@@ -1,0 +1,42 @@
+# Version « un seul fichier » : c'est une copie du site avec les images encodées
+# à l'intérieur. Pratique pour l'envoyer par mail, inutile dans le dépôt — elle
+# créerait une deuxième adresse servant exactement la même page.
+index-autonome.html
+
+# Systèmes
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# ─────────────────────────────────────────────────────────────────────
+# Fichiers de assets/ qui ne servent plus au site en ligne.
+# Ils restent sur votre disque : rien n'est supprimé, ils ne sont
+# simplement pas déployés. Retirez une ligne pour en remettre un.
+# ─────────────────────────────────────────────────────────────────────
+
+# anciennes captures d'agents, remplacées par les versions haute résolution
+assets/agent IA 1.png
+assets/AGENT IA 2.png
+assets/agent-ia-1.png
+assets/agent-ia-2.png
+
+# icônes de réseaux au format image : le site utilise des SVG écrits dans le HTML
+assets/Linkdin.png
+assets/TikTok.png
+assets/facebook.png
+assets/instagram.jpg
+assets/subsack.jpg
+assets/youtube.png
+
+# miniatures YouTube et bannière de chaîne : la section Ressources a été retirée
+assets/banner.jpg
+assets/yt-claude-assistant.jpg
+assets/yt-clients-sans-prospecter.jpg
+assets/yt-gpt-vs-claude.jpg
+assets/yt-ia-emails.jpg
