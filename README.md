@@ -44,6 +44,26 @@ Alternative sans ligne de commande : sur [app.netlify.com](https://app.netlify.c
 *Add new site → Import an existing project*, puis choisir ce dépôt. Chaque `git push`
 redéploie le site automatiquement. Netlify accepte les dépôts privés.
 
+## Les documents légaux
+
+Les CGV et les CGC existent à deux endroits :
+
+- **`cgv.html` et `cgc.html`** — les pages complètes, celles que Google indexe
+- **une fenêtre dans `index.html`** — le même texte, affiché sans quitter la page
+
+La fenêtre existe pour que le contenu reste accessible même quand `index.html`
+voyage seul (fichier envoyé par mail, aperçu, page ouverte hors du site).
+
+**Les pages restent la source unique.** Après les avoir modifiées :
+
+```bash
+node scripts/sync-legal.mjs
+```
+
+Le script recopie leur contenu dans les fenêtres. Ne modifiez jamais le texte
+directement entre les repères `<!-- CGV:START -->` et `<!-- CGV:END -->` :
+la prochaine synchronisation l'écraserait.
+
 ## Mettre à jour
 
 ### Le logo

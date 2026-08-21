@@ -316,6 +316,60 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .foot .icons a{border-color:var(--line);color:var(--grey-2);width:2.5rem;height:2.5rem}
 .foot .icons a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
 
+/* ---------- documents légaux en fenêtre ----------
+   Le contenu des CGV et des CGC vit dans la page : ainsi il reste lisible
+   même si le fichier est ouvert seul, sans cgv.html ni cgc.html à côté. */
+.doc-modal{
+  width:min(100% - 2rem, 46rem);max-height:86vh;padding:0;border:0;
+  background:var(--paper);color:#1A1A18;
+  box-shadow:0 24px 70px -20px rgba(0,0,0,.7);
+}
+.doc-modal::backdrop{background:rgba(0,0,0,.72)}
+.doc-modal__bar{position:sticky;top:0;z-index:2;background:var(--black);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.9rem clamp(1.1rem,3vw,2rem)}
+.doc-modal__bar b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;
+  letter-spacing:-.02em;font-size:1.05rem}
+.doc-modal__close{background:none;border:1px solid var(--line);color:#C9C9C3;
+  border-radius:999px;padding:.4rem .9rem;cursor:pointer;font:inherit;font-size:.9rem;
+  transition:border-color .18s ease,color .18s ease}
+.doc-modal__close:hover{border-color:var(--yellow);color:var(--yellow)}
+.doc-modal__body{padding:clamp(1.25rem,3vw,2rem) clamp(1.1rem,3vw,2rem) 0;
+  overflow-y:auto;max-height:calc(86vh - 7.5rem)}
+.doc-modal__foot{position:sticky;bottom:0;background:var(--paper);
+  border-top:1px solid #D8D8D2;padding:1rem clamp(1.1rem,3vw,2rem);
+  display:flex;flex-wrap:wrap;gap:.6rem 1rem;justify-content:space-between;
+  align-items:center;color:#4A4A45;font-size:.92rem}
+.doc-modal__foot a{color:#1A1A18;text-decoration:none;border-bottom:2px solid var(--yellow)}
+
+/* mise en forme du texte légal à l'intérieur de la fenêtre */
+.doc-modal__body section{border-top:1px solid #D8D8D2;padding-block:1.5rem}
+.doc-modal__body section:first-child{border-top:0;padding-top:0}
+.doc-modal__body h2{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;
+  letter-spacing:-.02em;line-height:1.2;font-size:1.35rem;margin:0 0 .9rem;
+  display:flex;gap:.8rem;align-items:baseline;color:#1A1A18}
+.doc-modal__body h2 .num{color:var(--yellow);-webkit-text-stroke:1.5px #000;flex:none;
+  letter-spacing:-.04em}
+.doc-modal__body h3{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;
+  font-size:1.35rem;margin:1.4rem 0 .5rem;color:#1A1A18}
+.doc-modal__body p{margin:0 0 .85rem;color:#3A3A36}
+.doc-modal__body ul{margin:0 0 .85rem;padding:0;list-style:none;
+  display:flex;flex-direction:column;gap:.4rem}
+.doc-modal__body ul li{display:flex;gap:.75rem;align-items:flex-start;color:#3A3A36}
+.doc-modal__body ul li::before{content:"";width:.45rem;height:.45rem;background:var(--yellow);
+  flex:none;transform:rotate(45deg);margin-top:.62rem;
+  outline:1px solid #000;outline-offset:-1px}
+.doc-modal__body strong{font-weight:600;color:#1A1A18}
+.doc-modal__body .mark,.doc-modal__body .warn{background:var(--yellow);padding:.15rem .45rem;
+  font-weight:600;color:#000}
+.doc-modal__body .contact-box{border:1px solid #D8D8D2;background:#fff;padding:1.1rem 1.25rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.doc-modal__body .contact-box a{font-family:"Bricolage Grotesque",Arial,sans-serif;
+  font-weight:700;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none;
+  border-bottom:2px solid var(--yellow);overflow-wrap:anywhere;color:#1A1A18}
+.doc-modal__body .legal-name,.doc-modal__body .maj{color:#4A4A45}
+.doc-modal__body .mono{color:#4A4A45}
+
 /* ---------- pied ---------- */
 .foot{border-top:1px solid var(--line);padding-block:2rem;display:flex;
   flex-direction:column;gap:1.5rem;color:var(--grey)}
@@ -775,14 +829,310 @@ h1.display em{font-style:normal;color:var(--yellow)}
       <div class="foot__legal">
         <p class="foot__copy">Copyright © 2026 SmartEfico</p>
         <p class="foot__links">
-          <a href="cgv.html" target="_blank" rel="noopener">CGV</a>
+          <!-- Les href restent de vrais liens : ils fonctionnent sur le site déployé
+               et si JavaScript est désactivé. Le script ouvre la fenêtre à la place. -->
+          <a href="cgv.html" data-doc="cgv">CGV</a>
           <span aria-hidden="true">|</span>
-          <a href="cgc.html" target="_blank" rel="noopener">CGC</a>
+          <a href="cgc.html" data-doc="cgc">CGC</a>
         </p>
       </div>
     </footer>
 
   </div>
 </main>
+
+<!-- ============ DOCUMENTS LÉGAUX ============
+     Le texte est repris automatiquement de cgv.html et cgc.html par
+     scripts/sync-legal.mjs. Ne pas l'éditer ici : modifiez les pages,
+     puis relancez le script. -->
+<dialog class="doc-modal" id="doc-cgv" aria-labelledby="doc-cgv-titre">
+  <div class="doc-modal__bar">
+    <b id="doc-cgv-titre">Conditions générales de vente</b>
+    <button class="doc-modal__close" type="button" data-close>Fermer</button>
+  </div>
+  <div class="doc-modal__body">
+    <!-- CGV:START -->
+<section>
+      <h2><span class="num">1</span>Objet</h2>
+      <p>Les présentes Conditions Générales de Vente (CGV) ont pour objet de définir les modalités selon lesquelles SmartEfico fournit à ses clients professionnels des services d'acquisition haut de gamme («&nbsp;High Ticket&nbsp;»), incluant&nbsp;:</p>
+      <ul>
+        <li>Stratégie marketing</li>
+        <li>Copywriting</li>
+        <li>Tunnels de vente</li>
+        <li>Création de créatives (images, vidéos, UGC)</li>
+        <li>Publicités Meta Ads, LinkedIn Ads, Google Ads &amp; YouTube Ads</li>
+        <li>Génération de leads et de rendez-vous qualifiés</li>
+        <li>Setting &amp; relances</li>
+        <li>Closing des offres du client</li>
+        <li>Implémentation et suivi d'agents IA</li>
+        <li>Optimisations et reporting</li>
+        <li>Accompagnement et pilotage complet «&nbsp;Done For You&nbsp;»</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>Public concerné</h2>
+      <p>SmartEfico travaille exclusivement avec des professionnels, des entreprises, dirigeants et entrepreneurs B2B ou B2C.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span>Conditions préalables obligatoires</h2>
+      <p>Pour accéder aux services SmartEfico, le client doit&nbsp;:</p>
+      <ul>
+        <li>Avoir déjà vendu son offre à des clients — <em>peut être nouveau dans la tech</em></li>
+        <li>Posséder une offre prête, validée et apportant une réelle valeur</li>
+        <li>Fournir des preuves&nbsp;: témoignages, résultats, études de cas</li>
+        <li>Être capable d'investir en publicité</li>
+        <li>S'engager pour une collaboration</li>
+        <li>Être prêt à fournir les informations nécessaires au bon déroulement des prestations</li>
+      </ul>
+      <p>SmartEfico se réserve le droit de refuser tout client qui ne remplit pas ces conditions.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>Description des offres</h2>
+      <p>Des offres proposées selon vos besoins.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">5</span>Durée &amp; renouvellement</h2>
+      <p>La durée du contrat correspond à l'offre choisie&nbsp;: 3, 6 ou 12 mois.</p>
+      <p>Le contrat est renouvelable par accord écrit.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">6</span>Prix &amp; paiement</h2>
+      <p>Les tarifs sont indiqués en euros et hors taxes (HT).</p>
+      <p>Les paiements peuvent s'effectuer&nbsp;:</p>
+      <ul>
+        <li>en une fois</li>
+        <li>ou en plusieurs échéances définies à la signature du contrat</li>
+      </ul>
+      <p>Le paiement est <strong>ferme et non remboursable</strong>.</p>
+      <p>Aucun remboursement n'est effectué une fois que la prestation a débuté.</p>
+      <p>En cas de retard de paiement, SmartEfico se réserve le droit de suspendre l'exécution des services.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span>Obligations du client</h2>
+      <p>Le client s'engage à&nbsp;:</p>
+      <ul>
+        <li>fournir un accès aux plateformes publicitaires</li>
+        <li>valider les créatives et tunnels dans les délais</li>
+        <li>rendre disponibles ses équipes (closers, équipes internes, etc.)</li>
+        <li>suivre les recommandations stratégiques</li>
+        <li>respecter les lois applicables</li>
+      </ul>
+      <p>Toute absence de collaboration impactant les résultats ne peut être imputée à SmartEfico.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">8</span>Obligations de SmartEfico</h2>
+      <p>SmartEfico s'engage à&nbsp;:</p>
+      <ul>
+        <li>fournir un service professionnel</li>
+        <li>implémenter le système d'acquisition complet</li>
+        <li>piloter les Ads, tunnels, IA, setting, closing</li>
+        <li>optimiser le CPA et le taux de conversion</li>
+        <li>communiquer régulièrement avec le client (bilans, reporting, IA récap)</li>
+      </ul>
+      <p>SmartEfico est soumis à une obligation de <strong>moyens</strong>, et non de résultats.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">9</span>Publicité &amp; budgets publicitaires</h2>
+      <p>Les budgets publicitaires Meta/LinkedIn/Google/YouTube sont <strong>à la charge du client</strong>.</p>
+      <p>Ils ne sont <strong>jamais inclus</strong> dans les forfaits.</p>
+      <p>SmartEfico n'est pas responsable en cas de refus de publicités par les plateformes.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Confidentialité</h2>
+      <p>Les données du client sont confidentielles et protégées (voir <a href="cgc.html" data-doc="cgc" style="border-bottom:2px solid var(--yellow);text-decoration:none">CGC</a>).</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Propriété intellectuelle</h2>
+      <p>Tous les éléments produits par SmartEfico (textes, créatives, tunnels, scripts, agents IA, systèmes internes) restent la propriété de SmartEfico jusqu'au paiement final du client.</p>
+      <p>Ensuite, le client possède toutes les ressources créées.</p>
+      <p>Une licence non exclusive peut être accordée tant que le contrat est actif.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Résiliation</h2>
+      <p>En cas de manquement grave par l'une des parties, le contrat peut être résilié après mise en demeure restée sans réponse sous 30 jours.</p>
+      <p><strong>Les paiements dus restent exigibles.</strong></p>
+    </section>
+
+    <section>
+      <h2><span class="num">13</span>Limitations de responsabilité</h2>
+      <p>SmartEfico ne garantit pas&nbsp;:</p>
+      <ul>
+        <li>un nombre minimum de rendez-vous</li>
+        <li>un nombre minimum de ventes</li>
+        <li>les décisions ou performances du client ou de son équipe</li>
+        <li>les actions des plateformes publicitaires</li>
+      </ul>
+      <p>Mais SmartEfico garantit le ROI positif des clients sous certaines conditions précisées sur le contrat et le site web.</p>
+      <p>Le client indemnise SmartEfico en cas d'usage illégal ou non conforme de son offre.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">14</span>Droit applicable</h2>
+      <p>Les présentes CGV sont régies par le droit français.</p>
+      <p>Tout litige sera soumis aux tribunaux compétents de Paris.</p>
+    </section>
+    <!-- CGV:END -->
+  </div>
+  <div class="doc-modal__foot">
+    <span>Copyright © 2026 SmartEfico</span>
+    <a href="cgv.html" target="_blank" rel="noopener">Ouvrir la page complète</a>
+  </div>
+</dialog>
+
+<dialog class="doc-modal" id="doc-cgc" aria-labelledby="doc-cgc-titre">
+  <div class="doc-modal__bar">
+    <b id="doc-cgc-titre">Conditions générales de confidentialité</b>
+    <button class="doc-modal__close" type="button" data-close>Fermer</button>
+  </div>
+  <div class="doc-modal__body">
+    <!-- CGC:START -->
+<section>
+      <h2><span class="num">1</span>Objet</h2>
+      <p>La présente Conditions Générales de Confidentialité définissent la manière dont SmartEfico collecte, utilise, stocke et protège les données personnelles des clients.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>Données collectées</h2>
+      <p>SmartEfico peut collecter&nbsp;:</p>
+      <ul>
+        <li>Nom, prénom, email, numéro de téléphone</li>
+        <li>Nom de l'entreprise</li>
+        <li>Données liées à l'activité (CA, offres, positionnement, etc.)</li>
+        <li>Informations publicitaires (données Ads, CRM, statistiques)</li>
+        <li>Données issues des agents IA (résumés, analyses automatiques)</li>
+        <li>Données de facturation</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span>Finalités</h2>
+      <p>Les données sont utilisées pour&nbsp;:</p>
+      <ul>
+        <li>exécuter les prestations</li>
+        <li>optimiser les campagnes publicitaires</li>
+        <li>améliorer les performances du système IA</li>
+        <li>générer des rapports et analyses</li>
+        <li>communiquer avec le client</li>
+      </ul>
+      <p><strong><span class="mark">Aucune donnée n'est vendue ou cédée à des tiers.</span></strong></p>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>Conservation des données</h2>
+      <p>Les données sont stockées tant que la relation contractuelle est active, puis archivées 24 mois.</p>
+      <p>Le client peut demander la suppression sur simple demande.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">5</span>Accès aux données</h2>
+      <p>Ont accès aux données&nbsp;:</p>
+      <ul>
+        <li>l'équipe SmartEfico</li>
+        <li>les agents IA développés par SmartEfico</li>
+        <li>les sous-traitants strictement nécessaires (hébergement, CRM, outils d'automatisation)</li>
+      </ul>
+      <p>Tous les accès sont sécurisés et limités.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">6</span>Sécurité</h2>
+      <p>SmartEfico met en œuvre toutes les mesures nécessaires pour protéger les données&nbsp;:</p>
+      <ul>
+        <li>serveurs sécurisés</li>
+        <li>cryptage</li>
+        <li>accès restreints</li>
+        <li>audits et contrôles internes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span>Données publicitaires</h2>
+      <p>Les accès Meta, LinkedIn, Google, YouTube fournis par le client restent sa propriété.</p>
+      <p>SmartEfico agit uniquement en tant que gestionnaire des campagnes.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">8</span>Droits du client</h2>
+      <p>Le client peut&nbsp;:</p>
+      <ul>
+        <li>accéder à ses données</li>
+        <li>demander une rectification</li>
+        <li>demander une suppression</li>
+        <li>demander une limitation de traitement</li>
+        <li>s'opposer au traitement</li>
+      </ul>
+      <p class="contact-box"><span class="mono">Contact</span><a href="mailto:contact.aintegrate@gmail.com">contact.aintegrate@gmail.com</a></p>
+    </section>
+
+    <section>
+      <h2><span class="num">9</span>Cookies &amp; tracking</h2>
+      <p>Le site SmartEfico utilise des cookies analytiques, marketing et techniques.</p>
+      <p>Le client peut s'y opposer via son navigateur.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Sous-traitance IA</h2>
+      <p>Certaines opérations peuvent être partiellement automatisées via&nbsp;:</p>
+      <ul>
+        <li>agents IA internes</li>
+        <li>outils de résumé</li>
+        <li>systèmes publicitaires (API Conversion)</li>
+        <li>systèmes de notifications instantanées</li>
+      </ul>
+      <p>Tous ces outils respectent les règles RGPD.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Modifications</h2>
+      <p>SmartEfico peut modifier les CGC&nbsp;; toute mise à jour sera publiée sur le site.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Loi applicable</h2>
+      <p>Les CGC sont régies par le droit français.</p>
+    </section>
+    <!-- CGC:END -->
+  </div>
+  <div class="doc-modal__foot">
+    <span>Copyright © 2026 SmartEfico</span>
+    <a href="cgc.html" target="_blank" rel="noopener">Ouvrir la page complète</a>
+  </div>
+</dialog>
+
+<script>
+// Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le
+// navigateur, on laisse le lien suivre son cours vers cgv.html / cgc.html.
+(function () {
+  var gere = typeof HTMLDialogElement === 'function';
+  document.querySelectorAll('a[data-doc]').forEach(function (lien) {
+    lien.addEventListener('click', function (e) {
+      var boite = document.getElementById('doc-' + lien.dataset.doc);
+      if (!gere || !boite || !boite.showModal) return;
+      e.preventDefault();
+      boite.showModal();
+    });
+  });
+  document.querySelectorAll('.doc-modal').forEach(function (boite) {
+    boite.querySelector('[data-close]').addEventListener('click', function () {
+      boite.close();
+    });
+    // clic sur le fond noir autour de la fenêtre
+    boite.addEventListener('click', function (e) {
+      if (e.target === boite) boite.close();
+    });
+  });
+})();
+</script>
 </body>
 </html>
