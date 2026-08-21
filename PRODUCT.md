@@ -90,11 +90,12 @@ Disponible et utilisé :
 - Portrait du fondateur et bannière de marque.
 - 194 vidéos publiées sur l'IA appliquée.
 
-Disponible mais **pas encore fourni** :
+Fourni par le propriétaire, **pas encore affiché sur le site** :
 
-- **Des noms de clients citables.** Le propriétaire déclare en avoir. Ils ne figurent pas
-  encore sur le site et il ne les a pas communiqués. À demander avant toute section de
-  référence client.
+- **Deux noms de clients citables** : l'**Ambassade du Togo au Maroc** et
+  **GROUP LIGHT MEDICAL**. Le propriétaire déclare avoir le droit de les nommer.
+  Aucun résultat chiffré ne les accompagne : ce sont des références, pas des études
+  de cas. Ne rien leur attribuer qu'il n'ait confirmé.
 
 Absences que le travail futur ne doit **pas** combler par invention :
 
@@ -104,8 +105,10 @@ Absences que le travail futur ne doit **pas** combler par invention :
   jamais ce qui aurait été *atteint*.
 - Le « +15 % de ROI » porté par l'agent Conversion API est une affirmation du
   propriétaire, non vérifiée.
-- La garantie de ROI positif mentionnée à l'article 13 des CGV renvoie à des conditions
-  « précisées sur le site web » qui n'y figurent pas.
+- La garantie de ROI positif a été **retirée de l'article 13 des CGV** le 21 août 2026,
+  sur décision du propriétaire : elle renvoyait à des conditions « précisées sur le site
+  web » absentes du site, et contredisait l'article 8 (obligation de moyens). Ne pas la
+  réintroduire sans conditions écrites.
 
 ## Product Principles
 
