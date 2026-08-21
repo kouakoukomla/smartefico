@@ -40,3 +40,8 @@ assets/yt-claude-assistant.jpg
 assets/yt-clients-sans-prospecter.jpg
 assets/yt-gpt-vs-claude.jpg
 assets/yt-ia-emails.jpg
+
+# Skill de design impeccable (outillage local, ~7 Mo) — pas du contenu de site
+.claude/
+.agents/
+.codex/

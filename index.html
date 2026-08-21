@@ -39,7 +39,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=DM+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=DM+Mono:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;display=swap">
 <style>
 /* =========================================================
    SmartEfico — identité NOIR · JAUNE · BLANC
@@ -64,7 +64,7 @@ body{
   margin:0;
   background:var(--black);
   color:var(--white);
-  font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   font-size:17px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
@@ -120,9 +120,11 @@ p{margin:0}
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(3.5rem,10vw,7rem) clamp(2.5rem,6vw,4rem);
   display:flex;flex-direction:column;gap:2rem}
-.hero__tag{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--line);
-  border-radius:999px;padding:.4rem .9rem;color:var(--grey-2);align-self:flex-start}
-.hero__tag i{width:.45rem;height:.45rem;border-radius:50%;background:var(--yellow);
+/* Le positionnement est placé sous les boutons, en casse normale : la pastille
+   en petites capitales espacées au-dessus du titre est un tic d'interface. */
+.hero__status{display:inline-flex;align-items:center;gap:.65rem;color:var(--grey);
+  font-size:.95rem;align-self:flex-start;margin-top:.4rem}
+.hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--yellow);
   flex:none;box-shadow:0 0 0 4px rgba(255,204,0,.18)}
 h1.display em{font-style:normal;color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.6rem}
@@ -139,14 +141,15 @@ h1.display em{font-style:normal;color:var(--yellow)}
   border-block:1px solid var(--line)}
 .band img{width:100%;max-width:1100px;margin-inline:auto;height:auto}
 
-/* ---------- marquee ---------- */
-.marquee{background:var(--yellow);color:var(--black);overflow:hidden;
-  padding-block:.85rem;display:flex;user-select:none}
-.marquee__track{display:flex;gap:2.5rem;padding-right:2.5rem;flex:none;
-  animation:slide 32s linear infinite;font-weight:600;letter-spacing:.02em}
-.marquee__track span{display:flex;align-items:center;gap:2.5rem;white-space:nowrap}
-.marquee__track span::after{content:"◆";font-size:.6em;opacity:.55}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+/* ---------- plateformes ----------
+   Bandeau fixe et non défilant : un défilement automatique masque la moitié
+   de son contenu à tout instant et réclame une attention qu'il n'a pas méritée. */
+.platforms{background:var(--yellow);color:var(--black)}
+.platforms__list{display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:.6rem 2rem;padding:1.1rem 0;margin:0;list-style:none;
+  font-weight:600;letter-spacing:.01em}
+.platforms__list li{display:flex;align-items:center;gap:2rem;white-space:nowrap}
+.platforms__list li:not(:last-child)::after{content:"◆";font-size:.55em;opacity:.5}
 
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:1rem;margin-bottom:clamp(2rem,4vw,3rem)}
@@ -194,8 +197,11 @@ h1.display em{font-style:normal;color:var(--yellow)}
   transition:color .2s ease}
 .offer:hover .offer__no{color:var(--yellow)}
 .offer p{color:var(--grey-2);font-size:1rem}
+/* casse normale : ces libellés font 34 à 41 caractères, trop long pour des
+   capitales — on reconnaît les mots à leur silhouette, que la capitale efface. */
 .kpi{margin-top:.3rem;display:inline-flex;align-items:center;gap:.5rem;
-  border-top:1px solid var(--line);padding-top:.9rem;color:var(--yellow)}
+  border-top:1px solid var(--line);padding-top:.9rem;color:var(--yellow);
+  text-transform:none;letter-spacing:.02em;font-size:.85rem}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
 /* ---------- agents IA ---------- */
@@ -248,9 +254,13 @@ h1.display em{font-style:normal;color:var(--yellow)}
 /* ---------- pourquoi nous ---------- */
 .why{display:grid;gap:1.5rem;grid-template-columns:1fr}
 @media (min-width:52rem){.why{grid-template-columns:repeat(2,1fr)}}
-.why article{border:1px solid var(--line);border-top:3px solid var(--yellow);
+/* bordure uniforme : le liseré de couleur en haut de carte est un tic d'interface.
+   Le jaune vit dans le repère de l'intitulé. */
+.why article{border:1px solid var(--line);
   padding:clamp(1.6rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem}
-.why .mono{color:var(--yellow)}
+.why .mono{color:var(--yellow);display:flex;align-items:center;gap:.6rem}
+.why .mono::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);
+  flex:none;transform:rotate(45deg)}
 .why p{color:var(--grey-2)}
 
 /* ---------- questions fréquentes ---------- */
@@ -431,13 +441,13 @@ h1.display em{font-style:normal;color:var(--yellow)}
 
   <!-- ============ HERO ============ -->
   <section class="wrap hero">
-    <span class="hero__tag mono"><i></i>Acquisition &amp; automatisation par l'IA</span>
     <h1 class="display">Générez des <em>leads qualifiés</em> pour vos offres et mettez l'<em>IA générative</em> au service de votre performance.</h1>
     <p class="lead">SmartEfico installe le système complet qui remplit votre agenda : tunnel de rendez-vous, publicités pilotées sur Meta, LinkedIn et TikTok, qualification des prospects par agents IA. Vous récupérez des leads qualifiés, pas des listes de contacts.</p>
     <div class="hero__actions">
       <a class="btn btn--solid" href="#appel">Je réserve mon appel</a>
       <a class="btn btn--line" href="tel:+33751599636">+33 7 51 59 96 36</a>
     </div>
+    <p class="hero__status"><i></i>Acquisition et automatisation par l'IA</p>
   </section>
 
   <!-- ============ BANDEAU ============ -->
@@ -445,15 +455,13 @@ h1.display em{font-style:normal;color:var(--yellow)}
     <img src="assets/cover.jpg" alt="" width="960" height="320">
   </section>
 
-  <!-- ============ MARQUEE ============ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>Meta</span><span>LinkedIn</span><span>TikTok</span><span>Google</span><span>YouTube</span><span>Agents IA</span><span>Make</span><span>n8n</span><span>CRM</span>
-    </div>
-    <div class="marquee__track">
-      <span>Meta</span><span>LinkedIn</span><span>TikTok</span><span>Google</span><span>YouTube</span><span>Agents IA</span><span>Make</span><span>n8n</span><span>CRM</span>
-    </div>
-  </div>
+  <!-- ============ PLATEFORMES ============ -->
+  <section class="platforms" aria-label="Plateformes et outils pilotés">
+    <ul class="wrap platforms__list">
+      <li>Meta</li><li>LinkedIn</li><li>TikTok</li><li>Google</li><li>YouTube</li>
+      <li>Agents IA</li><li>Make</li><li>n8n</li><li>CRM</li>
+    </ul>
+  </section>
 
   <div class="stack" style="padding-block:var(--gap)">
 
