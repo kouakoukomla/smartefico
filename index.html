@@ -291,14 +291,39 @@ h1.display em{font-style:normal;color:var(--yellow)}
 
 /* ---------- réservation ---------- */
 .book{background:var(--paper);color:var(--black);border:1px solid var(--line);
-  padding:clamp(1.25rem,3vw,2rem);display:flex;flex-direction:column;gap:1.25rem}
-.book__frame{width:100%;border:0;min-height:640px;background:var(--paper)}
-.book__fallback{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;
-  border-top:1px solid #D8D8D2;padding-top:1.25rem;color:#4A4A45}
-.book__fallback a{background:var(--black);color:var(--yellow);text-decoration:none;
-  padding:.75rem 1.25rem;border-radius:999px;font-weight:600;white-space:nowrap;
+  padding:clamp(1.25rem,3vw,2rem);display:grid;gap:1.75rem;grid-template-columns:1fr}
+@media (min-width:56rem){
+  /* rassurance à gauche, formulaire à droite ; sur mobile elle passe au-dessus */
+  .book{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:start}
+}
+.book__aside h3{font-size:1.05rem;margin-bottom:1rem;color:var(--black)}
+.book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
+.book__facts li{display:flex;flex-direction:column;gap:.15rem;
+  border-left:2px solid var(--yellow);padding-left:.85rem}
+.book__facts b{font-weight:600;font-size:.92rem;color:var(--black)}
+.book__facts span{font-size:.92rem;color:#4A4A45}
+.book__facts a{color:var(--black);text-decoration:none;border-bottom:2px solid var(--yellow)}
+
+.book__main{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.book__alt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
+  background:#FFFFFF;border:1px solid #D8D8D2;padding:.85rem 1rem;color:#4A4A45;
+  font-size:.94rem}
+.book__alt-tel{background:var(--black);color:var(--yellow);text-decoration:none;
+  padding:.55rem 1rem;border-radius:999px;font-weight:600;white-space:nowrap;
   transition:background-color .18s ease}
-.book__fallback a:hover{background:#1A1A1A}
+.book__alt-tel:hover{background:#1A1A1A}
+.book__alt-lien{color:var(--black);text-decoration:none;border-bottom:2px solid var(--yellow)}
+/* Hauteur fixe et généreuse : Tally n'émet aucune hauteur sans sa bibliothèque
+   parente, le cadre ne peut donc pas s'adapter. Trop court, une étape longue
+   défilerait à l'intérieur du cadre — ce qui est le pire des cas. */
+.book__frame{width:100%;border:0;min-height:700px;background:var(--paper)}
+.book__done{display:flex;flex-direction:column;gap:.3rem;
+  background:var(--yellow);border:1.5px solid var(--black);padding:1.1rem 1.25rem}
+.book__done[hidden]{display:none}
+.book__done b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;
+  font-size:1.2rem;letter-spacing:-.02em}
+.book__done span{color:#3A3000;font-size:.94rem}
+.book__done a{color:var(--black);font-weight:600}
 
 /* ---------- contact ---------- */
 .contact{background:var(--yellow);color:var(--black);padding:clamp(2rem,5vw,4rem);
@@ -799,14 +824,37 @@ h1.display em{font-style:normal;color:var(--yellow)}
         <p class="lead">Quelques questions pour comprendre votre offre et votre cible, et on se cale un créneau.</p>
       </div>
       <div class="book">
-        <iframe class="book__frame"
-                src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
-                title="Formulaire de réservation d'appel SmartEfico"
-                loading="lazy"></iframe>
-        <p class="book__fallback">
-          <span>Le formulaire ne s'affiche pas&nbsp;? Ouvrez-le directement&nbsp;:</span>
-          <a href="https://tally.so/r/81VkKx" target="_blank" rel="noopener">Réserver mon appel</a>
-        </p>
+
+        <!-- Rassurance placée contre le formulaire : ces réponses étaient jusqu'ici
+             repliées dans la FAQ, mille pixels plus haut. -->
+        <aside class="book__aside">
+          <h3>Avant de réserver</h3>
+          <ul class="book__facts">
+            <li><b>Qui décroche</b><span>Emmanuel Kouakou, fondateur de SmartEfico.</span></li>
+            <li><b>Ce qu'on regarde</b><span>Votre offre, votre cible, et ce qui bloque aujourd'hui.</span></li>
+            <li><b>Le chiffrage vient après</b><span>La proposition arrive après ce cadrage, jamais avant.</span></li>
+            <li><b>Vos données</b><span>Traitées selon les <a href="cgc.html" data-doc="cgc">conditions de confidentialité</a>, supprimées sur simple demande.</span></li>
+          </ul>
+        </aside>
+
+        <div class="book__main">
+          <!-- L'alternative est AU-DESSUS du cadre : si le formulaire ne s'affiche pas,
+               le recours doit être visible sans avoir à passer par la panne. -->
+          <p class="book__alt">
+            <span>Vous préférez éviter le formulaire&nbsp;?</span>
+            <a class="book__alt-tel" href="tel:+33751599636">Appelez le +33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>
+            <a class="book__alt-lien" href="https://tally.so/r/81VkKx" target="_blank" rel="noopener">ou ouvrez-le dans un onglet</a>
+          </p>
+          <p class="book__done" id="book-done" role="status" hidden>
+            <b>C'est envoyé.</b>
+            <span>Votre demande est arrivée. Vous recevrez une confirmation par email. Si c'est urgent, appelez le <a href="tel:+33751599636">+33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>.</span>
+          </p>
+          <iframe class="book__frame"
+                  src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
+                  title="Formulaire de réservation d'appel SmartEfico"
+                  loading="lazy"></iframe>
+        </div>
+
       </div>
     </section>
 
@@ -1132,6 +1180,34 @@ h1.display em{font-style:normal;color:var(--yellow)}
 </dialog>
 
 <script>
+// Accusé de réception du formulaire, dans la page.
+//
+// Le formulaire lui-même se charge par le src de l'iframe et le lazy-loading
+// natif : il ne dépend d'aucun JavaScript. Ce bloc n'est qu'une amélioration.
+//
+// Pourquoi il existe : sans lui, l'écran de remerciement de Tally reste
+// enfermé dans le cadre et rien, côté page, ne dit au visiteur que c'est parti.
+//
+// Pourquoi on ne redimensionne pas le cadre : l'enfant Tally annonce
+// « [iFrameResizerChild]Ready » puis attend une poignée de main d'une
+// bibliothèque parente qu'on ne charge pas. Il n'émet donc jamais de hauteur,
+// et le paramètre dynamicHeight reste sans effet. D'où la hauteur fixe et
+// généreuse fixée dans le CSS.
+(function () {
+  window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://tally.so') return;
+    var ev;
+    try { ev = JSON.parse(e.data).event; } catch (err) { return; }
+    if (ev !== 'Tally.FormSubmitted') return;
+    var fait = document.getElementById('book-done');
+    if (!fait) return;
+    fait.hidden = false;
+    fait.setAttribute('tabindex', '-1');
+    fait.focus();
+    fait.scrollIntoView({ block: 'center' });
+  });
+})();
+
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le
 // navigateur, on laisse le lien suivre son cours vers cgv.html / cgc.html.
 (function () {
