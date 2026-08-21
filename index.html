@@ -252,6 +252,16 @@ p{margin:0}
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .head__eyebrow{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);
   align-self:flex-start;background:var(--yellow);padding:.3rem .7rem;border-radius:3px}
+/* Variante centrée, calquée sur la référence : le titre tient le milieu à une
+   échelle plus haute, le chapô descend dessous sur une mesure étroite et ses
+   lignes sont centrées elles aussi. */
+.head--centre{align-items:center;text-align:center;gap:.9rem}
+.head--centre .head__eyebrow{align-self:center}
+.head--centre .display{font-size:clamp(2.1rem,4.8vw,3.6rem);max-width:17ch}
+/* Sur la référence, le chapô respire nettement plus sous le titre que ne le
+   ferait un simple gap : l écart y vaut environ la moitié du corps du titre. */
+.head--centre .lead{max-width:46ch;margin-inline:auto;
+  margin-top:clamp(.4rem,1.5vw,1.2rem)}
 
 /* ---------- chiffres ---------- */
 .figures{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -717,9 +727,10 @@ p{margin:0}
 
     <!-- ============ CE QU'ON VOUS APPORTE ============ -->
     <section class="wrap" id="apport">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Ce qu'on vous apporte</span>
         <h2 class="display">Des ventes, <em>pas de la notoriété</em>.</h2>
+        <p class="lead">Le buzz, très peu pour nous. Les ventes, c'est ce qui nous fait vibrer. Si c'est ce que vous cherchez, alors on est l'agence qu'il vous faut.</p>
       </div>
       <div class="bring">
         <ul class="deliver">
@@ -732,10 +743,6 @@ p{margin:0}
         </ul>
         <div class="manifesto">
           <p class="punch">Personne ne vous connaîtra grâce à nous, mais vous ferez du <em>cash</em> avec nos systèmes.</p>
-          <hr>
-          <p>Le buzz, très peu pour nous.</p>
-          <p>Les ventes, c'est ce qui nous fait vibrer.</p>
-          <p>Si c'est ce que vous cherchez, alors on est l'agence qu'il vous faut.</p>
           <hr>
           <p class="punch">Démultiplier vos ventes middle &amp; haute gamme en <em>moins de 3 mois</em>.</p>
           <p>C'est ce qu'on apporte à chacun de nos clients.</p>
