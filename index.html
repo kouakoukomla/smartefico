@@ -122,7 +122,7 @@ p{margin:0}
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;
   font-weight:800;letter-spacing:-.03em;font-size:1.15rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
-.nav__links{display:none;gap:1.4rem;margin-inline:auto}
+.nav__links{display:none;gap:clamp(1.5rem,3.2vw,2.75rem);margin-inline:auto}
 @media (min-width:48rem){.nav__links{display:flex}}
 /* liens de navigation : très gras et à pleine encre, comme demandé */
 .nav__links a{text-decoration:none;color:var(--ink);font-size:.95rem;
@@ -181,13 +181,14 @@ p{margin:0}
      display:flex annule le display:none de la règle de base : c est ce qui
      rend le menu lisible quand JavaScript ne tourne pas. */
   .nav__links{display:flex;order:9;flex-basis:100%;flex-wrap:wrap;
+    column-gap:1.6rem;row-gap:.2rem;
     margin:.6rem 0 0;padding-top:.6rem;border-top:1px solid var(--line)}
   /* à partir d ici, seulement quand le script tourne */
   .js .nav__burger{display:grid}
   .js .nav__cta{margin-left:0}
   .js .nav__links{display:none}
   .js .nav--ouvert .nav__links{display:flex;flex-direction:column;
-    gap:.15rem;padding:.6rem .25rem .25rem}
+    gap:.3rem;padding:.7rem .25rem .35rem}
   /* en liste, chaque entrée devient une cible tactile pleine largeur */
   .js .nav--ouvert .nav__links a{font-size:1.05rem;padding:.8rem 1rem;
     border-bottom:0;border-radius:9px;
