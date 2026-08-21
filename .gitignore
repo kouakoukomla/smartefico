@@ -45,3 +45,7 @@ assets/yt-ia-emails.jpg
 .claude/
 .agents/
 .codex/
+
+# Node (npx/npm sont utilisés localement pour le détecteur de design)
+node_modules/
+*.log
