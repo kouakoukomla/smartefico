@@ -168,8 +168,9 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
 .figure{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:.4rem}
 .figure b{font-weight:800;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1;
-  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums;
-  border-bottom:4px solid var(--yellow);align-self:flex-start;padding-bottom:.1rem}
+  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
+.figure span::before{content:"";display:inline-block;width:.5rem;height:.5rem;
+  background:var(--yellow);transform:rotate(45deg);margin-right:.55rem}
 .figure span{color:var(--ink-2);font-size:.94rem;margin-top:.5rem}
 
 /* ---------- ce qu'on installe ---------- */
@@ -271,7 +272,7 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
 
 /* ---------- pourquoi nous ---------- */
 .why{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:52rem){.why{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:52rem){.why{grid-template-columns:repeat(3,1fr)}}
 .why article{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.75rem}
 .why .mono{color:var(--ink-2);display:flex;align-items:center;gap:.55rem}
@@ -582,7 +583,7 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
           </figure>
           <span class="agent__tag mono">Temps réel</span>
           <h3>Instant setters notifier</h3>
-          <p>Un lead arrive, l'agent le qualifie, le classe (qualifié, semi-qualifié, non qualifié), l'enregistre dans le CRM et prévient le setter concerné ainsi que l'équipe, dans la seconde. Plus de lead chaud qui refroidit dans une boîte mail.</p>
+          <p>Un lead arrive, l'agent le qualifie, le classe (qualifié, semi-qualifié, non qualifié), l'enregistre dans le CRM et prévient dans la seconde la personne chargée de décrocher le rendez-vous — le <em>setter</em>, dans le jargon — ainsi que l'équipe. Plus de lead chaud qui refroidit dans une boîte mail.</p>
         </article>
         <article class="agent">
           <figure>
@@ -599,12 +600,13 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
     <!-- ============ QUELQUES CHIFFRES ============ -->
     <section class="wrap" id="chiffres">
       <div class="head">
-        <span class="head__eyebrow mono">Quelques chiffres</span>
+        <span class="head__eyebrow mono">Les repères</span>
+        <h2 class="display">Ce à quoi vous engager.</h2>
       </div>
       <div class="figures">
-        <p class="figure"><b>3 mois</b><span>pour démultiplier vos ventes middle &amp; haute gamme</span></p>
-        <p class="figure"><b>5</b><span>étapes, de la création du système au multi-scaling</span></p>
-        <p class="figure"><b>24 h/24</b><span>vos demandes entrantes qualifiées par agents IA</span></p>
+        <p class="figure"><b>3 mois</b><span>l'horizon sur lequel on travaille pour démultiplier vos ventes</span></p>
+        <p class="figure"><b>5</b><span>étapes, de la création du système à l'extension aux autres canaux</span></p>
+        <p class="figure"><b>24 h/24</b><span>vos demandes entrantes qualifiées, week-ends compris</span></p>
       </div>
     </section>
 
@@ -653,7 +655,7 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
         <article class="offer">
           <span class="offer__no">02</span>
           <h3>Qualification par agents IA</h3>
-          <p>Les demandes entrantes sont lues, triées et qualifiées selon vos règles avant d'arriver sur le bureau de vos closers.</p>
+          <p>Les demandes entrantes sont lues, triées et qualifiées selon vos règles avant d'arriver sur le bureau de ceux qui vendent — les <em>closers</em>. Ils ne parlent qu'à des gens qui peuvent acheter.</p>
           <span class="kpi mono">Part de rendez-vous réellement qualifiés</span>
         </article>
         <article class="offer">
@@ -705,7 +707,7 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
         <article class="step">
           <span class="step__no">03</span>
           <h3>Optimisation</h3>
-          <p>Analyse des retours des setters et des closers, puis ajustement des campagnes.</p>
+          <p>On écoute ce que remontent le terrain — qui décroche, qui bloque, sur quel argument — et on ajuste les campagnes en conséquence.</p>
         </article>
         <article class="step">
           <span class="step__no">04</span>
@@ -748,8 +750,8 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
           <span class="ba__titre mono">Avec SmartEfico</span>
           <ul>
             <li>Les campagnes tournent en continu sur Meta, LinkedIn et TikTok.</li>
-            <li>Chaque lead est qualifié, classé et notifié au setter dans la seconde.</li>
-            <li>Les campagnes sont ajustées sur les retours des setters et des closers.</li>
+            <li>Chaque lead est qualifié, classé et transmis à la bonne personne dans la seconde.</li>
+            <li>Les campagnes sont ajustées chaque semaine sur les retours du terrain.</li>
             <li>Les demandes courantes sont traitées par des agents, 24&nbsp;h/24.</li>
             <li>Un tableau de bord affiche les indicateurs dès la première semaine.</li>
           </ul>
@@ -779,18 +781,23 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
     <section class="wrap" id="pourquoi">
       <div class="head">
         <span class="head__eyebrow mono">Pourquoi nous</span>
-        <h2 class="display">Pourquoi choisir SmartEfico ?</h2>
+        <h2 class="display">Trois raisons, pas une de plus.</h2>
       </div>
       <div class="why">
         <article>
-          <span class="mono">Notre méthode</span>
-          <h3>Approche 100 % sur mesure</h3>
-          <p>Pas de technologie imposée. Nous choisissons les meilleurs modèles d'IA générative pour votre contexte métier et vos contraintes spécifiques.</p>
+          <span class="mono">L'ordre d'abord</span>
+          <h3>L'ordre n'est pas négociable</h3>
+          <p>Aucune campagne ne part avant que le système de rendez-vous existe, et rien n'est scalé avant que les campagnes soient optimisées. C'est ce qui vous évite de payer des clics qui tombent dans le vide.</p>
         </article>
         <article>
-          <span class="mono">Notre terrain</span>
-          <h3>Expertise métier</h3>
-          <p>Nous maîtrisons les enjeux spécifiques de l'heure.</p>
+          <span class="mono">On montre</span>
+          <h3>Les agents tournent déjà</h3>
+          <p>Les quatre scénarios plus haut sont des captures de production, pas des maquettes. Vous voyez ce que vous achetez avant de signer.</p>
+        </article>
+        <article>
+          <span class="mono">Pas de technologie imposée</span>
+          <h3>On se branche sur vos outils</h3>
+          <p>Le système s'installe sur votre boîte mail, vos Google Sheets, votre CRM. Vous n'avez rien de nouveau à apprendre, et rien à remplacer.</p>
         </article>
       </div>
     </section>
