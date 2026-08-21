@@ -15,15 +15,14 @@ Trois pages en HTML/CSS statique, sans framework, sans dépendance à installer.
 Les trois pages se lient entre elles et pointent toutes vers `assets/`.
 **Il faut donc les déployer ensemble**, sinon les liens et les images tombent en 404.
 
-## À faire avant la mise en ligne
+## Adresse du site
 
-Une seule chose : remplacer l'adresse de démonstration par la vraie.
+Le site est configuré pour **https://kouakoukomla.github.io/smartefico**.
 
-`https://www.smartefico.com` apparaît dans `index.html` (balise canonique, balises de
-partage, données structurées) et en haut de `cgv.html` et `cgc.html`. Tant qu'elle n'est
-pas corrigée, **l'aperçu au partage sur LinkedIn ou WhatsApp restera vide**.
-
-Un chercher-remplacer sur les trois fichiers suffit.
+Cette adresse figure dans `index.html` (balise canonique, balises de partage,
+données structurées) et en haut de `cgv.html` et `cgc.html`. Le jour où vous prenez
+un vrai nom de domaine, un chercher-remplacer sur les trois fichiers suffit —
+sans quoi l'aperçu au partage LinkedIn continuera de pointer vers l'ancienne adresse.
 
 ## Déployer avec GitHub Pages
 
