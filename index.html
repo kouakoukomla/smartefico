@@ -42,6 +42,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
 
+<!-- Pose un marqueur avant le premier rendu : le menu du téléphone ne se
+     replie derrière son bouton que si JavaScript est bien là. Sans lui, les
+     liens restent visibles, simplement rangés sur une deuxième ligne. -->
+<script>document.documentElement.className+=" js"</script>
 <style>
 /* =========================================================
    SmartEfico — fond clair, encre noire, jaune en aplat.
@@ -138,7 +142,59 @@ p{margin:0}
   background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
   transition:background-color .18s ease,transform .18s ease}
 .nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
-@media (max-width:30rem){.nav__cta-texte{display:none}}
+/* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
+   tiennent pas ensemble sur une ligne. Mesuré : il leur faut 509 px, d où ce
+   seuil de 34 rem — en dessous, la barre se coupait en deux. */
+@media (max-width:33.99rem){.nav__cta-texte{display:none}}
+/* bouton du menu : trois barres qui se croisent à l ouverture. Masqué tant
+   que les liens tiennent en ligne, il ne sert qu au format téléphone. */
+.nav__burger{display:none;gap:4px;justify-items:center;align-content:center;
+  width:2.65rem;height:2.65rem;flex:none;margin-left:auto;
+  background:none;border:0;padding:0;cursor:pointer;color:var(--ink);
+  border-radius:9px;transition:background-color .18s ease}
+.nav__burger:hover{background:var(--ground)}
+.nav__burger span{display:block;width:1.15rem;height:2px;background:currentColor;
+  border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+.nav--ouvert .nav__burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav--ouvert .nav__burger span:nth-child(2){opacity:0}
+.nav--ouvert .nav__burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (prefers-reduced-motion:reduce){.nav__burger span{transition:none}}
+
+/* Très petits téléphones : sans ce resserrement, marque + bouton + carré
+   jaune réclament 343 px et la barre se coupait en deux sous 352 px. */
+@media (max-width:22rem){
+  .nav__in{gap:.55rem;padding-left:.85rem}
+  .brand{font-size:1rem;gap:.4rem}
+}
+/* En deçà (écran de couverture des pliables), même resserrée la barre se
+   chevauchait : le logo seul tient lieu de marque, il reste cliquable et
+   ramène en haut de page. */
+@media (max-width:19rem){
+  .brand{font-size:0;gap:0}
+  .brand .logo{font-size:1rem}
+}
+
+/* ---------- menu déroulant, sous le seuil d affichage en ligne ---------- */
+@media (max-width:67.99rem){
+  .nav__in{flex-wrap:wrap}
+  /* les liens passent sous la marque, sur toute la largeur de la pilule.
+     display:flex annule le display:none de la règle de base : c est ce qui
+     rend le menu lisible quand JavaScript ne tourne pas. */
+  .nav__links{display:flex;order:9;flex-basis:100%;flex-wrap:wrap;
+    margin:.6rem 0 0;padding-top:.6rem;border-top:1px solid var(--line)}
+  /* à partir d ici, seulement quand le script tourne */
+  .js .nav__burger{display:grid}
+  .js .nav__cta{margin-left:0}
+  .js .nav__links{display:none}
+  .js .nav--ouvert .nav__links{display:flex;flex-direction:column;
+    gap:.15rem;padding:.6rem .25rem .25rem}
+  /* en liste, chaque entrée devient une cible tactile pleine largeur */
+  .js .nav--ouvert .nav__links a{font-size:1.05rem;padding:.8rem 1rem;
+    border-bottom:0;border-radius:9px;
+    transition:background-color .18s ease}
+  .js .nav--ouvert .nav__links a:hover,
+  .js .nav--ouvert .nav__links a:focus-visible{background:var(--ground)}
+}
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(3rem,8vw,6rem) clamp(2rem,5vw,3.5rem);
@@ -531,13 +587,17 @@ p{margin:0}
       <img class="logo" src="assets/logo-clair.png" alt="SmartEfico" width="512" height="512">
       SmartEfico
     </a>
-    <div class="nav__links">
+    <div class="nav__links" id="nav-menu">
       <!-- l'ordre du menu suit celui de la page -->
       <a href="#apport">Ce qu'on apporte</a>
       <a href="#resultats">Ce qu'on installe</a>
       <a href="#avant-apres">Avant / après</a>
       <a href="#questions">Questions</a>
     </div>
+    <button class="nav__burger" type="button" aria-label="Menu"
+            aria-controls="nav-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <a class="nav__cta" href="#appel" aria-label="Je réserve mon appel">
       <span class="nav__cta-texte">Je réserve mon appel</span>
       <span class="nav__fleche" aria-hidden="true">↗</span>
@@ -1252,6 +1312,47 @@ p{margin:0}
 </dialog>
 
 <script>
+// Menu déroulant du téléphone.
+//
+// Le bouton ne pilote que l affichage : sans ce script, la règle .js ne
+// s applique pas et les liens restent visibles sur une deuxième ligne.
+(function () {
+  var barre  = document.querySelector(".nav");
+  var bouton = document.querySelector(".nav__burger");
+  if (!barre || !bouton) return;
+
+  function poser(ouvert) {
+    barre.classList.toggle("nav--ouvert", ouvert);
+    bouton.setAttribute("aria-expanded", ouvert ? "true" : "false");
+  }
+  function estOuvert() { return bouton.getAttribute("aria-expanded") === "true"; }
+
+  bouton.addEventListener("click", function () { poser(!estOuvert()); });
+
+  // un lien choisi : on referme, sinon le menu masque la section visée
+  Array.prototype.forEach.call(
+    barre.querySelectorAll(".nav__links a"),
+    function (a) { a.addEventListener("click", function () { poser(false); }); }
+  );
+
+  // Échap referme et rend le clavier au bouton
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && estOuvert()) { poser(false); bouton.focus(); }
+  });
+
+  // un clic hors de la barre referme
+  document.addEventListener("click", function (e) {
+    if (estOuvert() && !barre.contains(e.target)) poser(false);
+  });
+
+  // écran élargi ou téléphone tourné : les liens repassent en ligne,
+  // l état ouvert n aurait plus de sens et laisserait la croix affichée
+  var large = window.matchMedia("(min-width:68rem)");
+  var suivre = function (m) { if (m.matches) poser(false); };
+  if (large.addEventListener) large.addEventListener("change", suivre);
+  else if (large.addListener) large.addListener(suivre);
+})();
+
 // Accusé de réception du formulaire, dans la page.
 //
 // Le formulaire lui-même se charge par le src de l'iframe et le lazy-loading
