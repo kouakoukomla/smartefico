@@ -123,7 +123,7 @@ p{margin:0}
   font-weight:800;letter-spacing:-.03em;font-size:1.15rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
 .nav__links{display:none;gap:1.4rem;margin-inline:auto}
-@media (min-width:68rem){.nav__links{display:flex}}
+@media (min-width:48rem){.nav__links{display:flex}}
 /* liens de navigation : très gras et à pleine encre, comme demandé */
 .nav__links a{text-decoration:none;color:var(--ink);font-size:.95rem;
   font-weight:800;letter-spacing:-.015em;padding-block:.35rem;
@@ -143,9 +143,9 @@ p{margin:0}
   transition:background-color .18s ease,transform .18s ease}
 .nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
 /* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
-   tiennent pas ensemble sur une ligne. Mesuré : il leur faut 509 px, d où ce
-   seuil de 34 rem — en dessous, la barre se coupait en deux. */
-@media (max-width:33.99rem){.nav__cta-texte{display:none}}
+   tiennent pas ensemble sur une ligne. Mesuré : il leur faut 413 px, d où ce
+   seuil de 28 rem — en dessous, la barre se coupait en deux. */
+@media (max-width:27.99rem){.nav__cta-texte{display:none}}
 /* bouton du menu : trois barres qui se croisent à l ouverture. Masqué tant
    que les liens tiennent en ligne, il ne sert qu au format téléphone. */
 .nav__burger{display:none;gap:4px;justify-items:center;align-content:center;
@@ -175,7 +175,7 @@ p{margin:0}
 }
 
 /* ---------- menu déroulant, sous le seuil d affichage en ligne ---------- */
-@media (max-width:67.99rem){
+@media (max-width:47.99rem){
   .nav__in{flex-wrap:wrap}
   /* les liens passent sous la marque, sur toute la largeur de la pilule.
      display:flex annule le display:none de la règle de base : c est ce qui
@@ -589,17 +589,17 @@ p{margin:0}
     </a>
     <div class="nav__links" id="nav-menu">
       <!-- l'ordre du menu suit celui de la page -->
-      <a href="#apport">Ce qu'on apporte</a>
-      <a href="#resultats">Ce qu'on installe</a>
+      <a href="#apport">Services</a>
+      <a href="#resultats">Produit</a>
       <a href="#avant-apres">Avant / après</a>
-      <a href="#questions">Questions</a>
+      <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Menu"
             aria-controls="nav-menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <a class="nav__cta" href="#appel" aria-label="Je réserve mon appel">
-      <span class="nav__cta-texte">Je réserve mon appel</span>
+    <a class="nav__cta" href="#appel" aria-label="Contact">
+      <span class="nav__cta-texte">Contact</span>
       <span class="nav__fleche" aria-hidden="true">↗</span>
     </a>
   </div>
@@ -1347,7 +1347,7 @@ p{margin:0}
 
   // écran élargi ou téléphone tourné : les liens repassent en ligne,
   // l état ouvert n aurait plus de sens et laisserait la croix affichée
-  var large = window.matchMedia("(min-width:68rem)");
+  var large = window.matchMedia("(min-width:48rem)");
   var suivre = function (m) { if (m.matches) poser(false); };
   if (large.addEventListener) large.addEventListener("change", suivre);
   else if (large.addListener) large.addListener(suivre);
