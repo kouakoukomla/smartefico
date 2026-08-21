@@ -219,14 +219,15 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .agent h3{padding-inline:.25rem}
 .agent p{color:var(--grey-2);font-size:.98rem;padding-inline:.25rem}
 
-/* ---------- références client ---------- */
-.refs{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.75rem;
-  display:flex;flex-direction:column;gap:1rem}
-.refs__label{color:var(--grey)}
+/* ---------- références client (bandeau haut de page) ---------- */
+.refs{border-bottom:1px solid var(--line);background:var(--black-2)}
+.refs__in{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 2.5rem;
+  padding-block:1.4rem}
+.refs__label{color:var(--grey);flex:none}
 .refs__list{display:flex;flex-wrap:wrap;gap:.75rem 2.5rem;margin:0;padding:0;
   list-style:none}
 .refs__list li{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:700;
-  letter-spacing:-.02em;font-size:clamp(1.15rem,2.6vw,1.6rem);
+  letter-spacing:-.02em;font-size:clamp(1.05rem,2.2vw,1.35rem);
   display:flex;align-items:center;gap:.7rem}
 .refs__list li::before{content:"";width:.5rem;height:.5rem;background:var(--yellow);
   flex:none;transform:rotate(45deg)}
@@ -252,6 +253,23 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .step p{color:#4A4A45;font-size:1rem;max-width:58ch}
 .step .chips{margin-top:.35rem}
 .step .chip{border-color:#CFCFC8;color:#3D3D38;background:#FFFFFF}
+
+/* ---------- avant / après ---------- */
+.ba{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  grid-template-columns:1fr}
+@media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
+.ba__col{background:var(--black);padding:clamp(1.5rem,3vw,2.25rem);
+  display:flex;flex-direction:column;gap:1.1rem}
+.ba__col--apres{background:var(--yellow);color:var(--black)}
+.ba__titre{color:var(--grey)}
+.ba__col--apres .ba__titre{color:#4A3D00}
+.ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.85rem}
+.ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--grey-2);
+  font-size:1rem;line-height:1.5}
+.ba__col--apres li{color:#241E00;font-weight:500}
+.ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.5rem;
+  background:var(--line);border-radius:50%}
+.ba__col--apres li::before{background:var(--black);transform:rotate(45deg);border-radius:0}
 
 /* ---------- public ciblé ---------- */
 .aud{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));
@@ -516,12 +534,13 @@ h1.display em{font-style:normal;color:var(--yellow)}
       SmartEfico
     </a>
     <div class="nav__links">
-      <a href="#apport">Ce qu'on apporte</a>
-      <a href="#resultats">Résultats</a>
+      <!-- l'ordre du menu suit celui de la page -->
       <a href="#agents">Agents IA</a>
+      <a href="#apport">Ce qu'on apporte</a>
+      <a href="#resultats">Ce qu'on installe</a>
       <a href="#methode">Méthode</a>
-      <a href="#public">Clients</a>
-      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#avant-apres">Avant / après</a>
+      <a href="#questions">Questions</a>
       <a href="#appel">Réserver</a>
     </div>
     <a class="nav__cta" href="#appel">Je réserve mon appel</a>
@@ -554,7 +573,65 @@ h1.display em{font-style:normal;color:var(--yellow)}
     </ul>
   </section>
 
+  <!-- ============ RÉFÉRENCES ============
+       Placées juste après l'accroche, comme la preuve sociale de dapper.agency.
+       Des noms, aucun chiffre : ne rien leur attribuer que le propriétaire
+       n'ait confirmé (voir PRODUCT.md, Evidence on Hand). -->
+  <section class="refs" aria-label="Références client">
+    <div class="wrap refs__in">
+      <span class="refs__label mono">Ils nous font confiance</span>
+      <ul class="refs__list">
+        <li>Ambassade du Togo au Maroc</li>
+        <li>GROUP LIGHT MEDICAL</li>
+      </ul>
+    </div>
+  </section>
+
   <div class="stack" style="padding-block:var(--gap)">
+
+    <!-- ============ AGENTS IA ============ -->
+    <section class="wrap" id="agents">
+      <div class="head">
+        <span class="head__eyebrow mono">Agents IA</span>
+        <h2 class="display">Les agents qu'on met<br>en production.</h2>
+        <p class="lead">Ce ne sont pas des maquettes : ce sont les scénarios réellement construits, tels qu'ils tournent. Voici les quatre principaux.</p>
+      </div>
+      <div class="agents">
+        <article class="agent">
+          <figure>
+            <img src="assets/agent-stats-pub.jpg" alt="Scénario Make « All Ads Insights » : collecte des performances publicitaires Meta et LinkedIn vers un tableau de bord" width="1100" height="583" loading="lazy">
+          </figure>
+          <span class="agent__tag mono">Planifié · quotidien</span>
+          <h3>Stats &amp; optimisation publicitaire</h3>
+          <p>Il passe en revue toutes vos campagnes Meta et LinkedIn, récupère les performances de chaque annonce et les consolide dans un tableau de bord unique. Vous arrivez le matin avec les chiffres déjà triés, prêts pour les arbitrages de la journée.</p>
+        </article>
+        <article class="agent">
+          <figure>
+            <img src="assets/agent-conversion-api.jpg" alt="Scénario Make de renvoi des conversions vers les API Meta et LinkedIn" width="1100" height="570" loading="lazy">
+          </figure>
+          <span class="agent__tag mono">Temps réel</span>
+          <h3>Conversion API Meta &amp; LinkedIn · +15 % de ROI</h3>
+          <p>À chaque conversion, l'agent renvoie l'information directement aux serveurs de Meta et de LinkedIn. Les algorithmes publicitaires apprennent sur des données complètes plutôt que sur ce que les navigateurs veulent bien laisser passer, et le ciblage se resserre.</p>
+        </article>
+        <article class="agent">
+          <figure>
+            <img src="assets/agent-setters-notifier.jpg" alt="Scénario Make « Setters Notifier » : qualification IA des leads puis notification des setters sur Discord" width="1100" height="571" loading="lazy">
+          </figure>
+          <span class="agent__tag mono">Temps réel</span>
+          <h3>Instant setters notifier</h3>
+          <p>Un lead arrive, l'agent le qualifie, le classe (qualifié, semi-qualifié, non qualifié), l'enregistre dans le CRM et prévient le setter concerné ainsi que l'équipe, dans la seconde. Plus de lead chaud qui refroidit dans une boîte mail.</p>
+        </article>
+        <article class="agent">
+          <figure>
+            <img src="assets/agent-bilans-bihebdos.jpg" alt="Scénario Make « Meetings Sender » : résumé automatique des réunions et diffusion à l'équipe" width="1100" height="571" loading="lazy">
+          </figure>
+          <span class="agent__tag mono">Planifié · bi-hebdomadaire</span>
+          <h3>Résumé des bilans bi-hebdos</h3>
+          <p>Il reprend les comptes rendus de réunion, en tire un résumé structuré et le distribue à chaque équipe concernée, puis met les statuts à jour. Le bilan est écrit et diffusé sans que personne n'ait à s'y coller.</p>
+        </article>
+      </div>
+
+    </section>
 
     <!-- ============ QUELQUES CHIFFRES ============ -->
     <section class="wrap" id="chiffres">
@@ -632,59 +709,6 @@ h1.display em{font-style:normal;color:var(--yellow)}
 
     </section>
 
-    <!-- ============ AGENTS IA ============ -->
-    <section class="wrap" id="agents">
-      <div class="head">
-        <span class="head__eyebrow mono">Agents IA</span>
-        <h2 class="display">Les agents qu'on met<br>en production.</h2>
-        <p class="lead">Ce ne sont pas des maquettes : ce sont les scénarios réellement construits, tels qu'ils tournent. Voici les quatre principaux.</p>
-      </div>
-      <div class="agents">
-        <article class="agent">
-          <figure>
-            <img src="assets/agent-stats-pub.jpg" alt="Scénario Make « All Ads Insights » : collecte des performances publicitaires Meta et LinkedIn vers un tableau de bord" width="1100" height="583" loading="lazy">
-          </figure>
-          <span class="agent__tag mono">Planifié · quotidien</span>
-          <h3>Stats &amp; optimisation publicitaire</h3>
-          <p>Il passe en revue toutes vos campagnes Meta et LinkedIn, récupère les performances de chaque annonce et les consolide dans un tableau de bord unique. Vous arrivez le matin avec les chiffres déjà triés, prêts pour les arbitrages de la journée.</p>
-        </article>
-        <article class="agent">
-          <figure>
-            <img src="assets/agent-conversion-api.jpg" alt="Scénario Make de renvoi des conversions vers les API Meta et LinkedIn" width="1100" height="570" loading="lazy">
-          </figure>
-          <span class="agent__tag mono">Temps réel</span>
-          <h3>Conversion API Meta &amp; LinkedIn · +15 % de ROI</h3>
-          <p>À chaque conversion, l'agent renvoie l'information directement aux serveurs de Meta et de LinkedIn. Les algorithmes publicitaires apprennent sur des données complètes plutôt que sur ce que les navigateurs veulent bien laisser passer, et le ciblage se resserre.</p>
-        </article>
-        <article class="agent">
-          <figure>
-            <img src="assets/agent-setters-notifier.jpg" alt="Scénario Make « Setters Notifier » : qualification IA des leads puis notification des setters sur Discord" width="1100" height="571" loading="lazy">
-          </figure>
-          <span class="agent__tag mono">Temps réel</span>
-          <h3>Instant setters notifier</h3>
-          <p>Un lead arrive, l'agent le qualifie, le classe (qualifié, semi-qualifié, non qualifié), l'enregistre dans le CRM et prévient le setter concerné ainsi que l'équipe, dans la seconde. Plus de lead chaud qui refroidit dans une boîte mail.</p>
-        </article>
-        <article class="agent">
-          <figure>
-            <img src="assets/agent-bilans-bihebdos.jpg" alt="Scénario Make « Meetings Sender » : résumé automatique des réunions et diffusion à l'équipe" width="1100" height="571" loading="lazy">
-          </figure>
-          <span class="agent__tag mono">Planifié · bi-hebdomadaire</span>
-          <h3>Résumé des bilans bi-hebdos</h3>
-          <p>Il reprend les comptes rendus de réunion, en tire un résumé structuré et le distribue à chaque équipe concernée, puis met les statuts à jour. Le bilan est écrit et diffusé sans que personne n'ait à s'y coller.</p>
-        </article>
-      </div>
-
-      <!-- Références client : des noms, aucun chiffre. Ne rien leur attribuer
-           que le propriétaire n'ait confirmé (voir PRODUCT.md, Evidence on Hand). -->
-      <aside class="refs">
-        <span class="refs__label mono">Ils nous font confiance</span>
-        <ul class="refs__list">
-          <li>Ambassade du Togo au Maroc</li>
-          <li>GROUP LIGHT MEDICAL</li>
-        </ul>
-      </aside>
-    </section>
-
   </div>
 
   <!-- ============ MÉTHODE D'ACQUISITION (section blanche) ============ -->
@@ -735,6 +759,40 @@ h1.display em{font-style:normal;color:var(--yellow)}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
+
+    <!-- ============ AVANT / APRÈS ============
+         Persuade sans citer aucun client : chaque ligne de la colonne gauche
+         vient de la description que le propriétaire fait lui-même du problème,
+         chaque ligne de droite d'une capacité déjà décrite sur cette page. -->
+    <section class="wrap" id="avant-apres">
+      <div class="head">
+        <span class="head__eyebrow mono">Ce qui change</span>
+        <h2 class="display">Avant, après.</h2>
+        <p class="lead">La plupart des dirigeants qu'on rencontre sont piégés dans l'opérationnel, avec un pipeline commercial instable. Voici ce que le système déplace, ligne par ligne.</p>
+      </div>
+      <div class="ba">
+        <div class="ba__col ba__col--avant">
+          <span class="ba__titre mono">Sans système</span>
+          <ul>
+            <li>La prospection avance quand quelqu'un trouve le temps de s'y mettre.</li>
+            <li>Un lead qui arrive attend qu'on pense à le rappeler.</li>
+            <li>Le pipeline dépend de l'effort fourni ce mois-ci.</li>
+            <li>Les tâches répétitives occupent quelqu'un dont le temps devrait aller ailleurs.</li>
+            <li>On sait que ça marche « plutôt bien », sans pouvoir le montrer.</li>
+          </ul>
+        </div>
+        <div class="ba__col ba__col--apres">
+          <span class="ba__titre mono">Avec SmartEfico</span>
+          <ul>
+            <li>Les campagnes tournent en continu sur Meta, LinkedIn et TikTok.</li>
+            <li>Chaque lead est qualifié, classé et notifié au setter dans la seconde.</li>
+            <li>Les campagnes sont ajustées sur les retours des setters et des closers.</li>
+            <li>Les demandes courantes sont traitées par des agents, 24&nbsp;h/24.</li>
+            <li>Un tableau de bord affiche les indicateurs dès la première semaine.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <!-- ============ PUBLIC CIBLÉ ============ -->
     <section class="wrap" id="public">
@@ -880,33 +938,6 @@ h1.display em{font-style:normal;color:var(--yellow)}
         </div>
       </div>
     </section>
-
-    <footer class="wrap foot">
-      <div class="foot__row">
-      <span class="foot__brand">
-        <img class="logo" src="assets/logo.png" alt="" width="512" height="512">
-        <span class="mono">SmartEfico</span>
-      </span>
-      <span class="icons">
-        <a href="https://www.linkedin.com/in/emmanuel-kouakou-i-ia-automatisation-no-code-609952195" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"></use></svg></a>
-        <a href="https://www.youtube.com/@smartefico" target="_blank" rel="noopener" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-youtube"></use></svg></a>
-        <a href="https://www.tiktok.com/@komlaemmanuelkoua" target="_blank" rel="noopener" aria-label="TikTok"><svg aria-hidden="true"><use href="#i-tiktok"></use></svg></a>
-        <a href="https://www.instagram.com/emmanuelkomlakouakou/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-instagram"></use></svg></a>
-        <a href="https://www.facebook.com/komla.kouakou" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-facebook"></use></svg></a>
-        <a href="https://substack.com/@manukouakou" target="_blank" rel="noopener" aria-label="Substack"><svg aria-hidden="true"><use href="#i-substack"></use></svg></a>
-      </span>
-      </div>
-      <div class="foot__legal">
-        <p class="foot__copy">Copyright © 2026 SmartEfico</p>
-        <p class="foot__links">
-          <!-- Les href restent de vrais liens : ils fonctionnent sur le site déployé
-               et si JavaScript est désactivé. Le script ouvre la fenêtre à la place. -->
-          <a href="cgv.html" data-doc="cgv">CGV</a>
-          <span aria-hidden="true">|</span>
-          <a href="cgc.html" data-doc="cgc">CGC</a>
-        </p>
-      </div>
-    </footer>
 
   </div>
 </main>
