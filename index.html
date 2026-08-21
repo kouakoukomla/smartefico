@@ -108,8 +108,9 @@ p{margin:0}
   letter-spacing:-.01em;font-size:1.02rem}
 .nav__links{display:none;gap:1.5rem}
 @media (min-width:62rem){.nav__links{display:flex}}
+/* padding vertical : porte la zone cliquable au-dessus du minimum de 24 px (WCAG 2.5.8) */
 .nav__links a{text-decoration:none;color:var(--grey-2);font-size:.9rem;
-  transition:color .18s ease}
+  padding-block:.35rem;transition:color .18s ease}
 .nav__links a:hover{color:var(--yellow)}
 .nav__cta{background:var(--yellow);color:var(--black);text-decoration:none;
   padding:.55rem 1rem;font-weight:600;font-size:.9rem;border-radius:999px;
@@ -189,7 +190,7 @@ h1.display em{font-style:normal;color:var(--yellow)}
   flex-direction:column;gap:.9rem;transition:background-color .2s ease}
 .offer:hover{background:var(--black-2)}
 .offer__no{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;
-  font-size:2.4rem;line-height:1;color:var(--line);letter-spacing:-.04em;
+  font-size:2.4rem;line-height:1;color:#6A6A64;letter-spacing:-.04em;
   transition:color .2s ease}
 .offer:hover .offer__no{color:var(--yellow)}
 .offer p{color:var(--grey-2);font-size:1rem}
@@ -230,7 +231,7 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .step__no{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;
   font-size:clamp(2.4rem,5vw,3.4rem);line-height:.9;letter-spacing:-.05em;
   -webkit-text-stroke:2px var(--black);color:var(--yellow)}
-.step p{color:#4A4A45;font-size:1rem;max-width:64ch}
+.step p{color:#4A4A45;font-size:1rem;max-width:58ch}
 .step .chips{margin-top:.35rem}
 .step .chip{border-color:#CFCFC8;color:#3D3D38;background:#FFFFFF}
 
@@ -264,7 +265,7 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .qa summary::after{content:"+";color:var(--yellow);font-size:1.6rem;line-height:.8;flex:none;
   transition:transform .22s ease}
 .qa[open] summary::after{transform:rotate(45deg)}
-.qa p{color:var(--grey-2);padding-bottom:1.5rem;max-width:70ch}
+.qa p{color:var(--grey-2);padding-bottom:1.5rem;max-width:62ch}
 
 /* ---------- réservation ---------- */
 .book{background:var(--paper);color:var(--black);border:1px solid var(--line);
@@ -315,7 +316,7 @@ h1.display em{font-style:normal;color:var(--yellow)}
 .foot__legal{border-top:1px solid var(--line);padding-top:1.75rem;
   display:flex;flex-direction:column;align-items:center;gap:.9rem;text-align:center}
 .foot__copy{color:var(--white);font-size:1.05rem}
-.foot__links{display:flex;align-items:center;gap:.7rem;color:var(--line)}
+.foot__links{display:flex;align-items:center;gap:.7rem;color:var(--grey)}
 .foot__links a{color:var(--grey-2);text-decoration:none;font-weight:500;
   border-bottom:1px solid var(--grey);padding-bottom:.1rem;
   transition:color .18s ease,border-color .18s ease}
