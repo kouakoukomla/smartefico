@@ -123,6 +123,7 @@ p{margin:0}
 /* liens de navigation : très gras et à pleine encre, comme demandé */
 .nav__links a{text-decoration:none;color:var(--ink);font-size:.95rem;
   font-weight:800;letter-spacing:-.015em;padding-block:.35rem;
+  white-space:nowrap;
   border-bottom:2px solid transparent;
   transition:border-color .18s ease,color .18s ease}
 .nav__links a:hover{border-bottom-color:var(--yellow)}
@@ -532,13 +533,10 @@ p{margin:0}
     </a>
     <div class="nav__links">
       <!-- l'ordre du menu suit celui de la page -->
-      <a href="#agents">Agents IA</a>
       <a href="#apport">Ce qu'on apporte</a>
       <a href="#resultats">Ce qu'on installe</a>
-      <a href="#methode">Méthode</a>
       <a href="#avant-apres">Avant / après</a>
       <a href="#questions">Questions</a>
-      <a href="#appel">Réserver</a>
     </div>
     <a class="nav__cta" href="#appel" aria-label="Je réserve mon appel">
       <span class="nav__cta-texte">Je réserve mon appel</span>
