@@ -37,9 +37,6 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#F3F3F3">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;display=swap">
 <style>
 /* =========================================================
    SmartEfico — fond clair, encre noire, jaune en aplat.
@@ -68,9 +65,9 @@ body{
   margin:0;
   background:var(--ground);
   color:var(--ink);
-  font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
-  font-size:16px;
-  line-height:1.55;
+  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.45;
   -webkit-font-smoothing:antialiased;
 }
 img{display:block;max-width:100%}
@@ -83,17 +80,17 @@ a{color:inherit}
 /* ---------- typographie ----------
    Fort écart entre le display et le corps, comme chez eux. */
 .display{
-  font-family:"Schibsted Grotesk",Arial,sans-serif;
+  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.035em;line-height:1.02;
   text-wrap:balance;overflow-wrap:break-word;margin:0;
 }
 h1.display{font-size:clamp(2.3rem,5.4vw,4.6rem);letter-spacing:-.04em;max-width:22ch}
 h2.display{font-size:clamp(1.85rem,4vw,3rem)}
-h3{font-family:"Schibsted Grotesk",Arial,sans-serif;font-weight:700;
+h3{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;
   letter-spacing:-.02em;font-size:1.2rem;line-height:1.25;margin:0}
 p{margin:0}
 .lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--ink-2);max-width:56ch}
-.mono{font-family:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+.mono{font-family:inherit;font-weight:600;
   font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 
 /* ---------- logo ---------- */
@@ -139,24 +136,31 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
   border-block:1px solid var(--line)}
 .band img{width:100%;max-width:1180px;margin-inline:auto;height:auto}
 
-/* ---------- plateformes ---------- */
-.platforms{background:var(--yellow);color:var(--ink)}
-.platforms__list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
-  gap:.6rem 2rem;padding:1rem 0;margin:0;list-style:none;font-weight:600}
-.platforms__list li{display:flex;align-items:center;gap:2rem;white-space:nowrap}
-.platforms__list li:not(:last-child)::after{content:"◆";font-size:.5em;opacity:.45}
-
-/* ---------- références ---------- */
-.refs{border-bottom:1px solid var(--line);background:var(--surface)}
-.refs__in{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 2.5rem;
-  padding-block:1.35rem}
-.refs__label{color:#5C5C5C;flex:none}
-.refs__list{display:flex;flex-wrap:wrap;gap:.75rem 2.5rem;margin:0;padding:0;list-style:none}
-.refs__list li{font-weight:700;letter-spacing:-.02em;
-  font-size:clamp(1rem,2vw,1.25rem);display:flex;align-items:center;gap:.7rem}
-.refs__list li::before{content:"";width:.5rem;height:.5rem;background:var(--yellow);
-  flex:none;transform:rotate(45deg)}
-
+/* ---------- bandeau de références défilant ----------
+   Deux pistes identiques défilent côte à côte : quand la première a
+   parcouru toute sa largeur, la seconde a pris exactement sa place, d'où
+   une boucle sans saut. La seconde est masquée aux lecteurs d'écran. */
+.ticker{background:var(--yellow);color:var(--ink);overflow:hidden;display:flex;
+  user-select:none}
+.ticker__piste{display:flex;flex:none;animation:defile 26s linear infinite}
+.ticker__lot{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem;
+  white-space:nowrap;font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(.95rem,1.8vw,1.15rem);padding-block:.95rem}
+.ticker__lot > span::after{content:"◆";font-size:.5em;margin-left:2.5rem;opacity:.45;
+  vertical-align:middle}
+.ticker__label{font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+  font-size:.72rem;color:#6B5600}
+/* le survol suspend la lecture, pour laisser le temps de lire un nom */
+.ticker:hover .ticker__piste,.ticker:focus-within .ticker__piste{animation-play-state:paused}
+@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+/* si le visiteur a demandé moins d'animations, la bande ne bouge pas
+   et la seconde piste disparaît pour ne pas dupliquer le texte */
+@media (prefers-reduced-motion:reduce){
+  .ticker{justify-content:center}
+  .ticker__piste{animation:none}
+  .ticker__piste[aria-hidden="true"]{display:none}
+  .ticker__lot{flex-wrap:wrap;white-space:normal;justify-content:center}
+}
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .head__eyebrow{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);
@@ -529,25 +533,35 @@ h1.display em{font-style:normal;background:var(--yellow);padding:0 .18em;
     <img src="assets/cover.jpg" alt="" width="960" height="320">
   </section>
 
-  <!-- ============ PLATEFORMES ============ -->
-  <section class="platforms" aria-label="Plateformes et outils pilotés">
-    <ul class="wrap platforms__list">
-      <li>Meta</li><li>LinkedIn</li><li>TikTok</li><li>Google</li><li>YouTube</li>
-      <li>Agents IA</li><li>Make</li><li>n8n</li><li>CRM</li>
-    </ul>
-  </section>
-
   <!-- ============ RÉFÉRENCES ============
-       Placées juste après l'accroche, comme la preuve sociale de dapper.agency.
-       Des noms, aucun chiffre : ne rien leur attribuer que le propriétaire
-       n'ait confirmé (voir PRODUCT.md, Evidence on Hand). -->
-  <section class="refs" aria-label="Références client">
-    <div class="wrap refs__in">
-      <span class="refs__label mono">Ils nous font confiance</span>
-      <ul class="refs__list">
-        <li>Ambassade du Togo au Maroc</li>
-        <li>GROUP LIGHT MEDICAL</li>
-      </ul>
+       Bandeau jaune défilant. Le défilement s'arrête au survol et ne démarre
+       pas du tout si le visiteur a demandé moins d'animations.
+       Le contenu est dupliqué à l'identique pour que la boucle soit sans
+       couture ; la seconde copie est masquée aux lecteurs d'écran. -->
+  <section class="ticker" aria-label="Ils nous font confiance">
+    <div class="ticker__piste">
+      <span class="ticker__lot">
+        <span class="ticker__label">Ils nous font confiance</span>
+        <span>Ambassade du Togo au Maroc</span>
+        <span>GROUP LIGHT MEDICAL</span>
+      </span>
+      <span class="ticker__lot" aria-hidden="true">
+        <span class="ticker__label">Ils nous font confiance</span>
+        <span>Ambassade du Togo au Maroc</span>
+        <span>GROUP LIGHT MEDICAL</span>
+      </span>
+    </div>
+    <div class="ticker__piste" aria-hidden="true">
+      <span class="ticker__lot">
+        <span class="ticker__label">Ils nous font confiance</span>
+        <span>Ambassade du Togo au Maroc</span>
+        <span>GROUP LIGHT MEDICAL</span>
+      </span>
+      <span class="ticker__lot">
+        <span class="ticker__label">Ils nous font confiance</span>
+        <span>Ambassade du Togo au Maroc</span>
+        <span>GROUP LIGHT MEDICAL</span>
+      </span>
     </div>
   </section>
 
