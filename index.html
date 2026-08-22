@@ -218,11 +218,6 @@ p{margin:0}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);transform:translateY(-2px)}
 
-/* ---------- bandeau ---------- */
-.band{width:100%;overflow:hidden;background:var(--noir);
-  border-block:1px solid var(--line)}
-.band img{width:100%;max-width:1180px;margin-inline:auto;height:auto}
-
 /* ---------- bandeau de références défilant ----------
    Deux pistes identiques défilent côte à côte : quand la première a
    parcouru toute sa largeur, la seconde a pris exactement sa place, d'où
@@ -626,7 +621,7 @@ p{margin:0}
       <!-- l'ordre du menu suit celui de la page -->
       <a href="#apport">Services</a>
       <a href="#resultats">Produit</a>
-      <a href="#avant-apres">Avant / après</a>
+      <a href="#avant-apres">Résultat</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Menu"
@@ -653,11 +648,6 @@ p{margin:0}
     <p class="hero__status"><i></i>Acquisition et automatisation par l'IA</p>
   </section>
 
-  <!-- ============ BANDEAU ============ -->
-  <section class="band" aria-hidden="true">
-    <img src="assets/cover.jpg" alt="" width="960" height="320">
-  </section>
-
   <!-- ============ RÉFÉRENCES ============
        Bandeau jaune défilant. Le défilement s'arrête au survol et ne démarre
        pas du tout si le visiteur a demandé moins d'animations.
@@ -669,11 +659,13 @@ p{margin:0}
         <span class="ticker__label">Ils nous font confiance</span>
         <span>Ambassade du Togo au Maroc</span>
         <span>GROUP LIGHT MEDICAL</span>
+        <span>École de Commerce Aménouvévé Logistique</span>
       </span>
       <span class="ticker__lot" aria-hidden="true">
         <span class="ticker__label">Ils nous font confiance</span>
         <span>Ambassade du Togo au Maroc</span>
         <span>GROUP LIGHT MEDICAL</span>
+        <span>École de Commerce Aménouvévé Logistique</span>
       </span>
     </div>
     <div class="ticker__piste" aria-hidden="true">
@@ -681,11 +673,13 @@ p{margin:0}
         <span class="ticker__label">Ils nous font confiance</span>
         <span>Ambassade du Togo au Maroc</span>
         <span>GROUP LIGHT MEDICAL</span>
+        <span>École de Commerce Aménouvévé Logistique</span>
       </span>
       <span class="ticker__lot">
         <span class="ticker__label">Ils nous font confiance</span>
         <span>Ambassade du Togo au Maroc</span>
         <span>GROUP LIGHT MEDICAL</span>
+        <span>École de Commerce Aménouvévé Logistique</span>
       </span>
     </div>
   </section>
@@ -867,7 +861,7 @@ p{margin:0}
          chaque ligne de droite d'une capacité déjà décrite sur cette page. -->
     <section class="wrap" id="avant-apres">
       <div class="head">
-        <span class="head__eyebrow mono">Ce qui change</span>
+        <span class="head__eyebrow mono">Résultat</span>
         <h2 class="display">Avant, <em>après</em>.</h2>
         <p class="lead">La plupart des dirigeants qu'on rencontre sont piégés dans l'opérationnel, avec un pipeline commercial instable. Voici ce que le système déplace, ligne par ligne.</p>
       </div>
