@@ -412,8 +412,22 @@ p{margin:0}
   padding:clamp(1.4rem,3vw,2rem)}
 .book__porte b{font-weight:800;letter-spacing:-.025em;color:#FFF;
   font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.25}
-.book__porte span{color:#B5B5B1;font-size:.95rem}
-.book__ouvrir{margin-top:.9rem}
+.book__porte>span{color:#B5B5B1;font-size:.95rem}
+.book__ouvrir{margin-top:.4rem}
+
+/* L'inventaire des questions, relevé sur le formulaire lui-même. Le visiteur
+   sait ce qui l'attend avant de cliquer, sans qu'on ait à déployer 1400 px
+   de cadre dans la page. */
+.quest{display:grid;gap:1.25rem 2rem;grid-template-columns:1fr;
+  width:100%;margin-block:.9rem}
+@media (min-width:34rem){.quest{grid-template-columns:1fr 1fr}}
+.quest__groupe{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.quest__titre{color:var(--yellow)}
+.quest ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.3rem}
+.quest li{display:flex;align-items:flex-start;gap:.6rem;
+  color:#D2D2CE;font-size:.92rem;line-height:1.35}
+.quest li::before{content:"";width:.4rem;height:.4rem;flex:none;margin-top:.45rem;
+  background:var(--yellow);transform:rotate(45deg)}
 .book__alt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
   color:#8A8A86;font-size:.92rem}
 .book__alt-tel{background:none;color:#F3F3F3;text-decoration:none;
@@ -1038,8 +1052,30 @@ p{margin:0}
                mécanisme des documents légaux, et le href reste un vrai lien
                vers Tally si <dialog> n'est pas géré. -->
           <div class="book__porte">
-            <b>Dix questions, deux minutes.</b>
-            <span>Votre offre, votre cible, et ce qui bloque aujourd'hui.</span>
+            <b>Ce qu'on vous demande</b>
+            <span>Dix champs, deux minutes. Rien sur vos chiffres.</span>
+
+            <div class="quest">
+              <div class="quest__groupe">
+                <span class="quest__titre mono">Le dirigeant</span>
+                <ul>
+                  <li>Nom</li>
+                  <li>Prénom(s)</li>
+                  <li>Email</li>
+                  <li>Téléphone ou WhatsApp</li>
+                </ul>
+              </div>
+              <div class="quest__groupe">
+                <span class="quest__titre mono">L'entreprise</span>
+                <ul>
+                  <li>Nom de l'entreprise</li>
+                  <li>Adresse mail</li>
+                  <li>Site web</li>
+                  <li>LinkedIn, Instagram, TikTok</li>
+                </ul>
+              </div>
+            </div>
+
             <a class="btn btn--solid book__ouvrir" href="https://tally.so/r/81VkKx"
                data-doc="appel" target="_blank" rel="noopener">Ouvrir le formulaire</a>
           </div>
