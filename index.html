@@ -472,8 +472,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
   gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
 /* height:auto est indispensable : sans lui l attribut height="800" du HTML
    fait loi, aspect-ratio est ignoré, et la photo s étire en ovale. */
-.signature__photo{width:clamp(8.5rem,20vw,15rem);height:auto;aspect-ratio:1;
-  border-radius:50%;object-fit:cover;margin-bottom:.9rem;
+/* Cadre à base pleine plutôt que rond : le cercle rognait les coins, donc les
+   épaules et le bas du buste, et se rétrécissait vers le bas. Le carré rend
+   toute la largeur de l image, la photo étant déjà carrée à la source. */
+.signature__photo{width:clamp(9.5rem,23vw,17rem);height:auto;aspect-ratio:1;
+  border-radius:14px;object-fit:cover;margin-bottom:1rem;
   box-shadow:0 0 0 4px var(--yellow)}
 .signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
