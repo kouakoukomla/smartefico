@@ -124,9 +124,12 @@ p{margin:0}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
 .nav__links{display:none;gap:clamp(1.5rem,3.2vw,2.75rem);margin-inline:auto}
 @media (min-width:48rem){.nav__links{display:flex}}
-/* liens de navigation : très gras et à pleine encre, comme demandé */
-.nav__links a{text-decoration:none;color:var(--ink);font-size:.95rem;
-  font-weight:800;letter-spacing:-.015em;padding-block:.35rem;
+/* liens de navigation : très gras et à pleine encre, comme demandé.
+   En majuscules, une chasse négative resserre trop : on la remet à zéro et
+   on ouvre légèrement l interlettrage, sans quoi les mots se collent. */
+.nav__links a{text-decoration:none;color:var(--ink);font-size:.88rem;
+  font-weight:800;letter-spacing:.02em;padding-block:.35rem;
+  text-transform:uppercase;
   white-space:nowrap;
   border-bottom:2px solid transparent;
   transition:border-color .18s ease,color .18s ease}
@@ -190,7 +193,7 @@ p{margin:0}
   .js .nav--ouvert .nav__links{display:flex;flex-direction:column;
     gap:.3rem;padding:.7rem .25rem .35rem}
   /* en liste, chaque entrée devient une cible tactile pleine largeur */
-  .js .nav--ouvert .nav__links a{font-size:1.05rem;padding:.8rem 1rem;
+  .js .nav--ouvert .nav__links a{font-size:.95rem;padding:.8rem 1rem;
     border-bottom:0;border-radius:9px;
     transition:background-color .18s ease}
   .js .nav--ouvert .nav__links a:hover,
@@ -247,16 +250,6 @@ p{margin:0}
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .head__eyebrow{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);
   align-self:flex-start;background:var(--yellow);padding:.3rem .7rem;border-radius:3px}
-/* Variante centrée, calquée sur la référence : le titre tient le milieu à une
-   échelle plus haute, le chapô descend dessous sur une mesure étroite et ses
-   lignes sont centrées elles aussi. */
-.head--centre{align-items:center;text-align:center;gap:.9rem}
-.head--centre .head__eyebrow{align-self:center}
-.head--centre .display{font-size:clamp(2.1rem,4.8vw,3.6rem);max-width:17ch}
-/* Sur la référence, le chapô respire nettement plus sous le titre que ne le
-   ferait un simple gap : l écart y vaut environ la moitié du corps du titre. */
-.head--centre .lead{max-width:46ch;margin-inline:auto;
-  margin-top:clamp(.4rem,1.5vw,1.2rem)}
 
 /* ---------- chiffres ---------- */
 .figures{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -477,21 +470,19 @@ p{margin:0}
   transition:border-color .2s ease,background-color .2s ease}
 .coord:hover{border-color:var(--yellow);background:#262626}
 .coord .mono{background:none;color:#8A8A86;padding:0}
-/* Le visage, le nom et le rôle, entre les coordonnées et les réseaux. */
-.signature{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.5rem);
-  margin-top:.75rem;padding-top:1.75rem;border-top:1px solid #333}
+/* Signature : bloc autonome et centré, posé sur le fond de page entre le
+   bloc de contact et les réseaux. */
+.signature{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
 /* height:auto est indispensable : sans lui l attribut height="800" du HTML
    fait loi, aspect-ratio est ignoré, et la photo s étire en ovale. */
-.signature__photo{width:clamp(4.5rem,9vw,6rem);height:auto;aspect-ratio:1;flex:none;
-  border-radius:50%;object-fit:cover;
-  box-shadow:0 0 0 2px var(--yellow)}
-.signature__mots{display:flex;flex-direction:column;gap:.25rem;min-width:0}
-.signature__mots b{font-weight:800;letter-spacing:-.025em;color:#FFF;
-  font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.2}
-/* Le sélecteur porte .contact pour peser autant que .contact .mono, qui
-   sinon en refait une pastille jaune — la deuxième du bloc. */
-.contact .signature__role{background:none;color:var(--yellow);padding:0}
-.signature__mots p{color:#B5B5B1;font-size:.95rem;max-width:44ch}
+.signature__photo{width:clamp(6.5rem,13vw,9.5rem);height:auto;aspect-ratio:1;
+  border-radius:50%;object-fit:cover;margin-bottom:.6rem;
+  box-shadow:0 0 0 3px var(--yellow)}
+.signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
+  font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
+.signature__role{color:var(--ink-2)}
+.signature__mot{color:var(--ink-2);font-size:1rem;max-width:44ch}
 .coord b{font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
   line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#FFF}
 
@@ -784,7 +775,7 @@ p{margin:0}
 
     <!-- ============ CE QU'ON VOUS APPORTE ============ -->
     <section class="wrap" id="apport">
-      <div class="head head--centre">
+      <div class="head">
         <span class="head__eyebrow mono">Ce qu'on vous apporte</span>
         <h2 class="display">Des ventes, <em>pas de la notoriété</em>.</h2>
         <p class="lead">Le buzz, très peu pour nous. Les ventes, c'est ce qui nous fait vibrer. Si c'est ce que vous cherchez, alors on est l'agence qu'il vous faut.</p>
@@ -1083,19 +1074,19 @@ p{margin:0}
             <b>kouakoukomla007@gmail.com</b>
           </a>
         </div>
-
-        <!-- Le visage derrière le « Appelez-moi » du chapô : jusqu'ici la page
-             parlait à la première personne sans jamais dire qui parlait. -->
-        <div class="signature">
-          <img class="signature__photo" src="assets/portrait.jpg"
-               alt="Emmanuel Kouakou" width="800" height="800" loading="lazy">
-          <div class="signature__mots">
-            <b>Emmanuel Kouakou</b>
-            <span class="signature__role mono">Fondateur de SmartEfico</span>
-            <p>C'est moi qui prends l'appel, qui lis vos réponses et qui installe les systèmes décrits sur cette page.</p>
-          </div>
-        </div>
       </div>
+    </section>
+
+    <!-- ============ SIGNATURE ============
+         Bloc à part, entre le contact et les réseaux : le visage derrière le
+         « Appelez-moi » du chapô. Jusqu'ici la page parlait à la première
+         personne sans jamais dire qui parlait. -->
+    <section class="wrap signature">
+      <img class="signature__photo" src="assets/portrait.jpg"
+           alt="Emmanuel Kouakou" width="800" height="800" loading="lazy">
+      <b class="signature__nom">Emmanuel Kouakou</b>
+      <span class="signature__role mono">Fondateur de SmartEfico</span>
+      <p class="signature__mot">C'est moi qui prends l'appel, qui lis vos réponses et qui installe les systèmes décrits sur cette page.</p>
     </section>
 
 
