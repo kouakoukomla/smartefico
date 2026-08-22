@@ -416,8 +416,32 @@ p{margin:0}
   transition:background-color .18s ease}
 .book__alt-tel:hover{background:#000}
 .book__alt-lien{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow)}
-/* Hauteur fixe : Tally n'émet aucune hauteur sans sa bibliothèque parente. */
-.book__frame{width:100%;border:0;min-height:700px;background:var(--surface)}
+/* Hauteur posée à la main, faute de mieux : Tally n'émet aucune hauteur.
+   Ses évènements FormLoaded et FormPageView ne portent que l'identifiant du
+   formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée de main
+   que seule sa bibliothèque parente sait faire.
+
+   Les valeurs ci-dessous ne sont pas devinées : le formulaire a été ouvert
+   seul et mesuré à quatre largeurs de cadre.
+
+       cadre 239 px  ->  1532 px de haut     (page de 320 px)
+       cadre 294 px  ->  1389 px             (page de 375 px)
+       cadre 493 px  ->  1268 px             (page de 900 px)
+       cadre 807 px  ->  1208 px             (page de 1280 px)
+
+   Plus le cadre est étroit, plus les champs s'empilent. Les paliers suivent
+   cette pente, avec ~80 px de marge. Le cadre se resserre à 56 rem, quand la
+   colonne de rassurance apparaît à sa gauche : d'où la remontée à ce palier.
+
+   À REMESURER si le formulaire change dans Tally : une question de plus et le
+   cadre redevient trop court, sans que rien ne le signale. */
+.book__frame{width:100%;border:0;min-height:1700px;background:var(--surface)}
+@media (min-width:20rem){.book__frame{min-height:1600px}}
+@media (min-width:23rem){.book__frame{min-height:1480px}}
+@media (min-width:36rem){.book__frame{min-height:1400px}}
+@media (min-width:45rem){.book__frame{min-height:1330px}}
+@media (min-width:56rem){.book__frame{min-height:1360px}}
+@media (min-width:75rem){.book__frame{min-height:1290px}}
 .book__done{display:flex;flex-direction:column;gap:.3rem;background:var(--yellow);
   border:1.5px solid var(--ink);padding:1.1rem 1.25rem}
 .book__done[hidden]{display:none}
