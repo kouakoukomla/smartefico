@@ -63,7 +63,14 @@ de main que seule sa bibliothèque parente sait faire. Deux impasses vérifiées
 `dynamicHeight=1` ne change rien, et charger `tally.so/widgets/embed.js` par-dessus un
 `src` classique fait retomber le cadre à 1 px.
 
-Les paliers de `.book__frame` viennent donc de mesures, prises en ouvrant le formulaire
+Le formulaire ne vit donc plus en pleine page mais dans un `<dialog>`, ouvert par le
+bouton de la section « Réservation ». Ce bouton porte `data-doc="appel"` et réutilise
+tel quel le script des documents légaux ; son `href` reste un vrai lien vers Tally si
+`<dialog>` n'est pas géré. Le cadre garde sa hauteur pleine et c'est la fenêtre qui défile :
+un seul défilement, pas deux imbriqués. À l'envoi, le gestionnaire de `Tally.FormSubmitted`
+referme la fenêtre avant de découvrir la confirmation, qui est dans la page.
+
+Les paliers de `.book__frame` viennent de mesures, prises en ouvrant le formulaire
 seul et en relevant `scrollHeight` :
 
 | largeur du cadre | hauteur du formulaire |

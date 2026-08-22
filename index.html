@@ -390,27 +390,44 @@ p{margin:0}
 .qa p{color:var(--ink-2);padding-bottom:1.35rem;max-width:64ch}
 
 /* ---------- réservation ---------- */
-.book{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.25rem,3vw,2rem);display:grid;gap:1.75rem;grid-template-columns:1fr}
+/* Panneau noir, comme le bloc de contact : le titre est dedans, pour que la
+   partie entière fasse un seul bloc et non un titre posé sur le gris. */
+.book{background:var(--noir);color:#F3F3F3;
+  padding:clamp(1.5rem,4vw,3rem);display:flex;flex-direction:column;gap:2rem}
+.head--sombre{margin-bottom:0}
+.head--sombre .display{color:#FFF}
+.head--sombre .lead{color:#B5B5B1}
+.book__grille{display:grid;gap:1.75rem;grid-template-columns:1fr}
 @media (min-width:56rem){
-  .book{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:start}
+  .book__grille{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:stretch}
 }
-.book__aside h3{font-size:1rem;margin-bottom:1rem}
+.book__aside h3{font-size:1rem;margin-bottom:1rem;color:#FFF}
 .book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
 .book__facts li{display:flex;flex-direction:column;gap:.15rem;
   border-left:3px solid var(--yellow);padding-left:.85rem}
-.book__facts b{font-weight:700;font-size:.9rem}
-.book__facts span{font-size:.9rem;color:var(--ink-2)}
-.book__facts a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow)}
+.book__facts b{font-weight:700;font-size:.9rem;color:#FFF}
+.book__facts span{font-size:.9rem;color:#B5B5B1}
+.book__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
 .book__main{display:flex;flex-direction:column;gap:1rem;min-width:0}
+
+/* La porte d'entrée du formulaire. Elle occupe toute la hauteur de la colonne,
+   ce qui met les deux colonnes à la même échelle — c'était impossible avec le
+   cadre en pleine page, qui les mettait dans un rapport de 1 à 4. */
+.book__porte{flex:1;display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;gap:.5rem;
+  background:var(--noir-2);border:1px solid #333;
+  padding:clamp(1.4rem,3vw,2rem)}
+.book__porte b{font-weight:800;letter-spacing:-.025em;color:#FFF;
+  font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.25}
+.book__porte span{color:#B5B5B1;font-size:.95rem}
+.book__ouvrir{margin-top:.9rem}
 .book__alt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
-  background:var(--ground);border:1px solid var(--line);padding:.8rem 1rem;
-  color:var(--ink-2);font-size:.92rem}
-.book__alt-tel{background:var(--ink);color:var(--surface);text-decoration:none;
-  padding:.5rem 1rem;border-radius:999px;font-weight:600;white-space:nowrap;
-  transition:background-color .18s ease}
-.book__alt-tel:hover{background:#000}
-.book__alt-lien{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow)}
+  color:#8A8A86;font-size:.92rem}
+.book__alt-tel{background:none;color:#F3F3F3;text-decoration:none;
+  padding:.4rem 0;font-weight:600;white-space:nowrap;
+  border-bottom:2px solid var(--yellow);
+  transition:color .18s ease}
+.book__alt-tel:hover{color:var(--yellow)}
 /* Hauteur posée à la main, faute de mieux : Tally n'émet aucune hauteur.
    Ses évènements FormLoaded et FormPageView ne portent que l'identifiant du
    formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée de main
@@ -430,15 +447,17 @@ p{margin:0}
 
    À REMESURER si le formulaire change dans Tally : une question de plus et le
    cadre redevient trop court, sans que rien ne le signale. */
-.book__frame{width:100%;border:0;min-height:1700px;background:var(--surface)}
+.book__frame{display:block;width:100%;border:0;min-height:1700px;background:var(--surface)}
 @media (min-width:20rem){.book__frame{min-height:1600px}}
 @media (min-width:23rem){.book__frame{min-height:1480px}}
 @media (min-width:36rem){.book__frame{min-height:1400px}}
 @media (min-width:45rem){.book__frame{min-height:1330px}}
 @media (min-width:56rem){.book__frame{min-height:1360px}}
 @media (min-width:75rem){.book__frame{min-height:1290px}}
+/* color explicite : le panneau qui l entoure est passé au noir et impose
+   #F3F3F3, qui sur le jaune ne fait que 1,4 pour 1. */
 .book__done{display:flex;flex-direction:column;gap:.3rem;background:var(--yellow);
-  border:1.5px solid var(--ink);padding:1.1rem 1.25rem}
+  color:var(--ink);border:1.5px solid var(--ink);padding:1.1rem 1.25rem}
 .book__done[hidden]{display:none}
 .book__done b{font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
 .book__done span{color:#5A4600;font-size:.92rem}
@@ -458,6 +477,21 @@ p{margin:0}
   transition:border-color .2s ease,background-color .2s ease}
 .coord:hover{border-color:var(--yellow);background:#262626}
 .coord .mono{background:none;color:#8A8A86;padding:0}
+/* Le visage, le nom et le rôle, entre les coordonnées et les réseaux. */
+.signature{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.5rem);
+  margin-top:.75rem;padding-top:1.75rem;border-top:1px solid #333}
+/* height:auto est indispensable : sans lui l attribut height="800" du HTML
+   fait loi, aspect-ratio est ignoré, et la photo s étire en ovale. */
+.signature__photo{width:clamp(4.5rem,9vw,6rem);height:auto;aspect-ratio:1;flex:none;
+  border-radius:50%;object-fit:cover;
+  box-shadow:0 0 0 2px var(--yellow)}
+.signature__mots{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.signature__mots b{font-weight:800;letter-spacing:-.025em;color:#FFF;
+  font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.2}
+/* Le sélecteur porte .contact pour peser autant que .contact .mono, qui
+   sinon en refait une pastille jaune — la deuxième du bloc. */
+.contact .signature__role{background:none;color:var(--yellow);padding:0}
+.signature__mots p{color:#B5B5B1;font-size:.95rem;max-width:44ch}
 .coord b{font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
   line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#FFF}
 
@@ -488,6 +522,11 @@ p{margin:0}
   background:var(--surface);color:var(--ink);
   box-shadow:0 24px 70px -20px rgba(0,0,0,.35)}
 .doc-modal::backdrop{background:rgba(18,18,18,.6)}
+/* La fenêtre du formulaire est plus large que celle des documents : Tally
+   empile ses champs dès qu'on le serre, et chaque pixel de largeur gagné
+   raccourcit le formulaire. */
+.doc-modal--appel{width:min(100% - 1.5rem,52rem);max-height:92vh}
+.doc-modal__body--cadre{padding:0}
 .doc-modal__bar{position:sticky;top:0;z-index:2;background:var(--noir);color:#FFF;
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:.9rem clamp(1.1rem,3vw,2rem)}
@@ -976,12 +1015,13 @@ p{margin:0}
 
     <!-- ============ RÉSERVATION ============ -->
     <section class="wrap" id="appel">
-      <div class="head">
-        <span class="head__eyebrow mono">Réservation</span>
-        <h2 class="display">Je réserve <em>mon appel</em>.</h2>
-        <p class="lead">Quelques questions pour comprendre votre offre et votre cible, et on se cale un créneau.</p>
-      </div>
       <div class="book">
+        <div class="head head--sombre">
+          <span class="head__eyebrow mono">Réservation</span>
+          <h2 class="display">Je réserve <em>mon appel</em>.</h2>
+          <p class="lead">Quelques questions pour comprendre votre offre et votre cible, et on se cale un créneau.</p>
+        </div>
+        <div class="book__grille">
 
         <!-- Rassurance placée contre le formulaire : ces réponses étaient jusqu'ici
              repliées dans la FAQ, mille pixels plus haut. -->
@@ -996,23 +1036,30 @@ p{margin:0}
         </aside>
 
         <div class="book__main">
-          <!-- L'alternative est AU-DESSUS du cadre : si le formulaire ne s'affiche pas,
-               le recours doit être visible sans avoir à passer par la panne. -->
-          <p class="book__alt">
-            <span>Vous préférez éviter le formulaire&nbsp;?</span>
-            <a class="book__alt-tel" href="tel:+33751599636">Appelez le +33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>
-            <a class="book__alt-lien" href="https://tally.so/r/81VkKx" target="_blank" rel="noopener">ou ouvrez-le dans un onglet</a>
-          </p>
           <p class="book__done" id="book-done" role="status" hidden>
             <b>C'est envoyé.</b>
             <span>Votre demande est arrivée. Vous recevrez une confirmation par email. Si c'est urgent, appelez le <a href="tel:+33751599636">+33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>.</span>
           </p>
-          <iframe class="book__frame"
-                  src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
-                  title="Formulaire de réservation d'appel SmartEfico"
-                  loading="lazy"></iframe>
+
+          <!-- Le formulaire s'ouvre dans une fenêtre plutôt qu'en pleine page :
+               il fait 1200 à 1500 px de haut selon la largeur, ce qui écrasait
+               la colonne de gauche. data-doc="appel" réutilise tel quel le
+               mécanisme des documents légaux, et le href reste un vrai lien
+               vers Tally si <dialog> n'est pas géré. -->
+          <div class="book__porte">
+            <b>Dix questions, deux minutes.</b>
+            <span>Votre offre, votre cible, et ce qui bloque aujourd'hui.</span>
+            <a class="btn btn--solid book__ouvrir" href="https://tally.so/r/81VkKx"
+               data-doc="appel" target="_blank" rel="noopener">Ouvrir le formulaire</a>
+          </div>
+
+          <p class="book__alt">
+            <span>Vous préférez éviter le formulaire&nbsp;?</span>
+            <a class="book__alt-tel" href="tel:+33751599636">Appelez le +33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>
+          </p>
         </div>
 
+        </div>
       </div>
     </section>
 
@@ -1035,6 +1082,18 @@ p{margin:0}
             <span class="mono">Email · Emmanuel Kouakou</span>
             <b>kouakoukomla007@gmail.com</b>
           </a>
+        </div>
+
+        <!-- Le visage derrière le « Appelez-moi » du chapô : jusqu'ici la page
+             parlait à la première personne sans jamais dire qui parlait. -->
+        <div class="signature">
+          <img class="signature__photo" src="assets/portrait.jpg"
+               alt="Emmanuel Kouakou" width="800" height="800" loading="lazy">
+          <div class="signature__mots">
+            <b>Emmanuel Kouakou</b>
+            <span class="signature__role mono">Fondateur de SmartEfico</span>
+            <p>C'est moi qui prends l'appel, qui lis vos réponses et qui installe les systèmes décrits sur cette page.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1068,6 +1127,23 @@ p{margin:0}
     </footer>
   </div>
 </main>
+
+<!-- Fenêtre du formulaire. Même classe .doc-modal que les documents légaux :
+     le script de fermeture et le clic sur le fond la prennent en charge sans
+     une ligne de plus. Le cadre garde sa hauteur pleine, c'est la fenêtre qui
+     défile — un seul défilement, pas deux imbriqués. -->
+<dialog class="doc-modal doc-modal--appel" id="doc-appel" aria-labelledby="doc-appel-titre">
+  <div class="doc-modal__bar">
+    <b id="doc-appel-titre">Réserver un appel</b>
+    <button class="doc-modal__close" type="button" data-close>Fermer</button>
+  </div>
+  <div class="doc-modal__body doc-modal__body--cadre">
+    <iframe class="book__frame"
+            src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
+            title="Formulaire de réservation d'appel SmartEfico"
+            loading="lazy"></iframe>
+  </div>
+</dialog>
 
 <!-- ============ DOCUMENTS LÉGAUX ============
      Le texte est repris automatiquement de cgv.html et cgc.html par
@@ -1400,6 +1476,11 @@ p{margin:0}
     if (ev !== 'Tally.FormSubmitted') return;
     var fait = document.getElementById('book-done');
     if (!fait) return;
+    // Le formulaire vit dans une fenêtre : sans cette fermeture, la
+    // confirmation s’afficherait dans la page, derrière ce que le
+    // visiteur a sous les yeux.
+    var boite = document.getElementById('doc-appel');
+    if (boite && boite.open) boite.close();
     fait.hidden = false;
     fait.setAttribute('tabindex', '-1');
     fait.focus();
