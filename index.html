@@ -390,9 +390,16 @@ p{margin:0}
 .head--sombre{margin-bottom:0}
 .head--sombre .display{color:#FFF}
 .head--sombre .lead{color:#B5B5B1}
+/* h2 porte l'étiquette : la section garde un intitulé dans le plan du
+   document, sans le pavé de texte que le formulaire remplace. */
+h2.head__eyebrow{font-weight:600;margin:0}
 .book__grille{display:grid;gap:1.75rem;grid-template-columns:1fr}
 @media (min-width:56rem){
-  .book__grille{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:stretch}
+  .book__grille{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:start}
+  /* Le formulaire fait quatre fois la hauteur de cette colonne. Collante, elle
+     l'accompagne au lieu de rester en haut à regarder passer 1300 px de vide.
+     6rem dégage la barre de navigation, elle-même collante. */
+  .book__aside{position:sticky;top:6rem}
 }
 .book__aside h3{font-size:1rem;margin-bottom:1rem;color:#FFF}
 .book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
@@ -403,31 +410,6 @@ p{margin:0}
 .book__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
 .book__main{display:flex;flex-direction:column;gap:1rem;min-width:0}
 
-/* La porte d'entrée du formulaire. Elle occupe toute la hauteur de la colonne,
-   ce qui met les deux colonnes à la même échelle — c'était impossible avec le
-   cadre en pleine page, qui les mettait dans un rapport de 1 à 4. */
-.book__porte{flex:1;display:flex;flex-direction:column;justify-content:center;
-  align-items:flex-start;gap:.5rem;
-  background:var(--noir-2);border:1px solid #333;
-  padding:clamp(1.4rem,3vw,2rem)}
-.book__porte b{font-weight:800;letter-spacing:-.025em;color:#FFF;
-  font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.25}
-.book__porte>span{color:#B5B5B1;font-size:.95rem}
-.book__ouvrir{margin-top:.4rem}
-
-/* L'inventaire des questions, relevé sur le formulaire lui-même. Le visiteur
-   sait ce qui l'attend avant de cliquer, sans qu'on ait à déployer 1400 px
-   de cadre dans la page. */
-.quest{display:grid;gap:1.25rem 2rem;grid-template-columns:1fr;
-  width:100%;margin-block:.9rem}
-@media (min-width:34rem){.quest{grid-template-columns:1fr 1fr}}
-.quest__groupe{display:flex;flex-direction:column;gap:.5rem;min-width:0}
-.quest__titre{color:var(--yellow)}
-.quest ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.3rem}
-.quest li{display:flex;align-items:flex-start;gap:.6rem;
-  color:#D2D2CE;font-size:.92rem;line-height:1.35}
-.quest li::before{content:"";width:.4rem;height:.4rem;flex:none;margin-top:.45rem;
-  background:var(--yellow);transform:rotate(45deg)}
 .book__alt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
   color:#8A8A86;font-size:.92rem}
 .book__alt-tel{background:none;color:#F3F3F3;text-decoration:none;
@@ -490,9 +472,9 @@ p{margin:0}
   gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
 /* height:auto est indispensable : sans lui l attribut height="800" du HTML
    fait loi, aspect-ratio est ignoré, et la photo s étire en ovale. */
-.signature__photo{width:clamp(6.5rem,13vw,9.5rem);height:auto;aspect-ratio:1;
-  border-radius:50%;object-fit:cover;margin-bottom:.6rem;
-  box-shadow:0 0 0 3px var(--yellow)}
+.signature__photo{width:clamp(8.5rem,20vw,15rem);height:auto;aspect-ratio:1;
+  border-radius:50%;object-fit:cover;margin-bottom:.9rem;
+  box-shadow:0 0 0 4px var(--yellow)}
 .signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
@@ -527,11 +509,6 @@ p{margin:0}
   background:var(--surface);color:var(--ink);
   box-shadow:0 24px 70px -20px rgba(0,0,0,.35)}
 .doc-modal::backdrop{background:rgba(18,18,18,.6)}
-/* La fenêtre du formulaire est plus large que celle des documents : Tally
-   empile ses champs dès qu'on le serre, et chaque pixel de largeur gagné
-   raccourcit le formulaire. */
-.doc-modal--appel{width:min(100% - 1.5rem,52rem);max-height:92vh}
-.doc-modal__body--cadre{padding:0}
 .doc-modal__bar{position:sticky;top:0;z-index:2;background:var(--noir);color:#FFF;
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:.9rem clamp(1.1rem,3vw,2rem)}
@@ -1022,9 +999,7 @@ p{margin:0}
     <section class="wrap" id="appel">
       <div class="book">
         <div class="head head--sombre">
-          <span class="head__eyebrow mono">Réservation</span>
-          <h2 class="display">Je réserve <em>mon appel</em>.</h2>
-          <p class="lead">Quelques questions pour comprendre votre offre et votre cible, et on se cale un créneau.</p>
+          <h2 class="head__eyebrow mono">Réservation</h2>
         </div>
         <div class="book__grille">
 
@@ -1046,39 +1021,13 @@ p{margin:0}
             <span>Votre demande est arrivée. Vous recevrez une confirmation par email. Si c'est urgent, appelez le <a href="tel:+33751599636">+33&nbsp;7&nbsp;51&nbsp;59&nbsp;96&nbsp;36</a>.</span>
           </p>
 
-          <!-- Le formulaire s'ouvre dans une fenêtre plutôt qu'en pleine page :
-               il fait 1200 à 1500 px de haut selon la largeur, ce qui écrasait
-               la colonne de gauche. data-doc="appel" réutilise tel quel le
-               mécanisme des documents légaux, et le href reste un vrai lien
-               vers Tally si <dialog> n'est pas géré. -->
-          <div class="book__porte">
-            <b>Ce qu'on vous demande</b>
-            <span>Dix champs, deux minutes. Rien sur vos chiffres.</span>
-
-            <div class="quest">
-              <div class="quest__groupe">
-                <span class="quest__titre mono">Le dirigeant</span>
-                <ul>
-                  <li>Nom</li>
-                  <li>Prénom(s)</li>
-                  <li>Email</li>
-                  <li>Téléphone ou WhatsApp</li>
-                </ul>
-              </div>
-              <div class="quest__groupe">
-                <span class="quest__titre mono">L'entreprise</span>
-                <ul>
-                  <li>Nom de l'entreprise</li>
-                  <li>Adresse mail</li>
-                  <li>Site web</li>
-                  <li>LinkedIn, Instagram, TikTok</li>
-                </ul>
-              </div>
-            </div>
-
-            <a class="btn btn--solid book__ouvrir" href="https://tally.so/r/81VkKx"
-               data-doc="appel" target="_blank" rel="noopener">Ouvrir le formulaire</a>
-          </div>
+          <!-- Le formulaire est rempli sur place. Il fait 1200 à 1500 px de
+               haut selon la largeur : la colonne de gauche est rendue collante
+               plus bas, faute de quoi elle paraîtrait écrasée à côté. -->
+          <iframe class="book__frame"
+                  src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
+                  title="Formulaire de réservation d'appel SmartEfico"
+                  loading="lazy"></iframe>
 
           <p class="book__alt">
             <span>Vous préférez éviter le formulaire&nbsp;?</span>
@@ -1154,23 +1103,6 @@ p{margin:0}
     </footer>
   </div>
 </main>
-
-<!-- Fenêtre du formulaire. Même classe .doc-modal que les documents légaux :
-     le script de fermeture et le clic sur le fond la prennent en charge sans
-     une ligne de plus. Le cadre garde sa hauteur pleine, c'est la fenêtre qui
-     défile — un seul défilement, pas deux imbriqués. -->
-<dialog class="doc-modal doc-modal--appel" id="doc-appel" aria-labelledby="doc-appel-titre">
-  <div class="doc-modal__bar">
-    <b id="doc-appel-titre">Réserver un appel</b>
-    <button class="doc-modal__close" type="button" data-close>Fermer</button>
-  </div>
-  <div class="doc-modal__body doc-modal__body--cadre">
-    <iframe class="book__frame"
-            src="https://tally.so/embed/81VkKx?alignLeft=1&amp;hideTitle=1"
-            title="Formulaire de réservation d'appel SmartEfico"
-            loading="lazy"></iframe>
-  </div>
-</dialog>
 
 <!-- ============ DOCUMENTS LÉGAUX ============
      Le texte est repris automatiquement de cgv.html et cgc.html par
@@ -1503,11 +1435,6 @@ p{margin:0}
     if (ev !== 'Tally.FormSubmitted') return;
     var fait = document.getElementById('book-done');
     if (!fait) return;
-    // Le formulaire vit dans une fenêtre : sans cette fermeture, la
-    // confirmation s’afficherait dans la page, derrière ce que le
-    // visiteur a sous les yeux.
-    var boite = document.getElementById('doc-appel');
-    if (boite && boite.open) boite.close();
     fait.hidden = false;
     fait.setAttribute('tabindex', '-1');
     fait.focus();
