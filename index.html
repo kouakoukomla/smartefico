@@ -55,16 +55,17 @@
    (contraste insuffisant). Il sert de fond, avec de l'encre noire dessus.
    ========================================================= */
 :root{
-  --ground:#F0F0F0;
-  --surface:#FFFFFF;
-  --ink:#212121;
-  --ink-2:#5C5C5C;
-  --ink-3:#6E6E6E;
-  --line:#E3E3E1;
-  --noir:#121212;
-  --noir-2:#1E1E1E;
+  --ground:#000000;
+  --surface:#161616;
+  --ink:#FFFFFF;
+  --ink-2:#B4B4B0;
+  --ink-3:#8A8A86;
+  --line:#262626;
+  --noir:#101010;
+  --noir-2:#1C1C1C;
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
+  --on-yellow:#141414;
   --gap:clamp(3.5rem,8vw,6.5rem);
 }
 
@@ -75,7 +76,7 @@ body{
   /* fond granuleux relevé sur la référence : #F0F0F0, grain d.écart-type 2.
      La tuile fait 128 px ; le grain étant sans structure, elle se répète
      sans couture visible. */
-  background:var(--ground) url("assets/grain.png") repeat;
+  background:var(--ground);
   color:var(--ink);
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:15px;
@@ -113,12 +114,13 @@ p{margin:0}
    bords. Le fond de la zone reste opaque en haut pour que le contenu de la
    page ne se devine pas derrière la barre au défilement. */
 .nav{position:sticky;top:0;z-index:50;padding-block:.85rem;
-  /* même fond que la page, grain compris, pour que la zone ne se détache pas */
-  background:var(--ground) url("assets/grain.png") repeat}
+  /* même fond que la page pour que la zone ne se détache pas */
+  background:var(--ground)}
 .nav__in{display:flex;align-items:center;gap:1.25rem;
   background:var(--surface);border-radius:14px;
   padding:.5rem .5rem .5rem 1.35rem;
-  box-shadow:0 1px 3px rgba(18,18,18,.06)}
+  border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.5)}
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;
   font-weight:800;letter-spacing:-.03em;font-size:1.15rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
@@ -142,7 +144,7 @@ p{margin:0}
 .nav__cta-texte{transition:opacity .18s ease}
 .nav__cta:hover .nav__cta-texte{opacity:.65}
 .nav__fleche{display:grid;place-items:center;width:2.65rem;height:2.65rem;flex:none;
-  background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
+  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
   transition:background-color .18s ease,transform .18s ease}
 .nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
 /* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
@@ -212,20 +214,21 @@ p{margin:0}
 .display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.01em;
   padding-right:.04em}
+.hero .display em{color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.5rem}
 .btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;
   font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
 .btn--solid{background:var(--ink);color:var(--surface)}
-.btn--solid:hover{background:#000;transform:translateY(-2px)}
+.btn--solid:hover{background:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
-.btn--line:hover{background:var(--yellow);border-color:var(--yellow);transform:translateY(-2px)}
+.btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
 /* ---------- bandeau de références défilant ----------
    Deux pistes identiques défilent côte à côte : quand la première a
    parcouru toute sa largeur, la seconde a pris exactement sa place, d'où
    une boucle sans saut. La seconde est masquée aux lecteurs d'écran. */
-.ticker{background:var(--yellow);color:var(--ink);overflow:hidden;display:flex;
+.ticker{background:var(--yellow);color:var(--on-yellow);overflow:hidden;display:flex;
   user-select:none}
 .ticker__piste{display:flex;flex:none;animation:defile 26s linear infinite}
 .ticker__lot{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem;
@@ -248,7 +251,7 @@ p{margin:0}
 }
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
-.head__eyebrow{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);
+.head__eyebrow{display:inline-flex;align-items:center;gap:.55rem;color:var(--on-yellow);
   align-self:flex-start;background:var(--yellow);padding:.3rem .7rem;border-radius:3px}
 
 /* ---------- chiffres ---------- */
@@ -268,13 +271,13 @@ p{margin:0}
 .offer{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
   transition:border-color .2s ease}
-.offer:hover{border-color:var(--ink)}
+.offer:hover{border-color:var(--yellow)}
 .offer__no{font-weight:800;font-size:1.6rem;line-height:1;color:var(--ink-3);
   letter-spacing:-.04em;transition:color .2s ease}
 .offer:hover .offer__no{color:var(--ink)}
 .offer p{color:var(--ink-2);font-size:.98rem}
 .kpi{margin-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--yellow);color:var(--ink);padding:.4rem .7rem;
+  background:var(--yellow);color:var(--on-yellow);padding:.4rem .7rem;
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
@@ -283,11 +286,11 @@ p{margin:0}
 @media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
 .agent{background:var(--surface);border:1px solid var(--line);padding:1rem 1rem 1.5rem;
   display:flex;flex-direction:column;gap:.7rem;transition:border-color .2s ease}
-.agent:hover{border-color:var(--ink)}
+.agent:hover{border-color:var(--yellow)}
 .agent figure{margin:0;overflow:hidden;background:var(--ground);border:1px solid var(--line)}
 .agent figure img{width:100%;height:auto;display:block;transition:transform .5s ease}
 .agent:hover figure img{transform:scale(1.02)}
-.agent__tag{align-self:flex-start;background:var(--yellow);color:var(--ink);
+.agent__tag{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
   padding:.25rem .6rem;margin-top:.4rem}
 .agent h3,.agent p{padding-inline:.25rem}
 .agent p{color:var(--ink-2);font-size:.96rem}
@@ -317,7 +320,7 @@ p{margin:0}
 
 /* ---------- méthode : bloc sombre ---------- */
 .invert{background:var(--noir);color:#F3F3F3;padding-block:var(--gap)}
-.invert .head__eyebrow{background:var(--yellow);color:var(--ink)}
+.invert .head__eyebrow{background:var(--yellow);color:var(--on-yellow)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
 .steps{display:flex;flex-direction:column;border-top:2px solid var(--yellow)}
@@ -339,15 +342,15 @@ p{margin:0}
 .ba__col{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.4rem,3vw,2.1rem);display:flex;flex-direction:column;gap:1rem}
 .ba__col--apres{background:var(--yellow);border-color:var(--yellow)}
-.ba__titre{color:#5C5C5C}
+.ba__titre{color:var(--ink-2)}
 .ba__col--apres .ba__titre{color:#6B5600}
 .ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
 .ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
   font-size:.98rem;line-height:1.5}
-.ba__col--apres li{color:var(--ink);font-weight:500}
+.ba__col--apres li{color:var(--on-yellow);font-weight:500}
 .ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
-  background:var(--line);border-radius:50%}
-.ba__col--apres li::before{background:var(--ink);transform:rotate(45deg);border-radius:0}
+  background:var(--ink-3);border-radius:50%}
+.ba__col--apres li::before{background:var(--on-yellow);transform:rotate(45deg);border-radius:0}
 
 /* ---------- public ciblé ---------- */
 .aud{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));
@@ -355,7 +358,7 @@ p{margin:0}
 .aud li{list-style:none;background:var(--surface);border:1px solid var(--line);
   padding:1rem 1.15rem;display:flex;align-items:flex-start;gap:.75rem;font-weight:500;
   transition:border-color .2s ease}
-.aud li:hover{border-color:var(--ink)}
+.aud li:hover{border-color:var(--yellow)}
 .aud li::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);flex:none;
   transform:rotate(45deg);margin-top:.5rem}
 
@@ -403,8 +406,10 @@ h2.head__eyebrow{font-weight:600;margin:0}
 }
 .book__aside h3{font-size:1rem;margin-bottom:1rem;color:#FFF}
 .book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
-.book__facts li{display:flex;flex-direction:column;gap:.15rem;
-  border-left:3px solid var(--yellow);padding-left:.85rem}
+.book__facts li{position:relative;display:flex;flex-direction:column;gap:.15rem;
+  padding-left:1.1rem}
+.book__facts li::before{content:"";position:absolute;left:0;top:.4rem;
+  width:.5rem;height:.5rem;background:var(--yellow);transform:rotate(45deg)}
 .book__facts b{font-weight:700;font-size:.9rem;color:#FFF}
 .book__facts span{font-size:.9rem;color:#B5B5B1}
 .book__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
@@ -436,7 +441,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
    À REMESURER si le formulaire change dans Tally : une question de plus et le
    cadre redevient trop court, sans que rien ne le signale. */
-.book__frame{display:block;width:100%;border:0;min-height:1700px;background:var(--surface)}
+.book__frame{display:block;width:100%;border:0;min-height:1700px;background:#FFFFFF}
 @media (min-width:20rem){.book__frame{min-height:1600px}}
 @media (min-width:23rem){.book__frame{min-height:1480px}}
 @media (min-width:36rem){.book__frame{min-height:1400px}}
@@ -446,18 +451,18 @@ h2.head__eyebrow{font-weight:600;margin:0}
 /* color explicite : le panneau qui l entoure est passé au noir et impose
    #F3F3F3, qui sur le jaune ne fait que 1,4 pour 1. */
 .book__done{display:flex;flex-direction:column;gap:.3rem;background:var(--yellow);
-  color:var(--ink);border:1.5px solid var(--ink);padding:1.1rem 1.25rem}
+  color:var(--on-yellow);border:1.5px solid var(--on-yellow);padding:1.1rem 1.25rem}
 .book__done[hidden]{display:none}
 .book__done b{font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
 .book__done span{color:#5A4600;font-size:.92rem}
-.book__done a{color:var(--ink);font-weight:600}
+.book__done a{color:var(--on-yellow);font-weight:600}
 
 /* ---------- contact ---------- */
 .contact{background:var(--noir);color:#F3F3F3;padding:clamp(2rem,5vw,3.5rem);
   display:flex;flex-direction:column;gap:1.2rem}
 .contact .display{color:#FFF}
 .contact .lead{color:#B5B5B1;max-width:52ch}
-.contact .mono{background:var(--yellow);color:var(--ink);padding:.3rem .7rem;
+.contact .mono{background:var(--yellow);color:var(--on-yellow);padding:.3rem .7rem;
   align-self:flex-start;border-radius:3px}
 .coords{display:grid;gap:.75rem;margin-top:.5rem;
   grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
@@ -490,7 +495,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .icons a{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;
   border:1.5px solid var(--line);color:var(--ink);background:var(--surface);
   transition:background-color .18s ease,color .18s ease,transform .18s ease,border-color .18s ease}
-.icons a:hover{background:var(--yellow);border-color:var(--yellow);transform:translateY(-2px)}
+.icons a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 .icons svg{width:1.3rem;height:1.3rem;fill:currentColor;display:block}
 
 /* ---------- pied ---------- */
@@ -531,7 +536,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .doc-modal__body section:first-child{border-top:0;padding-top:0}
 .doc-modal__body h2{font-weight:700;letter-spacing:-.02em;line-height:1.2;
   font-size:1.3rem;margin:0 0 .9rem;display:flex;gap:.8rem;align-items:baseline;color:var(--ink)}
-.doc-modal__body h2 .num{color:var(--ink);background:var(--yellow);padding:0 .35rem;
+.doc-modal__body h2 .num{color:var(--on-yellow);background:var(--yellow);padding:0 .35rem;
   flex:none;letter-spacing:-.03em}
 .doc-modal__body h3{font-weight:700;font-size:1.3rem;margin:1.4rem 0 .5rem}
 .doc-modal__body p{margin:0 0 .85rem;color:var(--ink-2)}
@@ -542,7 +547,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   flex:none;transform:rotate(45deg);margin-top:.6rem}
 .doc-modal__body strong{font-weight:600;color:var(--ink)}
 .doc-modal__body .mark,.doc-modal__body .warn{background:var(--yellow);padding:.15rem .45rem;
-  font-weight:600;color:var(--ink)}
+  font-weight:600;color:var(--on-yellow)}
 .doc-modal__body .contact-box{border:1px solid var(--line);background:var(--ground);
   padding:1.1rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
 .doc-modal__body .contact-box a{font-weight:700;font-size:1.2rem;letter-spacing:-.02em;
@@ -643,9 +648,9 @@ h2.head__eyebrow{font-weight:600;margin:0}
     </a>
     <div class="nav__links" id="nav-menu">
       <!-- l'ordre du menu suit celui de la page -->
-      <a href="#apport">Services</a>
-      <a href="#resultats">Produit</a>
-      <a href="#avant-apres">Résultat</a>
+      <a href="#apport">Ce qu'on vous apporte</a>
+      <a href="#resultats">Nos services</a>
+      <a href="#avant-apres">Avant/Après</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Menu"
@@ -885,7 +890,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
          chaque ligne de droite d'une capacité déjà décrite sur cette page. -->
     <section class="wrap" id="avant-apres">
       <div class="head">
-        <span class="head__eyebrow mono">Résultat</span>
+        <span class="head__eyebrow mono">Avant/Après</span>
         <h2 class="display">Avant, <em>après</em>.</h2>
         <p class="lead">La plupart des dirigeants qu'on rencontre sont piégés dans l'opérationnel, avec un pipeline commercial instable. Voici ce que le système déplace, ligne par ligne.</p>
       </div>
