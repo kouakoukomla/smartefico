@@ -8,22 +8,24 @@
 <link rel="canonical" href="https://kouakoukomla.github.io/smartefico/cgv.html">
 <link rel="icon" type="image/png" href="assets/logo-clair.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#F0F0F0">
+<meta name="theme-color" content="#000000">
 <style>
 :root{
-  --black:#121212;
-  --line:#2E2E2B;
-  --paper:#F0F0F0;
-  --ink:#212121;
-  --ink-2:#5C5C5C;
-  --rule:#E3E3E1;
+  --black:#101010;
+  --line:#262626;
+  --paper:#000000;
+  --surface:#161616;
+  --ink:#FFFFFF;
+  --ink-2:#B4B4B0;
+  --rule:#262626;
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
+  --on-yellow:#141414;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0;background:var(--paper) url("assets/grain.png") repeat;color:var(--ink);
+  margin:0;background:var(--paper);color:var(--ink);
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;
 }
@@ -73,13 +75,13 @@ ul li::before{content:"";width:.45rem;height:.45rem;background:var(--yellow);fle
   transform:rotate(45deg);margin-top:.62rem;
   outline:1px solid var(--black);outline-offset:-1px}
 strong{font-weight:600}
-.pack{border:1px solid var(--rule);background:#FFFFFF;padding:1.25rem 1.4rem;
+.pack{border:1px solid var(--rule);background:var(--surface);padding:1.25rem 1.4rem;
   margin-bottom:1rem}
 .pack__name{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:.6rem}
 .pack__name b{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:800;
   font-size:1.35rem;letter-spacing:-.02em}
-.pack__name span{background:var(--yellow);padding:.15rem .5rem;font-weight:600}
-.warn{background:var(--yellow);padding:.15rem .45rem;font-weight:600}
+.pack__name span{background:var(--yellow);color:var(--on-yellow);padding:.15rem .5rem;font-weight:600}
+.warn{background:var(--yellow);color:var(--on-yellow);padding:.15rem .45rem;font-weight:600}
 
 footer.doc{border-top:1px solid var(--rule);padding-block:2rem;
   display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
