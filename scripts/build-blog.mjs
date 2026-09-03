@@ -27,6 +27,7 @@ const escTexte = (s = '') =>
 const escAttr = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const cheminRelatif = (s = '') => String(s).trim().replace(/^\/+/, '');
+const urlImage = (s = '') => encodeURI(cheminRelatif(s));
 
 function analyser(md) {
   const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -167,7 +168,7 @@ for (const a of articles) {
   const titre = a.title || 'Article';
   const description = a.excerpt || '';
   const url = `${SITE}/${a.page}`;
-  const cover = a.cover ? cheminRelatif(a.cover) : '';
+  const cover = a.cover ? urlImage(a.cover) : '';
   const image = cover ? `${SITE}/${cover}` : `${SITE}/assets/og-cover.jpg`;
   const corpsHtml = marked.parse(a.body || '');
 
@@ -200,7 +201,7 @@ if (articles.length === 0) {
 } else {
   cartes = articles
     .map((a) => {
-      const cover = a.cover ? cheminRelatif(a.cover) : '';
+      const cover = a.cover ? urlImage(a.cover) : '';
       return `        <a class="post-card" href="${escAttr(a.page)}">
 ${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy">\n` : ''}          <div class="post-card__body">
             <span class="post-card__date mono">${escTexte(dateFr(a.date))}</span>
