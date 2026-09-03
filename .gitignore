@@ -14,6 +14,10 @@ desktop.ini
 *.swp
 *~
 
+# Dépendances Node (marked, pour convertir le markdown des articles en HTML).
+# Installées à la volée par GitHub Actions ; inutiles dans le dépôt.
+node_modules/
+
 # ─────────────────────────────────────────────────────────────────────
 # Fichiers de assets/ qui ne servent plus au site en ligne.
 # Ils restent sur votre disque : rien n'est supprimé, ils ne sont

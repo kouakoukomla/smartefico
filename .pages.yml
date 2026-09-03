@@ -45,3 +45,39 @@ content:
       - name: body
         label: Description
         type: text
+
+  - name: articles
+    label: Articles (blog)
+    icon: file-text
+    type: collection
+    path: content/articles
+    view:
+      fields:
+        - title
+        - date
+        - published
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: date
+        label: Date de publication
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: cover
+        label: Image de couverture
+        type: image
+        description: "Optionnelle. Affichée en haut de l'article et sur la vignette."
+      - name: excerpt
+        label: Résumé (accroche)
+        type: text
+        description: "1 à 2 phrases, affichées sur la vignette du blog."
+      - name: published
+        label: Publié sur le site
+        type: boolean
+        default: true
+      - name: body
+        label: Contenu de l'article
+        type: rich-text

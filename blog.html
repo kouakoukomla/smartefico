@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — SmartEfico</title>
+<meta name="description" content="Articles et idées sur l'acquisition, l'IA et l'automatisation, par Emmanuel Kouakou (SmartEfico).">
+<meta name="author" content="Emmanuel Kouakou">
+<link rel="canonical" href="https://kouakoukomla.github.io/smartefico/blog.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SmartEfico">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://kouakoukomla.github.io/smartefico/blog.html">
+<meta property="og:title" content="Blog — SmartEfico">
+<meta property="og:description" content="Articles et idées sur l'acquisition, l'IA et l'automatisation, par Emmanuel Kouakou (SmartEfico).">
+<meta property="og:image" content="https://kouakoukomla.github.io/smartefico/assets/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
+<style>
+/* =========================================================
+   SmartEfico — thème sombre : fond noir pur, texte blanc, jaune en aplat.
+   Fond noir pur #000000 (--ground) pour que le fond du logo se fonde dans
+   la page ; cartes sombres légèrement relevées (--surface #161616) ; texte
+   blanc (--ink). Un seul accent saturé, le jaune #FFCC00, employé en aplat
+   plein — jamais en texte.
+   Règle absolue : le jaune ne porte jamais de texte blanc (contraste
+   insuffisant). Sur un aplat jaune, le texte prend --on-yellow (#141414,
+   foncé) — d'où cette variable, utilisée partout où du texte s'affiche
+   sur du jaune.
+   ========================================================= */
+:root{
+  --ground:#000000;
+  --surface:#161616;
+  --ink:#FFFFFF;
+  --ink-2:#B4B4B0;
+  --ink-3:#8A8A86;
+  --line:#262626;
+  --noir:#101010;
+  --noir-2:#1C1C1C;
+  --yellow:#FFCC00;
+  --yellow-hi:#FFE04D;
+  --on-yellow:#141414;
+  --gap:clamp(3.5rem,8vw,6.5rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.wrap{width:min(100% - 2.5rem,74rem);margin-inline:auto}
+.stack{display:flex;flex-direction:column;gap:var(--gap)}
+
+/* ---------- typographie ----------
+   Fort écart entre le display et le corps, comme chez eux. */
+.display{
+  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  text-wrap:balance;overflow-wrap:break-word;margin:0;
+}
+h1.display{font-size:clamp(2.6rem,6.4vw,5.8rem);letter-spacing:-.042em;max-width:20ch}
+h2.display{font-size:clamp(1.85rem,4vw,3rem)}
+h3{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;
+  letter-spacing:-.02em;font-size:1.2rem;line-height:1.25;margin:0}
+p{margin:0}
+.lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--ink-2);max-width:56ch}
+.mono{font-family:inherit;font-weight:600;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- logo ---------- */
+.logo{width:2.1rem;height:2.1rem;flex:none;object-fit:contain}
+
+/* ---------- nav ---------- */
+/* Barre flottante : un bloc blanc arrondi posé sur le fond gris, détaché des
+   bords. Le fond de la zone reste opaque en haut pour que le contenu de la
+   page ne se devine pas derrière la barre au défilement. */
+.nav{position:sticky;top:0;z-index:50;padding-block:.85rem;
+  /* même fond que la page pour que la zone ne se détache pas */
+  background:var(--ground)}
+.nav__in{display:flex;align-items:center;gap:1.25rem;
+  background:var(--surface);border-radius:14px;
+  padding:.5rem .5rem .5rem 1.35rem;
+  border:1px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-weight:800;letter-spacing:-.03em;font-size:1.15rem;flex:none}
+/* les liens occupent le centre, entre la marque et l'appel à l'action */
+.nav__links{display:none;gap:clamp(1.5rem,3.2vw,2.75rem);margin-inline:auto}
+@media (min-width:48rem){.nav__links{display:flex}}
+/* liens de navigation : très gras et à pleine encre, comme demandé.
+   En majuscules, une chasse négative resserre trop : on la remet à zéro et
+   on ouvre légèrement l interlettrage, sans quoi les mots se collent. */
+.nav__links a{text-decoration:none;color:var(--ink);font-size:.88rem;
+  font-weight:800;letter-spacing:.02em;padding-block:.35rem;
+  text-transform:uppercase;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:border-color .18s ease,color .18s ease}
+.nav__links a:hover{border-bottom-color:var(--yellow)}
+/* appel à l'action : un libellé en toutes lettres, puis un carré jaune à la
+   flèche — comme dans le modèle. Le carré reste seul quand la place manque. */
+.nav__cta{display:flex;align-items:center;gap:.9rem;text-decoration:none;
+  color:var(--ink);font-weight:700;font-size:.95rem;letter-spacing:-.015em;
+  white-space:nowrap;flex:none;margin-left:auto}
+.nav__cta-texte{transition:opacity .18s ease}
+.nav__cta:hover .nav__cta-texte{opacity:.65}
+.nav__fleche{display:grid;place-items:center;width:2.65rem;height:2.65rem;flex:none;
+  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
+  transition:background-color .18s ease,transform .18s ease}
+.nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
+/* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
+   tiennent pas ensemble sur une ligne. Mesuré : il leur faut 413 px, d où ce
+   seuil de 28 rem — en dessous, la barre se coupait en deux. */
+@media (max-width:27.99rem){.nav__cta-texte{display:none}}
+/* bouton du menu : trois barres qui se croisent à l ouverture. Masqué tant
+   que les liens tiennent en ligne, il ne sert qu au format téléphone. */
+.nav__burger{display:none;gap:4px;justify-items:center;align-content:center;
+  width:2.65rem;height:2.65rem;flex:none;margin-left:auto;
+  background:none;border:0;padding:0;cursor:pointer;color:var(--ink);
+  border-radius:9px;transition:background-color .18s ease}
+.nav__burger:hover{background:var(--ground)}
+.nav__burger span{display:block;width:1.15rem;height:2px;background:currentColor;
+  border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+.nav--ouvert .nav__burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav--ouvert .nav__burger span:nth-child(2){opacity:0}
+.nav--ouvert .nav__burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (prefers-reduced-motion:reduce){.nav__burger span{transition:none}}
+
+/* Très petits téléphones : sans ce resserrement, marque + bouton + carré
+   jaune réclament 343 px et la barre se coupait en deux sous 352 px. */
+@media (max-width:22rem){
+  .nav__in{gap:.55rem;padding-left:.85rem}
+  .brand{font-size:1rem;gap:.4rem}
+}
+/* En deçà (écran de couverture des pliables), même resserrée la barre se
+   chevauchait : le logo seul tient lieu de marque, il reste cliquable et
+   ramène en haut de page. */
+@media (max-width:19rem){
+  .brand{font-size:0;gap:0}
+  .brand .logo{font-size:1rem}
+}
+
+/* ---------- menu déroulant, sous le seuil d affichage en ligne ---------- */
+@media (max-width:47.99rem){
+  .nav__in{flex-wrap:wrap}
+  /* les liens passent sous la marque, sur toute la largeur de la pilule.
+     display:flex annule le display:none de la règle de base : c est ce qui
+     rend le menu lisible quand JavaScript ne tourne pas. */
+  .nav__links{display:flex;order:9;flex-basis:100%;flex-wrap:wrap;
+    column-gap:1.6rem;row-gap:.2rem;
+    margin:.6rem 0 0;padding-top:.6rem;border-top:1px solid var(--line)}
+  /* à partir d ici, seulement quand le script tourne */
+  .js .nav__burger{display:grid}
+  .js .nav__cta{margin-left:0}
+  .js .nav__links{display:none}
+  .js .nav--ouvert .nav__links{display:flex;flex-direction:column;
+    gap:.3rem;padding:.7rem .25rem .35rem}
+  /* en liste, chaque entrée devient une cible tactile pleine largeur */
+  .js .nav--ouvert .nav__links a{font-size:.95rem;padding:.8rem 1rem;
+    border-bottom:0;border-radius:9px;
+    transition:background-color .18s ease}
+  .js .nav--ouvert .nav__links a:hover,
+  .js .nav--ouvert .nav__links a:focus-visible{background:var(--ground)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden}
+.hero__in{min-height:80vh;padding-block:clamp(3rem,8vw,6rem) clamp(2rem,5vw,3.5rem);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;gap:1.6rem;position:relative;z-index:2}
+/* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
+   (règle pointillée, crochets d'angle, coordonnée) et carte « scénario » en
+   filigrane. Volontairement PAS de grille décorative : un fond en grille de
+   hairlines est un motif typique d'interface générée. */
+.hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero__bg .glow{position:absolute;inset:0;
+  background:radial-gradient(46rem 34rem at 24% 42%,rgba(255,204,0,.16),transparent 62%)}
+.hero__bg .ruler{position:absolute;top:0;bottom:0;left:2.2rem;width:1px;
+  background:repeating-linear-gradient(to bottom,var(--line) 0 6px,transparent 6px 12px)}
+.hero__bg .brackets{position:absolute;inset:clamp(1rem,3vw,2rem)}
+.hero__bg .brackets::before,.hero__bg .brackets::after{content:"";position:absolute;width:22px;height:22px}
+.hero__bg .brackets::before{top:0;right:0;border-top:1.5px solid var(--yellow);border-right:1.5px solid var(--yellow)}
+.hero__bg .brackets::after{bottom:0;left:0;border-bottom:1.5px solid var(--yellow);border-left:1.5px solid var(--yellow)}
+.hero__bg .coord{position:absolute;bottom:clamp(1rem,3vw,1.8rem);right:clamp(1.2rem,3vw,2rem);
+  color:var(--ink-2)}
+.hero__bg .scenario{position:absolute;right:-7%;top:54%;transform:translateY(-50%) rotate(-4deg);
+  width:min(42%,32rem);opacity:.3}
+@media (max-width:60rem){.hero__bg .ruler,.hero__bg .scenario{display:none}}
+.hero__status{display:inline-flex;align-items:center;gap:.6rem;color:var(--ink-2);
+  font-size:.92rem;align-self:center;order:-1}
+.hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--yellow);
+  flex:none;box-shadow:0 0 0 4px rgba(255,204,0,.35)}
+/* accent de titre : serif italique au milieu du grotesque, comme chez eux.
+   Le serif est plus étroit, on compense légèrement la chasse. */
+.display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
+  font-style:italic;font-weight:400;letter-spacing:-.01em;
+  padding-right:.04em}
+.hero .display em{color:var(--yellow)}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;
+  font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
+  transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
+.btn--solid{background:var(--ink);color:var(--surface)}
+.btn--solid:hover{background:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+.btn--line{border-color:var(--ink);color:var(--ink)}
+.btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+
+/* ---------- bandeau de références défilant ----------
+   Deux pistes identiques défilent côte à côte : quand la première a
+   parcouru toute sa largeur, la seconde a pris exactement sa place, d'où
+   une boucle sans saut. La seconde est masquée aux lecteurs d'écran. */
+.ticker{background:var(--yellow);color:var(--on-yellow);overflow:hidden;display:flex;
+  user-select:none}
+.ticker__piste{display:flex;flex:none;animation:defile 26s linear infinite}
+.ticker__lot{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem;
+  white-space:nowrap;font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(.95rem,1.8vw,1.15rem);padding-block:.95rem}
+.ticker__lot > span::after{content:"◆";font-size:.5em;margin-left:2.5rem;opacity:.45;
+  vertical-align:middle}
+.ticker__label{font-weight:600;text-transform:uppercase;letter-spacing:.14em;
+  font-size:.72rem;color:#6B5600}
+/* le survol suspend la lecture, pour laisser le temps de lire un nom */
+.ticker:hover .ticker__piste,.ticker:focus-within .ticker__piste{animation-play-state:paused}
+@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+/* si le visiteur a demandé moins d'animations, la bande ne bouge pas
+   et la seconde piste disparaît pour ne pas dupliquer le texte */
+@media (prefers-reduced-motion:reduce){
+  .ticker{justify-content:center}
+  .ticker__piste{animation:none}
+  .ticker__piste[aria-hidden="true"]{display:none}
+  .ticker__lot{flex-wrap:wrap;white-space:normal;justify-content:center}
+}
+/* ---------- en-tête de section ---------- */
+.head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+.head__eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--on-yellow);
+  align-self:flex-start;background:var(--yellow);padding:.3rem .7rem;border-radius:3px}
+/* variante centrée : étiquette, titre et chapô alignés au milieu de la section */
+.head--centre{align-items:center;text-align:center}
+.head--centre .head__eyebrow{align-self:center}
+.head--centre .lead{margin-inline:auto}
+
+/* ---------- chiffres ---------- */
+.figures{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:38rem){.figures{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.figures{grid-template-columns:repeat(4,1fr)}}
+/* filet jaune en tête + icône filaire : traitement « repère technique »,
+   pour donner du poids visuel à ce qui est mesuré. */
+.figure{background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--yellow);
+  padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:.5rem;
+  transition:border-color .2s ease}
+.figure:hover{border-color:var(--yellow)}
+.figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
+.figure__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.figure b{font-weight:800;font-size:clamp(2.6rem,5.5vw,3.7rem);line-height:1;
+  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
+.figure span{color:var(--ink-2);font-size:.94rem;margin-top:.1rem}
+
+/* ---------- ce qu'on installe ---------- */
+.offers{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.offers{grid-template-columns:repeat(2,1fr)}}
+.offer{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  transition:border-color .2s ease}
+.offer:hover{border-color:var(--yellow)}
+.offer__no{font-weight:800;font-size:1.6rem;line-height:1;color:var(--ink-3);
+  letter-spacing:-.04em;transition:color .2s ease}
+.offer:hover .offer__no{color:var(--ink)}
+.offer p{color:var(--ink-2);font-size:.98rem}
+.kpi{margin-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--yellow);color:var(--on-yellow);padding:.4rem .7rem;
+  text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
+.kpi::before{content:"↗";font-size:1.1em;line-height:1}
+
+/* ---------- actualités / masterclass ---------- */
+.agenda{display:grid;gap:clamp(1rem,3vw,1.75rem)}
+/* affiche (colonne de gauche) plus petite, carte à droite plus large */
+@media (min-width:46rem){.agenda{grid-template-columns:minmax(0,19rem) 1fr;align-items:center}}
+.mc{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  transition:border-color .2s ease}
+.mc:hover{border-color:var(--yellow)}
+.mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
+  padding:.35rem .7rem;border-radius:3px}
+.mc p{color:var(--ink-2);font-size:.98rem;flex:1}
+.mc .btn{align-self:flex-start;margin-top:.3rem}
+.mc__affiche{display:block;border:1px solid var(--line);border-radius:.75rem;
+  overflow:hidden;transition:border-color .2s ease,transform .2s ease}
+.mc__affiche:hover{border-color:var(--yellow);transform:translateY(-2px)}
+.mc__affiche img{display:block;width:100%;height:auto}
+.agenda__note{margin-top:1.6rem;text-align:center;color:var(--ink-2)}
+.agenda__note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- agents IA ---------- */
+.agents{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
+.agent{background:var(--surface);border:1px solid var(--line);padding:1rem 1rem 1.5rem;
+  display:flex;flex-direction:column;gap:.7rem;transition:border-color .2s ease}
+.agent:hover{border-color:var(--yellow)}
+.agent figure{margin:0;overflow:hidden;background:var(--ground);border:1px solid var(--line)}
+.agent figure img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.agent:hover figure img{transform:scale(1.02)}
+.agent__tag{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
+  padding:.25rem .6rem;margin-top:.4rem}
+.agent h3,.agent p{padding-inline:.25rem}
+.agent p{color:var(--ink-2);font-size:.96rem}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.chip{border:1px solid var(--line);background:var(--surface);padding:.34rem .7rem;
+  color:var(--ink-2);font-size:.85rem}
+
+/* ---------- ce qu'on vous apporte ---------- */
+.bring{display:grid;gap:clamp(1.5rem,4vw,2.5rem);grid-template-columns:1fr}
+@media (min-width:56rem){.bring{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+.deliver{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);
+  margin:0;padding:0}
+.deliver li{list-style:none;display:flex;align-items:flex-start;gap:.85rem;
+  padding-block:.9rem;border-bottom:1px solid var(--line);font-size:1rem}
+.deliver li::before{content:"";width:.5rem;height:.5rem;background:var(--yellow);
+  flex:none;transform:rotate(45deg);margin-top:.55rem}
+.deliver li b{font-weight:700}
+/* bloc de contraste : le manifeste est la voix de la maison */
+.manifesto{display:flex;flex-direction:column;gap:1rem;background:var(--noir);
+  color:#F3F3F3;padding:clamp(1.5rem,3.5vw,2.4rem)}
+.manifesto p{color:#C9C9C6;font-size:1rem}
+.manifesto .punch{font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.25;color:#FFF}
+.manifesto .punch em{font-style:normal;color:var(--yellow)}
+.manifesto hr{border:0;border-top:1px solid #333;margin:.2rem 0}
+
+/* ---------- méthode : bloc sombre ---------- */
+.invert{background:var(--noir);color:#F3F3F3;padding-block:var(--gap)}
+.invert .head__eyebrow{background:var(--yellow);color:var(--on-yellow)}
+.invert .lead{color:#B5B5B1}
+.invert .display{color:#FFF}
+.steps{display:flex;flex-direction:column;border-top:2px solid var(--yellow)}
+.step{display:grid;gap:.5rem 1.75rem;grid-template-columns:1fr;
+  padding-block:1.5rem;border-bottom:1px solid #333}
+@media (min-width:46rem){
+  .step{grid-template-columns:5rem minmax(0,1fr);gap:.5rem 2rem}
+  .step__no{grid-row:1 / span 3}
+}
+.step__no{font-weight:800;font-size:clamp(2.1rem,4.4vw,3rem);line-height:.9;
+  letter-spacing:-.05em;color:var(--yellow)}
+.step h3{color:#FFF}
+.step p{color:#B5B5B1;font-size:.98rem;max-width:58ch}
+.step .chip{border-color:#3A3A3A;background:transparent;color:#C9C9C6}
+
+/* ---------- avant / après ---------- */
+.ba{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
+.ba__col{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.4rem,3vw,2.1rem);display:flex;flex-direction:column;gap:1rem}
+.ba__col--apres{background:var(--yellow);border-color:var(--yellow)}
+.ba__titre{color:var(--ink-2)}
+.ba__col--apres .ba__titre{color:#6B5600}
+.ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
+.ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
+  font-size:.98rem;line-height:1.5}
+.ba__col--apres li{color:var(--on-yellow);font-weight:500}
+.ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
+  background:var(--ink-3);border-radius:50%}
+.ba__col--apres li::before{background:var(--on-yellow);transform:rotate(45deg);border-radius:0}
+
+/* ---------- public ciblé ---------- */
+.aud{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));
+  padding:0;margin:0}
+.aud li{list-style:none;background:var(--surface);border:1px solid var(--line);
+  padding:1rem 1.15rem;display:flex;align-items:flex-start;gap:.75rem;font-weight:500;
+  transition:border-color .2s ease}
+.aud li:hover{border-color:var(--yellow)}
+.aud li::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);flex:none;
+  transform:rotate(45deg);margin-top:.5rem}
+
+/* ---------- pourquoi nous ---------- */
+.why{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:52rem){.why{grid-template-columns:repeat(3,1fr)}}
+.why article{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.75rem}
+.why .mono{color:var(--ink-2);display:flex;align-items:center;gap:.55rem}
+.why .mono::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);
+  flex:none;transform:rotate(45deg)}
+.why p{color:var(--ink-2)}
+
+/* ---------- questions ---------- */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
+  padding:1.25rem 0;cursor:pointer;list-style:none;font-weight:700;font-size:1.05rem;
+  letter-spacing:-.015em;transition:color .18s ease}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{color:var(--ink-2)}
+.qa summary::after{content:"+";color:var(--ink);font-size:1.5rem;line-height:.8;flex:none;
+  transition:transform .22s ease}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa p{color:var(--ink-2);padding-bottom:1.35rem;max-width:64ch}
+
+/* ---------- réservation ---------- */
+/* Panneau noir, comme le bloc de contact : le titre est dedans, pour que la
+   partie entière fasse un seul bloc et non un titre posé sur le gris. */
+.book{background:var(--noir);color:#F3F3F3;
+  padding:clamp(1.5rem,4vw,3rem);display:flex;flex-direction:column;gap:2rem}
+.head--sombre{margin-bottom:0}
+.head--sombre .display{color:#FFF}
+.head--sombre .lead{color:#B5B5B1}
+/* h2 porte l'étiquette : la section garde un intitulé dans le plan du
+   document, sans le pavé de texte que le formulaire remplace. */
+h2.head__eyebrow{font-weight:600;margin:0}
+.book__grille{display:grid;gap:1.75rem;grid-template-columns:1fr}
+@media (min-width:56rem){
+  .book__grille{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:start}
+  /* Le formulaire fait quatre fois la hauteur de cette colonne. Collante, elle
+     l'accompagne au lieu de rester en haut à regarder passer 1300 px de vide.
+     6rem dégage la barre de navigation, elle-même collante. */
+  .book__aside{position:sticky;top:6rem}
+}
+.book__aside h3{font-size:1rem;margin-bottom:1rem;color:#FFF}
+.book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
+.book__facts li{position:relative;display:flex;flex-direction:column;gap:.15rem;
+  padding-left:1.1rem}
+.book__facts li::before{content:"";position:absolute;left:0;top:.4rem;
+  width:.5rem;height:.5rem;background:var(--yellow);transform:rotate(45deg)}
+.book__facts b{font-weight:700;font-size:.9rem;color:#FFF}
+.book__facts span{font-size:.9rem;color:#B5B5B1}
+.book__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
+.book__main{display:flex;flex-direction:column;gap:1rem;min-width:0}
+
+.book__alt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
+  color:#8A8A86;font-size:.92rem}
+.book__alt-tel{background:none;color:#F3F3F3;text-decoration:none;
+  padding:.4rem 0;font-weight:600;white-space:nowrap;
+  border-bottom:2px solid var(--yellow);
+  transition:color .18s ease}
+.book__alt-tel:hover{color:var(--yellow)}
+/* Hauteur posée à la main, faute de mieux : Tally n'émet aucune hauteur.
+   Ses évènements FormLoaded et FormPageView ne portent que l'identifiant du
+   formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée de main
+   que seule sa bibliothèque parente sait faire.
+
+   Les valeurs ci-dessous ne sont pas devinées : le formulaire a été ouvert
+   seul et mesuré à quatre largeurs de cadre.
+
+       cadre 239 px  ->  1532 px de haut     (page de 320 px)
+       cadre 294 px  ->  1389 px             (page de 375 px)
+       cadre 493 px  ->  1268 px             (page de 900 px)
+       cadre 807 px  ->  1208 px             (page de 1280 px)
+
+   Plus le cadre est étroit, plus les champs s'empilent. Les paliers suivent
+   cette pente, avec ~80 px de marge. Le cadre se resserre à 56 rem, quand la
+   colonne de rassurance apparaît à sa gauche : d'où la remontée à ce palier.
+
+   À REMESURER si le formulaire change dans Tally : une question de plus et le
+   cadre redevient trop court, sans que rien ne le signale. */
+/* Fond aligné sur celui du formulaire Tally lui-même (thème sombre du
+   formulaire : background #1a1917) : au chargement et dans la marge basse,
+   plus aucune couture blanche dans le panneau sombre. */
+.book__frame{display:block;width:100%;border:0;min-height:1700px;background:#1a1917}
+@media (min-width:20rem){.book__frame{min-height:1600px}}
+@media (min-width:23rem){.book__frame{min-height:1480px}}
+@media (min-width:36rem){.book__frame{min-height:1400px}}
+@media (min-width:45rem){.book__frame{min-height:1330px}}
+@media (min-width:56rem){.book__frame{min-height:1360px}}
+@media (min-width:75rem){.book__frame{min-height:1290px}}
+/* color explicite : le panneau qui l entoure est passé au noir et impose
+   #F3F3F3, qui sur le jaune ne fait que 1,4 pour 1. */
+.book__done{display:flex;flex-direction:column;gap:.3rem;background:var(--yellow);
+  color:var(--on-yellow);border:1.5px solid var(--on-yellow);padding:1.1rem 1.25rem}
+.book__done[hidden]{display:none}
+.book__done b{font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+.book__done span{color:#5A4600;font-size:.92rem}
+.book__done a{color:var(--on-yellow);font-weight:600}
+
+/* ---------- contact ---------- */
+.contact{background:var(--noir);color:#F3F3F3;padding:clamp(2rem,5vw,3.5rem);
+  display:flex;flex-direction:column;gap:1.2rem;align-items:center;text-align:center}
+.contact .display{color:#FFF}
+.contact .lead{color:#B5B5B1;max-width:52ch}
+.contact .mono{background:var(--yellow);color:var(--on-yellow);padding:.3rem .7rem;
+  align-self:center;border-radius:3px}
+.coords{display:grid;gap:.75rem;margin-top:.5rem;width:100%;
+  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.coord{background:var(--noir-2);border:1px solid #333;padding:1rem 1.2rem;
+  display:flex;flex-direction:column;gap:.3rem;text-decoration:none;
+  transition:border-color .2s ease,background-color .2s ease}
+.coord:hover{border-color:var(--yellow);background:#262626}
+.coord .mono{background:none;color:#8A8A86;padding:0}
+/* Signature : bloc autonome et centré, posé sur le fond de page entre le
+   bloc de contact et les réseaux. */
+.signature{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
+/* height:auto est indispensable : sans lui l attribut height du HTML fait loi,
+   aspect-ratio est ignore, et la photo s etire. */
+/* Portrait rond et large, cercle a l anneau jaune. Le cadre carre (aspect 1)
+   rogne la photo verticale ; object-position remonte vers le visage pour qu il
+   reste centre. Anneau jaune plein et net, sans halo diffus. */
+.signature__photo{width:clamp(14rem,36vw,24rem);height:auto;aspect-ratio:1;
+  border-radius:50%;object-fit:cover;object-position:center 18%;
+  margin-bottom:1.6rem;
+  box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
+.signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
+  font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
+.signature__role{color:var(--ink-2)}
+.signature__mot{color:var(--ink-2);font-size:1rem;max-width:44ch}
+.coord b{font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
+  line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#FFF}
+
+/* ---------- icônes réseaux ---------- */
+.icons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.icons a{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;
+  border:1.5px solid var(--line);color:var(--ink);background:var(--surface);
+  transition:background-color .18s ease,color .18s ease,transform .18s ease,border-color .18s ease}
+.icons a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+.icons svg{width:1.3rem;height:1.3rem;fill:currentColor;display:block}
+
+/* ---------- pied ---------- */
+.foot{border-top:1px solid var(--line);padding-block:2rem;display:flex;
+  flex-direction:column;gap:1.5rem;color:var(--ink-2)}
+.foot__row{display:flex;flex-wrap:wrap;gap:1.25rem;justify-content:space-between;
+  align-items:center}
+.foot__brand{display:flex;align-items:center;gap:.7rem}
+.foot__legal{border-top:1px solid var(--line);padding-top:1.6rem;
+  display:flex;flex-direction:column;align-items:center;gap:.85rem;text-align:center}
+.foot__copy{color:var(--ink);font-size:1rem;font-weight:600}
+.foot__links{display:flex;align-items:center;gap:.7rem;color:var(--ink-3)}
+.foot__links a{color:var(--ink-2);text-decoration:none;font-weight:500;
+  border-bottom:2px solid var(--yellow);padding-bottom:.1rem;transition:color .18s ease}
+.foot__links a:hover{color:var(--ink)}
+
+/* ---------- documents légaux en fenêtre ---------- */
+.doc-modal{width:min(100% - 2rem,46rem);max-height:86vh;padding:0;border:0;
+  background:var(--surface);color:var(--ink);
+  box-shadow:0 24px 70px -20px rgba(0,0,0,.35)}
+.doc-modal::backdrop{background:rgba(18,18,18,.6)}
+.doc-modal__bar{position:sticky;top:0;z-index:2;background:var(--noir);color:#FFF;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.9rem clamp(1.1rem,3vw,2rem)}
+.doc-modal__bar b{font-weight:700;letter-spacing:-.02em;font-size:1.05rem}
+.doc-modal__close{background:none;border:1px solid #444;color:#C9C9C6;border-radius:999px;
+  padding:.4rem .9rem;cursor:pointer;font:inherit;font-size:.9rem;
+  transition:border-color .18s ease,color .18s ease}
+.doc-modal__close:hover{border-color:var(--yellow);color:var(--yellow)}
+.doc-modal__body{padding:clamp(1.25rem,3vw,2rem) clamp(1.1rem,3vw,2rem) 0;
+  overflow-y:auto;max-height:calc(86vh - 7.5rem)}
+.doc-modal__foot{position:sticky;bottom:0;background:var(--surface);
+  border-top:1px solid var(--line);padding:1rem clamp(1.1rem,3vw,2rem);
+  display:flex;flex-wrap:wrap;gap:.6rem 1rem;justify-content:space-between;
+  align-items:center;color:var(--ink-2);font-size:.9rem}
+.doc-modal__foot a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow)}
+.doc-modal__body section{border-top:1px solid var(--line);padding-block:1.5rem}
+.doc-modal__body section:first-child{border-top:0;padding-top:0}
+.doc-modal__body h2{font-weight:700;letter-spacing:-.02em;line-height:1.2;
+  font-size:1.3rem;margin:0 0 .9rem;display:flex;gap:.8rem;align-items:baseline;color:var(--ink)}
+.doc-modal__body h2 .num{color:var(--on-yellow);background:var(--yellow);padding:0 .35rem;
+  flex:none;letter-spacing:-.03em}
+.doc-modal__body h3{font-weight:700;font-size:1.3rem;margin:1.4rem 0 .5rem}
+.doc-modal__body p{margin:0 0 .85rem;color:var(--ink-2)}
+.doc-modal__body ul{margin:0 0 .85rem;padding:0;list-style:none;
+  display:flex;flex-direction:column;gap:.4rem}
+.doc-modal__body ul li{display:flex;gap:.75rem;align-items:flex-start;color:var(--ink-2)}
+.doc-modal__body ul li::before{content:"";width:.45rem;height:.45rem;background:var(--yellow);
+  flex:none;transform:rotate(45deg);margin-top:.6rem}
+.doc-modal__body strong{font-weight:600;color:var(--ink)}
+.doc-modal__body .mark,.doc-modal__body .warn{background:var(--yellow);padding:.15rem .45rem;
+  font-weight:600;color:var(--on-yellow)}
+.doc-modal__body .contact-box{border:1px solid var(--line);background:var(--ground);
+  padding:1.1rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.doc-modal__body .contact-box a{font-weight:700;font-size:1.2rem;letter-spacing:-.02em;
+  text-decoration:none;border-bottom:2px solid var(--yellow);overflow-wrap:anywhere;color:var(--ink)}
+.doc-modal__body .legal-name,.doc-modal__body .maj,.doc-modal__body .mono{color:var(--ink-2)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none !important;transition:none !important}
+}
+</style>
+<style>
+.blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
+.blog-top__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-weight:700}
+.blog-top__brand img{width:2rem;height:2rem}
+.blog-top__back{color:var(--ink-2);text-decoration:none}
+.blog-top__back:hover{color:var(--yellow)}
+.post-list{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:.5rem}
+@media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
+.post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
+.post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
+.post-card__cover{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--noir-2)}
+.post-card__body{padding:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.post-card__date{color:var(--ink-3)}
+.post-card h2{font-size:1.2rem;letter-spacing:-.02em}
+.post-card p{color:var(--ink-2);font-size:.95rem}
+.article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
+.article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
+.article__back:hover{color:var(--yellow)}
+.article__meta{color:var(--ink-3);margin:0 0 .6rem}
+.article__title{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+.article__cover{width:100%;border-radius:.9rem;border:1px solid var(--line);margin-bottom:1.6rem}
+.article__body{color:var(--ink);font-size:1.08rem;line-height:1.7}
+.article__body h2{font-size:1.5rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
+.article__body h3{font-size:1.2rem;margin:1.6rem 0 .5rem}
+.article__body p{margin:0 0 1.1rem;color:var(--ink-2)}
+.article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
+.article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.article__body a:hover{color:var(--yellow)}
+.article__body blockquote{border-left:3px solid var(--yellow);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}
+.article__body img{max-width:100%;height:auto;border-radius:.6rem;margin:1.2rem 0}
+.article__body code{background:var(--noir-2);padding:.15em .4em;border-radius:4px;font-size:.9em}
+.blog-foot{border-top:1px solid var(--line);margin-top:3rem;padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2)}
+.blog-foot a{color:var(--ink-2);text-decoration:none}
+.blog-foot a:hover{color:var(--yellow)}
+</style>
+</head>
+<body>
+  <header class="blog-top wrap">
+    <a class="blog-top__brand" href="index.html">
+      <img src="assets/logo-clair.png" alt="SmartEfico" width="512" height="512">
+      <span class="mono">SmartEfico</span>
+    </a>
+    <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
+  </header>
+  <main class="wrap">
+    <div class="head head--centre">
+      <span class="head__eyebrow mono">Blog</span>
+      <h1 class="display">Articles &amp; <em>idées</em>.</h1>
+      <p class="lead">Ce que j'apprends en installant des systèmes d'acquisition et d'automatisation par l'IA.</p>
+    </div>
+    <div class="post-list">
+        <a class="post-card" href="article-bienvenue-sur-le-blog.html">
+          <img class="post-card__cover" src="assets/masterclass-affiche.jpg" alt="" loading="lazy">
+          <div class="post-card__body">
+            <span class="post-card__date mono">3 septembre 2026</span>
+            <h2>Pourquoi j'ouvre ce blog</h2>
+            <p>Un endroit pour partager, concrètement, comment l'IA et l'automatisation font gagner des rendez-vous et du temps aux entreprises.</p>
+          </div>
+        </a>
+    </div>
+  </main>
+  <footer class="wrap blog-foot">
+    <span class="mono">© 2026 SmartEfico</span>
+    <a class="mono" href="index.html">Accueil</a>
+  </footer>
+</body>
+</html>

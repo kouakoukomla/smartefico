@@ -1,0 +1,13 @@
+{
+  "name": "smartefico-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site vitrine SmartEfico. Scripts de génération du blog et de synchronisation du contenu.",
+  "scripts": {
+    "build:content": "node scripts/sync-content.mjs && node scripts/build-blog.mjs"
+  },
+  "dependencies": {
+    "marked": "^12.0.2"
+  }
+}
