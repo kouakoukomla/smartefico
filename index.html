@@ -513,12 +513,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
    aspect-ratio est ignore, et la photo s etire. */
 /* Portrait rond et large, cercle a l anneau jaune. Le cadre carre (aspect 1)
    rogne la photo verticale ; object-position remonte vers le visage pour qu il
-   reste centre. Anneau jaune epais + halo jaune diffus pour detacher du noir. */
+   reste centre. Anneau jaune plein et net, sans halo diffus. */
 .signature__photo{width:clamp(14rem,36vw,24rem);height:auto;aspect-ratio:1;
   border-radius:50%;object-fit:cover;object-position:center 18%;
   margin-bottom:1.6rem;
-  box-shadow:0 0 0 7px var(--yellow),0 0 0 9px #000,
-    0 0 70px -10px rgba(255,204,0,.35)}
+  box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
 .signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
