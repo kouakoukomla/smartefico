@@ -1,0 +1,48 @@
+name: Régénérer le site après édition du contenu
+
+# Se déclenche quand le back office (Pages CMS) enregistre une masterclass,
+# c'est-à-dire quand un fichier de content/ (ou la config) change sur main.
+# Ne se déclenche PAS sur les fichiers HTML régénérés ci-dessous : pas de boucle.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - '.pages.yml'
+      - 'scripts/sync-content.mjs'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Une seule exécution à la fois, pour éviter les commits concurrents.
+concurrency:
+  group: regeneration-contenu
+  cancel-in-progress: false
+
+jobs:
+  regenerer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Régénérer la section Masterclass dans index.html
+        run: node scripts/sync-content.mjs
+
+      # index-autonome.html est volontairement hors dépôt (local) : on ne le
+      # régénère pas ici. Seul index.html, servi par GitHub Pages, est publié.
+      - name: Publier index.html régénéré
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "Rien à régénérer."
+          else
+            git commit -m "Auto : régénération du site après édition du contenu"
+            git push
+          fi

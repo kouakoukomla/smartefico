@@ -1,0 +1,47 @@
+# Configuration du back office Pages CMS (https://pagescms.org)
+# Connecte-toi sur https://app.pagescms.org avec ton compte GitHub, choisis le
+# dépôt kouakoukomla/smartefico : ce fichier décrit les formulaires du back office.
+
+media:
+  input: assets
+  output: assets
+
+content:
+  - name: masterclasses
+    label: Masterclass
+    icon: calendar
+    type: collection
+    path: content/masterclasses
+    view:
+      fields:
+        - title
+        - date_label
+        - published
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: date_label
+        label: Date (texte affiché)
+        type: string
+        description: "Ex. : Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne"
+      - name: poster
+        label: Affiche
+        type: image
+        description: "Image de l'affiche (rangée dans assets/)."
+      - name: tally_url
+        label: Lien d'inscription
+        type: string
+        description: "Lien du formulaire Tally, ex. https://tally.so/r/BzJr5Q"
+      - name: published
+        label: Publiée sur le site
+        type: boolean
+        default: true
+      - name: order
+        label: Ordre d'affichage
+        type: number
+        default: 1
+      - name: body
+        label: Description
+        type: text

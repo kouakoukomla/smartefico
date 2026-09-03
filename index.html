@@ -1080,16 +1080,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
     </section>
 
     <!-- ============ ACTUALITÉS / MASTERCLASS ============
-         SECTION À TENIR À JOUR. Tout ce qui se modifie est entre les repères
-         MASTERCLASS:START et MASTERCLASS:END ci-dessous.
-
-         • Pour AJOUTER une masterclass : copiez un bloc <article class="mc"> … </article>
-           entier, collez-le juste après, puis changez la date, le titre, le texte
-           et le lien du bouton « S'inscrire ».
-         • Pour la RETIRER quand elle est passée : supprimez son bloc <article>.
-         • Le lien « S'inscrire » peut pointer vers un formulaire Tally d'inscription
-           (href="https://tally.so/r/xxxxx") ou, par défaut, vers "#appel".
-         Un modèle prêt à copier est fourni en commentaire dans la zone. -->
+         Section pilotée par le back office (Pages CMS).
+         Les masterclass sont éditées dans content/masterclasses/*.md, puis la
+         zone MASTERCLASS:START/END est régénérée par scripts/sync-content.mjs
+         (automatiquement, via GitHub Actions, à chaque enregistrement dans le CMS).
+         Ne pas éditer le contenu à la main entre les repères. -->
     <section class="wrap" id="agenda">
       <div class="head head--centre">
         <span class="head__eyebrow mono">Actualités</span>
@@ -1098,14 +1093,10 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
       <div class="agenda">
         <!-- MASTERCLASS:START -->
-        <!-- Affiche de la masterclass, à gauche de la carte. Le clic sur l'affiche
-             mène aussi au formulaire d'inscription. Pour changer d'évènement,
-             remplacez l'image assets/masterclass-affiche.jpg et le lien ci-dessous. -->
-        <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener"
-           aria-label="Affiche de la masterclass — s'inscrire">
-          <img src="assets/masterclass-affiche.jpg"
-               alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA », samedi 3 octobre 2026 à 19h GMT, 100% en ligne"
-               width="900" height="1125" loading="lazy">
+        <!-- Section générée par scripts/sync-content.mjs à partir de
+             content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
+        <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener" aria-label="Affiche de la masterclass — s'inscrire">
+          <img src="assets/masterclass-affiche.jpg" alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA »" loading="lazy">
         </a>
         <article class="mc">
           <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne</span>
@@ -1113,15 +1104,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
           <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances. Au programme : l'art du prompt engineering, l'étude de marché et l'analyse concurrentielle assistées par l'IA, et la création d'une identité simple et pertinente. Places limitées, inscription avant le 30 septembre.</p>
           <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
         </article>
-        <!--
-          ===== MODÈLE À COPIER pour une autre masterclass (retirez les commentaires) =====
-          <article class="mc">
-            <span class="mc__date mono">12 octobre 2026 · 18 h</span>
-            <h3>Le titre de votre masterclass</h3>
-            <p>Une ou deux phrases : ce que les participants apprennent, et à qui ça s'adresse.</p>
-            <a class="btn btn--line" href="https://tally.so/r/VOTRE_FORMULAIRE" target="_blank" rel="noopener">S'inscrire</a>
-          </article>
-          =============================================================================== -->
         <!-- MASTERCLASS:END -->
       </div>
       <p class="agenda__note">Vous cherchez plutôt mes articles&nbsp;? Ils sont publiés sur
