@@ -323,6 +323,10 @@ p{margin:0}
   padding:.35rem .7rem;border-radius:3px}
 .mc p{color:var(--ink-2);font-size:.98rem;flex:1}
 .mc .btn{align-self:flex-start;margin-top:.3rem}
+.mc__affiche{display:block;border:1px solid var(--line);border-radius:.75rem;
+  overflow:hidden;transition:border-color .2s ease,transform .2s ease}
+.mc__affiche:hover{border-color:var(--yellow);transform:translateY(-2px)}
+.mc__affiche img{display:block;width:100%;height:auto}
 .agenda__note{margin-top:1.6rem;text-align:center;color:var(--ink-2)}
 .agenda__note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 
@@ -1094,20 +1098,29 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <div class="agenda">
         <!-- MASTERCLASS:START -->
         <article class="mc">
-          <span class="mc__date mono">Prochaine session · date à venir</span>
-          <h3>Générer des rendez-vous qualifiés avec l'IA</h3>
-          <p>Une masterclass en ligne pour dirigeants et indépendants : comment installer un système d'acquisition qui remplit votre agenda sans prospection manuelle. Inscrivez-vous pour être prévenu de la prochaine date.</p>
-          <a class="btn btn--line" href="#appel">S'inscrire</a>
+          <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne</span>
+          <h3>Lancer et gérer vos activités grâce à l'IA</h3>
+          <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances. Au programme : l'art du prompt engineering, l'étude de marché et l'analyse concurrentielle assistées par l'IA, et la création d'une identité simple et pertinente. Places limitées, inscription avant le 30 septembre.</p>
+          <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
         </article>
+        <!-- Affiche de la masterclass, à droite de la carte. Le clic sur l'affiche
+             mène aussi au formulaire d'inscription. Pour changer d'évènement,
+             remplacez l'image assets/masterclass-affiche.jpg et le lien ci-dessous. -->
+        <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener"
+           aria-label="Affiche de la masterclass — s'inscrire">
+          <img src="assets/masterclass-affiche.jpg"
+               alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA », samedi 3 octobre 2026 à 19h GMT, 100% en ligne"
+               width="900" height="1125" loading="lazy">
+        </a>
         <!--
-          ===== MODÈLE À COPIER (retirez ces deux lignes de commentaire autour) =====
+          ===== MODÈLE À COPIER pour une autre masterclass (retirez les commentaires) =====
           <article class="mc">
             <span class="mc__date mono">12 octobre 2026 · 18 h</span>
             <h3>Le titre de votre masterclass</h3>
             <p>Une ou deux phrases : ce que les participants apprennent, et à qui ça s'adresse.</p>
             <a class="btn btn--line" href="https://tally.so/r/VOTRE_FORMULAIRE" target="_blank" rel="noopener">S'inscrire</a>
           </article>
-          ========================================================================= -->
+          =============================================================================== -->
         <!-- MASTERCLASS:END -->
       </div>
       <p class="agenda__note">Vous cherchez plutôt mes articles&nbsp;? Ils sont publiés sur
