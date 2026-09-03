@@ -1,7 +1,7 @@
 ---
 title: Lancer et gérer vos activités grâce à l'IA
 date_label: Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne
-poster: assets/Masterclass-Formation sur l'IA.jpg
+poster: assets/Masterclass-Formation sur l'IA-1.jpg
 tally_url: https://tally.so/r/BzJr5Q
 published: true
 order: 1
