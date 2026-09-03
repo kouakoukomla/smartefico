@@ -312,6 +312,20 @@ p{margin:0}
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
+/* ---------- actualités / masterclass ---------- */
+.agenda{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.agenda{grid-template-columns:repeat(2,1fr)}}
+.mc{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  transition:border-color .2s ease}
+.mc:hover{border-color:var(--yellow)}
+.mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
+  padding:.35rem .7rem;border-radius:3px}
+.mc p{color:var(--ink-2);font-size:.98rem;flex:1}
+.mc .btn{align-self:flex-start;margin-top:.3rem}
+.agenda__note{margin-top:1.6rem;text-align:center;color:var(--ink-2)}
+.agenda__note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
 /* ---------- agents IA ---------- */
 .agents{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
@@ -686,6 +700,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <a href="#apport">Ce qu'on vous apporte</a>
       <a href="#resultats">Nos services</a>
       <a href="#avant-apres">Avant/Après</a>
+      <a href="#agenda">Masterclass</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Menu"
@@ -1057,6 +1072,46 @@ h2.head__eyebrow{font-weight:600;margin:0}
           <p>Le système s'installe sur votre boîte mail, vos Google Sheets, votre CRM. Vous n'avez rien de nouveau à apprendre, et rien à remplacer.</p>
         </article>
       </div>
+    </section>
+
+    <!-- ============ ACTUALITÉS / MASTERCLASS ============
+         SECTION À TENIR À JOUR. Tout ce qui se modifie est entre les repères
+         MASTERCLASS:START et MASTERCLASS:END ci-dessous.
+
+         • Pour AJOUTER une masterclass : copiez un bloc <article class="mc"> … </article>
+           entier, collez-le juste après, puis changez la date, le titre, le texte
+           et le lien du bouton « S'inscrire ».
+         • Pour la RETIRER quand elle est passée : supprimez son bloc <article>.
+         • Le lien « S'inscrire » peut pointer vers un formulaire Tally d'inscription
+           (href="https://tally.so/r/xxxxx") ou, par défaut, vers "#appel".
+         Un modèle prêt à copier est fourni en commentaire dans la zone. -->
+    <section class="wrap" id="agenda">
+      <div class="head head--centre">
+        <span class="head__eyebrow mono">Actualités</span>
+        <h2 class="display">Masterclass &amp; <em>évènements à venir</em>.</h2>
+        <p class="lead">Des sessions ponctuelles pour apprendre à générer des rendez-vous qualifiés avec l'IA. Réservez votre place dès qu'une date est ouverte.</p>
+      </div>
+      <div class="agenda">
+        <!-- MASTERCLASS:START -->
+        <article class="mc">
+          <span class="mc__date mono">Prochaine session · date à venir</span>
+          <h3>Générer des rendez-vous qualifiés avec l'IA</h3>
+          <p>Une masterclass en ligne pour dirigeants et indépendants : comment installer un système d'acquisition qui remplit votre agenda sans prospection manuelle. Inscrivez-vous pour être prévenu de la prochaine date.</p>
+          <a class="btn btn--line" href="#appel">S'inscrire</a>
+        </article>
+        <!--
+          ===== MODÈLE À COPIER (retirez ces deux lignes de commentaire autour) =====
+          <article class="mc">
+            <span class="mc__date mono">12 octobre 2026 · 18 h</span>
+            <h3>Le titre de votre masterclass</h3>
+            <p>Une ou deux phrases : ce que les participants apprennent, et à qui ça s'adresse.</p>
+            <a class="btn btn--line" href="https://tally.so/r/VOTRE_FORMULAIRE" target="_blank" rel="noopener">S'inscrire</a>
+          </article>
+          ========================================================================= -->
+        <!-- MASTERCLASS:END -->
+      </div>
+      <p class="agenda__note">Vous cherchez plutôt mes articles&nbsp;? Ils sont publiés sur
+        <a href="https://substack.com/@manukouakou" target="_blank" rel="noopener">mon Substack</a>.</p>
     </section>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
