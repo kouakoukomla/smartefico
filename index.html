@@ -313,8 +313,9 @@ p{margin:0}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
 /* ---------- actualités / masterclass ---------- */
-.agenda{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:46rem){.agenda{grid-template-columns:repeat(2,1fr)}}
+.agenda{display:grid;gap:clamp(1rem,3vw,1.75rem)}
+/* affiche (colonne de gauche) plus petite, carte à droite plus large */
+@media (min-width:46rem){.agenda{grid-template-columns:minmax(0,19rem) 1fr;align-items:center}}
 .mc{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
   transition:border-color .2s ease}
@@ -1097,13 +1098,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
       <div class="agenda">
         <!-- MASTERCLASS:START -->
-        <article class="mc">
-          <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne</span>
-          <h3>Lancer et gérer vos activités grâce à l'IA</h3>
-          <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances. Au programme : l'art du prompt engineering, l'étude de marché et l'analyse concurrentielle assistées par l'IA, et la création d'une identité simple et pertinente. Places limitées, inscription avant le 30 septembre.</p>
-          <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
-        </article>
-        <!-- Affiche de la masterclass, à droite de la carte. Le clic sur l'affiche
+        <!-- Affiche de la masterclass, à gauche de la carte. Le clic sur l'affiche
              mène aussi au formulaire d'inscription. Pour changer d'évènement,
              remplacez l'image assets/masterclass-affiche.jpg et le lien ci-dessous. -->
         <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener"
@@ -1112,6 +1107,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
                alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA », samedi 3 octobre 2026 à 19h GMT, 100% en ligne"
                width="900" height="1125" loading="lazy">
         </a>
+        <article class="mc">
+          <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne</span>
+          <h3>Lancer et gérer vos activités grâce à l'IA</h3>
+          <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances. Au programme : l'art du prompt engineering, l'étude de marché et l'analyse concurrentielle assistées par l'IA, et la création d'une identité simple et pertinente. Places limitées, inscription avant le 30 septembre.</p>
+          <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
+        </article>
         <!--
           ===== MODÈLE À COPIER pour une autre masterclass (retirez les commentaires) =====
           <article class="mc">
