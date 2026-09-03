@@ -5,9 +5,10 @@
   "type": "module",
   "description": "Site vitrine SmartEfico. Scripts de génération du blog et de synchronisation du contenu.",
   "scripts": {
-    "build:content": "node scripts/sync-content.mjs && node scripts/build-blog.mjs"
+    "build:content": "node scripts/optimize-images.mjs && node scripts/sync-content.mjs && node scripts/build-blog.mjs"
   },
   "dependencies": {
-    "marked": "^12.0.2"
+    "marked": "^12.0.2",
+    "sharp": "^0.33.4"
   }
 }

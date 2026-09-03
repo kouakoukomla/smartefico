@@ -8,9 +8,11 @@ on:
     branches: [main]
     paths:
       - 'content/**'
+      - 'assets/**'
       - '.pages.yml'
       - 'scripts/sync-content.mjs'
       - 'scripts/build-blog.mjs'
+      - 'scripts/optimize-images.mjs'
       - 'package.json'
       - 'package-lock.json'
   workflow_dispatch: {}
@@ -32,8 +34,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Installer les dépendances (marked)
-        run: npm ci
+      # « npm ci » est reproductible, mais le lockfile peut avoir été généré sous
+      # Windows : sharp a des binaires par plateforme, d'où le repli sur install.
+      - name: Installer les dépendances (marked, sharp)
+        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+
+      # Compresse les images trop lourdes uploadées via le back office.
+      # Les noms de fichiers sont conservés : les références restent valides.
+      - name: Optimiser les images de assets/
+        run: node scripts/optimize-images.mjs
 
       - name: Régénérer la section Masterclass dans index.html
         run: node scripts/sync-content.mjs
