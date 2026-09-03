@@ -282,6 +282,10 @@ p{margin:0}
    références premium. Le numéro suit l'ordre du document, sans le saisir à la main. */
 .head__eyebrow::before{content:counter(sec,decimal-leading-zero) " /";opacity:.55;
   font-variant-numeric:tabular-nums}
+/* variante centrée : étiquette, titre et chapô alignés au milieu de la section */
+.head--centre{align-items:center;text-align:center}
+.head--centre .head__eyebrow{align-self:center}
+.head--centre .lead{margin-inline:auto}
 
 /* ---------- chiffres ---------- */
 .figures{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -497,12 +501,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
 /* ---------- contact ---------- */
 .contact{background:var(--noir);color:#F3F3F3;padding:clamp(2rem,5vw,3.5rem);
-  display:flex;flex-direction:column;gap:1.2rem}
+  display:flex;flex-direction:column;gap:1.2rem;align-items:center;text-align:center}
 .contact .display{color:#FFF}
 .contact .lead{color:#B5B5B1;max-width:52ch}
 .contact .mono{background:var(--yellow);color:var(--on-yellow);padding:.3rem .7rem;
-  align-self:flex-start;border-radius:3px}
-.coords{display:grid;gap:.75rem;margin-top:.5rem;
+  align-self:center;border-radius:3px}
+.coords{display:grid;gap:.75rem;margin-top:.5rem;width:100%;
   grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
 .coord{background:var(--noir-2);border:1px solid #333;padding:1rem 1.2rem;
   display:flex;flex-direction:column;gap:.3rem;text-decoration:none;
@@ -849,7 +853,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ QUELQUES CHIFFRES ============ -->
     <section class="wrap" id="chiffres">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Les repères</span>
         <h2 class="display">Ce à quoi <em>vous engager</em>.</h2>
       </div>
@@ -875,7 +879,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ CE QU'ON VOUS APPORTE ============ -->
     <section class="wrap" id="apport">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Ce qu'on vous apporte</span>
         <h2 class="display">Des ventes, <em>pas de la notoriété</em>.</h2>
         <p class="lead">Le buzz, très peu pour nous. Les ventes, c'est ce qui nous fait vibrer. Si c'est ce que vous cherchez, alors on est l'agence qu'il vous faut.</p>
@@ -900,7 +904,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ RÉSULTATS ============ -->
     <section class="wrap" id="resultats">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Ce qu'on installe</span>
         <h2 class="display">Ce qu'on installe,<br>et ce qu'on <em>mesure dessus</em>.</h2>
         <p class="lead">Chaque système arrive avec son tableau de bord. Voici les quatre briques qu'on met en place, et l'indicateur que vous y verrez dès la première semaine.</p>
@@ -939,7 +943,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   <!-- ============ MÉTHODE D'ACQUISITION (section blanche) ============ -->
   <section class="invert" id="methode">
     <div class="wrap">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Méthode d'acquisition</span>
         <h2 class="display">Cinq étapes, <em>du système<br>au multi-scaling</em>.</h2>
         <p class="lead">Chaque étape s'appuie sur la précédente : on ne lance pas de publicité avant que le système de rendez-vous soit en place, et on ne scale pas avant que les campagnes soient optimisées.</p>
@@ -990,7 +994,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
          vient de la description que le propriétaire fait lui-même du problème,
          chaque ligne de droite d'une capacité déjà décrite sur cette page. -->
     <section class="wrap" id="avant-apres">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Avant/Après</span>
         <h2 class="display">Avant, <em>après</em>.</h2>
         <p class="lead">La plupart des dirigeants qu'on rencontre sont piégés dans l'opérationnel, avec un pipeline commercial instable. Voici ce que le système déplace, ligne par ligne.</p>
@@ -1021,7 +1025,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ PUBLIC CIBLÉ ============ -->
     <section class="wrap" id="public">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Public ciblé</span>
         <h2 class="display">Avec qui <em>l'agence travaille</em>.</h2>
       </div>
@@ -1039,7 +1043,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ POURQUOI SMARTEFICO ============ -->
     <section class="wrap" id="pourquoi">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Pourquoi nous</span>
         <h2 class="display">Trois raisons, <em>pas une de plus</em>.</h2>
       </div>
@@ -1064,7 +1068,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
     <section class="wrap" id="questions">
-      <div class="head">
+      <div class="head head--centre">
         <span class="head__eyebrow mono">Questions fréquentes</span>
         <h2 class="display">Ce qu'on me demande<br><em>avant de commencer</em>.</h2>
       </div>
