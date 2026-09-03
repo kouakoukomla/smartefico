@@ -209,8 +209,8 @@ p{margin:0}
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden}
 .hero__in{min-height:80vh;padding-block:clamp(3rem,8vw,6rem) clamp(2rem,5vw,3.5rem);
-  display:flex;flex-direction:column;justify-content:center;gap:1.6rem;
-  position:relative;z-index:2}
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;gap:1.6rem;position:relative;z-index:2}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
    (règle pointillée, crochets d'angle, coordonnée) et carte « scénario » en
    filigrane. Volontairement PAS de grille décorative : un fond en grille de
@@ -230,7 +230,7 @@ p{margin:0}
   width:min(42%,32rem);opacity:.3}
 @media (max-width:60rem){.hero__bg .ruler,.hero__bg .scenario{display:none}}
 .hero__status{display:inline-flex;align-items:center;gap:.6rem;color:var(--ink-2);
-  font-size:.92rem;align-self:flex-start;order:-1}
+  font-size:.92rem;align-self:center;order:-1}
 .hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--yellow);
   flex:none;box-shadow:0 0 0 4px rgba(255,204,0,.35)}
 /* accent de titre : serif italique au milieu du grotesque, comme chez eux.
