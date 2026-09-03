@@ -1,6 +1,6 @@
 ---
 title: Lancer et gérer vos activités grâce à l'IA
-date_label: Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne
+date_label: Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne
 poster: assets/masterclass-affiche.jpg
 tally_url: https://tally.so/r/BzJr5Q
 published: true
