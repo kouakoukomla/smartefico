@@ -510,13 +510,16 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .signature{display:flex;flex-direction:column;align-items:center;text-align:center;
   gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
 /* height:auto est indispensable : sans lui l attribut height="800" du HTML
-   fait loi, aspect-ratio est ignoré, et la photo s étire en ovale. */
-/* Ronde, et large : le bloc de signature occupe toute la page à cet endroit,
-   la place ne manque pas. Le cercle rogne les coins de l image carrée, ce qui
-   est assumé. */
-.signature__photo{width:clamp(11rem,28vw,22rem);height:auto;aspect-ratio:1;
-  border-radius:50%;object-fit:cover;margin-bottom:1.1rem;
-  box-shadow:0 0 0 5px var(--yellow)}
+   fait loi, aspect-ratio est ignoré, et la photo s etire. */
+/* Portrait editorial : cadre rectangulaire aux coins arrondis, pas de cercle
+   ni d anneau jaune. Le format 4/5 rogne un peu les cotes de l image carree et
+   garde toute la hauteur, donc le visage n est jamais coupe. Un halo doux
+   detache la photo du fond noir ; une hairline claire dessine les coins. */
+.signature__photo{width:clamp(12rem,30vw,19rem);height:auto;aspect-ratio:4/5;
+  border-radius:1.25rem;object-fit:cover;object-position:center 25%;
+  margin-bottom:1.4rem;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 30px 70px -30px rgba(0,0,0,.9),
+    0 0 120px -40px rgba(255,255,255,.10)}
 .signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
