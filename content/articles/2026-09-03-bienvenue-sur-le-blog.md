@@ -1,11 +1,11 @@
 ---
 title: Pourquoi j'ouvre ce blog
 date: 2026-09-03
-cover: assets/masterclass-affiche.jpg
-excerpt: Un endroit pour partager, concrètement, comment l'IA et l'automatisation font gagner des rendez-vous et du temps aux entreprises.
+cover: assets/Masterclass-Formation sur l'IA-2.jpg
+excerpt: Un endroit pour partager, concrètement, comment l'IA et
+  l'automatisation font gagner des rendez-vous et du temps aux entreprises.
 published: true
 ---
-
 Bienvenue sur le blog de **SmartEfico**. J'y publierai, sans jargon inutile, ce que
 j'apprends en installant des systèmes d'acquisition et d'automatisation pour des
 entreprises.
