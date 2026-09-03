@@ -81,3 +81,44 @@ content:
       - name: body
         label: Contenu de l'article
         type: rich-text
+
+  - name: faq
+    label: FAQ (questions fréquentes)
+    icon: help-circle
+    type: collection
+    path: content/faq
+    view:
+      fields:
+        - question
+        - order
+        - published
+    fields:
+      - name: question
+        label: Question
+        type: string
+        required: true
+      - name: order
+        label: Ordre d'affichage
+        type: number
+        default: 1
+      - name: published
+        label: Affichée sur le site
+        type: boolean
+        default: true
+      - name: body
+        label: Réponse
+        type: text
+
+  - name: accueil
+    label: Page d'accueil (accroche)
+    icon: home
+    type: file
+    path: content/pages/accueil.md
+    fields:
+      - name: hero_title
+        label: Grande accroche (titre)
+        type: text
+        description: "Mettez un mot *entre astérisques* pour l'afficher en jaune italique."
+      - name: hero_subtitle
+        label: Sous-titre
+        type: text
