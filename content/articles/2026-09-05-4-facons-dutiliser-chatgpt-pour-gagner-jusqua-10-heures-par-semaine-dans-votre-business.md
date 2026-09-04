@@ -9,11 +9,7 @@ excerpt: "ChatGPT peut aider les dirigeants de TPE/PME à gagner du temps en
   sur la croissance du business."
 published: true
 ---
-Saviez-vous que les dirigeants de TPE/PME passent 60 % de leur temps sur des tâches à faible valeur ajoutée ?
-
-![👇](https://static.xx.fbcdn.net/images/emoji.php/v9/t4f/1/16/1f447.png)
-
-Et si l’IA pouvait vous rendre 10 heures par semaine, sans stress ni surcharge ?
+Saviez-vous que les dirigeants de TPE/PME passent 60 % de leur temps sur des tâches à faible valeur ajoutée ?Et si l’IA pouvait vous rendre 10 heures par semaine, sans stress ni surcharge ?
 
 Voici comment utiliser ChatGPT comme un assistant stratégique, dès aujourd’hui.
 
