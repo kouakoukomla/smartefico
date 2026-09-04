@@ -38,17 +38,24 @@ for (const nom of readdirSync(join(racine, 'assets'))) {
   const mime = TYPES[extname(nom).toLowerCase()];
   if (!mime) continue;
 
-  const aiguille = `"assets/${nom}"`;
-  if (!html.includes(aiguille)) continue;
+  // Le HTML écrit les noms de fichiers tels qu'encodeURI les produit : un nom
+  // contenant des espaces y apparaît avec des %20. On cherche donc les deux
+  // formes, sans quoi une image au nom espacé n'est jamais encodée.
+  const aiguilles = [...new Set([`"assets/${nom}"`, `"assets/${encodeURI(nom)}"`])]
+    .filter((a) => html.includes(a));
+  if (aiguilles.length === 0) continue;
 
   const b64 = readFileSync(chemin).toString('base64');
-  html = html.split(aiguille).join(`"data:${mime};base64,${b64}"`);
+  for (const aiguille of aiguilles) {
+    html = html.split(aiguille).join(`"data:${mime};base64,${b64}"`);
+  }
   inlinees++;
 }
 
-const restantes = (html.match(/(?:src|href)="assets\//g) || []).length;
-if (restantes > 0) {
-  console.error(`Attention : ${restantes} référence(s) à assets/ non résolue(s).`);
+const restantes = html.match(/(?:src|href)="assets\/[^"]*"/g) || [];
+if (restantes.length > 0) {
+  console.error(`Attention : ${restantes.length} référence(s) à assets/ non résolue(s).`);
+  for (const ref of new Set(restantes)) console.error(`  ${ref}`);
   console.error('Le fichier ne sera pas autonome. Vérifiez que les fichiers existent.');
   process.exit(1);
 }

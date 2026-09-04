@@ -221,8 +221,6 @@ p{margin:0}
 .hero__bg .brackets::before,.hero__bg .brackets::after{content:"";position:absolute;width:22px;height:22px}
 .hero__bg .brackets::before{top:0;right:0;border-top:1.5px solid var(--yellow);border-right:1.5px solid var(--yellow)}
 .hero__bg .brackets::after{bottom:0;left:0;border-bottom:1.5px solid var(--yellow);border-left:1.5px solid var(--yellow)}
-.hero__bg .coord{position:absolute;bottom:clamp(1rem,3vw,1.8rem);right:clamp(1.2rem,3vw,2rem);
-  color:var(--ink-2)}
 .hero__bg .scenario{position:absolute;right:-7%;top:54%;transform:translateY(-50%) rotate(-4deg);
   width:min(42%,32rem);opacity:.3}
 @media (max-width:60rem){.hero__bg .ruler,.hero__bg .scenario{display:none}}
@@ -236,7 +234,12 @@ p{margin:0}
   font-style:italic;font-weight:400;letter-spacing:-.01em;
   padding-right:.04em}
 .hero .display em{color:var(--yellow)}
-.hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.5rem}
+.hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:.5rem}
+/* Les deux boutons du hero sont plus compacts que les autres : à la taille
+   commune ils mesuraient 399 px à eux deux et ne tenaient sur une ligne
+   qu'à partir de 439 px de large. La hauteur, elle, ne bouge pas : le
+   padding vertical reste celui de .btn pour garder une cible tactile. */
+.hero__actions .btn{font-size:.8rem;padding:.85rem 1rem}
 .btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;
   font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
@@ -270,6 +273,15 @@ p{margin:0}
   .ticker__piste[aria-hidden="true"]{display:none}
   .ticker__lot{flex-wrap:wrap;white-space:normal;justify-content:center}
 }
+/* ---------- repère de section ----------
+   Premier enfant de la pile qui suit le bandeau de références : le
+   padding-block de la pile le sépare du bandeau, son gap le sépare des
+   agents IA. Les deux valent var(--gap), il tombe donc au milieu — ne pas
+   lui ajouter de marge, cela le décalerait. Il ne reprend pas la classe
+   .coord : celle-ci porte le décor des cartes de contact (fond opaque,
+   bordure, padding), qui ne convient pas ici. */
+.repere{text-align:center;color:var(--ink-2)}
+
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
 .head__eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--on-yellow);
@@ -746,7 +758,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <text x="224" y="154" fill="#B4B4B0" font-family="monospace" font-size="11">Agent&#160;IA</text>
         <text x="352" y="154" fill="#B4B4B0" font-family="monospace" font-size="11">CRM</text>
       </svg>
-      <span class="coord mono">SYS · 00 / Acquisition</span>
     </div>
     <div class="wrap hero__in">
       <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> pour vos offres et mettez l'<em>IA générative</em> au service de votre performance.<!-- HERO_TITLE:END --></h1>
@@ -820,6 +831,8 @@ h2.head__eyebrow{font-weight:600;margin:0}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
+
+    <p class="repere mono" aria-hidden="true">SYS · 00 / Acquisition</p>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
