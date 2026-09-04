@@ -273,14 +273,6 @@ p{margin:0}
   .ticker__piste[aria-hidden="true"]{display:none}
   .ticker__lot{flex-wrap:wrap;white-space:normal;justify-content:center}
 }
-/* ---------- repère de section ----------
-   Premier enfant de la pile qui suit le bandeau de références : le
-   padding-block de la pile le sépare du bandeau, son gap le sépare des
-   agents IA. Les deux valent var(--gap), il tombe donc au milieu — ne pas
-   lui ajouter de marge, cela le décalerait. Il ne reprend pas la classe
-   .coord : celle-ci porte le décor des cartes de contact (fond opaque,
-   bordure, padding), qui ne convient pas ici. */
-.repere{text-align:center;color:var(--ink-2);font-size:clamp(.9rem,2.2vw,1.25rem)}
 
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
@@ -831,8 +823,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
-
-    <p class="repere mono" aria-hidden="true">SYS · Acquisition</p>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
