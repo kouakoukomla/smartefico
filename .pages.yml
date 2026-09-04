@@ -8,7 +8,7 @@ media:
 
 content:
   - name: masterclasses
-    label: activités
+    label: masterclass
     icon: calendar
     type: collection
     path: content/masterclasses
