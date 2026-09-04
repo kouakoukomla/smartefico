@@ -280,7 +280,7 @@ p{margin:0}
    lui ajouter de marge, cela le décalerait. Il ne reprend pas la classe
    .coord : celle-ci porte le décor des cartes de contact (fond opaque,
    bordure, padding), qui ne convient pas ici. */
-.repere{text-align:center;color:var(--ink-2)}
+.repere{text-align:center;color:var(--ink-2);font-size:clamp(.9rem,2.2vw,1.25rem)}
 
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
@@ -832,7 +832,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
   <div class="stack" style="padding-block:var(--gap)">
 
-    <p class="repere mono" aria-hidden="true">SYS · 00 / Acquisition</p>
+    <p class="repere mono" aria-hidden="true">SYS · Acquisition</p>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
