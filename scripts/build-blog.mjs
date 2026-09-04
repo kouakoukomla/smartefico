@@ -14,7 +14,7 @@
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync, unlinkSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { marked } from 'marked';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -29,19 +29,41 @@ const escAttr = (s = '') =>
 const cheminRelatif = (s = '') => String(s).trim().replace(/^\/+/, '');
 const urlImage = (s = '') => encodeURI(cheminRelatif(s));
 
+/**
+ * Lit l'en-tête entre les deux --- d'un fichier de contenu.
+ *
+ * Le back office replie les valeurs longues sur plusieurs lignes indentées :
+ *     title: Un titre qui depasse la largeur
+ *       et se poursuit ici
+ * Ces lignes de continuation sont recollées à la valeur précédente. Sans ce
+ * recollage, un titre ou une accroche arrive tronqué sur le site — dans la
+ * page, dans la balise <title> et dans les aperçus de partage — sans qu'aucun
+ * message ne le signale.
+ */
 function analyser(md) {
   const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   const donnees = {};
   let corps = md;
   if (m) {
     corps = m[2] || '';
+    let cle = null;
     for (const ligne of m[1].split(/\r?\n/)) {
       const p = ligne.match(/^([A-Za-z0-9_]+)\s*:\s*(.*)$/);
-      if (!p) continue;
-      let val = p[2].trim();
-      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'")))
-        val = val.slice(1, -1);
-      donnees[p[1]] = val;
+      if (p) {
+        cle = p[1];
+        donnees[cle] = p[2].trim();
+      } else if (cle && /^\s+\S/.test(ligne)) {
+        donnees[cle] = (donnees[cle] + ' ' + ligne.trim()).trim();
+      } else {
+        cle = null;
+      }
+    }
+    // Les guillemets encadrants ne se retirent qu'une fois la valeur complète.
+    for (const k of Object.keys(donnees)) {
+      const v = donnees[k];
+      if (v.length > 1 &&
+          ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))))
+        donnees[k] = v.slice(1, -1);
     }
   }
   donnees.body = corps.trim();
@@ -49,6 +71,21 @@ function analyser(md) {
 }
 
 const versBool = (v) => v === undefined || v === true || v === 'true' || v === 'oui' || v === 'yes';
+
+/**
+ * Liste les .md du dossier et de ses sous-dossiers. Le back office permet de
+ * ranger les articles dans des sous-dossiers : sans cette descente, un article
+ * classé dans un sous-dossier serait ignoré en silence.
+ */
+function listerMd(dossier) {
+  const trouves = [];
+  for (const e of readdirSync(dossier, { withFileTypes: true })) {
+    const chemin = join(dossier, e.name);
+    if (e.isDirectory()) trouves.push(...listerMd(chemin));
+    else if (e.name.endsWith('.md')) trouves.push(chemin);
+  }
+  return trouves;
+}
 
 function slugDe(nomFichier) {
   return nomFichier
@@ -150,11 +187,10 @@ const pied = `  <footer class="wrap blog-foot">
 // --- lecture des articles ---------------------------------------------------
 let articles = [];
 if (existsSync(dossierArticles)) {
-  articles = readdirSync(dossierArticles)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => {
-      const a = analyser(readFileSync(join(dossierArticles, f), 'utf8'));
-      a.slug = slugDe(f);
+  articles = listerMd(dossierArticles)
+    .map((chemin) => {
+      const a = analyser(readFileSync(chemin, 'utf8'));
+      a.slug = slugDe(basename(chemin));
       a.page = `article-${a.slug}.html`;
       return a;
     })
