@@ -122,3 +122,22 @@ content:
       - name: hero_subtitle
         label: Sous-titre
         type: text
+
+  - name: visuels
+    label: Visuels du site
+    icon: image
+    type: file
+    path: content/pages/visuels.md
+    fields:
+      - name: portrait
+        label: Photo de profil (bas de page)
+        type: image
+        description: "Votre portrait, affiché en rond avec l'anneau jaune."
+      - name: logo
+        label: Logo
+        type: image
+        description: "Utilisé dans le menu et dans le pied de page."
+      - name: og_image
+        label: Image de partage
+        type: image
+        description: "Aperçu affiché quand le lien du site est partagé (LinkedIn, WhatsApp…). Idéalement 1200 x 630 px."

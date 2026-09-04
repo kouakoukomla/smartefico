@@ -87,6 +87,33 @@ if (accueil.hero_subtitle) {
   resume.push('hero : sous-titre');
 }
 
+// --- VISUELS (portrait, logo, image de partage) -----------------------------
+// Les balises sont régénérées en entier : les dimensions viennent du CSS
+// (.logo et .signature__photo), donc changer d'image ne déforme jamais rien.
+const SITE = 'https://kouakoukomla.github.io/smartefico';
+const visuels = lireFichier('content/pages/visuels.md');
+
+if (visuels.portrait) {
+  index = injecter(
+    index,
+    'VISUEL_PORTRAIT',
+    `<img class="signature__photo" src="${urlImage(visuels.portrait)}" alt="Emmanuel Kouakou" loading="lazy">`
+  );
+  resume.push('visuel : portrait');
+}
+if (visuels.logo) {
+  const logo = urlImage(visuels.logo);
+  index = injecter(index, 'VISUEL_LOGO_NAV', `<img class="logo" src="${logo}" alt="SmartEfico">`);
+  index = injecter(index, 'VISUEL_LOGO_PIED', `<img class="logo" src="${logo}" alt="">`);
+  resume.push('visuel : logo');
+}
+if (visuels.og_image) {
+  const og = `${SITE}/${urlImage(visuels.og_image)}`;
+  index = injecter(index, 'VISUEL_OG', `<meta property="og:image" content="${og}">`);
+  index = injecter(index, 'VISUEL_TWITTER', `<meta name="twitter:image" content="${og}">`);
+  resume.push('visuel : image de partage');
+}
+
 // --- FAQ --------------------------------------------------------------------
 const faq = lireCollection('content/faq')
   .filter((q) => versBool(q.published))
