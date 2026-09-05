@@ -56,37 +56,25 @@ balises Open Graph et Twitter, et données structurées JSON-LD. Elle vaut aujou
 `https://kouakoukomla.github.io/smartefico`. Tout changement doit couvrir les trois
 fichiers d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
 
-**La hauteur du formulaire Tally est écrite en dur, et c'est voulu.** Tally n'émet
-aucune hauteur : ses évènements `Tally.FormLoaded` et `Tally.FormPageView` ne portent
-que l'identifiant du formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée
-de main que seule sa bibliothèque parente sait faire. Deux impasses vérifiées : ajouter
+**Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
+la section Réservation ne contient plus d'`iframe` : un bouton « Ouvrir le formulaire »
+mène à `https://tally.so/r/81VkKx` dans un nouvel onglet.
+
+Sont partis avec lui : les paliers de hauteur de `.book__frame` et leurs six requêtes
+média, le panneau `.book__done` et son écouteur `message`, et le `position:sticky` de
+`.book__aside`. Le formulaire faisait quatre fois la hauteur de cette colonne, ce qui
+était la seule raison de la rendre collante ; la contrainte « pas d'`overflow` sur
+`.book`, `.book__grille` ou `.wrap` » tombe avec elle.
+
+**Si le formulaire devait revenir dans la page**, sachez que Tally n'émet aucune
+hauteur : ses évènements `Tally.FormLoaded` et `Tally.FormPageView` ne portent que
+l'identifiant du formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée de
+main que seule sa bibliothèque parente sait faire. Deux impasses vérifiées : ajouter
 `dynamicHeight=1` ne change rien, et charger `tally.so/widgets/embed.js` par-dessus un
-`src` classique fait retomber le cadre à 1 px.
-
-Le formulaire est donc incrusté dans la page, à sa hauteur pleine : aucune barre de
-défilement imbriquée. La colonne de rassurance à sa gauche est en `position:sticky`
-(`top:6rem`, sous la barre de navigation elle-même collante) : le formulaire fait quatre
-fois sa hauteur, et sans cela elle resterait en haut à regarder passer 1300 px de vide.
-Ne pas introduire d’`overflow` sur `.book`, `.book__grille` ou `.wrap` : ce serait suffisant
-pour tuer le collant sans rien signaler.
-
-Les paliers de `.book__frame` viennent de mesures, prises en ouvrant le formulaire
-seul et en relevant `scrollHeight` :
-
-| largeur du cadre | hauteur du formulaire |
-|---|---|
-| 239 px | 1532 px |
-| 294 px | 1389 px |
-| 493 px | 1268 px |
-| 807 px | 1208 px |
-
-Plus le cadre est étroit, plus les champs s'empilent. Le cadre se resserre d'un coup à
-56 rem, quand la colonne de rassurance apparaît à sa gauche : d'où la remontée du palier
-à cet endroit. Chaque largeur garde entre 64 et 191 px de marge.
-
-**À remesurer si le formulaire change dans Tally.** Une question de plus et le cadre
-redevient trop court, sans que rien ne le signale : le formulaire prend une barre de
-défilement interne, imbriquée dans celle de la page.
+`src` classique fait retomber le cadre à 1 px. Il faudrait donc reposer une hauteur en
+dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précédente,
+à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
+807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
 ## Contraintes de contenu
 

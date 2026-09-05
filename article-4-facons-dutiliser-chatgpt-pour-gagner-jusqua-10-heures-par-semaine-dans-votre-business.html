@@ -487,10 +487,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .book__grille{display:grid;gap:1.75rem;grid-template-columns:1fr}
 @media (min-width:56rem){
   .book__grille{grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:2.5rem;align-items:start}
-  /* Le formulaire fait quatre fois la hauteur de cette colonne. Collante, elle
-     l'accompagne au lieu de rester en haut à regarder passer 1300 px de vide.
-     6rem dégage la barre de navigation, elle-même collante. */
-  .book__aside{position:sticky;top:6rem}
 }
 .book__aside h3{font-size:1rem;margin-bottom:1rem;color:#FFF}
 .book__facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
@@ -510,43 +506,19 @@ h2.head__eyebrow{font-weight:600;margin:0}
   border-bottom:2px solid var(--yellow);
   transition:color .18s ease}
 .book__alt-tel:hover{color:var(--yellow)}
-/* Hauteur posée à la main, faute de mieux : Tally n'émet aucune hauteur.
-   Ses évènements FormLoaded et FormPageView ne portent que l'identifiant du
-   formulaire, et son enfant iframe-resizer 5.5.9 attend une poignée de main
-   que seule sa bibliothèque parente sait faire.
-
-   Les valeurs ci-dessous ne sont pas devinées : le formulaire a été ouvert
-   seul et mesuré à quatre largeurs de cadre.
-
-       cadre 239 px  ->  1532 px de haut     (page de 320 px)
-       cadre 294 px  ->  1389 px             (page de 375 px)
-       cadre 493 px  ->  1268 px             (page de 900 px)
-       cadre 807 px  ->  1208 px             (page de 1280 px)
-
-   Plus le cadre est étroit, plus les champs s'empilent. Les paliers suivent
-   cette pente, avec ~80 px de marge. Le cadre se resserre à 56 rem, quand la
-   colonne de rassurance apparaît à sa gauche : d'où la remontée à ce palier.
-
-   À REMESURER si le formulaire change dans Tally : une question de plus et le
-   cadre redevient trop court, sans que rien ne le signale. */
-/* Fond aligné sur celui du formulaire Tally lui-même (thème sombre du
-   formulaire : background #1a1917) : au chargement et dans la marge basse,
-   plus aucune couture blanche dans le panneau sombre. */
-.book__frame{display:block;width:100%;border:0;min-height:1700px;background:#1a1917}
-@media (min-width:20rem){.book__frame{min-height:1600px}}
-@media (min-width:23rem){.book__frame{min-height:1480px}}
-@media (min-width:36rem){.book__frame{min-height:1400px}}
-@media (min-width:45rem){.book__frame{min-height:1330px}}
-@media (min-width:56rem){.book__frame{min-height:1360px}}
-@media (min-width:75rem){.book__frame{min-height:1290px}}
-/* color explicite : le panneau qui l entoure est passé au noir et impose
-   #F3F3F3, qui sur le jaune ne fait que 1,4 pour 1. */
-.book__done{display:flex;flex-direction:column;gap:.3rem;background:var(--yellow);
-  color:var(--on-yellow);border:1.5px solid var(--on-yellow);padding:1.1rem 1.25rem}
-.book__done[hidden]{display:none}
-.book__done b{font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
-.book__done span{color:#5A4600;font-size:.92rem}
-.book__done a{color:var(--on-yellow);font-weight:600}
+/* Invitation à ouvrir le formulaire. Le fond #1a1917 est celui du thème
+   sombre de Tally : le visiteur retrouve la même surface une fois le
+   nouvel onglet ouvert. */
+.book__invite{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem;
+  background:#1a1917;border:1px solid #2C2B28;padding:clamp(1.5rem,4vw,2.5rem)}
+.book__invite h3{font-size:clamp(1.15rem,2.4vw,1.5rem);color:#FFF;margin:0}
+.book__invite p{color:#B5B5B1;font-size:.95rem;max-width:46ch}
+.book__btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
+  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:1rem;
+  padding:.9rem 1.7rem;border-radius:999px;
+  transition:transform .18s ease,background-color .18s ease}
+.book__btn:hover,.book__btn:focus-visible{background:var(--yellow-hi);
+  transform:translateY(-2px)}
 
 /* ---------- contact ---------- */
 .contact{background:var(--noir);color:#F3F3F3;padding:clamp(2rem,5vw,3.5rem);
