@@ -151,7 +151,6 @@ const styleBlog = `<style>
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
-.post-card p{color:var(--ink-2);font-size:.9rem}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
 .article__back:hover{color:var(--yellow)}
@@ -267,11 +266,13 @@ if (articles.length === 0) {
   cartes = articles
     .map((a) => {
       const cover = a.cover ? urlImage(a.cover) : '';
+      // Comme dans le rail de index.html : la vignette ne montre que la date et
+      // le titre. Le résumé reste utilisé pour la description de la page de
+      // l'article et pour les aperçus de partage.
       return `        <a class="post-card" href="${escAttr(a.page)}">
 ${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy">\n` : ''}          <div class="post-card__body">
             <span class="post-card__date mono">${escTexte(dateFr(a.date))}</span>
             <h2>${escTexte(a.title || 'Article')}</h2>
-            <p>${escTexte(a.excerpt || '')}</p>
           </div>
         </a>`;
     })
