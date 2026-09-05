@@ -314,6 +314,55 @@ for (const f of readdirSync(racine)) {
   }
 }
 
+// --- rappel des articles dans le rail « blog et actualités » de index.html ---
+// La section réunit les masterclass, posées par sync-content.mjs, et les
+// articles, posés ici : ce script a déjà la liste triée, les slugs, les dates
+// mises en forme et les échappements. Les deux scripts écrivent dans le même
+// fichier mais entre des repères distincts, ils ne se marchent pas dessus.
+function injecter(html, marque, contenu) {
+  const debut = `<!-- ${marque}:START -->`;
+  const arret = `<!-- ${marque}:END -->`;
+  const i = html.indexOf(debut);
+  const j = html.indexOf(arret);
+  if (i === -1 || j === -1 || j < i) return html;
+  return html.slice(0, i + debut.length) + contenu + html.slice(j);
+}
+
+function carteArticle(a) {
+  const page = escAttr(a.page);
+  const cover = a.cover ? urlImage(a.cover) : '';
+  // L'affiche mène au même endroit que le bouton : on la retire du parcours au
+  // clavier et des lecteurs d'écran plutôt que d'annoncer deux fois le lien.
+  const affiche = cover
+    ? `          <a class="mc__affiche" href="${page}" tabindex="-1" aria-hidden="true">
+            <img src="${escAttr(cover)}" alt="" loading="lazy">
+          </a>\n`
+    : '';
+  const date = escTexte(dateFr(a.date));
+  return (
+    `        <article class="mc mc--article">\n` +
+    affiche +
+    `          <div class="mc__corps">\n` +
+    (date ? `            <span class="mc__date mono">${date}</span>\n` : '') +
+    `            <h3>${escTexte(a.title || 'Article')}</h3>
+            <p>${escTexte(a.excerpt || '')}</p>
+            <a class="btn btn--line" href="${page}">Lire l'article</a>
+          </div>
+        </article>`
+  );
+}
+
+const cheminIndex = join(racine, 'index.html');
+const avantIndex = readFileSync(cheminIndex, 'utf8');
+const avertArticles =
+  '\n        <!-- Cartes générées par scripts/build-blog.mjs à partir de\n' +
+  '             content/articles/*.md (back office). NE PAS éditer à la main. -->\n' +
+  (articles.length ? articles.map(carteArticle).join('\n') + '\n' : '') +
+  '        ';
+const apresIndex = injecter(avantIndex, 'ARTICLES', avertArticles);
+if (apresIndex !== avantIndex) writeFileSync(cheminIndex, apresIndex, 'utf8');
+
 console.log(
-  `Blog : ${articles.length} article(s) généré(s), ${supprimees} page(s) obsolète(s) supprimée(s). blog.html mis à jour.`
+  `Blog : ${articles.length} article(s) généré(s), ${supprimees} page(s) obsolète(s) supprimée(s). ` +
+    `blog.html et le rail de index.html mis à jour.`
 );

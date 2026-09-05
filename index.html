@@ -316,22 +316,58 @@ p{margin:0}
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
-/* ---------- actualités / masterclass ---------- */
-.agenda{display:grid;gap:clamp(1rem,3vw,1.75rem)}
-/* affiche (colonne de gauche) plus petite, carte à droite plus large */
-@media (min-width:46rem){.agenda{grid-template-columns:minmax(0,19rem) 1fr;align-items:center}}
+/* ---------- blog et actualités ----------
+   Rail horizontal : les masterclass puis les articles du blog, dans un seul
+   fil que le visiteur fait défiler au doigt, à la molette ou avec les deux
+   flèches. scroll-snap cale chaque carte en place, si bien qu'on ne
+   s'arrête jamais sur une demi-carte.
+
+   Le défilement est manuel et non automatique : la page porte déjà un
+   bandeau qui défile seul, et en ajouter un second obligerait le lecteur à
+   courir après deux contenus en mouvement.
+
+   Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
+   glisser. */
+.rail{position:relative}
+.rail__piste{display:flex;align-items:stretch;gap:clamp(1rem,3vw,1.5rem);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-bottom:.75rem;scrollbar-width:thin;
+  scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
+.rail__piste > *{flex:0 0 min(84%,21rem);scroll-snap-align:start}
+.rail__fleche{position:absolute;top:calc(50% - 1.4rem);z-index:2;display:none;
+  width:2.8rem;height:2.8rem;border-radius:999px;border:1px solid var(--line);
+  background:rgba(0,0,0,.72);color:var(--ink);font-size:1.4rem;line-height:1;
+  cursor:pointer;align-items:center;justify-content:center;
+  transition:background-color .18s ease,border-color .18s ease,opacity .18s ease}
+.rail__fleche:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.rail__fleche[disabled]{opacity:.25;cursor:default}
+.rail__fleche[disabled]:hover{background:rgba(0,0,0,.72);border-color:var(--line);color:var(--ink)}
+.rail__fleche--prec{left:-.6rem}
+.rail__fleche--suiv{right:-.6rem}
+/* pointeur fin = souris ou trackpad : les flèches apparaissent, et
+   uniquement si le script a constaté qu'il y a de quoi défiler */
+@media (pointer:fine){.rail--defilable .rail__fleche{display:flex}}
+@media (prefers-reduced-motion:reduce){.rail__piste{scroll-behavior:auto}}
+
+/* une carte du rail : visuel en haut, texte dessous, bouton en bas */
 .mc{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  display:flex;flex-direction:column;overflow:hidden;
   transition:border-color .2s ease}
 .mc:hover{border-color:var(--yellow)}
+.mc__affiche{display:block;border-bottom:1px solid var(--line)}
+/* contain, et non cover : les affiches de masterclass sont en portrait, les
+   rogner couperait le visage ou la date. Le fond comble le reste. */
+.mc__affiche img{display:block;width:100%;aspect-ratio:16/10;
+  object-fit:contain;background:var(--noir-2)}
+/* les couvertures d'articles sont en paysage : là, le rognage est le bon */
+.mc--article .mc__affiche img{object-fit:cover}
+.mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
+  padding:clamp(1.1rem,2.4vw,1.5rem)}
 .mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
   padding:.35rem .7rem;border-radius:3px}
-.mc p{color:var(--ink-2);font-size:.98rem;flex:1}
+.mc h3{font-size:1.05rem;letter-spacing:-.02em}
+.mc p{color:var(--ink-2);font-size:.92rem;flex:1}
 .mc .btn{align-self:flex-start;margin-top:.3rem}
-.mc__affiche{display:block;border:1px solid var(--line);border-radius:.75rem;
-  overflow:hidden;transition:border-color .2s ease,transform .2s ease}
-.mc__affiche:hover{border-color:var(--yellow);transform:translateY(-2px)}
-.mc__affiche img{display:block;width:100%;height:auto}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le jaune est réservé au seul
    bouton, qui devient la seule tache de couleur de la zone et donc ce que
@@ -1105,27 +1141,72 @@ h2.head__eyebrow{font-weight:600;margin:0}
          Ne pas éditer le contenu à la main entre les repères. -->
     <section class="wrap" id="agenda">
       <div class="head head--centre">
-        <span class="head__eyebrow mono">Actualités</span>
-        <h2 class="display">Masterclass &amp; <em>évènements à venir</em>.</h2>
+        <span class="head__eyebrow mono">Blog et actualités</span>
+        <h2 class="display">Blog et <em>évènements à venir</em>.</h2>
         <p class="lead">Des sessions ponctuelles pour apprendre à générer des rendez-vous qualifiés avec l'IA. Réservez votre place dès qu'une date est ouverte.</p>
       </div>
-      <div class="agenda">
+      <div class="rail">
+        <div class="rail__piste" id="rail-actus">
         <!-- MASTERCLASS:START -->
         <!-- Section générée par scripts/sync-content.mjs à partir de
              content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
-        <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener" aria-label="Affiche de la masterclass — s'inscrire">
-          <img src="assets/Masterclass-Formation%20sur%20l'IA-1.jpg" alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA »" loading="lazy">
-        </a>
         <article class="mc">
-          <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne</span>
-          <h3>Lancer et gérer vos activités grâce à l'IA</h3>
-          <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances.
+          <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener" aria-label="Affiche de la masterclass — s'inscrire">
+            <img src="assets/Masterclass-Formation%20sur%20l'IA-1.jpg" alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA »" loading="lazy">
+          </a>
+          <div class="mc__corps">
+            <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne</span>
+            <h3>Lancer et gérer vos activités grâce à l'IA</h3>
+            <p>Une masterclass en ligne pour entrepreneurs, porteurs de projets, start-ups, dirigeants de PME et freelances.
 Au programme : l'art du prompt engineering, l'étude de marché et l'analyse concurrentielle assistées par l'IA, et la création d'une identité simple et pertinente.
 Les places sont limitées.
 Les inscriptions doivent être faites avant le 30 septembre 2026.</p>
-          <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
+            <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
+          </div>
         </article>
         <!-- MASTERCLASS:END -->
+        <!-- ARTICLES:START -->
+        <!-- Cartes générées par scripts/build-blog.mjs à partir de
+             content/articles/*.md (back office). NE PAS éditer à la main. -->
+        <article class="mc mc--article">
+          <a class="mc__affiche" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy">
+          </a>
+          <div class="mc__corps">
+            <span class="mc__date mono">5 septembre 2026</span>
+            <h3>4 façons d’utiliser ChatGPT pour gagner jusqu’à 10 heures par semaine dans votre business</h3>
+            <p>ChatGPT aide les TPE/PME à automatiser les tâches répétitives, gagner du temps et se concentrer sur la croissance</p>
+            <a class="btn btn--line" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html">Lire l'article</a>
+          </div>
+        </article>
+        <article class="mc mc--article">
+          <a class="mc__affiche" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/Masterclass-Formation%20sur%20l'IA.jpg" alt="" loading="lazy">
+          </a>
+          <div class="mc__corps">
+            <span class="mc__date mono">5 septembre 2026</span>
+            <h3>ET SI L’IA DEVENAIT VOTRE PROCHAIN LEVIER POUR LANCER VOTRE BUSINESS ?</h3>
+            <p>Apprenez à utiliser l’IA pour structurer votre projet, analyser votre marché et développer votre activité plus rapidement. Une Masterclass concrète pour passer de l’idée à l’action avec des outils et méthodes directement applicables.</p>
+            <a class="btn btn--line" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html">Lire l'article</a>
+          </div>
+        </article>
+        <article class="mc mc--article">
+          <a class="mc__affiche" href="article-bienvenue-sur-le-blog.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/2252f773-38f3-40b9-9524-db3a9991f557.png" alt="" loading="lazy">
+          </a>
+          <div class="mc__corps">
+            <span class="mc__date mono">3 septembre 2026</span>
+            <h3>Pourquoi j'ouvre ce blog</h3>
+            <p>Un endroit pour partager, concrètement, comment l'IA et l'automatisation font gagner des rendez-vous et du temps aux entreprises.</p>
+            <a class="btn btn--line" href="article-bienvenue-sur-le-blog.html">Lire l'article</a>
+          </div>
+        </article>
+        <!-- ARTICLES:END -->
+        </div>
+        <button class="rail__fleche rail__fleche--prec" type="button"
+                aria-controls="rail-actus" aria-label="Voir les cartes précédentes">&#8249;</button>
+        <button class="rail__fleche rail__fleche--suiv" type="button"
+                aria-controls="rail-actus" aria-label="Voir les cartes suivantes">&#8250;</button>
       </div>
     </section>
 
@@ -1628,6 +1709,35 @@ Les inscriptions doivent être faites avant le 30 septembre 2026.</p>
     fait.setAttribute('tabindex', '-1');
     fait.focus();
     fait.scrollIntoView({ block: 'center' });
+  });
+})();
+
+// Rail « blog et actualités » : les deux flèches font avancer la piste d'une
+// carte, et se désactivent aux extrémités. Tout marche déjà sans ce script —
+// la piste se fait glisser au doigt et à la molette ; les flèches ne sont
+// qu'un raccourci, et restent cachées tant qu'il n'y a rien à faire défiler.
+(function () {
+  document.querySelectorAll('.rail').forEach(function (rail) {
+    var piste = rail.querySelector('.rail__piste');
+    var prec = rail.querySelector('.rail__fleche--prec');
+    var suiv = rail.querySelector('.rail__fleche--suiv');
+    if (!piste || !prec || !suiv) return;
+
+    function pas() {
+      var carte = piste.firstElementChild;
+      return carte ? carte.getBoundingClientRect().width + 16 : piste.clientWidth * 0.8;
+    }
+    function etat() {
+      var reste = piste.scrollWidth - piste.clientWidth;
+      rail.classList.toggle('rail--defilable', reste > 4);
+      prec.disabled = piste.scrollLeft <= 4;
+      suiv.disabled = piste.scrollLeft >= reste - 4;
+    }
+    prec.addEventListener('click', function () { piste.scrollBy({ left: -pas() }); });
+    suiv.addEventListener('click', function () { piste.scrollBy({ left: pas() }); });
+    piste.addEventListener('scroll', etat, { passive: true });
+    window.addEventListener('resize', etat);
+    etat();
   });
 })();
 

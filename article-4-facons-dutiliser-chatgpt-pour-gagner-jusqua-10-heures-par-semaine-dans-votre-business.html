@@ -291,22 +291,58 @@ p{margin:0}
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
-/* ---------- actualités / masterclass ---------- */
-.agenda{display:grid;gap:clamp(1rem,3vw,1.75rem)}
-/* affiche (colonne de gauche) plus petite, carte à droite plus large */
-@media (min-width:46rem){.agenda{grid-template-columns:minmax(0,19rem) 1fr;align-items:center}}
+/* ---------- blog et actualités ----------
+   Rail horizontal : les masterclass puis les articles du blog, dans un seul
+   fil que le visiteur fait défiler au doigt, à la molette ou avec les deux
+   flèches. scroll-snap cale chaque carte en place, si bien qu'on ne
+   s'arrête jamais sur une demi-carte.
+
+   Le défilement est manuel et non automatique : la page porte déjà un
+   bandeau qui défile seul, et en ajouter un second obligerait le lecteur à
+   courir après deux contenus en mouvement.
+
+   Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
+   glisser. */
+.rail{position:relative}
+.rail__piste{display:flex;align-items:stretch;gap:clamp(1rem,3vw,1.5rem);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-bottom:.75rem;scrollbar-width:thin;
+  scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
+.rail__piste > *{flex:0 0 min(84%,21rem);scroll-snap-align:start}
+.rail__fleche{position:absolute;top:calc(50% - 1.4rem);z-index:2;display:none;
+  width:2.8rem;height:2.8rem;border-radius:999px;border:1px solid var(--line);
+  background:rgba(0,0,0,.72);color:var(--ink);font-size:1.4rem;line-height:1;
+  cursor:pointer;align-items:center;justify-content:center;
+  transition:background-color .18s ease,border-color .18s ease,opacity .18s ease}
+.rail__fleche:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.rail__fleche[disabled]{opacity:.25;cursor:default}
+.rail__fleche[disabled]:hover{background:rgba(0,0,0,.72);border-color:var(--line);color:var(--ink)}
+.rail__fleche--prec{left:-.6rem}
+.rail__fleche--suiv{right:-.6rem}
+/* pointeur fin = souris ou trackpad : les flèches apparaissent, et
+   uniquement si le script a constaté qu'il y a de quoi défiler */
+@media (pointer:fine){.rail--defilable .rail__fleche{display:flex}}
+@media (prefers-reduced-motion:reduce){.rail__piste{scroll-behavior:auto}}
+
+/* une carte du rail : visuel en haut, texte dessous, bouton en bas */
 .mc{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  display:flex;flex-direction:column;overflow:hidden;
   transition:border-color .2s ease}
 .mc:hover{border-color:var(--yellow)}
+.mc__affiche{display:block;border-bottom:1px solid var(--line)}
+/* contain, et non cover : les affiches de masterclass sont en portrait, les
+   rogner couperait le visage ou la date. Le fond comble le reste. */
+.mc__affiche img{display:block;width:100%;aspect-ratio:16/10;
+  object-fit:contain;background:var(--noir-2)}
+/* les couvertures d'articles sont en paysage : là, le rognage est le bon */
+.mc--article .mc__affiche img{object-fit:cover}
+.mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
+  padding:clamp(1.1rem,2.4vw,1.5rem)}
 .mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
   padding:.35rem .7rem;border-radius:3px}
-.mc p{color:var(--ink-2);font-size:.98rem;flex:1}
+.mc h3{font-size:1.05rem;letter-spacing:-.02em}
+.mc p{color:var(--ink-2);font-size:.92rem;flex:1}
 .mc .btn{align-self:flex-start;margin-top:.3rem}
-.mc__affiche{display:block;border:1px solid var(--line);border-radius:.75rem;
-  overflow:hidden;transition:border-color .2s ease,transform .2s ease}
-.mc__affiche:hover{border-color:var(--yellow);transform:translateY(-2px)}
-.mc__affiche img{display:block;width:100%;height:auto}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le jaune est réservé au seul
    bouton, qui devient la seule tache de couleur de la zone et donc ce que

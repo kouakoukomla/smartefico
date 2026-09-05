@@ -198,30 +198,35 @@ function carteMc(e) {
   const lien = escAttr((e.tally_url || '#appel').trim() || '#appel');
   const externe = /^https?:/i.test(lien) ? ' target="_blank" rel="noopener"' : '';
   const poster = e.poster ? urlImage(e.poster) : '';
+  // L'affiche est désormais DANS la carte, en tête : le rail aligne des
+  // cartes entières, plus une grille affiche-à-gauche / texte-à-droite.
   const affiche = poster
-    ? `        <a class="mc__affiche" href="${lien}"${externe} aria-label="Affiche de la masterclass — s'inscrire">
-          <img src="${poster}" alt="Affiche de la masterclass « ${escAttr(e.title || '')} »" loading="lazy">
-        </a>\n`
+    ? `          <a class="mc__affiche" href="${lien}"${externe} aria-label="Affiche de la masterclass — s'inscrire">
+            <img src="${poster}" alt="Affiche de la masterclass « ${escAttr(e.title || '')} »" loading="lazy">
+          </a>\n`
     : '';
-  const styleCarte = poster ? '' : ' style="grid-column:1/-1"';
   return (
+    `        <article class="mc">\n` +
     affiche +
-    `        <article class="mc"${styleCarte}>
-          <span class="mc__date mono">${date}</span>
-          <h3>${titre}</h3>
-          <p>${desc}</p>
-          <a class="btn btn--line" href="${lien}"${externe}>S'inscrire</a>
+    `          <div class="mc__corps">
+            <span class="mc__date mono">${date}</span>
+            <h3>${titre}</h3>
+            <p>${desc}</p>
+            <a class="btn btn--line" href="${lien}"${externe}>S'inscrire</a>
+          </div>
         </article>`
   );
 }
 
 let mc;
 if (evenements.length === 0) {
-  mc = `        <article class="mc" style="grid-column:1/-1">
-          <span class="mc__date mono">Aucune date ouverte pour le moment</span>
-          <h3>Prochaine masterclass à venir</h3>
-          <p>Inscrivez-vous pour être prévenu de la prochaine session.</p>
-          <a class="btn btn--line" href="#appel">Être prévenu</a>
+  mc = `        <article class="mc">
+          <div class="mc__corps">
+            <span class="mc__date mono">Aucune date ouverte pour le moment</span>
+            <h3>Prochaine masterclass à venir</h3>
+            <p>Inscrivez-vous pour être prévenu de la prochaine session.</p>
+            <a class="btn btn--line" href="#appel">Être prévenu</a>
+          </div>
         </article>`;
 } else {
   mc = evenements.map(carteMc).join('\n');
