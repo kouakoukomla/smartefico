@@ -329,7 +329,7 @@ p{margin:0}
    Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
    glisser. */
 .rail{position:relative}
-.rail__piste{display:flex;align-items:stretch;gap:clamp(1rem,3vw,1.5rem);
+.rail__piste{display:flex;align-items:flex-start;gap:clamp(1rem,3vw,1.5rem);
   overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
   padding-bottom:.75rem;scrollbar-width:thin;
   scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
@@ -367,7 +367,10 @@ p{margin:0}
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
 .mc p{color:var(--ink-2);font-size:.92rem;flex:1}
-.mc .btn{align-self:flex-start;margin-top:.3rem}
+/* Le bouton se cale en bas de la carte. Les cartes d'articles n'affichent
+   que la date et le titre : sans cela leur bouton remonterait coller au titre,
+   alors que celui des masterclass reste poussé vers le bas par le texte. */
+.mc .btn{align-self:flex-start;margin-top:auto}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le jaune est réservé au seul
    bouton, qui devient la seule tache de couleur de la zone et donc ce que
@@ -1143,7 +1146,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <div class="head head--centre">
         <span class="head__eyebrow mono">Blog et actualités</span>
         <h2 class="display">Blog et <em>évènements à venir</em>.</h2>
-        <p class="lead">Des sessions ponctuelles pour apprendre à générer des rendez-vous qualifiés avec l'IA. Réservez votre place dès qu'une date est ouverte.</p>
+        <p class="lead">Mes articles sur l'acquisition et l'IA, et les sessions ponctuelles pour apprendre à générer des rendez-vous qualifiés. Lisez, ou réservez votre place dès qu'une date est ouverte.</p>
       </div>
       <div class="rail">
         <div class="rail__piste" id="rail-actus">
@@ -1175,7 +1178,6 @@ Les inscriptions doivent être faites avant le 30 septembre 2026.</p>
           <div class="mc__corps">
             <span class="mc__date mono">5 septembre 2026</span>
             <h3>4 façons d’utiliser ChatGPT pour gagner jusqu’à 10 heures par semaine dans votre business</h3>
-            <p>ChatGPT aide les TPE/PME à automatiser les tâches répétitives, gagner du temps et se concentrer sur la croissance</p>
             <a class="btn btn--line" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html">Lire l'article</a>
           </div>
         </article>
@@ -1186,7 +1188,6 @@ Les inscriptions doivent être faites avant le 30 septembre 2026.</p>
           <div class="mc__corps">
             <span class="mc__date mono">5 septembre 2026</span>
             <h3>ET SI L’IA DEVENAIT VOTRE PROCHAIN LEVIER POUR LANCER VOTRE BUSINESS ?</h3>
-            <p>Apprenez à utiliser l’IA pour structurer votre projet, analyser votre marché et développer votre activité plus rapidement. Une Masterclass concrète pour passer de l’idée à l’action avec des outils et méthodes directement applicables.</p>
             <a class="btn btn--line" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html">Lire l'article</a>
           </div>
         </article>
@@ -1197,7 +1198,6 @@ Les inscriptions doivent être faites avant le 30 septembre 2026.</p>
           <div class="mc__corps">
             <span class="mc__date mono">3 septembre 2026</span>
             <h3>Pourquoi j'ouvre ce blog</h3>
-            <p>Un endroit pour partager, concrètement, comment l'IA et l'automatisation font gagner des rendez-vous et du temps aux entreprises.</p>
             <a class="btn btn--line" href="article-bienvenue-sur-le-blog.html">Lire l'article</a>
           </div>
         </article>

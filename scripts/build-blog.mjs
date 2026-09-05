@@ -339,13 +339,15 @@ function carteArticle(a) {
           </a>\n`
     : '';
   const date = escTexte(dateFr(a.date));
+  // Volontairement sans le résumé : dans le rail, une carte d'article ne montre
+  // que sa date et son titre. Le résumé reste sur blog.html, où il aide à
+  // choisir entre plusieurs articles affichés côte à côte.
   return (
     `        <article class="mc mc--article">\n` +
     affiche +
     `          <div class="mc__corps">\n` +
     (date ? `            <span class="mc__date mono">${date}</span>\n` : '') +
     `            <h3>${escTexte(a.title || 'Article')}</h3>
-            <p>${escTexte(a.excerpt || '')}</p>
             <a class="btn btn--line" href="${page}">Lire l'article</a>
           </div>
         </article>`
