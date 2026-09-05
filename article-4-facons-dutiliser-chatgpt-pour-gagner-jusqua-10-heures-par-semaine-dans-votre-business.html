@@ -293,13 +293,14 @@ p{margin:0}
 
 /* ---------- blog et actualités ----------
    Rail horizontal : les masterclass puis les articles du blog, dans un seul
-   fil que le visiteur fait défiler au doigt, à la molette ou avec les deux
-   flèches. scroll-snap cale chaque carte en place, si bien qu'on ne
-   s'arrête jamais sur une demi-carte.
+   fil. Il avance seul d'une carte toutes les cinq secondes et revient au
+   début en fin de course ; le visiteur peut aussi le faire défiler au doigt,
+   à la molette ou avec les deux flèches. scroll-snap cale chaque carte en
+   place, si bien qu'on ne s'arrête jamais sur une demi-carte.
 
-   Le défilement est manuel et non automatique : la page porte déjà un
-   bandeau qui défile seul, et en ajouter un second obligerait le lecteur à
-   courir après deux contenus en mouvement.
+   L'avance automatique s'interrompt au survol, à la prise de focus clavier
+   et dès que le visiteur fait défiler lui-même — sans quoi elle lui
+   reprendrait la main au milieu de sa lecture.
 
    Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
    glisser. */
@@ -329,10 +330,16 @@ p{margin:0}
   display:flex;flex-direction:column;overflow:hidden;
   transition:border-color .2s ease}
 .mc:hover{border-color:var(--yellow)}
+/* Une carte d'article est un lien entier : elle ne porte que son visuel et
+   son titre, sans bouton à cliquer. Le titre se centre dans la place qui
+   reste, sinon il flotterait en haut d'une carte étirée à la hauteur de la
+   carte masterclass, qui elle garde sa date, son texte et son bouton. */
+.mc--article{text-decoration:none;color:inherit}
+.mc--article .mc__corps{justify-content:center;gap:0}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
 /* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
    comprises. */
-.mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
+.mc__affiche img{display:block;width:100%;aspect-ratio:2.5/1;
   object-fit:cover;background:var(--noir-2)}
 /* Les affiches sont en portrait : on n'en voit qu'une bande. Prise au centre,
    elle coupe le visage à hauteur du menton — vérifié sur l'affiche actuelle,
@@ -665,7 +672,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
-.post-card__date{color:var(--ink-3)}
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
