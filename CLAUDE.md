@@ -60,13 +60,22 @@ fichiers d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
 la section Réservation ne contient plus d'`iframe` : un bouton « Ouvrir le formulaire »
 mène à `https://tally.so/r/81VkKx` dans un nouvel onglet.
 
-**En revanche il est incrusté dans un article de blog.** Un article dont l'en-tête porte
-un `tally_url` reçoit le formulaire correspondant en fin de page, monté par
-`build-blog.mjs`. Le champ est éditable dans le back office. Les paliers de hauteur de
-`.tally__frame` viennent de mesures prises sur le formulaire `BzJr5Q` — cadre de 280 px
-→ 3326 px de haut, 350 → 2954, 420 → 2763, 480 → 2547, 560 → 2475, 704 → 2243. **À
-remesurer pour un autre formulaire**, ou si celui-ci change dans Tally : trop court, le
-cadre prend une barre de défilement imbriquée sans que rien ne le signale.
+**En revanche il est incrusté dans un article de blog**, et là sa hauteur est
+négociée. Un article dont l'en-tête porte un `tally_url` reçoit le formulaire en fin de
+page, monté par `build-blog.mjs` ; le champ est éditable dans le back office.
+
+Le cadre porte `data-tally-src` — et non `src` — avec `dynamicHeight=1`, et la page
+charge `tally.so/widgets/embed.js`, qui appelle `Tally.loadEmbeds()`. C'est cette
+bibliothèque parente qui manquait aux tentatives précédentes : elle pose la source
+elle-même, répond au cadre enfant, et tient la hauteur à jour. Le formulaire peut donc
+gagner ou perdre des questions dans Tally sans rien à remesurer ici.
+
+`embed.js` ne monte le cadre que lorsqu'il entre dans le champ de vision, par un
+`IntersectionObserver`. Un repli se déclenche au bout de huit secondes si rien ne
+s'est produit : la source est posée à la main et `.tally__frame--repli` rend au cadre
+une hauteur fixe. Ces paliers-là viennent de mesures sur le formulaire `BzJr5Q` —
+cadre de 280 px → 3326 px de haut, 350 → 2954, 420 → 2763, 480 → 2547, 560 → 2475,
+704 → 2243 — et ne valent que pour lui. Ils ne servent que sur ce chemin de secours.
 
 Sont partis avec lui : les paliers de hauteur de `.book__frame` et leurs six requêtes
 média, le panneau `.book__done` et son écouteur `message`, et le `position:sticky` de

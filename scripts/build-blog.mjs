@@ -141,15 +141,68 @@ function formulaire(a) {
   const m = brut.match(/tally\.so\/(?:r|embed)\/([A-Za-z0-9]+)/);
   if (!m) return '';
   const id = m[1];
-  const embed = `https://tally.so/embed/${id}?alignLeft=1&amp;hideTitle=1`;
+  // data-tally-src, et non src : embed.js pose lui-même la source, puis tient
+  // la hauteur du cadre à jour. dynamicHeight=1 est ce qui déclenche la
+  // poignée de main ; sans lui, ou avec un src classique, elle n'a pas lieu.
+  const embed = `https://tally.so/embed/${id}?alignLeft=1&amp;hideTitle=1&amp;dynamicHeight=1`;
   const publique = `https://tally.so/r/${id}`;
   return `    <section class="tally" aria-labelledby="tally-titre">
       <h2 id="tally-titre">Je réserve ma place</h2>
-      <iframe class="tally__frame" src="${embed}"
+      <iframe class="tally__frame" data-tally-src="${embed}"
               title="Formulaire d'inscription" loading="lazy"></iframe>
       <p class="tally__alt">Le formulaire ne s'affiche pas&nbsp;?
         <a href="${publique}" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
     </section>
+`;
+}
+
+/**
+ * Scripts du formulaire, posés en fin de page quand l'article en porte un.
+ *
+ * embed.js est la bibliothèque parente de Tally : c'est elle qui remplit le
+ * data-tally-src et qui répond au cadre enfant, lequel annonce sa hauteur à
+ * chaque changement. Le cadre suit donc le formulaire tout seul : une question
+ * ajoutée ou retirée dans Tally n'a plus rien à remesurer ici.
+ *
+ * Le repli couvre le cas où ce script ne se charge pas — connexion coupée,
+ * bloqueur, panne de Tally. On pose alors la source à la main et on rend au
+ * cadre une hauteur fixe et généreuse, faute de mieux. Le lien « ouvrez-le
+ * dans un nouvel onglet » reste sous le cadre dans tous les cas.
+ */
+function scriptsFormulaire(a) {
+  if (!formulaire(a)) return '';
+  return `  <script>
+  (function () {
+    // Branchement officiel de Tally : embed.js ne monte pas les cadres de
+    // lui-même, il faut appeler Tally.loadEmbeds() une fois qu'il est chargé.
+    // C'est lui qui pose ensuite la source et qui tient la hauteur à jour.
+    function replier() {
+      document.querySelectorAll('.tally__frame:not([src])').forEach(function (c) {
+        c.classList.add('tally__frame--repli');
+        c.setAttribute('src', c.getAttribute('data-tally-src'));
+      });
+    }
+    function monter() {
+      if (window.Tally && typeof window.Tally.loadEmbeds === 'function') {
+        window.Tally.loadEmbeds();
+        return;
+      }
+      replier();
+    }
+    var s = document.createElement('script');
+    s.src = 'https://tally.so/widgets/embed.js';
+    s.onload = monter;
+    s.onerror = monter;
+    document.body.appendChild(s);
+
+    // embed.js ne monte le cadre que lorsque celui-ci entre dans le champ de
+    // vision, via un IntersectionObserver. Si rien ne s'est produit au bout de
+    // huit secondes — observateur muet, script bloqué, panne — on prend le
+    // relais : source posée à la main, hauteur fixe. Le visiteur voit le
+    // formulaire dans tous les cas.
+    setTimeout(replier, 8000);
+  })();
+  <\/script>
 `;
 }
 
@@ -192,25 +245,28 @@ const styleBlog = `<style>
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .article__body a:hover{color:var(--yellow)}
-/* Formulaire Tally incruste en fin d article.
-   Tally n emet aucune hauteur (voir CLAUDE.md) : les paliers ci-dessous
-   viennent de mesures, prises en ouvrant le formulaire BzJr5Q seul et en
-   relevant scrollHeight. Largeur du cadre -> hauteur du formulaire :
-       280 px -> 3326    350 px -> 2954    420 px -> 2763
-       480 px -> 2547    560 px -> 2475    704 px -> 2243
-   Le cadre vaut min(largeur de page - 40 px, 704 px), d ou les seuils.
-   Chaque palier garde 120 a 210 px de marge.
-   A REMESURER pour un autre formulaire, ou si celui-ci change dans Tally :
-   trop court, il prend une barre de defilement imbriquee sans rien signaler. */
+/* Formulaire Tally incruste en fin d article. La hauteur du cadre est tenue
+   par embed.js, qui repond au cadre enfant : le formulaire peut gagner ou
+   perdre des questions dans Tally, le cadre suit sans rien a remesurer ici.
+   min-height ne sert donc que de place tenue pendant le chargement — il doit
+   rester bas, sinon il empecherait le cadre de se retrecir. */
 .tally{margin-top:3rem}
 .tally h2{font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;margin:0 0 1.2rem}
-.tally__frame{display:block;width:100%;border:0;min-height:3700px;background:#1a1917;border-radius:.9rem}
-@media(min-width:20rem){.tally__frame{min-height:3400px}}
-@media(min-width:23rem){.tally__frame{min-height:3200px}}
-@media(min-width:25rem){.tally__frame{min-height:3050px}}
-@media(min-width:30rem){.tally__frame{min-height:2820px}}
-@media(min-width:36rem){.tally__frame{min-height:2620px}}
-@media(min-width:46.5rem){.tally__frame{min-height:2400px}}
+.tally__frame{display:block;width:100%;border:0;min-height:24rem;background:#1a1917;border-radius:.9rem}
+/* Repli, pose par le script si embed.js ne se charge pas : la hauteur
+   redevient fixe. Les paliers viennent de mesures prises en ouvrant le
+   formulaire BzJr5Q seul et en relevant scrollHeight, largeur du cadre ->
+   hauteur : 280 -> 3326, 350 -> 2954, 420 -> 2763, 480 -> 2547, 560 -> 2475,
+   704 -> 2243. Le cadre vaut min(largeur de page - 40 px, 704 px), d ou les
+   seuils. Valables pour ce formulaire-la : un autre demanderait de nouvelles
+   mesures, mais seulement sur ce chemin de secours. */
+.tally__frame--repli{min-height:3700px}
+@media(min-width:20rem){.tally__frame--repli{min-height:3400px}}
+@media(min-width:23rem){.tally__frame--repli{min-height:3200px}}
+@media(min-width:25rem){.tally__frame--repli{min-height:3050px}}
+@media(min-width:30rem){.tally__frame--repli{min-height:2820px}}
+@media(min-width:36rem){.tally__frame--repli{min-height:2620px}}
+@media(min-width:46.5rem){.tally__frame--repli{min-height:2400px}}
 .tally__alt{color:var(--ink-3);font-size:.9rem;margin-top:.9rem}
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .tally__alt a:hover{color:var(--yellow)}
@@ -301,7 +357,7 @@ ${corpsHtml}
 ${formulaire(a)}    <p style="margin-top:2.5rem"><a class="btn btn--line" href="index.html#appel">Me contacter</a></p>
   </main>
 ${pied}
-</body>
+${scriptsFormulaire(a)}</body>
 </html>
 `;
   writeFileSync(join(racine, a.page), html, 'utf8');

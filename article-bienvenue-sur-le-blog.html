@@ -657,25 +657,28 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .article__body a:hover{color:var(--yellow)}
-/* Formulaire Tally incruste en fin d article.
-   Tally n emet aucune hauteur (voir CLAUDE.md) : les paliers ci-dessous
-   viennent de mesures, prises en ouvrant le formulaire BzJr5Q seul et en
-   relevant scrollHeight. Largeur du cadre -> hauteur du formulaire :
-       280 px -> 3326    350 px -> 2954    420 px -> 2763
-       480 px -> 2547    560 px -> 2475    704 px -> 2243
-   Le cadre vaut min(largeur de page - 40 px, 704 px), d ou les seuils.
-   Chaque palier garde 120 a 210 px de marge.
-   A REMESURER pour un autre formulaire, ou si celui-ci change dans Tally :
-   trop court, il prend une barre de defilement imbriquee sans rien signaler. */
+/* Formulaire Tally incruste en fin d article. La hauteur du cadre est tenue
+   par embed.js, qui repond au cadre enfant : le formulaire peut gagner ou
+   perdre des questions dans Tally, le cadre suit sans rien a remesurer ici.
+   min-height ne sert donc que de place tenue pendant le chargement — il doit
+   rester bas, sinon il empecherait le cadre de se retrecir. */
 .tally{margin-top:3rem}
 .tally h2{font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;margin:0 0 1.2rem}
-.tally__frame{display:block;width:100%;border:0;min-height:3700px;background:#1a1917;border-radius:.9rem}
-@media(min-width:20rem){.tally__frame{min-height:3400px}}
-@media(min-width:23rem){.tally__frame{min-height:3200px}}
-@media(min-width:25rem){.tally__frame{min-height:3050px}}
-@media(min-width:30rem){.tally__frame{min-height:2820px}}
-@media(min-width:36rem){.tally__frame{min-height:2620px}}
-@media(min-width:46.5rem){.tally__frame{min-height:2400px}}
+.tally__frame{display:block;width:100%;border:0;min-height:24rem;background:#1a1917;border-radius:.9rem}
+/* Repli, pose par le script si embed.js ne se charge pas : la hauteur
+   redevient fixe. Les paliers viennent de mesures prises en ouvrant le
+   formulaire BzJr5Q seul et en relevant scrollHeight, largeur du cadre ->
+   hauteur : 280 -> 3326, 350 -> 2954, 420 -> 2763, 480 -> 2547, 560 -> 2475,
+   704 -> 2243. Le cadre vaut min(largeur de page - 40 px, 704 px), d ou les
+   seuils. Valables pour ce formulaire-la : un autre demanderait de nouvelles
+   mesures, mais seulement sur ce chemin de secours. */
+.tally__frame--repli{min-height:3700px}
+@media(min-width:20rem){.tally__frame--repli{min-height:3400px}}
+@media(min-width:23rem){.tally__frame--repli{min-height:3200px}}
+@media(min-width:25rem){.tally__frame--repli{min-height:3050px}}
+@media(min-width:30rem){.tally__frame--repli{min-height:2820px}}
+@media(min-width:36rem){.tally__frame--repli{min-height:2620px}}
+@media(min-width:46.5rem){.tally__frame--repli{min-height:2400px}}
 .tally__alt{color:var(--ink-3);font-size:.9rem;margin-top:.9rem}
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .tally__alt a:hover{color:var(--yellow)}
