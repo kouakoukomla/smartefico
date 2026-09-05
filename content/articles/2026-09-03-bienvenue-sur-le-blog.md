@@ -1,7 +1,7 @@
 ---
 title: Pourquoi j'ouvre ce blog
 date: 2026-09-03
-cover: assets/71b9f2b9-4689-4b96-85ae-5ae6bd4db72f.png
+cover: assets/2252f773-38f3-40b9-9524-db3a9991f557.png
 excerpt: Un endroit pour partager, concrètement, comment l'IA et
   l'automatisation font gagner des rendez-vous et du temps aux entreprises.
 published: true
