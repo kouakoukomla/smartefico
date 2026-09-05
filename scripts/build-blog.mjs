@@ -149,6 +149,7 @@ const styleBlog = `<style>
 .post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
+.post-card__date{color:var(--ink-3)}
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
@@ -265,11 +266,12 @@ if (articles.length === 0) {
   cartes = articles
     .map((a) => {
       const cover = a.cover ? urlImage(a.cover) : '';
-      // Comme dans le rail de index.html : la vignette ne montre que le titre.
-      // Date et résumé restent dans la page de l'article, et le résumé sert
-      // toujours de description pour les moteurs et les aperçus de partage.
+      // Comme dans le rail de index.html : la vignette ne montre que la date et
+      // le titre. Le résumé reste utilisé pour la description de la page de
+      // l'article et pour les aperçus de partage.
       return `        <a class="post-card" href="${escAttr(a.page)}">
 ${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy">\n` : ''}          <div class="post-card__body">
+            <span class="post-card__date mono">${escTexte(dateFr(a.date))}</span>
             <h2>${escTexte(a.title || 'Article')}</h2>
           </div>
         </a>`;
@@ -327,25 +329,29 @@ function injecter(html, marque, contenu) {
   return html.slice(0, i + debut.length) + contenu + html.slice(j);
 }
 
-// Une carte d'article ne porte que son visuel et son titre : ni date, ni
-// résumé, ni bouton. La carte entière est donc le lien — sans bouton, il n'y
-// aurait plus rien à cliquer, et deux liens vers la même page se seraient
-// annoncés deux fois aux lecteurs d'écran.
 function carteArticle(a) {
   const page = escAttr(a.page);
   const cover = a.cover ? urlImage(a.cover) : '';
+  // L'affiche mène au même endroit que le bouton : on la retire du parcours au
+  // clavier et des lecteurs d'écran plutôt que d'annoncer deux fois le lien.
   const affiche = cover
-    ? `          <span class="mc__affiche">
+    ? `          <a class="mc__affiche" href="${page}" tabindex="-1" aria-hidden="true">
             <img src="${escAttr(cover)}" alt="" loading="lazy">
-          </span>\n`
+          </a>\n`
     : '';
+  const date = escTexte(dateFr(a.date));
+  // Volontairement sans le résumé : dans le rail, une carte d'article ne montre
+  // que sa date et son titre. Le résumé reste sur blog.html, où il aide à
+  // choisir entre plusieurs articles affichés côte à côte.
   return (
-    `        <a class="mc mc--article" href="${page}">\n` +
+    `        <article class="mc mc--article">\n` +
     affiche +
-    `          <div class="mc__corps">
-            <h3>${escTexte(a.title || 'Article')}</h3>
+    `          <div class="mc__corps">\n` +
+    (date ? `            <span class="mc__date mono">${date}</span>\n` : '') +
+    `            <h3>${escTexte(a.title || 'Article')}</h3>
+            <a class="btn btn--line" href="${page}">Lire l'article</a>
           </div>
-        </a>`
+        </article>`
   );
 }
 
