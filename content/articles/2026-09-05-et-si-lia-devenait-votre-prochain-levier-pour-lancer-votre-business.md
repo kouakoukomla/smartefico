@@ -14,7 +14,7 @@ Vous avez une idée, un projet ou une activité… mais vous perdez encore trop 
 
 Aujourd’hui, l’IA peut vous aider à passer beaucoup plus rapidement de **l’idée à l’action**.
 
-Le **samedi 3 octobre 2026 à 19h00 GMT**, je vous donne rendez-vous pour une **Masterclass intensive de 3 heures, 100 % en ligne**, conçue pour les entrepreneurs, porteurs de projets, dirigeants de PME, start-ups et freelances.
+Le **samedi 3 octobre 2026 à 19h00 GMT**, je vous donne rendez-vous pour une **Masterclass intensive de 2 heures, 100 % en ligne**, conçue pour les entrepreneurs, porteurs de projets, dirigeants de PME, start-ups et freelances.
 
 Pendant cette Masterclass, vous apprendrez notamment à :
 
