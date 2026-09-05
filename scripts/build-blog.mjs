@@ -32,13 +32,26 @@ const urlImage = (s = '') => encodeURI(cheminRelatif(s));
 /**
  * Lit l'en-tête entre les deux --- d'un fichier de contenu.
  *
- * Le back office replie les valeurs longues sur plusieurs lignes indentées :
- *     title: Un titre qui depasse la largeur
- *       et se poursuit ici
- * Ces lignes de continuation sont recollées à la valeur précédente. Sans ce
- * recollage, un titre ou une accroche arrive tronqué sur le site — dans la
- * page, dans la balise <title> et dans les aperçus de partage — sans qu'aucun
- * message ne le signale.
+ * Le back office écrit les valeurs longues de deux façons, qu'il faut savoir
+ * lire toutes les deux, sans quoi un titre ou une accroche arrive tronqué sur
+ * le site — dans la page, dans la balise <title> et dans les aperçus de
+ * partage — sans qu'aucun message ne le signale.
+ *
+ * 1. Repliée sur des lignes indentées :
+ *        title: Un titre qui depasse la largeur
+ *          et se poursuit ici
+ *    Les lignes de continuation sont recollées à la valeur précédente.
+ *
+ * 2. En bloc YAML, quand la valeur compte plusieurs paragraphes. L'annonce
+ *    du bloc (>, >-, |, |- …) tient seule sur la ligne de la clé, la valeur
+ *    étant sur les lignes indentées qui suivent, lignes vides comprises :
+ *        excerpt: >-
+ *          Un premier paragraphe.
+ *
+ *          Un second.
+ *    Un « > » replie le tout en un seul paragraphe, un « | » garde les
+ *    retours à la ligne. Sans ce cas, l'annonce elle-même était prise pour la
+ *    valeur : le site affichait « >- » suivi du seul premier paragraphe.
  */
 function analyser(md) {
   const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -46,12 +59,28 @@ function analyser(md) {
   let corps = md;
   if (m) {
     corps = m[2] || '';
+    const lignes = m[1].split(/\r?\n/);
     let cle = null;
-    for (const ligne of m[1].split(/\r?\n/)) {
+    for (let i = 0; i < lignes.length; i++) {
+      const ligne = lignes[i];
       const p = ligne.match(/^([A-Za-z0-9_]+)\s*:\s*(.*)$/);
       if (p) {
         cle = p[1];
-        donnees[cle] = p[2].trim();
+        const val = p[2].trim();
+        const bloc = val.match(/^([|>])(?:[-+]?\d*|\d*[-+]?)$/);
+        if (bloc) {
+          const morceaux = [];
+          while (i + 1 < lignes.length &&
+                 (lignes[i + 1].trim() === '' || /^\s/.test(lignes[i + 1]))) {
+            morceaux.push(lignes[++i].trim());
+          }
+          let valeur = morceaux.join(bloc[1] === '>' ? ' ' : '\n');
+          if (bloc[1] === '>') valeur = valeur.replace(/\s+/g, ' ');
+          donnees[cle] = valeur.trim();
+          cle = null;
+          continue;
+        }
+        donnees[cle] = val;
       } else if (cle && /^\s+\S/.test(ligne)) {
         donnees[cle] = (donnees[cle] + ' ' + ligne.trim()).trim();
       } else {
