@@ -77,6 +77,13 @@ une hauteur fixe. Ces paliers-là viennent de mesures sur le formulaire `BzJr5Q`
 cadre de 280 px → 3326 px de haut, 350 → 2954, 420 → 2763, 480 → 2547, 560 → 2475,
 704 → 2243 — et ne valent que pour lui. Ils ne servent que sur ce chemin de secours.
 
+**La négociation de hauteur est confirmée** : le propriétaire a ouvert l'article le
+5 septembre 2026 et constaté que le cadre s'arrête net sous le dernier champ, sans
+vide. Le repli ne se déclenche donc pas en usage normal. Ne pas revenir à une hauteur
+mesurée : l'aperçu intégré à Claude Code ne déclenche aucun `IntersectionObserver`,
+le formulaire n'y monte jamais, et le repli s'y affiche à tort — ce n'est pas un bug
+du site.
+
 Sont partis avec lui : les paliers de hauteur de `.book__frame` et leurs six requêtes
 média, le panneau `.book__done` et son écouteur `message`, et le `position:sticky` de
 `.book__aside`. Le formulaire faisait quatre fois la hauteur de cette colonne, ce qui
