@@ -35,7 +35,7 @@ L’objectif n’est pas de passer 3 heures à parler de théorie.
 💻 **100 % en ligne**  
 💰 **Participation : 50 €**
 
-          `Les places sont limitées et les inscriptions se terminent le 30 septembre.`
+**Les places sont limitées et les inscriptions se terminent le 30 septembre.**
 
 ### N’ATTENDEZ PAS D’ÊTRE « PRÊT » POUR COMMENCER.
 
