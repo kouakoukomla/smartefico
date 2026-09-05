@@ -329,7 +329,7 @@ p{margin:0}
    Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
    glisser. */
 .rail{position:relative}
-.rail__piste{display:flex;align-items:flex-start;gap:clamp(1rem,3vw,1.5rem);
+.rail__piste{display:flex;align-items:stretch;gap:clamp(1rem,3vw,1.5rem);
   overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
   padding-bottom:.75rem;scrollbar-width:thin;
   scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
@@ -366,7 +366,12 @@ p{margin:0}
 .mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
-.mc p{color:var(--ink-2);font-size:.92rem;flex:1}
+/* Toutes les cartes du rail ont la même hauteur : leurs bas sont alignés.
+   Le texte des masterclass est donc borné à cinq lignes, sans quoi une seule
+   description longue etirerait tout le rail et creuserait un vide sous les
+   cartes d'articles, qui ne portent que leur date et leur titre. */
+.mc p{color:var(--ink-2);font-size:.92rem;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
 /* Le bouton se cale en bas de la carte. Les cartes d'articles n'affichent
    que la date et le titre : sans cela leur bouton remonterait coller au titre,
    alors que celui des masterclass reste poussé vers le bas par le texte. */
