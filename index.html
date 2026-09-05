@@ -370,11 +370,9 @@ p{margin:0}
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
 /* Toutes les cartes du rail ont la même hauteur : leurs bas sont alignés.
-   Le texte des masterclass est donc borné à cinq lignes, sans quoi une seule
-   description longue etirerait tout le rail et creuserait un vide sous les
-   cartes d'articles, qui ne portent que leur date et leur titre. */
-.mc p{color:var(--ink-2);font-size:.92rem;
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+   Aucune ne porte plus de texte courant — date, titre et bouton seulement.
+   Ce reste sert au cas « aucune date ouverte », seule carte a en afficher. */
+.mc p{color:var(--ink-2);font-size:.92rem}
 /* Le bouton se cale en bas de la carte. Les cartes d'articles n'affichent
    que la date et le titre : sans cela leur bouton remonterait coller au titre,
    alors que celui des masterclass reste poussé vers le bas par le texte. */
@@ -1168,7 +1166,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
           <div class="mc__corps">
             <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne</span>
             <h3>Lancer et gérer vos activités grâce à l'IA</h3>
-            <p>Pour entrepreneurs, porteurs de projets, PME et freelances. Au programme : prompt engineering, étude de marché, identité de marque. Inscriptions avant le 30 septembre.</p>
             <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
           </div>
         </article>

@@ -345,11 +345,9 @@ p{margin:0}
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
 /* Toutes les cartes du rail ont la même hauteur : leurs bas sont alignés.
-   Le texte des masterclass est donc borné à cinq lignes, sans quoi une seule
-   description longue etirerait tout le rail et creuserait un vide sous les
-   cartes d'articles, qui ne portent que leur date et leur titre. */
-.mc p{color:var(--ink-2);font-size:.92rem;
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+   Aucune ne porte plus de texte courant — date, titre et bouton seulement.
+   Ce reste sert au cas « aucune date ouverte », seule carte a en afficher. */
+.mc p{color:var(--ink-2);font-size:.92rem}
 /* Le bouton se cale en bas de la carte. Les cartes d'articles n'affichent
    que la date et le titre : sans cela leur bouton remonterait coller au titre,
    alors que celui des masterclass reste poussé vers le bas par le texte. */
