@@ -137,15 +137,6 @@ p{margin:0}
   border-bottom:2px solid transparent;
   transition:border-color .18s ease,color .18s ease}
 .nav__links a:hover{border-bottom-color:var(--yellow)}
-/* Le lien Blog est mis en avant : c'est la seule entrée du menu qui mène
-   ailleurs que sur la page, et la barre étant collante, c'est le rappel du
-   blog que tout le monde voit, quelle que soit la profondeur de lecture.
-   Jaune plein plutôt qu'une pastille : le carré jaune de l'appel à l'action
-   occupe déjà la droite de la barre, deux blocs jaunes se disputeraient le
-   regard. Le trait sous le mot est celui du survol, rendu permanent. */
-.nav__links a.nav__blog{color:var(--yellow);border-bottom-color:var(--yellow)}
-.nav__links a.nav__blog:hover,.nav__links a.nav__blog:focus-visible{
-  color:var(--yellow-hi);border-bottom-color:var(--yellow-hi)}
 /* appel à l'action : un libellé en toutes lettres, puis un carré jaune à la
    flèche — comme dans le modèle. Le carré reste seul quand la place manque. */
 .nav__cta{display:flex;align-items:center;gap:.9rem;text-decoration:none;
@@ -346,14 +337,14 @@ p{margin:0}
    arrête le regard. Le bouton est noir sur jaune : le contraste le plus
    fort disponible, sur la cible qui doit être cliquée. */
 .blog-cta{background:var(--yellow);color:var(--on-yellow);
-  padding-block:clamp(2.5rem,6vw,4rem)}
-.blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem}
+  padding-block:clamp(1.5rem,3.5vw,2.2rem)}
+.blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
 .blog-cta__oeil{color:var(--on-yellow);opacity:.65}
-.blog-cta__titre{font-size:clamp(1.45rem,4.5vw,2.6rem);color:var(--on-yellow);
-  max-width:24ch;line-height:1.08}
+.blog-cta__titre{font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--on-yellow);
+  max-width:34ch;line-height:1.15}
 .blog-cta__btn{display:inline-flex;align-items:center;background:var(--on-yellow);
-  color:#FFF;text-decoration:none;font-weight:700;font-size:1rem;
-  padding:.95rem 1.9rem;border-radius:999px;
+  color:#FFF;text-decoration:none;font-weight:700;font-size:.9rem;
+  padding:.7rem 1.4rem;border-radius:999px;
   transition:transform .18s ease,background-color .18s ease}
 .blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:#000;transform:translateY(-2px)}
 
@@ -732,7 +723,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <a href="#resultats">Nos services</a>
       <a href="#avant-apres">Avant/Après</a>
       <a href="#agenda">Actualités</a>
-      <a class="nav__blog" href="blog.html">Blog</a>
+      <a href="blog.html">Blog</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Menu"
