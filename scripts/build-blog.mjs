@@ -118,11 +118,11 @@ const styleBlog = `<style>
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
 .post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
 .post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
-.post-card__cover{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--noir-2)}
-.post-card__body{padding:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;display:block;background:var(--noir-2)}
+.post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
-.post-card h2{font-size:1.2rem;letter-spacing:-.02em}
-.post-card p{color:var(--ink-2);font-size:.95rem}
+.post-card h2{font-size:1.05rem;letter-spacing:-.02em}
+.post-card p{color:var(--ink-2);font-size:.9rem}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
 .article__back:hover{color:var(--yellow)}
