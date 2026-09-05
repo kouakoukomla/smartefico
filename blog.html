@@ -357,7 +357,8 @@ p{margin:0}
    bouton, qui devient la seule tache de couleur de la zone et donc ce que
    l'œil trouve en premier. Même paire de couleurs que le carré jaune de la
    barre de navigation : jaune plein, texte --on-yellow. */
-.blog-cta{padding-block:clamp(1.5rem,3.5vw,2.2rem)}
+/* Sans fond non plus : l'écart de la pile suffit à l'isoler. */
+.blog-cta{padding-block:0}
 .blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
 .blog-cta__oeil{color:var(--ink-3)}
 .blog-cta__titre{font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--ink);
@@ -407,7 +408,11 @@ p{margin:0}
 .manifesto hr{border:0;border-top:1px solid #333;margin:.2rem 0}
 
 /* ---------- méthode : bloc sombre ---------- */
-.invert{background:var(--noir);color:#F3F3F3;padding-block:var(--gap)}
+/* Marge intérieure alignée sur les autres panneaux noirs (.book 48 px,
+   .contact 56 px). À var(--gap) elle valait 102 px et venait s'ajouter aux
+   102 px d'écart que la pile ménage déjà autour du panneau : 241 px de vide
+   avant le titre, 229 px après le dernier repère. */
+.invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(2rem,4.5vw,3.5rem)}
 .invert .head__eyebrow{background:var(--yellow);color:var(--on-yellow)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
@@ -536,8 +541,10 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .coord .mono{background:none;color:#8A8A86;padding:0}
 /* Signature : bloc autonome et centré, posé sur le fond de page entre le
    bloc de contact et les réseaux. */
+/* Pas de padding vertical : cette section n'a pas de fond, sa marge
+   intérieure se serait ajoutée à l'écart que la pile ménage déjà. */
 .signature{display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:.5rem;padding-block:clamp(2.5rem,6vw,4rem)}
+  gap:.5rem}
 /* height:auto est indispensable : sans lui l attribut height du HTML fait loi,
    aspect-ratio est ignore, et la photo s etire. */
 /* Portrait rond et large, cercle a l anneau jaune. Le cadre carre (aspect 1)
