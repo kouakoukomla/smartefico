@@ -74,6 +74,10 @@ content:
         label: Résumé (accroche)
         type: text
         description: "1 à 2 phrases, affichées sur la vignette du blog."
+      - name: tally_url
+        label: Formulaire d'inscription (Tally)
+        type: string
+        description: "Optionnel. Collez le lien du formulaire, ex. https://tally.so/r/BzJr5Q : il sera incrusté à la fin de l'article."
       - name: published
         label: Publié sur le site
         type: boolean

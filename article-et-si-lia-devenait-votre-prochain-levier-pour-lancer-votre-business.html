@@ -657,6 +657,28 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .article__body a:hover{color:var(--yellow)}
+/* Formulaire Tally incruste en fin d article.
+   Tally n emet aucune hauteur (voir CLAUDE.md) : les paliers ci-dessous
+   viennent de mesures, prises en ouvrant le formulaire BzJr5Q seul et en
+   relevant scrollHeight. Largeur du cadre -> hauteur du formulaire :
+       280 px -> 3326    350 px -> 2954    420 px -> 2763
+       480 px -> 2547    560 px -> 2475    704 px -> 2243
+   Le cadre vaut min(largeur de page - 40 px, 704 px), d ou les seuils.
+   Chaque palier garde 120 a 210 px de marge.
+   A REMESURER pour un autre formulaire, ou si celui-ci change dans Tally :
+   trop court, il prend une barre de defilement imbriquee sans rien signaler. */
+.tally{margin-top:3rem}
+.tally h2{font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;margin:0 0 1.2rem}
+.tally__frame{display:block;width:100%;border:0;min-height:3700px;background:#1a1917;border-radius:.9rem}
+@media(min-width:20rem){.tally__frame{min-height:3400px}}
+@media(min-width:23rem){.tally__frame{min-height:3200px}}
+@media(min-width:25rem){.tally__frame{min-height:3050px}}
+@media(min-width:30rem){.tally__frame{min-height:2820px}}
+@media(min-width:36rem){.tally__frame{min-height:2620px}}
+@media(min-width:46.5rem){.tally__frame{min-height:2400px}}
+.tally__alt{color:var(--ink-3);font-size:.9rem;margin-top:.9rem}
+.tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.tally__alt a:hover{color:var(--yellow)}
 .article__body blockquote{border-left:3px solid var(--yellow);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}
 .article__body img{max-width:100%;height:auto;border-radius:.6rem;margin:1.2rem 0}
 .article__body code{background:var(--noir-2);padding:.15em .4em;border-radius:4px;font-size:.9em}
@@ -697,6 +719,13 @@ h2.head__eyebrow{font-weight:600;margin:0}
 <p><strong>Votre prochaine activité peut commencer par une idée.</strong><br><strong>Mais elle peut aller beaucoup plus vite avec l’IA.</strong></p>
 
     </div>
+    <section class="tally" aria-labelledby="tally-titre">
+      <h2 id="tally-titre">Je réserve ma place</h2>
+      <iframe class="tally__frame" src="https://tally.so/embed/BzJr5Q?alignLeft=1&amp;hideTitle=1"
+              title="Formulaire d'inscription" loading="lazy"></iframe>
+      <p class="tally__alt">Le formulaire ne s'affiche pas&nbsp;?
+        <a href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">Ouvrez-le dans un nouvel onglet</a>.</p>
+    </section>
     <p style="margin-top:2.5rem"><a class="btn btn--line" href="index.html#appel">Me contacter</a></p>
   </main>
   <footer class="wrap blog-foot">

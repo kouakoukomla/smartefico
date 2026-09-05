@@ -8,6 +8,7 @@ excerpt: >-
 
   Une Masterclass concrète pour passer de l’idée à l’action avec des outils et
   méthodes directement applicables.
+tally_url: https://tally.so/r/BzJr5Q
 published: true
 ---
 Vous avez une idée, un projet ou une activité… mais vous perdez encore trop de temps à chercher **quoi faire, comment vous positionner et par où commencer** ?

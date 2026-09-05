@@ -60,6 +60,14 @@ fichiers d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
 la section Réservation ne contient plus d'`iframe` : un bouton « Ouvrir le formulaire »
 mène à `https://tally.so/r/81VkKx` dans un nouvel onglet.
 
+**En revanche il est incrusté dans un article de blog.** Un article dont l'en-tête porte
+un `tally_url` reçoit le formulaire correspondant en fin de page, monté par
+`build-blog.mjs`. Le champ est éditable dans le back office. Les paliers de hauteur de
+`.tally__frame` viennent de mesures prises sur le formulaire `BzJr5Q` — cadre de 280 px
+→ 3326 px de haut, 350 → 2954, 420 → 2763, 480 → 2547, 560 → 2475, 704 → 2243. **À
+remesurer pour un autre formulaire**, ou si celui-ci change dans Tally : trop court, le
+cadre prend une barre de défilement imbriquée sans que rien ne le signale.
+
 Sont partis avec lui : les paliers de hauteur de `.book__frame` et leurs six requêtes
 média, le panneau `.book__done` et son écouteur `message`, et le `position:sticky` de
 `.book__aside`. Le formulaire faisait quatre fois la hauteur de cette colonne, ce qui
