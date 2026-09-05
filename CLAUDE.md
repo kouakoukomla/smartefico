@@ -150,6 +150,15 @@ navigateur :
 ## Déploiement
 
 Dépôt `kouakoukomla/smartefico`, branche `main`, cible GitHub Pages depuis la racine.
-Le dépôt est privé à ce jour, ce qui empêche Pages de publier sur un compte gratuit.
+
+**Le site est en ligne.** Vérifié le 5 septembre 2026 : le dépôt est public
+(`visibility: public` renvoyé par l'API sans authentification) et
+`https://kouakoukomla.github.io/smartefico/` répond `200` en servant le dernier
+commit. La note précédente disait le contraire — dépôt privé, Pages empêchée de
+publier — elle datait d'avant le passage en public.
+
+Conséquence à garder en tête : **tout ce qui est poussé sur `main` est visible de
+tous**, code compris. Rien de secret ne doit entrer dans le dépôt.
+
 `index-autonome.html` est exclu du dépôt : servi par Pages, il ferait doublon avec la
 page d'accueil.
