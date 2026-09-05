@@ -355,12 +355,15 @@ p{margin:0}
   transition:border-color .2s ease}
 .mc:hover{border-color:var(--yellow)}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
-/* contain, et non cover : les affiches de masterclass sont en portrait, les
-   rogner couperait le visage ou la date. Le fond comble le reste. */
+/* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
+   comprises. */
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
-  object-fit:contain;background:var(--noir-2)}
-/* les couvertures d'articles sont en paysage : là, le rognage est le bon */
-.mc--article .mc__affiche img{object-fit:cover}
+  object-fit:cover;background:var(--noir-2)}
+/* Les affiches sont en portrait : on n'en voit qu'une bande. Prise au centre,
+   elle coupe le visage à hauteur du menton — vérifié sur l'affiche actuelle,
+   1000x1250. Remontée à 17 %, elle cadre le portrait entier et le titre.
+   À revoir si une affiche de composition différente est publiée. */
+.mc:not(.mc--article) .mc__affiche img{object-position:center 17%}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
   padding:clamp(1.1rem,2.4vw,1.5rem)}
 .mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
