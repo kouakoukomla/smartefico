@@ -181,6 +181,31 @@ navigateur :
   dossier par joker — `(Resolve-Path "…\Mon Deuxi*me site web").Path` — plutôt que de
   l'écrire en clair.
 
+**Les fins de ligne sont en LF partout**, imposées par `.gitattributes` :
+
+```
+* text=auto eol=lf
+```
+
+Dépôt, disque et scripts écrivent tous en LF. Les images, PDF et polices sont marqués
+`binary` pour qu'aucune conversion ne les approche.
+
+Cette règle existe parce que deux sources écrivaient en sens contraire. Les scripts
+(`sync-content.mjs`, `sync-legal.mjs`, `build-blog.mjs`, `build-standalone.mjs`)
+produisent du LF ; les fichiers déposés par l'interface web de GitHub arrivent en CRLF.
+Les deux se mélangeaient dans un même fichier, et chaque enregistrement depuis le back
+office produisait des dizaines de lignes « modifiées » dont seul le retour chariot
+changeait. Le contenu était identique ; le bruit, lui, noyait les vraies modifications.
+`index.html` en a compté jusqu'à 268 d'un coup.
+
+Conséquence pratique : **tout script qui écrit un fichier du dépôt doit émettre du LF.**
+Un `join('\r\n')` réintroduirait le problème — le fichier serait enregistré en LF malgré
+tout, mais `git status` le signalerait modifié en permanence, sans rien à enregistrer.
+
+`.git-blame-ignore-revs` fait sauter à `git blame` le commit de normalisation, qui a
+touché 6 608 lignes sans changer un caractère. GitHub le lit tout seul ; en local,
+`git config blame.ignoreRevsFile .git-blame-ignore-revs`.
+
 ## Déploiement
 
 Dépôt `kouakoukomla/smartefico`, branche `main`. **Le site est servi par deux hôtes
