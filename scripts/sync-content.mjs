@@ -186,6 +186,18 @@ function idYoutube(url) {
 }
 
 const video = lireFichier('content/pages/video.md');
+
+// Titre et chapô de la section, au même régime que le hero : un mot entre
+// astérisques passe en italique sérif.
+if (video.section_titre) {
+  index = injecter(index, 'INTERIEUR_TITRE', accent(video.section_titre));
+  resume.push('intérieur : titre');
+}
+if (video.section_chapo) {
+  index = injecter(index, 'INTERIEUR_CHAPO', escTexte(video.section_chapo));
+  resume.push('intérieur : chapô');
+}
+
 const idVideo = idYoutube(video.youtube_url);
 if (idVideo) {
   const titre = escAttr(video.titre || 'Vidéo SmartEfico');

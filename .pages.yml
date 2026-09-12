@@ -152,6 +152,14 @@ content:
     type: file
     path: content/pages/video.md
     fields:
+      - name: section_titre
+        label: Titre de la section
+        type: text
+        description: "Mettez un mot *entre astérisques* pour l'afficher en italique sérif."
+      - name: section_chapo
+        label: Texte sous le titre
+        type: text
+        description: "Les deux ou trois phrases qui présentent la vidéo."
       - name: youtube_url
         label: Lien de la vidéo YouTube
         type: text
