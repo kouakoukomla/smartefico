@@ -53,3 +53,7 @@ assets/yt-ia-emails.jpg
 # Node (npx/npm sont utilisés localement pour le détecteur de design)
 node_modules/
 *.log
+
+# Maquette de demonstration (style weichie.com) — hors depot.
+# Elle cite deux clients non valides ; le depot est public.
+maquette-weichie.html
