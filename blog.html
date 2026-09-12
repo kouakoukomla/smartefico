@@ -124,9 +124,9 @@ p{margin:0}
 .nav__cta-texte{transition:opacity .18s ease}
 .nav__cta:hover .nav__cta-texte{opacity:.65}
 .nav__fleche{display:grid;place-items:center;width:2.65rem;height:2.65rem;flex:none;
-  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
+  color:var(--ground);background:var(--ink);border-radius:9px;font-size:1.15rem;line-height:1;
   transition:background-color .18s ease,transform .18s ease}
-.nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
+.nav__cta:hover .nav__fleche{background:#E6E6E2;transform:translate(2px,-2px)}
 /* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
    tiennent pas ensemble sur une ligne. Mesuré : il leur faut 413 px, d où ce
    seuil de 28 rem — en dessous, la barre se coupait en deux. */
@@ -205,7 +205,7 @@ p{margin:0}
 @media (max-width:60rem){.hero__bg .ruler,.hero__bg .scenario{display:none}}
 .hero__status{display:inline-flex;align-items:center;gap:.6rem;color:var(--ink-2);
   font-size:.92rem;align-self:center;order:-1}
-.hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--yellow);
+.hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--ink);
   flex:none;box-shadow:0 0 0 4px rgba(255,204,0,.35)}
 /* accent de titre : serif italique au milieu du grotesque, comme chez eux.
    Le serif est plus étroit, on compense légèrement la chasse. */
@@ -218,8 +218,8 @@ p{margin:0}
 .hero__actions{gap:.75rem;width:100%}
 .hero__actions .btn{font-size:1rem;min-height:3.25rem;
   padding:.85rem 1.4rem;justify-content:center;min-width:14rem}
-.hero__actions .btn--solid{background:var(--yellow);color:var(--on-yellow)}
-.hero__actions .btn--solid:hover{background:var(--yellow-hi)}
+.hero__actions .btn--solid{background:var(--ink);color:var(--ground)}
+.hero__actions .btn--solid:hover{background:#E6E6E2}
 @media (max-width:35rem){
   .hero__actions{max-width:24rem}
   .hero__actions .btn{width:100%;min-width:0}
@@ -228,43 +228,35 @@ p{margin:0}
   font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
 .btn--solid{background:var(--ink);color:var(--surface)}
-.btn--solid:hover{background:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+.btn--solid:hover{background:var(--ink);color:var(--ground);transform:translateY(-2px)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
-.btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+.btn--line:hover{background:var(--ink);border-color:var(--ink);color:var(--ground);transform:translateY(-2px)}
 
-/* ---------- bandeau de références défilant ----------
-   Deux pistes identiques défilent côte à côte : quand la première a
-   parcouru toute sa largeur, la seconde a pris exactement sa place, d'où
-   une boucle sans saut. La seconde est masquée aux lecteurs d'écran. */
-.ticker{background:var(--yellow);color:var(--on-yellow);overflow:hidden;display:flex;
-  user-select:none}
-.ticker__piste{display:flex;flex:none;animation:defile 26s linear infinite}
-.ticker__lot{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem;
-  white-space:nowrap;font-weight:700;letter-spacing:-.01em;
-  font-size:clamp(.95rem,1.8vw,1.15rem);padding-block:.95rem}
-.ticker__lot > span::after{content:"◆";font-size:.5em;margin-left:2.5rem;opacity:.45;
-  vertical-align:middle}
-.ticker__label{font-weight:600;text-transform:uppercase;letter-spacing:.14em;
-  font-size:.72rem;color:#6B5600}
-/* le survol suspend la lecture, pour laisser le temps de lire un nom */
-.ticker:hover .ticker__piste,.ticker:focus-within .ticker__piste{animation-play-state:paused}
-@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-/* si le visiteur a demandé moins d'animations, la bande ne bouge pas
-   et la seconde piste disparaît pour ne pas dupliquer le texte */
-@media (prefers-reduced-motion:reduce){
-  .ticker{justify-content:center}
-  .ticker__piste{animation:none}
-  .ticker__piste[aria-hidden="true"]{display:none}
-  .ticker__lot{flex-wrap:wrap;white-space:normal;justify-content:center}
-}
+/* ---------- bandeau de références ----------
+   Il ne défile plus. Les dix mots tiennent sur une ou deux lignes centrées
+   et se lisent d’un coup, au lieu de passer à moitié cachés en boucle.
+   Sont partis avec le mouvement : la seconde piste jumelle qui servait à
+   boucler sans saut, l’animation `defile` et son arrêt au survol, la règle
+   `prefers-reduced-motion` qui n’a plus rien à neutraliser, les losanges
+   séparateurs (dans une liste qui s’enroule, celui qui tombe en fin de
+   ligne pend dans le vide — c’est l’écart qui sépare désormais), et
+   `.ticker__label`, dont la couleur olive ne tenait que sur l’ancien fond
+   jaune : elle n’était appelée nulle part. */
+.ticker{background:var(--ground);color:var(--ink-2);border-block:1px solid var(--line);
+  display:flex;justify-content:center;user-select:none}
+.ticker__lot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:.75rem clamp(2rem,4vw,3.5rem);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(.95rem,1.8vw,1.15rem);padding:.95rem 1.25rem}
 
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
-.head__eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--on-yellow);
-  align-self:flex-start;background:var(--yellow);padding:.3rem .7rem;border-radius:3px}
+/* Les dix pastilles jaunes qui coiffaient les titres de section ont été
+   retirées : chaque titre porte déjà son sujet, et l’une d’elles répétait
+   le sien mot pour mot. Ne subsiste que le titre de la section Réservation,
+   qui est un vrai h2 : il garde la casse et le suivi de `.mono`, sans aplat. */
+.head__eyebrow{color:var(--ink-3)}
 /* variante centrée : étiquette, titre et chapô alignés au milieu de la section */
 .head--centre{align-items:center;text-align:center}
-.head--centre .head__eyebrow{align-self:center}
 .head--centre .lead{margin-inline:auto}
 
 /* ---------- chiffres ---------- */
@@ -296,7 +288,7 @@ p{margin:0}
 .offer:hover .offer__no{color:var(--ink)}
 .offer p{color:var(--ink-2);font-size:.98rem}
 .kpi{margin-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--yellow);color:var(--on-yellow);padding:.4rem .7rem;
+  background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);padding:.4rem .7rem;
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
@@ -323,7 +315,7 @@ p{margin:0}
   background:rgba(0,0,0,.72);color:var(--ink);font-size:1.4rem;line-height:1;
   cursor:pointer;align-items:center;justify-content:center;
   transition:background-color .18s ease,border-color .18s ease,opacity .18s ease}
-.rail__fleche:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.rail__fleche:hover{background:var(--ink);border-color:var(--ink);color:var(--ground)}
 .rail__fleche[disabled]{opacity:.25;cursor:default}
 .rail__fleche[disabled]:hover{background:rgba(0,0,0,.72);border-color:var(--line);color:var(--ink)}
 .rail__fleche--prec{left:-.6rem}
@@ -350,7 +342,7 @@ p{margin:0}
 .mc:not(.mc--article) .mc__affiche img{object-position:center 17%}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
   padding:clamp(1.1rem,2.4vw,1.5rem)}
-.mc__date{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
+.mc__date{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
 /* Toutes les cartes du rail ont la même hauteur : leurs bas sont alignés.
@@ -372,11 +364,11 @@ p{margin:0}
 .blog-cta__oeil{color:var(--ink-3)}
 .blog-cta__titre{font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--ink);
   max-width:34ch;line-height:1.15}
-.blog-cta__btn{display:inline-flex;align-items:center;background:var(--yellow);
-  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:.9rem;
+.blog-cta__btn{display:inline-flex;align-items:center;background:var(--ink);
+  color:var(--ground);text-decoration:none;font-weight:700;font-size:.9rem;
   padding:.7rem 1.4rem;border-radius:999px;
   transition:transform .18s ease,background-color .18s ease}
-.blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:var(--yellow-hi);
+.blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:#E6E6E2;
   transform:translateY(-2px)}
 
 /* ---------- agents IA ---------- */
@@ -388,7 +380,7 @@ p{margin:0}
 .agent figure{margin:0;overflow:hidden;background:var(--ground);border:1px solid var(--line)}
 .agent figure img{width:100%;height:auto;display:block;transition:transform .5s ease}
 .agent:hover figure img{transform:scale(1.02)}
-.agent__tag{align-self:flex-start;background:var(--yellow);color:var(--on-yellow);
+.agent__tag{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
   padding:.25rem .6rem;margin-top:.4rem}
 .agent h3,.agent p{padding-inline:.25rem}
 .agent p{color:var(--ink-2);font-size:1rem}
@@ -404,7 +396,7 @@ p{margin:0}
   margin:0;padding:0}
 .deliver li{list-style:none;display:flex;align-items:flex-start;gap:.85rem;
   padding-block:.9rem;border-bottom:1px solid var(--line);font-size:1rem}
-.deliver li::before{content:"";width:.5rem;height:.5rem;background:var(--yellow);
+.deliver li::before{content:"";width:.5rem;height:.5rem;background:var(--ink);
   flex:none;transform:rotate(45deg);margin-top:.55rem}
 .deliver li b{font-weight:700}
 /* bloc de contraste : le manifeste est la voix de la maison */
@@ -422,7 +414,6 @@ p{margin:0}
    102 px d'écart que la pile ménage déjà autour du panneau : 241 px de vide
    avant le titre, 229 px après le dernier repère. */
 .invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(2rem,4.5vw,3.5rem)}
-.invert .head__eyebrow{background:var(--yellow);color:var(--on-yellow)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
 .steps{display:flex;flex-direction:column;border-top:2px solid var(--yellow)}
@@ -443,16 +434,19 @@ p{margin:0}
 @media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
 .ba__col{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.4rem,3vw,2.1rem);display:flex;flex-direction:column;gap:1rem}
-.ba__col--apres{background:var(--yellow);border-color:var(--yellow)}
+/* La colonne d’arrivée était un aplat jaune plein. Elle se distingue
+   désormais par sa clarté, pas par sa couleur : fond noir comme l’autre,
+   bordure plus vive, texte en blanc plein contre le gris d’en face. */
+.ba__col--apres{border-color:#3A3A38}
 .ba__titre{color:var(--ink-2)}
-.ba__col--apres .ba__titre{color:#6B5600}
+.ba__col--apres .ba__titre{color:var(--ink)}
 .ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
 .ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
   font-size:.98rem;line-height:1.5}
-.ba__col--apres li{color:var(--on-yellow);font-weight:500}
+.ba__col--apres li{color:var(--ink);font-weight:500}
 .ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
   background:var(--ink-3);border-radius:50%}
-.ba__col--apres li::before{background:var(--on-yellow);transform:rotate(45deg);border-radius:0}
+.ba__col--apres li::before{background:var(--ink);transform:rotate(45deg);border-radius:0}
 
 /* ---------- public ciblé ---------- */
 .aud{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,16rem),1fr));
@@ -461,7 +455,7 @@ p{margin:0}
   padding:1rem 1.15rem;display:flex;align-items:flex-start;gap:.75rem;font-weight:500;
   transition:border-color .2s ease}
 .aud li:hover{border-color:var(--yellow)}
-.aud li::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);flex:none;
+.aud li::before{content:"";width:.55rem;height:.55rem;background:var(--ink);flex:none;
   transform:rotate(45deg);margin-top:.5rem}
 
 /* ---------- pourquoi nous ---------- */
@@ -470,7 +464,7 @@ p{margin:0}
 .why article{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.75rem}
 .why .mono{color:var(--ink-2);display:flex;align-items:center;gap:.55rem}
-.why .mono::before{content:"";width:.55rem;height:.55rem;background:var(--yellow);
+.why .mono::before{content:"";width:.55rem;height:.55rem;background:var(--ink);
   flex:none;transform:rotate(45deg)}
 .why p{color:var(--ink-2)}
 
@@ -507,7 +501,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .book__facts li{position:relative;display:flex;flex-direction:column;gap:.15rem;
   padding-left:1.1rem}
 .book__facts li::before{content:"";position:absolute;left:0;top:.4rem;
-  width:.5rem;height:.5rem;background:var(--yellow);transform:rotate(45deg)}
+  width:.5rem;height:.5rem;background:var(--ink);transform:rotate(45deg)}
 .book__facts b{font-weight:700;font-size:.9rem;color:#FFF}
 .book__facts span{font-size:.9rem;color:#B5B5B1}
 .book__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
@@ -519,7 +513,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   color:#F3F3F3;text-decoration:none;padding:.9rem 1.5rem;font-weight:700;
   border:1.5px solid var(--ink);border-radius:999px;
   transition:color .18s ease,background-color .18s ease}
-.book__alt-tel:hover{color:var(--on-yellow);background:var(--yellow);border-color:var(--yellow)}
+.book__alt-tel:hover{color:var(--ground);background:var(--ink);border-color:var(--ink)}
 /* Invitation à ouvrir le formulaire. Le fond #1a1917 est celui du thème
    sombre de Tally : le visiteur retrouve la même surface une fois le
    nouvel onglet ouvert. */
@@ -527,11 +521,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
   background:#1a1917;border:1px solid #2C2B28;padding:clamp(1.5rem,4vw,2.5rem)}
 .book__invite h3{font-size:clamp(1.15rem,2.4vw,1.5rem);color:#FFF;margin:0}
 .book__invite p{color:#B5B5B1;font-size:.95rem;max-width:46ch}
-.book__btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
+.book__btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);
   color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:1rem;
   padding:.9rem 1.7rem;border-radius:999px;
   transition:transform .18s ease,background-color .18s ease}
-.book__btn:hover,.book__btn:focus-visible{background:var(--yellow-hi);
+.book__btn:hover,.book__btn:focus-visible{background:#E6E6E2;
   transform:translateY(-2px)}
 .book__btn,.book__alt-tel{max-width:100%;text-align:center;min-height:3.25rem}
 
@@ -540,7 +534,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   display:flex;flex-direction:column;gap:1.2rem;align-items:center;text-align:center}
 .contact .display{color:#FFF}
 .contact .lead{color:#B5B5B1;max-width:52ch}
-.contact .mono{background:var(--yellow);color:var(--on-yellow);padding:.3rem .7rem;
+.contact .mono{background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);padding:.3rem .7rem;
   align-self:center;border-radius:3px}
 .coords{display:grid;gap:.75rem;margin-top:.5rem;width:100%;
   grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
@@ -576,7 +570,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .icons a{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;
   border:1.5px solid var(--line);color:var(--ink);background:var(--surface);
   transition:background-color .18s ease,color .18s ease,transform .18s ease,border-color .18s ease}
-.icons a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+.icons a:hover{background:var(--ink);border-color:var(--ink);color:var(--ground);transform:translateY(-2px)}
 .icons svg{width:1.3rem;height:1.3rem;fill:currentColor;display:block}
 
 /* ---------- pied ---------- */
@@ -617,18 +611,18 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .doc-modal__body section:first-child{border-top:0;padding-top:0}
 .doc-modal__body h2{font-weight:700;letter-spacing:-.02em;line-height:1.2;
   font-size:1.3rem;margin:0 0 .9rem;display:flex;gap:.8rem;align-items:baseline;color:var(--ink)}
-.doc-modal__body h2 .num{color:var(--on-yellow);background:var(--yellow);padding:0 .35rem;
+.doc-modal__body h2 .num{color:var(--ground);background:var(--ink);padding:0 .35rem;
   flex:none;letter-spacing:-.03em}
 .doc-modal__body h3{font-weight:700;font-size:1.3rem;margin:1.4rem 0 .5rem}
 .doc-modal__body p{margin:0 0 .85rem;color:var(--ink-2)}
 .doc-modal__body ul{margin:0 0 .85rem;padding:0;list-style:none;
   display:flex;flex-direction:column;gap:.4rem}
 .doc-modal__body ul li{display:flex;gap:.75rem;align-items:flex-start;color:var(--ink-2)}
-.doc-modal__body ul li::before{content:"";width:.45rem;height:.45rem;background:var(--yellow);
+.doc-modal__body ul li::before{content:"";width:.45rem;height:.45rem;background:var(--ink);
   flex:none;transform:rotate(45deg);margin-top:.6rem}
 .doc-modal__body strong{font-weight:600;color:var(--ink)}
-.doc-modal__body .mark,.doc-modal__body .warn{background:var(--yellow);padding:.15rem .45rem;
-  font-weight:600;color:var(--on-yellow)}
+.doc-modal__body .mark,.doc-modal__body .warn{background:var(--ink);padding:.15rem .45rem;
+  font-weight:600;color:var(--ground)}
 .doc-modal__body .contact-box{border:1px solid var(--line);background:var(--ground);
   padding:1.1rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
 .doc-modal__body .contact-box a{font-weight:700;font-size:1.2rem;letter-spacing:-.02em;
