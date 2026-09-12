@@ -71,17 +71,12 @@ p{margin:0 0 .9rem}
 p:last-child{margin-bottom:0}
 ul{margin:0 0 .9rem;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
 ul li{display:flex;gap:.75rem;align-items:flex-start}
-ul li::before{content:"";width:.45rem;height:.45rem;background:var(--yellow);flex:none;
+ul li::before{content:"";width:.45rem;height:.45rem;background:var(--ink);flex:none;
   transform:rotate(45deg);margin-top:.62rem;
   outline:1px solid var(--black);outline-offset:-1px}
 strong{font-weight:600}
-.pack{border:1px solid var(--rule);background:var(--surface);padding:1.25rem 1.4rem;
-  margin-bottom:1rem}
-.pack__name{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:.6rem}
-.pack__name b{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:800;
-  font-size:1.35rem;letter-spacing:-.02em}
-.pack__name span{background:var(--yellow);color:var(--on-yellow);padding:.15rem .5rem;font-weight:600}
-.warn{background:var(--yellow);color:var(--on-yellow);padding:.15rem .45rem;font-weight:600}
+/* Les règles .pack et .warn ont été retirées : elles habillaient les forfaits
+   chiffrés supprimés des CGV, et plus aucun markup ne les appelait. */
 
 footer.doc{border-top:1px solid var(--rule);padding-block:2rem;
   display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
