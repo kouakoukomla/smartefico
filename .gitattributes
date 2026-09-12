@@ -1,0 +1,32 @@
+# Fins de ligne
+#
+# Le dépôt stocke tout le texte en LF, quelle que soit la machine qui écrit.
+#
+# Pourquoi : les scripts (sync-content.mjs, sync-legal.mjs, build-blog.mjs,
+# build-standalone.mjs) écrivent en LF, alors que les fichiers déposés par
+# l'interface web de GitHub arrivent en CRLF. Les deux se mélangeaient dans
+# un même fichier, et chaque enregistrement depuis le back office produisait
+# des dizaines de lignes « modifiées » dont seul le retour chariot changeait.
+# Le contenu était identique ; le bruit, lui, masquait les vraies
+# modifications dans les diffs.
+#
+# `text=auto` supprime la cause : git normalise en LF au moment d'enregistrer,
+# donc une ligne écrite en CRLF et la même écrite en LF donnent le même
+# enregistrement. Plus aucun diff fantôme, d'où qu'ait été édité le fichier.
+* text=auto
+
+# Images : jamais de conversion, elle les corromprait.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.avif binary
+*.pdf  binary
+
+# Polices, si un jour l'une d'elles est auto-hébergée.
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
