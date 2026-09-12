@@ -87,9 +87,11 @@ body{
 img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+/* Blanc plein comme les autres boutons. Il reste la chose la plus claire
+   de la page au moment où il paraît, ce qui est tout ce qu'on lui demande. */
 .skip-link{position:fixed;top:1rem;left:1rem;z-index:100;
-  transform:translateY(-200%);padding:.8rem 1rem;background:var(--yellow);
-  color:var(--on-yellow);font-weight:700;border-radius:.5rem}
+  transform:translateY(-200%);padding:.8rem 1rem;background:var(--ink);
+  color:var(--ground);font-weight:700;border-radius:.5rem}
 .skip-link:focus{transform:translateY(0)}
 
 .wrap{width:min(100% - 2.5rem,74rem);margin-inline:auto}

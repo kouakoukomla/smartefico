@@ -125,9 +125,13 @@ dans la page. Jaune `#FFCC00`, blanc.
 comme aplat : il ne subsiste qu'en trait fin, en icône, en survol, et sur les mots
 que le titre d'accueil met en valeur. C'est le blanc qui porte l'emphase — boutons
 pleins, puces, étiquettes relevées. Le jaune ne tient pas sur fond blanc (1,5:1) :
-dans une zone claire, il n'a pas sa place. Seule exception conservée, le `.skip-link`,
-invisible tant qu'on ne navigue pas au clavier : son aplat jaune sert à le rendre
-impossible à manquer au moment où il apparaît.
+dans une zone claire, il n'a pas sa place.
+
+**Sans aucune exception, y compris le `.skip-link`.** Il avait d'abord été épargné,
+au motif qu'il n'apparaît qu'à la navigation clavier et doit être impossible à
+manquer à cet instant. Le propriétaire a tranché : il passe au blanc comme le reste.
+Il demeure la chose la plus claire de la page au moment où il paraît, ce qui suffit
+à son office.
 
 **Polices, telles qu'elles sont réellement dans le code.** Une version précédente de
 ce fichier annonçait Bricolage Grotesque, Schibsted Grotesk et DM Mono : aucune des
