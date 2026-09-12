@@ -1,0 +1,11 @@
+# Commits de pure mise en forme, a ignorer dans git blame.
+#
+# Sans ce fichier, la normalisation des fins de ligne attribuerait chaque
+# ligne du site a son auteur, et « qui a ecrit cette ligne » ne repondrait
+# plus rien d utile.
+#
+# GitHub le lit automatiquement. En local :
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# Normaliser les fins de ligne : LF dans le depot
+f9e7012dfe503cb775e81f040b03d111f4238297
