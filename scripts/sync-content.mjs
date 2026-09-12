@@ -141,7 +141,7 @@ if (accueil.hero_subtitle) {
 // --- VISUELS (portrait, logo, image de partage) -----------------------------
 // Les balises sont régénérées en entier : les dimensions viennent du CSS
 // (.logo et .signature__photo), donc changer d'image ne déforme jamais rien.
-const SITE = 'https://kouakoukomla.github.io/smartefico';
+const SITE = 'https://smartefico-z7.vercel.app';
 const visuels = lireFichier('content/pages/visuels.md');
 
 if (visuels.portrait) {

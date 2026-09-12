@@ -1,4 +1,4 @@
 ---
-hero_title: Générez des *leads qualifiés* pour vos offres et mettez l'*IA générative* au service de votre performance.
-hero_subtitle: SmartEfico installe le système complet qui remplit votre agenda : tunnel de rendez-vous, publicités pilotées sur Meta, LinkedIn et TikTok, qualification des prospects par agents IA. Vous récupérez des leads qualifiés, pas des listes de contacts.
+hero_title: Des *leads qualifiés*. Une acquisition qui avance.
+hero_subtitle: Pour les PME et ETI : nous connectons vos publicités, votre tunnel de rendez-vous et vos agents IA pour qualifier chaque demande et la transmettre à votre équipe commerciale.
 ---

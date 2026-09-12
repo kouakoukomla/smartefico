@@ -19,7 +19,7 @@ import { marked } from 'marked';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dossierArticles = join(racine, 'content', 'articles');
-const SITE = 'https://kouakoukomla.github.io/smartefico';
+const SITE = 'https://smartefico-z7.vercel.app';
 
 // --- utilitaires ------------------------------------------------------------
 const escTexte = (s = '') =>

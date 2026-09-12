@@ -1,7 +1,8 @@
 # Site SmartEfico
 
 Site vitrine de SmartEfico — génération de leads qualifiés et IA générative.
-Trois pages en HTML/CSS statique, sans framework, sans dépendance à installer.
+Pages en HTML/CSS statique, sans framework. Le blog et les zones éditables sont
+régénérés avec `npm run build:content` après installation des dépendances (`npm ci`).
 
 ## Contenu du dépôt
 
@@ -17,12 +18,13 @@ Les trois pages se lient entre elles et pointent toutes vers `assets/`.
 
 ## Adresse du site
 
-Le site est configuré pour **https://kouakoukomla.github.io/smartefico**.
+L'adresse publique de référence est **https://smartefico-z7.vercel.app**.
 
-Cette adresse figure dans `index.html` (balise canonique, balises de partage,
-données structurées) et en haut de `cgv.html` et `cgc.html`. Le jour où vous prenez
-un vrai nom de domaine, un chercher-remplacer sur les trois fichiers suffit —
-sans quoi l'aperçu au partage LinkedIn continuera de pointer vers l'ancienne adresse.
+Cette adresse figure dans les pages HTML (balises canoniques, balises de partage,
+données structurées), ainsi que dans `scripts/sync-content.mjs` et
+`scripts/build-blog.mjs`. Pour changer de domaine, mettre à jour les pages et ces
+deux scripts, puis régénérer le contenu pour conserver la bonne adresse après
+une édition dans Pages CMS.
 
 ## Déployer avec GitHub Pages
 
