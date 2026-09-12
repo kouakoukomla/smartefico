@@ -3,6 +3,8 @@
  * Régénère les zones « pilotées par le back office » de index.html à partir des
  * fichiers de content/ (édités via Pages CMS) :
  *   - HERO_TITLE / HERO_SUB : accroche et sous-titre du hero (content/pages/accueil.md)
+ *   - VISUEL_*               : portrait, logo, image de partage (content/pages/visuels.md)
+ *   - VIDEO                  : vidéo « à l'intérieur » (content/pages/video.md)
  *   - FAQ                    : questions fréquentes (content/faq/*.md)
  *   - MASTERCLASS            : évènements (content/masterclasses/*.md)
  *
@@ -91,7 +93,12 @@ function analyser(md) {
       const v = donnees[k];
       if (v.length > 1 &&
           ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))))
-        donnees[k] = v.slice(1, -1);
+        // YAML double l'apostrophe à l'intérieur d'une chaîne entre apostrophes.
+        // Sans ce décodage, un titre saisi dans le back office ressortait avec
+        // « l''IA » au lieu de « l'IA ».
+        donnees[k] = v.startsWith("'")
+          ? v.slice(1, -1).replace(/''/g, "'")
+          : v.slice(1, -1);
     }
   }
   donnees.body = corps.trim();
@@ -163,6 +170,40 @@ if (visuels.og_image) {
   index = injecter(index, 'VISUEL_OG', `<meta property="og:image" content="${og}">`);
   index = injecter(index, 'VISUEL_TWITTER', `<meta name="twitter:image" content="${og}">`);
   resume.push('visuel : image de partage');
+}
+
+// --- VIDÉO « à l'intérieur » -----------------------------------------------
+// Le champ accepte n'importe laquelle des formes que YouTube distribue :
+// watch?v=, youtu.be/, /embed/, /shorts/, /live/. On n'en garde que
+// l'identifiant, puis on le remonte sur youtube-nocookie.com — même lecteur,
+// sans cookie de suivi tant que le visiteur n'a pas lancé la lecture.
+function idYoutube(url) {
+  if (!url) return null;
+  const m = String(url).trim().match(
+    /(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})/
+  );
+  return m ? m[1] : /^[A-Za-z0-9_-]{11}$/.test(String(url).trim()) ? String(url).trim() : null;
+}
+
+const video = lireFichier('content/pages/video.md');
+const idVideo = idYoutube(video.youtube_url);
+if (idVideo) {
+  const titre = escAttr(video.titre || 'Vidéo SmartEfico');
+  index = injecter(
+    index,
+    'VIDEO',
+    `\n      <div class="video">\n` +
+      `        <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0"\n` +
+      `          title="${titre}" loading="lazy"\n` +
+      `          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
+      `          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
+      `      </div>\n      `
+  );
+  resume.push('vidéo : ' + idVideo);
+} else if (video.youtube_url) {
+  console.warn(
+    `Vidéo ignorée : « ${video.youtube_url} » ne contient pas d'identifiant YouTube reconnaissable.`
+  );
 }
 
 // --- FAQ --------------------------------------------------------------------

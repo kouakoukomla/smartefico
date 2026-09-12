@@ -92,7 +92,12 @@ function analyser(md) {
       const v = donnees[k];
       if (v.length > 1 &&
           ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))))
-        donnees[k] = v.slice(1, -1);
+        // YAML double l'apostrophe à l'intérieur d'une chaîne entre apostrophes.
+        // Sans ce décodage, un titre saisi dans le back office ressortait avec
+        // « l''IA » au lieu de « l'IA ».
+        donnees[k] = v.startsWith("'")
+          ? v.slice(1, -1).replace(/''/g, "'")
+          : v.slice(1, -1);
     }
   }
   donnees.body = corps.trim();
@@ -461,12 +466,41 @@ function carteArticle(a) {
   );
 }
 
+// La carte qui ferme le rail : elle ne mène pas à un article mais au blog
+// entier, et porte pour affiche la couverture du dernier publié. C'est elle
+// qui réunit tout ce que le rail ne montre pas fiche par fiche.
+function carteBlog(dernier) {
+  const cover = dernier && dernier.cover ? urlImage(dernier.cover) : '';
+  const affiche = cover
+    ? `          <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
+            <img src="${escAttr(cover)}" alt="" loading="lazy">
+          </a>\n`
+    : '';
+  return (
+    `        <article class="mc mc--article mc--blog">\n` +
+    affiche +
+    `          <div class="mc__corps">\n` +
+    `            <span class="mc__date mono">Blog</span>\n` +
+    `            <h3>Articles &amp; idées</h3>
+            <a class="btn btn--line" href="blog.html">Voir le blog</a>
+          </div>
+        </article>`
+  );
+}
+
+// Le rail ne reprend plus chaque article un par un : il garde ceux qui sont
+// adossés à un évènement — ils portent un `tally_url`, donc une inscription
+// ouverte — et laisse la carte du blog représenter tout le reste. Sans cette
+// règle, le rail grossissait d'une fiche à chaque publication.
+const railArticles = articles.filter((a) => String(a.tally_url || '').trim());
+
 const cheminIndex = join(racine, 'index.html');
 const avantIndex = readFileSync(cheminIndex, 'utf8');
 const avertArticles =
   '\n        <!-- Cartes générées par scripts/build-blog.mjs à partir de\n' +
   '             content/articles/*.md (back office). NE PAS éditer à la main. -->\n' +
-  (articles.length ? articles.map(carteArticle).join('\n') + '\n' : '') +
+  (railArticles.length ? railArticles.map(carteArticle).join('\n') + '\n' : '') +
+  carteBlog(articles[0]) + '\n' +
   '        ';
 const apresIndex = injecter(avantIndex, 'ARTICLES', avertArticles);
 if (apresIndex !== avantIndex) writeFileSync(cheminIndex, apresIndex, 'utf8');

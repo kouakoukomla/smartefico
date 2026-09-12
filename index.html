@@ -48,15 +48,17 @@
 <script>document.documentElement.className+=" js"</script>
 <style>
 /* =========================================================
-   SmartEfico — thème sombre : fond noir pur, texte blanc, jaune en aplat.
+   SmartEfico — thème sombre : fond noir pur, texte blanc, jaune rationné.
    Fond noir pur #000000 (--ground) pour que le fond du logo se fonde dans
    la page ; cartes sombres légèrement relevées (--surface #161616) ; texte
-   blanc (--ink). Un seul accent saturé, le jaune #FFCC00, employé en aplat
-   plein — jamais en texte.
-   Règle absolue : le jaune ne porte jamais de texte blanc (contraste
-   insuffisant). Sur un aplat jaune, le texte prend --on-yellow (#141414,
-   foncé) — d'où cette variable, utilisée partout où du texte s'affiche
-   sur du jaune.
+   blanc (--ink).
+   Le jaune #FFCC00 reste la couleur de marque, mais il ne remplit plus
+   aucune surface : il ne subsiste qu'en trait, en icône, en survol et sur
+   les mots que le titre d'accueil met en valeur. C'est le blanc qui porte
+   l'emphase — boutons pleins, puces, étiquettes relevées.
+   --on-yellow (#141414) ne sert plus qu'en réserve : si un aplat jaune
+   devait revenir, c'est cette couleur que son texte prendrait, jamais du
+   blanc, dont le contraste sur le jaune est insuffisant.
    ========================================================= */
 :root{
   --ground:#000000;
@@ -387,11 +389,29 @@ p{margin:0}
    que la date et le titre : sans cela leur bouton remonterait coller au titre,
    alors que celui des masterclass reste poussé vers le bas par le texte. */
 .mc .btn{align-self:flex-start;margin-top:auto}
+/* La carte du blog ferme le rail : elle ne mène pas à un article mais au
+   blog entier, et porte pour affiche la couverture du dernier publié. Sa
+   bordure plus vive la détache des fiches qui la précèdent. */
+.mc--blog{border-color:#3A3A38}
+.mc--blog:hover{border-color:var(--ink)}
+
+/* ---------- à l'intérieur (vidéo) ----------
+   Le cadre garde le format 16/9 quelle que soit la largeur, et l'iframe le
+   remplit. youtube-nocookie.com plutôt que youtube.com : même lecteur, sans
+   cookie de suivi tant que le visiteur n'a pas lancé la vidéo. `loading=lazy`
+   diffère le chargement jusqu'à l'approche de la section — la page d'accueil
+   ne paie donc rien tant qu'on ne descend pas jusqu'ici. */
+.video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
+  border-radius:.75rem;overflow:hidden;background:var(--surface);
+  max-width:56rem;margin-inline:auto}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video__repli{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:.9rem;height:100%;padding:1.5rem;text-align:center;
+  color:var(--ink-2);font-size:.96rem}
 /* ---------- appel au blog ----------
-   Le bloc se fond dans le noir de la page : le jaune est réservé au seul
-   bouton, qui devient la seule tache de couleur de la zone et donc ce que
-   l'œil trouve en premier. Même paire de couleurs que le carré jaune de la
-   barre de navigation : jaune plein, texte --on-yellow. */
+   Le bloc se fond dans le noir de la page : le bouton en est la seule tache
+   claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
+   le carré de la barre de navigation : blanc plein, texte noir. */
 /* Sans fond non plus : l'écart de la pile suffit à l'isoler. */
 .blog-cta{padding-block:0}
 .blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
@@ -1119,16 +1139,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <!-- Cartes générées par scripts/build-blog.mjs à partir de
              content/articles/*.md (back office). NE PAS éditer à la main. -->
         <article class="mc mc--article">
-          <a class="mc__affiche" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy">
-          </a>
-          <div class="mc__corps">
-            <span class="mc__date mono">5 septembre 2026</span>
-            <h3>4 façons d’utiliser ChatGPT pour gagner jusqu’à 10 heures par semaine dans votre business</h3>
-            <a class="btn btn--line" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html">Lire l'article</a>
-          </div>
-        </article>
-        <article class="mc mc--article">
           <a class="mc__affiche" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html" tabindex="-1" aria-hidden="true">
             <img src="assets/Masterclass-Formation%20sur%20l'IA.jpg" alt="" loading="lazy">
           </a>
@@ -1138,14 +1148,14 @@ h2.head__eyebrow{font-weight:600;margin:0}
             <a class="btn btn--line" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html">Lire l'article</a>
           </div>
         </article>
-        <article class="mc mc--article">
-          <a class="mc__affiche" href="article-bienvenue-sur-le-blog.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/2252f773-38f3-40b9-9524-db3a9991f557.png" alt="" loading="lazy">
+        <article class="mc mc--article mc--blog">
+          <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy">
           </a>
           <div class="mc__corps">
-            <span class="mc__date mono">3 septembre 2026</span>
-            <h3>Pourquoi j'ouvre ce blog</h3>
-            <a class="btn btn--line" href="article-bienvenue-sur-le-blog.html">Lire l'article</a>
+            <span class="mc__date mono">Blog</span>
+            <h3>Articles &amp; idées</h3>
+            <a class="btn btn--line" href="blog.html">Voir le blog</a>
           </div>
         </article>
         <!-- ARTICLES:END -->
@@ -1155,6 +1165,27 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <button class="rail__fleche rail__fleche--suiv" type="button"
                 aria-controls="rail-actus" aria-label="Voir les cartes suivantes">&#8250;</button>
       </div>
+    </section>
+
+    <!-- ============ À L'INTÉRIEUR ============
+         La vidéo est éditable dans le back office (content/pages/video.md).
+         La zone VIDEO:START/END est régénérée par scripts/sync-content.mjs :
+         ne pas éditer son contenu à la main, il serait écrasé. -->
+    <section class="wrap" id="interieur">
+      <div class="head head--centre">
+        <h2 class="display">À l'intérieur de <em>SmartEfico</em>.</h2>
+        <p class="lead">Une visite guidée pour voir exactement ce qui vous attend à
+          l'intérieur. Une vue privilégiée depuis l'intérieur du programme, réservée
+          habituellement à vous.</p>
+      </div>
+      <!-- VIDEO:START -->
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0"
+          title="Lancer un business solo avec l'IA : les 3 questions qui changent tout" loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <!-- VIDEO:END -->
     </section>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->

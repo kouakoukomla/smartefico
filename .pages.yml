@@ -145,3 +145,18 @@ content:
         label: Image de partage
         type: image
         description: "Aperçu affiché quand le lien du site est partagé (LinkedIn, WhatsApp…). Idéalement 1200 x 630 px."
+
+  - name: video
+    label: Vidéo « À l'intérieur »
+    icon: video
+    type: file
+    path: content/pages/video.md
+    fields:
+      - name: youtube_url
+        label: Lien de la vidéo YouTube
+        type: text
+        description: "Collez l'adresse de la vidéo à montrer sur la page d'accueil. Toutes les formes marchent : youtube.com/watch?v=…, youtu.be/…, /shorts/…. Publiez une nouvelle vidéo, remplacez le lien ici, la page suit."
+      - name: titre
+        label: Titre de la vidéo
+        type: text
+        description: "Sert de description au lecteur pour les lecteurs d'écran. Reprenez le titre YouTube."
