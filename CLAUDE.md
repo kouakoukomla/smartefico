@@ -53,8 +53,8 @@ propriétaire. Ne pas les supprimer, ne pas les réintégrer sans raison.
 
 **L'adresse du site est écrite en dur à trois endroits par page** : balise canonique,
 balises Open Graph et Twitter, et données structurées JSON-LD. Elle vaut aujourd'hui
-`https://kouakoukomla.github.io/smartefico`. Tout changement doit couvrir les trois
-fichiers d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
+`https://smartefico-z7.vercel.app`. Tout changement doit couvrir les trois fichiers
+d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
 
 **Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
 la section Réservation ne contient plus d'`iframe` : un bouton « Ouvrir le formulaire »
@@ -119,12 +119,42 @@ des affirmations fausses sur son entreprise.
 ## Design
 
 Noir pur `#000000` — et non un gris très sombre — pour que le fond du logo se fonde
-dans la page. Jaune `#FFCC00`, blanc. Polices : Bricolage Grotesque (titres),
-Schibsted Grotesk (texte), DM Mono (étiquettes).
+dans la page. Jaune `#FFCC00`, blanc.
 
-Instrument Sans a été retirée parce qu'impeccable la signale comme sur-utilisée par les
-interfaces générées. Ne pas y revenir, ni vers Inter, Roboto, Fraunces, Geist,
-Plus Jakarta Sans ou Space Grotesk.
+**Le jaune est rationné.** Il reste la couleur de marque, mais comme accent, jamais
+comme aplat : il ne subsiste qu'en trait fin, en icône, en survol, et sur les mots
+que le titre d'accueil met en valeur. C'est le blanc qui porte l'emphase — boutons
+pleins, puces, étiquettes relevées. Le jaune ne tient pas sur fond blanc (1,5:1) :
+dans une zone claire, il n'a pas sa place. Seule exception conservée, le `.skip-link`,
+invisible tant qu'on ne navigue pas au clavier : son aplat jaune sert à le rendre
+impossible à manquer au moment où il apparaît.
+
+**Polices, telles qu'elles sont réellement dans le code.** Une version précédente de
+ce fichier annonçait Bricolage Grotesque, Schibsted Grotesk et DM Mono : aucune des
+trois n'apparaît nulle part, ni dans `index.html`, ni dans le blog, ni dans les
+articles, ni dans les pages légales.
+
+- Titres et texte — `"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif`.
+  Le display est en graisse 800, chasse `-.035em` (`-.042em` sur le `h1`),
+  interlignage 1,02.
+- Mots accentués — `"Instrument Serif","Times New Roman",Georgia,serif` en italique,
+  dans les `<em>` des titres. C'est la seule feuille Google Fonts chargée, et elle ne
+  demande que l'italique (`family=Instrument+Serif:ital@1`) : un Instrument Serif
+  droit n'existe pas sur ces pages.
+- La classe `.mono` **ne porte aucune police monospace.** Elle vaut
+  `font-family:inherit`, en capitales avec un fort suivi. Le nom trompe.
+
+**Helvetica Now Text est commerciale, et rien ne la charge** — aucun `@font-face`,
+aucune feuille distante. Elle ne s'affiche que chez les visiteurs qui la possèdent
+déjà. Les autres descendent la pile : Helvetica Neue sur Apple, Arial sur Windows,
+et sur Android, où aucune Helvetica n'existe, le `sans-serif` générique — c'est-à-dire
+Roboto, que la liste ci-dessous proscrit. En pratique, presque personne ne voit la
+police annoncée.
+
+Instrument **Sans** a été retirée parce qu'impeccable la signale comme sur-utilisée
+par les interfaces générées. À ne pas confondre avec Instrument **Serif** ci-dessus,
+qui reste en place. Ne pas revenir vers Instrument Sans, ni vers Inter, Roboto,
+Fraunces, Geist, Plus Jakarta Sans ou Space Grotesk.
 
 **Signalements d'impeccable à ne pas « corriger »**, vérifiés un par un dans le
 navigateur :
@@ -149,16 +179,22 @@ navigateur :
 
 ## Déploiement
 
-Dépôt `kouakoukomla/smartefico`, branche `main`, cible GitHub Pages depuis la racine.
+Dépôt `kouakoukomla/smartefico`, branche `main`. **Le site est servi par deux hôtes
+à la fois**, tous deux alimentés par `main` :
 
-**Le site est en ligne.** Vérifié le 5 septembre 2026 : le dépôt est public
-(`visibility: public` renvoyé par l'API sans authentification) et
-`https://kouakoukomla.github.io/smartefico/` répond `200` en servant le dernier
-commit. La note précédente disait le contraire — dépôt privé, Pages empêchée de
-publier — elle datait d'avant le passage en public.
+- `https://smartefico-z7.vercel.app/` — Vercel, l'adresse canonique depuis le
+  12 septembre 2026.
+- `https://kouakoukomla.github.io/smartefico/` — GitHub Pages, toujours actif.
+
+Vérifié le 12 septembre 2026 : les deux répondent `200` et servent le même commit.
+Ce n'est pas un problème de contenu dupliqué tant que la balise canonique de chaque
+page désigne Vercel — c'est le cas, y compris sur la version servie par Pages, qui
+renvoie donc le référencement vers Vercel. Si vous coupez GitHub Pages un jour, rien
+d'autre n'est à changer ; si vous changez d'adresse canonique, il faut reprendre les
+trois emplacements de chaque page (voir Architecture).
 
 Conséquence à garder en tête : **tout ce qui est poussé sur `main` est visible de
 tous**, code compris. Rien de secret ne doit entrer dans le dépôt.
 
-`index-autonome.html` est exclu du dépôt : servi par Pages, il ferait doublon avec la
+`index-autonome.html` est exclu du dépôt : servi en ligne, il ferait doublon avec la
 page d'accueil.
