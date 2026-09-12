@@ -13,7 +13,12 @@
 # `text=auto` supprime la cause : git normalise en LF au moment d'enregistrer,
 # donc une ligne écrite en CRLF et la même écrite en LF donnent le même
 # enregistrement. Plus aucun diff fantôme, d'où qu'ait été édité le fichier.
-* text=auto
+#
+# `eol=lf` étend la règle au disque, pas seulement au dépôt. Sans lui, sur
+# Windows, git recheckoute en CRLF ce que les scripts viennent d'écrire en
+# LF : `git status` affiche alors un fichier « modifié » qui n'a rien à
+# enregistrer. Avec lui, dépôt, disque et scripts écrivent tous en LF.
+* text=auto eol=lf
 
 # Images : jamais de conversion, elle les corromprait.
 *.png  binary
