@@ -3,6 +3,7 @@ title: 4 façons d’utiliser ChatGPT pour gagner jusqu’à 10 heures par semai
   dans votre business
 date: 2026-09-05
 cover: assets/724534669_2083670452545757_1073765564763983040_n.jpg
+cover_position: 12%
 excerpt: ChatGPT aide les TPE/PME à automatiser les tâches répétitives, gagner
   du temps et se concentrer sur la croissance
 published: true

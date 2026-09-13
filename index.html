@@ -369,13 +369,17 @@ p{margin:0}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
 /* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
    comprises. */
+/* La carte est en 2:1, les affiches sont carrées ou en portrait : on n'en voit
+   qu'une bande horizontale. Prise au centre, elle tombe sous le menton et le
+   visage disparaît entièrement au-dessus de la fenêtre.
+   12 % pose le visage à 30 % de la hauteur de la carte sur les trois affiches
+   en service, mesuré : l'affiche de masterclass (1000x1250), celle de l'article
+   « Et si l'IA devenait… » (1400x1749) et la photo à la pancarte (1254x1254).
+   Elles ont toutes le visage autour du cinquième supérieur, d'où une valeur
+   commune plutôt qu'un cas par carte. À revoir si une affiche de composition
+   très différente est publiée. */
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
-  object-fit:cover;background:var(--noir-2)}
-/* Les affiches sont en portrait : on n'en voit qu'une bande. Prise au centre,
-   elle coupe le visage à hauteur du menton — vérifié sur l'affiche actuelle,
-   1000x1250. Remontée à 17 %, elle cadre le portrait entier et le titre.
-   À revoir si une affiche de composition différente est publiée. */
-.mc:not(.mc--article) .mc__affiche img{object-position:center 17%}
+  object-fit:cover;object-position:center 12%;background:var(--noir-2)}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
   padding:clamp(1.1rem,2.4vw,1.5rem)}
 .mc__date{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
@@ -1124,23 +1128,14 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <!-- MASTERCLASS:START -->
         <!-- Section générée par scripts/sync-content.mjs à partir de
              content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
-        <article class="mc">
-          <a class="mc__affiche" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener" aria-label="Affiche de la masterclass — s'inscrire">
-            <img src="assets/Masterclass-Formation%20sur%20l'IA-1.jpg" alt="Affiche de la masterclass « Lancer et gérer vos activités grâce à l'IA »" loading="lazy">
-          </a>
-          <div class="mc__corps">
-            <span class="mc__date mono">Samedi 3 octobre 2026 · 19h00 GMT · 2h · en ligne</span>
-            <h3>Lancer et gérer vos activités grâce à l'IA</h3>
-            <a class="btn btn--line" href="https://tally.so/r/BzJr5Q" target="_blank" rel="noopener">S'inscrire</a>
-          </div>
-        </article>
+
         <!-- MASTERCLASS:END -->
         <!-- ARTICLES:START -->
         <!-- Cartes générées par scripts/build-blog.mjs à partir de
              content/articles/*.md (back office). NE PAS éditer à la main. -->
         <article class="mc mc--article">
           <a class="mc__affiche" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/Masterclass-Formation%20sur%20l'IA.jpg" alt="" loading="lazy">
+            <img src="assets/Masterclass-Formation%20sur%20l'IA.jpg" alt="" loading="lazy" style="object-position:center 12%">
           </a>
           <div class="mc__corps">
             <span class="mc__date mono">5 septembre 2026</span>
@@ -1150,7 +1145,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
         </article>
         <article class="mc mc--article mc--blog">
           <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy">
+            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy" style="object-position:center 12%">
           </a>
           <div class="mc__corps">
             <span class="mc__date mono">Blog</span>

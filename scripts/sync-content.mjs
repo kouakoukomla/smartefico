@@ -271,19 +271,11 @@ function carteMc(e) {
   );
 }
 
-let mc;
-if (evenements.length === 0) {
-  mc = `        <article class="mc">
-          <div class="mc__corps">
-            <span class="mc__date mono">Aucune date ouverte pour le moment</span>
-            <h3>Prochaine masterclass à venir</h3>
-            <p>Inscrivez-vous pour être prévenu de la prochaine session.</p>
-            <a class="btn btn--line" href="#appel">Être prévenu</a>
-          </div>
-        </article>`;
-} else {
-  mc = evenements.map(carteMc).join('\n');
-}
+// Sans évènement publié, la zone reste vide : le rail se referme sur l'article
+// et la carte du blog. Une fiche « aucune date ouverte pour le moment » tenait
+// cette place auparavant ; elle annonçait une absence, ce qui coûte plus qu'un
+// rail plus court. Dépublier un évènement le fait donc vraiment disparaître.
+const mc = evenements.map(carteMc).join('\n');
 const avertMc =
   '\n        <!-- Section générée par scripts/sync-content.mjs à partir de\n' +
   '             content/masterclasses/*.md (back office). NE PAS éditer à la main. -->\n';

@@ -70,6 +70,10 @@ content:
         label: Image de couverture
         type: image
         description: "Optionnelle. Affichée en haut de l'article et sur la vignette."
+      - name: cover_position
+        label: Cadrage de la vignette
+        type: text
+        description: "Où se trouve le sujet dans la hauteur de l'image, en pourcentage. La vignette n'en montre qu'une bande large : 12% si le visage est tout en haut, 50% s'il est au milieu, 70% s'il est bas. Laissez vide pour garder le réglage par défaut (12%)."
       - name: excerpt
         label: Résumé (accroche)
         type: text

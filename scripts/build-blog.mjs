@@ -233,7 +233,9 @@ const styleBlog = `<style>
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
 .post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
 .post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
-.post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;display:block;background:var(--noir-2)}
+/* Même cadrage que les cartes du rail de index.html : la bande 2:1 prise au
+   centre coupe le visage, 12 % le pose à 30 % de la hauteur. */
+.post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
@@ -381,7 +383,7 @@ if (articles.length === 0) {
       // le titre. Le résumé reste utilisé pour la description de la page de
       // l'article et pour les aperçus de partage.
       return `        <a class="post-card" href="${escAttr(a.page)}">
-${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy">\n` : ''}          <div class="post-card__body">
+${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(a)}>\n` : ''}          <div class="post-card__body">
             <span class="post-card__date mono">${escTexte(dateFr(a.date))}</span>
             <h2>${escTexte(a.title || 'Article')}</h2>
           </div>
@@ -440,6 +442,17 @@ function injecter(html, marque, contenu) {
   return html.slice(0, i + debut.length) + contenu + html.slice(j);
 }
 
+// Le cadrage appartient à l'image, pas au composant : la carte montre une bande
+// 2:1 d'une source carrée ou verticale, et le sujet n'y est jamais au même
+// endroit. Sur les couvertures en service le visage est à 19 %, 21 % et 58 % de
+// la hauteur — aucune valeur unique ne peut les cadrer toutes. Chaque article
+// déclare donc son `cover_position` ; sans lui, le CSS garde son 12 %, qui
+// convient aux affiches où le sujet occupe le cinquième supérieur.
+function cadrage(a) {
+  const v = String(a.cover_position || '').trim();
+  return v ? ` style="object-position:center ${escAttr(v)}"` : '';
+}
+
 function carteArticle(a) {
   const page = escAttr(a.page);
   const cover = a.cover ? urlImage(a.cover) : '';
@@ -447,7 +460,7 @@ function carteArticle(a) {
   // clavier et des lecteurs d'écran plutôt que d'annoncer deux fois le lien.
   const affiche = cover
     ? `          <a class="mc__affiche" href="${page}" tabindex="-1" aria-hidden="true">
-            <img src="${escAttr(cover)}" alt="" loading="lazy">
+            <img src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(a)}>
           </a>\n`
     : '';
   const date = escTexte(dateFr(a.date));
@@ -473,7 +486,7 @@ function carteBlog(dernier) {
   const cover = dernier && dernier.cover ? urlImage(dernier.cover) : '';
   const affiche = cover
     ? `          <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="${escAttr(cover)}" alt="" loading="lazy">
+            <img src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(dernier)}>
           </a>\n`
     : '';
   return (

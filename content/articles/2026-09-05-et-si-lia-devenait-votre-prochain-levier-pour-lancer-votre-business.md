@@ -2,6 +2,7 @@
 title: ET SI L’IA DEVENAIT VOTRE PROCHAIN LEVIER POUR LANCER VOTRE BUSINESS ?
 date: 2026-09-05
 cover: assets/Masterclass-Formation sur l'IA.jpg
+cover_position: 12%
 excerpt: >-
   Apprenez à utiliser l’IA pour structurer votre projet, analyser votre marché
   et développer votre activité plus rapidement.

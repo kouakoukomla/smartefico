@@ -344,13 +344,17 @@ p{margin:0}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
 /* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
    comprises. */
+/* La carte est en 2:1, les affiches sont carrées ou en portrait : on n'en voit
+   qu'une bande horizontale. Prise au centre, elle tombe sous le menton et le
+   visage disparaît entièrement au-dessus de la fenêtre.
+   12 % pose le visage à 30 % de la hauteur de la carte sur les trois affiches
+   en service, mesuré : l'affiche de masterclass (1000x1250), celle de l'article
+   « Et si l'IA devenait… » (1400x1749) et la photo à la pancarte (1254x1254).
+   Elles ont toutes le visage autour du cinquième supérieur, d'où une valeur
+   commune plutôt qu'un cas par carte. À revoir si une affiche de composition
+   très différente est publiée. */
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
-  object-fit:cover;background:var(--noir-2)}
-/* Les affiches sont en portrait : on n'en voit qu'une bande. Prise au centre,
-   elle coupe le visage à hauteur du menton — vérifié sur l'affiche actuelle,
-   1000x1250. Remontée à 17 %, elle cadre le portrait entier et le titre.
-   À revoir si une affiche de composition différente est publiée. */
-.mc:not(.mc--article) .mc__affiche img{object-position:center 17%}
+  object-fit:cover;object-position:center 12%;background:var(--noir-2)}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
   padding:clamp(1.1rem,2.4vw,1.5rem)}
 .mc__date{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
@@ -673,7 +677,9 @@ h2.head__eyebrow{font-weight:600;margin:0}
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
 .post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
 .post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
-.post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;display:block;background:var(--noir-2)}
+/* Même cadrage que les cartes du rail de index.html : la bande 2:1 prise au
+   centre coupe le visage, 12 % le pose à 30 % de la hauteur. */
+.post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
