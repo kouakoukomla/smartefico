@@ -54,3 +54,10 @@ assets/yt-ia-emails.jpg
 node_modules/
 *.log
 
+
+# Captures d origine, avant recadrage. « im 1.png » porte le nom, l email et
+# le telephone d un lead ; « im 3 » et « im 4 » nomment des espaces clients.
+# Le depot est public : seules les versions recadrees de assets/ doivent partir.
+im [0-9].png
+Im [0-9].png
+log [0-9].jpg
