@@ -214,10 +214,42 @@ p{margin:0}
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
 }
-.hero__status{display:inline-flex;align-items:center;gap:.6rem;color:var(--ink-2);
-  font-size:.92rem;align-self:center;order:-1}
-.hero__status i{width:.45rem;height:.45rem;border-radius:50%;background:var(--ink);
-  flex:none;box-shadow:0 0 0 4px rgba(255,204,0,.35)}
+/* Ligne de confiance, au-dessus du titre. */
+.hero__confiance{color:var(--ink-2);font-size:.92rem;align-self:center;order:-2;
+  text-align:center}
+/* Bandeau de logos clients, blanc franc sur le noir de la page.
+   Les logos sont servis en silhouette blanche sur transparence, produits par
+   scripts a partir des fichiers couleur d origine (qui restent intacts a la
+   racine). Un filtre CSS ne pouvait pas y arriver : "invert" retourne aussi
+   l interieur des logos, et le sceau de l ambassade — un disque blanc portant
+   un embleme colore — devenait un pave sombre. Le traitement se fait donc sur
+   l image : la luminance sert de couche alpha, le blanc devient transparent,
+   le reste est peint en blanc. */
+.hero__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:1.25rem clamp(2rem,5vw,3.5rem);align-self:center;order:-1;
+  padding-block:.25rem 1rem}
+.hero__logos img{width:auto}
+/* Les deux marques ne pesent pas pareil a hauteur egale : le sceau est un
+   disque dense, le logotype une forme large et aeree. Le sceau prend donc
+   plus de hauteur, sans quoi ses deux lignes de texte interieures se
+   moyennent en gris et le disque parait plein. */
+.hero__logos .sceau{height:clamp(4.75rem,9.5vw,6.75rem)}
+.hero__logos .logotype{height:clamp(3.4rem,6.4vw,4.6rem)}
+
+/* ---------- preuves ----------
+   Deux colonnes de captures. Le fond sombre des tableaux de bord rejoint
+   celui des cartes du site : un filet suffit à les détacher. */
+.preuves{display:grid;gap:1rem;grid-template-columns:1fr;align-items:start}
+@media (min-width:56rem){.preuves{grid-template-columns:repeat(2,1fr)}}
+.preuve{margin:0;background:var(--surface);border:1px solid var(--line);
+  display:flex;flex-direction:column;gap:.75rem;padding:.75rem .75rem 1rem;
+  transition:border-color .2s ease}
+.preuve:hover{border-color:#3A3A38}
+/* Trois captures, pas quatre : la panoramique ouvre sur toute la largeur,
+   les deux autres se partagent la rangee du dessous. */
+@media (min-width:56rem){.preuve--large{grid-column:1/-1}}
+.preuve img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+.preuve figcaption{color:var(--ink-2);font-size:.92rem;padding-inline:.25rem}
 /* accent de titre : serif italique au milieu du grotesque, comme chez eux.
    Le serif est plus étroit, on compense légèrement la chasse. */
 .display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
@@ -590,7 +622,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   width:.4rem;height:.4rem;background:var(--ink-3);transform:rotate(45deg)}
 .contact__facts b{font-weight:700;font-size:.92rem;color:#FFF}
 .contact__facts span{font-size:.92rem;color:#B5B5B1;line-height:1.45}
-.contact__facts a{color:#F3F3F3;text-decoration:none;border-bottom:2px solid var(--yellow)}
+.contact__facts a{color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow)}
 .contact__btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   background:var(--ink);color:var(--ground);text-decoration:none;font-weight:700;
   font-size:1rem;padding:.9rem 1.5rem;border-radius:999px;margin-top:.35rem;
@@ -601,11 +633,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .contact__alt{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem;
   margin-top:.35rem;color:#B5B5B1;font-size:.95rem}
 .contact__tel{display:inline-flex;align-items:center;justify-content:center;
-  background:transparent;color:#F3F3F3;text-decoration:none;font-weight:700;
-  padding:.85rem 1.4rem;border:1px solid #FFFFFF3D;border-radius:999px;
+  background:transparent;color:var(--yellow);text-decoration:none;font-weight:700;
+  padding:.85rem 1.4rem;border:1px solid var(--yellow);border-radius:999px;
   min-height:3.25rem;max-width:100%;text-align:center;
   transition:color .18s ease,background-color .18s ease,border-color .18s ease}
-.contact__tel:hover{color:var(--ground);background:var(--ink);border-color:var(--ink)}
+.contact__tel:hover{color:var(--on-yellow);background:var(--yellow);border-color:var(--yellow)}
 .coord__quoi{font-weight:600;font-size:.78rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3)}
 .contact .display{color:#FFF}
@@ -640,8 +672,8 @@ h2.head__eyebrow{font-weight:600;margin:0}
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
 .signature__mot{color:var(--ink-2);font-size:1rem;max-width:44ch}
-.coord b{font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
-  line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:#FFF}
+.coord b{color:var(--yellow);font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
+  line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 
 /* ---------- icônes réseaux ---------- */
 .icons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
