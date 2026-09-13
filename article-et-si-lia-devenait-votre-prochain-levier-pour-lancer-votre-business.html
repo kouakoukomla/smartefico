@@ -47,7 +47,10 @@
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
   --on-yellow:#141414;
-  --gap:clamp(3.5rem,8vw,6.5rem);
+  /* Rythme entre les sections. Etait a 8vw plafonne a 6.5rem, soit 102 px
+     sur un ecran de 1280 : quinze fois cet ecart sur une page de 10 800 px,
+     ce qui la faisait respirer trop fort. Resserre d un tiers. */
+  --gap:clamp(2.5rem,5.4vw,4.5rem);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -260,7 +263,7 @@ p{margin:0}
   margin-left:var(--ticker-ecart);opacity:.45;vertical-align:middle}
 
 /* ---------- en-tête de section ---------- */
-.head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+.head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été
    retirées : chaque titre porte déjà son sujet, et l’une d’elles répétait
    le sien mot pour mot. Ne subsiste que le titre de la section Réservation,
