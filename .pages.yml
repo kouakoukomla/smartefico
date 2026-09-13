@@ -151,24 +151,16 @@ content:
         description: "Aperçu affiché quand le lien du site est partagé (LinkedIn, WhatsApp…). Idéalement 1200 x 630 px."
 
   - name: video
-    label: Vidéo « À l'intérieur »
+    label: Vidéo (Blog et évènements)
     icon: video
     type: file
     path: content/pages/video.md
     fields:
-      - name: section_titre
-        label: Titre de la section
-        type: text
-        description: "Mettez un mot *entre astérisques* pour l'afficher en italique sérif."
-      - name: section_chapo
-        label: Texte sous le titre
-        type: text
-        description: "Les deux ou trois phrases qui présentent la vidéo."
       - name: youtube_url
         label: Lien de la vidéo YouTube
         type: text
-        description: "Collez l'adresse de la vidéo à montrer sur la page d'accueil. Toutes les formes marchent : youtube.com/watch?v=…, youtu.be/…, /shorts/…. Publiez une nouvelle vidéo, remplacez le lien ici, la page suit."
+        description: "Collez l'adresse de la vidéo à montrer en dernière carte de « Blog et évènements à venir ». Toutes les formes marchent : youtube.com/watch?v=…, youtu.be/…, /shorts/…. Publiez une nouvelle vidéo, remplacez le lien ici, la page suit. Videz le champ pour retirer la carte."
       - name: titre
         label: Titre de la vidéo
         type: text
-        description: "Sert de description au lecteur pour les lecteurs d'écran. Reprenez le titre YouTube."
+        description: "Affiché sur la carte, sous le lecteur. Reprenez le titre YouTube."

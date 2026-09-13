@@ -187,29 +187,30 @@ function idYoutube(url) {
 
 const video = lireFichier('content/pages/video.md');
 
-// Titre et chapô de la section, au même régime que le hero : un mot entre
-// astérisques passe en italique sérif.
-if (video.section_titre) {
-  index = injecter(index, 'INTERIEUR_TITRE', accent(video.section_titre));
-  resume.push('intérieur : titre');
-}
-if (video.section_chapo) {
-  index = injecter(index, 'INTERIEUR_CHAPO', escTexte(video.section_chapo));
-  resume.push('intérieur : chapô');
-}
-
+// La vidéo est une carte du rail « Blog et évènements à venir », posée après
+// celle du blog. Elle en reprend la structure — affiche, corps, bouton — pour
+// que la rangée reste alignée ; seule l'affiche porte un lecteur au lieu d'une
+// image.
 const idVideo = idYoutube(video.youtube_url);
 if (idVideo) {
-  const titre = escAttr(video.titre || 'Vidéo SmartEfico');
+  const titre = video.titre || 'Vidéo SmartEfico';
   index = injecter(
     index,
     'VIDEO',
-    `\n      <div class="video">\n` +
-      `        <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0"\n` +
-      `          title="${titre}" loading="lazy"\n` +
-      `          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
-      `          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
-      `      </div>\n      `
+    `\n        <article class="mc mc--article mc--video">\n` +
+      `          <div class="mc__affiche mc__affiche--video">\n` +
+      `            <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0"\n` +
+      `              title="${escAttr(titre)}" loading="lazy"\n` +
+      `              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
+      `              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
+      `          </div>\n` +
+      `          <div class="mc__corps">\n` +
+      `            <span class="mc__date mono">Vidéo</span>\n` +
+      `            <h3>${escTexte(titre)}</h3>\n` +
+      `            <a class="btn btn--line" href="https://www.youtube.com/@smartefico"\n` +
+      `               target="_blank" rel="noopener">Voir la chaîne</a>\n` +
+      `          </div>\n` +
+      `        </article>\n        `
   );
   resume.push('vidéo : ' + idVideo);
 } else if (video.youtube_url) {

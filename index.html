@@ -72,7 +72,10 @@
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
   --on-yellow:#141414;
-  --gap:clamp(3.5rem,8vw,6.5rem);
+  /* Rythme entre les sections. Etait a 8vw plafonne a 6.5rem, soit 102 px
+     sur un ecran de 1280 : quinze fois cet ecart sur une page de 10 800 px,
+     ce qui la faisait respirer trop fort. Resserre d un tiers. */
+  --gap:clamp(2.5rem,5.4vw,4.5rem);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -285,7 +288,7 @@ p{margin:0}
   margin-left:var(--ticker-ecart);opacity:.45;vertical-align:middle}
 
 /* ---------- en-tête de section ---------- */
-.head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+.head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été
    retirées : chaque titre porte déjà son sujet, et l’une d’elles répétait
    le sien mot pour mot. Ne subsiste que le titre de la section Réservation,
@@ -399,19 +402,16 @@ p{margin:0}
 .mc--blog{border-color:#3A3A38}
 .mc--blog:hover{border-color:var(--ink)}
 
-/* ---------- à l'intérieur (vidéo) ----------
-   Le cadre garde le format 16/9 quelle que soit la largeur, et l'iframe le
-   remplit. youtube-nocookie.com plutôt que youtube.com : même lecteur, sans
-   cookie de suivi tant que le visiteur n'a pas lancé la vidéo. `loading=lazy`
-   diffère le chargement jusqu'à l'approche de la section — la page d'accueil
-   ne paie donc rien tant qu'on ne descend pas jusqu'ici. */
-.video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
-  border-radius:.75rem;overflow:hidden;background:var(--surface);
-  max-width:56rem;margin-inline:auto}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video__repli{display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:.9rem;height:100%;padding:1.5rem;text-align:center;
-  color:var(--ink-2);font-size:.96rem}
+/* ---------- carte vidéo ----------
+   Dernière carte du rail. Son affiche porte un lecteur au lieu d'une image,
+   dans la même boîte 2:1 que les autres : la rangée reste alignée, et la
+   vidéo 16/9 s'y pose avec deux liserés noirs que le fond de page avale.
+   youtube-nocookie.com plutôt que youtube.com : même lecteur, sans cookie de
+   suivi tant que la lecture n'est pas lancée. `loading=lazy` diffère le
+   chargement jusqu'à l'approche du rail. */
+.mc__affiche--video{position:relative;aspect-ratio:2/1;overflow:hidden;
+  background:#000;border-bottom:1px solid var(--line)}
+.mc__affiche--video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le bouton en est la seule tache
    claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
@@ -1154,32 +1154,28 @@ h2.head__eyebrow{font-weight:600;margin:0}
           </div>
         </article>
         <!-- ARTICLES:END -->
+        <!-- VIDEO:START -->
+        <article class="mc mc--article mc--video">
+          <div class="mc__affiche mc__affiche--video">
+            <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0"
+              title="Lancer un business solo avec l'IA : les 3 questions qui changent tout" loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="mc__corps">
+            <span class="mc__date mono">Vidéo</span>
+            <h3>Lancer un business solo avec l'IA : les 3 questions qui changent tout</h3>
+            <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
+               target="_blank" rel="noopener">Voir la chaîne</a>
+          </div>
+        </article>
+        <!-- VIDEO:END -->
         </div>
         <button class="rail__fleche rail__fleche--prec" type="button"
                 aria-controls="rail-actus" aria-label="Voir les cartes précédentes">&#8249;</button>
         <button class="rail__fleche rail__fleche--suiv" type="button"
                 aria-controls="rail-actus" aria-label="Voir les cartes suivantes">&#8250;</button>
       </div>
-    </section>
-
-    <!-- ============ À L'INTÉRIEUR ============
-         Titre, chapô et vidéo sont éditables dans le back office
-         (content/pages/video.md). Les trois zones sont régénérées par
-         scripts/sync-content.mjs : ne rien écrire à la main entre leurs
-         repères, il serait écrasé. -->
-    <section class="wrap" id="interieur">
-      <div class="head head--centre">
-        <h2 class="display"><!-- INTERIEUR_TITRE:START -->À l'intérieur de <em>SmartEfico</em>.<!-- INTERIEUR_TITRE:END --></h2>
-        <p class="lead"><!-- INTERIEUR_CHAPO:START -->Une visite guidée pour voir exactement ce qui vous attend à l'intérieur. Une vue privilégiée depuis l'intérieur du programme, réservée habituellement aux membres.<!-- INTERIEUR_CHAPO:END --></p>
-      </div>
-      <!-- VIDEO:START -->
-      <div class="video">
-        <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0"
-          title="Lancer un business solo avec l'IA : les 3 questions qui changent tout" loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <!-- VIDEO:END -->
     </section>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->

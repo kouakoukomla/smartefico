@@ -374,19 +374,16 @@ p{margin:0}
 .mc--blog{border-color:#3A3A38}
 .mc--blog:hover{border-color:var(--ink)}
 
-/* ---------- à l'intérieur (vidéo) ----------
-   Le cadre garde le format 16/9 quelle que soit la largeur, et l'iframe le
-   remplit. youtube-nocookie.com plutôt que youtube.com : même lecteur, sans
-   cookie de suivi tant que le visiteur n'a pas lancé la vidéo. `loading=lazy`
-   diffère le chargement jusqu'à l'approche de la section — la page d'accueil
-   ne paie donc rien tant qu'on ne descend pas jusqu'ici. */
-.video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
-  border-radius:.75rem;overflow:hidden;background:var(--surface);
-  max-width:56rem;margin-inline:auto}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video__repli{display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:.9rem;height:100%;padding:1.5rem;text-align:center;
-  color:var(--ink-2);font-size:.96rem}
+/* ---------- carte vidéo ----------
+   Dernière carte du rail. Son affiche porte un lecteur au lieu d'une image,
+   dans la même boîte 2:1 que les autres : la rangée reste alignée, et la
+   vidéo 16/9 s'y pose avec deux liserés noirs que le fond de page avale.
+   youtube-nocookie.com plutôt que youtube.com : même lecteur, sans cookie de
+   suivi tant que la lecture n'est pas lancée. `loading=lazy` diffère le
+   chargement jusqu'à l'approche du rail. */
+.mc__affiche--video{position:relative;aspect-ratio:2/1;overflow:hidden;
+  background:#000;border-bottom:1px solid var(--line)}
+.mc__affiche--video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le bouton en est la seule tache
    claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
