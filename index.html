@@ -237,7 +237,7 @@ p{margin:0}
    droite il était un décor, à .14 en pleine largeur il est une texture, et le
    titre continue de se détacher. */
 .hero__bg .scenario{position:absolute;left:50%;top:50%;translate:-50% -50%;
-  width:min(96%,72rem);opacity:.14}
+  width:min(96%,72rem);opacity:.24}
 /* Les liaisons coulent de la gauche vers la droite, sans fin : c'est le seul
    mouvement de la page d'accueil, et il dit ce que le système fait. Le pas de
    l'animation vaut la longueur d'un tiret plus son vide (5+5), sinon la boucle
@@ -250,7 +250,7 @@ p{margin:0}
   .hero__bg .ruler{display:none}
   /* Sur un écran étroit le texte occupe presque tout : la texture s'efface
      encore pour ne pas venir chercher l'œil derrière les mots. */
-  .hero__bg .scenario{width:150%;opacity:.09}
+  .hero__bg .scenario{width:150%;opacity:.15}
 }
 @media (prefers-reduced-motion:reduce){
   .scenario__flux,.scenario__pouls{animation:none}
@@ -841,13 +841,13 @@ h2.head__eyebrow{font-weight:600;margin:0}
            en continu et l’agent bat, pour que le système ait l’air de tourner —
            ce qu’il fait. Les libellés sont ceux de la page, aucun ajout. -->
       <svg class="scenario" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
-        <g class="scenario__flux" fill="none" stroke="#5a5a58" stroke-width="1.6" stroke-dasharray="5 5">
+        <g class="scenario__flux" fill="none" stroke="#6f6f6b" stroke-width="1.6" stroke-dasharray="5 5">
           <path d="M190 43 C290 43 290 130 380 130"/>
           <path d="M190 130 H380"/>
           <path d="M190 217 C290 217 290 130 380 130"/>
           <path d="M530 130 H720"/>
         </g>
-        <g fill="#141414" stroke="#3a3a3a" stroke-width="1.6">
+        <g fill="#141414" stroke="#4d4d4a" stroke-width="1.6">
           <rect x="40" y="20" width="150" height="46" rx="11"/>
           <rect x="40" y="107" width="150" height="46" rx="11"/>
           <rect x="40" y="194" width="150" height="46" rx="11"/>
