@@ -86,16 +86,22 @@ Disponible et utilisé :
 
 - **Quatre captures de scénarios d'agents IA réellement en production** —
   `assets/agent-stats-pub.jpg`, `agent-conversion-api.jpg`, `agent-setters-notifier.jpg`,
-  `agent-bilans-bihebdos.jpg`. C'est la preuve la plus solide dont dispose le site.
+  `agent-bilans-bihebdos.jpg`. **Elles ne sont plus affichées** : la section Agents IA
+  montre depuis le 14 septembre 2026 quatre schémas de flux animés. Les fichiers
+  restent en place, le propriétaire a demandé de les garder.
 - Portrait du fondateur et bannière de marque.
 - 194 vidéos publiées sur l'IA appliquée.
 
-Fourni par le propriétaire, **pas encore affiché sur le site** :
+Fourni par le propriétaire :
 
 - **Deux noms de clients citables** : l'**Ambassade du Togo au Maroc** et
-  **GROUP LIGHT MEDICAL**. Le propriétaire déclare avoir le droit de les nommer.
+  **Ménouvévé Logistique**. Le propriétaire déclare avoir le droit de les nommer.
+  Leurs logos sont affichés dans le hero depuis le 14 septembre 2026, en silhouette
+  blanche, produites par `scripts/silhouettes-logos.mjs`.
   Aucun résultat chiffré ne les accompagne : ce sont des références, pas des études
   de cas. Ne rien leur attribuer qu'il n'ait confirmé.
+- **GROUP LIGHT MEDICAL a été écarté** le 14 septembre 2026, sur demande explicite
+  du propriétaire. Ne pas le réintroduire.
 
 Absences que le travail futur ne doit **pas** combler par invention :
 
