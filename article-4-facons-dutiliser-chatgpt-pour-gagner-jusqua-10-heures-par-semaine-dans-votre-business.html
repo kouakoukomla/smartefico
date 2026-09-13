@@ -319,7 +319,12 @@ p{margin:0}
    Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
    glisser. */
 .rail{position:relative}
-.rail__piste{display:flex;align-items:stretch;gap:clamp(1rem,3vw,1.5rem);
+/* `safe center` et non `center` : les cartes se groupent au milieu quand elles
+   tiennent dans la largeur, et repassent au bord dès qu'il faut faire défiler.
+   Un `center` sec pousserait la première carte hors d'atteinte à gauche sur
+   téléphone — le défaut classique d'un conteneur défilant centré. */
+.rail__piste{display:flex;align-items:stretch;justify-content:safe center;
+  gap:clamp(1rem,3vw,1.5rem);
   overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
   padding-bottom:.75rem;scrollbar-width:thin;
   scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
