@@ -57,8 +57,13 @@ balises Open Graph et Twitter, et données structurées JSON-LD. Elle vaut aujou
 d'un coup, sinon les aperçus de partage LinkedIn pointent à côté.
 
 **Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
-la section Réservation ne contient plus d'`iframe` : un bouton « Ouvrir le formulaire »
-mène à `https://tally.so/r/81VkKx` dans un nouvel onglet.
+la section Contact ne contient plus d'`iframe` : un bouton « Réserver mon appel » mène
+à `https://tally.so/r/81VkKx` dans un nouvel onglet.
+
+**Et cette section ne fait plus rien d’autre.** Le 14 septembre 2026, le propriétaire
+l'a ramenée à un titre, une phrase et ce bouton. Le téléphone et les deux adresses
+email qui y vivaient sont partis : le téléphone reste dans le hero, `contact.aintegrate`
+dans le pied de page. Ne pas les y remettre sans sa demande.
 
 **En revanche il est incrusté dans un article de blog**, et là sa hauteur est
 négociée. Un article dont l'en-tête porte un `tally_url` reçoit le formulaire en fin de

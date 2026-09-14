@@ -55,9 +55,11 @@ inclus dans les forfaits.**
 
 ## Capabilities and Constraints
 
-- **Deux chemins de conversion d'égale importance**, confirmé par le propriétaire :
-  l'appel téléphonique direct et la réservation par formulaire Tally. Aucun des deux ne
-  doit être relégué au profit de l'autre.
+- **Deux chemins de conversion**, confirmé par le propriétaire : l'appel téléphonique
+  direct et la réservation par formulaire Tally. Ils n'ont plus le même poids depuis le
+  14 septembre 2026 : la section Contact ne propose que le formulaire, et le téléphone
+  ne paraît plus que dans le hero. C'est une décision explicite du propriétaire, pas un
+  oubli. Ne pas rétablir le téléphone dans le contact sans sa demande.
 - Site statique, sans serveur ni base de données. Le formulaire est hébergé par Tally.
 - Engagement contractuel de **moyens et non de résultats** (CGV, article 8).
 - **Aucun montant publié**, nulle part : tarifs, seuils de budget publicitaire et durées
@@ -126,8 +128,10 @@ Absences que le travail futur ne doit **pas** combler par invention :
    prise de rendez-vous va contre la position revendiquée.
 2. **Ne rien affirmer qui ne soit vérifiable.** En l'absence de chiffres clients, la
    crédibilité repose sur la méthode et sur les agents montrés en fonctionnement.
-3. **Deux portes d'entrée, également ouvertes.** Téléphone et formulaire servent deux
-   tempéraments d'acheteur ; sacrifier l'un ferme la moitié du chemin.
+3. **Deux portes d'entrée, inégalement ouvertes.** Téléphone et formulaire servent deux
+   tempéraments d'acheteur. Le propriétaire a choisi le 14 septembre 2026 de faire du
+   formulaire la porte principale : le contact ne propose que lui, le téléphone reste
+   dans le hero. Ne fermer ni l'une ni l'autre.
 4. **Le dirigeant décide seul et vite.** Il doit pouvoir comprendre l'offre, juger la
    preuve et agir sans consulter personne.
 5. **Les documents contractuels sont la parole du propriétaire.** Leur mise en forme

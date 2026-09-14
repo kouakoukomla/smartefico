@@ -297,9 +297,10 @@ em{color:var(--yellow)}
 .figures{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:38rem){.figures{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:64rem){.figures{grid-template-columns:repeat(4,1fr)}}
-/* filet jaune en tête + icône filaire : traitement « repère technique »,
-   pour donner du poids visuel à ce qui est mesuré. */
-.figure{background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--yellow);
+/* Icône filaire jaune, traitement « repère technique ». Le filet jaune qui
+   coiffait chaque carte est parti le 14 septembre 2026 : il ne reste que
+   l'icône, et la bordure qui s'éclaire au survol. */
+.figure{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:.5rem;
   transition:border-color .2s ease}
 .figure:hover{border-color:var(--yellow)}
@@ -594,62 +595,28 @@ h2.head__eyebrow{font-weight:600;margin:0}
    sombre de Tally : le visiteur retrouve la même surface une fois le
    nouvel onglet ouvert. */
 
-/* ---------- contact ---------- */
 /* ---------- contact ----------
-   Deux colonnes, comme la page de contact qui a servi de modèle : à gauche
-   ce qu’on peut savoir — le titre, un mot, les coordonnées — à droite ce
-   qu’on peut faire, dans un panneau détaché. La réservation vivait juste
-   au-dessus dans sa propre section ; les deux disaient « parlons » et se
-   suivaient, elles n’en font plus qu’une. */
-.contact{display:grid;gap:clamp(1.5rem,3.2vw,2.5rem);align-items:start;
-  background:var(--noir);color:#F3F3F3;padding:clamp(1.5rem,3.2vw,2.25rem);
+   Une seule colonne, centrée : un titre, une phrase, un bouton. Les règles
+   des deux anciennes colonnes sont parties avec le markup qu’elles
+   servaient — coordonnées, panneau détaché, liste de repères. */
+.contact{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(1rem,2.4vw,1.5rem);background:var(--noir);color:#F3F3F3;
+  padding:clamp(2.25rem,6vw,4.5rem) clamp(1.5rem,3.2vw,2.25rem);
   border:1px solid var(--line);border-radius:1.4rem}
-@media (min-width:60rem){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
-.contact__mot{display:flex;flex-direction:column;gap:1rem;min-width:0}
-/* Le panneau de droite porte sa propre marge interieure ; sans compensation
-   son titre demarre plus bas que celui de gauche. La colonne de gauche prend
-   donc le meme retrait, mais seulement quand les deux sont cote a cote. Elle
-   est la plus courte des deux : ce retrait ne rallonge pas le bloc. */
-@media (min-width:60rem){.contact__mot{padding-top:clamp(1.15rem,2.4vw,1.6rem)}}
-/* Le panneau d’action se détache du bloc qui le porte : un cran plus clair,
-   son propre filet. C’est là que se trouve la seule chose à faire. */
-.contact__action{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;
-  background:var(--noir-2);border:1px solid var(--line);border-radius:1.1rem;
-  padding:clamp(1.15rem,2.4vw,1.6rem);min-width:0;width:100%}
-.contact__action h3{font-size:clamp(1.2rem,2.6vw,1.65rem);color:#FFF;margin:0;
-  letter-spacing:-.025em;line-height:1.2}
-.contact__intro{color:#B5B5B1;font-size:.98rem;max-width:46ch}
-.contact__facts{list-style:none;margin:.15rem 0 0;padding:0;display:flex;
-  flex-direction:column;gap:.75rem;width:100%}
-.contact__facts li{position:relative;display:flex;flex-direction:column;gap:.15rem;
-  padding-left:1.1rem}
-.contact__facts li::before{content:"";position:absolute;left:0;top:.45rem;
-  width:.4rem;height:.4rem;background:var(--ink-3);transform:rotate(45deg)}
-.contact__facts b{font-weight:700;font-size:.92rem;color:#FFF}
-.contact__facts span{font-size:.92rem;color:#B5B5B1;line-height:1.45}
-.contact__facts a{color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow)}
+/* « Très grand », demandé par le propriétaire : au-dessus de tous les autres
+   titres de section, juste sous celui d’accueil. Pas de max-width, c’est
+   text-wrap:balance, hérité de .display, qui répartit les lignes. */
+.contact .display{color:#FFF;font-size:clamp(2.2rem,6.4vw,4.4rem);
+  letter-spacing:-.04em;line-height:1.02}
+.contact__phrase{color:#B5B5B1;font-size:clamp(1rem,1.6vw,1.2rem);
+  line-height:1.5;max-width:52ch}
 .contact__btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   background:var(--ink);color:var(--ground);text-decoration:none;font-weight:700;
-  font-size:1rem;padding:.85rem 1.5rem;border-radius:999px;margin-top:.25rem;
-  min-height:3rem;max-width:100%;text-align:center;
+  font-size:1.05rem;padding:.95rem 1.8rem;border-radius:999px;margin-top:.5rem;
+  min-height:3.25rem;max-width:100%;text-align:center;
   transition:background-color .18s ease,transform .18s ease}
 .contact__btn:hover,.contact__btn:focus-visible{background:#E6E6E2;transform:translateY(-2px)}
 .contact__note{color:var(--ink-3);font-size:.85rem}
-.coord__quoi{font-weight:600;font-size:.78rem;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--ink-3)}
-.contact .display{color:#FFF;font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.06}
-.contact .lead{color:#B5B5B1;max-width:42ch}
-/* Une seule colonne : les coordonnées vivent désormais dans la moitié gauche
-   du bloc de contact, et à deux par ligne les adresses email se coupaient en
-   plein mot (« …@gma / il.com »). En pleine largeur elles tiennent d'un bloc,
-   et la troisième carte ne reste plus seule sur sa ligne. */
-.coords{display:grid;gap:.75rem;margin-top:.5rem;width:100%;
-  grid-template-columns:1fr}
-.coord{background:var(--noir-2);border:1px solid #333;padding:1rem 1.2rem;
-  display:flex;flex-direction:column;gap:.3rem;text-decoration:none;
-  transition:border-color .2s ease,background-color .2s ease}
-.coord:hover{border-color:var(--yellow);background:#262626}
-.coord .mono{background:none;color:#8A8A86;padding:0}
 /* Signature : bloc autonome et centré, posé sur le fond de page entre le
    bloc de contact et les réseaux. */
 /* Pas de padding vertical : cette section n'a pas de fond, sa marge
@@ -669,8 +636,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
 .signature__mot{color:var(--ink-2);font-size:1rem;max-width:44ch}
-.coord b{color:var(--yellow);font-weight:700;font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.02em;
-  line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 
 /* ---------- icônes réseaux ---------- */
 .icons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
