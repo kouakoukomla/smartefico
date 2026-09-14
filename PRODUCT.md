@@ -96,8 +96,12 @@ Fourni par le propriétaire :
 
 - **Deux noms de clients citables** : l'**Ambassade du Togo au Maroc** et
   **Ménouvévé Logistique**. Le propriétaire déclare avoir le droit de les nommer.
-  Leurs logos sont affichés dans le hero depuis le 14 septembre 2026, en silhouette
-  blanche, produites par `scripts/silhouettes-logos.mjs`.
+  Leurs logos **ne sont pas affichés**. Un bandeau les a portés en silhouette blanche
+  le 14 septembre 2026, d'abord dans le hero puis en ouverture du corps de page ; le
+  propriétaire l'a fait retirer le jour même. Les deux fichiers restent dans
+  `assets/` — `client-ambassade-togo.png` et `client-menouveve.png` — et
+  `scripts/silhouettes-logos.mjs` sait les régénérer depuis les originaux couleur.
+  Ne pas les remettre à l'écran sans qu'il le demande.
   Aucun résultat chiffré ne les accompagne : ce sont des références, pas des études
   de cas. Ne rien leur attribuer qu'il n'ait confirmé.
 - **GROUP LIGHT MEDICAL a été écarté** le 14 septembre 2026, sur demande explicite

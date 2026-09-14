@@ -239,27 +239,6 @@ p{margin:0}
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
 }
-/* ---------- bandeau de confiance ----------
-   Blanc franc sur le noir de la page.
-   Les logos sont servis en silhouette blanche sur transparence, produits par
-   scripts a partir des fichiers couleur d origine (qui restent intacts a la
-   racine). Un filtre CSS ne pouvait pas y arriver : "invert" retourne aussi
-   l interieur des logos, et le sceau de l ambassade — un disque blanc portant
-   un embleme colore — devenait un pave sombre. Le traitement se fait donc sur
-   l image : la luminance sert de couche alpha, le blanc devient transparent,
-   le reste est peint en blanc. */
-.confiance{display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:clamp(1.35rem,3vw,2.25rem)}
-.confiance__ligne{font-size:clamp(1.5rem,4vw,2.75rem);color:var(--ink);max-width:22ch}
-.confiance__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-  gap:1.5rem clamp(2.5rem,6vw,4.5rem)}
-.confiance__logos img{width:auto}
-/* Les deux marques ne pesent pas pareil a hauteur egale : le sceau est un
-   disque dense, le logotype une forme large et aeree. Le sceau prend donc
-   plus de hauteur, sans quoi ses deux lignes de texte interieures se
-   moyennent en gris et le disque parait plein. */
-.confiance__logos .sceau{height:clamp(5.5rem,11vw,8rem)}
-.confiance__logos .logotype{height:clamp(3.9rem,7.6vw,5.5rem)}
 
 /* ---------- preuves ----------
    Deux colonnes de captures. Le fond sombre des tableaux de bord rejoint
@@ -552,8 +531,7 @@ em{color:var(--yellow)}
    lui-meme, il n y a rien a scripter et le clavier le manoeuvre seul.
    La premiere est ouverte : sans cela la section ne montre que des titres,
    et rien ne dit qu ils s ouvrent. */
-.steps{display:grid;gap:.75rem;grid-template-columns:1fr;align-items:start;
-  border-top:2px solid var(--yellow);padding-top:1.25rem}
+.steps{display:grid;gap:.75rem;grid-template-columns:1fr;align-items:start}
 @media (min-width:46rem){.steps{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:68rem){.steps{grid-template-columns:repeat(3,1fr)}}
 .step{border:1px solid #333;background:var(--noir-2);transition:border-color .2s ease}
@@ -939,19 +917,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
-
-    <!-- ============ CONFIANCE ============
-         Ce bandeau vivait dans le hero, au-dessus du titre : il repoussait
-         la promesse vers le bas et se lisait avant elle. Il ouvre desormais
-         le corps de page. Le visiteur a lu ce qu on promet, on lui montre
-         qui l a deja signe, puis les agents qui le font. -->
-    <section class="wrap confiance" aria-label="Ils nous font confiance">
-      <p class="confiance__ligne display">+ 2 CEOs &amp; Entreprises nous font confiance</p>
-      <div class="confiance__logos">
-        <img class="sceau" src="assets/client-ambassade-togo.png" alt="Ambassade de la République togolaise au Royaume du Maroc" width="348" height="349" loading="lazy" decoding="async">
-        <img class="logotype" src="assets/client-menouveve.png" alt="Ménouvévé Logistique" width="731" height="682" loading="lazy" decoding="async">
-      </div>
-    </section>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
