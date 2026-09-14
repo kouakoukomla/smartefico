@@ -521,17 +521,34 @@ em{color:var(--yellow)}
 .invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(2rem,4.5vw,3.5rem)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
-.steps{display:flex;flex-direction:column;border-top:2px solid var(--yellow)}
-.step{display:grid;gap:.5rem 1.75rem;grid-template-columns:1fr;
-  padding-block:1.5rem;border-bottom:1px solid #333}
-@media (min-width:46rem){
-  .step{grid-template-columns:5rem minmax(0,1fr);gap:.5rem 2rem}
-  .step__no{grid-row:1 / span 3}
-}
-.step__no{font-weight:800;font-size:clamp(2.1rem,4.4vw,3rem);line-height:.9;
-  letter-spacing:-.05em;color:var(--yellow)}
-.step h3{color:#FFF}
-.step p{color:#B5B5B1;font-size:.98rem;max-width:58ch}
+/* Les cinq etapes sont des panneaux depliants, poses cote a cote. Elles
+   formaient une liste verticale de cinq lignes pleines : cinq titres qui
+   occupaient la hauteur d un ecran entier. `details` porte le pliage
+   lui-meme, il n y a rien a scripter et le clavier le manoeuvre seul.
+   La premiere est ouverte : sans cela la section ne montre que des titres,
+   et rien ne dit qu ils s ouvrent. */
+.steps{display:grid;gap:.75rem;grid-template-columns:1fr;align-items:start;
+  border-top:2px solid var(--yellow);padding-top:1.25rem}
+@media (min-width:46rem){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:68rem){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{border:1px solid #333;background:var(--noir-2);transition:border-color .2s ease}
+.step:hover,.step[open]{border-color:#4A4A47}
+.step__tete{display:flex;align-items:center;gap:.9rem;cursor:pointer;
+  padding:1.05rem 1.2rem;list-style:none}
+.step__tete::-webkit-details-marker{display:none}
+.step__tete:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
+.step__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
+  letter-spacing:-.05em;color:var(--yellow);flex:none}
+.step h3{color:#FFF;font-size:1.05rem;flex:1;min-width:0}
+/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert. */
+.step__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
+  border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
+  transform:rotate(45deg);transition:transform .2s ease}
+.step[open] .step__chevron{transform:rotate(-135deg);margin-top:.25rem}
+@media (prefers-reduced-motion:reduce){.step__chevron{transition:none}}
+.step__corps{padding:0 1.2rem 1.2rem}
+.step__corps .chips{margin-top:0}
+.step p{color:#B5B5B1;font-size:.95rem}
 .step .chip{border-color:#3A3A3A;background:transparent;color:#C9C9C6}
 
 /* ---------- avant / après ---------- */
