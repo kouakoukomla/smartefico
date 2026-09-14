@@ -239,10 +239,8 @@ p{margin:0}
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
 }
-/* Ligne de confiance, au-dessus du titre. */
-.hero__confiance{color:var(--ink-2);font-size:.92rem;align-self:center;order:-2;
-  text-align:center}
-/* Bandeau de logos clients, blanc franc sur le noir de la page.
+/* ---------- bandeau de confiance ----------
+   Blanc franc sur le noir de la page.
    Les logos sont servis en silhouette blanche sur transparence, produits par
    scripts a partir des fichiers couleur d origine (qui restent intacts a la
    racine). Un filtre CSS ne pouvait pas y arriver : "invert" retourne aussi
@@ -250,16 +248,18 @@ p{margin:0}
    un embleme colore — devenait un pave sombre. Le traitement se fait donc sur
    l image : la luminance sert de couche alpha, le blanc devient transparent,
    le reste est peint en blanc. */
-.hero__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-  gap:1.25rem clamp(2rem,5vw,3.5rem);align-self:center;order:-1;
-  padding-block:.25rem 1rem}
-.hero__logos img{width:auto}
+.confiance{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(1.35rem,3vw,2.25rem)}
+.confiance__ligne{font-size:clamp(1.5rem,4vw,2.75rem);color:var(--ink);max-width:22ch}
+.confiance__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:1.5rem clamp(2.5rem,6vw,4.5rem)}
+.confiance__logos img{width:auto}
 /* Les deux marques ne pesent pas pareil a hauteur egale : le sceau est un
    disque dense, le logotype une forme large et aeree. Le sceau prend donc
    plus de hauteur, sans quoi ses deux lignes de texte interieures se
    moyennent en gris et le disque parait plein. */
-.hero__logos .sceau{height:clamp(4.75rem,9.5vw,6.75rem)}
-.hero__logos .logotype{height:clamp(3.4rem,6.4vw,4.6rem)}
+.confiance__logos .sceau{height:clamp(5.5rem,11vw,8rem)}
+.confiance__logos .logotype{height:clamp(3.9rem,7.6vw,5.5rem)}
 
 /* ---------- preuves ----------
    Deux colonnes de captures. Le fond sombre des tableaux de bord rejoint
@@ -626,21 +626,26 @@ h2.head__eyebrow{font-weight:600;margin:0}
    qu’on peut faire, dans un panneau détaché. La réservation vivait juste
    au-dessus dans sa propre section ; les deux disaient « parlons » et se
    suivaient, elles n’en font plus qu’une. */
-.contact{display:grid;gap:clamp(1.75rem,4vw,3rem);align-items:start;
-  background:var(--noir);color:#F3F3F3;padding:clamp(1.75rem,4vw,3rem);
+.contact{display:grid;gap:clamp(1.5rem,3.2vw,2.5rem);align-items:start;
+  background:var(--noir);color:#F3F3F3;padding:clamp(1.5rem,3.2vw,2.25rem);
   border:1px solid var(--line);border-radius:1.4rem}
 @media (min-width:60rem){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
-.contact__mot{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.contact__mot{display:flex;flex-direction:column;gap:1rem;min-width:0}
+/* Le panneau de droite porte sa propre marge interieure ; sans compensation
+   son titre demarre plus bas que celui de gauche. La colonne de gauche prend
+   donc le meme retrait, mais seulement quand les deux sont cote a cote. Elle
+   est la plus courte des deux : ce retrait ne rallonge pas le bloc. */
+@media (min-width:60rem){.contact__mot{padding-top:clamp(1.15rem,2.4vw,1.6rem)}}
 /* Le panneau d’action se détache du bloc qui le porte : un cran plus clair,
    son propre filet. C’est là que se trouve la seule chose à faire. */
-.contact__action{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;
+.contact__action{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;
   background:var(--noir-2);border:1px solid var(--line);border-radius:1.1rem;
-  padding:clamp(1.35rem,3vw,2rem);min-width:0;width:100%}
-.contact__action h3{font-size:clamp(1.15rem,2.4vw,1.5rem);color:#FFF;margin:0;
-  letter-spacing:-.025em}
+  padding:clamp(1.15rem,2.4vw,1.6rem);min-width:0;width:100%}
+.contact__action h3{font-size:clamp(1.2rem,2.6vw,1.65rem);color:#FFF;margin:0;
+  letter-spacing:-.025em;line-height:1.2}
 .contact__intro{color:#B5B5B1;font-size:.98rem;max-width:46ch}
-.contact__facts{list-style:none;margin:.25rem 0 0;padding:0;display:flex;
-  flex-direction:column;gap:.9rem;width:100%}
+.contact__facts{list-style:none;margin:.15rem 0 0;padding:0;display:flex;
+  flex-direction:column;gap:.75rem;width:100%}
 .contact__facts li{position:relative;display:flex;flex-direction:column;gap:.15rem;
   padding-left:1.1rem}
 .contact__facts li::before{content:"";position:absolute;left:0;top:.45rem;
@@ -650,22 +655,22 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .contact__facts a{color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow)}
 .contact__btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   background:var(--ink);color:var(--ground);text-decoration:none;font-weight:700;
-  font-size:1rem;padding:.9rem 1.5rem;border-radius:999px;margin-top:.35rem;
-  min-height:3.25rem;max-width:100%;text-align:center;
+  font-size:1rem;padding:.85rem 1.5rem;border-radius:999px;margin-top:.25rem;
+  min-height:3rem;max-width:100%;text-align:center;
   transition:background-color .18s ease,transform .18s ease}
 .contact__btn:hover,.contact__btn:focus-visible{background:#E6E6E2;transform:translateY(-2px)}
 .contact__note{color:var(--ink-3);font-size:.85rem}
-.contact__alt{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem;
-  margin-top:.35rem;color:#B5B5B1;font-size:.95rem}
+.contact__alt{display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;
+  margin-top:.25rem;color:#B5B5B1;font-size:.95rem}
 .contact__tel{display:inline-flex;align-items:center;justify-content:center;
   background:transparent;color:var(--yellow);text-decoration:none;font-weight:700;
-  padding:.85rem 1.4rem;border:1px solid var(--yellow);border-radius:999px;
-  min-height:3.25rem;max-width:100%;text-align:center;
+  padding:.8rem 1.4rem;border:1px solid var(--yellow);border-radius:999px;
+  min-height:3rem;max-width:100%;text-align:center;
   transition:color .18s ease,background-color .18s ease,border-color .18s ease}
 .contact__tel:hover{color:var(--on-yellow);background:var(--yellow);border-color:var(--yellow)}
 .coord__quoi{font-weight:600;font-size:.78rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3)}
-.contact .display{color:#FFF}
+.contact .display{color:#FFF;font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.06}
 .contact .lead{color:#B5B5B1;max-width:42ch}
 /* Une seule colonne : les coordonnées vivent désormais dans la moitié gauche
    du bloc de contact, et à deux par ligne les adresses email se coupaient en
@@ -896,11 +901,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <a class="btn btn--solid" href="#contact">Réserver un échange</a>
         <a class="btn btn--line" href="tel:+33751599636">+33 7 51 59 96 36</a>
       </div>
-      <p class="hero__confiance">+ 2 CEOs &amp; Entreprises nous font confiance</p>
-      <div class="hero__logos">
-        <img class="sceau" src="assets/client-ambassade-togo.png" alt="Ambassade de la République togolaise au Royaume du Maroc" width="348" height="349" decoding="async">
-        <img class="logotype" src="assets/client-menouveve.png" alt="Ménouvévé Logistique" width="731" height="682" decoding="async">
-      </div>
     </div>
   </section>
 
@@ -925,6 +925,19 @@ h2.head__eyebrow{font-weight:600;margin:0}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
+
+    <!-- ============ CONFIANCE ============
+         Ce bandeau vivait dans le hero, au-dessus du titre : il repoussait
+         la promesse vers le bas et se lisait avant elle. Il ouvre desormais
+         le corps de page. Le visiteur a lu ce qu on promet, on lui montre
+         qui l a deja signe, puis les agents qui le font. -->
+    <section class="wrap confiance" aria-label="Ils nous font confiance">
+      <p class="confiance__ligne display">+ 2 CEOs &amp; Entreprises nous font confiance</p>
+      <div class="confiance__logos">
+        <img class="sceau" src="assets/client-ambassade-togo.png" alt="Ambassade de la République togolaise au Royaume du Maroc" width="348" height="349" loading="lazy" decoding="async">
+        <img class="logotype" src="assets/client-menouveve.png" alt="Ménouvévé Logistique" width="731" height="682" loading="lazy" decoding="async">
+      </div>
+    </section>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
