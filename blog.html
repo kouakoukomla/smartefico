@@ -70,8 +70,8 @@ a{color:inherit}
 /* Blanc plein comme les autres boutons. Il reste la chose la plus claire
    de la page au moment où il paraît, ce qui est tout ce qu'on lui demande. */
 .skip-link{position:fixed;top:1rem;left:1rem;z-index:100;
-  transform:translateY(-200%);padding:.8rem 1rem;background:var(--ink);
-  color:var(--ground);font-weight:700;border-radius:.5rem}
+  transform:translateY(-200%);padding:.8rem 1rem;background:var(--yellow);
+  color:var(--on-yellow);font-weight:700;border-radius:.5rem}
 .skip-link:focus{transform:translateY(0)}
 
 .wrap{width:min(100% - 2.5rem,74rem);margin-inline:auto}
@@ -131,9 +131,9 @@ p{margin:0}
 .nav__cta-texte{transition:opacity .18s ease}
 .nav__cta:hover .nav__cta-texte{opacity:.65}
 .nav__fleche{display:grid;place-items:center;width:2.65rem;height:2.65rem;flex:none;
-  color:var(--ground);background:var(--ink);border-radius:9px;font-size:1.15rem;line-height:1;
+  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:1.15rem;line-height:1;
   transition:background-color .18s ease,transform .18s ease}
-.nav__cta:hover .nav__fleche{background:#E6E6E2;transform:translate(2px,-2px)}
+.nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
 /* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
    tiennent pas ensemble sur une ligne. Mesuré : il leur faut 413 px, d où ce
    seuil de 28 rem — en dessous, la barre se coupait en deux. */
@@ -245,8 +245,8 @@ em{color:var(--yellow)}
 .hero__actions{gap:.75rem;width:100%}
 .hero__actions .btn{font-size:1rem;min-height:3.25rem;
   padding:.85rem 1.4rem;justify-content:center;min-width:14rem}
-.hero__actions .btn--solid{background:var(--ink);color:var(--ground)}
-.hero__actions .btn--solid:hover{background:#E6E6E2}
+.hero__actions .btn--solid{background:var(--yellow);color:var(--on-yellow)}
+.hero__actions .btn--solid:hover{background:var(--yellow-hi)}
 @media (max-width:35rem){
   .hero__actions{max-width:24rem}
   .hero__actions .btn{width:100%;min-width:0}
@@ -254,10 +254,10 @@ em{color:var(--yellow)}
 .btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;
   font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
-.btn--solid{background:var(--ink);color:var(--surface)}
-.btn--solid:hover{background:var(--ink);color:var(--ground);transform:translateY(-2px)}
+.btn--solid{background:var(--yellow);color:var(--on-yellow)}
+.btn--solid:hover{background:var(--yellow-hi);color:var(--on-yellow);transform:translateY(-2px)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
-.btn--line:hover{background:var(--ink);border-color:var(--ink);color:var(--ground);transform:translateY(-2px)}
+.btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
 /* ---------- bandeau de références ----------
    Il ne défile plus. Les dix mots tiennent sur une ou deux lignes centrées
@@ -355,7 +355,7 @@ em{color:var(--yellow)}
   background:rgba(0,0,0,.72);color:var(--ink);font-size:1.4rem;line-height:1;
   cursor:pointer;align-items:center;justify-content:center;
   transition:background-color .18s ease,border-color .18s ease,opacity .18s ease}
-.rail__fleche:hover{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+.rail__fleche:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
 .rail__fleche[disabled]{opacity:.25;cursor:default}
 .rail__fleche[disabled]:hover{background:rgba(0,0,0,.72);border-color:var(--line);color:var(--ink)}
 .rail__fleche--prec{left:-.6rem}
@@ -423,11 +423,11 @@ em{color:var(--yellow)}
 .blog-cta__oeil{color:var(--ink-3)}
 .blog-cta__titre{font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--ink);
   max-width:34ch;line-height:1.15}
-.blog-cta__btn{display:inline-flex;align-items:center;background:var(--ink);
-  color:var(--ground);text-decoration:none;font-weight:700;font-size:.9rem;
+.blog-cta__btn{display:inline-flex;align-items:center;background:var(--yellow);
+  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:.9rem;
   padding:.7rem 1.4rem;border-radius:999px;
   transition:transform .18s ease,background-color .18s ease}
-.blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:#E6E6E2;
+.blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:var(--yellow-hi);
   transform:translateY(-2px)}
 
 /* ---------- agents IA ---------- */
@@ -611,11 +611,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .contact__phrase{color:#B5B5B1;font-size:clamp(1rem,1.6vw,1.2rem);
   line-height:1.5;max-width:52ch}
 .contact__btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  background:var(--ink);color:var(--ground);text-decoration:none;font-weight:700;
+  background:var(--yellow);color:var(--on-yellow);text-decoration:none;font-weight:700;
   font-size:1.05rem;padding:.95rem 1.8rem;border-radius:999px;margin-top:.5rem;
   min-height:3.25rem;max-width:100%;text-align:center;
   transition:background-color .18s ease,transform .18s ease}
-.contact__btn:hover,.contact__btn:focus-visible{background:#E6E6E2;transform:translateY(-2px)}
+.contact__btn:hover,.contact__btn:focus-visible{background:var(--yellow-hi);transform:translateY(-2px)}
 .contact__note{color:var(--ink-3);font-size:.85rem}
 /* Signature : bloc autonome et centré, posé sur le fond de page entre le
    bloc de contact et les réseaux. */
@@ -642,7 +642,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .icons a{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;
   border:1.5px solid var(--line);color:var(--ink);background:var(--surface);
   transition:background-color .18s ease,color .18s ease,transform .18s ease,border-color .18s ease}
-.icons a:hover{background:var(--ink);border-color:var(--ink);color:var(--ground);transform:translateY(-2px)}
+.icons a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 .icons svg{width:1.3rem;height:1.3rem;fill:currentColor;display:block}
 
 /* ---------- pied ---------- */

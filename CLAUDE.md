@@ -126,11 +126,19 @@ des affirmations fausses sur son entreprise.
 Noir pur `#000000` — et non un gris très sombre — pour que le fond du logo se fonde
 dans la page. Jaune `#FFCC00`, blanc.
 
-**Le jaune est rationné.** Il reste la couleur de marque, mais comme accent, jamais
-comme aplat : il ne subsiste qu'en trait fin, en icône, en survol, et sur les mots
-en italique. C'est le blanc qui porte l'emphase — boutons pleins, puces, étiquettes
-relevées. Le jaune ne tient pas sur fond blanc (1,5:1) : dans une zone claire, il
-n'a pas sa place.
+**Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
+et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
+se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et
+gris. Le jaune ne tient pas sur fond blanc (1,5:1) : dans une zone claire, il n'a pas
+sa place.
+
+**Les aplats cliquables sont jaunes**, depuis le 14 septembre 2026. Le propriétaire
+est revenu sur le retrait des aplats en nommant le carré à la flèche de la barre du
+haut ; laisser les autres en blanc aurait eu l’air d’un oubli, donc la famille entière
+a suivi : lien d’évitement, carré de la barre du haut, boutons pleins, survol des
+boutons à filet, flèches du rail, bouton du blog, bouton « Réserver mon appel »,
+survol des icônes de réseaux, et le survol du lien de contact des pages légales.
+Le texte posé dessus est `--on-yellow` (#141414), soit 12,18:1.
 
 **Tous les italiques sont jaunes**, depuis le 14 septembre 2026. La règle ne valait
 jusque-là que pour le titre d'accueil ; le propriétaire l'a étendue à tout le site.
@@ -140,11 +148,11 @@ et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrenc
 la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
 fond réel, entre 11,97:1 et 13,89:1.
 
-**Sans aucune exception, y compris le `.skip-link`.** Il avait d'abord été épargné,
-au motif qu'il n'apparaît qu'à la navigation clavier et doit être impossible à
-manquer à cet instant. Le propriétaire a tranché : il passe au blanc comme le reste.
-Il demeure la chose la plus claire de la page au moment où il paraît, ce qui suffit
-à son office.
+**Le `.skip-link` suit la règle des aplats cliquables**, quelle qu'elle soit. Il avait
+été épargné une première fois, au motif qu'il n'apparaît qu'à la navigation clavier et
+doit être impossible à manquer à cet instant ; le propriétaire a tranché qu'il ferait
+comme le reste. Passé au blanc avec les autres, il est repassé au jaune avec eux.
+Ne pas le traiter à part.
 
 **Polices, telles qu'elles sont réellement dans le code.** Une version précédente de
 ce fichier annonçait Bricolage Grotesque, Schibsted Grotesk et DM Mono : aucune des
