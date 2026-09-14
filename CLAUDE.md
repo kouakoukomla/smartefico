@@ -124,7 +124,20 @@ des affirmations fausses sur son entreprise.
 ## Design
 
 Noir pur `#000000` — et non un gris très sombre — pour que le fond du logo se fonde
-dans la page. Jaune `#FFCC00`, blanc.
+dans la page. Jaune `#FFCC00`, blanc, et un violet `#9D4DFF` cantonné à un seul endroit.
+
+**Le violet n'existe que dans le contour animé de la barre de navigation**, demandé par
+le propriétaire le 14 septembre 2026 : un filet dégradé jaune et violet, et deux éclats —
+un jaune, un violet — qui en font le tour en 7 s. Ne pas l'employer ailleurs.
+
+C'est un SVG posé sur la bordure de `.nav__in`, et non un `conic-gradient` qui tourne. La
+barre est vingt fois plus large que haute : un dégradé conique y concentrerait tout son
+mouvement au milieu des grands côtés et laisserait le reste presque figé.
+`stroke-dashoffset` avance au contraire à vitesse constante sur le périmètre d'un
+`<rect>`, et `pathLength="100"` rend ce périmètre indépendant de la largeur d'écran.
+Vérifié dans le navigateur : un seul éclat par couleur, et le contour suit la barre quand
+le menu mobile l'allonge. Sous `prefers-reduced-motion`, les éclats disparaissent et le
+filet reste.
 
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui

@@ -47,6 +47,10 @@
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
   --on-yellow:#141414;
+  /* Violet : il n existe que dans le contour anime de la barre de navigation,
+     demande par le proprietaire le 14 septembre 2026. Nulle part ailleurs. */
+  --violet:#9D4DFF;
+  --violet-hi:#C49BFF;
   /* Rythme entre les sections. Etait a 8vw plafonne a 6.5rem, soit 102 px
      sur un ecran de 1280 : quinze fois cet ecart sur une page de 10 800 px,
      ce qui la faisait respirer trop fort. Resserre d un tiers. */
@@ -108,6 +112,58 @@ p{margin:0}
   padding:.5rem .5rem .5rem 1.35rem;
   border:1px solid var(--line);
   box-shadow:0 1px 3px rgba(0,0,0,.5)}
+/* ---------- contour anime de la barre ----------
+   Un contour jaune et violet, et deux eclats qui en font le tour, demande du
+   proprietaire le 14 septembre 2026.
+
+   Un SVG pose sur la bordure, et non un conic-gradient qui tourne. La barre
+   est vingt fois plus large que haute : vu de son centre, chaque petit cote
+   ne couvre que 6 degres et chaque grand cote 174, dont l essentiel se joue
+   dans les soixante pixels du milieu. Un degrade conique y concentrerait tout
+   son mouvement et laisserait le reste presque fige. Le long d un rect,
+   stroke-dashoffset avance a vitesse constante sur tout le perimetre.
+
+   pathLength="100" ramene ce perimetre a 100 quelle que soit la largeur :
+   « 22 78 » veut dire un eclat par tour, a toutes les tailles d ecran.
+   Chaque eclat est une queue, une tete plus vive posee a son bout, et un
+   halo qui scintille autour de la tete. Le violet part a l oppose du jaune.
+
+   Le rect est centre sur le bord exterieur de la bordure : le SVG deborde de
+   1 px pour la couvrir, et overflow:visible laisse passer la moitie
+   exterieure du trait et du halo. pointer-events:none, rien ne gene le clic. */
+.nav__in{position:relative;border-color:transparent}
+.nav__contour{position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);
+  height:calc(100% + 2px);overflow:visible;pointer-events:none}
+.nav__arret--jaune{stop-color:var(--yellow)}
+.nav__arret--violet{stop-color:var(--violet)}
+.nav__trace{fill:none;stroke-linecap:round}
+.nav__trace--fond{stroke:url(#nav-contour-degrade);stroke-width:1.5;opacity:.75}
+.nav__trace--jaune{stroke:var(--yellow-hi)}
+.nav__trace--violet{stroke:var(--violet-hi)}
+/* Le halo prend la teinte saturee et reste etroit. A 9 px et en teinte pale,
+   il se lisait comme une pastille grise posee sur le coin, pas comme une
+   lueur : verifie sur capture, en bureau comme en mobile. */
+.nav__trace--jaune.nav__trace--halo{stroke:var(--yellow)}
+.nav__trace--violet.nav__trace--halo{stroke:var(--violet)}
+/* Tour de 7 s. Les retards negatifs placent chaque piece sur le tour :
+   18 % d avance pour la tete (le bout d une queue de 22), 17 % pour le halo
+   centre sur elle, et 50 % de plus pour tout l eclat violet. */
+.nav__trace--queue{stroke-width:2;stroke-dasharray:22 78;opacity:.55;
+  animation:nav-tour 7s linear infinite}
+.nav__trace--tete{stroke-width:2.5;stroke-dasharray:4 96;
+  animation:nav-tour 7s linear -1.26s infinite}
+.nav__trace--halo{stroke-width:5;stroke-dasharray:6 94;opacity:.3;
+  animation:nav-tour 7s linear -1.19s infinite,nav-scintille 1.8s ease-in-out infinite alternate}
+.nav__trace--violet.nav__trace--queue{animation-delay:-3.5s}
+.nav__trace--violet.nav__trace--tete{animation-delay:-4.76s}
+.nav__trace--violet.nav__trace--halo{animation-delay:-4.69s,-.9s}
+@keyframes nav-tour{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+@keyframes nav-scintille{from{opacity:.18}to{opacity:.55}}
+/* Sans mouvement : le contour reste, jaune et violet, sans rien qui tourne. */
+@media (prefers-reduced-motion:reduce){
+  .nav__trace--queue,.nav__trace--tete,.nav__trace--halo{display:none}
+  .nav__trace--fond{opacity:1}
+}
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;
   font-weight:800;letter-spacing:-.03em;font-size:1.15rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
