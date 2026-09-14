@@ -69,6 +69,12 @@ ul li::before{content:"";width:.45rem;height:.45rem;background:var(--ink);flex:n
   transform:rotate(45deg);margin-top:.62rem;
   outline:1px solid var(--black);outline-offset:-1px}
 strong{font-weight:600}
+/* Tous les mots en italique sont jaunes. La regle valait jusqu ici pour le
+   seul titre d accueil ; le proprietaire l a etendue a tout le site le
+   14 septembre 2026. L italique reste donc rare, et partout ou il parait
+   il porte la couleur de marque. Aucun fond clair sur ce site : les dix-neuf
+   italiques ont ete verifies un par un, tous sur noir ou gris tres sombre. */
+em{color:var(--yellow)}
 .mark{background:var(--ink);color:var(--paper);padding:.15rem .45rem;font-weight:600}
 .contact-box{border:1px solid var(--rule);background:var(--surface);padding:1.15rem 1.3rem;
   display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}

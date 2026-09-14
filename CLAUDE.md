@@ -123,9 +123,17 @@ dans la page. Jaune `#FFCC00`, blanc.
 
 **Le jaune est rationné.** Il reste la couleur de marque, mais comme accent, jamais
 comme aplat : il ne subsiste qu'en trait fin, en icône, en survol, et sur les mots
-que le titre d'accueil met en valeur. C'est le blanc qui porte l'emphase — boutons
-pleins, puces, étiquettes relevées. Le jaune ne tient pas sur fond blanc (1,5:1) :
-dans une zone claire, il n'a pas sa place.
+en italique. C'est le blanc qui porte l'emphase — boutons pleins, puces, étiquettes
+relevées. Le jaune ne tient pas sur fond blanc (1,5:1) : dans une zone claire, il
+n'a pas sa place.
+
+**Tous les italiques sont jaunes**, depuis le 14 septembre 2026. La règle ne valait
+jusque-là que pour le titre d'accueil ; le propriétaire l'a étendue à tout le site.
+Une seule déclaration la porte, `em{color:var(--yellow)}`, présente dans la feuille
+de `index.html` — que le blog et les articles recopient — et dans celles de `cgv.html`
+et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrences sur
+la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
+fond réel, entre 11,97:1 et 13,89:1.
 
 **Sans aucune exception, y compris le `.skip-link`.** Il avait d'abord été épargné,
 au motif qu'il n'apparaît qu'à la navigation clavier et doit être impossible à
@@ -142,7 +150,9 @@ articles, ni dans les pages légales.
   Le display est en graisse 800, chasse `-.035em` (`-.042em` sur le `h1`),
   interlignage 1,02.
 - Mots accentués — `"Instrument Serif","Times New Roman",Georgia,serif` en italique,
-  dans les `<em>` des titres. C'est la seule feuille Google Fonts chargée, et elle ne
+  dans les `<em>` des titres, en jaune. Les `<em>` du corps de texte restent en
+  Helvetica, italiques et jaunes eux aussi. C'est la seule feuille Google Fonts
+  chargée, et elle ne
   demande que l'italique (`family=Instrument+Serif:ital@1`) : un Instrument Serif
   droit n'existe pas sur ces pages.
 - La classe `.mono` **ne porte aucune police monospace.** Elle vaut

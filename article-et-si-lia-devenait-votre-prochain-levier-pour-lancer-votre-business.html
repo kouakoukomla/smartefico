@@ -250,12 +250,17 @@ p{margin:0}
 @media (min-width:56rem){.preuve--large{grid-column:1/-1}}
 .preuve img{width:100%;height:auto;display:block;border:1px solid var(--line)}
 .preuve figcaption{color:var(--ink-2);font-size:.92rem;padding-inline:.25rem}
+/* Tous les mots en italique sont jaunes. La regle valait jusqu ici pour le
+   seul titre d accueil ; le proprietaire l a etendue a tout le site le
+   14 septembre 2026. L italique reste donc rare, et partout ou il parait
+   il porte la couleur de marque. Aucun fond clair sur ce site : les dix-neuf
+   italiques ont ete verifies un par un, tous sur noir ou gris tres sombre. */
+em{color:var(--yellow)}
 /* accent de titre : serif italique au milieu du grotesque, comme chez eux.
    Le serif est plus étroit, on compense légèrement la chasse. */
 .display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.01em;
   padding-right:.04em}
-.hero .display em{color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:.5rem}
 /* Les deux voies de contact restent lisibles et de même taille. */
 .hero__actions{gap:.75rem;width:100%}
