@@ -18,7 +18,14 @@ import sharp from 'sharp';
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dossier = join(racine, 'assets');
 
-const LARGEUR_MAX = 1400;          // aucune image affichée plus large que ~700px (x2)
+// Plafond de largeur. Il valait « aucune image affichée plus large que
+// ~700px (x2) » ; ce n’est plus vrai depuis le 14 septembre 2026 : la
+// capture panoramique de la section Preuves s’affiche sur toute la largeur,
+// soit ~1160px, et ne reçoit donc qu’environ 1,2x sa taille d’affichage.
+// C’est assez pour une capture de tableau de bord, dont on lit les grands
+// nombres et non les mentions fines. Relever ce plafond alourdirait toutes
+// les autres images pour ce seul cas.
+const LARGEUR_MAX = 1400;
 const SEUIL_OCTETS = 350 * 1024;   // en dessous, on ne touche pas
 const EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 
