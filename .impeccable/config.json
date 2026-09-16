@@ -14,6 +14,15 @@
         "value": "instrument serif",
         "createdAt": "2026-09-02T23:05:14.828Z",
         "reason": "projet: accent serif italique Instrument Serif, choix delibere documente (titres grotesques + accent serif)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-16T21:43:37.824Z",
+        "reason": "user requested: « Ces carreaux doivent défiler » (section Marques, 16 septembre 2026) ; arrêt au survol et sous prefers-reduced-motion"
       }
     ]
   }

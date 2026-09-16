@@ -155,8 +155,16 @@ se redessine pas et les compteurs attendent à zéro.
 
 **Plus de bandeau de mots-clés sous le hero.** La liste « Acquisition · Automatisation ·
 IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à la demande du
-propriétaire, avec son style. Le hero enchaîne directement sur les Agents IA. Ne pas la
-remettre.
+propriétaire, avec son style. Ne pas la remettre.
+
+**À sa place, les marques clientes défilent**, demande du même jour : sous le titre
+« Marques avec lesquelles j'ai travaillé », deux rangs pleine largeur de grands
+carreaux noirs arrondis, en sens contraires, logos en silhouette blanche. Le HTML
+n'écrit chaque logo qu'une fois (`.marques__piste`) ; le script les recopie jusqu'à
+couvrir l'écran le plus large, en deux moitiés identiques, et masque les copies aux
+lecteurs d'écran. Sans script ou sous `prefers-reduced-motion`, les deux carreaux
+d'origine restent centrés, immobiles. Le survol arrête le rang. Ajouter une marque :
+un `<li>` de plus. Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
 
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
@@ -223,6 +231,9 @@ navigateur :
   Ajouter du padding doublerait les marges.
 - `flat-type-hierarchy` sur les pages légales — le détecteur ne sait pas lire `clamp()`
   et ne voit donc jamais les `h1` et `h2`. L'échelle réelle compte trois paliers nets.
+- `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
+  demande explicite du propriétaire du 16 septembre 2026. Mouvement réduit et survol
+  l'arrêtent déjà.
 - `tight-leading` — vise des titres à 1,15, où un interlignage serré est correct. Un
   troisième est mesuré à « 1,30 » sous une règle « il faut ≥ 1,30 ».
 

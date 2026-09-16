@@ -315,6 +315,41 @@ em{color:var(--yellow)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
+/* ---------- marques ----------
+   Demande du propriétaire du 16 septembre 2026 : de grands carreaux qui
+   défilent, logos en blanc sur le noir. Les logos sont des silhouettes
+   blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
+
+   Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
+   (.marques--defile), deux rangs pleine largeur glissent en sens contraires.
+   Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
+   repart, sans saut. L'écart est une marge à droite de chaque carreau, et
+   non un gap : un gap laisserait à la piste un écart de moins que deux
+   moitiés, et la boucle sauterait d'autant. */
+.marques{--tuile:clamp(14rem,26vw,28rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
+.marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
+  margin:0;padding:0 1.25rem;list-style:none}
+.marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
+  background:var(--ground);border:1px solid var(--line);border-radius:14px;
+  transition:border-color .2s ease}
+/* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
+   ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
+.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
+.marque__logo--sceau{height:calc(var(--tuile) * .42)}
+.marques--defile .marques__rang{overflow:hidden}
+.marques--defile .marques__rang + .marques__rang{margin-top:var(--ecart)}
+.marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
+  padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
+.marques--defile .marque{margin-right:var(--ecart)}
+.marques__rang--inverse .marques__piste{animation-direction:reverse}
+@keyframes marques-defile{to{transform:translateX(-50%)}}
+/* Au survol, le rang s'arrête et le carreau s'éclaire, comme les cartes. */
+@media (hover:hover){
+  .marques__rang:hover .marques__piste{animation-play-state:paused}
+  .marque:hover{border-color:var(--yellow)}
+}
+@media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
+
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été

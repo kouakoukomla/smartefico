@@ -340,6 +340,41 @@ em{color:var(--yellow)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
+/* ---------- marques ----------
+   Demande du propriétaire du 16 septembre 2026 : de grands carreaux qui
+   défilent, logos en blanc sur le noir. Les logos sont des silhouettes
+   blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
+
+   Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
+   (.marques--defile), deux rangs pleine largeur glissent en sens contraires.
+   Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
+   repart, sans saut. L'écart est une marge à droite de chaque carreau, et
+   non un gap : un gap laisserait à la piste un écart de moins que deux
+   moitiés, et la boucle sauterait d'autant. */
+.marques{--tuile:clamp(14rem,26vw,28rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
+.marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
+  margin:0;padding:0 1.25rem;list-style:none}
+.marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
+  background:var(--ground);border:1px solid var(--line);border-radius:14px;
+  transition:border-color .2s ease}
+/* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
+   ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
+.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
+.marque__logo--sceau{height:calc(var(--tuile) * .42)}
+.marques--defile .marques__rang{overflow:hidden}
+.marques--defile .marques__rang + .marques__rang{margin-top:var(--ecart)}
+.marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
+  padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
+.marques--defile .marque{margin-right:var(--ecart)}
+.marques__rang--inverse .marques__piste{animation-direction:reverse}
+@keyframes marques-defile{to{transform:translateX(-50%)}}
+/* Au survol, le rang s'arrête et le carreau s'éclaire, comme les cartes. */
+@media (hover:hover){
+  .marques__rang:hover .marques__piste{animation-play-state:paused}
+  .marque:hover{border-color:var(--yellow)}
+}
+@media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
+
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été
@@ -942,6 +977,24 @@ h2.head__eyebrow{font-weight:600;margin:0}
   </section>
 
   <div class="stack" style="padding-block:var(--gap)">
+
+    <!-- ============ MARQUES ============
+         Chaque logo n'est écrit qu'une fois. Le script en bas de page les
+         recopie en deux rangs de carreaux qui défilent en sens contraires ;
+         sans lui, ou sous prefers-reduced-motion, les carreaux d'origine
+         restent côte à côte, immobiles. Pour ajouter une marque : un <li> de
+         plus, rien d'autre. -->
+    <section class="marques" aria-labelledby="marques-titre">
+      <div class="wrap head head--centre">
+        <h2 class="display" id="marques-titre">Marques avec lesquelles <em>j’ai travaillé</em>.</h2>
+      </div>
+      <div class="marques__rang">
+        <ul class="marques__piste">
+          <li class="marque"><img class="marque__logo" src="assets/client-menouveve.png" alt="Aménouvévé Logistique" width="731" height="682"></li>
+          <li class="marque"><img class="marque__logo marque__logo--sceau" src="assets/client-ambassade-togo.png" alt="Ambassade du Togo au Maroc" width="348" height="349"></li>
+        </ul>
+      </div>
+    </section>
 
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
@@ -1903,6 +1956,60 @@ h2.head__eyebrow{font-weight:600;margin:0}
     window.addEventListener('resize', etat);
     etat();
   });
+})();
+
+// Marques : deux rangs de carreaux qui défilent en sens contraires. La page
+// n'écrit chaque logo qu'une fois ; le script les recopie assez de fois pour
+// qu'une moitié de piste couvre l'écran le plus large que la fenêtre puisse
+// prendre. Les carreaux d'origine restent en tête du premier rang : ce sont
+// les seuls que lisent les lecteurs d'écran, les copies leur sont masquées.
+(function () {
+  var section = document.querySelector('.marques');
+  if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var piste = section.querySelector('.marques__piste');
+  var modeles = Array.prototype.slice.call(piste.children);
+  var n = modeles.length;
+  if (!n) return;
+
+  var CADENCE = 0.12; // carreaux qui passent par seconde
+
+  section.classList.add('marques--defile');
+  var rangInverse = document.createElement('div');
+  rangInverse.className = 'marques__rang marques__rang--inverse';
+  rangInverse.setAttribute('aria-hidden', 'true');
+  var pisteInverse = document.createElement('ul');
+  pisteInverse.className = 'marques__piste';
+  rangInverse.appendChild(pisteInverse);
+  section.appendChild(rangInverse);
+
+  function copie(i) {
+    var li = modeles[i % n].cloneNode(true);
+    li.setAttribute('aria-hidden', 'true');
+    li.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
+    return li;
+  }
+
+  // Un nombre de carreaux par moitié multiple du nombre de logos : la
+  // seconde moitié reprend exactement où la première a commencé.
+  var parMoitie = 0;
+  function construire() {
+    var pas = modeles[0].getBoundingClientRect().width +
+      parseFloat(window.getComputedStyle(modeles[0]).marginRight);
+    var large = Math.max(window.innerWidth, screen.width, screen.height);
+    var voulu = n * Math.ceil(large / pas / n);
+    if (voulu <= parMoitie) return;
+    parMoitie = voulu;
+    while (piste.children.length > n) piste.removeChild(piste.lastChild);
+    pisteInverse.textContent = '';
+    for (var i = 0; i < 2 * parMoitie; i++) {
+      if (i >= n) piste.appendChild(copie(i));
+      pisteInverse.appendChild(copie(i + 1)); // décalé d'un logo sur le rang du dessus
+    }
+    section.style.setProperty('--duree', (parMoitie / CADENCE).toFixed(1) + 's');
+  }
+  construire();
+  // Une fenêtre agrandie, ou un zoom arrière, peut dépasser l'écran : on complète.
+  window.addEventListener('resize', construire);
 })();
 
 // Compteurs de « Ce à quoi vous engager » : chaque chiffre repart de zéro et
