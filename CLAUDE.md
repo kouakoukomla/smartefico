@@ -153,6 +153,11 @@ prévu : l'icône est désormais visée par `.figure .figure__ico`. Dans l'aper�
 Claude Code, le défilement ne part que si le panneau est affiché : masqué, la page ne
 se redessine pas et les compteurs attendent à zéro.
 
+**Plus de bandeau de mots-clés sous le hero.** La liste « Acquisition · Automatisation ·
+IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à la demande du
+propriétaire, avec son style. Le hero enchaîne directement sur les Agents IA. Ne pas la
+remettre.
+
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
 se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et

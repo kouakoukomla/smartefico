@@ -315,29 +315,6 @@ em{color:var(--yellow)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
-/* ---------- bandeau de références ----------
-   Il ne défile plus. Les dix mots tiennent sur une ou deux lignes centrées
-   et se lisent d’un coup, au lieu de passer à moitié cachés en boucle.
-   Sont partis avec le mouvement : la seconde piste jumelle qui servait à
-   boucler sans saut, l’animation `defile` et son arrêt au survol, la règle
-   `prefers-reduced-motion` qui n’a plus rien à neutraliser, et
-   `.ticker__label`, dont la couleur olive ne tenait que sur l’ancien fond
-   jaune : elle n’était appelée nulle part.
-   Les losanges, eux, restent : sans eux la bande paraissait vide. Quand la
-   liste s’enroule, celui qui tombe en fin de ligne pend dans le vide — le
-   défaut est connu et assumé, il se paie moins cher que la nudité. */
-.ticker{background:var(--ground);color:var(--ink-2);border-block:1px solid var(--line);
-  display:flex;justify-content:center;user-select:none}
-.ticker__lot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-  gap:.75rem var(--ticker-ecart);font-weight:700;letter-spacing:-.01em;
-  font-size:clamp(.95rem,1.8vw,1.15rem);padding:.95rem 1.25rem;
-  --ticker-ecart:clamp(1.4rem,2.6vw,2.4rem)}
-/* Le losange sépare, il ne termine pas : le dernier mot n'en porte aucun.
-   Sa marge vaut l'écart de la grille, ce qui le pose au milieu de l'espace
-   entre deux mots plutôt que collé au précédent. */
-.ticker__lot > span:not(:last-child)::after{content:"◆";font-size:.5em;
-  margin-left:var(--ticker-ecart);opacity:.45;vertical-align:middle}
-
 /* ---------- en-tête de section ---------- */
 .head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été
@@ -401,9 +378,8 @@ em{color:var(--yellow)}
    flèches. scroll-snap cale chaque carte en place, si bien qu'on ne
    s'arrête jamais sur une demi-carte.
 
-   Le défilement est manuel et non automatique : la page porte déjà un
-   bandeau qui défile seul, et en ajouter un second obligerait le lecteur à
-   courir après deux contenus en mouvement.
+   Le défilement est manuel et non automatique : un fil qui avance seul
+   obligerait le lecteur à courir après les cartes.
 
    Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
    glisser. */
