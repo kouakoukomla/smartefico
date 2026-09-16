@@ -158,8 +158,11 @@ IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à 
 propriétaire, avec son style. Ne pas la remettre.
 
 **À sa place, les marques clientes défilent**, demande du même jour : sous le titre
-« Marques avec lesquelles j'ai travaillé », deux rangs pleine largeur de grands
-carreaux noirs arrondis, en sens contraires, logos en silhouette blanche. Le HTML
+« Elles m'ont fait confiance », un seul rang pleine largeur de grands carreaux noirs
+arrondis, logos en silhouette blanche. Le titre était d'abord « Marques avec
+lesquelles j'ai travaillé » ; le propriétaire a voulu « travaillées », forme fautive
+après « avec lesquelles », puis a choisi cette reformulation. Un second rang, en sens
+contraire, a été retiré à sa demande. Le HTML
 n'écrit chaque logo qu'une fois (`.marques__piste`) ; le script les recopie jusqu'à
 couvrir l'écran le plus large, en deux moitiés identiques, et masque les copies aux
 lecteurs d'écran. Sans script ou sous `prefers-reduced-motion`, les deux carreaux

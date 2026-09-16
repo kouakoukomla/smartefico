@@ -321,7 +321,8 @@ em{color:var(--yellow)}
    blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
 
    Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
-   (.marques--defile), deux rangs pleine largeur glissent en sens contraires.
+   (.marques--defile), un seul rang pleine largeur glisse vers la gauche —
+   le second rang, qui allait en sens contraire, est parti le même jour.
    Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
    repart, sans saut. L'écart est une marge à droite de chaque carreau, et
    non un gap : un gap laisserait à la piste un écart de moins que deux
@@ -337,11 +338,9 @@ em{color:var(--yellow)}
 .marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
 .marque__logo--sceau{height:calc(var(--tuile) * .42)}
 .marques--defile .marques__rang{overflow:hidden}
-.marques--defile .marques__rang + .marques__rang{margin-top:var(--ecart)}
 .marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
   padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
 .marques--defile .marque{margin-right:var(--ecart)}
-.marques__rang--inverse .marques__piste{animation-direction:reverse}
 @keyframes marques-defile{to{transform:translateX(-50%)}}
 /* Au survol, le rang s'arrête et le carreau s'éclaire, comme les cartes. */
 @media (hover:hover){

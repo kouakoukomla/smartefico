@@ -346,7 +346,8 @@ em{color:var(--yellow)}
    blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
 
    Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
-   (.marques--defile), deux rangs pleine largeur glissent en sens contraires.
+   (.marques--defile), un seul rang pleine largeur glisse vers la gauche —
+   le second rang, qui allait en sens contraire, est parti le même jour.
    Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
    repart, sans saut. L'écart est une marge à droite de chaque carreau, et
    non un gap : un gap laisserait à la piste un écart de moins que deux
@@ -362,11 +363,9 @@ em{color:var(--yellow)}
 .marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
 .marque__logo--sceau{height:calc(var(--tuile) * .42)}
 .marques--defile .marques__rang{overflow:hidden}
-.marques--defile .marques__rang + .marques__rang{margin-top:var(--ecart)}
 .marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
   padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
 .marques--defile .marque{margin-right:var(--ecart)}
-.marques__rang--inverse .marques__piste{animation-direction:reverse}
 @keyframes marques-defile{to{transform:translateX(-50%)}}
 /* Au survol, le rang s'arrête et le carreau s'éclaire, comme les cartes. */
 @media (hover:hover){
@@ -980,13 +979,13 @@ h2.head__eyebrow{font-weight:600;margin:0}
 
     <!-- ============ MARQUES ============
          Chaque logo n'est écrit qu'une fois. Le script en bas de page les
-         recopie en deux rangs de carreaux qui défilent en sens contraires ;
+         recopie en un rang de carreaux qui défile ;
          sans lui, ou sous prefers-reduced-motion, les carreaux d'origine
          restent côte à côte, immobiles. Pour ajouter une marque : un <li> de
          plus, rien d'autre. -->
     <section class="marques" aria-labelledby="marques-titre">
       <div class="wrap head head--centre">
-        <h2 class="display" id="marques-titre">Marques avec lesquelles <em>j’ai travaillé</em>.</h2>
+        <h2 class="display" id="marques-titre">Elles m’ont fait <em>confiance</em>.</h2>
       </div>
       <div class="marques__rang">
         <ul class="marques__piste">
@@ -1958,11 +1957,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
   });
 })();
 
-// Marques : deux rangs de carreaux qui défilent en sens contraires. La page
-// n'écrit chaque logo qu'une fois ; le script les recopie assez de fois pour
-// qu'une moitié de piste couvre l'écran le plus large que la fenêtre puisse
-// prendre. Les carreaux d'origine restent en tête du premier rang : ce sont
-// les seuls que lisent les lecteurs d'écran, les copies leur sont masquées.
+// Marques : un rang de carreaux qui défile. La page n'écrit chaque logo
+// qu'une fois ; le script les recopie assez de fois pour qu'une moitié de
+// piste couvre l'écran le plus large que la fenêtre puisse prendre. Les
+// carreaux d'origine restent en tête : ce sont les seuls que lisent les
+// lecteurs d'écran, les copies leur sont masquées.
 (function () {
   var section = document.querySelector('.marques');
   if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1974,13 +1973,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
   var CADENCE = 0.12; // carreaux qui passent par seconde
 
   section.classList.add('marques--defile');
-  var rangInverse = document.createElement('div');
-  rangInverse.className = 'marques__rang marques__rang--inverse';
-  rangInverse.setAttribute('aria-hidden', 'true');
-  var pisteInverse = document.createElement('ul');
-  pisteInverse.className = 'marques__piste';
-  rangInverse.appendChild(pisteInverse);
-  section.appendChild(rangInverse);
 
   function copie(i) {
     var li = modeles[i % n].cloneNode(true);
@@ -2000,11 +1992,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
     if (voulu <= parMoitie) return;
     parMoitie = voulu;
     while (piste.children.length > n) piste.removeChild(piste.lastChild);
-    pisteInverse.textContent = '';
-    for (var i = 0; i < 2 * parMoitie; i++) {
-      if (i >= n) piste.appendChild(copie(i));
-      pisteInverse.appendChild(copie(i + 1)); // décalé d'un logo sur le rang du dessus
-    }
+    for (var i = n; i < 2 * parMoitie; i++) piste.appendChild(copie(i));
     section.style.setProperty('--duree', (parMoitie / CADENCE).toFixed(1) + 's');
   }
   construire();

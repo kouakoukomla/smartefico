@@ -100,8 +100,8 @@ Fourni par le propriétaire :
   **Aménouvévé Logistique** (le logo lit « A » + « MÉNOUVÉVÉ LOGISTIQUE » ; le
   propriétaire écrit « AMENOUVEVE »). Le propriétaire déclare avoir le droit de les
   nommer. Leurs logos **sont affichés** depuis le 16 septembre 2026, à sa demande,
-  en silhouette blanche dans des carreaux qui défilent, sous le titre « Marques avec
-  lesquelles j'ai travaillé », entre le hero et les Agents IA. Un premier bandeau
+  en silhouette blanche dans un rang de carreaux qui défile, sous le titre « Elles
+  m'ont fait confiance », entre le hero et les Agents IA. Un premier bandeau
   les avait portés le 14 septembre, puis retiré le jour même. Les fichiers sont
   `assets/client-ambassade-togo.png` et `assets/client-menouveve.png` ;
   `scripts/silhouettes-logos.mjs` sait les régénérer depuis les originaux couleur.
