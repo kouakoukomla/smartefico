@@ -139,6 +139,20 @@ Vérifié dans le navigateur : un seul éclat par couleur, et le contour suit la
 le menu mobile l'allonge. Sous `prefers-reduced-motion`, les éclats disparaissent et le
 filet reste.
 
+**Les chiffres de « Ce à quoi vous engager » défilent**, demande du propriétaire du
+16 septembre 2026. Chaque `<data class="compteur" value="…">` repart de zéro et monte
+jusqu'à sa valeur en 1,4 s, une seule fois, quand il entre à l'écran — les cartes qui
+entrent ensemble se suivent à 120 ms. La valeur finale reste écrite dans le HTML : sans
+script, sans `IntersectionObserver` ou sous `prefers-reduced-motion`, rien ne bouge.
+Pendant le défilement, le lecteur d'écran lit `.compteur__lu` (valeur finale, cachée) et
+ignore `.compteur__vu` ; à la fin, le script rend le texte d'origine. Aucun chiffre n'a
+été ajouté : ce sont les quatre qui y étaient. D'où aussi `.figure > span` au lieu de
+`.figure span`, qui aurait rapetissé et grisé les span du compteur. Ce sélecteur, plus
+spécifique que `.figure__ico`, laissait aussi les quatre icônes en gris au lieu du jaune
+prévu : l'icône est désormais visée par `.figure .figure__ico`. Dans l'aperçu de
+Claude Code, le défilement ne part que si le panneau est affiché : masqué, la page ne
+se redessine pas et les compteurs attendent à zéro.
+
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
 se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et

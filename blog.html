@@ -355,17 +355,29 @@ em{color:var(--yellow)}
 @media (min-width:64rem){.figures{grid-template-columns:repeat(4,1fr)}}
 /* Icône filaire jaune, traitement « repère technique ». Le filet jaune qui
    coiffait chaque carte est parti le 14 septembre 2026 : il ne reste que
-   l'icône, et la bordure qui s'éclaire au survol. */
+   l'icône, et la bordure qui s'éclaire au survol.
+   Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
+   plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 .figure{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:.5rem;
   transition:border-color .2s ease}
 .figure:hover{border-color:var(--yellow)}
-.figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
+.figure .figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
 .figure__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
   stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .figure b{font-weight:800;font-size:clamp(2.6rem,5.5vw,3.7rem);line-height:1;
   letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
-.figure span{color:var(--ink-2);font-size:.94rem;margin-top:.1rem}
+/* Enfants directs seulement : les compteurs posent leurs propres span dans
+   le chiffre, qui doivent garder la taille et le blanc du titre. */
+.figure > span{color:var(--ink-2);font-size:.94rem;margin-top:.1rem}
+/* Compteurs : chaque chiffre part de zéro et monte jusqu'à sa valeur quand il
+   entre à l'écran (script en bas de page). Pendant qu'il défile, le lecteur
+   d'écran lit la valeur finale, cachée à l'œil, et ignore celle qui bouge.
+   Le chiffre mobile est calé à droite dans la largeur de la valeur finale :
+   en passant de 9 à 10, « 24 » ne pousse pas « h/24 ». */
+.compteur__vu{display:inline-block;text-align:right}
+.compteur__lu{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;user-select:none}
 
 /* ---------- ce qu'on installe ---------- */
 .offers{display:grid;gap:1rem;grid-template-columns:1fr}
