@@ -139,6 +139,14 @@ de main en main ; chaque lecteur peut s'inscrire, et Tally range ces inscription
 `utm_source = guide-pdf`. L'adresse est écrite en clair pour les exemplaires imprimés.
 Si le domaine change, ces liens sont dans `scripts/guide/guide.html`.
 
+Le formulaire de rendez-vous **`81VkKx`** (« Automatisez vos process », derrière le
+bouton « Réserver mon appel ») y renvoie aussi, depuis le 17 septembre 2026 : une ligne
+« En attendant notre réponse, recevez le guide gratuit » à la fin de sa page 2, juste
+après « Nous revenons vers vous sous 24 h ouvrées », vers
+`guide.html?utm_source=tally-rdv`. Ce réglage vit dans Tally, pas dans le dépôt. Le
+formulaire du guide (`0Q47ZN`) n'a pas reçu de lien : dans la landing page, il ferait
+doublon.
+
 Sur `guide.html` même, le « Guide gratuit » du pied de page pointe vers `#formulaire` :
 un lien vers la page la rechargerait, et **aucun lien de cette page ne doit mener
 directement au PDF**, qui ne se donne qu'après l'inscription.
