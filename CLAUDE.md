@@ -112,10 +112,18 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
-publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Un seul lien
-du site y mène, ajouté le même jour à la demande du propriétaire : `.guide-lien`, la
-sixième case de la grille des cinq étapes (`#methode`), qui comble la case vide que
-cinq panneaux laissaient sur trois colonnes.
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Deux liens
+de la page d'accueil y mènent, ajoutés le même jour à la demande du propriétaire :
+
+- `.guide-lien`, la sixième case de la grille des cinq étapes (`#methode`), qui comble
+  la case vide que cinq panneaux laissaient sur trois colonnes ;
+- « Guide gratuit » dans le menu, juste après « Blog » — les deux pages à part se
+  suivent, le reste du menu garde l'ordre de la page.
+
+**Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
+ligne, il reste 28 px entre la marque et les liens et 36 px avant « Contact », mesurés
+sous Windows, où la graisse 800 tombe sur Arial Black, la plus large des polices de la
+pile. Un huitième lien ne tiendrait pas sans relever ce seuil.
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
