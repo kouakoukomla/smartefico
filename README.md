@@ -18,7 +18,7 @@ Les trois pages se lient entre elles et pointent toutes vers `assets/`.
 
 ## Adresse du site
 
-L'adresse publique de référence est **https://www.smartefico.com**.
+L'adresse publique de référence est **https://smartefico.com**.
 
 Cette adresse figure dans les pages HTML (balises canoniques, balises de partage,
 données structurées), ainsi que dans `scripts/sync-content.mjs` et

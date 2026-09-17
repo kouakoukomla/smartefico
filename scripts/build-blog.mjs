@@ -19,7 +19,7 @@ import { marked } from 'marked';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dossierArticles = join(racine, 'content', 'articles');
-const SITE = 'https://www.smartefico.com';
+const SITE = 'https://smartefico.com';
 
 // --- utilitaires ------------------------------------------------------------
 const escTexte = (s = '') =>
