@@ -497,8 +497,11 @@ function carteArticle(a) {
 }
 
 // La carte qui ferme le rail : elle ne mène pas à un article mais au blog
-// entier, et porte pour affiche la couverture du dernier publié. C'est elle
-// qui réunit tout ce que le rail ne montre pas fiche par fiche.
+// entier, et porte pour affiche la couverture d'un article. C'est elle qui
+// réunit tout ce que le rail ne montre pas fiche par fiche. L'article dont
+// elle emprunte l'affiche est choisi plus bas, parmi ceux que le rail ne
+// montre pas déjà : depuis que le dernier publié ouvre le rail, reprendre sa
+// couverture afficherait deux fois la même image à deux cartes d'intervalle.
 function carteBlog(dernier) {
   const cover = dernier && dernier.cover ? urlImage(dernier.cover) : '';
   const affiche = cover
@@ -518,24 +521,61 @@ function carteBlog(dernier) {
   );
 }
 
-// Le rail ne reprend plus chaque article un par un : il garde ceux qui sont
-// adossés à un évènement — ils portent un `tally_url`, donc une inscription
-// ouverte — et laisse la carte du blog représenter tout le reste. Sans cette
-// règle, le rail grossissait d'une fiche à chaque publication.
-const railArticles = articles.filter((a) => String(a.tally_url || '').trim());
+// Le rail ouvre sur le dernier article publié, demande du propriétaire du
+// 17 septembre 2026 : une publication se voit sans avoir à faire défiler, et
+// la carte se remplace d'elle-même à la suivante. Elle vit dans sa propre zone
+// (ARTICLE_UNE), placée avant les masterclass dans index.html — c'est ce qui
+// la garde en tête de rail sans déplacer le reste.
+const une = articles[0] || null;
+
+// Derrière elle, le rail ne reprend pas chaque article un par un : il garde
+// ceux qui sont adossés à un évènement — ils portent un `tally_url`, donc une
+// inscription ouverte — et laisse la carte du blog représenter tout le reste.
+// Sans cette règle, le rail grossissait d'une fiche à chaque publication. Le
+// dernier publié en est retiré : il est déjà en tête, et la même fiche deux
+// fois dans un même rail passerait pour un défaut.
+const railArticles = articles.filter(
+  (a) => a !== une && String(a.tally_url || '').trim()
+);
+
+// L'affiche de la carte du blog : le premier article, dans l'ordre de
+// publication, dont le rail ne montre pas déjà la couverture. S'ils y sont
+// tous — un ou deux articles en tout — le plus ancien sert quand même, faute
+// d'autre image.
+const afficheBlog =
+  articles.find((a) => a !== une && !railArticles.includes(a)) ||
+  articles[articles.length - 1] ||
+  null;
 
 const cheminIndex = join(racine, 'index.html');
 const avantIndex = readFileSync(cheminIndex, 'utf8');
-const avertArticles =
+
+// Les deux zones portent le même avertissement : ce sont deux fenêtres sur la
+// même source, content/articles/*.md.
+const zone = (cartes) =>
   '\n        <!-- Cartes générées par scripts/build-blog.mjs à partir de\n' +
   '             content/articles/*.md (back office). NE PAS éditer à la main. -->\n' +
-  (railArticles.length ? railArticles.map(carteArticle).join('\n') + '\n' : '') +
-  carteBlog(articles[0]) + '\n' +
+  (cartes ? cartes + '\n' : '') +
   '        ';
-const apresIndex = injecter(avantIndex, 'ARTICLES', avertArticles);
+
+let apresIndex = injecter(avantIndex, 'ARTICLE_UNE', zone(une ? carteArticle(une) : ''));
+apresIndex = injecter(
+  apresIndex,
+  'ARTICLES',
+  zone(
+    (railArticles.length ? railArticles.map(carteArticle).join('\n') + '\n' : '') +
+      carteBlog(afficheBlog)
+  )
+);
 if (apresIndex !== avantIndex) writeFileSync(cheminIndex, apresIndex, 'utf8');
 
 console.log(
   `Blog : ${articles.length} article(s) généré(s), ${supprimees} page(s) obsolète(s) supprimée(s). ` +
     `blog.html et le rail de index.html mis à jour.`
+);
+console.log(
+  une
+    ? `Rail : « ${une.title} » en tête, ${railArticles.length} article(s) ` +
+      `d'évènement derrière, puis la carte du blog.`
+    : 'Rail : aucun article publié, seule la carte du blog est posée.'
 );

@@ -1462,7 +1462,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
          Les masterclass sont éditées dans content/masterclasses/*.md, puis la
          zone MASTERCLASS:START/END est régénérée par scripts/sync-content.mjs
          (automatiquement, via GitHub Actions, à chaque enregistrement dans le CMS).
-         Ne pas éditer le contenu à la main entre les repères. -->
+         Ne pas éditer le contenu à la main entre les repères.
+
+         Le rail ouvre sur le dernier article publié : la zone ARTICLE_UNE,
+         écrite par scripts/build-blog.mjs, est placée avant les masterclass
+         pour que la carte soit la première vue, sans faire défiler. Elle se
+         remplace d'elle-même à la publication suivante. -->
     <section class="wrap" id="agenda">
       <div class="head head--centre">
         <h2 class="display">Blog et <em>évènements à venir</em>.</h2>
@@ -1470,6 +1475,20 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
       <div class="rail">
         <div class="rail__piste" id="rail-actus">
+        <!-- ARTICLE_UNE:START -->
+        <!-- Cartes générées par scripts/build-blog.mjs à partir de
+             content/articles/*.md (back office). NE PAS éditer à la main. -->
+        <article class="mc mc--article">
+          <a class="mc__affiche" href="article-le-mois-ou-lia-a-pris-le-clavier.html" tabindex="-1" aria-hidden="true">
+            <img src="assets/OIF.jpg" alt="" loading="lazy">
+          </a>
+          <div class="mc__corps">
+            <span class="mc__date mono">17 septembre 2026</span>
+            <h3>Le mois où l'IA a pris le clavier</h3>
+            <a class="btn btn--line" href="article-le-mois-ou-lia-a-pris-le-clavier.html">Lire l'article</a>
+          </div>
+        </article>
+        <!-- ARTICLE_UNE:END -->
         <!-- MASTERCLASS:START -->
         <!-- Section générée par scripts/sync-content.mjs à partir de
              content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
@@ -1490,7 +1509,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
         </article>
         <article class="mc mc--article mc--blog">
           <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/OIF.jpg" alt="" loading="lazy">
+            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy" style="object-position:center 12%">
           </a>
           <div class="mc__corps">
             <span class="mc__date mono">Blog</span>

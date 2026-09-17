@@ -123,6 +123,26 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
+**Le rail « Blog et évènements à venir » ouvre sur le dernier article publié**,
+demande du propriétaire du 17 septembre 2026 : une publication doit se voir sans faire
+défiler. Sa carte vit dans la zone `ARTICLE_UNE:START/END` de `index.html`, placée
+avant `MASTERCLASS` — c'est ce qui la garde en tête de rail sans déplacer le reste.
+`build-blog.mjs` l'écrit à partir du même tableau trié que `blog.html` : la carte de
+tête est donc toujours le premier article de la page du blog. Rien à faire à la
+publication, l'action GitHub régénère les deux.
+
+Derrière elle, le rail ne reprend pas les articles un par un : il garde ceux qui
+portent un `tally_url` — une inscription ouverte — moins celui de tête, et laisse la
+carte du blog représenter tout le reste. Cette carte emprunte la couverture du premier
+article que le rail ne montre pas déjà : depuis que le dernier publié ouvre le rail,
+reprendre la sienne afficherait deux fois la même image à deux cartes d'intervalle.
+Ordre final : dernier article, masterclass, articles d'évènement, carte du blog, vidéo.
+
+Le champ `date` du back office ne porte que le jour, sans heure : deux articles
+publiés le même jour se départagent par l'ordre des fichiers, et non par l'heure
+d'enregistrement — c'est le cas des deux articles du 5 septembre 2026. Pour décider
+lequel passe devant, il faut changer une date.
+
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
 publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Sept liens
