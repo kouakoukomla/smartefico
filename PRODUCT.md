@@ -93,6 +93,11 @@ Disponible et utilisé :
   restent en place, le propriétaire a demandé de les garder.
 - Portrait du fondateur et bannière de marque.
 - 194 vidéos publiées sur l'IA appliquée.
+- **Un guide gratuit** (17 septembre 2026) : « Les 5 étapes pour générer des leads
+  qualifiés avec l'IA », 11 pages de méthode et de fiches à remplir, offert sur
+  `guide.html` contre un formulaire. Rédigé à partir du site seul — méthode, agents,
+  indicateurs — et soumis à la relecture du propriétaire avant publication. Il ne
+  promet aucun résultat chiffré.
 
 Fourni par le propriétaire :
 

@@ -11,8 +11,13 @@ Trois pages HTML statiques, sans framework, sans étape de compilation. Le conte
 ```bash
 node scripts/sync-legal.mjs        # après toute modification de cgv.html ou cgc.html
 node scripts/build-standalone.mjs  # régénère index-autonome.html
+node scripts/build-guide.mjs       # après toute modification de scripts/guide/guide.html
 npx --yes serve .                  # aperçu local sur http://localhost:3000
 ```
+
+`serve` redirige `/guide.html` vers `/guide` et perd la chaîne de requête au passage :
+pour tester les paramètres `utm_…`, ouvrir directement `/guide?utm_source=…`. Vercel et
+GitHub Pages ne font pas cette redirection.
 
 Contrôle qualité du design (44 règles d'anti-patterns) :
 
@@ -104,6 +109,35 @@ main que seule sa bibliothèque parente sait faire. Deux impasses vérifiées : 
 dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précédente,
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
+
+**Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
+modèle d'une page « Free download workbook ». Aucun lien du site n'y mène : elle se
+partage en publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire.
+
+- Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
+  téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
+  consentement obligatoire, et trois champs cachés `utm_source`, `utm_medium`,
+  `utm_campaign` que la page remplit à partir de sa propre adresse. Il est intégré
+  comme dans les articles (`data-tally-src`, `embed.js`, repli à 8 s), avec
+  `transparentBackground=1` : le fond vient de la carte de la page.
+- Ses couleurs et sa police (Arimo, la plus proche d'Helvetica chez Google Fonts —
+  Tally n'accepte qu'elles, et Inter est proscrite) sont réglées dans Tally. Les
+  réglages avancés (arrondis, bouton pleine largeur, fond des champs) y sont aussi
+  posés mais ne s'appliquent qu'avec Tally Pro.
+- Une fois envoyé, il mène à **`guide-merci.html`** (`noindex`), qui porte le lien du
+  PDF. Deux chemins y conduisent : le réglage « Redirect on completion » de Tally, et un
+  écouteur `message` de `guide.html` qui réagit à `Tally.FormSubmitted` venant de
+  `https://tally.so`. Vérifié en simulant l'évènement ; aucune vraie inscription n'a été
+  envoyée pendant les essais.
+- Le guide est **`assets/guide-5-etapes-smartefico.pdf`** (11 pages A4). Sa source est
+  `scripts/guide/guide.html`, imprimée par Chrome sans fenêtre (`build-guide.mjs`) :
+  même typographie que le site, sans bibliothèque PDF. Couverture et dernière page
+  noires, pages intérieures blanches pour être imprimées et remplies au stylo — le jaune
+  n'y sert qu'en aplat sous du texte sombre. Tout son contenu reprend ce que le site dit
+  déjà (méthode, agents, indicateurs) : aucun chiffre de résultat, aucun montant.
+- Aucun outil de rendu PDF n'est installé sur la machine (ni Python, ni poppler). Pour
+  relire le guide, capturer `scripts/guide/guide.html` à 794 px de large : la mise en
+  page est la même qu'à l'impression.
 
 ## Contraintes de contenu
 
@@ -237,6 +271,10 @@ navigateur :
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
   demande explicite du propriétaire du 16 septembre 2026. Mouvement réduit et survol
   l'arrêtent déjà.
+- Sur `scripts/guide/guide.html`, `tight-leading` (« 0,13 »), `oversized-h1`
+  (« 7392px ») et `all-caps-body` — le détecteur lit mal les unités d'impression (pt,
+  mm). Les étiquettes en capitales, là comme dans `guide.html`, font une trentaine de
+  caractères, comme `.mono` sur le site.
 - `tight-leading` — vise des titres à 1,15, où un interlignage serré est correct. Un
   troisième est mesuré à « 1,30 » sous une règle « il faut ≥ 1,30 ».
 
