@@ -132,6 +132,10 @@ du site y mènent, ajoutés le même jour à la demande du propriétaire :
 - « Guide gratuit » dans le pied de page de `guide-merci.html`, pour transmettre la
   page d'inscription — le PDF lui-même y est déjà proposé par deux boutons.
 
+Sur `guide.html` même, le « Guide gratuit » du pied de page pointe vers `#formulaire` :
+un lien vers la page la rechargerait, et **aucun lien de cette page ne doit mener
+directement au PDF**, qui ne se donne qu'après l'inscription.
+
 **Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
 ligne, il reste 28 px entre la marque et les liens et 36 px avant « Contact », mesurés
 sous Windows, où la graisse 800 tombe sur Arial Black, la plus large des polices de la
