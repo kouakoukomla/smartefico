@@ -132,6 +132,13 @@ du site y mènent, ajoutés le même jour à la demande du propriétaire :
 - « Guide gratuit » dans le pied de page de `guide-merci.html`, pour transmettre la
   page d'inscription — le PDF lui-même y est déjà proposé par deux boutons.
 
+Le PDF lui-même y renvoie, dix fois : le pied de chaque page intérieure et une ligne
+« Partager » en dernière page mènent à
+`https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf`. Le fichier circule
+de main en main ; chaque lecteur peut s'inscrire, et Tally range ces inscriptions sous
+`utm_source = guide-pdf`. L'adresse est écrite en clair pour les exemplaires imprimés.
+Si le domaine change, ces liens sont dans `scripts/guide/guide.html`.
+
 Sur `guide.html` même, le « Guide gratuit » du pied de page pointe vers `#formulaire` :
 un lien vers la page la rechargerait, et **aucun lien de cette page ne doit mener
 directement au PDF**, qui ne se donne qu'après l'inscription.

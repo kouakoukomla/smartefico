@@ -36,9 +36,13 @@ em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:ita
 .page--noire{background:var(--noir);color:var(--blanc)}
 .page--noire em{color:var(--jaune)}
 
-/* pied de page des pages intérieures */
+/* pied de page des pages intérieures. Le lien mène à la page d'inscription
+   (guide.html) : le PDF circule de main en main, et chaque lecteur peut s'y
+   inscrire. utm_source=guide-pdf range ces inscriptions à part dans Tally.
+   L'adresse reste écrite en clair pour les exemplaires imprimés. */
 .pied{margin-top:auto;display:flex;justify-content:space-between;align-items:center;
   font-size:8pt;color:var(--encre-2);border-top:1px solid var(--filet);padding-top:3mm}
+.pied a{color:inherit;text-decoration:none}
 
 /* en-tête d'étape : bandeau noir, numéro sur pastille jaune */
 .bandeau{background:var(--noir);color:var(--blanc);margin:-17mm -18mm 0;
@@ -115,6 +119,7 @@ td.vide{height:11mm}
   font-size:13pt;text-decoration:none;padding:4.5mm 9mm;border-radius:20mm}
 .fin__coord{list-style:none;padding:0;display:flex;flex-direction:column;gap:2.5mm;font-size:11pt}
 .fin__coord a{color:var(--blanc)}
+.fin p.fin__partage{font-size:10pt}
 .fin__coord span{display:inline-block;width:28mm;color:var(--gris-clair);font-size:8.5pt;
   letter-spacing:.1em;text-transform:uppercase}
 </style>
@@ -188,7 +193,7 @@ td.vide{height:11mm}
       <tr><td>05</td><td><strong>Multi-scaling</strong></td><td>Étendre à Google, YouTube, TikTok et LinkedIn — puis, lorsqu'elles seront accessibles, aux publicités sur ChatGPT ou Perplexity.</td></tr>
     </table>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>2</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>2</span></div>
 </section>
 
 <!-- 3 · FICHE 0 : OÙ EN ÊTES-VOUS -->
@@ -219,7 +224,7 @@ td.vide{height:11mm}
       <div class="lignes"><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>3</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>3</span></div>
 </section>
 
 <!-- 4 · ÉTAPE 1 -->
@@ -269,7 +274,7 @@ td.vide{height:11mm}
       <div class="lignes"><i></i><i></i></div>
     </div>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>4</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>4</span></div>
 </section>
 
 <!-- 5 · ÉTAPE 2 -->
@@ -318,7 +323,7 @@ td.vide{height:11mm}
       <div class="lignes"><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>5</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>5</span></div>
 </section>
 
 <!-- 6 · TABLEAU DE BORD -->
@@ -354,7 +359,7 @@ td.vide{height:11mm}
       <tr><td>Contenus publiés</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     </table>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>6</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>6</span></div>
 </section>
 
 <!-- 7 · ÉTAPE 3 -->
@@ -389,7 +394,7 @@ td.vide{height:11mm}
       <tr><td><strong>S__</strong></td><td class="vide" style="height:37mm"></td><td></td><td></td></tr>
     </table>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>7</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>7</span></div>
 </section>
 
 <!-- 8 · ÉTAPE 4 -->
@@ -432,7 +437,7 @@ td.vide{height:11mm}
       <div class="lignes"><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>8</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>8</span></div>
 </section>
 
 <!-- 9 · ÉTAPE 5 -->
@@ -470,7 +475,7 @@ td.vide{height:11mm}
       <div class="lignes"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>9</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>9</span></div>
 </section>
 
 <!-- 10 · AGENTS IA -->
@@ -505,7 +510,7 @@ td.vide{height:11mm}
     </table>
     <small style="color:var(--encre-2);font-size:8.5pt">Pas de technologie imposée : un agent se branche sur votre boîte mail, vos Google Sheets, votre CRM.</small>
   </div>
-  <div class="pied"><span>SmartEfico · Les 5 étapes</span><span>10</span></div>
+  <div class="pied"><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">SmartEfico · Les 5 étapes · smartefico-z7.vercel.app/guide.html</a><span>10</span></div>
 </section>
 
 <!-- 11 · PROCHAINE ÉTAPE -->
@@ -521,7 +526,10 @@ td.vide{height:11mm}
     <li><span>E-mail</span><a href="mailto:contact.aintegrate@gmail.com">contact.aintegrate@gmail.com</a></li>
     <li><span>Site</span><a href="https://smartefico-z7.vercel.app/">smartefico-z7.vercel.app</a></li>
     <li><span>YouTube</span><a href="https://www.youtube.com/@smartefico">youtube.com/@smartefico</a></li>
+    <li><span>Partager</span><a href="https://smartefico-z7.vercel.app/guide.html?utm_source=guide-pdf">smartefico-z7.vercel.app/guide.html</a></li>
   </ul>
+  <p class="fin__partage">Un collègue en aurait besoin&nbsp;? Transmettez-lui ce lien plutôt que le
+    fichier : il recevra le guide à jour.</p>
 </section>
 
 </body>
