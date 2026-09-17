@@ -112,7 +112,7 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
-publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Six liens
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Sept liens
 du site y mènent, ajoutés le même jour à la demande du propriétaire :
 
 - `.guide-lien`, la sixième case de la grille des cinq étapes (`#methode`), qui comble
@@ -128,7 +128,9 @@ du site y mènent, ajoutés le même jour à la demande du propriétaire :
 - « Guide gratuit » dans le pied de page de `cgv.html` et `cgc.html`, devant le lien
   vers l'autre document. Ce pied est hors du `<main>` : `sync-legal.mjs` ne le recopie
   pas dans les fenêtres de l'accueil, et le texte légal n'a pas bougé. La barre du haut
-  de ces deux pages garde son seul « ← Retour au site ».
+  de ces deux pages garde son seul « ← Retour au site » ;
+- « Guide gratuit » dans le pied de page de `guide-merci.html`, pour transmettre la
+  page d'inscription — le PDF lui-même y est déjà proposé par deux boutons.
 
 **Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
 ligne, il reste 28 px entre la marque et les liens et 36 px avant « Contact », mesurés
