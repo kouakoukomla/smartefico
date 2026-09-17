@@ -2,6 +2,7 @@
 title: Le mois où l'IA a pris le clavier
 date: 2026-09-17
 cover: assets/OIF.jpg
+cover_position: 50%
 excerpt: « Elle clique, elle paie, elle ne demande plus » — le plus évocateur,
   mais un peu alarmiste pour votre ton habituel.
 published: true

@@ -451,15 +451,19 @@ em{color:var(--yellow)}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
 /* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
    comprises. */
-/* La carte est en 2:1, les affiches sont carrées ou en portrait : on n'en voit
-   qu'une bande horizontale. Prise au centre, elle tombe sous le menton et le
-   visage disparaît entièrement au-dessus de la fenêtre.
-   12 % pose le visage à 30 % de la hauteur de la carte sur les trois affiches
-   en service, mesuré : l'affiche de masterclass (1000x1250), celle de l'article
-   « Et si l'IA devenait… » (1400x1749) et la photo à la pancarte (1254x1254).
-   Elles ont toutes le visage autour du cinquième supérieur, d'où une valeur
-   commune plutôt qu'un cas par carte. À revoir si une affiche de composition
-   très différente est publiée. */
+/* La carte est en 2:1. Une affiche carrée ou en portrait n'y montre qu'une
+   bande horizontale : prise au centre, elle tombe sous le menton et le visage
+   disparaît au-dessus de la fenêtre. 12 % le pose à 30 % de la hauteur de la
+   carte sur les affiches en service, mesuré : l'affiche de masterclass
+   (1000x1250), celle de l'article « Et si l'IA devenait… » (1400x1749) et la
+   photo à la pancarte (1254x1254), qui ont toutes le visage autour du
+   cinquième supérieur. D'où cette valeur par défaut, plutôt qu'un cas par
+   carte.
+   Une affiche déjà large — un visuel 16:9, comme celui de l'article du
+   17 septembre 2026 — n'a presque rien à perdre : elle demande 50 %, qui
+   centre la bande et ne rogne que le vide en haut et en bas. C'est ce que fait
+   le champ « Cadrage de la vignette » du back office (`cover_position`),
+   article par article. */
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
   object-fit:cover;object-position:center 12%;background:var(--noir-2)}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
@@ -914,7 +918,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
     </div>
     <div class="post-list">
         <a class="post-card" href="article-le-mois-ou-lia-a-pris-le-clavier.html">
-          <img class="post-card__cover" src="assets/OIF.jpg" alt="" loading="lazy">
+          <img class="post-card__cover" src="assets/OIF.jpg" alt="" loading="lazy" style="object-position:center 50%">
           <div class="post-card__body">
             <span class="post-card__date mono">17 septembre 2026</span>
             <h2>Le mois où l'IA a pris le clavier</h2>

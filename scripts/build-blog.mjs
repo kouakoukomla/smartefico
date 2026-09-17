@@ -528,24 +528,22 @@ function carteBlog(dernier) {
 // la garde en tête de rail sans déplacer le reste.
 const une = articles[0] || null;
 
-// Derrière elle, le rail ne reprend pas chaque article un par un : il garde
-// ceux qui sont adossés à un évènement — ils portent un `tally_url`, donc une
-// inscription ouverte — et laisse la carte du blog représenter tout le reste.
-// Sans cette règle, le rail grossissait d'une fiche à chaque publication. Le
-// dernier publié en est retiré : il est déjà en tête, et la même fiche deux
-// fois dans un même rail passerait pour un défaut.
-const railArticles = articles.filter(
-  (a) => a !== une && String(a.tally_url || '').trim()
-);
+// Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont
+// adossés à un évènement — ils portent un `tally_url` — y avaient leur carte
+// jusqu'au 17 septembre 2026 ; le propriétaire les a retirés le même jour.
+// Une inscription ouverte reste annoncée par sa masterclass, écrite dans la
+// zone MASTERCLASS par sync-content.mjs. Le rail tient donc en trois cartes :
+// dernier article, blog, vidéo — trois visuels, et aucun défilement à faire
+// sur un écran d'ordinateur.
 
-// L'affiche de la carte du blog : le premier article, dans l'ordre de
-// publication, dont le rail ne montre pas déjà la couverture. S'ils y sont
-// tous — un ou deux articles en tout — le plus ancien sert quand même, faute
-// d'autre image.
-const afficheBlog =
-  articles.find((a) => a !== une && !railArticles.includes(a)) ||
-  articles[articles.length - 1] ||
-  null;
+// L'affiche de la carte du blog : celle de l'article le plus ancien, celui qui
+// a ouvert le blog. Trois raisons plutôt qu'une : ce n'est pas la couverture de
+// l'article de tête, qui paraîtrait deux fois à une carte d'intervalle ; elle
+// ne change pas à chaque publication, alors que cette carte est un décor et
+// non une information ; et elle est cadrée pour un bandeau 2:1, ce que la
+// couverture du jour n'est pas toujours. Si un seul article existe, elle n'a
+// pas le choix.
+const afficheBlog = articles[articles.length - 1] || null;
 
 const cheminIndex = join(racine, 'index.html');
 const avantIndex = readFileSync(cheminIndex, 'utf8');
@@ -559,14 +557,7 @@ const zone = (cartes) =>
   '        ';
 
 let apresIndex = injecter(avantIndex, 'ARTICLE_UNE', zone(une ? carteArticle(une) : ''));
-apresIndex = injecter(
-  apresIndex,
-  'ARTICLES',
-  zone(
-    (railArticles.length ? railArticles.map(carteArticle).join('\n') + '\n' : '') +
-      carteBlog(afficheBlog)
-  )
-);
+apresIndex = injecter(apresIndex, 'ARTICLES', zone(carteBlog(afficheBlog)));
 if (apresIndex !== avantIndex) writeFileSync(cheminIndex, apresIndex, 'utf8');
 
 console.log(
@@ -575,7 +566,7 @@ console.log(
 );
 console.log(
   une
-    ? `Rail : « ${une.title} » en tête, ${railArticles.length} article(s) ` +
-      `d'évènement derrière, puis la carte du blog.`
+    ? `Rail : « ${une.title} » en tête, puis la carte du blog` +
+      (afficheBlog && afficheBlog !== une ? ` (affiche : « ${afficheBlog.title} »).` : '.')
     : 'Rail : aucun article publié, seule la carte du blog est posée.'
 );

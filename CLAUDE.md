@@ -131,12 +131,30 @@ avant `MASTERCLASS` — c'est ce qui la garde en tête de rail sans déplacer le
 tête est donc toujours le premier article de la page du blog. Rien à faire à la
 publication, l'action GitHub régénère les deux.
 
-Derrière elle, le rail ne reprend pas les articles un par un : il garde ceux qui
-portent un `tally_url` — une inscription ouverte — moins celui de tête, et laisse la
-carte du blog représenter tout le reste. Cette carte emprunte la couverture du premier
-article que le rail ne montre pas déjà : depuis que le dernier publié ouvre le rail,
-reprendre la sienne afficherait deux fois la même image à deux cartes d'intervalle.
-Ordre final : dernier article, masterclass, articles d'évènement, carte du blog, vidéo.
+Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont adossés à
+un évènement — ils portent un `tally_url` — y avaient leur carte ; le propriétaire les
+a retirés le 17 septembre 2026, en nommant celle de « Et si l'IA devenait votre
+prochain levier… ». L'article reste sur le blog, avec son formulaire incrusté : seule
+sa carte a quitté l'accueil. Une inscription ouverte s'annonce par sa masterclass,
+dans la zone MASTERCLASS. Le rail tient donc en trois cartes — dernier article, blog,
+vidéo — et tient sans défilement sur un écran d'ordinateur.
+
+La carte du blog porte l'affiche de l'article le plus ancien, celui qui a ouvert le
+blog. Trois raisons : ce n'est pas la couverture de l'article de tête, qui paraîtrait
+deux fois à une carte d'intervalle ; elle ne bouge pas à chaque publication, alors que
+cette carte est un décor et non une information ; et elle est cadrée pour un bandeau,
+ce que la couverture du jour n'est pas toujours.
+
+**Le cadrage d'une affiche appartient à l'image**, pas au composant : la carte montre
+une bande 2:1 d'une source souvent carrée ou verticale. 12 % par défaut, mesuré sur les
+affiches à visage, où le sujet occupe le cinquième supérieur ; 50 % pour un visuel déjà
+large, comme le 16:9 de l'article du 17 septembre 2026, où la bande centrée ne rogne que
+du vide. Le champ « Cadrage de la vignette » du back office (`cover_position`) le règle
+article par article, et vaut aussi pour les vignettes de `blog.html`. Une photo dont le
+sujet occupe toute la hauteur — la pancarte de l'article du 5 septembre 2026, où le
+visage est en haut et le texte de la pancarte en bas — ne peut pas entrer dans ce
+bandeau sans être coupée quelque part : sa vignette de `blog.html` coupe la première
+ligne de la pancarte, et aucune valeur de cadrage n'y change quoi que ce soit.
 
 Le champ `date` du back office ne porte que le jour, sans heure : deux articles
 publiés le même jour se départagent par l'ordre des fichiers, et non par l'heure

@@ -479,15 +479,19 @@ em{color:var(--yellow)}
 .mc__affiche{display:block;border-bottom:1px solid var(--line)}
 /* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
    comprises. */
-/* La carte est en 2:1, les affiches sont carrées ou en portrait : on n'en voit
-   qu'une bande horizontale. Prise au centre, elle tombe sous le menton et le
-   visage disparaît entièrement au-dessus de la fenêtre.
-   12 % pose le visage à 30 % de la hauteur de la carte sur les trois affiches
-   en service, mesuré : l'affiche de masterclass (1000x1250), celle de l'article
-   « Et si l'IA devenait… » (1400x1749) et la photo à la pancarte (1254x1254).
-   Elles ont toutes le visage autour du cinquième supérieur, d'où une valeur
-   commune plutôt qu'un cas par carte. À revoir si une affiche de composition
-   très différente est publiée. */
+/* La carte est en 2:1. Une affiche carrée ou en portrait n'y montre qu'une
+   bande horizontale : prise au centre, elle tombe sous le menton et le visage
+   disparaît au-dessus de la fenêtre. 12 % le pose à 30 % de la hauteur de la
+   carte sur les affiches en service, mesuré : l'affiche de masterclass
+   (1000x1250), celle de l'article « Et si l'IA devenait… » (1400x1749) et la
+   photo à la pancarte (1254x1254), qui ont toutes le visage autour du
+   cinquième supérieur. D'où cette valeur par défaut, plutôt qu'un cas par
+   carte.
+   Une affiche déjà large — un visuel 16:9, comme celui de l'article du
+   17 septembre 2026 — n'a presque rien à perdre : elle demande 50 %, qui
+   centre la bande et ne rogne que le vide en haut et en bas. C'est ce que fait
+   le champ « Cadrage de la vignette » du back office (`cover_position`),
+   article par article. */
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
   object-fit:cover;object-position:center 12%;background:var(--noir-2)}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
@@ -1480,7 +1484,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
              content/articles/*.md (back office). NE PAS éditer à la main. -->
         <article class="mc mc--article">
           <a class="mc__affiche" href="article-le-mois-ou-lia-a-pris-le-clavier.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/OIF.jpg" alt="" loading="lazy">
+            <img src="assets/OIF.jpg" alt="" loading="lazy" style="object-position:center 50%">
           </a>
           <div class="mc__corps">
             <span class="mc__date mono">17 septembre 2026</span>
@@ -1497,19 +1501,9 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <!-- ARTICLES:START -->
         <!-- Cartes générées par scripts/build-blog.mjs à partir de
              content/articles/*.md (back office). NE PAS éditer à la main. -->
-        <article class="mc mc--article">
-          <a class="mc__affiche" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/Masterclass-Formation%20sur%20l'IA.jpg" alt="" loading="lazy" style="object-position:center 12%">
-          </a>
-          <div class="mc__corps">
-            <span class="mc__date mono">5 septembre 2026</span>
-            <h3>ET SI L’IA DEVENAIT VOTRE PROCHAIN LEVIER POUR LANCER VOTRE BUSINESS ?</h3>
-            <a class="btn btn--line" href="article-et-si-lia-devenait-votre-prochain-levier-pour-lancer-votre-business.html">Lire l'article</a>
-          </div>
-        </article>
         <article class="mc mc--article mc--blog">
           <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy" style="object-position:center 12%">
+            <img src="assets/2252f773-38f3-40b9-9524-db3a9991f557.png" alt="" loading="lazy" style="object-position:center 70%">
           </a>
           <div class="mc__corps">
             <span class="mc__date mono">Blog</span>
