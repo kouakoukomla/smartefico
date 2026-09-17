@@ -826,6 +826,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
 .blog-top__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-weight:700}
 .blog-top__brand img{width:2rem;height:2rem}
+/* Deux liens à droite : le guide gratuit (guide.html), en blanc parce que
+   c'est une invitation, puis le retour au site, en gris. Sur téléphone, ils
+   passent l'un sous l'autre plutôt que de pousser la marque. */
+.blog-top__liens{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.35rem 1.4rem;text-align:right}
+.blog-top__guide{color:var(--ink);text-decoration:none}
+.blog-top__guide:hover{color:var(--yellow)}
 .blog-top__back{color:var(--ink-2);text-decoration:none}
 .blog-top__back:hover{color:var(--yellow)}
 .post-list{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:.5rem}
@@ -890,7 +896,10 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <img src="assets/logo-clair.png" alt="SmartEfico" width="512" height="512">
       <span class="mono">SmartEfico</span>
     </a>
-    <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
+    <nav class="blog-top__liens" aria-label="Liens du site">
+      <a class="blog-top__guide mono" href="guide.html">Guide gratuit</a>
+      <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
+    </nav>
   </header>
   <main class="wrap article">
     <a class="article__back mono" href="blog.html">← Tous les articles</a>
