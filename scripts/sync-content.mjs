@@ -148,7 +148,7 @@ if (accueil.hero_subtitle) {
 // --- VISUELS (portrait, logo, image de partage) -----------------------------
 // Les balises sont régénérées en entier : les dimensions viennent du CSS
 // (.logo et .signature__photo), donc changer d'image ne déforme jamais rien.
-const SITE = 'https://smartefico.com';
+const SITE = 'https://www.smartefico.com';
 const visuels = lireFichier('content/pages/visuels.md');
 
 if (visuels.portrait) {

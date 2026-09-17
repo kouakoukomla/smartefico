@@ -58,9 +58,12 @@ propriétaire. Ne pas les supprimer, ne pas les réintégrer sans raison.
 
 **L'adresse du site est écrite en dur à trois endroits par page** : balise canonique,
 balises Open Graph et Twitter, et données structurées JSON-LD. Elle vaut
-`https://smartefico.com` depuis le 17 septembre 2026 (avant :
-`https://smartefico-z7.vercel.app`). Un changement d'adresse doit tout couvrir d'un
-coup, sinon les aperçus de partage LinkedIn pointent à côté :
+**`https://www.smartefico.com`** depuis le 17 septembre 2026 (avant :
+`https://smartefico-z7.vercel.app`). Vercel sert `www` et redirige `smartefico.com`
+vers lui en 308, chaîne de requête comprise : les liens sans `www` fonctionnent, mais
+les balises doivent désigner `www`, l'adresse finale. Les textes affichés en clair (le
+PDF) gardent `smartefico.com`, plus court. Un changement d'adresse doit tout couvrir
+d'un coup, sinon les aperçus de partage LinkedIn pointent à côté :
 
 - les pages : `index.html`, `cgv.html`, `cgc.html`, `guide.html`, `guide-merci.html` ;
 - les constantes `SITE` de `sync-content.mjs` et `build-blog.mjs`, puis régénérer le
@@ -143,7 +146,7 @@ du site y mènent, ajoutés le même jour à la demande du propriétaire :
 
 Le PDF lui-même y renvoie, dix fois : le pied de chaque page intérieure et une ligne
 « Partager » en dernière page mènent à
-`https://smartefico.com/guide.html?utm_source=guide-pdf`. Le fichier circule
+`https://www.smartefico.com/guide.html?utm_source=guide-pdf`. Le fichier circule
 de main en main ; chaque lecteur peut s'inscrire, et Tally range ces inscriptions sous
 `utm_source = guide-pdf`. L'adresse est écrite en clair pour les exemplaires imprimés.
 Si le domaine change, ces liens sont dans `scripts/guide/guide.html`.
@@ -369,15 +372,23 @@ touché 6 608 lignes sans changer un caractère. GitHub le lit tout seul ; en lo
 Dépôt `kouakoukomla/smartefico`, branche `main`. **Le site est servi par deux hôtes
 à la fois**, tous deux alimentés par `main` :
 
-- `https://smartefico.com/` — Vercel, sur le domaine du propriétaire, l'adresse
-  canonique depuis le 17 septembre 2026. Domaine acheté ce jour-là via Vercel
-  (registraire Name.com), serveurs DNS `ns1/ns2.vercel-dns.com`, échéance le
-  17 septembre 2027. `https://smartefico-z7.vercel.app/` reste servi par le même
-  projet.
+- `https://www.smartefico.com/` — Vercel, projet **`smartefico-z7`** de l'équipe
+  `emmanuel-kouakou`, l'adresse canonique depuis le 17 septembre 2026. Domaine acheté
+  ce jour-là via Vercel (registraire Name.com), serveurs DNS `ns1/ns2.vercel-dns.com`,
+  échéance le 17 septembre 2027. `smartefico.com` redirige vers `www`.
+  `https://smartefico-z7.vercel.app/` reste servi par le même projet. Réglages :
+  https://vercel.com/emmanuel-kouakou/smartefico-z7/settings/domains
+
+**Le dépôt est relié à quatre projets Vercel**, constaté le 17 septembre 2026 :
+`smartefico-z7` (celui du domaine), `smartefico`, `smartefico-42` et `smartefico-ca`.
+Chaque envoi sur `main` construit donc le site quatre fois, et chacun le sert sur son
+`*.vercel.app`. Les trois derniers ne servent à rien ; leur suppression revient au
+propriétaire. Pour savoir quel projet sert quoi, les statuts de commit publics de
+GitHub donnent l'adresse de chaque déploiement.
 - `https://kouakoukomla.github.io/smartefico/` — GitHub Pages, toujours actif.
 
 Ce n'est pas un problème de contenu dupliqué tant que la balise canonique de chaque
-page désigne `smartefico.com` — c'est le cas, y compris sur les versions servies par
+page désigne `www.smartefico.com` — c'est le cas, y compris sur les versions servies par
 `vercel.app` et par Pages, qui renvoient donc le référencement vers le domaine. Si vous
 coupez GitHub Pages un jour, rien d'autre n'est à changer ; si vous changez d'adresse
 canonique, voir la liste complète dans Architecture.
