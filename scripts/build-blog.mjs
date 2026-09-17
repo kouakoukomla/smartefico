@@ -526,7 +526,14 @@ function carteBlog(dernier) {
 // la carte se remplace d'elle-même à la suivante. Elle vit dans sa propre zone
 // (ARTICLE_UNE), placée avant les masterclass dans index.html — c'est ce qui
 // la garde en tête de rail sans déplacer le reste.
-const une = articles[0] || null;
+//
+// « Le plus récent » se lit à une réserve près : l'en-tête `home: false` écarte
+// un article de cette carte sans le retirer du blog, et c'est alors le
+// précédent qui la garde. Le champ existe parce que le propriétaire l'a demandé
+// le 18 septembre 2026 pour sa revue d'actualités du 17, dont la couverture est
+// un visuel d'éditeur : sur l'accueil, la carte de tête doit parler de
+// SmartEfico. L'interrupteur est dans le back office, coché par défaut.
+const une = articles.find((a) => versBool(a.home)) || null;
 
 // Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont
 // adossés à un évènement — ils portent un `tally_url` — y avaient leur carte

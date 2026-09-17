@@ -6,6 +6,7 @@ cover_position: 50%
 excerpt: « Elle clique, elle paie, elle ne demande plus » — le plus évocateur,
   mais un peu alarmiste pour votre ton habituel.
 published: true
+home: false
 ---
 - **70 % des salariés français ont déjà utilisé l'IA au travail, et deux tiers des utilisateurs le font sans le dire**
 - **OpenAI lance GPT-6 Astra, son premier modèle classé « critique » en cybersécurité**

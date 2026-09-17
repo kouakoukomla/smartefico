@@ -86,6 +86,11 @@ content:
         label: Publié sur le site
         type: boolean
         default: true
+      - name: home
+        label: Peut passer en tête de la page d'accueil
+        type: boolean
+        default: true
+        description: "Coché, cet article prend la carte de tête de la section « Blog et évènements à venir » dès qu'il est le plus récent. Décoché, il reste dans le blog et c'est l'article précédent qui garde la carte."
       - name: body
         label: Contenu de l'article
         type: rich-text

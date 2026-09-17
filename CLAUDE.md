@@ -128,8 +128,16 @@ demande du propriétaire du 17 septembre 2026 : une publication doit se voir san
 défiler. Sa carte vit dans la zone `ARTICLE_UNE:START/END` de `index.html`, placée
 avant `MASTERCLASS` — c'est ce qui la garde en tête de rail sans déplacer le reste.
 `build-blog.mjs` l'écrit à partir du même tableau trié que `blog.html` : la carte de
-tête est donc toujours le premier article de la page du blog. Rien à faire à la
-publication, l'action GitHub régénère les deux.
+tête est donc le premier article de la page du blog. Rien à faire à la publication,
+l'action GitHub régénère les deux.
+
+**Un article peut refuser cette carte.** L'en-tête `home: false` l'écarte de l'accueil
+sans le retirer du blog, et c'est alors l'article publié juste avant qui garde la carte.
+Le propriétaire l'a demandé le 18 septembre 2026 pour sa revue d'actualités du 17, dont
+la couverture est un visuel d'éditeur : sur l'accueil, la carte de tête doit parler de
+SmartEfico. L'interrupteur est dans le back office — « Peut passer en tête de la page
+d'accueil » — et coché par défaut : un article ordinaire n'a rien à décider, il passe en
+tête le jour de sa publication.
 
 Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont adossés à
 un évènement — ils portent un `tally_url` — y avaient leur carte ; le propriétaire les
@@ -151,10 +159,15 @@ affiches à visage, où le sujet occupe le cinquième supérieur ; 50 % pour un 
 large, comme le 16:9 de l'article du 17 septembre 2026, où la bande centrée ne rogne que
 du vide. Le champ « Cadrage de la vignette » du back office (`cover_position`) le règle
 article par article, et vaut aussi pour les vignettes de `blog.html`. Une photo dont le
-sujet occupe toute la hauteur — la pancarte de l'article du 5 septembre 2026, où le
-visage est en haut et le texte de la pancarte en bas — ne peut pas entrer dans ce
-bandeau sans être coupée quelque part : sa vignette de `blog.html` coupe la première
-ligne de la pancarte, et aucune valeur de cadrage n'y change quoi que ce soit.
+sujet occupe toute la hauteur, elle, y perd forcément quelque chose : la pancarte de
+l'article du 5 septembre 2026 porte le visage en haut et son texte en bas, et la bande
+n'en prend que la moitié. Elle est cadrée à 0 % depuis le 18 septembre 2026, quand cet
+article est passé en tête de l'accueil : le visage est net, et il ne reste de la
+pancarte qu'un liseré blanc et le haut des lettres de sa première ligne, quelques
+pixels en bas de la carte. 12 % en montrait deux lignes, dont une coupée par le milieu.
+Aucune valeur ne les évite toutes — la bande fait la moitié d'une image carrée, et le
+texte commence avant cette moitié. Seul un recadrage de l'image, réservé à la vignette,
+y parviendrait ; il demanderait un champ de plus dans le back office.
 
 Le champ `date` du back office ne porte que le jour, sans heure : deux articles
 publiés le même jour se départagent par l'ordre des fichiers, et non par l'heure
