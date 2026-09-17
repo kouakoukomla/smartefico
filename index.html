@@ -1630,8 +1630,11 @@ h2.head__eyebrow{font-weight:600;margin:0}
       <div class="foot__legal">
         <p class="foot__copy">Copyright © 2026 SmartEfico</p>
         <p class="foot__links">
-          <!-- Les href restent de vrais liens : ils fonctionnent sur le site déployé
-               et si JavaScript est désactivé. Le script ouvre la fenêtre à la place. -->
+          <a href="guide.html">Guide gratuit</a>
+          <span aria-hidden="true">|</span>
+          <!-- Les href des CGV et CGC restent de vrais liens : ils fonctionnent sur le
+               site déployé et si JavaScript est désactivé. Le script ouvre la fenêtre
+               à la place. Le guide, lui, n'a pas de data-doc : c'est une vraie page. -->
           <a href="cgv.html" data-doc="cgv">CGV</a>
           <span aria-hidden="true">|</span>
           <a href="cgc.html" data-doc="cgc">CGC</a>

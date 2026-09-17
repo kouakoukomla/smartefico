@@ -287,6 +287,11 @@ const styleBlog = `<style>
 .article__body img{max-width:100%;height:auto;border-radius:.6rem;margin:1.2rem 0}
 .article__body code{background:var(--noir-2);padding:.15em .4em;border-radius:4px;font-size:.9em}
 .blog-foot{border-top:1px solid var(--line);margin-top:3rem;padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2)}
+/* Pied : le copyright reste sur une ligne ; quand la place manque, ce sont
+   les liens qui passent dessous, calés à droite. */
+.blog-foot{flex-wrap:wrap}
+.blog-foot > .mono{white-space:nowrap}
+.blog-foot__liens{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.4rem 1.4rem;margin-left:auto}
 .blog-foot a{color:var(--ink-2);text-decoration:none}
 .blog-foot a:hover{color:var(--yellow)}
 </style>`;
@@ -331,7 +336,10 @@ const entete = `  <header class="blog-top wrap">
 
 const pied = `  <footer class="wrap blog-foot">
     <span class="mono">© ${new Date().getFullYear()} SmartEfico</span>
-    <a class="mono" href="index.html">Accueil</a>
+    <span class="blog-foot__liens">
+      <a class="mono" href="guide.html">Guide gratuit</a>
+      <a class="mono" href="index.html">Accueil</a>
+    </span>
   </footer>`;
 
 // --- lecture des articles ---------------------------------------------------

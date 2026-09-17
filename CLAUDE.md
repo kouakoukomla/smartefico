@@ -112,16 +112,22 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
-publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Trois liens
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Cinq liens
 du site y mènent, ajoutés le même jour à la demande du propriétaire :
 
 - `.guide-lien`, la sixième case de la grille des cinq étapes (`#methode`), qui comble
   la case vide que cinq panneaux laissaient sur trois colonnes ;
 - « Guide gratuit » dans le menu de l'accueil, juste après « Blog » — les deux pages à
   part se suivent, le reste du menu garde l'ordre de la page ;
+- « Guide gratuit » dans le pied de page de l'accueil, devant « CGV | CGC », sans
+  `data-doc` : c'est une vraie page, pas une fenêtre ;
 - « Guide gratuit » dans l'en-tête du blog et de chaque article, avant « Retour au
-  site ». Cet en-tête est écrit par `build-blog.mjs` (`entete`) : c'est là qu'il se
-  modifie, jamais dans les pages générées.
+  site », et dans leur pied de page, avant « Accueil ». Les deux sont écrits par
+  `build-blog.mjs` (`entete` et `pied`) : c'est là qu'ils se modifient, jamais dans
+  les pages générées.
+
+Les pages CGV et CGC n'en ont pas : leur pied de page ne renvoie qu'entre elles et vers
+l'accueil.
 
 **Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
 ligne, il reste 28 px entre la marque et les liens et 36 px avant « Contact », mesurés
