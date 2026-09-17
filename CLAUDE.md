@@ -392,6 +392,20 @@ a d'abord été cherché dans `smartefico-z7`, à tort : pour savoir quel projet
 quoi, ouvrir la page Domains de chacun. Les statuts de commit publics de GitHub
 donnent le nom de chaque projet.
 
+Le propriétaire a demandé le 17 septembre 2026 la suppression de `smartefico-42` et
+`smartefico-ca` ; elle revient à lui, dans son navigateur. **Vérifier une suppression
+sans se fier à la page d'accueil** de `*.vercel.app`, servie depuis le cache de Vercel
+(`X-Vercel-Cache: HIT`) : demander une page qui n'existe pas. `X-Vercel-Error:
+DEPLOYMENT_NOT_FOUND` veut dire que le projet ne sert plus rien ; `NOT_FOUND`, qu'un
+déploiement répond encore. Pour savoir si un projet est encore relié au dépôt, pousser
+un commit et lire ses statuts GitHub : seuls les projets reliés y apparaissent.
+
+**Le tableau de bord Vercel ne marche pas dans le navigateur intégré** de Claude Code.
+La page des réglages Git y tourne en boucle (erreurs React 418 et 419, des milliers de
+requêtes), Vercel finit par répondre `429`, et les confirmations envoyées se perdent.
+Le réglage des domaines, lui, y est passé. Pour le reste, le propriétaire opère dans
+son navigateur habituel.
+
 Ce n'est pas un problème de contenu dupliqué tant que la balise canonique de chaque
 page désigne `smartefico.com` — c'est le cas, y compris sur les versions servies par
 `vercel.app` et par Pages, qui renvoient donc le référencement vers le domaine. Si vous
