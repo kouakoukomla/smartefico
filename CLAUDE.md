@@ -217,9 +217,12 @@ un lien vers la page la rechargerait, et **aucun lien de cette page ne doit mene
 directement au PDF**, qui ne se donne qu'après l'inscription.
 
 **Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
-ligne, il reste 28 px entre la marque et les liens et 36 px avant « Contact », mesurés
+ligne, il reste 41 px entre la marque et les liens et 63 px avant « Contact », mesurés
 sous Windows, où la graisse 800 tombe sur Arial Black, la plus large des polices de la
-pile. Un huitième lien ne tiendrait pas sans relever ce seuil.
+pile. Ces deux marges valaient 28 px et 36 px jusqu'au 18 septembre 2026, quand le
+propriétaire a renommé « Actualités » en « Chaîne » — la section ne montre plus que sa
+vidéo. Le mot plus court rend une quarantaine de pixels, pas de quoi ajouter un
+huitième lien : celui-là ne tiendrait toujours pas sans relever le seuil.
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
