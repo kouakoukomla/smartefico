@@ -111,8 +111,11 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
-modèle d'une page « Free download workbook ». Aucun lien du site n'y mène : elle se
-partage en publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire.
+modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Un seul lien
+du site y mène, ajouté le même jour à la demande du propriétaire : `.guide-lien`, la
+sixième case de la grille des cinq étapes (`#methode`), qui comble la case vide que
+cinq panneaux laissaient sur trois colonnes.
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
