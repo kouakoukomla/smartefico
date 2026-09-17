@@ -507,22 +507,22 @@ em{color:var(--yellow)}
    que la date et le titre : sans cela leur bouton remonterait coller au titre,
    alors que celui des masterclass reste poussé vers le bas par le texte. */
 .mc .btn{align-self:flex-start;margin-top:auto}
-/* La carte du blog ferme le rail : elle ne mène pas à un article mais au
-   blog entier, et porte pour affiche la couverture du dernier publié. Sa
-   bordure plus vive la détache des fiches qui la précèdent. */
-.mc--blog{border-color:#3A3A38}
-.mc--blog:hover{border-color:var(--ink)}
-
-/* ---------- carte vidéo ----------
-   Dernière carte du rail. Son affiche porte un lecteur au lieu d'une image,
-   dans la même boîte 2:1 que les autres : la rangée reste alignée, et la
-   vidéo 16/9 s'y pose avec deux liserés noirs que le fond de page avale.
+/* ---------- la vidéo de la chaîne ----------
+   Elle était la dernière carte du rail. Depuis le 18 septembre 2026 elle tient
+   la section seule — le propriétaire a retiré la carte d'article et celle du
+   blog — et n'a donc plus à s'aligner sur une rangée : plein format 16:9,
+   centrée, 54 rem au plus, soit une fois et demie la largeur de trois cartes.
+   Sous 54 rem elle prend toute la largeur disponible.
+   Elle démarre d'elle-même et en sourdine, demande du propriétaire du même
+   jour : aucun navigateur ne laisse une vidéo se lancer avec le son sans un
+   geste du visiteur, et le bouton du lecteur le rend en un clic.
    youtube-nocookie.com plutôt que youtube.com : même lecteur, sans cookie de
-   suivi tant que la lecture n'est pas lancée. `loading=lazy` diffère le
-   chargement jusqu'à l'approche du rail. */
-.mc__affiche--video{position:relative;aspect-ratio:2/1;overflow:hidden;
-  background:#000;border-bottom:1px solid var(--line)}
-.mc__affiche--video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+   suivi tant que la lecture n'est pas lancée. Plus de `loading=lazy` : le
+   lecteur doit être prêt à l'arrivée, pas à l'approche. */
+.video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
+  background:#000;border:1px solid var(--line)}
+.video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le bouton en est la seule tache
    claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
@@ -1461,79 +1461,50 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
     </section>
 
-    <!-- ============ ACTUALITÉS / MASTERCLASS ============
+    <!-- ============ LA CHAÎNE / MASTERCLASS ============
          Section pilotée par le back office (Pages CMS).
          Les masterclass sont éditées dans content/masterclasses/*.md, puis la
          zone MASTERCLASS:START/END est régénérée par scripts/sync-content.mjs
          (automatiquement, via GitHub Actions, à chaque enregistrement dans le CMS).
          Ne pas éditer le contenu à la main entre les repères.
 
-         Le rail ouvre sur le dernier article publié : la zone ARTICLE_UNE,
-         écrite par scripts/build-blog.mjs, est placée avant les masterclass
-         pour que la carte soit la première vue, sans faire défiler. Elle se
-         remplace d'elle-même à la publication suivante. -->
+         Le 18 septembre 2026, le propriétaire a retiré les deux dernières
+         cartes — le dernier article, puis le blog. La vidéo de la chaîne tient
+         la section seule, au centre et en grand, hors du rail. Le rail ne sert
+         plus qu'aux masterclass et se cache tant qu'aucune date n'est ouverte
+         (voir le script du rail, en bas de page). -->
     <section class="wrap" id="agenda">
       <div class="head head--centre">
-        <h2 class="display">Blog et <em>évènements à venir</em>.</h2>
-        <p class="lead">Mes articles sur l'acquisition et l'IA, et les sessions ponctuelles pour apprendre à générer des rendez-vous qualifiés. Lisez, ou réservez votre place dès qu'une date est ouverte.</p>
+        <h2 class="display">Ma chaîne, <em>en clair</em>.</h2>
+        <p class="lead">Des méthodes concrètes pour mettre l'IA au travail dans votre activité. Les prochaines masterclass s'afficheront ici.</p>
       </div>
       <div class="rail">
         <div class="rail__piste" id="rail-actus">
-        <!-- ARTICLE_UNE:START -->
-        <!-- Cartes générées par scripts/build-blog.mjs à partir de
-             content/articles/*.md (back office). NE PAS éditer à la main. -->
-        <article class="mc mc--article">
-          <a class="mc__affiche" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/724534669_2083670452545757_1073765564763983040_n.jpg" alt="" loading="lazy" style="object-position:center 0%">
-          </a>
-          <div class="mc__corps">
-            <span class="mc__date mono">5 septembre 2026</span>
-            <h3>4 façons d’utiliser ChatGPT pour gagner jusqu’à 10 heures par semaine dans votre business</h3>
-            <a class="btn btn--line" href="article-4-facons-dutiliser-chatgpt-pour-gagner-jusqua-10-heures-par-semaine-dans-votre-business.html">Lire l'article</a>
-          </div>
-        </article>
-        <!-- ARTICLE_UNE:END -->
         <!-- MASTERCLASS:START -->
         <!-- Section générée par scripts/sync-content.mjs à partir de
              content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
 
         <!-- MASTERCLASS:END -->
-        <!-- ARTICLES:START -->
-        <!-- Cartes générées par scripts/build-blog.mjs à partir de
-             content/articles/*.md (back office). NE PAS éditer à la main. -->
-        <article class="mc mc--article mc--blog">
-          <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="assets/2252f773-38f3-40b9-9524-db3a9991f557.png" alt="" loading="lazy" style="object-position:center 70%">
-          </a>
-          <div class="mc__corps">
-            <span class="mc__date mono">Blog</span>
-            <h3>Articles &amp; idées</h3>
-            <a class="btn btn--line" href="blog.html">Voir le blog</a>
-          </div>
-        </article>
-        <!-- ARTICLES:END -->
-        <!-- VIDEO:START -->
-        <article class="mc mc--article mc--video">
-          <div class="mc__affiche mc__affiche--video">
-            <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0"
-              title="Lancer un business solo avec l'IA : les 3 questions qui changent tout" loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="mc__corps">
-            <span class="mc__date mono">Vidéo</span>
-            <h3>Lancer un business solo avec l'IA : les 3 questions qui changent tout</h3>
-            <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
-               target="_blank" rel="noopener">Voir la chaîne</a>
-          </div>
-        </article>
-        <!-- VIDEO:END -->
         </div>
         <button class="rail__fleche rail__fleche--prec" type="button"
                 aria-controls="rail-actus" aria-label="Voir les cartes précédentes">&#8249;</button>
         <button class="rail__fleche rail__fleche--suiv" type="button"
                 aria-controls="rail-actus" aria-label="Voir les cartes suivantes">&#8250;</button>
       </div>
+      <!-- VIDEO:START -->
+      <!-- Zone générée par scripts/sync-content.mjs à partir de
+           content/pages/video.md (back office). NE PAS éditer à la main. -->
+      <div class="video-scene">
+        <div class="video-scene__cadre">
+          <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1"
+            title="Lancer un business solo avec l'IA : les 3 questions qui changent tout"
+            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
+           target="_blank" rel="noopener">Voir la chaîne</a>
+      </div>
+      <!-- VIDEO:END -->
     </section>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
@@ -1982,6 +1953,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
     var prec = rail.querySelector('.rail__fleche--prec');
     var suiv = rail.querySelector('.rail__fleche--suiv');
     if (!piste || !prec || !suiv) return;
+
+    // Depuis que la vidéo a quitté le rail, celui-ci ne porte que les
+    // masterclass : sans date ouverte, il est vide et ne laisserait qu'un
+    // blanc entre le titre et la vidéo. Sans script, ce blanc fait douze
+    // pixels sur fond noir — invisible.
+    if (!piste.children.length) { rail.hidden = true; return; }
 
     function pas() {
       var carte = piste.firstElementChild;

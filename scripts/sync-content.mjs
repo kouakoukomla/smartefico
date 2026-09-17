@@ -187,30 +187,34 @@ function idYoutube(url) {
 
 const video = lireFichier('content/pages/video.md');
 
-// La vidéo est une carte du rail « Blog et évènements à venir », posée après
-// celle du blog. Elle en reprend la structure — affiche, corps, bouton — pour
-// que la rangée reste alignée ; seule l'affiche porte un lecteur au lieu d'une
-// image.
+// La vidéo tient seule la section « Ma chaîne, en clair » — « Blog et évènements
+// à venir » jusqu'au 18 septembre 2026 — depuis ce jour-là : le propriétaire y a
+// retiré la carte du dernier article et celle du blog. Elle n'est donc plus une carte du rail mais un bloc à part,
+// posé après lui, en 16:9 et au centre.
+//
+// Elle démarre seule (`autoplay=1`), forcément en sourdine (`mute=1`) : c'est
+// la condition posée par tous les navigateurs, et `allow="autoplay…"` est ce
+// qui l'autorise pour un cadre d'un autre domaine. `playsinline=1` évite que
+// l'iPhone bascule en plein écran. Plus de `loading="lazy"` : le lecteur doit
+// être prêt à l'arrivée sur la page.
 const idVideo = idYoutube(video.youtube_url);
 if (idVideo) {
   const titre = video.titre || 'Vidéo SmartEfico';
   index = injecter(
     index,
     'VIDEO',
-    `\n        <article class="mc mc--article mc--video">\n` +
-      `          <div class="mc__affiche mc__affiche--video">\n` +
-      `            <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0"\n` +
-      `              title="${escAttr(titre)}" loading="lazy"\n` +
-      `              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
-      `              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
-      `          </div>\n` +
-      `          <div class="mc__corps">\n` +
-      `            <span class="mc__date mono">Vidéo</span>\n` +
-      `            <h3>${escTexte(titre)}</h3>\n` +
-      `            <a class="btn btn--line" href="https://www.youtube.com/@smartefico"\n` +
-      `               target="_blank" rel="noopener">Voir la chaîne</a>\n` +
-      `          </div>\n` +
-      `        </article>\n        `
+    `\n      <!-- Zone générée par scripts/sync-content.mjs à partir de\n` +
+      `           content/pages/video.md (back office). NE PAS éditer à la main. -->\n` +
+      `      <div class="video-scene">\n` +
+      `        <div class="video-scene__cadre">\n` +
+      `          <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1"\n` +
+      `            title="${escAttr(titre)}"\n` +
+      `            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
+      `            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
+      `        </div>\n` +
+      `        <a class="btn btn--line" href="https://www.youtube.com/@smartefico"\n` +
+      `           target="_blank" rel="noopener">Voir la chaîne</a>\n` +
+      `      </div>\n      `
   );
   resume.push('vidéo : ' + idVideo);
 } else if (video.youtube_url) {

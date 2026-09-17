@@ -123,56 +123,57 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
-**Le rail « Blog et évènements à venir » ouvre sur le dernier article publié**,
-demande du propriétaire du 17 septembre 2026 : une publication doit se voir sans faire
-défiler. Sa carte vit dans la zone `ARTICLE_UNE:START/END` de `index.html`, placée
-avant `MASTERCLASS` — c'est ce qui la garde en tête de rail sans déplacer le reste.
-`build-blog.mjs` l'écrit à partir du même tableau trié que `blog.html` : la carte de
-tête est donc le premier article de la page du blog. Rien à faire à la publication,
-l'action GitHub régénère les deux.
+**La section « Ma chaîne, en clair » ne montre plus que la vidéo de la chaîne**,
+depuis le 18 septembre 2026. Elle s'appelait « Blog et évènements à venir » ; le
+propriétaire a vidé son rail en trois temps :
+les articles adossés à un évènement, puis la carte du dernier article publié — posée la
+veille, dans une zone `ARTICLE_UNE` placée avant les masterclass — puis celle du blog.
+Reste un lecteur YouTube en 16:9, centré, 54 rem au plus, et le bouton « Voir la
+chaîne ». Le rail ne porte plus que les masterclass et son script le masque tant qu'il
+est vide ; sans JavaScript, il ne laisse qu'une douzaine de pixels noirs.
 
-**Un article peut refuser cette carte.** L'en-tête `home: false` l'écarte de l'accueil
-sans le retirer du blog, et c'est alors l'article publié juste avant qui garde la carte.
-Le propriétaire l'a demandé le 18 septembre 2026 pour sa revue d'actualités du 17, dont
-la couverture est un visuel d'éditeur : sur l'accueil, la carte de tête doit parler de
-SmartEfico. L'interrupteur est dans le back office — « Peut passer en tête de la page
-d'accueil » — et coché par défaut : un article ordinaire n'a rien à décider, il passe en
-tête le jour de sa publication.
+Le titre et l'accroche ont suivi le même jour, l'ancien texte annonçant des articles
+au-dessus d'une seule vidéo : « Ma chaîne, *en clair*. » et « Des méthodes concrètes
+pour mettre l'IA au travail dans votre activité. Les prochaines masterclass
+s'afficheront ici. » Le propriétaire a choisi cette formulation entre deux proposées.
+L'ancre reste `#agenda` et le lien du menu s'appelle toujours « Actualités » : le
+renommer est son choix, pas une correction à faire d'office.
 
-Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont adossés à
-un évènement — ils portent un `tally_url` — y avaient leur carte ; le propriétaire les
-a retirés le 17 septembre 2026, en nommant celle de « Et si l'IA devenait votre
-prochain levier… ». L'article reste sur le blog, avec son formulaire incrusté : seule
-sa carte a quitté l'accueil. Une inscription ouverte s'annonce par sa masterclass,
-dans la zone MASTERCLASS. Le rail tient donc en trois cartes — dernier article, blog,
-vidéo — et tient sans défilement sur un écran d'ordinateur.
+**La vidéo démarre seule, en sourdine**, demande du même jour. Trois paramètres dans
+l'adresse d'incrustation — `autoplay=1&mute=1&playsinline=1` — et `allow="autoplay; …"`
+sur le cadre, sans quoi un cadre d'un autre domaine n'a pas le droit de lancer la
+lecture. Le `loading="lazy"` est parti avec : le lecteur doit être prêt à l'arrivée, pas
+à l'approche. Le son sans geste du visiteur n'existe sur aucun navigateur — `mute=1`
+n'est pas un choix, c'est la condition de l'autoplay — et YouTube affiche ses sous-titres
+quand il démarre muet. Ce bloc est écrit par `sync-content.mjs` depuis
+`content/pages/video.md` (zone VIDEO) : il se modifie là, jamais à la main.
 
-La carte du blog porte l'affiche de l'article le plus ancien, celui qui a ouvert le
-blog. Trois raisons : ce n'est pas la couverture de l'article de tête, qui paraîtrait
-deux fois à une carte d'intervalle ; elle ne bouge pas à chaque publication, alors que
-cette carte est un décor et non une information ; et elle est cadrée pour un bandeau,
-ce que la couverture du jour n'est pas toujours.
+**Ce qui est parti avec les cartes**, et qu'il faudrait refaire pour revenir en arrière :
+les zones `ARTICLE_UNE` et `ARTICLES` de `index.html` ; l'injection de `build-blog.mjs`
+dans `index.html`, qui ne touche donc plus qu'à `blog.html` et aux pages d'articles ;
+l'interrupteur `home` du back office, qui écartait un article de l'accueil sans le
+retirer du blog ; et les règles `.mc--blog` et `.mc__affiche--video`. Le reste de la
+carte — `.mc`, `.mc__affiche`, `.mc__corps` — sert toujours aux masterclass.
 
-**Le cadrage d'une affiche appartient à l'image**, pas au composant : la carte montre
+**Le cadrage d'une affiche appartient à l'image**, pas au composant : une vignette montre
 une bande 2:1 d'une source souvent carrée ou verticale. 12 % par défaut, mesuré sur les
 affiches à visage, où le sujet occupe le cinquième supérieur ; 50 % pour un visuel déjà
 large, comme le 16:9 de l'article du 17 septembre 2026, où la bande centrée ne rogne que
 du vide. Le champ « Cadrage de la vignette » du back office (`cover_position`) le règle
-article par article, et vaut aussi pour les vignettes de `blog.html`. Une photo dont le
-sujet occupe toute la hauteur, elle, y perd forcément quelque chose : la pancarte de
-l'article du 5 septembre 2026 porte le visage en haut et son texte en bas, et la bande
-n'en prend que la moitié. Elle est cadrée à 0 % depuis le 18 septembre 2026, quand cet
-article est passé en tête de l'accueil : le visage est net, et il ne reste de la
-pancarte qu'un liseré blanc et le haut des lettres de sa première ligne, quelques
-pixels en bas de la carte. 12 % en montrait deux lignes, dont une coupée par le milieu.
-Aucune valeur ne les évite toutes — la bande fait la moitié d'une image carrée, et le
-texte commence avant cette moitié. Seul un recadrage de l'image, réservé à la vignette,
-y parviendrait ; il demanderait un champ de plus dans le back office.
+article par article. Il ne sert plus que sur `blog.html`, depuis que l'accueil n'affiche
+plus de vignette d'article ; les affiches de masterclass, elles, gardent le 12 % du CSS.
+Une photo dont le sujet occupe toute la hauteur y perd forcément quelque chose : la
+pancarte de l'article du 5 septembre 2026 porte le visage en haut et son texte en bas, et
+la bande n'en prend que la moitié. Elle est cadrée à 0 % : le visage est net, et il ne
+reste de la pancarte qu'un liseré blanc et le haut des lettres de sa première ligne.
+12 % en montrait deux lignes, dont une coupée par le milieu. Aucune valeur ne les évite
+toutes — la bande fait la moitié d'une image carrée, et le texte commence avant cette
+moitié.
 
 Le champ `date` du back office ne porte que le jour, sans heure : deux articles
 publiés le même jour se départagent par l'ordre des fichiers, et non par l'heure
 d'enregistrement — c'est le cas des deux articles du 5 septembre 2026. Pour décider
-lequel passe devant, il faut changer une date.
+lequel paraît en premier sur `blog.html`, il faut changer une date.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en

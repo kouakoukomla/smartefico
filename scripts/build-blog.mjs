@@ -11,6 +11,13 @@
  * Dépendance : marked (installée par GitHub Actions ; « npm install » en local).
  * Après ce script, build-standalone.mjs n'a pas besoin de tourner : le blog est
  * indépendant de index-autonome.html.
+ *
+ * Ce script n'écrit plus rien dans index.html. Il y a posé, du 17 au
+ * 18 septembre 2026, la carte du dernier article publié (zone ARTICLE_UNE) et
+ * celle du blog (zone ARTICLES) ; le propriétaire a retiré l'une puis l'autre,
+ * et la section — « Ma chaîne, en clair » depuis ce jour-là — ne montre plus que la vidéo de
+ * la chaîne, écrite par sync-content.mjs. Les deux zones et leurs repères ont
+ * disparu de index.html avec elles.
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync, unlinkSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -445,20 +452,7 @@ for (const f of readdirSync(racine)) {
   }
 }
 
-// --- rappel des articles dans le rail « blog et actualités » de index.html ---
-// La section réunit les masterclass, posées par sync-content.mjs, et les
-// articles, posés ici : ce script a déjà la liste triée, les slugs, les dates
-// mises en forme et les échappements. Les deux scripts écrivent dans le même
-// fichier mais entre des repères distincts, ils ne se marchent pas dessus.
-function injecter(html, marque, contenu) {
-  const debut = `<!-- ${marque}:START -->`;
-  const arret = `<!-- ${marque}:END -->`;
-  const i = html.indexOf(debut);
-  const j = html.indexOf(arret);
-  if (i === -1 || j === -1 || j < i) return html;
-  return html.slice(0, i + debut.length) + contenu + html.slice(j);
-}
-
+// --- cadrage des vignettes ---------------------------------------------------
 // Le cadrage appartient à l'image, pas au composant : la carte montre une bande
 // 2:1 d'une source carrée ou verticale, et le sujet n'y est jamais au même
 // endroit. Sur les couvertures en service le visage est à 19 %, 21 % et 58 % de
@@ -470,110 +464,7 @@ function cadrage(a) {
   return v ? ` style="object-position:center ${escAttr(v)}"` : '';
 }
 
-function carteArticle(a) {
-  const page = escAttr(a.page);
-  const cover = a.cover ? urlImage(a.cover) : '';
-  // L'affiche mène au même endroit que le bouton : on la retire du parcours au
-  // clavier et des lecteurs d'écran plutôt que d'annoncer deux fois le lien.
-  const affiche = cover
-    ? `          <a class="mc__affiche" href="${page}" tabindex="-1" aria-hidden="true">
-            <img src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(a)}>
-          </a>\n`
-    : '';
-  const date = escTexte(dateFr(a.date));
-  // Volontairement sans le résumé : dans le rail, une carte d'article ne montre
-  // que sa date et son titre. Le résumé reste sur blog.html, où il aide à
-  // choisir entre plusieurs articles affichés côte à côte.
-  return (
-    `        <article class="mc mc--article">\n` +
-    affiche +
-    `          <div class="mc__corps">\n` +
-    (date ? `            <span class="mc__date mono">${date}</span>\n` : '') +
-    `            <h3>${escTexte(a.title || 'Article')}</h3>
-            <a class="btn btn--line" href="${page}">Lire l'article</a>
-          </div>
-        </article>`
-  );
-}
-
-// La carte qui ferme le rail : elle ne mène pas à un article mais au blog
-// entier, et porte pour affiche la couverture d'un article. C'est elle qui
-// réunit tout ce que le rail ne montre pas fiche par fiche. L'article dont
-// elle emprunte l'affiche est choisi plus bas, parmi ceux que le rail ne
-// montre pas déjà : depuis que le dernier publié ouvre le rail, reprendre sa
-// couverture afficherait deux fois la même image à deux cartes d'intervalle.
-function carteBlog(dernier) {
-  const cover = dernier && dernier.cover ? urlImage(dernier.cover) : '';
-  const affiche = cover
-    ? `          <a class="mc__affiche" href="blog.html" tabindex="-1" aria-hidden="true">
-            <img src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(dernier)}>
-          </a>\n`
-    : '';
-  return (
-    `        <article class="mc mc--article mc--blog">\n` +
-    affiche +
-    `          <div class="mc__corps">\n` +
-    `            <span class="mc__date mono">Blog</span>\n` +
-    `            <h3>Articles &amp; idées</h3>
-            <a class="btn btn--line" href="blog.html">Voir le blog</a>
-          </div>
-        </article>`
-  );
-}
-
-// Le rail ouvre sur le dernier article publié, demande du propriétaire du
-// 17 septembre 2026 : une publication se voit sans avoir à faire défiler, et
-// la carte se remplace d'elle-même à la suivante. Elle vit dans sa propre zone
-// (ARTICLE_UNE), placée avant les masterclass dans index.html — c'est ce qui
-// la garde en tête de rail sans déplacer le reste.
-//
-// « Le plus récent » se lit à une réserve près : l'en-tête `home: false` écarte
-// un article de cette carte sans le retirer du blog, et c'est alors le
-// précédent qui la garde. Le champ existe parce que le propriétaire l'a demandé
-// le 18 septembre 2026 pour sa revue d'actualités du 17, dont la couverture est
-// un visuel d'éditeur : sur l'accueil, la carte de tête doit parler de
-// SmartEfico. L'interrupteur est dans le back office, coché par défaut.
-const une = articles.find((a) => versBool(a.home)) || null;
-
-// Et c'est le seul article que le rail montre fiche par fiche. Ceux qui sont
-// adossés à un évènement — ils portent un `tally_url` — y avaient leur carte
-// jusqu'au 17 septembre 2026 ; le propriétaire les a retirés le même jour.
-// Une inscription ouverte reste annoncée par sa masterclass, écrite dans la
-// zone MASTERCLASS par sync-content.mjs. Le rail tient donc en trois cartes :
-// dernier article, blog, vidéo — trois visuels, et aucun défilement à faire
-// sur un écran d'ordinateur.
-
-// L'affiche de la carte du blog : celle de l'article le plus ancien, celui qui
-// a ouvert le blog. Trois raisons plutôt qu'une : ce n'est pas la couverture de
-// l'article de tête, qui paraîtrait deux fois à une carte d'intervalle ; elle
-// ne change pas à chaque publication, alors que cette carte est un décor et
-// non une information ; et elle est cadrée pour un bandeau 2:1, ce que la
-// couverture du jour n'est pas toujours. Si un seul article existe, elle n'a
-// pas le choix.
-const afficheBlog = articles[articles.length - 1] || null;
-
-const cheminIndex = join(racine, 'index.html');
-const avantIndex = readFileSync(cheminIndex, 'utf8');
-
-// Les deux zones portent le même avertissement : ce sont deux fenêtres sur la
-// même source, content/articles/*.md.
-const zone = (cartes) =>
-  '\n        <!-- Cartes générées par scripts/build-blog.mjs à partir de\n' +
-  '             content/articles/*.md (back office). NE PAS éditer à la main. -->\n' +
-  (cartes ? cartes + '\n' : '') +
-  '        ';
-
-let apresIndex = injecter(avantIndex, 'ARTICLE_UNE', zone(une ? carteArticle(une) : ''));
-apresIndex = injecter(apresIndex, 'ARTICLES', zone(carteBlog(afficheBlog)));
-if (apresIndex !== avantIndex) writeFileSync(cheminIndex, apresIndex, 'utf8');
-
 console.log(
   `Blog : ${articles.length} article(s) généré(s), ${supprimees} page(s) obsolète(s) supprimée(s). ` +
-    `blog.html et le rail de index.html mis à jour.`
-);
-console.log(
-  une
-    ? `Rail : « ${une.title} » en tête, puis la carte du blog` +
-      (afficheBlog && afficheBlog !== une ? ` (affiche : « ${afficheBlog.title} »).` : '.')
-    : 'Rail : aucun article publié, seule la carte du blog est posée.'
+    `blog.html et les pages d'articles sont à jour.`
 );
