@@ -752,6 +752,29 @@ h2.head__eyebrow{font-weight:600;margin:0}
   border-radius:50%;object-fit:cover;object-position:center 18%;
   margin-bottom:1.6rem;
   box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
+/* La photo se dévoile de haut en bas quand elle entre à l'écran : le visage
+   d'abord, les bras croisés ensuite, et l'anneau jaune se pose avec elle.
+   Demande du propriétaire du 18 septembre 2026 — « qu'il croise les bras et
+   sourie quand on arrive sur la page ». Une photographie ne bouge pas ; c'est
+   le dévoilement qui fait le geste.
+   L'état de départ n'est posé que par le script (classe --pose) : sans
+   JavaScript, sans IntersectionObserver ou sous mouvement réduit, la photo est
+   simplement là, entière, anneau compris. Le clip-path rogne aussi l'ombre
+   portée, donc l'anneau : il apparaît avec la bande qu'il entoure. */
+.signature__photo--pose{clip-path:inset(0 0 100% 0);transform:scale(1.06);
+  box-shadow:0 0 0 0 var(--yellow),0 0 0 0 #000}
+.signature__photo--vu{animation:pose 1.1s cubic-bezier(.22,.61,.36,1) forwards}
+@keyframes pose{
+  from{clip-path:inset(0 0 100% 0);transform:scale(1.06);
+    box-shadow:0 0 0 0 var(--yellow),0 0 0 0 #000}
+  to{clip-path:inset(0 0 0 0);transform:scale(1);
+    box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
+}
+@media (prefers-reduced-motion:reduce){
+  .signature__photo--pose{clip-path:none;transform:none;
+    box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
+  .signature__photo--vu{animation:none}
+}
 .signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
   font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
 .signature__role{color:var(--ink-2)}
