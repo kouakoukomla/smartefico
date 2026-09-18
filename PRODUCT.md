@@ -60,7 +60,9 @@ inclus dans les forfaits.**
   14 septembre 2026 : la section Contact ne propose que le formulaire, et le téléphone
   ne paraît plus que dans le hero. C'est une décision explicite du propriétaire, pas un
   oubli. Ne pas rétablir le téléphone dans le contact sans sa demande.
-- Site statique, sans serveur ni base de données. Le formulaire est hébergé par Tally.
+- Site statique, sans base de données. Le formulaire est hébergé par Tally. Une seule
+  fonction serveur depuis le 18 septembre 2026 : l'assistant de discussion
+  (`api/chat.js`, Claude), qui ne conserve rien des conversations.
 - Engagement contractuel de **moyens et non de résultats** (CGV, article 8).
 - **Aucun montant publié**, nulle part : tarifs, seuils de budget publicitaire et durées
   d'engagement ont été retirés des CGV sur décision du propriétaire.

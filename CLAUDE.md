@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Site vitrine de SmartEfico (agence d'acquisition et d'automatisation IA), en français.
 Trois pages HTML statiques, sans framework, sans étape de compilation. Le contenu de
-`index.html` est directement ce qui est servi.
+`index.html` est directement ce qui est servi. Une seule pièce tourne côté serveur :
+la fonction Vercel `api/chat.js`, qui fait parler l'assistant de discussion (voir
+Architecture).
 
 ## Commandes
 
@@ -12,6 +14,7 @@ Trois pages HTML statiques, sans framework, sans étape de compilation. Le conte
 node scripts/sync-legal.mjs        # après toute modification de cgv.html ou cgc.html
 node scripts/build-standalone.mjs  # régénère index-autonome.html
 node scripts/build-guide.mjs       # après toute modification de scripts/guide/guide.html
+node scripts/build-assistant.mjs   # après toute modification de index.html ou guide.html
 npx --yes serve .                  # aperçu local sur http://localhost:3000
 ```
 
@@ -174,6 +177,74 @@ Le champ `date` du back office ne porte que le jour, sans heure : deux articles
 publiés le même jour se départagent par l'ordre des fichiers, et non par l'heure
 d'enregistrement — c'est le cas des deux articles du 5 septembre 2026. Pour décider
 lequel paraît en premier sur `blog.html`, il faut changer une date.
+
+**Un assistant de discussion répond aux visiteurs**, demandé par le propriétaire le
+18 septembre 2026 : une pastille jaune « Une question ? » en bas à droite de
+`index.html` ouvre un panneau branché sur Claude. Il répond sur SmartEfico, cerne la
+situation du visiteur et l'oriente vers `81VkKx` ou vers le guide
+(`guide.html?utm_source=assistant`). Choisi parmi trois options — assistant IA sur
+mesure, assistant guidé sans IA, outil tout fait — pour montrer sur son propre site ce
+que l'agence vend : des agents IA qui qualifient.
+
+- **Quatre fichiers.** `api/chat.js`, la fonction serveur ; `lib/contexte-assistant.js`,
+  le texte du site qu'elle donne à Claude, **généré** par `scripts/build-assistant.mjs`
+  à partir du `<main>` de `index.html` et de `guide.html` et de la liste des
+  articles ; la pastille elle-même, entre les repères `ASSISTANT:START/END` de
+  `index.html`, avec son style et son script dans la page comme tout le reste ; et
+  `vercel.json`, qui donne 60 s à la fonction. GitHub Actions régénère le contexte
+  après chaque enregistrement du back office ; après une retouche de `index.html` à la
+  main, relancer `build-assistant.mjs` avant de pousser.
+- **La clé n'est jamais dans le dépôt**, qui est public : c'est la variable
+  `ANTHROPIC_API_KEY` du projet Vercel `smartefico`. Sans elle, la fonction répond 503
+  et la pastille affiche « pas encore en service ». Une variable ajoutée dans Vercel
+  ne vaut qu'à partir du déploiement suivant.
+- **La requête** : `claude-opus-5`, effort `low` (réflexion active, au plus bas :
+  latence et coût d'une discussion courte), `max_tokens` 2048, en flux. Le secours
+  `fallbacks: "default"` (en-tête `server-side-fallback-2026-07-01`) fait repasser
+  par l'API elle-même une question anodine que les filtres de sécurité de Claude
+  auraient déclinée. Le cache porte sur le préfixe fixe — consignes, puis contenu du
+  site, le repère sur ce second bloc — et, par le cache automatique de la requête,
+  sur la conversation qui grandit. Rien de variable (date, identifiant) ne doit entrer
+  dans `SYSTEME` : il invaliderait le cache à chaque question.
+- **Les consignes reprennent les contraintes de contenu** de ce fichier : aucun
+  montant, aucune promesse de résultat, aucun chiffre hors du site, les deux seuls
+  clients citables sans rien leur attribuer, aucune ville, et le rappel qu'il est une
+  IA. Toute demande hors sujet est ramenée à SmartEfico en une phrase — c'est aussi une
+  protection : l'adresse est publique, et sans cette règle elle servirait de Claude
+  gratuit à n'importe qui. Une règle de contenu nouvelle ici doit aussi entrer dans
+  `CONSIGNES`.
+- **Contre l'abus**, dans l'ordre où la fonction les applique : les origines admises
+  (`smartefico.com`, `www`, `smartefico-z7.vercel.app`, `kouakoukomla.github.io`,
+  plus `ASSISTANT_ORIGINES_EN_PLUS`) ; vingt messages par adresse IP et par dix
+  minutes ; 21 messages, 1 200 caractères par question et 16 000 au total ; la
+  génération coupée quand le visiteur quitte la page. Le compteur d'IP vit dans la
+  mémoire d'une instance que Vercel recycle : il arrête un visiteur trop pressé, pas
+  une attaque. **Le vrai garde-fou est la limite de dépense mensuelle posée dans la
+  console d'Anthropic**, et une clé réservée au site, révocable seule.
+- **Coût estimé** : environ 5 000 tokens de préfixe, relus au dixième du prix à partir
+  de la deuxième question, soit de l'ordre de 5 à 10 centimes pour une conversation
+  de cinq questions. Chaque réponse laisse une ligne JSON dans les journaux de Vercel
+  (`assistant: "reponse"`, tokens lus en cache, écrits, produits) sans rien du contenu
+  échangé : `cache_lu` doit dépasser zéro dès la deuxième question, sinon le cache ne
+  sert pas.
+- **Rien n'est conservé par le site.** La page tient l'historique en mémoire et le
+  renvoie entier à chaque question ; il disparaît avec l'onglet. Pas de cookie, rien
+  ne part avant que le visiteur écrive, et la mention sous le champ dit que les
+  réponses viennent d'une IA et qu'il ne faut pas y écrire de données sensibles.
+  L'article 10 des CGC (« Sous-traitance IA ») ne cite pas encore cet assistant : le
+  compléter revient au propriétaire, c'est son texte.
+- **La pastille appelle toujours `https://smartefico.com/api/chat`**, y compris depuis
+  les copies servies par `vercel.app` et Pages : d'où la liste d'origines. Les autres
+  projets Vercel reliés au dépôt déploient eux aussi la fonction, mais sans clé ;
+  personne ne les appelle. La copie autonome, ouverte depuis le disque, masque la
+  pastille.
+- **Tester sans rien dépenser** : le SDK suit `ANTHROPIC_BASE_URL`. Un faux serveur de
+  l'API Messages qui répond en SSE, un petit serveur Node qui sert `api/chat.js`
+  (la fonction lit elle-même son corps quand `req.body` manque, elle tourne donc hors
+  de Vercel) et, dans Chrome sans fenêtre, un `fetch` détourné vers ce serveur ont
+  suffi à éprouver le 18 septembre 2026 le flux, les liens, l'historique, les erreurs,
+  le débit et le refus. Le premier vrai appel se fait en production, une fois la clé
+  posée.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
@@ -404,6 +475,12 @@ navigateur :
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
   demande explicite du propriétaire du 16 septembre 2026. Mouvement réduit et survol
   l'arrêtent déjà.
+- `pulsing-dot` sur `.assistant__msg--attente span` — les trois points ne vivent que
+  pendant qu'une réponse de l'assistant se prépare, et disparaissent au premier
+  morceau reçu : c'est un état réel et passager, pas une animation de décor. Consigné
+  dans `.impeccable/config.json`. Les deux autres signalements levés par la pastille
+  ont été corrigés : la mention passée de 11,5 à 12,8 px, et l'ombre du panneau
+  retirée — sur le noir pur de la page, la bordure suffit.
 - Sur `scripts/guide/guide.html`, `tight-leading` (« 0,13 »), `oversized-h1`
   (« 7392px ») et `all-caps-body` — le détecteur lit mal les unités d'impression (pt,
   mm). Les étiquettes en capitales, là comme dans `guide.html`, font une trentaine de

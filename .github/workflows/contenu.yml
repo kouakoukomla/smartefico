@@ -12,6 +12,7 @@ on:
       - '.pages.yml'
       - 'scripts/sync-content.mjs'
       - 'scripts/build-blog.mjs'
+      - 'scripts/build-assistant.mjs'
       - 'scripts/optimize-images.mjs'
       - 'package.json'
       - 'package-lock.json'
@@ -49,6 +50,11 @@ jobs:
 
       - name: Générer le blog (blog.html + pages d'articles)
         run: node scripts/build-blog.mjs
+
+      # L'assistant de discussion lit le site à travers ce fichier : il doit
+      # suivre chaque changement de contenu, donc passer après les deux autres.
+      - name: Régénérer le contexte de l'assistant (lib/contexte-assistant.js)
+        run: node scripts/build-assistant.mjs
 
       # index-autonome.html reste volontairement hors dépôt (local).
       - name: Publier les fichiers régénérés

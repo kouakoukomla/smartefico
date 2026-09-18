@@ -844,6 +844,89 @@ h2.head__eyebrow{font-weight:600;margin:0}
   text-decoration:none;border-bottom:2px solid var(--yellow);overflow-wrap:anywhere;color:var(--ink)}
 .doc-modal__body .legal-name,.doc-modal__body .maj,.doc-modal__body .mono{color:var(--ink-2)}
 
+/* ---------- assistant de discussion ----------
+   Une pastille jaune en bas à droite — un aplat cliquable, donc jaune — ouvre
+   un panneau de discussion branché sur api/chat.js. Rien ne part vers le
+   serveur avant que le visiteur écrive : ni cookie, ni script tiers, et
+   ouvrir le panneau ne coûte rien. L'ensemble porte l'attribut hidden dans le
+   HTML et c'est le script qui le montre : sans JavaScript, il ne pourrait
+   rien faire, il n'apparaît donc pas.
+   Pas d'ombre portée : sur le noir pur de la page, une ombre noire ne se voit
+   pas, et c'est la bordure qui détache le panneau. */
+.assistant{position:fixed;right:clamp(.75rem,2.4vw,1.5rem);bottom:clamp(.75rem,2.4vw,1.5rem);
+  z-index:60;display:flex;flex-direction:column;align-items:flex-end}
+.assistant[hidden],.assistant__panneau[hidden],.assistant__suggestions[hidden]{display:none}
+.assistant__ouvrir{display:inline-flex;align-items:center;gap:.55rem;min-height:3.25rem;
+  padding:.75rem 1.2rem .75rem .95rem;border:0;border-radius:999px;cursor:pointer;
+  background:var(--yellow);color:var(--on-yellow);font:inherit;font-weight:700;font-size:.98rem;
+  transition:background-color .18s ease,transform .18s ease}
+.assistant__ouvrir:hover{background:var(--yellow-hi);transform:translateY(-2px)}
+.assistant__ouvrir svg{width:1.35rem;height:1.35rem;flex:none}
+.assistant--ouvert .assistant__ouvrir{display:none}
+.assistant__panneau{width:min(24rem,calc(100vw - 1.5rem));height:min(36rem,calc(100dvh - 2rem));
+  display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+  border-radius:.9rem;overflow:hidden}
+.assistant__tete{display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:.8rem .9rem .8rem 1rem;border-bottom:1px solid var(--line);background:var(--noir)}
+.assistant__titre{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--ink);
+  letter-spacing:-.01em}
+.assistant__titre img{width:1.75rem;height:1.75rem}
+.assistant__fermer{flex:none;width:2.4rem;height:2.4rem;border-radius:50%;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:1.35rem;
+  line-height:1;transition:background-color .18s ease,border-color .18s ease,color .18s ease}
+.assistant__fermer:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.assistant__fil{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:1rem;
+  display:flex;flex-direction:column;gap:.7rem}
+.assistant__msg{max-width:88%;padding:.7rem .9rem;border-radius:.85rem;font-size:.95rem;
+  line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.assistant__msg--bot{align-self:flex-start;background:var(--noir-2);color:var(--ink);
+  border-top-left-radius:.25rem}
+.assistant__msg--moi{align-self:flex-end;background:var(--ink);color:var(--on-yellow);
+  border-top-right-radius:.25rem}
+.assistant__msg a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.assistant__msg--bot a:hover{color:var(--yellow)}
+.assistant__msg--erreur{color:var(--ink-2)}
+/* Trois points pendant que la réponse se prépare, remplacés par le texte dès
+   le premier morceau reçu. */
+.assistant__msg--attente{display:flex;gap:.3rem;padding-block:.95rem}
+.assistant__msg--attente span{width:.45rem;height:.45rem;border-radius:50%;background:var(--ink-3);
+  animation:assistant-points 1.2s ease-in-out infinite}
+.assistant__msg--attente span:nth-child(2){animation-delay:.15s}
+.assistant__msg--attente span:nth-child(3){animation-delay:.3s}
+@keyframes assistant-points{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.assistant__suggestions{display:flex;flex-wrap:wrap;gap:.45rem;padding:0 1rem .85rem}
+.assistant__suggestion{font:inherit;font-size:.85rem;padding:.45rem .8rem;border-radius:999px;
+  cursor:pointer;border:1px solid #3A3A38;background:transparent;color:var(--ink);
+  transition:background-color .18s ease,border-color .18s ease,color .18s ease}
+.assistant__suggestion:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.assistant__saisie{display:flex;align-items:flex-end;gap:.5rem;padding:.75rem .75rem .5rem;
+  border-top:1px solid var(--line);background:var(--noir)}
+/* 1rem et pas moins : en dessous, Safari sur iPhone zoome la page au
+   moment où l'on touche le champ. */
+.assistant__saisie textarea{flex:1;resize:none;min-height:2.75rem;max-height:7.5rem;
+  padding:.65rem .85rem;border-radius:.7rem;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);font:inherit;font-size:1rem;line-height:1.4}
+.assistant__saisie textarea::placeholder{color:var(--ink-3)}
+.assistant__saisie textarea:focus-visible{outline:2px solid var(--yellow);outline-offset:1px}
+.assistant__envoyer{flex:none;width:2.75rem;height:2.75rem;border-radius:50%;border:0;cursor:pointer;
+  display:grid;place-items:center;background:var(--yellow);color:var(--on-yellow);
+  transition:background-color .18s ease,opacity .18s ease}
+.assistant__envoyer:hover{background:var(--yellow-hi)}
+.assistant__envoyer:disabled{opacity:.35;cursor:default}
+.assistant__envoyer svg{width:1.2rem;height:1.2rem}
+.assistant__mention{margin:0;padding:0 .9rem .7rem;background:var(--noir);color:var(--ink-3);
+  font-size:.8rem;line-height:1.4}
+.assistant__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
+  white-space:nowrap}
+/* Sur téléphone : la pastille se réduit à son icône pour ne rien masquer de
+   la page, et le panneau prend l'écran presque entier. */
+@media (max-width:30rem){
+  .assistant__ouvrir{padding:.8rem}
+  .assistant__etiquette{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
+    white-space:nowrap}
+  .assistant__panneau{width:calc(100vw - 1.5rem);height:calc(100dvh - 1.5rem)}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{animation:none !important;transition:none !important}

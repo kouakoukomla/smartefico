@@ -23,6 +23,15 @@
         ],
         "createdAt": "2026-09-16T21:43:37.824Z",
         "reason": "user requested: « Ces carreaux doivent défiler » (section Marques, 16 septembre 2026) ; arrêt au survol et sous prefers-reduced-motion"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-18T13:18:43.691Z",
+        "reason": "projet: les trois points de .assistant__msg--attente ne vivent que pendant qu'une réponse de l'assistant se prépare (requête en cours) et disparaissent au premier morceau reçu ; arrêtés sous prefers-reduced-motion"
       }
     ]
   }
