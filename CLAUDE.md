@@ -271,8 +271,14 @@ marketing et techniques » que le site ne posait pas. Sur proposition, le propri
 a validé le 18 septembre 2026 une seule phrase à la place : « Le site SmartEfico ne
 dépose aucun cookie de mesure d'audience ni de publicité. » La phrase qui suivait
 (« Le client peut s'y opposer via son navigateur ») est partie avec, faute d'objet.
-À tenir vrai : installer un jour une mesure d'audience ou un pixel publicitaire
-obligerait à réécrire cet article, avec son accord.
+Le même jour, un second paragraphe, dans la version détaillée qu'il a choisie, y
+nomme les services tiers : la vidéo YouTube en mode de confidentialité renforcée, qui
+peut enregistrer des informations dès l'arrivée puisqu'elle se lance seule ; Tally,
+qui héberge les formulaires ; Google Fonts, qui reçoit l'adresse IP du visiteur au
+chargement de la police des titres — il a préféré le déclarer plutôt que d'héberger
+la police sur le site. À tenir vrai : installer une mesure d'audience ou un pixel,
+couper l'autoplay, héberger la police ou changer d'outil de formulaire oblige à
+retoucher cet article, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
