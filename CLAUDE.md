@@ -194,10 +194,16 @@ que l'agence vend : des agents IA qui qualifient.
   `vercel.json`, qui donne 60 s à la fonction. GitHub Actions régénère le contexte
   après chaque enregistrement du back office ; après une retouche de `index.html` à la
   main, relancer `build-assistant.mjs` avant de pousser.
-- **La clé n'est jamais dans le dépôt**, qui est public : c'est la variable
-  `ANTHROPIC_API_KEY` du projet Vercel `smartefico`. Sans elle, la fonction répond 503
-  et la pastille affiche « pas encore en service ». Une variable ajoutée dans Vercel
-  ne vaut qu'à partir du déploiement suivant.
+- **La clé n'est jamais dans le dépôt**, qui est public : c'est une variable du projet
+  Vercel `smartefico`, en Production. Le propriétaire l'a enregistrée le 18 septembre
+  2026 sous le nom **`cle_smartefico`** ; la fonction lit `ANTHROPIC_API_KEY` d'abord,
+  puis ce nom-là. Sans l'une ou l'autre, elle répond 503 et la pastille affiche « pas
+  encore en service ». Une variable ajoutée dans Vercel ne vaut qu'à partir du
+  déploiement suivant. Il a fallu cinq allers-retours pour la poser : elle n'arrivait
+  pas dans ce projet, puis sous un autre nom. Pour vérifier, ouvrir
+  https://vercel.com/emmanuel-kouakou/smartefico/settings/environment-variables,
+  onglet **Project** — la liste se charge avec plusieurs secondes de retard et « No
+  Environment Variables Added » peut s'afficher avant elle.
 - **La requête** : `claude-opus-5`, effort `low` (réflexion active, au plus bas :
   latence et coût d'une discussion courte), `max_tokens` 2048, en flux. Le secours
   `fallbacks: "default"` (en-tête `server-side-fallback-2026-07-01`) fait repasser

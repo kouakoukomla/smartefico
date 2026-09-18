@@ -7,9 +7,10 @@
  * L'API de Claude ne garde rien d'une requête à l'autre : c'est la page qui
  * tient l'historique et le renvoie à chaque message.
  *
- * La clé vit dans la variable d'environnement ANTHROPIC_API_KEY du projet
- * Vercel `smartefico`, jamais dans le dépôt, qui est public. Sans elle, la
- * fonction répond 503 et la bulle affiche « pas encore en service ».
+ * La clé vit dans une variable d'environnement du projet Vercel `smartefico`,
+ * jamais dans le dépôt, qui est public : ANTHROPIC_API_KEY, ou cle_smartefico,
+ * le nom sous lequel le propriétaire l'a enregistrée. Sans elle, la fonction
+ * répond 503 et la bulle affiche « pas encore en service ».
  *
  * Chaque appel coûte de l'argent, et l'adresse est publique. D'où, dans
  * l'ordre : une liste d'origines admises, un débit par adresse IP, des
@@ -223,13 +224,17 @@ export default async function handler(req, res) {
     return;
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  // La clé se lit sous son nom habituel, ANTHROPIC_API_KEY. Le propriétaire
+  // l'a enregistrée dans Vercel sous le nom cle_smartefico le 18 septembre
+  // 2026 : les deux noms sont acceptés, le nom habituel l'emporte.
+  const cle = process.env.ANTHROPIC_API_KEY || process.env.cle_smartefico;
+  if (!cle) {
     refuser(res, 503, 'configuration');
     return;
   }
   // Une seule tentative de plus, et 45 s au plus par essai : la fonction a
   // 60 s pour répondre (vercel.json), il ne faut pas que le client la dépasse.
-  client ??= new Anthropic({ timeout: 45000, maxRetries: 1 });
+  client ??= new Anthropic({ apiKey: cle, timeout: 45000, maxRetries: 1 });
 
   const flux = client.beta.messages.stream({
     model: MODELE,
