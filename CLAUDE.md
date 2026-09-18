@@ -75,7 +75,8 @@ d'un coup, sinon les aperçus de partage LinkedIn pointent à côté :
 - `scripts/guide/guide.html`, puis `node scripts/build-guide.mjs` : le PDF porte
   l'adresse en clair et en lien ;
 - hors du dépôt, dans Tally : la redirection de fin et le lien vers les CGC du
-  formulaire `0Q47ZN`, et le lien vers le guide du formulaire `81VkKx`.
+  formulaire `0Q47ZN`, le lien vers le guide du formulaire `81VkKx`, et le lien
+  vers les CGC du formulaire de contact `D4LJDR`.
 
 **Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
 la section Contact ne contient plus d'`iframe` : un bouton « Réserver mon appel » mène
@@ -125,6 +126,36 @@ main que seule sa bibliothèque parente sait faire. Deux impasses vérifiées : 
 dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précédente,
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
+
+**La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
+le 18 septembre 2026, se place juste avant la chaîne. Titre, accroche, textes et
+étiquettes sont ceux du propriétaire, mot pour mot : cinq cartes `.pilier` — 01 Former,
+02 Conseiller, 03 Sensibiliser, 04 Déployer, 05 Accompagner —, puis une sixième,
+`.pilier--appel`, « Prêt à intégrer l'IA dans votre activité ? ». Trois colonnes sur
+deux rangs, comme la grille de la méthode que `.guide-lien` complète de la même façon.
+Les numéros reprennent le traitement de `.step__no` (jaune, gras, serré) ; le numéro
+affiché est masqué aux lecteurs d'écran, qui lisent « 01 — Former » dans le titre. La
+sixième carte se distingue par un filet jaune — le « trait fin », l'un des quatre rôles
+du jaune — et son bouton « Nous contacter » ouvre le formulaire `D4LJDR` dans un nouvel
+onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, qui
+est plein.
+
+**Le formulaire de contact `D4LJDR`** (https://tally.so/r/D4LJDR), créé le même jour
+sur le modèle fourni par le propriétaire : titre « Passez à la vitesse supérieure avec
+l'IA. », texte d'introduction, Nom complet, Email, Sujet et Message obligatoires ;
+Téléphone (France par défaut), « Comment nous avez-vous connu ? » et la case newsletter
+facultatifs ; bouton « Envoyer le message ». Trois choix sont de Claude et se
+modifient dans Tally : les options de **Sujet** (les cinq piliers, « Acquisition et
+publicités », « Autre ») et de **« Comment nous avez-vous connu ? »** (LinkedIn,
+YouTube, Recherche Google, Recommandation, Guide gratuit, Autre), que le modèle ne
+donnait pas ; le titre « Newsletter » au-dessus de la case, Tally exigeant un intitulé
+de question ; et une ligne sur les données personnelles avec le lien vers les CGC, comme
+dans `0Q47ZN`. Trois champs cachés `utm_source`, `utm_medium`, `utm_campaign`. Même
+style que `0Q47ZN` (Arimo, jaune `#FFCC00`, texte blanc) mais fond `#000000` : il
+s'ouvre en pleine page et non dans une carte. Les réglages avancés (bouton pleine
+largeur, champs arrondis) ne s'appliquent qu'avec Tally Pro. Pas de redirection de fin
+: la page de remerciement de Tally suffit. L'assistant de discussion, lui, oriente
+toujours vers `81VkKx`.
 
 **La section « Ma chaîne, en clair » ne montre plus que la vidéo de la chaîne**,
 depuis le 18 septembre 2026. Elle s'appelait « Blog et évènements à venir » ; le

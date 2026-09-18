@@ -707,6 +707,39 @@ em{color:var(--yellow)}
 .aud li::before{content:"";width:.55rem;height:.55rem;background:var(--ink);flex:none;
   transform:rotate(45deg);margin-top:.5rem}
 
+/* ---------- l'IA générative ----------
+   Cinq cartes et une sixième, l'appel à prendre contact : trois colonnes sur
+   deux rangs, comme la grille de la méthode, que .guide-lien complète de la
+   même façon. Les numéros reprennent ceux des étapes — jaunes, gras, serrés —
+   pour que le « 01 — Former » du propriétaire se lise d'un coup d'œil. Le
+   numéro écrit en gros est caché aux lecteurs d'écran, qui lisent celui,
+   visuellement masqué, placé dans le titre. */
+.piliers{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.piliers{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.piliers{grid-template-columns:repeat(3,1fr)}}
+.pilier{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.85rem}
+.pilier__tete{display:flex;align-items:baseline;gap:.8rem}
+.pilier__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
+  letter-spacing:-.05em;color:var(--yellow);flex:none}
+.pilier h3{color:#FFF;font-size:1.25rem;letter-spacing:-.02em}
+.pilier p{color:var(--ink-2)}
+.pilier__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
+  white-space:nowrap}
+/* Les étiquettes se calent en bas de la carte : les textes n'ont pas la même
+   longueur, les rangées d'étiquettes s'alignent quand même d'une carte à
+   l'autre. */
+.pilier__puces{list-style:none;padding:0;margin:auto 0 0;padding-top:.4rem}
+.pilier .chip{background:transparent;border-color:#3A3A38}
+/* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
+   fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
+   aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
+   celui de la section Contact : aucun formulaire n'est incrusté ici. */
+.pilier--appel{border-color:var(--yellow);justify-content:center}
+.pilier--appel h3{font-size:clamp(1.3rem,2.2vw,1.55rem);line-height:1.2}
+.pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
+.pilier__note{color:var(--ink-3);font-size:.85rem}
+
 /* ---------- pourquoi nous ---------- */
 .why{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.why{grid-template-columns:repeat(3,1fr)}}
@@ -1564,6 +1597,92 @@ h2.head__eyebrow{font-weight:600;margin:0}
           <h3>On se branche sur vos outils</h3>
           <p>Le système s'installe sur votre boîte mail, vos Google Sheets, votre CRM. Vous n'avez rien de nouveau à apprendre, et rien à remplacer.</p>
         </article>
+      </div>
+    </section>
+
+    <!-- ============ L'IA GÉNÉRATIVE ============
+         Demandée par le propriétaire le 18 septembre 2026, juste avant la
+         chaîne : les cinq façons dont SmartEfico accompagne l'IA dans une
+         entreprise. Titre, accroche, textes et étiquettes sont les siens, mot
+         pour mot. La sixième carte mène au formulaire de contact Tally D4LJDR,
+         créé le même jour, dans un nouvel onglet. -->
+    <section class="wrap" id="ia">
+      <div class="head head--centre">
+        <h2 class="display">L’IA générative au service de votre <em>performance</em>.</h2>
+        <p class="lead">SmartEfico vous accompagne à chaque étape de votre transformation&nbsp;: de la définition de votre stratégie au déploiement d’outils performants, jusqu’à l’amélioration continue de vos usages.</p>
+      </div>
+      <div class="piliers">
+        <article class="pilier">
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">01</span>
+            <h3><span class="pilier__cache">01 — </span>Former</h3>
+          </div>
+          <p>Développez les compétences IA de vos équipes grâce à des formations personnalisées, basées sur vos métiers et vos cas d’usage réels.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Formations pratiques</li>
+            <li class="chip">Bibliothèque de prompts</li>
+            <li class="chip">Supports personnalisés</li>
+            <li class="chip">Plan de progression</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">02</span>
+            <h3><span class="pilier__cache">02 — </span>Conseiller</h3>
+          </div>
+          <p>Identifiez les meilleures opportunités pour votre activité. Nous analysons vos processus, détectons les tâches à automatiser et construisons une feuille de route adaptée à vos priorités.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Audit IA</li>
+            <li class="chip">Diagnostic des processus</li>
+            <li class="chip">Cas d’usage prioritaires</li>
+            <li class="chip">Estimation du ROI</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">03</span>
+            <h3><span class="pilier__cache">03 — </span>Sensibiliser</h3>
+          </div>
+          <p>Aidez vos collaborateurs à comprendre les possibilités, les limites et les risques de l’intelligence artificielle. Nous vous accompagnons également dans la définition de règles d’utilisation claires et sécurisées.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Conférences</li>
+            <li class="chip">Ateliers pratiques</li>
+            <li class="chip">Bonnes pratiques</li>
+            <li class="chip">Gouvernance IA</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">04</span>
+            <h3><span class="pilier__cache">04 — </span>Déployer</h3>
+          </div>
+          <p>Passez de l’idée à l’action avec des assistants IA et des workflows d’automatisation connectés à vos outils existants.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Agents IA</li>
+            <li class="chip">Automatisations Make et n8n</li>
+            <li class="chip">Intégrations CRM</li>
+            <li class="chip">Documentation et prise en main</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">05</span>
+            <h3><span class="pilier__cache">05 — </span>Accompagner</h3>
+          </div>
+          <p>Nous suivons les performances de vos solutions, optimisons les automatisations et identifions régulièrement de nouvelles opportunités d’amélioration.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Suivi des performances</li>
+            <li class="chip">Optimisation continue</li>
+            <li class="chip">Veille technologique</li>
+            <li class="chip">Nouveaux cas d’usage</li>
+          </ul>
+        </article>
+        <aside class="pilier pilier--appel" aria-labelledby="ia-appel">
+          <h3 id="ia-appel">Prêt à intégrer l’IA dans votre activité&nbsp;?</h3>
+          <p>Commençons par identifier les tâches que vous pouvez automatiser pour gagner du temps, améliorer votre efficacité et accélérer votre croissance.</p>
+          <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=section-ia" target="_blank" rel="noopener">Nous contacter <span aria-hidden="true">&nbsp;↗</span></a>
+          <p class="pilier__note">Formulaire Tally · nouvel onglet</p>
+        </aside>
       </div>
     </section>
 

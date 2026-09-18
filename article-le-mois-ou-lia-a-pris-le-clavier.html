@@ -679,6 +679,39 @@ em{color:var(--yellow)}
 .aud li::before{content:"";width:.55rem;height:.55rem;background:var(--ink);flex:none;
   transform:rotate(45deg);margin-top:.5rem}
 
+/* ---------- l'IA générative ----------
+   Cinq cartes et une sixième, l'appel à prendre contact : trois colonnes sur
+   deux rangs, comme la grille de la méthode, que .guide-lien complète de la
+   même façon. Les numéros reprennent ceux des étapes — jaunes, gras, serrés —
+   pour que le « 01 — Former » du propriétaire se lise d'un coup d'œil. Le
+   numéro écrit en gros est caché aux lecteurs d'écran, qui lisent celui,
+   visuellement masqué, placé dans le titre. */
+.piliers{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.piliers{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.piliers{grid-template-columns:repeat(3,1fr)}}
+.pilier{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.85rem}
+.pilier__tete{display:flex;align-items:baseline;gap:.8rem}
+.pilier__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
+  letter-spacing:-.05em;color:var(--yellow);flex:none}
+.pilier h3{color:#FFF;font-size:1.25rem;letter-spacing:-.02em}
+.pilier p{color:var(--ink-2)}
+.pilier__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
+  white-space:nowrap}
+/* Les étiquettes se calent en bas de la carte : les textes n'ont pas la même
+   longueur, les rangées d'étiquettes s'alignent quand même d'une carte à
+   l'autre. */
+.pilier__puces{list-style:none;padding:0;margin:auto 0 0;padding-top:.4rem}
+.pilier .chip{background:transparent;border-color:#3A3A38}
+/* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
+   fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
+   aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
+   celui de la section Contact : aucun formulaire n'est incrusté ici. */
+.pilier--appel{border-color:var(--yellow);justify-content:center}
+.pilier--appel h3{font-size:clamp(1.3rem,2.2vw,1.55rem);line-height:1.2}
+.pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
+.pilier__note{color:var(--ink-3);font-size:.85rem}
+
 /* ---------- pourquoi nous ---------- */
 .why{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.why{grid-template-columns:repeat(3,1fr)}}
