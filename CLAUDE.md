@@ -489,6 +489,37 @@ prévu : l'icône est désormais visée par `.figure .figure__ico`. Dans l'aper�
 Claude Code, le défilement ne part que si le panneau est affiché : masqué, la page ne
 se redessine pas et les compteurs attendent à zéro.
 
+**Les captures de « Ne nous croyez pas sur parole, observez » s'animent**, demande du
+propriétaire du 19 septembre 2026 : « que les graphiques et les nombres puissent
+bouger ». Les images restent les vraies captures — c'est ce qui en fait des preuves ;
+rien n'a été redessiné. Une couche SVG (`.preuve__anim`), posée dans le repère de
+chaque image (son `viewBox` reprend les dimensions de l'image), y dépose des caches de
+la couleur exacte du fond, relevée au pixel, puis les retire quand la capture entre à
+l'écran. Les deux anneaux se tracent dans le sens des aiguilles d'une montre : un
+cercle `#191919` de 24 d'épaisseur couvre l'anneau (rayons 108 à 127) et son
+`stroke-dashoffset` recule. Les deux courbes se dessinent de gauche à droite : un
+rideau `#1d1f24` à bord fondu glisse hors d'une zone découpée. Les huit grands
+chiffres montent de zéro à leur valeur en 1,4 s, sur la courbe des compteurs, puis
+s'effacent sur ceux de la capture. Au repos, on voit donc toujours les pixels
+d'origine. Les chiffres animés sont en police système : celle des tableaux de bord
+sur Mac, Arial ailleurs, un peu plus étroite — le fondu final absorbe l'écart. Les
+nombres des trois légendes sont des compteurs ordinaires (voir ci-dessus).
+
+- La couche ne s'allume que par le script (`.preuves--vivantes`). Sans JavaScript,
+  sans `IntersectionObserver`, sous `prefers-reduced-motion` ou à l'impression, les
+  captures s'affichent telles quelles — vérifié dans chacun de ces cas.
+- Chaque capture joue une seule fois, quand 30 % en sont visibles et que son image est
+  chargée.
+- La couche est retirée d'un pixel de chaque côté, pour épouser l'image à l'intérieur
+  de son filet. Le filet reste sur l'image : posé sur le cadre `.preuve__ecran`, il
+  ajoutait trois signalements `cramped-padding` d'impeccable.
+- **Remplacer une capture oblige à refaire les relevés** : centres et rayons des
+  anneaux, zone des courbes, boîtes et couleurs des chiffres, tous écrits dans le HTML
+  en pixels de l'image. La méthode suivie : lire l'image brute avec `sharp`,
+  échantillonner les fonds, balayer depuis le centre des anneaux jusqu'à leurs bords,
+  puis superposer les chiffres animés en rouge translucide sur l'image à sa taille
+  réelle pour contrôler le calage.
+
 **Plus de bandeau de mots-clés sous le hero.** La liste « Acquisition · Automatisation ·
 IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à la demande du
 propriétaire, avec son style. Ne pas la remettre.
