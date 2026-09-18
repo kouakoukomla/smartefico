@@ -449,28 +449,19 @@ lecteurs d'écran. Sans script ou sous `prefers-reduced-motion`, les deux carrea
 d'origine restent centrés, immobiles. Le survol arrête le rang. Ajouter une marque :
 un `<li>` de plus. Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
 
-**La photo de la signature se dévoile quand elle entre à l'écran**, demande du
-propriétaire du 18 septembre 2026 : « que le personnage en bas commence à croiser les
-bras et à sourire quand on arrive sur la page ». Une photographie ne bouge pas — il est
-déjà bras croisés et souriant sur `Portrait3.jpg`. C'est le dévoilement qui fait le
-geste : une bande qui descend, le visage d'abord, les épaules, puis les bras croisés,
-avec un léger recul (1,06 → 1) et l'anneau jaune qui se pose avec elle, en 1,1 s et une
-seule fois. Le `clip-path` rogne aussi l'ombre portée, donc l'anneau suit la bande sans
-qu'on ait à l'animer à part. Pour un vrai mouvement — le personnage qui croise les bras
-à l'écran — il faudrait une vidéo, à produire hors du dépôt et à poser dans le même
-cadre rond.
+**La photo de la signature ne bouge pas**, décision du propriétaire du 18 septembre
+2026. Le même jour, il avait demandé que « le personnage en bas commence à croiser les
+bras et à sourire quand on arrive sur la page » ; une photo ne bouge pas, et le geste
+avait été rendu par un dévoilement de haut en bas, visage d'abord, bras croisés
+ensuite. Il l'a fait retirer quelques heures plus tard : « elle ne doit pas bouger ».
+Ne pas remettre d'animation sur ce portrait sans sa demande. Pour un vrai mouvement,
+il faudrait une vidéo, à produire hors du dépôt.
 
-Deux pièges, tous deux vérifiés dans le navigateur :
-
-- **Un `clip-path` posé sur la cible ramène son taux de visibilité à zéro** pour
-  `IntersectionObserver` dans Chrome — `intersectionRatio: 0` alors que
-  `isIntersecting` vaut `true`. Un `threshold` de 0,35 n'est donc jamais franchi,
-  aucun appel ne vient, et la photo reste cachée pour de bon. C'est ce qui s'est passé
-  au premier essai. La marge négative (`rootMargin: '0px 0px -12% 0px'`) joue le rôle
-  du seuil ; ne pas remettre de `threshold`.
-- **L'état de départ n'est posé que par le script.** Sans JavaScript, sans
-  `IntersectionObserver` ou sous `prefers-reduced-motion`, la photo est simplement là,
-  entière, anneau compris : aucun portrait ne peut rester caché par accident.
+Un piège relevé pendant cet essai, et qui vaut pour toute animation future : **un
+`clip-path` posé sur la cible d'un `IntersectionObserver` ramène son taux de
+visibilité à zéro dans Chrome** — `intersectionRatio: 0` alors que `isIntersecting`
+vaut `true`. Un `threshold` supérieur à zéro n'est alors jamais franchi et l'élément
+reste caché pour de bon ; une marge négative (`rootMargin`) fait office de seuil.
 
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
