@@ -13,13 +13,15 @@ Architecture).
 ```bash
 node scripts/sync-legal.mjs        # après toute modification de cgv.html ou cgc.html
 node scripts/build-standalone.mjs  # régénère index-autonome.html
-node scripts/build-guide.mjs       # après toute modification de scripts/guide/guide.html
-node scripts/build-assistant.mjs   # après toute modification de index.html ou guide.html
+node scripts/build-guide.mjs guide     # après toute modification de scripts/guide/guide.html
+node scripts/build-guide.mjs guide-ia  # après toute modification de scripts/guide/guide-ia.html
+node scripts/build-assistant.mjs   # après toute modification de index.html, guide.html ou guide-ia.html
 npx --yes serve .                  # aperçu local sur http://localhost:3000
 ```
 
-`serve` redirige `/guide.html` vers `/guide` et perd la chaîne de requête au passage :
-pour tester les paramètres `utm_…`, ouvrir directement `/guide?utm_source=…`. Vercel et
+`serve` redirige `/guide.html` vers `/guide` (et `/guide-ia.html` vers `/guide-ia`) et
+perd la chaîne de requête au passage : pour tester les paramètres `utm_…`, ouvrir
+directement `/guide?utm_source=…`. Vercel et
 GitHub Pages ne font pas cette redirection.
 
 Contrôle qualité du design (44 règles d'anti-patterns) :
@@ -32,6 +34,10 @@ Toujours passer par `npx`. Le script installé localement
 (`.claude/skills/impeccable/scripts/detect.mjs`) tourne en mode dégradé — ses modules
 d'analyse HTML sont absents, il retombe sur des expressions régulières et ne trouve
 qu'une fraction des problèmes, en le signalant lui-même.
+
+`build-guide.mjs` sans argument réimprime les deux guides. Ne réimprimer que celui qui a
+changé : Chrome date chaque PDF, et un guide réimprimé sans modification apparaît
+quand même modifié dans git.
 
 Ni tests, ni linter, ni build : il n'y a rien d'autre à exécuter.
 
@@ -69,14 +75,15 @@ est revenu à l'adresse sans `www` le même jour. Les balises doivent toujours d
 l'adresse finale, celle qui ne redirige pas. Un changement d'adresse doit tout couvrir
 d'un coup, sinon les aperçus de partage LinkedIn pointent à côté :
 
-- les pages : `index.html`, `cgv.html`, `cgc.html`, `guide.html`, `guide-merci.html` ;
+- les pages : `index.html`, `cgv.html`, `cgc.html`, `guide.html`, `guide-merci.html`,
+  `guide-ia.html`, `guide-ia-merci.html` ;
 - les constantes `SITE` de `sync-content.mjs` et `build-blog.mjs`, puis régénérer le
   blog ;
-- `scripts/guide/guide.html`, puis `node scripts/build-guide.mjs` : le PDF porte
-  l'adresse en clair et en lien ;
+- `scripts/guide/guide.html` et `scripts/guide/guide-ia.html`, puis
+  `node scripts/build-guide.mjs` : les PDF portent l'adresse en clair et en lien ;
 - hors du dépôt, dans Tally : la redirection de fin et le lien vers les CGC du
-  formulaire `0Q47ZN`, le lien vers le guide du formulaire `81VkKx`, et le lien
-  vers les CGC du formulaire de contact `D4LJDR`.
+  formulaire `0Q47ZN`, les mêmes pour `LZ8MLz`, le lien vers le guide du
+  formulaire `81VkKx`, et le lien vers les CGC du formulaire de contact `D4LJDR`.
 
 **Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
 la section Contact ne contient plus d'`iframe` : un bouton « Réserver mon appel » mène
@@ -138,8 +145,8 @@ affiché est masqué aux lecteurs d'écran, qui lisent « 01 — Former » dans 
 sixième carte se distingue par un filet jaune — le « trait fin », l'un des quatre rôles
 du jaune — et son bouton « Nous contacter » ouvre le formulaire `D4LJDR` dans un nouvel
 onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, qui
-est plein. Sous la grille, sur toute sa largeur, un encart mène au guide gratuit
-(voir `guide.html` plus bas).
+est plein. Sous la grille, sur toute sa largeur, un encart mène à son propre guide
+gratuit (voir `guide-ia.html` plus bas).
 
 **Le formulaire de contact `D4LJDR`** (https://tally.so/r/D4LJDR), créé le même jour
 sur le modèle fourni par le propriétaire : titre « Passez à la vitesse supérieure avec
@@ -156,7 +163,9 @@ style que `0Q47ZN` (Arimo, jaune `#FFCC00`, texte blanc) mais fond `#000000` : i
 s'ouvre en pleine page et non dans une carte. Les réglages avancés (bouton pleine
 largeur, champs arrondis) ne s'appliquent qu'avec Tally Pro. Pas de redirection de fin
 : la page de remerciement de Tally suffit. L'assistant de discussion, lui, oriente
-toujours vers `81VkKx`.
+toujours vers `81VkKx`. Le guide de l'IA générative y renvoie depuis sa dernière page
+(`utm_source=guide-ia-pdf`) et depuis sa page de remerciement (`utm_source=guide-ia`) :
+ses sujets sont justement les cinq leviers du guide.
 
 **La section « Ma chaîne, en clair » ne montre plus que la vidéo de la chaîne**,
 depuis le 18 septembre 2026. Elle s'appelait « Blog et évènements à venir » ; le
@@ -213,15 +222,16 @@ lequel paraît en premier sur `blog.html`, il faut changer une date.
 **Un assistant de discussion répond aux visiteurs**, demandé par le propriétaire le
 18 septembre 2026 : une pastille jaune « Une question ? » en bas à droite de
 `index.html` ouvre un panneau branché sur Claude. Il répond sur SmartEfico, cerne la
-situation du visiteur et l'oriente vers `81VkKx` ou vers le guide
-(`guide.html?utm_source=assistant`). Choisi parmi trois options — assistant IA sur
+situation du visiteur et l'oriente vers `81VkKx` ou vers celui des deux guides qui
+répond à son besoin (`guide.html` ou `guide-ia.html`, avec `?utm_source=assistant`).
+Choisi parmi trois options — assistant IA sur
 mesure, assistant guidé sans IA, outil tout fait — pour montrer sur son propre site ce
 que l'agence vend : des agents IA qui qualifient.
 
 - **Quatre fichiers.** `api/chat.js`, la fonction serveur ; `lib/contexte-assistant.js`,
   le texte du site qu'elle donne à Claude, **généré** par `scripts/build-assistant.mjs`
-  à partir du `<main>` de `index.html` et de `guide.html` et de la liste des
-  articles ; la pastille elle-même, entre les repères `ASSISTANT:START/END` de
+  à partir du `<main>` de `index.html`, `guide.html` et `guide-ia.html` et de la
+  liste des articles ; la pastille elle-même, entre les repères `ASSISTANT:START/END` de
   `index.html`, avec son style et son script dans la page comme tout le reste ; et
   `vercel.json`, qui donne 60 s à la fonction. GitHub Actions régénère le contexte
   après chaque enregistrement du back office ; après une retouche de `index.html` à la
@@ -314,9 +324,8 @@ retoucher cet article, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
-publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Huit liens
-du site y mènent, tous demandés par le propriétaire — sept le même jour, le huitième
-le lendemain :
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Sept liens
+du site y mènent, ajoutés le même jour à la demande du propriétaire :
 
 - `.guide-lien`, la sixième case de la grille des cinq étapes (`#methode`), qui comble
   la case vide que cinq panneaux laissaient sur trois colonnes ;
@@ -333,15 +342,7 @@ le lendemain :
   pas dans les fenêtres de l'accueil, et le texte légal n'a pas bougé. La barre du haut
   de ces deux pages garde son seul « ← Retour au site » ;
 - « Guide gratuit » dans le pied de page de `guide-merci.html`, pour transmettre la
-  page d'inscription — le PDF lui-même y est déjà proposé par deux boutons ;
-- `.guide-lien--large`, sous la grille de la section `#ia` (« L'IA générative au
-  service de votre performance »), le 18 septembre 2026 : le même encart que dans la
-  méthode, sur toute la largeur, la sixième case étant prise par l'appel à prendre
-  contact. Sa ligne cite le titre exact du guide — « Les 5 étapes », seul, se
-  confondrait avec les cinq cartes du dessus. Son lien porte
-  `utm_source=site&utm_medium=section-ia`, comme le bouton « Nous contacter » voisin :
-  Tally range ces inscriptions à part. Sur téléphone, le bouton « Recevoir » passe
-  sous le texte.
+  page d'inscription — le PDF lui-même y est déjà proposé par deux boutons.
 
 Le PDF lui-même y renvoie, dix fois : le pied de chaque page intérieure et une ligne
 « Partager » en dernière page mènent à
@@ -392,8 +393,53 @@ huitième lien : celui-là ne tiendrait toujours pas sans relever le seuil.
   n'y sert qu'en aplat sous du texte sombre. Tout son contenu reprend ce que le site dit
   déjà (méthode, agents, indicateurs) : aucun chiffre de résultat, aucun montant.
 - Aucun outil de rendu PDF n'est installé sur la machine (ni Python, ni poppler). Pour
-  relire le guide, capturer `scripts/guide/guide.html` à 794 px de large : la mise en
-  page est la même qu'à l'impression.
+  relire un guide, capturer sa source (`scripts/guide/guide.html` ou `guide-ia.html`)
+  à 794 px de large : la mise en page est la même qu'à l'impression. Chaque `.page` a
+  `overflow:hidden` : un contenu trop long y est rogné sans bruit, et le pied de page
+  disparaît le premier. Comparer `scrollHeight` et `clientHeight` de chaque page le
+  révèle.
+
+**Un second guide et sa page : `guide-ia.html`**, demandés le 18 septembre 2026. L'encart
+posé le même jour sous la section `#ia` menait d'abord au guide des 5 étapes ; le
+propriétaire a voulu un guide propre à la section, avec sa propre page d'atterrissage,
+qui « contienne toutes les informations » des cinq cartes et parle de chacune « dans
+3 pages maximum ». Lu comme trois pages au plus par levier : chacun en a deux.
+
+- Le guide est **`assets/guide-ia-generative-smartefico.pdf`** (14 pages A4), imprimé
+  depuis `scripts/guide/guide-ia.html` par `node scripts/build-guide.mjs guide-ia`,
+  avec la mise en page du premier. Couverture ; mode d'emploi et tableau des cinq
+  leviers ; fiche 0, « Où en êtes-vous ? » ; puis deux pages par levier. La première
+  prend le texte de la carte, mot pour mot, en chapeau, ses quatre étiquettes en quatre
+  cartes, une règle et « Pour commencer cette semaine » ; la seconde est la fiche à
+  remplir — plan de formation et modèle de consigne ; diagnostic des processus,
+  matrice impact/effort et calcul du temps rendu ; charte d'utilisation ; premier
+  workflow ; tableau de suivi et journal des cas d'usage. Dernière page noire, vers
+  `D4LJDR`.
+- Hors des textes des cartes, tout est de Claude, sur la règle du premier guide : rien
+  que le site ne dise déjà en substance, aucun chiffre de résultat, aucun montant,
+  aucun client cité, et la typographie française (espace insécable avant « ? », « : »,
+  et dans les guillemets). Le propriétaire est invité à le relire.
+- L'encart `.guide-lien--large` de `#ia` y mène, avec
+  `utm_source=site&utm_medium=section-ia` comme le bouton « Nous contacter » voisin :
+  Tally range ces inscriptions à part. C'est le seul lien du site vers cette page ; le
+  menu, le pied de page, le blog et la sixième case de la méthode désignent toujours le
+  guide des 5 étapes. Sa ligne dit « Les 5 leviers de l'IA générative et leurs fiches à
+  remplir, en PDF ». Sur téléphone, le bouton « Recevoir » passe sous le texte.
+- Le formulaire est le Tally **`LZ8MLz`**, copie de `0Q47ZN` : mêmes champs, mêmes
+  champs cachés, même style. Seul le consentement change, « au sujet de l'IA dans mon
+  activité » au lieu de l'acquisition. Tally lui avait posé d'office le logo de
+  l'espace de travail : retiré, pour qu'il ressemble à l'autre.
+- Envoyé, il mène à **`guide-ia-merci.html`** (`noindex`) par les deux mêmes chemins :
+  « Redirect on completion » dans Tally et l'écouteur `message` de `guide-ia.html`.
+  Vérifié en simulant l'évènement — ignoré quand il ne vient pas de `https://tally.so`.
+  Aucune vraie inscription n'a été envoyée.
+- Le PDF renvoie à `guide-ia.html?utm_source=guide-pdf` (pied des pages intérieures et
+  « Partager ») : le formulaire étant distinct, ces inscriptions ne se mêlent pas à
+  celles du premier guide.
+- Même règle que `guide.html` : aucun lien de `guide-ia.html` ne mène directement au
+  PDF.
+- L'assistant de discussion connaît les deux guides et propose celui qui répond au
+  besoin du visiteur (`LIEN_GUIDE_IA` dans `api/chat.js`).
 
 ## Contraintes de contenu
 

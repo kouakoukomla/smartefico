@@ -10,10 +10,11 @@
  * du back office ; après une modification de index.html à la main, le relancer
  * soi-même.
  *
- * Trois sources :
+ * Quatre sources :
  *   - le <main> de index.html, sans les deux textes légaux ni la bulle de
  *     l'assistant elle-même ;
- *   - le <main> de guide.html, pour décrire le guide gratuit ;
+ *   - le <main> de guide.html et celui de guide-ia.html, pour décrire les deux
+ *     guides gratuits ;
  *   - la liste des articles publiés, titre et adresse.
  *
  * Aucune dépendance. Écrit en LF, comme tous les scripts du dépôt.
@@ -88,8 +89,9 @@ let accueil = readFileSync(join(racine, 'index.html'), 'utf8');
 for (const zone of ['CGV', 'CGC', 'ASSISTANT']) accueil = sansZone(accueil, zone);
 const texteAccueil = texte(main(accueil));
 
-// --- 2. la page du guide gratuit ---------------------------------------------
+// --- 2. les pages des deux guides gratuits ----------------------------------------
 const texteGuide = texte(main(readFileSync(join(racine, 'guide.html'), 'utf8')));
+const texteGuideIA = texte(main(readFileSync(join(racine, 'guide-ia.html'), 'utf8')));
 
 // --- 3. les articles publiés -----------------------------------------------------
 // Même lecture de l'en-tête que build-blog.mjs, réduite à ce qu'il faut ici :
@@ -135,15 +137,18 @@ const contexte = [
   '=== Page d\'accueil de smartefico.com ===',
   texteAccueil,
   '',
-  '=== Page du guide gratuit (smartefico.com/guide.html) ===',
+  '=== Page du guide gratuit « Les 5 étapes » (smartefico.com/guide.html) ===',
   texteGuide,
+  '',
+  '=== Page du guide gratuit « L\'IA générative » (smartefico.com/guide-ia.html) ===',
+  texteGuideIA,
   '',
   '=== Articles du blog (smartefico.com/blog.html) ===',
   articles.length ? articles.join('\n') : 'Aucun article publié.',
 ].join('\n');
 
 const sortie = `// Fichier généré par scripts/build-assistant.mjs à partir de index.html,
-// guide.html et content/articles/. NE PAS éditer à la main : relancer le script.
+// guide.html, guide-ia.html et content/articles/. NE PAS éditer à la main : relancer le script.
 // Ce texte est le contexte que l'assistant de discussion (api/chat.js) reçoit.
 export const CONTEXTE_SITE = ${JSON.stringify(contexte)};
 `;
