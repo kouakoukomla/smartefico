@@ -138,7 +138,8 @@ affiché est masqué aux lecteurs d'écran, qui lisent « 01 — Former » dans 
 sixième carte se distingue par un filet jaune — le « trait fin », l'un des quatre rôles
 du jaune — et son bouton « Nous contacter » ouvre le formulaire `D4LJDR` dans un nouvel
 onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, qui
-est plein.
+est plein. Sous la grille, sur toute sa largeur, un encart mène au guide gratuit
+(voir `guide.html` plus bas).
 
 **Le formulaire de contact `D4LJDR`** (https://tally.so/r/D4LJDR), créé le même jour
 sur le modèle fourni par le propriétaire : titre « Passez à la vitesse supérieure avec
@@ -313,8 +314,9 @@ retoucher cet article, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
-publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Sept liens
-du site y mènent, ajoutés le même jour à la demande du propriétaire :
+publicité ou sur LinkedIn. Elle offre un guide PDF contre un formulaire. Huit liens
+du site y mènent, tous demandés par le propriétaire — sept le même jour, le huitième
+le lendemain :
 
 - `.guide-lien`, la sixième case de la grille des cinq étapes (`#methode`), qui comble
   la case vide que cinq panneaux laissaient sur trois colonnes ;
@@ -331,7 +333,15 @@ du site y mènent, ajoutés le même jour à la demande du propriétaire :
   pas dans les fenêtres de l'accueil, et le texte légal n'a pas bougé. La barre du haut
   de ces deux pages garde son seul « ← Retour au site » ;
 - « Guide gratuit » dans le pied de page de `guide-merci.html`, pour transmettre la
-  page d'inscription — le PDF lui-même y est déjà proposé par deux boutons.
+  page d'inscription — le PDF lui-même y est déjà proposé par deux boutons ;
+- `.guide-lien--large`, sous la grille de la section `#ia` (« L'IA générative au
+  service de votre performance »), le 18 septembre 2026 : le même encart que dans la
+  méthode, sur toute la largeur, la sixième case étant prise par l'appel à prendre
+  contact. Sa ligne cite le titre exact du guide — « Les 5 étapes », seul, se
+  confondrait avec les cinq cartes du dessus. Son lien porte
+  `utm_source=site&utm_medium=section-ia`, comme le bouton « Nous contacter » voisin :
+  Tally range ces inscriptions à part. Sur téléphone, le bouton « Recevoir » passe
+  sous le texte.
 
 Le PDF lui-même y renvoie, dix fois : le pied de chaque page intérieure et une ligne
 « Partager » en dernière page mènent à
