@@ -228,12 +228,15 @@ const faq = lireCollection('content/faq')
   .filter((q) => versBool(q.published))
   .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
 if (faq.length) {
+  // Toutes les questions sont fermées à l'arrivée, première comprise : demande
+  // du propriétaire du 18 septembre 2026. Le « + » de chaque ligne dit qu'elles
+  // s'ouvrent.
   const html =
     '\n' +
     faq
       .map(
-        (q, n) =>
-          `        <details class="qa"${n === 0 ? ' open' : ''}>
+        (q) =>
+          `        <details class="qa">
           <summary>${escTexte(q.question || '')}</summary>
           <p>${escTexte(q.body || '')}</p>
         </details>`

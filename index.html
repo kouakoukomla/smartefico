@@ -588,8 +588,9 @@ em{color:var(--yellow)}
 @media (min-width:56rem){.bring{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
 /* Les six prestations sont des panneaux depliants. Elles formaient une liste
    de six lignes nues : six mots, et rien qui dise ce qu il y a derriere.
-   `details` porte le pliage, comme pour les cinq etapes de la methode. La
-   premiere est ouverte, sans quoi rien ne dit que les autres s ouvrent. */
+   `details` porte le pliage, comme pour les cinq etapes de la methode.
+   Toutes sont fermees a l arrivee, comme les etapes et la FAQ, a la demande
+   du proprietaire du 18 septembre 2026 : le chevron dit qu elles s ouvrent. */
 .deliver{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);
   margin:0;padding:0}
 .livrable{border-bottom:1px solid var(--line)}
@@ -1290,7 +1291,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
       <div class="bring">
         <div class="deliver">
-          <details class="livrable" open>
+          <details class="livrable">
             <summary class="livrable__tete">
               <h3>Des rendez-vous qualifiés</h3>
               <span class="livrable__chevron" aria-hidden="true"></span>
@@ -1719,7 +1720,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
       <div class="faq">
         <!-- FAQ:START -->
-        <details class="qa" open>
+        <details class="qa">
           <summary>Faut-il savoir coder pour travailler avec vous ?</summary>
           <p>Non, jamais. Tout est monté en no-code avec Make ou n8n, branché sur les outils que vous utilisez déjà : votre boîte mail, vos Google Sheets, votre CRM. Vous n'installez rien de nouveau à apprendre.</p>
         </details>

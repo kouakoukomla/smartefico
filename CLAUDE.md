@@ -472,11 +472,13 @@ visibilité à zéro dans Chrome** — `intersectionRatio: 0` alors que `isInter
 vaut `true`. Un `threshold` supérieur à zéro n'est alors jamais franchi et l'élément
 reste caché pour de bon ; une marge négative (`rootMargin`) fait office de seuil.
 
-**Les cinq étapes de la méthode sont toutes fermées à l'arrivée**, demande du
-propriétaire du 18 septembre 2026. La première, « 01 Création du système », portait
-`open` pour montrer que les panneaux se déplient ; le chevron de chaque titre le dit
-seul. Les six prestations (`.livrable`) et la FAQ (`.qa`) gardent leur premier panneau
-ouvert : il n'a rien demandé pour elles.
+**Aucun panneau dépliant n'est ouvert à l'arrivée**, demande du propriétaire du
+18 septembre 2026, en deux temps : d'abord « 01 Création du système » dans les cinq
+étapes de la méthode (`.step`), puis « Des rendez-vous qualifiés » dans « Ce qu'on
+vous apporte » (`.livrable`) et la première question de la FAQ (`.qa`). Chacun portait
+`open` pour montrer que les autres se déplient ; le chevron ou le « + » de chaque
+titre le dit seul. Celui de la FAQ était posé par `sync-content.mjs`, qui écrit la
+zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`.
 
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
