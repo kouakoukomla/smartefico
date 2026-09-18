@@ -237,8 +237,11 @@ que l'agence vend : des agents IA qui qualifient.
   renvoie entier à chaque question ; il disparaît avec l'onglet. Pas de cookie, rien
   ne part avant que le visiteur écrive, et la mention sous le champ dit que les
   réponses viennent d'une IA et qu'il ne faut pas y écrire de données sensibles.
-  L'article 10 des CGC (« Sous-traitance IA ») ne cite pas encore cet assistant : le
-  compléter revient au propriétaire, c'est son texte.
+  L'article 10 des CGC (« Sous-traitance IA ») le cite depuis le 18 septembre 2026 :
+  une ligne proposée puis validée par le propriétaire, ajoutée à sa liste d'outils —
+  « l'assistant de discussion du site, qui transmet les questions des visiteurs à
+  Claude (Anthropic) pour en générer les réponses ; SmartEfico n'en conserve aucune
+  copie ».
 - **La pastille appelle toujours `https://smartefico.com/api/chat`**, y compris depuis
   les copies servies par `vercel.app` et Pages : d'où la liste d'origines. Les autres
   projets Vercel reliés au dépôt déploient eux aussi la fonction, mais sans clé ;
@@ -251,6 +254,25 @@ que l'agence vend : des agents IA qui qualifient.
   suffi à éprouver le 18 septembre 2026 le flux, les liens, l'historique, les erreurs,
   le débit et le refus. Le premier vrai appel se fait en production, une fois la clé
   posée.
+
+**Aucune mesure d'audience, par choix.** Le 18 septembre 2026, le propriétaire a
+demandé un tableau de bord des visites ; le site n'en mesurait aucune, et n'en mesure
+toujours aucune. Entre Vercel Web Analytics (sans cookie), Google Analytics 4 et
+Plausible, il a choisi Google Analytics, puis y a renoncé le même jour : « fais sans le
+Google Analytics ». Ne pas installer de mesure sans sa demande. S'il y revient :
+Google Analytics impose en France un bandeau de consentement, que le site n'a pas ;
+Vercel Web Analytics s'en passe. Les chiffres disponibles sans rien installer : l'onglet
+Observability du projet Vercel (volume de requêtes), les onglets Submissions et
+Insights de chaque formulaire Tally, YouTube Studio, et les journaux de l'assistant
+(tokens seulement, jamais le contenu).
+
+L'article 9 des CGC (« Cookies & tracking ») annonçait des « cookies analytiques,
+marketing et techniques » que le site ne posait pas. Sur proposition, le propriétaire
+a validé le 18 septembre 2026 une seule phrase à la place : « Le site SmartEfico ne
+dépose aucun cookie de mesure d'audience ni de publicité. » La phrase qui suivait
+(« Le client peut s'y opposer via son navigateur ») est partie avec, faute d'objet.
+À tenir vrai : installer un jour une mesure d'audience ou un pixel publicitaire
+obligerait à réécrire cet article, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
