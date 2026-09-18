@@ -472,6 +472,12 @@ visibilité à zéro dans Chrome** — `intersectionRatio: 0` alors que `isInter
 vaut `true`. Un `threshold` supérieur à zéro n'est alors jamais franchi et l'élément
 reste caché pour de bon ; une marge négative (`rootMargin`) fait office de seuil.
 
+**Les cinq étapes de la méthode sont toutes fermées à l'arrivée**, demande du
+propriétaire du 18 septembre 2026. La première, « 01 Création du système », portait
+`open` pour montrer que les panneaux se déplient ; le chevron de chaque titre le dit
+seul. Les six prestations (`.livrable`) et la FAQ (`.qa`) gardent leur premier panneau
+ouvert : il n'a rien demandé pour elles.
+
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
 se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et

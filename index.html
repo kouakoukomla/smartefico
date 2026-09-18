@@ -634,8 +634,9 @@ em{color:var(--yellow)}
    formaient une liste verticale de cinq lignes pleines : cinq titres qui
    occupaient la hauteur d un ecran entier. `details` porte le pliage
    lui-meme, il n y a rien a scripter et le clavier le manoeuvre seul.
-   La premiere est ouverte : sans cela la section ne montre que des titres,
-   et rien ne dit qu ils s ouvrent. */
+   Toutes sont fermees a l arrivee, a la demande du proprietaire du
+   18 septembre 2026. La premiere etait ouverte, pour montrer que les autres
+   s ouvrent ; c est desormais le chevron de chaque titre qui le dit. */
 .steps{display:grid;gap:.75rem;grid-template-columns:1fr;align-items:start}
 @media (min-width:46rem){.steps{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:68rem){.steps{grid-template-columns:repeat(3,1fr)}}
@@ -1435,7 +1436,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
         <p class="lead">Chaque étape s'appuie sur la précédente : on ne lance pas de publicité avant que le système de rendez-vous soit en place, et on ne scale pas avant que les campagnes soient optimisées.</p>
       </div>
       <div class="steps">
-        <details class="step" open>
+        <details class="step">
           <summary class="step__tete">
             <span class="step__no">01</span>
             <h3>Création du système</h3>
