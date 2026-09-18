@@ -1,5 +1,5 @@
 ---
-portrait: assets/Portrait3.jpg
+portrait: assets/portrait-emmanuel-kouakou.jpg
 logo: assets/logo-clair.png
 og_image: assets/og-cover.jpg
 ---

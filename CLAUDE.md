@@ -457,6 +457,15 @@ ensuite. Il l'a fait retirer quelques heures plus tard : « elle ne doit pas bou
 Ne pas remettre d'animation sur ce portrait sans sa demande. Pour un vrai mouvement,
 il faudrait une vidéo, à produire hors du dépôt.
 
+Le portrait lui-même a changé le même jour, à sa demande : c'est désormais « Mon
+image.jpg » (dans son dossier `IMG/` et à la racine du site, ignoré par git), en
+couleur sur fond ocre, servi en `assets/portrait-emmanuel-kouakou.jpg` — 900 px de
+large, 53 Ko, au lieu des 3,6 Mo de l'original. Il se déclare dans le back office
+(`content/pages/visuels.md`, champ `portrait`) et non dans `index.html`, que
+`sync-content.mjs` réécrit. Le cadrage du cercle, `object-position: center 18%`,
+lui convient sans retouche. L'ancien portrait noir et blanc, `assets/Portrait3.jpg`,
+reste dans le dépôt, inutilisé.
+
 Un piège relevé pendant cet essai, et qui vaut pour toute animation future : **un
 `clip-path` posé sur la cible d'un `IntersectionObserver` ramène son taux de
 visibilité à zéro dans Chrome** — `intersectionRatio: 0` alors que `isIntersecting`
