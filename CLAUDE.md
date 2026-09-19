@@ -169,11 +169,14 @@ toujours, et reste le premier : l'ordre du menu suit encore celui de la page.
 
 Le même jour, « Ce à quoi vous engager » (`#chiffres`) et « Ne nous croyez pas sur
 parole, observez » (`#preuves`) l'ont suivie, ensemble et toujours avant « Agents IA »,
-à la demande du propriétaire. Le haut de l'accueil enchaîne donc : hero, marques,
-`#apport`, `#chiffres`, `#preuves`, `#agents`, puis `#resultats` (« Ce qu'on
-installe »). Aucune de ces sections n'est dans le menu, et aucun texte n'y dépend de
-leur ordre — « Les quatre scénarios plus haut », dans « Trois raisons », désigne les
-agents, qui restent au-dessus.
+à la demande du propriétaire. Puis, toujours le même jour, « Agents IA » (`#agents`)
+est passé après « Ce qu'on installe » (`#resultats`), à sa demande. Le haut de
+l'accueil enchaîne donc : hero, marques, `#apport`, `#chiffres`, `#preuves`,
+`#resultats`, `#agents`, puis le bandeau des cinq étapes (`#methode`). Hormis
+« Services » vers `#resultats`, aucune de ces sections n'est dans le menu, dont
+l'ordre reste celui de la page ; aucun texte n'y dépend de leur ordre — « Les quatre
+scénarios plus haut », dans « Trois raisons », désigne les agents, qui restent
+au-dessus.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, se place juste avant la chaîne. Titre, accroche, textes et
