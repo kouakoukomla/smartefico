@@ -207,19 +207,22 @@ IA » (`#agents`) est passé après « Ce qu'on installe » (`#resultats`), puis
 bandeau des cinq étapes ; et « Avant, après » (`#avant-apres`), qui suivait ce
 bandeau, est remonté juste avant « Ce qu'on installe ». L'accueil enchaîne donc :
 hero, marques, `#apport`, `#chiffres`, `#preuves`, `#avant-apres`, `#resultats`, le
-bandeau des cinq étapes (`#methode`), `#agents`, `#ia` (qui les suit depuis le même
-jour), « Trois raisons » (`#pourquoi`), puis « Avec qui l'agence travaille »
-(`#public`), passée après « Trois raisons » le même jour, toujours à sa demande. La première pile s'arrête avant le bandeau, la seconde
-s'ouvre sur les agents. Le menu suit l'ordre de la page : « Avant/Après » y est
+bandeau des cinq étapes (`#methode`), `#ia`, `#agents` (placés l'un contre l'autre le
+même jour, l'IA générative d'abord), « Trois raisons » (`#pourquoi`), puis « Avec qui
+l'agence travaille » (`#public`), passée après « Trois raisons » le même jour,
+toujours à sa demande. La première pile s'arrête avant le bandeau, la seconde
+s'ouvre sur l'IA générative. Le menu suit l'ordre de la page : « Avant/Après » y est
 passé devant « Services », sans rien changer à sa largeur. Aucun texte visible ne
 dépend de cet ordre — « Les quatre scénarios plus haut », dans « Trois raisons »,
 désigne les agents, qui restent au-dessus.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
-le 18 septembre 2026, s'est d'abord placée juste avant la chaîne ; depuis le 19, elle
-suit « Agents IA », à la demande du propriétaire (« juste avec "Agent IA" tu mettras
+le 18 septembre 2026, s'est d'abord placée juste avant la chaîne. Le 19, à la demande
+du propriétaire, elle a rejoint « Agents IA » (« juste avec "Agent IA" tu mettras
 toutes les informations relatives à "L'IA générative au service de votre
-performance" »), sans rien changer à son contenu. Titre, accroche, textes et
+performance" »), d'abord après eux, puis juste avant (« toute la partie "Agent IA"
+doit être après toute la partie "L'IA générative…" »), sans rien changer à son
+contenu. Titre, accroche, textes et
 étiquettes sont ceux du propriétaire, mot pour mot : cinq cartes `.pilier` — 01 Former,
 02 Conseiller, 03 Sensibiliser, 04 Déployer, 05 Accompagner —, puis une sixième,
 `.pilier--appel`, « Prêt à intégrer l'IA dans votre activité ? ». Trois colonnes sur
