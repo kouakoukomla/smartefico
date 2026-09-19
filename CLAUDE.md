@@ -567,6 +567,34 @@ vous apporte » (`.livrable`) et la première question de la FAQ (`.qa`). Chacun
 titre le dit seul. Celui de la FAQ était posé par `sync-content.mjs`, qui écrit la
 zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`.
 
+**Pas plus de vide qu'il n'en faut**, demande du propriétaire du 19 septembre 2026 :
+« supprime les endroits où il y a trop d'espace ». Entre deux sections, la page
+laisse environ 77 px à 1 440 px de large (`--gap` de la pile, plus l'interlignage).
+Mesuré sur toute la page à quatre largeurs, quatre endroits dépassaient nettement :
+
+- **le hero**, qui avait une hauteur minimale (`min(42rem,80svh)`) supérieure à son
+  contenu : le surplus se centrait autour du texte, et il y avait 180 px entre les
+  boutons et « Elles m'ont fait confiance » sur ordinateur, plus de 100 px au-dessus
+  et au-dessous du texte sur tablette. Hauteur minimale retirée, marges ramenées à
+  `clamp(2rem,4.5vw,3.5rem)` en haut et `clamp(.75rem,1.5vw,1.25rem)` en bas ;
+- **le bandeau des cinq étapes** (`.invert`) : la pile de part et d'autre et le
+  panneau additionnaient 135 px. Les deux `<div class="stack">` qui l'encadrent ne
+  lui laissent plus qu'un demi-écart (style en ligne) ; la marge intérieure du
+  panneau, alignée sur `.contact`, n'a pas bougé ;
+- **le bas de page** : la seconde pile ajoutait son écart sous le pied de page, qui a
+  déjà le sien. Remis à zéro ;
+- **les cartes de `#ia`** : les étiquettes calées en bas laissaient 70 px de trou au
+  milieu des cartes 02 et 03. Elles suivent désormais le texte, un peu plus serrées
+  (0,8 rem), deux par ligne ; la première rangée perd 60 px.
+
+La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
+confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
+téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur, ses
+deux crochets d'angle jaunes sont masqués — celui du bas tombait sur le bouton du
+téléphone. Pour remesurer : capturer la page entière, puis chercher les bandes
+horizontales où aucun pixel ne dépasse `#1E1E1E` ; les panneaux `#101010` et les
+cartes `#161616` passent pour du vide, à retrancher à la main.
+
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
 se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et

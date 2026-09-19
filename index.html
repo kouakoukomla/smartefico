@@ -275,7 +275,13 @@ p{margin:0}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden}
-.hero__in{min-height:min(42rem,80svh);padding-block:clamp(2.5rem,6vw,5rem) clamp(2.5rem,5vw,4rem);
+/* Le hero prend la hauteur de son contenu. Il avait une hauteur minimale
+   (42 rem, ou 80 % de l'écran) et le surplus se répartissait au-dessus et
+   au-dessous du texte : 180 px de vide entre les boutons et « Elles m'ont
+   fait confiance » sur un écran de 1 440 px, plus de 100 px au-dessus du
+   titre sur tablette. Retirée le 19 septembre 2026 avec une marge basse
+   réduite : la pile qui suit ménage déjà son écart (var(--gap)). */
+.hero__in{padding-block:clamp(2rem,4.5vw,3.5rem) clamp(.75rem,1.5vw,1.25rem);
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;gap:1.6rem;position:relative;z-index:2}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
@@ -297,6 +303,14 @@ p{margin:0}
 
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
+}
+/* Sur téléphone, les boutons du hero prennent toute la largeur : depuis que
+   le hero a perdu sa hauteur minimale (19 septembre 2026), le crochet du bas
+   tombait sur le coin du bouton du téléphone. Les deux crochets partent
+   ensemble, comme la règle sous 60 rem, plutôt que de rendre au hero la
+   marge qu'on vient de lui retirer. */
+@media (max-width:35rem){
+  .hero__bg .brackets{display:none}
 }
 
 /* ---------- preuves ----------
@@ -652,7 +666,11 @@ em{color:var(--yellow)}
    À var(--gap) elle venait s'ajouter à l'écart que la pile ménage déjà
    autour du panneau, ce qui creusait un vide de plus de 200 px avant le
    titre. (.book est cité dans l'historique : ce panneau-là a fusionné
-   avec .contact.) */
+   avec .contact.) Les deux piles qui l'encadrent ne lui laissent plus, de
+   leur côté, qu'un demi-écart (style en ligne de leurs <div class="stack">) :
+   pile et panneau additionnés, il restait 135 px de vide au-dessus du titre
+   et sous les étapes, contre 77 entre les autres sections. Resserré le
+   19 septembre 2026. */
 .invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(2rem,4.5vw,3.5rem)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
@@ -753,11 +771,14 @@ em{color:var(--yellow)}
 .pilier p{color:var(--ink-2)}
 .pilier__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
   white-space:nowrap}
-/* Les étiquettes se calent en bas de la carte : les textes n'ont pas la même
-   longueur, les rangées d'étiquettes s'alignent quand même d'une carte à
-   l'autre. */
-.pilier__puces{list-style:none;padding:0;margin:auto 0 0;padding-top:.4rem}
-.pilier .chip{background:transparent;border-color:#3A3A38}
+/* Les étiquettes suivent le texte. Calées en bas de la carte pour aligner
+   leurs rangées, elles laissaient un trou de 70 px au milieu des cartes les
+   plus courtes ; retiré le 19 septembre 2026 (« supprime les endroits où il
+   y a trop d'espace »). Elles sont aussi un peu plus serrées qu'ailleurs
+   sur le site : deux tiennent par ligne dans une carte de 24 rem, et la
+   première rangée perd 60 px. */
+.pilier__puces{list-style:none;padding:0;margin:0;padding-top:.4rem}
+.pilier .chip{background:transparent;border-color:#3A3A38;padding:.3rem .55rem;font-size:.8rem}
 /* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
    fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
    aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
@@ -1163,7 +1184,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
     </div>
   </section>
 
-  <div class="stack" style="padding-block:var(--gap)">
+  <div class="stack" style="padding-block:var(--gap) calc(var(--gap) / 2)">
 
     <!-- ============ MARQUES ============
          Chaque logo n'est écrit qu'une fois. Le script en bas de page les
@@ -1596,7 +1617,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
     </div>
   </section>
 
-  <div class="stack" style="padding-block:var(--gap)">
+  <div class="stack" style="padding-block:calc(var(--gap) / 2) 0">
 
     <!-- ============ AVANT / APRÈS ============
          Persuade sans citer aucun client : chaque ligne de la colonne gauche
