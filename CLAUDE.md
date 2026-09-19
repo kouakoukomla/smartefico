@@ -170,15 +170,16 @@ toujours, et reste le premier : l'ordre du menu suit encore celui de la page.
 Le même jour, « Ce à quoi vous engager » (`#chiffres`) et « Ne nous croyez pas sur
 parole, observez » (`#preuves`) l'ont suivie, ensemble et toujours avant « Agents IA »,
 à la demande du propriétaire. Puis, toujours le même jour et à sa demande, « Agents
-IA » (`#agents`) est passé après « Ce qu'on installe » (`#resultats`), et « Avant,
-après » (`#avant-apres`), qui suivait le bandeau des cinq étapes, est remonté juste
-avant « Ce qu'on installe ». Le haut de l'accueil enchaîne donc : hero, marques,
-`#apport`, `#chiffres`, `#preuves`, `#avant-apres`, `#resultats`, `#agents`, le
-bandeau des cinq étapes (`#methode`), puis « Avec qui l'agence travaille »
-(`#public`). Le menu suit l'ordre de la page : « Avant/Après » y est passé devant
-« Services », sans rien changer à sa largeur. Aucun texte visible ne dépend de cet
-ordre — « Les quatre scénarios plus haut », dans « Trois raisons », désigne les
-agents, qui restent au-dessus.
+IA » (`#agents`) est passé après « Ce qu'on installe » (`#resultats`), puis après le
+bandeau des cinq étapes ; et « Avant, après » (`#avant-apres`), qui suivait ce
+bandeau, est remonté juste avant « Ce qu'on installe ». L'accueil enchaîne donc :
+hero, marques, `#apport`, `#chiffres`, `#preuves`, `#avant-apres`, `#resultats`, le
+bandeau des cinq étapes (`#methode`), `#agents`, puis « Avec qui l'agence
+travaille » (`#public`). La première pile s'arrête avant le bandeau, la seconde
+s'ouvre sur les agents. Le menu suit l'ordre de la page : « Avant/Après » y est
+passé devant « Services », sans rien changer à sa largeur. Aucun texte visible ne
+dépend de cet ordre — « Les quatre scénarios plus haut », dans « Trois raisons »,
+désigne les agents, qui restent au-dessus.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, se place juste avant la chaîne. Titre, accroche, textes et
