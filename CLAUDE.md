@@ -16,6 +16,7 @@ node scripts/build-standalone.mjs  # régénère index-autonome.html
 node scripts/build-guide.mjs guide     # après toute modification de scripts/guide/guide.html
 node scripts/build-guide.mjs guide-ia  # après toute modification de scripts/guide/guide-ia.html
 node scripts/build-assistant.mjs   # après toute modification de index.html, guide.html ou guide-ia.html
+node scripts/build-partage.mjs     # après toute modification de scripts/partage/partage.html
 npx --yes serve .                  # aperçu local sur http://localhost:3000
 ```
 
@@ -84,6 +85,38 @@ d'un coup, sinon les aperçus de partage LinkedIn pointent à côté :
 - hors du dépôt, dans Tally : la redirection de fin et le lien vers les CGC du
   formulaire `0Q47ZN`, les mêmes pour `LZ8MLz`, le lien vers le guide du
   formulaire `81VkKx`, et le lien vers les CGC du formulaire de contact `D4LJDR`.
+
+**L'aperçu de partage** (ce qu'affichent WhatsApp, LinkedIn ou Facebook quand on
+partage le lien) a été refait le 19 septembre 2026, à la demande du propriétaire :
+« quand je partage le lien, voici ce que cela affiche […] Tu dois actualiser ».
+L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noir et
+blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
+la description de l'aperçu ne parlaient eux aussi que des leads.
+
+- L'image est désormais **`assets/og-smartefico.jpg`** (1200 x 630, 78 Ko) : le titre
+  d'accueil entier, ses deux moitiés à égalité et ses mots accentués en Instrument
+  Serif jaune, le portrait couleur de la signature à droite derrière un filet jaune,
+  et, repris de l'ancienne image, « PME, ETI, grands comptes et dirigeants. » et le
+  numéro. Sa source est `scripts/partage/partage.html`, photographiée par
+  `node scripts/build-partage.mjs` (Chrome sans fenêtre, puis `sharp` en JPEG).
+- Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
+  d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
+  l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
+  balises de `guide.html` et `guide-ia.html`, et dans `build-blog.mjs` (image par
+  défaut du blog et des articles sans couverture).
+- Titre de l'aperçu (et de l'onglet) : « SmartEfico — Leads qualifiés et IA générative
+  au service de votre performance ». Description : « Des rendez-vous qualifiés pour
+  vos offres, et l'IA générative au service de votre performance : publicités
+  pilotées, agents IA, formation et accompagnement de vos équipes. » La
+  `meta description` pour les moteurs de recherche, qui parlait déjà des deux, n'a pas
+  bougé.
+- **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
+  l'image d'une adresse donnée. `og-cover.jpg` reste dans le dépôt, inutilisée — des
+  partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
+  cache ne changent pas d'eux-mêmes : LinkedIn se rafraîchit par son Post Inspector,
+  Facebook par son outil de débogage (« Scrape again ») ; WhatsApp n'a pas d'outil et
+  garde son aperçu un moment — partager en attendant une adresse légèrement
+  différente, comme `https://smartefico.com/?v=2`, l'oblige à relire la page.
 
 **Le formulaire Tally n'est plus incrusté dans la page.** Sur demande du propriétaire,
 la section Contact ne contient plus d'`iframe` : un bouton « Réserver mon appel » mène

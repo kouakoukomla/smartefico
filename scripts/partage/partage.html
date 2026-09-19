@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Image de partage — SmartEfico</title>
+<!-- Source de l'image de partage du site (og:image, twitter:image), 1200 x 630,
+     refaite le 19 septembre 2026 à la demande du propriétaire : l'ancienne
+     (assets/og-cover.jpg, du 12 septembre) montrait le portrait noir et blanc
+     et ne mettait en grand que la moitié « leads qualifiés » du titre.
+     Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico.jpg.
+     Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
+     la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
+     viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
+     LinkedIn, Facebook et WhatsApp gardent une image en mémoire par adresse. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
+<style>
+/* Mêmes codes que le site : noir pur, blanc, et le jaune #FFCC00 pour le
+   filet et les mots accentués, en Instrument Serif italique comme dans le
+   titre d'accueil. */
+html,body{margin:0;background:#000}
+.carte{position:relative;width:1200px;height:630px;overflow:hidden;background:#000;color:#fff;
+  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif}
+/* Le visage occupe le haut du portrait (900 x 1350) : 12 % le garde entier. */
+.photo{position:absolute;top:0;right:0;width:470px;height:630px;
+  background:url("../../assets/portrait-emmanuel-kouakou.jpg") 50% 12%/cover no-repeat}
+/* un filet jaune sépare le texte de la photo : le « trait fin » du site */
+.photo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:#FFCC00}
+.texte{position:absolute;left:64px;top:0;bottom:0;width:630px;display:flex;flex-direction:column;
+  justify-content:center}
+.marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+.marque img{width:78px;height:78px;display:block}
+.marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
+h1{margin:0;font-weight:800;font-size:54px;line-height:1.05;letter-spacing:-.032em}
+h1 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
+  font-weight:400;color:#FFCC00;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
+p{margin:0}
+.cible{margin-top:30px;font-size:27px;font-weight:600}
+.tel{margin-top:10px;font-size:26px;color:#FFCC00;font-weight:600;letter-spacing:.01em}
+</style>
+</head>
+<body>
+<div class="carte">
+  <div class="photo"></div>
+  <div class="texte">
+    <div class="marque"><img src="../../assets/logo-clair.png" alt=""><span>SMARTEFICO</span></div>
+    <h1>Générez des <em>leads&nbsp;qualifiés</em> pour vos offres et mettez l’<em>IA&nbsp;générative</em> au service de votre performance.</h1>
+    <p class="cible">PME, ETI, grands comptes et dirigeants.</p>
+    <p class="tel">+33 7 51 59 96 36</p>
+  </div>
+</div>
+</body>
+</html>
