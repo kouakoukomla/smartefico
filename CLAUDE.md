@@ -208,7 +208,8 @@ bandeau des cinq étapes ; et « Avant, après » (`#avant-apres`), qui suivait 
 bandeau, est remonté juste avant « Ce qu'on installe ». L'accueil enchaîne donc :
 hero, marques, `#apport`, `#chiffres`, `#preuves`, `#avant-apres`, `#resultats`, le
 bandeau des cinq étapes (`#methode`), `#agents`, `#ia` (qui les suit depuis le même
-jour), puis « Avec qui l'agence travaille » (`#public`). La première pile s'arrête avant le bandeau, la seconde
+jour), « Trois raisons » (`#pourquoi`), puis « Avec qui l'agence travaille »
+(`#public`), passée après « Trois raisons » le même jour, toujours à sa demande. La première pile s'arrête avant le bandeau, la seconde
 s'ouvre sur les agents. Le menu suit l'ordre de la page : « Avant/Après » y est
 passé devant « Services », sans rien changer à sa largeur. Aucun texte visible ne
 dépend de cet ordre — « Les quatre scénarios plus haut », dans « Trois raisons »,
