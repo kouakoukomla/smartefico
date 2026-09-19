@@ -134,6 +134,39 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
+**« Ce qu'on vous apporte » (`#apport`) résume le titre d'accueil**, depuis le
+19 septembre 2026. Le propriétaire l'a fait remonter juste après les marques, avant
+« Agents IA », et a demandé de la résumer « de sorte que cela exprime mieux mon grand
+titre » : « Générez des leads qualifiés pour vos offres et mettez l'IA générative au
+service de votre performance. » Elle tient désormais en trois blocs, tous tirés de son
+texte d'origine, resserré :
+
+- une accroche, « Le buzz, très peu pour nous. Les ventes, c'est ce qui nous fait
+  vibrer. » (sa troisième phrase d'introduction, sans « Si c'est ce que vous
+  cherchez… ») ;
+- deux cartes qui reprennent les deux moitiés du titre, avec ses mots en italique :
+  « Des *leads qualifiés* pour vos offres » (ses rendez-vous qualifiés, et le système
+  en trois étiquettes) et « L'*IA générative* au service de votre performance » (ce
+  qu'elle fait, qu'elle sert sans remplacer, et les cinq prestations en étiquettes :
+  Formation, Conseil, Sensibilisation, Déploiement, Accompagnement) ;
+- le manifeste en bandeau, en quatre phrases sur deux volets face à face, demande du
+  même jour (« 2 lignes parlant de la génération de lead et 2 autres lignes parlant
+  de l'IA générative au service de la performance ») : à gauche ses deux phrases,
+  « Personne ne vous connaîtra grâce à nous, mais vous ferez du *cash* avec nos
+  systèmes. » et « Démultiplier vos ventes middle & haute gamme en *moins de 3
+  mois*. » ; à droite deux phrases proposées par Claude sur le même modèle — une
+  opposition, puis un résultat —, « L'IA ne remplacera personne chez vous, mais elle
+  fera gagner du *temps* à vos équipes. » et « Mettre l'IA générative au service de
+  votre *performance*, de la formation de vos équipes au suivi de vos outils. » La
+  phrase « C'est ce qu'on apporte à chacun de nos clients. » est partie pour tenir
+  en quatre lignes.
+
+Sont partis : les deux premiers paragraphes d'introduction, fondus dans les cartes, et
+les six panneaux dépliants `.livrable` avec leurs textes cachés, dont le détail vit
+désormais dans `#ia` — l'historique git les garde si on voulait y revenir. Les cartes
+réutilisent le composant `.pilier` de `#ia`. Le lien « Expertises » du menu y mène
+toujours, et reste le premier : l'ordre du menu suit encore celui de la page.
+
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, se place juste avant la chaîne. Titre, accroche, textes et
 étiquettes sont ceux du propriétaire, mot pour mot : cinq cartes `.pilier` — 01 Former,
@@ -562,7 +595,8 @@ reste caché pour de bon ; une marge négative (`rootMargin`) fait office de seu
 **Aucun panneau dépliant n'est ouvert à l'arrivée**, demande du propriétaire du
 18 septembre 2026, en deux temps : d'abord « 01 Création du système » dans les cinq
 étapes de la méthode (`.step`), puis « Des rendez-vous qualifiés » dans « Ce qu'on
-vous apporte » (`.livrable`) et la première question de la FAQ (`.qa`). Chacun portait
+vous apporte » (`.livrable`, panneaux retirés le lendemain avec la réécriture de la
+section) et la première question de la FAQ (`.qa`). Chacun portait
 `open` pour montrer que les autres se déplient ; le chevron ou le « + » de chaque
 titre le dit seul. Celui de la FAQ était posé par `sync-content.mjs`, qui écrit la
 zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`.

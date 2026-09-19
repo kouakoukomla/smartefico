@@ -622,36 +622,35 @@ em{color:var(--yellow)}
 .chip{border:1px solid var(--line);background:var(--surface);padding:.34rem .7rem;
   color:var(--ink-2);font-size:.85rem}
 
-/* ---------- ce qu'on vous apporte ---------- */
-.bring{display:grid;gap:clamp(1.5rem,4vw,2.5rem);grid-template-columns:1fr}
-@media (min-width:56rem){.bring{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
-/* Les six prestations sont des panneaux depliants. Elles formaient une liste
-   de six lignes nues : six mots, et rien qui dise ce qu il y a derriere.
-   `details` porte le pliage, comme pour les cinq etapes de la methode.
-   Toutes sont fermees a l arrivee, comme les etapes et la FAQ, a la demande
-   du proprietaire du 18 septembre 2026 : le chevron dit qu elles s ouvrent. */
-.deliver{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);
-  margin:0;padding:0}
-.livrable{border-bottom:1px solid var(--line)}
-.livrable__tete{display:flex;align-items:center;gap:.85rem;cursor:pointer;
-  padding-block:.9rem;list-style:none}
-.livrable__tete::-webkit-details-marker{display:none}
-.livrable__tete:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
-/* Le losange blanc de l ancienne liste : il tenait le rythme de la colonne. */
-.livrable__tete::before{content:"";width:.5rem;height:.5rem;background:var(--ink);
-  flex:none;transform:rotate(45deg)}
-.livrable__tete h3{font-size:1rem;font-weight:700;flex:1;min-width:0;color:var(--ink)}
-/* Le carre tourne a 45 deg deborde sa boite de mise en page de 3 px de chaque
-   cote : c est sa diagonale. Dans une carte, la marge interieure l absorbe ;
-   ici la colonne n en a pas, d ou cette marge a droite. */
-.livrable__chevron{flex:none;width:.55rem;height:.55rem;margin-top:-.22rem;
-  margin-right:3px;
-  border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
-  transform:rotate(45deg);transition:transform .2s ease}
-.livrable[open] .livrable__chevron{transform:rotate(-135deg);margin-top:.22rem}
-@media (prefers-reduced-motion:reduce){.livrable__chevron{transition:none}}
-.livrable__corps{padding:0 0 1.05rem 1.35rem}
-.livrable__corps p{color:var(--ink-2);font-size:.95rem;line-height:1.55}
+/* ---------- ce qu'on vous apporte ----------
+   Réécrite le 19 septembre 2026, à la demande du propriétaire, pour dire en
+   résumé ce que promet le titre d'accueil : deux cartes qui en reprennent les
+   deux moitiés — les leads qualifiés, l'IA générative au service de la
+   performance —, puis le manifeste en bandeau. Elle vient juste après les
+   marques, avant les agents IA. Les cartes reprennent le composant .pilier
+   de la section #ia (défini plus bas) ; leurs mots accentués sont ceux du
+   titre d'accueil, dans la même italique. Elle remplace six panneaux
+   dépliants (.livrable), dont le détail vit désormais dans #ia. */
+.apports{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.apports{grid-template-columns:repeat(2,1fr)}}
+.apports .pilier h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
+  font-weight:400;letter-spacing:-.005em;font-size:1.12em}
+/* Le bandeau tient en quatre phrases, à la demande du propriétaire du même
+   jour : deux sur la génération de leads (les siennes), deux sur l'IA
+   générative au service de la performance, bâties sur le même modèle — une
+   opposition, puis un résultat. Chaque volet porte une moitié du titre
+   d'accueil ; les deux volets se font face, et le filet horizontal qui les
+   sépare sur téléphone devient vertical. Deux classes dans les sélecteurs :
+   .manifesto, déclarée plus bas, l'emporterait sinon. */
+.apport__manifeste{grid-column:1/-1}
+.apport__volet{display:flex;flex-direction:column;gap:1rem}
+.manifesto.apport__manifeste .punch{font-size:clamp(1.15rem,1.9vw,1.4rem);line-height:1.3}
+@media (min-width:46rem){
+  .manifesto.apport__manifeste{display:grid;grid-template-columns:1fr 1fr;align-items:start;
+    gap:2.5rem}
+  .apport__manifeste hr{display:none}
+  .apport__volet ~ .apport__volet{border-left:1px solid #333;padding-left:2.5rem}
+}
 /* bloc de contraste : le manifeste est la voix de la maison */
 .manifesto{display:flex;flex-direction:column;gap:1rem;background:var(--noir);
   color:#F3F3F3;padding:clamp(1.5rem,3.5vw,2.4rem)}
@@ -1204,6 +1203,55 @@ h2.head__eyebrow{font-weight:600;margin:0}
       </div>
     </section>
 
+    <!-- ============ CE QU'ON VOUS APPORTE ============
+         Réécrite le 19 septembre 2026 à la demande du propriétaire : la
+         résumer pour qu'elle dise mieux le titre d'accueil (« Générez des
+         leads qualifiés pour vos offres et mettez l'IA générative au service
+         de votre performance »). Les textes sont les siens, resserrés. Les six
+         panneaux dépliants qui la complétaient sont partis : leur détail vit
+         dans la section #ia. Placée avant les agents IA, à sa demande. Le
+         bandeau final en quatre phrases : deux sur les leads (les siennes),
+         deux sur l'IA générative (proposées par Claude, même construction). -->
+    <section class="wrap" id="apport">
+      <div class="head head--centre">
+        <h2 class="display">Ce qu’on vous <em>apporte</em>.</h2>
+        <p class="lead">Le buzz, très peu pour nous. Les ventes, c’est ce qui nous fait vibrer.</p>
+      </div>
+      <div class="apports">
+        <article class="pilier">
+          <h3>Des <em>leads qualifiés</em> pour vos offres</h3>
+          <p>Des rendez-vous avec des gens qui peuvent acheter, pas des listes de contacts. On installe le système complet qui les produit.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Publicités Meta, LinkedIn et TikTok</li>
+            <li class="chip">Tunnel de rendez-vous</li>
+            <li class="chip">Qualification par agents IA</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <h3>L’<em>IA générative</em> au service de votre performance</h3>
+          <p>Elle trie vos demandes entrantes, répond aux questions courantes et produit vos contenus. Elle sert votre performance commerciale&nbsp;; elle ne la remplace pas.</p>
+          <ul class="chips pilier__puces">
+            <li class="chip">Formation</li>
+            <li class="chip">Conseil</li>
+            <li class="chip">Sensibilisation</li>
+            <li class="chip">Déploiement</li>
+            <li class="chip">Accompagnement</li>
+          </ul>
+        </article>
+        <div class="manifesto apport__manifeste">
+          <div class="apport__volet">
+            <p class="punch">Personne ne vous connaîtra grâce à nous, mais vous ferez du <em>cash</em> avec nos systèmes.</p>
+            <p class="punch">Démultiplier vos ventes middle &amp; haute gamme en <em>moins de&nbsp;3&nbsp;mois</em>.</p>
+          </div>
+          <hr>
+          <div class="apport__volet">
+            <p class="punch">L’IA ne remplacera personne chez vous, mais elle fera gagner du <em>temps</em> à vos équipes.</p>
+            <p class="punch">Mettre l’IA générative au service de votre <em>performance</em>, de la formation de vos équipes au suivi de vos outils.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ AGENTS IA ============ -->
     <section class="wrap" id="agents">
       <div class="head head--centre">
@@ -1335,87 +1383,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
         </p>
       </div>
     </section>
-
-    <!-- ============ CE QU'ON VOUS APPORTE ============ -->
-    <section class="wrap" id="apport">
-      <div class="head head--centre">
-        <h2 class="display">Ce qu’on vous <em>apporte</em>.</h2>
-        <p class="lead">Des rendez-vous avec des gens qui peuvent acheter, pas des listes de
-          contacts. On installe le système complet qui les produit : publicités pilotées sur
-          Meta, LinkedIn et TikTok, tunnel de rendez-vous, qualification des demandes par
-          agents IA.</p>
-        <p class="lead">L’IA générative travaille là où elle fait gagner du temps — trier les
-          demandes entrantes, répondre aux questions courantes, produire les contenus sur tous
-          vos canaux. Elle sert votre performance commerciale ; elle ne la remplace pas.</p>
-        <p class="lead">Le buzz, très peu pour nous. Les ventes, c’est ce qui nous fait vibrer.
-          Si c’est ce que vous cherchez, alors on est l’agence qu’il vous faut.</p>
-      </div>
-      <div class="bring">
-        <div class="deliver">
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Des rendez-vous qualifiés</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>Pour vos offres middle &amp; high ticket. C’est le cœur de ce qu’on installe : des publicités pilotées sur Meta, LinkedIn et TikTok, un tunnel qui transforme le clic en rendez-vous, et des agents IA qui trient les demandes avant qu’elles n’arrivent à vos vendeurs. Ceux-ci ne parlent qu’à des gens qui peuvent acheter.</p>
-            </div>
-          </details>
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Formation</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>On forme vos équipes aux outils qu’on installe : rédiger les instructions données aux agents, lire le tableau de bord, reprendre la main sur un scénario qui dévie. Le but est que le système continue de tourner sans nous.</p>
-            </div>
-          </details>
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Conseil</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>Avant d’installer quoi que ce soit, on regarde votre offre, votre cible et ce qui bloque aujourd’hui. Certains n’ont pas besoin de publicité mais d’un tunnel de rendez-vous ; d’autres, l’inverse. Le cadrage précède toujours la proposition.</p>
-            </div>
-          </details>
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Sensibilisation</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>Des sessions pour vos équipes sur ce que l’IA générative sait faire, et surtout sur ce qu’elle ne sait pas faire. Sans ce cadrage, un déploiement se heurte soit à des attentes irréalistes, soit au refus de l’outil.</p>
-            </div>
-          </details>
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Déploiement</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>La mise en production : connexion des régies publicitaires, montage des scénarios d’agents, branchement du tableau de bord. Vous récupérez un système qui tourne, pas une maquette.</p>
-            </div>
-          </details>
-          <details class="livrable">
-            <summary class="livrable__tete">
-              <h3>Accompagnement</h3>
-              <span class="livrable__chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="livrable__corps">
-              <p>Une fois le système en place, on l’ajuste sur ce que remonte le terrain — qui décroche, qui bloque, sur quel argument. Les campagnes et les règles de qualification évoluent avec ce que vous observez.</p>
-            </div>
-          </details>
-        </div>
-        <div class="manifesto">
-          <p class="punch">Personne ne vous connaîtra grâce à nous, mais vous ferez du <em>cash</em> avec nos systèmes.</p>
-          <hr>
-          <p class="punch">Démultiplier vos ventes middle &amp; haute gamme en <em>moins de 3 mois</em>.</p>
-          <p>C'est ce qu'on apporte à chacun de nos clients.</p>
-        </div>
-      </div>
-    </section>
-
 
     <!-- ============ PREUVES ============
          Captures des tableaux de bord réels, recadrées avant publication :
