@@ -463,7 +463,8 @@ huitième lien : celui-là ne tiendrait toujours pas sans relever le seuil.
   consentement obligatoire, et trois champs cachés `utm_source`, `utm_medium`,
   `utm_campaign` que la page remplit à partir de sa propre adresse. Il est intégré
   comme dans les articles (`data-tally-src`, `embed.js`, repli à 8 s), avec
-  `transparentBackground=1` : le fond vient de la carte de la page.
+  `transparentBackground=1` : le fond vient de la carte de la page, restée noire sur
+  la page blanche (voir Design).
 - Ses couleurs et sa police (Arimo, la plus proche d'Helvetica chez Google Fonts —
   Tally n'accepte qu'elles, et Inter est proscrite) sont réglées dans Tally. Les
   réglages avancés (arrondis, bouton pleine largeur, fond des champs) y sont aussi
@@ -546,8 +547,34 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-Noir pur `#000000` — et non un gris très sombre — pour que le fond du logo se fonde
-dans la page. Jaune `#FFCC00`, blanc, et un violet `#9D4DFF` cantonné à un seul endroit.
+**Fond blanc depuis le 19 septembre 2026**, sur tout le site, à la demande du
+propriétaire (« je veux que le fond soit en blanc, propose moi avant de publier ») et
+sur maquette validée (« oui, passe tout le site en blanc »). Jusque-là, le fond était un
+noir pur `#000000`. Palette : blanc `#FFFFFF`, cartes gris très clair `#F4F4F1` (celui
+des fiches des guides PDF), encre `#141414`, gris `#4E4E49` et `#6B6B66`, filets
+`#DEDED9` ; jaune `#FFCC00`, et un violet `#9D4DFF` cantonné à un seul endroit.
+
+- **Sur `index.html`, la feuille décrit encore l'ancien thème sombre** : ses jetons
+  (`--ground`, `--surface`, `--ink`…) gardent leurs valeurs noires, et le bloc « THÈME
+  CLAIR », à la fin du `<style>`, les renverse. Le blog et les articles recopient cette
+  feuille. Les autres pages (`cgv.html`, `cgc.html`, les deux guides et leurs pages de
+  remerciement) ont leur feuille propre : leurs jetons y sont directement clairs.
+- **Des îlots restent noirs**, avec les jetons de l'ancien thème : la barre de
+  navigation (le logo est dessiné pour le noir), les carreaux des marques, le manifeste
+  en quatre phrases, le bandeau des cinq étapes, la carte d'appel de `#ia`, les écrans
+  des schémas d'agents, le bloc de contact, le pied de page, les flèches du rail, le
+  panneau de l'assistant et la barre des fenêtres CGV/CGC. Sur l'accueil, la liste est
+  en tête du bloc clair ; un composant sombre ajouté plus tard doit y entrer. Sur les
+  pages légales, la barre du haut ; sur les deux pages de guide, la carte du
+  formulaire.
+- **La carte du formulaire des guides doit rester noire** : `0Q47ZN` et `LZ8MLz` ont
+  leur texte réglé en blanc dans Tally, sur fond transparent. Sur une carte claire, ils
+  deviendraient illisibles. Le formulaire des articles (`BzJr5Q`), au thème clair de
+  Tally, s'est au contraire fondu dans la page.
+- **N'ont pas changé** : l'image d'aperçu de partage (`og-smartefico.jpg`) et les deux
+  guides PDF, noirs en couverture ; les captures de preuves, qui sont des images.
+- Le logo de la page (`logo-clair.png`, sur transparence) tient sur le blanc : son
+  contour blanc s'y efface, l'hexagone noir et le monogramme jaune restent.
 
 **Le violet n'existe que dans le contour animé de la barre de navigation**, demandé par
 le propriétaire le 14 septembre 2026 : un filet dégradé jaune et violet, et deux éclats —
@@ -681,13 +708,17 @@ téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur
 deux crochets d'angle jaunes sont masqués — celui du bas tombait sur le bouton du
 téléphone. Pour remesurer : capturer la page entière, puis chercher les bandes
 horizontales où aucun pixel ne dépasse `#1E1E1E` ; les panneaux `#101010` et les
-cartes `#161616` passent pour du vide, à retrancher à la main.
+cartes `#161616` passent pour du vide, à retrancher à la main. Ces mesures datent du
+fond noir : depuis le fond blanc, chercher au contraire les bandes où aucun pixel ne
+descend sous `#E0E0E0`, les cartes `#F4F4F1` passant alors pour du vide.
 
 **Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
 et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
-se clique. Le blanc garde les puces et les étiquettes relevées, le reste est noir et
-gris. Le jaune ne tient pas sur fond blanc (1,5:1) : dans une zone claire, il n'a pas
-sa place.
+se clique. Le jaune ne tient pas en texte ni en trait sur fond blanc (1,5:1). Depuis le
+fond blanc, il n'y sert donc plus qu'en aplat sous du texte sombre : les boutons, les
+pastilles des numéros (01, 02…) et des icônes, les coches des pages de guide, et le
+trait de surligneur sous les mots en italique. Au survol, une carte claire se cerne
+d'encre, et non de jaune. Dans les îlots noirs, le jaune garde ses quatre rôles d'avant.
 
 **Les aplats cliquables sont jaunes**, depuis le 14 septembre 2026. Le propriétaire
 est revenu sur le retrait des aplats en nommant le carré à la flèche de la barre du
@@ -704,6 +735,13 @@ de `index.html` — que le blog et les articles recopient — et dans celles de 
 et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrences sur
 la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
 fond réel, entre 11,97:1 et 13,89:1.
+
+Depuis le fond blanc (19 septembre 2026), un italique sur fond clair est à l'encre
+pleine, même dans une phrase grise, souligné d'un trait de surligneur jaune : un
+`linear-gradient` posé sous le bas des lettres, avec `box-decoration-break:clone` pour
+qu'il suive chaque ligne. Dans les îlots noirs, les italiques restent jaunes. La règle
+est écrite dans chaque feuille : le bloc clair de `index.html`, puis les feuilles de
+`cgv.html`, `cgc.html`, des deux guides et de leurs pages de remerciement.
 
 **Le `.skip-link` suit la règle des aplats cliquables**, quelle qu'elle soit. Il avait
 été épargné une première fois, au motif qu'il n'apparaît qu'à la navigation clavier et

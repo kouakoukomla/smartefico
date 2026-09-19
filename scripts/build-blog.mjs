@@ -234,18 +234,22 @@ const styleBlog = `<style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
 .blog-top__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-weight:700}
 .blog-top__brand img{width:2rem;height:2rem}
-/* Deux liens à droite : le guide gratuit (guide.html), en blanc parce que
-   c'est une invitation, puis le retour au site, en gris. Sur téléphone, ils
+/* Deux liens à droite : le guide gratuit (guide.html), à l'encre pleine parce
+   que c'est une invitation, puis le retour au site, en gris. Au survol, un
+   trait jaune épais les souligne : depuis le fond blanc (19 septembre 2026),
+   un texte jaune ne se lirait plus. Sur téléphone, ils
    passent l'un sous l'autre plutôt que de pousser la marque. */
 .blog-top__liens{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.35rem 1.4rem;text-align:right}
 .blog-top__guide{color:var(--ink);text-decoration:none}
-.blog-top__guide:hover{color:var(--yellow)}
+.blog-top__guide:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);
+  text-decoration-thickness:.2em;text-underline-offset:.22em}
 .blog-top__back{color:var(--ink-2);text-decoration:none}
-.blog-top__back:hover{color:var(--yellow)}
+.blog-top__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);
+  text-decoration-thickness:.2em;text-underline-offset:.22em}
 .post-list{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:.5rem}
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
 .post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
-.post-card:hover{border-color:var(--yellow);transform:translateY(-2px)}
+.post-card:hover{border-color:var(--ink);transform:translateY(-2px)}
 /* Même cadrage que les cartes du rail de index.html : la bande 2:1 prise au
    centre coupe le visage, 12 % le pose à 30 % de la hauteur. */
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
@@ -254,7 +258,8 @@ const styleBlog = `<style>
 .post-card h2{font-size:1.05rem;letter-spacing:-.02em}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
-.article__back:hover{color:var(--yellow)}
+.article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);
+  text-decoration-thickness:.2em;text-underline-offset:.22em}
 .article__meta{color:var(--ink-3);margin:0 0 .6rem}
 .article__title{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
 .article__cover{width:100%;border-radius:.9rem;border:1px solid var(--line);margin-bottom:1.6rem}
@@ -264,7 +269,7 @@ const styleBlog = `<style>
 .article__body p{margin:0 0 1.1rem;color:var(--ink-2)}
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.article__body a:hover{color:var(--yellow)}
+.article__body a:hover{text-decoration-color:var(--yellow);text-decoration-thickness:.2em}
 /* Formulaire Tally incruste en fin d article. La hauteur du cadre est tenue
    par embed.js, qui repond au cadre enfant : le formulaire peut gagner ou
    perdre des questions dans Tally, le cadre suit sans rien a remesurer ici.
@@ -272,7 +277,7 @@ const styleBlog = `<style>
    rester bas, sinon il empecherait le cadre de se retrecir. */
 .tally{margin-top:3rem}
 .tally h2{font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;margin:0 0 1.2rem}
-.tally__frame{display:block;width:100%;border:0;min-height:24rem;background:#1a1917;border-radius:.9rem}
+.tally__frame{display:block;width:100%;border:0;min-height:24rem;background:var(--surface);border-radius:.9rem}
 /* Repli, pose par le script si embed.js ne se charge pas : la hauteur
    redevient fixe. Les paliers viennent de mesures prises en ouvrant le
    formulaire BzJr5Q seul et en relevant scrollHeight, largeur du cadre ->
@@ -289,7 +294,7 @@ const styleBlog = `<style>
 @media(min-width:46.5rem){.tally__frame--repli{min-height:2400px}}
 .tally__alt{color:var(--ink-3);font-size:.9rem;margin-top:.9rem}
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
-.tally__alt a:hover{color:var(--yellow)}
+.tally__alt a:hover{color:var(--ink);text-decoration-color:var(--yellow);text-decoration-thickness:.2em}
 .article__body blockquote{border-left:3px solid var(--yellow);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}
 .article__body img{max-width:100%;height:auto;border-radius:.6rem;margin:1.2rem 0}
 .article__body code{background:var(--noir-2);padding:.15em .4em;border-radius:4px;font-size:.9em}
@@ -300,7 +305,8 @@ const styleBlog = `<style>
 .blog-foot > .mono{white-space:nowrap}
 .blog-foot__liens{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.4rem 1.4rem;margin-left:auto}
 .blog-foot a{color:var(--ink-2);text-decoration:none}
-.blog-foot a:hover{color:var(--yellow)}
+.blog-foot a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);
+  text-decoration-thickness:.2em;text-underline-offset:.22em}
 </style>`;
 
 function tete({ titre, description, url, image }) {
@@ -321,7 +327,7 @@ function tete({ titre, description, url, image }) {
 <meta name="twitter:card" content="summary_large_image">
 ${favicon}
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">

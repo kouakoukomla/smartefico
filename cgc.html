@@ -8,16 +8,16 @@
 <link rel="canonical" href="https://smartefico.com/cgc.html">
 <link rel="icon" type="image/png" href="assets/logo-clair.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#FFFFFF">
 <style>
 :root{
   --black:#101010;
   --line:#262626;
-  --paper:#000000;
-  --surface:#161616;
-  --ink:#FFFFFF;
-  --ink-2:#B4B4B0;
-  --rule:#262626;
+  --paper:#FFFFFF;
+  --surface:#F4F4F1;
+  --ink:#141414;
+  --ink-2:#4E4E49;
+  --rule:#DEDED9;
   --yellow:#FFCC00;
   --on-yellow:#141414;
 }
@@ -30,7 +30,8 @@ body{
 }
 img{display:block;max-width:100%}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.top :focus-visible{outline-color:var(--yellow)}
 .wrap{width:min(100% - 2.5rem,52rem);margin-inline:auto}
 .mono{font-family:inherit;font-weight:600;
   font-size:.75rem;letter-spacing:.16em;text-transform:uppercase}
@@ -59,8 +60,9 @@ section{border-top:1px solid var(--rule);padding-block:clamp(1.75rem,4vw,2.5rem)
 h2{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;
   letter-spacing:-.02em;line-height:1.15;font-size:clamp(1.4rem,2.6vw,1.75rem);
   margin:0 0 1rem;display:flex;gap:.85rem;align-items:baseline}
-h2 .num{color:var(--yellow);-webkit-text-stroke:1.5px var(--black);flex:none;
-  letter-spacing:-.04em}
+/* Numéros : blancs sur un carré noir, comme dans les fenêtres de l'accueil. */
+h2 .num{color:var(--paper);background:var(--ink);padding:0 .35rem;flex:none;
+  letter-spacing:-.03em}
 p{margin:0 0 .9rem}
 p:last-child{margin-bottom:0}
 ul{margin:0 0 .9rem;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
@@ -69,13 +71,15 @@ ul li::before{content:"";width:.45rem;height:.45rem;background:var(--ink);flex:n
   transform:rotate(45deg);margin-top:.62rem;
   outline:1px solid var(--black);outline-offset:-1px}
 strong{font-weight:600}
-/* Tous les mots en italique sont jaunes. La regle valait jusqu ici pour le
-   seul titre d accueil ; le proprietaire l a etendue a tout le site le
-   14 septembre 2026. L italique reste donc rare, et partout ou il parait
-   il porte la couleur de marque. Aucun fond clair sur ce site : les dix-neuf
-   italiques ont ete verifies un par un, tous sur noir ou gris tres sombre. */
-em{color:var(--yellow)}
-.mark{background:var(--ink);color:var(--paper);padding:.15rem .45rem;font-weight:600}
+/* Les mots en italique portent la couleur de marque (regle etendue a tout
+   le site le 14 septembre 2026). Depuis le passage au fond blanc, le
+   19 septembre 2026, ils restent noirs, soulignes d un trait de surligneur
+   jaune : le jaune ne se lit pas en texte sur du blanc (1,5:1). */
+em{color:var(--ink);background-image:linear-gradient(to top,transparent .1em,var(--yellow) .1em,
+  var(--yellow) .4em,transparent .4em);background-repeat:no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mark{background:var(--ink);color:var(--paper);padding:.15rem .45rem;font-weight:600;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
 .contact-box{border:1px solid var(--rule);background:var(--surface);padding:1.15rem 1.3rem;
   display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
 .contact-box a{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;

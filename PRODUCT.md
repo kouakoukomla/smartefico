@@ -77,8 +77,11 @@ inclus dans les forfaits.**
 Nom **SmartEfico**. Fondateur Emmanuel Kouakou, connu sous « Manu K » sur YouTube.
 
 Logo : `assets/logo.png`, hexagone à contour blanc et monogramme SE jaune sur fond noir.
-Le noir du site doit rester **pur (`#000000`)** et non un gris sombre, pour que le fond
-du logo se fonde dans la page. Palette : noir, jaune `#FFCC00`, blanc.
+Palette : noir, jaune `#FFCC00`, blanc. Le site est **sur fond blanc depuis le
+19 septembre 2026**, à la demande du propriétaire ; il était auparavant sur un noir pur
+(`#000000`). Le noir reste dans des îlots (barre de navigation, bandeaux, contact, pied
+de page), et c'est là que le logo se pose. Sur le blanc, le jaune ne sert qu'en aplat
+sous du texte sombre (voir CLAUDE.md, Design).
 
 Voix directe et commerciale, revendiquée contre le registre de la notoriété.
 
