@@ -526,9 +526,25 @@ em{color:var(--yellow)}
    youtube-nocookie.com plutôt que youtube.com : même lecteur, sans cookie de
    suivi tant que la lecture n'est pas lancée. Plus de `loading=lazy` : le
    lecteur doit être prêt à l'arrivée, pas à l'approche. */
-.video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+/* La vidéo de la chaîne : coins arrondis et halo, demande du propriétaire du
+   20 septembre 2026 (« Arrange la vidéo youtube et rends la jolie sur le
+   site, les bords un peu arrondi »). Le halo est un ::before posé derrière le
+   cadre : il détache l'écran du noir profond sans rien ajouter de jaune, et
+   l'ombre portée le pose au-dessus de la page. Le markup, lui, est écrit par
+   sync-content.mjs : il ne se retouche pas ici. */
+.video-scene{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.video-scene::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:50%;top:-8%;width:min(124%,70rem);height:100%;transform:translateX(-50%);
+  background:radial-gradient(56% 60% at 50% 45%,rgba(158,168,255,.16),transparent 74%)}
 .video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
-  background:#000;border:1px solid var(--line)}
+  background:#000;border:0;
+  border-radius:clamp(.9rem,1.8vw,1.35rem);
+  /* Safari laisse une iframe déborder d'un coin arrondi tant que son cadre
+     n'a pas son propre plan de rendu : d'où le translateZ. */
+  isolation:isolate;transform:translateZ(0);
+  /* Pas de filet autour : l'image est claire, elle se détache seule, et un
+     filet fin doublé d'une ombre large est un signalement d'impeccable. */
+  box-shadow:0 18px 44px -28px #000}
 .video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le bouton en est la seule tache
