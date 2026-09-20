@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * Fabrique assets/og-smartefico.jpg, l'image affichée quand le lien du site
- * est partagé (LinkedIn, WhatsApp, Facebook…).
+ * Fabrique l'image affichée quand le lien du site est partagé (LinkedIn,
+ * WhatsApp, Facebook…) : assets/og-smartefico-noir.jpg depuis le passage du
+ * site au noir profond, le 20 septembre 2026. La version du noir pur,
+ * assets/og-smartefico.jpg, reste dans le dépôt pour les partages déjà faits.
  *
  *   node scripts/build-partage.mjs
  *
@@ -12,7 +14,8 @@
  * L'image est déclarée dans le back office (content/pages/visuels.md, champ
  * og_image), d'où sync-content.mjs la recopie dans index.html. À chaque
  * refonte, lui donner un nouveau nom : les réseaux gardent en mémoire l'image
- * d'une adresse donnée.
+ * d'une adresse donnée : changer alors FICHIER, puis les adresses qui le
+ * citent (voir CLAUDE.md, « L'aperçu de partage »).
  */
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdtempSync, rmSync, statSync } from 'node:fs';
@@ -23,7 +26,8 @@ import sharp from 'sharp';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(racine, 'scripts', 'partage', 'partage.html');
-const sortie = join(racine, 'assets', 'og-smartefico.jpg');
+const FICHIER = 'og-smartefico-noir.jpg';
+const sortie = join(racine, 'assets', FICHIER);
 
 const chrome = [
   process.env.CHROME,
@@ -65,4 +69,4 @@ if (width !== 1200 || height !== 630) {
 }
 await sharp(capture).jpeg({ quality: 86, progressive: true, mozjpeg: true }).toFile(sortie);
 try { rmSync(dossier, { recursive: true, force: true }); } catch { /* Chrome peut tarder à lâcher le dossier */ }
-console.log(`assets/og-smartefico.jpg : 1200 x 630, ${Math.round(statSync(sortie).size / 1024)} Ko`);
+console.log(`assets/${FICHIER} : 1200 x 630, ${Math.round(statSync(sortie).size / 1024)} Ko`);

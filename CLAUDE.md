@@ -93,12 +93,18 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico.jpg`** (1200 x 630, 78 Ko) : le titre
-  d'accueil entier, ses deux moitiés à égalité et ses mots accentués en Instrument
-  Serif jaune, le portrait couleur de la signature à droite derrière un filet jaune,
-  et, repris de l'ancienne image, « PME, ETI, grands comptes et dirigeants. » et le
-  numéro. Sa source est `scripts/partage/partage.html`, photographiée par
-  `node scripts/build-partage.mjs` (Chrome sans fenêtre, puis `sharp` en JPEG).
+- L'image est désormais **`assets/og-smartefico-noir.jpg`** (1200 x 630, 76 Ko), sur le
+  noir profond du site : le titre d'accueil entier, ses deux moitiés à égalité et ses
+  mots accentués en Instrument Serif jaune ; le portrait couleur de la signature à
+  droite derrière un filet gris ; et, repris de l'ancienne image, « PME, ETI, grands
+  comptes et dirigeants. » et le numéro, sur une pastille jaune. Comme sur un écran du
+  site, le jaune n'y paraît que deux fois. Sa source est `scripts/partage/partage.html`,
+  photographiée par `node scripts/build-partage.mjs` (Chrome sans fenêtre, puis `sharp`
+  en JPEG) ; le nom du fichier écrit est la constante `FICHIER` du script.
+- Elle a suivi les fonds du site : `og-smartefico.jpg` (noir pur, 19 septembre), qui
+  reste dans le dépôt parce que des partages y pointent peut-être, puis celle-ci. Une
+  version sur fond blanc a existé le 19 septembre sans jamais être mise en ligne — le
+  fond a changé avant — et n'a pas été gardée : l'historique git la retrouve.
 - Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
   d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
   l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
@@ -111,8 +117,8 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   `meta description` pour les moteurs de recherche, qui parlait déjà des deux, n'a pas
   bougé.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
-  l'image d'une adresse donnée. `og-cover.jpg` reste dans le dépôt, inutilisée — des
-  partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
+  l'image d'une adresse donnée. `og-cover.jpg` et `og-smartefico.jpg` restent dans le
+  dépôt, inutilisées — des partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
   cache ne changent pas d'eux-mêmes : LinkedIn se rafraîchit par son Post Inspector,
   Facebook par son outil de débogage (« Scrape again ») ; WhatsApp n'a pas d'outil et
   garde son aperçu un moment — partager en attendant une adresse légèrement
@@ -547,34 +553,36 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Fond blanc depuis le 19 septembre 2026**, sur tout le site, à la demande du
-propriétaire (« je veux que le fond soit en blanc, propose moi avant de publier ») et
-sur maquette validée (« oui, passe tout le site en blanc »). Jusque-là, le fond était un
-noir pur `#000000`. Palette : blanc `#FFFFFF`, cartes gris très clair `#F4F4F1` (celui
-des fiches des guides PDF), encre `#141414`, gris `#4E4E49` et `#6B6B66`, filets
-`#DEDED9` ; jaune `#FFCC00`, et un violet `#9D4DFF` cantonné à un seul endroit.
+**Fond noir profond depuis le 20 septembre 2026**, sur tout le site, à la demande du
+propriétaire (« Propose moi un fond noir profond. Utilise moins de jaune. fais une
+proposition, ne le mets pas en ligne ») et sur maquette validée (« garde ce noir, passe
+tout le site dessus »). Palette : fond `#050507`, cartes `#0E0E12`, texte `#F5F5F3`,
+gris `#A6A6A2` et `#7B7B80`, filets `#1E1E24`, et `--mur` `#34343D`, le gris clair qui
+a repris au jaune les survols et les traits ; jaune `#FFCC00`, et un violet `#9D4DFF`
+cantonné à un seul endroit.
 
-- **Sur `index.html`, la feuille décrit encore l'ancien thème sombre** : ses jetons
-  (`--ground`, `--surface`, `--ink`…) gardent leurs valeurs noires, et le bloc « THÈME
-  CLAIR », à la fin du `<style>`, les renverse. Le blog et les articles recopient cette
-  feuille. Les autres pages (`cgv.html`, `cgc.html`, les deux guides et leurs pages de
-  remerciement) ont leur feuille propre : leurs jetons y sont directement clairs.
-- **Des îlots restent noirs**, avec les jetons de l'ancien thème : la barre de
-  navigation (le logo est dessiné pour le noir), les carreaux des marques, le manifeste
-  en quatre phrases, le bandeau des cinq étapes, la carte d'appel de `#ia`, les écrans
-  des schémas d'agents, le bloc de contact, le pied de page, les flèches du rail, le
-  panneau de l'assistant et la barre des fenêtres CGV/CGC. Sur l'accueil, la liste est
-  en tête du bloc clair ; un composant sombre ajouté plus tard doit y entrer. Sur les
-  pages légales, la barre du haut ; sur les deux pages de guide, la carte du
-  formulaire.
-- **La carte du formulaire des guides doit rester noire** : `0Q47ZN` et `LZ8MLz` ont
-  leur texte réglé en blanc dans Tally, sur fond transparent. Sur une carte claire, ils
-  deviendraient illisibles. Le formulaire des articles (`BzJr5Q`), au thème clair de
-  Tally, s'est au contraire fondu dans la page.
-- **N'ont pas changé** : l'image d'aperçu de partage (`og-smartefico.jpg`) et les deux
-  guides PDF, noirs en couverture ; les captures de preuves, qui sont des images.
-- Le logo de la page (`logo-clair.png`, sur transparence) tient sur le blanc : son
-  contour blanc s'y efface, l'hexagone noir et le monogramme jaune restent.
+**Le site a changé de fond trois fois en trois jours** : noir pur `#000000` jusqu'au
+19 septembre, blanc le 19 (une journée), noir profond le 20. Chaque fois à sa demande
+et sur maquette montrée avant publication. L'historique git garde les deux états
+précédents ; le bloc de thème se remplace d'un bloc.
+
+- **Le fond n'est plus plat** : un halo froid très faible en haut de la page
+  (`radial-gradient` sur `body`), et des cartes relevées d'un cran sur le fond. C'est
+  ce qui distingue ce noir du noir pur des débuts.
+- **Sur `index.html`, la feuille décrit encore le noir pur** : ses jetons (`--ground`,
+  `--surface`, `--ink`…) en gardent les valeurs, et le bloc « NOIR PROFOND », à la fin
+  du `<style>`, les renverse. Le blog et les articles recopient cette feuille. Les
+  autres pages (`cgv.html`, `cgc.html`, les deux guides et leurs pages de remerciement)
+  ont leur feuille propre : leurs jetons y sont directement écrits.
+- **Il n'y a plus d'îlots** : le fond blanc en avait imposé une dizaine (menu, marques,
+  bandeaux, contact, pied de page, assistant, carte du formulaire des guides, barre des
+  pages légales), tous revenus au régime commun. Le formulaire Tally des guides, texte
+  blanc sur fond transparent, se pose de nouveau sur la carte sans rien de particulier.
+- **N'ont pas changé** : les deux guides PDF et les captures de preuves, qui sont des
+  images. L'image d'aperçu de partage a suivi, le même jour (voir « L'aperçu de
+  partage »).
+- Le logo de la page est `logo-clair.png`, sur transparence : son contour blanc
+  redevient visible sur le noir.
 
 **Le violet n'existe que dans le contour animé de la barre de navigation**, demandé par
 le propriétaire le 14 septembre 2026 : un filet dégradé jaune et violet, et deux éclats —
@@ -708,17 +716,33 @@ téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur
 deux crochets d'angle jaunes sont masqués — celui du bas tombait sur le bouton du
 téléphone. Pour remesurer : capturer la page entière, puis chercher les bandes
 horizontales où aucun pixel ne dépasse `#1E1E1E` ; les panneaux `#101010` et les
-cartes `#161616` passent pour du vide, à retrancher à la main. Ces mesures datent du
-fond noir : depuis le fond blanc, chercher au contraire les bandes où aucun pixel ne
-descend sous `#E0E0E0`, les cartes `#F4F4F1` passant alors pour du vide.
+cartes `#161616` passent pour du vide, à retrancher à la main. La méthode vaut de
+nouveau depuis le noir profond du 20 septembre, avec ses valeurs à lui : cartes
+`#0E0E12`, panneaux `#0A0A0D`. La journée du fond blanc demandait l'inverse — les
+bandes où aucun pixel ne descendait sous `#E0E0E0`.
 
-**Le jaune est rationné, mais il n'est plus interdit d'aplat.** Il tient quatre rôles,
-et seulement ceux-là : le trait fin, l'icône, le mot en italique, et l'aplat de ce qui
-se clique. Le jaune ne tient pas en texte ni en trait sur fond blanc (1,5:1). Depuis le
-fond blanc, il n'y sert donc plus qu'en aplat sous du texte sombre : les boutons, les
-pastilles des numéros (01, 02…) et des icônes, les coches des pages de guide, et le
-trait de surligneur sous les mots en italique. Au survol, une carte claire se cerne
-d'encre, et non de jaune. Dans les îlots noirs, le jaune garde ses quatre rôles d'avant.
+**Le jaune ne sert plus qu'aux actions**, depuis le 20 septembre 2026 (« Utilise moins
+de jaune »). Il ne paraît plus que trois fois par écran :
+
+- les deux mots en italique du grand titre — de l'accueil (`.hero em`) comme des pages
+  de guide (`.display em`) ;
+- les boutons : « Réserver un échange », « Recevoir », « Nous contacter », « Réserver
+  mon appel », « Lire le blog », le carré à la flèche du menu, le lien d'évitement et
+  la pastille de l'assistant ;
+- rien d'autre.
+
+Ont perdu le jaune le même jour : les numéros (01, 02…), passés en gris ; les icônes,
+en blanc ; tous les autres mots en italique, en blanc — la serif suffit à les
+détacher ; les coches des pages de guide ; le cercle de la photo de la signature ; les
+soulignés du pied de page et des pages légales ; et tous les survols, qui prennent
+`--mur` pour un filet, ou le blanc pour un aplat (flèches du rail, icônes de réseaux,
+boutons à filet, suggestions de l'assistant). Le texte posé sur un aplat jaune reste
+`--on-yellow` (#141414), soit 12,18:1.
+
+Règle précédente, pour mémoire : le jaune tenait quatre rôles — le trait fin, l'icône,
+le mot en italique, et l'aplat de ce qui se clique. Il n'en garde que le dernier, plus
+le titre. Et il ne tient pas en texte sur fond blanc (1,5:1), si un fond clair revenait
+un jour.
 
 **Les aplats cliquables sont jaunes**, depuis le 14 septembre 2026. Le propriétaire
 est revenu sur le retrait des aplats en nommant le carré à la flèche de la barre du
@@ -736,12 +760,12 @@ et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrenc
 la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
 fond réel, entre 11,97:1 et 13,89:1.
 
-Depuis le fond blanc (19 septembre 2026), un italique sur fond clair est à l'encre
-pleine, même dans une phrase grise, souligné d'un trait de surligneur jaune : un
-`linear-gradient` posé sous le bas des lettres, avec `box-decoration-break:clone` pour
-qu'il suive chaque ligne. Dans les îlots noirs, les italiques restent jaunes. La règle
-est écrite dans chaque feuille : le bloc clair de `index.html`, puis les feuilles de
-`cgv.html`, `cgc.html`, des deux guides et de leurs pages de remerciement.
+**Ce n'est plus vrai depuis le 20 septembre 2026** : les italiques sont blancs, sauf
+ceux des grands titres, restés jaunes. La journée du fond blanc les avait mis à l'encre
+noire, soulignés d'un trait de surligneur jaune ; cette écriture-là est partie avec le
+fond. La règle vit dans chaque feuille : le bloc « NOIR PROFOND » de `index.html`, puis
+les feuilles de `cgv.html`, `cgc.html`, des deux guides et de leurs pages de
+remerciement.
 
 **Le `.skip-link` suit la règle des aplats cliquables**, quelle qu'elle soit. Il avait
 été épargné une première fois, au motif qu'il n'apparaît qu'à la navigation clavier et
@@ -789,6 +813,8 @@ navigateur :
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
   demande explicite du propriétaire du 16 septembre 2026. Mouvement réduit et survol
   l'arrêtent déjà.
+- `cramped-padding` sur les quatre `<p>` des figures — même cause : le padding est
+  porté par les enfants. Absent le temps du fond blanc, revenu avec le noir profond.
 - `pulsing-dot` sur `.assistant__msg--attente span` — les trois points ne vivent que
   pendant qu'une réponse de l'assistant se prépare, et disparaissent au premier
   morceau reçu : c'est un état réel et passager, pas une animation de décor. Consigné

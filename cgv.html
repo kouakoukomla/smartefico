@@ -8,16 +8,17 @@
 <link rel="canonical" href="https://smartefico.com/cgv.html">
 <link rel="icon" type="image/png" href="assets/logo-clair.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#050507">
 <style>
 :root{
-  --black:#101010;
-  --line:#262626;
-  --paper:#FFFFFF;
-  --surface:#F4F4F1;
-  --ink:#141414;
-  --ink-2:#4E4E49;
-  --rule:#DEDED9;
+  --black:#0A0A0D;
+  --line:#1E1E24;
+  --paper:#050507;
+  --surface:#0E0E12;
+  --ink:#F5F5F3;
+  --ink-2:#A6A6A2;
+  --rule:#1E1E24;
+  --mur:#34343D;
   --yellow:#FFCC00;
   --yellow-hi:#FFE04D;
   --on-yellow:#141414;
@@ -47,7 +48,7 @@ a{color:inherit}
 .back{text-decoration:none;border:1px solid var(--line);border-radius:999px;
   padding:.45rem 1rem;color:#C9C9C3;white-space:nowrap;
   transition:border-color .18s ease,color .18s ease}
-.back:hover{border-color:var(--yellow);color:var(--yellow)}
+.back:hover{border-color:var(--ink);color:var(--ink)}
 
 header.doc{padding-block:clamp(2.5rem,7vw,4.5rem) clamp(1.5rem,4vw,2.5rem)}
 header.doc .mono{color:var(--ink-2)}
@@ -77,20 +78,17 @@ ul li::before{content:"";width:.45rem;height:.45rem;background:var(--ink);flex:n
   transform:rotate(45deg);margin-top:.62rem;
   outline:1px solid var(--black);outline-offset:-1px}
 strong{font-weight:600}
-/* Les mots en italique portent la couleur de marque (regle etendue a tout
-   le site le 14 septembre 2026). Depuis le passage au fond blanc, le
-   19 septembre 2026, ils restent noirs, soulignes d un trait de surligneur
-   jaune : le jaune ne se lit pas en texte sur du blanc (1,5:1). */
-em{color:var(--ink);background-image:linear-gradient(to top,transparent .1em,var(--yellow) .1em,
-  var(--yellow) .4em,transparent .4em);background-repeat:no-repeat;
-  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* Les mots en italique etaient jaunes depuis le 14 septembre 2026. Depuis
+   le noir profond du 20 septembre, ils sont blancs : le jaune ne sert plus
+   qu aux actions, et l italique se detache seul. */
+em{color:var(--ink)}
 /* Les règles .pack et .warn ont été retirées : elles habillaient les forfaits
    chiffrés supprimés des CGV, et plus aucun markup ne les appelait. */
 
 footer.doc{border-top:1px solid var(--rule);padding-block:2rem;
   display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
   color:var(--ink-2)}
-footer.doc a{text-decoration:none;border-bottom:1px solid var(--yellow)}
+footer.doc a{text-decoration:none;border-bottom:1px solid var(--mur)}
 footer.doc a:hover{color:var(--ink)}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
