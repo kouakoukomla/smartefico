@@ -248,7 +248,7 @@ const styleBlog = `<style>
   text-decoration-thickness:.15em;text-underline-offset:.22em}
 .post-list{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:.5rem}
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
-.post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
+.post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
 .post-card:hover{border-color:var(--mur);transform:translateY(-2px)}
 /* Même cadrage que les cartes du rail de index.html : la bande 2:1 prise au
    centre coupe le visage, 12 % le pose à 30 % de la hauteur. */
@@ -262,7 +262,12 @@ const styleBlog = `<style>
   text-decoration-thickness:.15em;text-underline-offset:.22em}
 .article__meta{color:var(--ink-3);margin:0 0 .6rem}
 .article__title{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
-.article__cover{width:100%;border-radius:.9rem;border:1px solid var(--line);margin-bottom:1.6rem}
+/* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
+   20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
+   L'affiche perd son filet : sur une image claire il ne servait à rien, et
+   doublé d'une ombre il lèverait un signalement d'impeccable. */
+.article__cover{width:100%;border-radius:clamp(.9rem,2.2vw,1.35rem);margin-bottom:1.6rem;
+  box-shadow:0 18px 44px -28px #000}
 .article__body{color:var(--ink);font-size:1.08rem;line-height:1.7}
 .article__body h2{font-size:1.5rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
 .article__body h3{font-size:1.2rem;margin:1.6rem 0 .5rem}
@@ -296,7 +301,7 @@ const styleBlog = `<style>
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .tally__alt a:hover{color:var(--ink);text-decoration-color:var(--mur);text-decoration-thickness:.15em}
 .article__body blockquote{border-left:3px solid var(--mur);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}
-.article__body img{max-width:100%;height:auto;border-radius:.6rem;margin:1.2rem 0}
+.article__body img{max-width:100%;height:auto;border-radius:.9rem;margin:1.2rem 0}
 .article__body code{background:var(--noir-2);padding:.15em .4em;border-radius:4px;font-size:.9em}
 .blog-foot{border-top:1px solid var(--line);margin-top:3rem;padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;color:var(--ink-2)}
 /* Pied : le copyright reste sur une ligne ; quand la place manque, ce sont
