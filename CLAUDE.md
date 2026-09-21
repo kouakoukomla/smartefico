@@ -650,18 +650,20 @@ arrondis, logos en silhouette blanche. Le titre était d'abord « Marques avec
 lesquelles j'ai travaillé » ; le propriétaire a voulu « travaillées », forme fautive
 après « avec lesquelles », puis a choisi cette reformulation.
 
-**Deux rangs en sens contraires, filet jaune sur carreau noir**, depuis le
+**Deux rangs en sens contraires, filet blanc sur carreau noir**, depuis le
 21 septembre 2026 : « Dans cette section "Elles m'ont fait confiance" tu mettras
 2 menus déroulants, le 1er dans un sens et le deuxième dans le sens opposé. Les cadres
 déroulant doivent être en jaune. » Le second rang avait existé le 16 septembre et
 avait été retiré le même jour, à sa demande ; il revient, et va vers la droite quand
 le premier va vers la gauche.
 
-« Les cadres en jaune » a d'abord été rendu par un **aplat plein** — carreau jaune,
-logos noircis au filtre. Le propriétaire a tranché pour le **filet** quelques heures
-plus tard (« Mets plutôt le filet jaune sur carreau noir »), et c'est l'état
-d'aujourd'hui : carreau `--ground`, contour `--yellow` de 2 px, logos blancs
-d'origine. L'aplat reste dans l'historique git si la question revenait.
+« Les cadres en jaune » a changé trois fois dans la journée : d'abord un **aplat
+plein** — carreau jaune, logos noircis au filtre ; puis un **filet jaune** sur carreau
+noir (« Mets plutôt le filet jaune sur carreau noir ») ; puis le **filet blanc**, état
+d'aujourd'hui (« mets juste le filet plutôt en blanc »). Carreau `--ground`, contour
+`--ink` de 2 px, logos blancs d'origine. **Le jaune a donc quitté cette section** : il
+n'y reste que le mot en italique du titre. Les deux états précédents sont dans
+l'historique git.
 
 - **Le sens contraire est un `animation-direction:reverse`** sur la même image-clé :
   la piste va de `-50%` à `0` au lieu de l'inverse. Comme chaque piste porte deux
@@ -673,14 +675,16 @@ d'origine. L'aplat reste dans l'historique git si la question revenait.
   sont lus par les lecteurs d'écran, comme avant.
 - Ses carreaux démarrent **décalés d'un cran** (le premier `<li>` passe à la fin) :
   sans cela, les deux rangs s'aligneraient verticalement.
-- **Le filet fait 2 px, pas 1.** À cette taille de carreau, un filet d'un pixel se
-  perdait. Les logos restent les silhouettes blanches d'origine : sur le carreau noir
-  elles se lisent comme avant. Le temps de l'aplat jaune, il avait fallu les noircir
-  par un `filter:brightness(0)` — blanc sur jaune ne se voit pas (1,07:1) ; ce filtre
-  est parti avec l'aplat, et le site n'en porte de nouveau aucun.
-- Le survol arrête le rang et passe le filet au blanc, comme les autres survols
-  secondaires. `.marque:hover` est sorti de la règle de survol commune du bloc
-  « NOIR PROFOND », qui l'aurait mis à `--mur`.
+- **Le filet fait 2 px, pas 1.** La mesure vient du filet jaune, où un pixel se
+  perdait à cette taille de carreau ; le blanc la garde pour que les deux rangs pèsent
+  pareil. Les logos restent les silhouettes blanches d'origine. Le temps de l'aplat
+  jaune, il avait fallu les noircir par un `filter:brightness(0)` — blanc sur jaune ne
+  se voit pas (1,07:1) ; ce filtre est parti avec l'aplat, et le site n'en porte de
+  nouveau aucun.
+- **Le survol n'arrête plus que le rang.** Le filet étant déjà blanc, il n'y a rien de
+  plus clair à lui donner sur ce noir, et l'arrêt suffit comme retour. `.marque:hover`
+  reste sorti de la règle de survol commune du bloc « NOIR PROFOND », qui le mettrait
+  à `--mur`, c'est-à-dire plus sombre qu'au repos.
 - Sans script ou sous `prefers-reduced-motion`, il n'y a qu'un rang : les deux
   carreaux d'origine, centrés et immobiles.
 - **La piste ne se remplit que si le carreau est posé.** `construire()` renonce quand

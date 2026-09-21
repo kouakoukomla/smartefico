@@ -337,16 +337,20 @@ em{color:var(--yellow)}
 .marques{--tuile:clamp(14rem,26vw,28rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
 .marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
   margin:0;padding:0 1.25rem;list-style:none}
-/* Filet jaune sur carreau noir, 21 septembre 2026. Le propriétaire avait
-   d'abord demandé « les cadres déroulant en jaune », rendu par un aplat
-   plein ; il a tranché pour le filet quelques heures plus tard (« Mets
-   plutôt le filet jaune sur carreau noir »). Le jaune ne porte donc plus
-   que le contour, et les logos redeviennent les silhouettes blanches
-   d'origine — sur l'aplat, il avait fallu les noircir au filtre, le blanc
-   ne s'y voyant pas. 2 px et non 1 : à cette taille de carreau, un filet
-   d'un pixel se perdait. */
+/* Filet blanc sur carreau noir, 21 septembre 2026, au terme de trois
+   demandes du propriétaire dans la journée : « les cadres déroulant en
+   jaune », rendu par un aplat plein ; puis « mets plutôt le filet jaune sur
+   carreau noir » ; puis « mets juste le filet plutôt en blanc ». Le jaune
+   a donc quitté cette section, où il ne reste que dans le mot en italique
+   du titre.
+
+   Les logos sont les silhouettes blanches d'origine. Le temps de l'aplat
+   jaune, il avait fallu les noircir au filtre, le blanc ne s'y voyant pas ;
+   ce filtre est parti avec l'aplat. 2 px et non 1 : la mesure vient du
+   filet jaune, et le blanc, plus contrasté encore sur ce noir, la garde
+   pour que les deux rangs pèsent pareil. */
 .marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
-  background:var(--ground);border:2px solid var(--yellow);border-radius:14px;
+  background:var(--ground);border:2px solid var(--ink);border-radius:14px;
   transition:border-color .2s ease}
 /* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
    ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
@@ -360,11 +364,11 @@ em{color:var(--yellow)}
 /* Le second rang remonte la piste : même image-clé, jouée à l'envers. */
 .marques__rang--retour{margin-top:var(--ecart)}
 .marques--defile .marques__rang--retour .marques__piste{animation-direction:reverse}
-/* Au survol, le rang s'arrête et le filet passe au blanc, comme les autres
-   survols secondaires du site. */
+/* Au survol, le rang s'arrête, et c'est tout : le filet est déjà blanc, il
+   n'y a rien de plus clair à lui donner sur ce noir. L'arrêt du rang est le
+   retour. */
 @media (hover:hover){
   .marques__rang:hover .marques__piste{animation-play-state:paused}
-  .marque:hover{border-color:var(--ink)}
 }
 @media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
 
