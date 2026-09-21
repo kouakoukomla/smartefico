@@ -650,12 +650,18 @@ arrondis, logos en silhouette blanche. Le titre était d'abord « Marques avec
 lesquelles j'ai travaillé » ; le propriétaire a voulu « travaillées », forme fautive
 après « avec lesquelles », puis a choisi cette reformulation.
 
-**Deux rangs en sens contraires, carreaux jaunes**, depuis le 21 septembre 2026 :
-« Dans cette section "Elles m'ont fait confiance" tu mettras 2 menus déroulants, le
-1er dans un sens et le deuxième dans le sens opposé. Les cadres déroulant doivent être
-en jaune. » Le second rang avait existé le 16 septembre et avait été retiré le même
-jour, à sa demande ; il revient, et va vers la droite quand le premier va vers la
-gauche.
+**Deux rangs en sens contraires, filet jaune sur carreau noir**, depuis le
+21 septembre 2026 : « Dans cette section "Elles m'ont fait confiance" tu mettras
+2 menus déroulants, le 1er dans un sens et le deuxième dans le sens opposé. Les cadres
+déroulant doivent être en jaune. » Le second rang avait existé le 16 septembre et
+avait été retiré le même jour, à sa demande ; il revient, et va vers la droite quand
+le premier va vers la gauche.
+
+« Les cadres en jaune » a d'abord été rendu par un **aplat plein** — carreau jaune,
+logos noircis au filtre. Le propriétaire a tranché pour le **filet** quelques heures
+plus tard (« Mets plutôt le filet jaune sur carreau noir »), et c'est l'état
+d'aujourd'hui : carreau `--ground`, contour `--yellow` de 2 px, logos blancs
+d'origine. L'aplat reste dans l'historique git si la question revenait.
 
 - **Le sens contraire est un `animation-direction:reverse`** sur la même image-clé :
   la piste va de `-50%` à `0` au lieu de l'inverse. Comme chaque piste porte deux
@@ -667,22 +673,25 @@ gauche.
   sont lus par les lecteurs d'écran, comme avant.
 - Ses carreaux démarrent **décalés d'un cran** (le premier `<li>` passe à la fin) :
   sans cela, les deux rangs s'aligneraient verticalement.
-- **Les logos sont noircis par un `filter:brightness(0)`.** Ce sont des silhouettes
-  blanches sur transparence : blanc sur jaune ne se voit pas (1,07:1). Le filtre les
-  rend noirs sans toucher à leur découpe, et noir sur `#FFCC00` mesure 13,89:1. C'est
-  le seul filtre du site — la règle « pas un filtre » valait pour la fabrication des
-  silhouettes, pas pour leur couleur d'affichage. Refaire des silhouettes noires
-  demanderait `log 1.jpg` et `log 2.jpg`, qui vivent hors du dépôt.
-- Le survol arrête le rang ; le carreau se cerne de `--on-yellow` et non de `--mur` —
-  sur un aplat jaune, c'est l'encre qui éclaire. `.marque:hover` est donc sorti de la
-  règle de survol commune du bloc « NOIR PROFOND ».
+- **Le filet fait 2 px, pas 1.** À cette taille de carreau, un filet d'un pixel se
+  perdait. Les logos restent les silhouettes blanches d'origine : sur le carreau noir
+  elles se lisent comme avant. Le temps de l'aplat jaune, il avait fallu les noircir
+  par un `filter:brightness(0)` — blanc sur jaune ne se voit pas (1,07:1) ; ce filtre
+  est parti avec l'aplat, et le site n'en porte de nouveau aucun.
+- Le survol arrête le rang et passe le filet au blanc, comme les autres survols
+  secondaires. `.marque:hover` est sorti de la règle de survol commune du bloc
+  « NOIR PROFOND », qui l'aurait mis à `--mur`.
 - Sans script ou sous `prefers-reduced-motion`, il n'y a qu'un rang : les deux
-  carreaux d'origine, jaunes, centrés et immobiles.
+  carreaux d'origine, centrés et immobiles.
+- **La piste ne se remplit que si le carreau est posé.** `construire()` renonce quand
+  son pas mesuré n'est pas un nombre positif, et repasse au `load` et à chaque
+  redimensionnement. Sans ce garde-fou, une page qu'aucune fenêtre ne dessine rendait
+  une largeur nulle et une marge vide, donc un pas `NaN` : la piste restait à ses deux
+  carreaux et `--duree` recevait « NaNs », que le navigateur rejette au profit des
+  60 s par défaut. C'est ce que montre l'aperçu de Claude Code quand le panneau est
+  masqué — il se remplit dès qu'on l'affiche.
 
-C'est désormais le plus gros aplat de jaune de la page, loin devant les boutons. Le
-ramener à un filet jaune sur carreau noir tient en deux déclarations si le
-propriétaire le demande. Voir PRODUCT.md pour les deux clients et leur droit d'être
-cités.
+Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
 
 **La photo de la signature ne bouge pas**, décision du propriétaire du 18 septembre
 2026. Le même jour, il avait demandé que « le personnage en bas commence à croiser les

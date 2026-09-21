@@ -337,19 +337,20 @@ em{color:var(--yellow)}
 .marques{--tuile:clamp(14rem,26vw,28rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
 .marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
   margin:0;padding:0 1.25rem;list-style:none}
-/* Carreaux jaunes depuis le 21 septembre 2026, à la demande du propriétaire.
-   Les logos sont des silhouettes blanches sur transparence : blanc sur jaune
-   ne se voit pas (1,07:1), d'où le brightness(0) qui les rend noirs sans
-   toucher à leur découpe. Noir sur #FFCC00 mesure 14,9:1. C'est le seul
-   filtre du site ; refaire des silhouettes noires demanderait les deux JPEG
-   d'origine, qui vivent hors du dépôt. */
+/* Filet jaune sur carreau noir, 21 septembre 2026. Le propriétaire avait
+   d'abord demandé « les cadres déroulant en jaune », rendu par un aplat
+   plein ; il a tranché pour le filet quelques heures plus tard (« Mets
+   plutôt le filet jaune sur carreau noir »). Le jaune ne porte donc plus
+   que le contour, et les logos redeviennent les silhouettes blanches
+   d'origine — sur l'aplat, il avait fallu les noircir au filtre, le blanc
+   ne s'y voyant pas. 2 px et non 1 : à cette taille de carreau, un filet
+   d'un pixel se perdait. */
 .marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
-  background:var(--yellow);border:1px solid var(--yellow);border-radius:14px;
+  background:var(--ground);border:2px solid var(--yellow);border-radius:14px;
   transition:border-color .2s ease}
 /* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
    ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
-.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain;
-  filter:brightness(0)}
+.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
 .marque__logo--sceau{height:calc(var(--tuile) * .42)}
 .marques--defile .marques__rang{overflow:hidden}
 .marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
@@ -359,11 +360,11 @@ em{color:var(--yellow)}
 /* Le second rang remonte la piste : même image-clé, jouée à l'envers. */
 .marques__rang--retour{margin-top:var(--ecart)}
 .marques--defile .marques__rang--retour .marques__piste{animation-direction:reverse}
-/* Au survol, le rang s'arrête et le carreau se cerne d'encre : sur un aplat
-   jaune, c'est l'encre qui éclaire, pas le blanc. */
+/* Au survol, le rang s'arrête et le filet passe au blanc, comme les autres
+   survols secondaires du site. */
 @media (hover:hover){
   .marques__rang:hover .marques__piste{animation-play-state:paused}
-  .marque:hover{border-color:var(--on-yellow)}
+  .marque:hover{border-color:var(--ink)}
 }
 @media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
 
