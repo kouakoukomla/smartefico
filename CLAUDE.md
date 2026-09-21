@@ -648,13 +648,41 @@ propriétaire, avec son style. Ne pas la remettre.
 « Elles m'ont fait confiance », un seul rang pleine largeur de grands carreaux noirs
 arrondis, logos en silhouette blanche. Le titre était d'abord « Marques avec
 lesquelles j'ai travaillé » ; le propriétaire a voulu « travaillées », forme fautive
-après « avec lesquelles », puis a choisi cette reformulation. Un second rang, en sens
-contraire, a été retiré à sa demande. Le HTML
-n'écrit chaque logo qu'une fois (`.marques__piste`) ; le script les recopie jusqu'à
-couvrir l'écran le plus large, en deux moitiés identiques, et masque les copies aux
-lecteurs d'écran. Sans script ou sous `prefers-reduced-motion`, les deux carreaux
-d'origine restent centrés, immobiles. Le survol arrête le rang. Ajouter une marque :
-un `<li>` de plus. Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
+après « avec lesquelles », puis a choisi cette reformulation.
+
+**Deux rangs en sens contraires, carreaux jaunes**, depuis le 21 septembre 2026 :
+« Dans cette section "Elles m'ont fait confiance" tu mettras 2 menus déroulants, le
+1er dans un sens et le deuxième dans le sens opposé. Les cadres déroulant doivent être
+en jaune. » Le second rang avait existé le 16 septembre et avait été retiré le même
+jour, à sa demande ; il revient, et va vers la droite quand le premier va vers la
+gauche.
+
+- **Le sens contraire est un `animation-direction:reverse`** sur la même image-clé :
+  la piste va de `-50%` à `0` au lieu de l'inverse. Comme chaque piste porte deux
+  moitiés identiques, elle boucle aussi bien dans un sens que dans l'autre.
+- **Le second rang est fabriqué par le script**, qui recopie le premier. Le HTML
+  n'écrit donc toujours chaque logo qu'une fois (`.marques__piste`) : **ajouter une
+  marque reste un `<li>` de plus**, et les deux rangs le prennent. Le second est
+  décoratif : `aria-hidden`, `alt` vidés. Seuls les carreaux d'origine du premier rang
+  sont lus par les lecteurs d'écran, comme avant.
+- Ses carreaux démarrent **décalés d'un cran** (le premier `<li>` passe à la fin) :
+  sans cela, les deux rangs s'aligneraient verticalement.
+- **Les logos sont noircis par un `filter:brightness(0)`.** Ce sont des silhouettes
+  blanches sur transparence : blanc sur jaune ne se voit pas (1,07:1). Le filtre les
+  rend noirs sans toucher à leur découpe, et noir sur `#FFCC00` mesure 13,89:1. C'est
+  le seul filtre du site — la règle « pas un filtre » valait pour la fabrication des
+  silhouettes, pas pour leur couleur d'affichage. Refaire des silhouettes noires
+  demanderait `log 1.jpg` et `log 2.jpg`, qui vivent hors du dépôt.
+- Le survol arrête le rang ; le carreau se cerne de `--on-yellow` et non de `--mur` —
+  sur un aplat jaune, c'est l'encre qui éclaire. `.marque:hover` est donc sorti de la
+  règle de survol commune du bloc « NOIR PROFOND ».
+- Sans script ou sous `prefers-reduced-motion`, il n'y a qu'un rang : les deux
+  carreaux d'origine, jaunes, centrés et immobiles.
+
+C'est désormais le plus gros aplat de jaune de la page, loin devant les boutons. Le
+ramener à un filet jaune sur carreau noir tient en deux déclarations si le
+propriétaire le demande. Voir PRODUCT.md pour les deux clients et leur droit d'être
+cités.
 
 **La photo de la signature ne bouge pas**, décision du propriétaire du 18 septembre
 2026. Le même jour, il avait demandé que « le personnage en bas commence à croiser les
@@ -826,8 +854,8 @@ navigateur :
 - `flat-type-hierarchy` sur les pages légales — le détecteur ne sait pas lire `clamp()`
   et ne voit donc jamais les `h1` et `h2`. L'échelle réelle compte trois paliers nets.
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
-  demande explicite du propriétaire du 16 septembre 2026. Mouvement réduit et survol
-  l'arrêtent déjà.
+  demande explicite du propriétaire du 16 septembre 2026, et les deux rangs en sens
+  contraires celle du 21. Mouvement réduit et survol l'arrêtent déjà.
 - `cramped-padding` sur les quatre `<p>` des figures — même cause : le padding est
   porté par les enfants. Absent le temps du fond blanc, revenu avec le noir profond.
 - `pulsing-dot` sur `.assistant__msg--attente span` — les trois points ne vivent que
