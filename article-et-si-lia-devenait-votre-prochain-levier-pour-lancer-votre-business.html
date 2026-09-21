@@ -27,7 +27,7 @@
    Cette feuille a été écrite pour le noir pur des débuts, et ses jetons
    ci-dessous en gardent les valeurs. Le bloc « NOIR PROFOND », à la fin,
    les renverse pour toute la page : fond plus profond, cartes relevées, et
-   le jaune ramené aux seules actions. Le texte posé sur un aplat jaune est
+   le jaune porté sur les actions, les grands titres et les chiffres clés. Le texte posé sur un aplat jaune est
    toujours --on-yellow (#141414), jamais du blanc, dont le contraste sur
    le jaune est insuffisant.
    ========================================================= */
@@ -991,11 +991,16 @@ h2.head__eyebrow{font-weight:600;margin:0}
    peine visible en haut de page, et des cartes relevées d'un cran
    (#0E0E12) qui creusent la page au lieu de s'y fondre.
 
-   Le jaune ne paraît plus que trois fois par écran : les deux mots du
-   titre d'accueil, les boutons d'action et la pastille de l'assistant.
-   Partout ailleurs il cède la place au blanc ou au gris : les numéros,
-   les icônes, les mots en italique du corps de texte, et le filet qui
-   s'allume au survol d'une carte (--mur).
+   Le jaune a d'abord été ramené aux seules actions. Le propriétaire en a
+   redemandé le 21 septembre 2026 — « Augmente un peu le jaune sur le
+   site. Tu mettras un jaune très lisible dans les parties les plus
+   importantes » —, et il marque de nouveau ce que la page dit de plus
+   important : les mots accentués de chaque grand titre, les numéros des
+   trois grilles, les quatre chiffres de « Ce à quoi vous engager » et les
+   mots du manifeste, en plus des boutons et de la pastille de
+   l'assistant. Il reste hors du décor : le corps de texte, les survols
+   (--mur), les flèches, les icônes de réseaux, les soulignés du pied et
+   le cercle de la photo gardent le blanc ou le gris.
    ========================================================= */
 :root{
   --ground:#050507;
@@ -1014,16 +1019,25 @@ body{background:radial-gradient(70rem 45rem at 50% -14rem,#12121A,transparent 68
 .hero__bg .glow{background:radial-gradient(46rem 34rem at 24% 42%,rgba(150,160,255,.09),transparent 62%)}
 .hero__bg .brackets::before,.hero__bg .brackets::after{border-color:#2B2B34}
 
-/* Les mots en italique restent jaunes dans le titre d'accueil, et
-   seulement là ; ailleurs ils sont blancs, la serif suffit à les
+/* Les mots en italique sont jaunes dans les grands titres — celui de
+   l'accueil, celui de chaque section et celui du blog, soit deux mots par
+   écran. C'est la règle des pages de guide, qui ont toujours visé .display.
+   Dans le corps de texte ils restent blancs : la serif suffit à les
    détacher. */
 em{color:var(--ink)}
-.hero em{color:var(--yellow)}
+.display em{color:var(--yellow)}
 
-/* Numéros et icônes : blancs et gris, au lieu du jaune. */
-.offer__no,.pilier__no,.step__no{color:var(--ink-3)}
-.offer:hover .offer__no{color:var(--ink)}
-.figure .figure__ico,.guide-lien__ico{color:var(--ink)}
+/* Les numéros (01 à 05) et les icônes des chiffres clés reprennent le
+   jaune de la feuille : ils numérotent la méthode, les cinq leviers de
+   l'IA et ce qu'on installe. Les quatre chiffres de « Ce à quoi vous
+   engager » l'adoptent à leur tour — c'est ce que la page promet de plus
+   concret, et ce sont les plus gros caractères de la section. Sur le fond
+   des cartes (#0E0E12), #FFCC00 mesure 12,7:1.
+
+   L'icône du guide reste blanche : elle décore un lien, elle n'énonce
+   rien. */
+.figure b{color:var(--yellow)}
+.guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
 .figure:hover,.offer:hover,.agent:hover,.aud li:hover,.mc:hover,
@@ -1039,7 +1053,6 @@ em{color:var(--ink)}
 .assistant__msg--bot a:hover{color:var(--ink)}
 .doc-modal__close:hover{border-color:var(--ink);color:var(--ink)}
 .doc-modal__foot a,.doc-modal__body .contact-box a{border-bottom-color:var(--mur)}
-.manifesto .punch em{color:var(--ink)}
 /* Le cercle de la photo et les soulignés du pied passent au gris : deux
    aplats jaunes de moins, loin de tout bouton. */
 .signature__photo{box-shadow:0 0 0 7px var(--mur),0 0 0 10px var(--ground)}

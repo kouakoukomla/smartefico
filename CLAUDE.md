@@ -710,28 +710,44 @@ nouveau depuis le noir profond du 20 septembre, avec ses valeurs à lui : cartes
 `#0E0E12`, panneaux `#0A0A0D`. La journée du fond blanc demandait l'inverse — les
 bandes où aucun pixel ne descendait sous `#E0E0E0`.
 
-**Le jaune ne sert plus qu'aux actions**, depuis le 20 septembre 2026 (« Utilise moins
-de jaune »). Il ne paraît plus que trois fois par écran :
+**Le jaune marque les actions et ce que la page dit de plus important**, depuis le
+21 septembre 2026. Le propriétaire l'avait ramené aux seules actions la veille
+(« Utilise moins de jaune ») ; il en a redemandé le lendemain : « Augmente un peu le
+jaune sur le site. Tu mettras un jaune très lisible dans les parties les plus
+importantes. » Il tient donc trois rôles, et pas un de plus :
 
-- les deux mots en italique du grand titre — de l'accueil (`.hero em`) comme des pages
-  de guide (`.display em`) ;
-- les boutons : « Réserver un échange », « Recevoir », « Nous contacter », « Réserver
-  mon appel », « Lire le blog », le carré à la flèche du menu, le lien d'évitement et
-  la pastille de l'assistant ;
-- rien d'autre.
+- **les actions** : « Réserver un échange », « Recevoir », « Nous contacter »,
+  « Réserver mon appel », « Lire le blog », le carré à la flèche du menu, le lien
+  d'évitement et la pastille de l'assistant ;
+- **les mots accentués des grands titres** : une seule règle, `.display em`, pour le
+  titre d'accueil, celui de chaque section, celui du blog et ceux des pages de guide,
+  qui la portaient déjà — deux mots par écran, jamais plus ;
+- **les chiffres et les numéros** : les quatre chiffres de « Ce à quoi vous engager »
+  (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles (`.step__no`,
+  `.pilier__no`, `.offer__no`), les mots du manifeste (`.manifesto .punch em`) et les
+  coches des deux pages de guide.
 
-Ont perdu le jaune le même jour : les numéros (01, 02…), passés en gris ; les icônes,
-en blanc ; tous les autres mots en italique, en blanc — la serif suffit à les
-détacher ; les coches des pages de guide ; le cercle de la photo de la signature ; les
-soulignés du pied de page et des pages légales ; et tous les survols, qui prennent
-`--mur` pour un filet, ou le blanc pour un aplat (flèches du rail, icônes de réseaux,
-boutons à filet, suggestions de l'assistant). Le texte posé sur un aplat jaune reste
-`--on-yellow` (#141414), soit 12,18:1.
+**Reste hors du jaune**, et doit y rester : les italiques du corps de texte, blancs — la
+serif suffit à les détacher ; tous les survols, qui prennent `--mur` pour un filet ou
+le blanc pour un aplat (flèches du rail, icônes de réseaux, boutons à filet,
+suggestions de l'assistant) ; le cercle de la photo de la signature ; les soulignés du
+pied de page et des pages légales ; et l'icône de l'encart « Guide gratuit », qui
+décore un lien sans rien énoncer.
 
-Règle précédente, pour mémoire : le jaune tenait quatre rôles — le trait fin, l'icône,
-le mot en italique, et l'aplat de ce qui se clique. Il n'en garde que le dernier, plus
-le titre. Et il ne tient pas en texte sur fond blanc (1,5:1), si un fond clair revenait
-un jour.
+**Le jaune est très lisible sur ce fond**, ce qui est la raison de la demande : mesuré
+dans le navigateur, `#FFCC00` donne 13,47:1 sur les italiques des titres, 12,74:1 sur
+les chiffres et les numéros posés sur une carte (#0E0E12), 13,08:1 sur le manifeste,
+12,13:1 sur le bandeau des cinq étapes — tous très au-dessus du seuil AAA de 7:1. Le
+texte posé sur un aplat jaune reste `--on-yellow` (#141414), soit 12,18:1. Il ne tient
+en revanche pas en texte sur fond blanc (1,5:1), si un fond clair revenait un jour.
+
+Les trois règles qui se sont succédé, pour mémoire : jusqu'au 20 septembre, le jaune
+tenait quatre rôles — le trait fin, l'icône, le mot en italique, l'aplat de ce qui se
+clique ; le 20, il n'a gardé que l'aplat et le titre d'accueil ; le 21, il a repris le
+titre de section, l'icône et le chiffre, sans reprendre le trait fin ni le survol.
+Toutes les retouches vivent dans le bloc « NOIR PROFOND » de `index.html`, que le blog
+et les articles recopient — sauf les coches, qui sont un SVG en ligne dans la feuille
+propre de chaque page de guide.
 
 **Les aplats cliquables sont jaunes**, depuis le 14 septembre 2026. Le propriétaire
 est revenu sur le retrait des aplats en nommant le carré à la flèche de la barre du
@@ -749,8 +765,9 @@ et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrenc
 la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
 fond réel, entre 11,97:1 et 13,89:1.
 
-**Ce n'est plus vrai depuis le 20 septembre 2026** : les italiques sont blancs, sauf
-ceux des grands titres, restés jaunes. La journée du fond blanc les avait mis à l'encre
+**Ce n'est plus vrai depuis le 20 septembre 2026** : les italiques du corps de texte
+sont blancs. Ceux des grands titres sont restés jaunes, et le 21 septembre les titres
+de section les ont rejoints (voir « Le jaune marque les actions… » plus haut). La journée du fond blanc les avait mis à l'encre
 noire, soulignés d'un trait de surligneur jaune ; cette écriture-là est partie avec le
 fond. La règle vit dans chaque feuille : le bloc « NOIR PROFOND » de `index.html`, puis
 les feuilles de `cgv.html`, `cgc.html`, des deux guides et de leurs pages de
