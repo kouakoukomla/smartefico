@@ -12,17 +12,19 @@
      20 septembre, avec lui encore (la version du noir pur reste en
      assets/og-smartefico.jpg : des partages déjà faits y pointent).
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-noir.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-jaune.jpg.
      Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
      la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
      viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
      LinkedIn, Facebook et WhatsApp gardent une image en mémoire par adresse. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
 <style>
-/* Mêmes codes que le site depuis le 20 septembre 2026 : fond noir profond
-   #050507, texte blanc, et le jaune deux fois seulement, comme sur un écran
-   du site — les mots accentués du titre (en Instrument Serif italique) et la
-   pastille du numéro, qui tient lieu de bouton. */
+/* Mêmes codes que le site : fond noir profond #050507, texte blanc, et le
+   jaune sur ce que l'image a de plus important, comme un écran du site
+   depuis le 21 septembre 2026 — le nom de la marque, les mots accentués du
+   titre (en Instrument Serif italique), le filet qui sépare le texte du
+   portrait, et la pastille du numéro, qui tient lieu de bouton. La ligne
+   d'audience reste blanche : c'est du texte courant. */
 html,body{margin:0;background:#050507}
 .carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#F5F5F3;
   background:radial-gradient(52rem 34rem at 30% -6rem,#14141C,transparent 70%) #050507;
@@ -30,13 +32,15 @@ html,body{margin:0;background:#050507}
 /* Le visage occupe le haut du portrait (900 x 1350) : 12 % le garde entier. */
 .photo{position:absolute;top:0;right:0;width:470px;height:630px;
   background:url("../../assets/portrait-emmanuel-kouakou.jpg") 50% 12%/cover no-repeat}
-/* un filet gris sépare le texte de la photo */
-.photo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:#34343D}
+/* Le filet qui sépare le texte de la photo est jaune depuis le 21 septembre
+   2026 : c'est la seule arête de l'image, et elle porte la couleur au lieu
+   de la subir. En gris #34343D, on ne la voyait pas. */
+.photo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:#FFCC00}
 .texte{position:absolute;left:64px;top:0;bottom:0;width:630px;display:flex;flex-direction:column;
   justify-content:center}
 .marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}
 .marque img{width:78px;height:78px;display:block}
-.marque span{color:#F5F5F3;font-weight:700;font-size:19px;letter-spacing:.14em}
+.marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
 h1{margin:0;font-weight:800;font-size:54px;line-height:1.05;letter-spacing:-.032em}
 h1 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
   font-weight:400;color:#FFCC00;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}

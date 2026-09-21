@@ -93,18 +93,26 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico-noir.jpg`** (1200 x 630, 76 Ko), sur le
-  noir profond du site : le titre d'accueil entier, ses deux moitiés à égalité et ses
-  mots accentués en Instrument Serif jaune ; le portrait couleur de la signature à
-  droite derrière un filet gris ; et, repris de l'ancienne image, « PME, ETI, grands
-  comptes et dirigeants. » et le numéro, sur une pastille jaune. Comme sur un écran du
-  site, le jaune n'y paraît que deux fois. Sa source est `scripts/partage/partage.html`,
+- L'image est désormais **`assets/og-smartefico-jaune.jpg`** (1200 x 630, 78 Ko), sur
+  le noir profond du site : le titre d'accueil entier, ses deux moitiés à égalité et
+  ses mots accentués en Instrument Serif jaune ; le portrait couleur de la signature à
+  droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes et dirigeants. »
+  et le numéro, sur une pastille jaune. Sa source est `scripts/partage/partage.html`,
   photographiée par `node scripts/build-partage.mjs` (Chrome sans fenêtre, puis `sharp`
   en JPEG) ; le nom du fichier écrit est la constante `FICHIER` du script.
-- Elle a suivi les fonds du site : `og-smartefico.jpg` (noir pur, 19 septembre), qui
-  reste dans le dépôt parce que des partages y pointent peut-être, puis celle-ci. Une
-  version sur fond blanc a existé le 19 septembre sans jamais être mise en ligne — le
-  fond a changé avant — et n'a pas été gardée : l'historique git la retrouve.
+- **Le jaune y suit celui du site**, refait le 21 septembre 2026 avec lui, à la demande
+  du propriétaire (« Refais l'image de partage avec le nouveau jaune »). Il y paraît
+  désormais quatre fois et non deux : le logo, le nom **SMARTEFICO** passé du blanc au
+  jaune, les deux mots accentués du titre, et la pastille du numéro. Le filet de 6 px
+  qui séparait le texte du portrait, en gris `#34343D`, passe à 8 px de jaune : c'est
+  la seule arête de l'image, on ne la voyait pas. La ligne d'audience reste blanche,
+  c'est du texte courant. L'image n'a ni chiffre ni numéro : les deux autres emplois du
+  jaune sur le site n'ont rien à y marquer.
+- Elle a suivi les fonds du site : `og-smartefico.jpg` (noir pur, 19 septembre) et
+  `og-smartefico-noir.jpg` (noir profond, jaune réduit, 20 septembre), qui restent dans
+  le dépôt parce que des partages y pointent peut-être. Une version sur fond blanc a
+  existé le 19 septembre sans jamais être mise en ligne — le fond a changé avant — et
+  n'a pas été gardée : l'historique git la retrouve.
 - Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
   d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
   l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
@@ -117,8 +125,9 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   `meta description` pour les moteurs de recherche, qui parlait déjà des deux, n'a pas
   bougé.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
-  l'image d'une adresse donnée. `og-cover.jpg` et `og-smartefico.jpg` restent dans le
-  dépôt, inutilisées — des partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
+  l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg` et
+  `og-smartefico-noir.jpg` restent dans le dépôt, inutilisées — des partages anciens y
+  pointent peut-être. Après une refonte, les aperçus déjà mis en
   cache ne changent pas d'eux-mêmes : LinkedIn se rafraîchit par son Post Inspector,
   Facebook par son outil de débogage (« Scrape again ») ; WhatsApp n'a pas d'outil et
   garde son aperçu un moment — partager en attendant une adresse légèrement
