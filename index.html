@@ -309,45 +309,6 @@ p{margin:0}
   .hero__bg .brackets{display:none}
 }
 
-/* ---------- preuves ----------
-   Deux colonnes de captures. Le fond sombre des tableaux de bord rejoint
-   celui des cartes du site : un filet suffit à les détacher. */
-.preuves{display:grid;gap:1rem;grid-template-columns:1fr;align-items:start}
-@media (min-width:56rem){.preuves{grid-template-columns:repeat(2,1fr)}}
-.preuve{margin:0;background:var(--surface);border:1px solid var(--line);
-  display:flex;flex-direction:column;gap:.75rem;padding:.75rem .75rem 1rem;
-  transition:border-color .2s ease}
-.preuve:hover{border-color:#3A3A38}
-/* Trois captures, pas quatre : la panoramique ouvre sur toute la largeur,
-   les deux autres se partagent la rangee du dessous. */
-@media (min-width:56rem){.preuve--large{grid-column:1/-1}}
-.preuve__ecran{position:relative}
-.preuve__ecran img{width:100%;height:auto;display:block;border:1px solid var(--line)}
-.preuve figcaption{color:var(--ink-2);font-size:.92rem;padding-inline:.25rem}
-/* Les captures s'animent quand elles entrent à l'écran, demande du
-   propriétaire du 19 septembre 2026. Les images restent les vraies
-   captures : une couche SVG, dans le repère de chaque image, pose des caches
-   de la couleur exacte de leur fond (relevée au pixel), puis les retire —
-   les anneaux se tracent dans le sens des aiguilles d'une montre, les
-   courbes de gauche à droite, et les grands chiffres montent jusqu'à leur
-   valeur avant de s'effacer sur ceux de la capture. Au repos, on voit donc
-   toujours les pixels d'origine. La couche n'existe que si le script l'a
-   allumée : sans lui, sans IntersectionObserver, sous prefers-reduced-motion
-   ou à l'impression, les captures s'affichent telles quelles. */
-/* Un pixel de retrait de chaque côté : la couche épouse l'image à
-   l'intérieur de son filet. */
-.preuve__anim{position:absolute;top:1px;left:1px;width:calc(100% - 2px);height:calc(100% - 2px);
-  display:none;pointer-events:none}
-.preuves--vivantes .preuve__anim{display:block}
-.preuve__anneau{fill:none;stroke-width:24;stroke-dasharray:100 200;stroke-dashoffset:0}
-.preuve--joue .preuve__anneau{stroke-dashoffset:-100;
-  transition:stroke-dashoffset 1.4s cubic-bezier(.33,1,.68,1) var(--retard,0s)}
-.preuve--joue .preuve__rideau{transform:translateX(var(--course));
-  transition:transform 1.8s cubic-bezier(.45,.05,.25,1) .1s}
-.preuve__chiffre text{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-  font-weight:400;font-variant-numeric:tabular-nums}
-.preuve--joue .preuve__chiffre{opacity:0;transition:opacity .35s ease 1.5s}
-@media print{.preuve__anim{display:none!important}}
 /* Tous les mots en italique sont jaunes. La regle valait jusqu ici pour le
    seul titre d accueil ; le proprietaire l a etendue a tout le site le
    14 septembre 2026. L italique reste donc rare, et partout ou il parait
@@ -1093,7 +1054,7 @@ em{color:var(--ink)}
 .figure .figure__ico,.guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
-.figure:hover,.offer:hover,.agent:hover,.aud li:hover,.mc:hover,.preuve:hover,
+.figure:hover,.offer:hover,.agent:hover,.aud li:hover,.mc:hover,
 .marque:hover,.guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .pilier--appel{border-color:var(--line)}
 .step__tete:focus-visible,.guide-lien:focus-visible{outline-color:var(--ink)}
@@ -1353,90 +1314,6 @@ em{color:var(--ink)}
           <span class="figure__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.2 10.9l7.5-3.6M8.2 13.1l7.5 3.6"/></svg></span>
           <b><data class="compteur" value="3">3</data></b><span>régies publicitaires pilotées — Meta, LinkedIn, TikTok</span>
         </p>
-      </div>
-    </section>
-
-    <!-- ============ PREUVES ============
-         Captures des tableaux de bord réels, recadrées avant publication :
-         la table qui portait le nom, l’email et le téléphone d’un lead a été
-         retirée du fichier lui-même, de même que les barres latérales qui
-         nommaient les espaces clients. Un masquage CSS n’aurait rien protégé,
-         l’image restant téléchargeable. Les légendes ne font que lire ce que
-         montre chaque capture : aucun résultat n’y est attribué.
-
-         Une quatrième capture, celle des coûts publicitaires, a été écartée le
-         14 septembre 2026 : elle portait une adresse e‑mail personnelle en
-         étiquette d’axe, et des montants en euros que la règle « aucun montant,
-         nulle part » interdit. Ne pas la remettre sans nouvelle capture.
-
-         Depuis le 19 septembre 2026, chaque capture porte une couche SVG
-         animée (.preuve__anim) dont les coordonnées et les couleurs ont été
-         relevées au pixel sur l’image elle-même. Remplacer une capture
-         oblige à refaire ces relevés, sinon les caches tomberont à côté. -->
-    <section class="wrap" id="preuves">
-      <div class="head head--centre">
-        <h2 class="display">Ne nous croyez pas sur parole, <em>observez</em>.</h2>
-        <p class="lead">Les preuves clients parlent d’elles-mêmes.</p>
-      </div>
-      <div class="preuves">
-        <figure class="preuve preuve--large">
-          <div class="preuve__ecran">
-            <img src="assets/preuve-leads.png" width="1400" height="537" alt="Tableau de bord des leads : 790 au total, répartis par statut et par réseau." loading="lazy">
-            <svg class="preuve__anim" viewBox="0 0 1400 537" aria-hidden="true" focusable="false">
-              <circle class="preuve__anneau" cx="349" cy="277" r="117.5" pathLength="100" transform="rotate(-90 349 277)" stroke="#191919"/>
-              <circle class="preuve__anneau" cx="1000" cy="237" r="117.5" pathLength="100" transform="rotate(-90 1000 237)" stroke="#191919" style="--retard:.15s"/>
-              <g class="preuve__chiffre">
-                <rect x="290" y="243" width="118" height="55" fill="#191919"/>
-                <text x="349" y="292" font-size="60" text-anchor="middle" fill="#fff" data-valeur="790">790</text>
-                <rect x="941" y="202" width="117" height="56" fill="#191919"/>
-                <text x="1000" y="252" font-size="61" text-anchor="middle" fill="#fff" data-valeur="790">790</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption><data class="compteur" value="790">790</data> leads, par statut et par réseau</figcaption>
-        </figure>
-        <figure class="preuve">
-          <div class="preuve__ecran">
-            <img src="assets/preuve-tracking.png" width="1255" height="723" alt="Suivi des sources de leads : 672 leads et 17 créatives publicitaires en cours." loading="lazy">
-            <svg class="preuve__anim" viewBox="0 0 1255 723" aria-hidden="true" focusable="false">
-              <defs>
-                <linearGradient id="pv-fondu-t"><stop offset="0" stop-color="#1d1f24" stop-opacity="0"/><stop offset=".06" stop-color="#1d1f24"/></linearGradient>
-                <clipPath id="pv-zone-t"><rect x="99" y="438" width="1101" height="253"/></clipPath>
-              </defs>
-              <g clip-path="url(#pv-zone-t)"><rect class="preuve__rideau" x="29" y="438" width="1171" height="253" fill="url(#pv-fondu-t)" style="--course:1171px"/></g>
-              <g class="preuve__chiffre">
-                <rect x="47" y="263" width="86" height="44" fill="#31353e"/>
-                <text x="51" y="301" font-size="44.5" fill="#fff" data-valeur="672">672</text>
-                <rect x="656" y="263" width="56" height="43" fill="#31353e"/>
-                <text x="660" y="300" font-size="44.5" fill="#fff" data-valeur="17">17</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption><data class="compteur" value="672">672</data> leads, <data class="compteur" value="17">17</data> créatives en cours</figcaption>
-        </figure>
-        <figure class="preuve">
-          <div class="preuve__ecran">
-            <img src="assets/preuve-pipeline.png" width="1260" height="756" alt="Pipeline et closing : 625 leads, 624 deals, 5 % de no-show." loading="lazy">
-            <svg class="preuve__anim" viewBox="0 0 1260 756" aria-hidden="true" focusable="false">
-              <defs>
-                <linearGradient id="pv-fondu-p"><stop offset="0" stop-color="#1d1f24" stop-opacity="0"/><stop offset=".059" stop-color="#1d1f24"/></linearGradient>
-                <clipPath id="pv-zone-p"><rect x="98" y="430" width="1118" height="262"/></clipPath>
-              </defs>
-              <g clip-path="url(#pv-zone-p)"><rect class="preuve__rideau" x="28" y="430" width="1188" height="262" fill="url(#pv-fondu-p)" style="--course:1188px"/></g>
-              <g class="preuve__chiffre">
-                <rect x="45" y="105" width="88" height="44" fill="#31353e"/>
-                <text x="49" y="143" font-size="44.5" fill="#fff" data-valeur="625">625</text>
-                <rect x="666" y="105" width="88" height="44" fill="#31353e"/>
-                <text x="670" y="143" font-size="44.5" fill="#fff" data-valeur="209">209</text>
-                <rect x="45" y="257" width="88" height="44" fill="#1d1f24"/>
-                <text x="49" y="295" font-size="44.5" fill="#fff" data-valeur="624">624</text>
-                <rect x="666" y="258" width="29" height="43" fill="#1d1f24"/>
-                <text x="670" y="295" font-size="44.5" fill="#fff" data-valeur="5">5</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption><data class="compteur" value="625">625</data> leads, <data class="compteur" value="624">624</data> deals, <data class="compteur" value="5">5</data> % de no-show</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -2704,57 +2581,6 @@ em{color:var(--ink)}
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 1 });
   compteurs.forEach(function (el) { guet.observe(el); });
-})();
-
-// Preuves : chaque capture s'anime une fois, quand elle entre à l'écran et que
-// son image est chargée. Le style porte les anneaux et les courbes ; ce script
-// allume la couche, la déclenche, et fait monter les grands chiffres avec la
-// même courbe que les compteurs ci-dessus. Sans IntersectionObserver ou sous
-// prefers-reduced-motion, la couche reste éteinte : les captures s'affichent
-// telles quelles.
-(function () {
-  var grille = document.querySelector('.preuves');
-  if (!grille || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var figures = Array.prototype.slice.call(grille.querySelectorAll('.preuve'));
-  grille.classList.add('preuves--vivantes');
-
-  var DUREE = 1400; // ms, comme les compteurs
-
-  function compter(texte) {
-    var cible = parseInt(texte.getAttribute('data-valeur'), 10);
-    var depart = null;
-    texte.textContent = '0';
-    function image(t) {
-      if (depart === null) depart = t;
-      var p = Math.min((t - depart) / DUREE, 1);
-      texte.textContent = Math.round(cible * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(image);
-    }
-    requestAnimationFrame(image);
-  }
-
-  function jouer(fig) {
-    if (fig.classList.contains('preuve--joue')) return;
-    fig.getBoundingClientRect(); // l'état de départ doit être peint avant la transition
-    fig.classList.add('preuve--joue');
-    Array.prototype.forEach.call(fig.querySelectorAll('[data-valeur]'), compter);
-  }
-
-  var guet = new IntersectionObserver(function (entrees) {
-    entrees.forEach(function (entree) {
-      if (!entree.isIntersecting) return;
-      guet.unobserve(entree.target);
-      var fig = entree.target;
-      var img = fig.querySelector('img');
-      if (img.complete && img.naturalWidth) jouer(fig);
-      else img.addEventListener('load', function () { jouer(fig); });
-    });
-  }, { rootMargin: '0px 0px -15% 0px', threshold: 0.3 });
-  figures.forEach(function (fig) { guet.observe(fig); });
-
-  // À l'impression, la couche s'éteint : aucun cache ne reste sur une capture.
-  window.addEventListener('beforeprint', function () { grille.classList.remove('preuves--vivantes'); });
 })();
 
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le

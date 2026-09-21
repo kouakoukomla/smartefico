@@ -208,19 +208,20 @@ toujours, et reste le premier : l'ordre du menu suit encore celui de la page.
 
 Le même jour, « Ce à quoi vous engager » (`#chiffres`) et « Ne nous croyez pas sur
 parole, observez » (`#preuves`) l'ont suivie, ensemble et toujours avant « Agents IA »,
-à la demande du propriétaire. Puis, toujours le même jour et à sa demande, « Agents
-IA » (`#agents`) est passé après « Ce qu'on installe » (`#resultats`), puis après le
-bandeau des cinq étapes ; et « Avant, après » (`#avant-apres`), qui suivait ce
-bandeau, est remonté juste avant « Ce qu'on installe ». L'accueil enchaîne donc :
-hero, marques, `#apport`, `#chiffres`, `#preuves`, `#avant-apres`, `#resultats`, le
-bandeau des cinq étapes (`#methode`), `#ia`, `#agents` (placés l'un contre l'autre le
-même jour, l'IA générative d'abord), « Trois raisons » (`#pourquoi`), puis « Avec qui
-l'agence travaille » (`#public`), passée après « Trois raisons » le même jour,
-toujours à sa demande. La première pile s'arrête avant le bandeau, la seconde
-s'ouvre sur l'IA générative. Le menu suit l'ordre de la page : « Avant/Après » y est
-passé devant « Services », sans rien changer à sa largeur. Aucun texte visible ne
-dépend de cet ordre — « Les quatre scénarios plus haut », dans « Trois raisons »,
-désigne les agents, qui restent au-dessus.
+à la demande du propriétaire. La seconde a été supprimée le 21 septembre 2026, elle
+aussi à sa demande (voir « Plus de captures de preuves » dans Design). Puis, toujours
+le même jour et à sa demande, « Agents IA » (`#agents`) est passé après « Ce qu'on
+installe » (`#resultats`), puis après le bandeau des cinq étapes ; et « Avant, après »
+(`#avant-apres`), qui suivait ce bandeau, est remonté juste avant « Ce qu'on
+installe ». L'accueil enchaîne donc : hero, marques, `#apport`, `#chiffres`,
+`#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
+`#agents` (placés l'un contre l'autre le même jour, l'IA générative d'abord), « Trois
+raisons » (`#pourquoi`), puis « Avec qui l'agence travaille » (`#public`), passée
+après « Trois raisons » le même jour, toujours à sa demande. La première pile s'arrête
+avant le bandeau, la seconde s'ouvre sur l'IA générative. Le menu suit l'ordre de la
+page : « Avant/Après » y est passé devant « Services », sans rien changer à sa
+largeur. Aucun texte visible ne dépend de cet ordre — « Les quatre scénarios plus
+haut », dans « Trois raisons », désigne les agents, qui restent au-dessus.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, s'est d'abord placée juste avant la chaîne. Le 19, à la demande
@@ -578,9 +579,8 @@ précédents ; le bloc de thème se remplace d'un bloc.
   bandeaux, contact, pied de page, assistant, carte du formulaire des guides, barre des
   pages légales), tous revenus au régime commun. Le formulaire Tally des guides, texte
   blanc sur fond transparent, se pose de nouveau sur la carte sans rien de particulier.
-- **N'ont pas changé** : les deux guides PDF et les captures de preuves, qui sont des
-  images. L'image d'aperçu de partage a suivi, le même jour (voir « L'aperçu de
-  partage »).
+- **N'ont pas changé** : les deux guides PDF, qui sont des images. L'image d'aperçu de
+  partage a suivi, le même jour (voir « L'aperçu de partage »).
 - Le logo de la page est `logo-clair.png`, sur transparence : son contour blanc
   redevient visible sur le noir.
 
@@ -611,36 +611,25 @@ prévu : l'icône est désormais visée par `.figure .figure__ico`. Dans l'aper�
 Claude Code, le défilement ne part que si le panneau est affiché : masqué, la page ne
 se redessine pas et les compteurs attendent à zéro.
 
-**Les captures de « Ne nous croyez pas sur parole, observez » s'animent**, demande du
-propriétaire du 19 septembre 2026 : « que les graphiques et les nombres puissent
-bouger ». Les images restent les vraies captures — c'est ce qui en fait des preuves ;
-rien n'a été redessiné. Une couche SVG (`.preuve__anim`), posée dans le repère de
-chaque image (son `viewBox` reprend les dimensions de l'image), y dépose des caches de
-la couleur exacte du fond, relevée au pixel, puis les retire quand la capture entre à
-l'écran. Les deux anneaux se tracent dans le sens des aiguilles d'une montre : un
-cercle `#191919` de 24 d'épaisseur couvre l'anneau (rayons 108 à 127) et son
-`stroke-dashoffset` recule. Les deux courbes se dessinent de gauche à droite : un
-rideau `#1d1f24` à bord fondu glisse hors d'une zone découpée. Les huit grands
-chiffres montent de zéro à leur valeur en 1,4 s, sur la courbe des compteurs, puis
-s'effacent sur ceux de la capture. Au repos, on voit donc toujours les pixels
-d'origine. Les chiffres animés sont en police système : celle des tableaux de bord
-sur Mac, Arial ailleurs, un peu plus étroite — le fondu final absorbe l'écart. Les
-nombres des trois légendes sont des compteurs ordinaires (voir ci-dessus).
+**Plus de captures de preuves.** La section « Ne nous croyez pas sur parole,
+observez » (`#preuves`) a été supprimée le 21 septembre 2026 à la demande du
+propriétaire : ses trois captures de tableaux de bord — 790 leads, 672 leads et
+17 créatives, 625 leads et 624 deals —, leurs légendes à compteurs et la couche SVG
+qui les animait depuis le 19 septembre. Sont partis avec elle son style
+(`.preuves`, `.preuve`, `.preuve__anim`…), son script et le `.preuve:hover` de la
+règle de survol commune. L'accueil passe donc de « Ce à quoi vous engager » à
+« Avant, après ».
 
-- La couche ne s'allume que par le script (`.preuves--vivantes`). Sans JavaScript,
-  sans `IntersectionObserver`, sous `prefers-reduced-motion` ou à l'impression, les
-  captures s'affichent telles quelles — vérifié dans chacun de ces cas.
-- Chaque capture joue une seule fois, quand 30 % en sont visibles et que son image est
-  chargée.
-- La couche est retirée d'un pixel de chaque côté, pour épouser l'image à l'intérieur
-  de son filet. Le filet reste sur l'image : posé sur le cadre `.preuve__ecran`, il
-  ajoutait trois signalements `cramped-padding` d'impeccable.
-- **Remplacer une capture oblige à refaire les relevés** : centres et rayons des
-  anneaux, zone des courbes, boîtes et couleurs des chiffres, tous écrits dans le HTML
-  en pixels de l'image. La méthode suivie : lire l'image brute avec `sharp`,
-  échantillonner les fonds, balayer depuis le centre des anneaux jusqu'à leurs bords,
-  puis superposer les chiffres animés en rouge translucide sur l'image à sa taille
-  réelle pour contrôler le calage.
+Les trois images restent dans `assets/` (`preuve-leads.png`, `preuve-tracking.png`,
+`preuve-pipeline.png`), suivies par git mais plus servies par aucune page, comme
+`og-cover.jpg`. Elles étaient recadrées avant publication : la table qui portait le
+nom, l'email et le téléphone d'un lead avait été retirée du fichier lui-même, de même
+que les barres latérales nommant les espaces clients. Une quatrième capture, celle
+des coûts publicitaires, avait été écartée le 14 septembre 2026 — adresse e-mail
+personnelle en étiquette d'axe, et montants en euros que la règle « aucun montant,
+nulle part » interdit. Y revenir demanderait de reprendre l'historique git : la
+couche animée portait, écrits en pixels de chaque image, les centres et rayons des
+anneaux, la zone des courbes, et les boîtes et couleurs des huit grands chiffres.
 
 **Plus de bandeau de mots-clés sous le hero.** La liste « Acquisition · Automatisation ·
 IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à la demande du
