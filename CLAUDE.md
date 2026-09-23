@@ -859,6 +859,18 @@ Mesuré sur toute la page à quatre largeurs, quatre endroits dépassaient nette
   milieu des cartes 02 et 03. Elles suivent désormais le texte, un peu plus serrées
   (0,8 rem), deux par ligne ; la première rangée perd 60 px.
 
+**Les en-têtes de section ont resserré à leur tour le 23 septembre 2026**, à sa
+demande (« Réduis aussi l'espace des titres de section »), juste après l'interlignage
+du titre d'accueil. Leur interlignage avait déjà suivi, la règle étant commune
+(`.display`, 0,95) ; restait l'air autour. `.head` passe d'un écart de `.8rem` à
+`.55rem` entre le titre et le chapô, et d'une marge basse de
+`clamp(1.25rem,2.4vw,2rem)` à `clamp(.85rem,1.6vw,1.35rem)`. Mesuré à 1 280 px : le
+blanc titre-chapô tombe de 17 à 13 px, et le blanc chapô-contenu de 77 à 67 px. **Le
+second bouge moins que la marge retirée** — la moitié de ces 67 px vient de la marge
+intérieure des cartes, pas de l'en-tête ; y toucher demanderait de rouvrir `.figure`,
+`.offer` et consorts, ce qui n'a pas été fait. L'écart entre deux sections ne bouge
+pas non plus : c'est `--gap`, et il tient le rythme de toute la page.
+
 La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
 téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur, ses

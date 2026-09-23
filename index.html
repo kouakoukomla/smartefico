@@ -426,7 +426,17 @@ em{color:var(--yellow)}
 @media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
 
 /* ---------- en-tête de section ---------- */
-.head{display:flex;flex-direction:column;gap:.8rem;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
+/* Espace resserré le 23 septembre 2026 : « Réduis aussi l'espace des titres
+   de section ». Leur interlignage avait déjà suivi celui du titre d'accueil,
+   la règle étant commune (.display, 0,95) ; restait l'air autour. L'écart au
+   chapô passe de .8rem à .55rem, et la marge sous l'en-tête de
+   clamp(1.25rem,2.4vw,2rem) à clamp(.85rem,1.6vw,1.35rem) — mesuré à 1 280 px,
+   le blanc entre le titre et le chapô tombe de 17 à 13 px, et celui entre le
+   chapô et le contenu de 77 à 67 px. Le second bouge moins que la marge
+   retirée : la moitié de ces 67 px vient de la marge intérieure des cartes,
+   et non de l'en-tête. L'écart entre deux sections, lui, ne
+   bouge pas : c'est --gap, et il tient le rythme de toute la page. */
+.head{display:flex;flex-direction:column;gap:.55rem;margin-bottom:clamp(.85rem,1.6vw,1.35rem)}
 /* Les dix pastilles jaunes qui coiffaient les titres de section ont été
    retirées : chaque titre porte déjà son sujet, et l’une d’elles répétait
    le sien mot pour mot. Ne subsiste que le titre de la section Réservation,
