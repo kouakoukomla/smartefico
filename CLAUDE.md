@@ -956,7 +956,18 @@ dois utiliser ce type de caractère. »
 
 - **Grands titres — la pile Helvetica**, inchangée :
   `"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif`, graisse 800,
-  chasse `-.035em` (`-.042em` sur le `h1`), interlignage 1,02. Elle ne vit plus que
+  chasse `-.035em` (`-.042em` sur le `h1`), **interlignage 0,95** depuis le
+  23 septembre 2026 — il valait 1,02, et le propriétaire l'a trouvé trop lâche
+  (« Il y a trop d'espace dans ce grand titre »), toujours sur le modèle
+  d'aicliently.com, dont le titre d'accueil est à 65 px sur 65 px d'interligne,
+  soit un rapport de 1,00 avec une graisse noire. Le rapport n'est pas
+  transposable tel quel : nos lignes tombent sur Arial Black sous Windows, dont
+  la boîte de ligne est plus haute. **Mesuré plutôt que calculé** — on relève sur
+  une capture les lignes d'image qui portent de l'encre : à 1 280 px, le pas est
+  passé de 84–88 px à 78–83 px, et le blanc entre deux lignes de 21 px à 2 px.
+  Vérifié à 1 280, 900, 760, 600 et 520 px : le plus petit écart tombe à 1 px,
+  jamais en dessous — les lignes se frôlent sans jamais se chevaucher. Descendre
+  sous 0,95 les ferait collisionner. Elle ne vit plus que
   sur quatre déclarations : `.display` (accueil, guides, pages de remerciement, titre
   du blog), le `h1` des pages légales, et `.article__title` dans `build-blog.mjs`.
   **Toute nouvelle règle de titre doit la redéclarer**, sinon elle hérite de Poppins.

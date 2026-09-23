@@ -118,7 +118,14 @@ a{color:inherit}
    sur cette page, avec celle des mots accentués en Instrument Serif. */
 .display{
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  /* Interlignage resserré de 1,02 à 0,95 le 23 septembre 2026 : « Il y a trop
+     d'espace dans ce grand titre », sur le modèle d'aicliently.com, dont le
+     titre d'accueil est à 65 px sur 65 px d'interligne — rapport 1,00 — avec
+     une graisse noire. À 1 280 px notre titre mesurait 84 à 88 px de pas pour
+     des bandes de lettres de 76 px : un blanc franc entre les lignes. À 0,95,
+     le pas tombe à 78 px et les lignes se frôlent, comme chez lui. Mesuré sur
+     capture, en relevant les lignes d'image qui portent de l'encre. */
+  font-weight:800;letter-spacing:-.035em;line-height:.95;
   text-wrap:balance;overflow-wrap:break-word;margin:0;
 }
 h1.display{font-size:clamp(2.6rem,6.4vw,5.8rem);letter-spacing:-.042em;max-width:20ch}
