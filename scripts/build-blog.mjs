@@ -233,9 +233,9 @@ const favicon = (index.match(/<link rel="icon"[^>]*>/) || [''])[0];
 const styleBlog = `<style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
 .blog-top__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-weight:700}
-/* Sur fond clair, le logo complet : assets/logo.png, contour blanc sur sa
-   plaque noire. logo-clair.png n'a pas de plaque, et son contour blanc
-   disparaît sur du blanc (demande du propriétaire, 23 septembre 2026). */
+/* Sur fond sombre, le logo sans plaque : assets/logo-clair.png, dont le
+   contour blanc se détache seul. La plaque de logo.png n'a servi que le
+   temps du fond blanc, le 23 septembre 2026. */
 .blog-top__brand img{width:2rem;height:2rem}
 /* Deux liens à droite : le guide gratuit (guide.html), à l'encre pleine parce
    que c'est une invitation, puis le retour au site, en gris. Au survol, un
@@ -334,7 +334,7 @@ function tete({ titre, description, url, image }) {
 <meta name="twitter:card" content="summary_large_image">
 ${favicon}
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
@@ -345,7 +345,7 @@ ${styleBlog}
 
 const entete = `  <header class="blog-top wrap">
     <a class="blog-top__brand" href="index.html">
-      <img src="assets/logo.png" alt="SmartEfico" width="512" height="512">
+      <img src="assets/logo-clair.png" alt="SmartEfico" width="512" height="512">
       <span class="mono">SmartEfico</span>
     </a>
     <nav class="blog-top__liens" aria-label="Liens du site">

@@ -592,56 +592,64 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Fond blanc depuis le 23 septembre 2026**, sur tout le site, à la demande du
-propriétaire (« change le fond de mon site en blanc »). Palette : fond `#FFFFFF`,
-cartes `#F4F4F1` — le gris des fiches des guides PDF —, encre `#141414`, gris
-`#4E4E49` et `#6B6B66`, filets `#DEDED9`, et `--mur` `#8A8A84`, le gris des survols
-et des soulignés dont le blog se sert ; jaune `#FFCC00`, et un violet `#9D4DFF`
-cantonné à un seul endroit. La balise `theme-color` de chaque page vaut `#FFFFFF`.
+**Noir plat depuis le 23 septembre 2026, au soir**, sur tout le site. Le propriétaire
+a donné un modèle — « Tu peux adapter mon site au fond d'écran de celui-ci :
+aicliently.com. Ne mets pas en ligne, montre-moi juste le rendu » — puis a validé la
+maquette de l'accueil d'un « passe tout le site dessus », comme le 20 septembre.
 
-**Le site a changé de fond quatre fois en cinq jours** : noir pur `#000000` jusqu'au
-19 septembre, blanc le 19 (une journée), noir profond le 20, blanc de nouveau le 23.
-Chaque fois à sa demande. L'historique git garde les trois états précédents ; le bloc
-de thème se remplace d'un bloc, et celui d'aujourd'hui reprend celui du 19 en
-l'adaptant à ce que la page a gagné depuis.
+**Ce que fait la référence, relevé dans son navigateur** et non à l'œil : un seul bloc
+de fond sur toute la page (10 614 px de haut) en `#000000`, **aucun `background-image`
+nulle part** — un balayage de tous ses éléments en compte zéro —, et des cartes
+relevées d'un cran à `#0E0E0E`. Son accent vert `#00D18B` **n'a pas été repris** : la
+charte SmartEfico est noir, jaune, blanc, et elle vient de lui.
 
-- **Sur `index.html`, la feuille décrit encore le noir pur** : ses jetons (`--ground`,
-  `--surface`, `--ink`…) en gardent les valeurs, et le bloc « FOND BLANC », à la fin
-  du `<style>`, les renverse. Le blog et les articles recopient cette feuille. Les
-  autres pages (`cgv.html`, `cgc.html`, les deux guides et leurs pages de remerciement)
-  ont leur feuille propre : leurs jetons y sont directement écrits.
-- **Une dizaine d'îlots gardent le noir**, et le jaune y reste une couleur de texte :
-  la barre de navigation (le logo est dessiné pour le noir), les carreaux des marques,
-  le manifeste, le bandeau des cinq étapes, la carte d'appel de l'IA générative, les
-  écrans des schémas d'agents, le bloc de contact, le pied de page, le panneau de
-  l'assistant, la barre des fenêtres légales et la carte du formulaire des guides —
-  celle-là parce que le formulaire Tally, réglé dans Tally, a son texte en blanc sur
-  un fond transparent. Une seule règle leur rend les jetons de l'ancien thème ; leurs
-  composants n'ont pas changé.
-- **Le halo froid du haut de page est parti** avec le noir profond, et les cartes ne
-  sont plus relevées mais creusées : leur gris très clair se pose sur le blanc. Le
-  hero garde son halo, passé au jaune très dilué, et le halo de la vidéo, bleu sur le
-  noir, passe à un gris de 10 %.
-- **N'ont pas changé** : les deux guides PDF, qui sont des images. L'image d'aperçu de
-  partage, elle, a rejoint le fond blanc le jour même, en deux temps et à sa demande
-  (voir « L'aperçu de partage ») : rafraîchir les aperçus déjà en cache reste au
-  propriétaire, Claude n'a de session sur aucun réseau.
+Palette : fond `#000000`, cartes `#0E0E0E`, texte `#FFFFFF`, gris `#B4B4B0` et
+`#8A8A86`, filets `#1F1F1F`, et `--mur` `#333333`, le gris des survols et des
+soulignés ; jaune `#FFCC00`, et un violet `#9D4DFF` cantonné à un seul endroit. La
+balise `theme-color` de chaque page vaut `#000000`.
+
+**Le site a changé de fond cinq fois en cinq jours** : noir pur `#000000` jusqu'au
+19 septembre, blanc le 19 (une journée), noir profond le 20, blanc de nouveau le 23,
+noir plat le 23 au soir. Chaque fois à sa demande. **Ne jamais traiter un fond comme
+acquis** : l'historique git garde les quatre états précédents, et le bloc de thème se
+remplace d'un bloc.
+
+- **Sur `index.html`, la feuille décrit le noir pur et le bloc final ne fait presque
+  plus que l'ajuster** : ses jetons (`--ground`, `--surface`, `--ink`…) portent déjà
+  les valeurs d'origine, et le bloc « NOIR PLAT », à la fin du `<style>`, ne change
+  que la surface des cartes (`#0E0E0E` au lieu de `#161616`), les filets, et les
+  règles du jaune. Le blog et les articles recopient cette feuille. Les autres pages
+  (`cgv.html`, `cgc.html`, les deux guides et leurs pages de remerciement) ont leur
+  feuille propre : leurs jetons y sont directement écrits.
+- **Il n'y a plus d'îlots.** Le fond blanc en avait imposé une dizaine (menu, marques,
+  manifeste, bandeaux, contact, pied de page, assistant, barre des pages légales,
+  carte du formulaire des guides), tous revenus au régime commun. Le formulaire Tally
+  des guides, texte blanc sur fond transparent, se pose de nouveau sur la carte sans
+  rien de particulier.
+- **Le fond est plat**, c'est ce qui distingue ce noir du « noir profond » du
+  20 septembre : pas de `radial-gradient` sur `body`, et le halo de la vidéo est
+  retiré — il ne lui reste que son ombre portée. Le hero garde le sien, en jaune à
+  10 % : c'est un décor de section, pas le fond de la page.
+- **N'ont pas changé** : les deux guides PDF, qui sont des images, et **l'image
+  d'aperçu de partage, restée blanche** — refaite trois fois dans la journée, elle
+  n'a pas été redemandée après ce cinquième fond (voir « L'aperçu de partage »).
+  C'est donc la seule pièce du site qui ne suit pas ce fond, et la refaire coûte un
+  sixième nom de fichier et un nouveau passage du propriétaire par le Post Inspector.
 - **Deux fichiers de logo, et le fond décide lequel.** `assets/logo.png` est le logo
   complet : contour blanc épais sur sa plaque noire. `assets/logo-clair.png` est le
   même sans la plaque, sur transparence — son contour blanc ne se voit donc que sur du
   sombre, et sur du blanc il ne reste que l'hexagone noir au sigle jaune. Le
   23 septembre 2026, le propriétaire a demandé de remettre le blanc (« Remets le logo
-  blanc sur le fond blanc ») : **sur fond clair, c'est `logo.png`** — en-tête du blog
-  et de chaque article (écrit dans `entete` de `build-blog.mjs`), en-tête des deux
-  pages de guide et de leurs pages de remerciement. Les pages légales l'utilisaient
-  déjà dans leur barre du haut. **Sur les îlots restés noirs, c'est `logo-clair.png`**,
-  où le contour se voit sans plaque : menu et pied de page de l'accueil — que le champ
-  `logo` du back office renseigne, et qu'il ne faut donc pas basculer là — et le
-  panneau de l'assistant, et les couvertures noires des deux guides PDF. Interrogé
-  avant de trancher, il n'avait d'abord voulu le changement que sur les pages ; il a
-  demandé l'image de partage juste après (« Remets le logo blanc dans l'image de
-  partage aussi »), et elle porte donc `logo.png` elle aussi. La règle tient en une
-  phrase : **plaque noire sur fond clair, transparence sur fond sombre.**
+  blanc sur le fond blanc », puis « … dans l'image de partage aussi ») : `logo.png`
+  est alors passé sur les en-têtes du blog, des articles, des deux pages de guide et
+  de leurs pages de remerciement, et dans l'image de partage. **Le noir plat du même
+  soir les a tous rendus à `logo-clair.png`** : la plaque n'a plus lieu d'être quand
+  la page est noire. Seules exceptions qui gardent `logo.png` : la barre du haut des
+  pages légales, qui l'utilisait déjà avant tout cela, et l'image de partage, restée
+  blanche. La règle tient en une phrase et survit à tous les changements de fond :
+  **plaque noire sur fond clair, transparence sur fond sombre.** Le menu et le pied
+  de page de l'accueil sont renseignés par le champ `logo` du back office : ne pas
+  basculer ce champ, il vaut pour deux emplacements toujours sombres.
 
 **Le violet n'existe que dans le contour animé de la barre de navigation**, demandé par
 le propriétaire le 14 septembre 2026 : un filet dégradé jaune et violet, et deux éclats —
@@ -728,11 +736,12 @@ d'aujourd'hui (« mets juste le filet plutôt en blanc »). Carreau `--ground`, 
 n'y reste que le mot en italique du titre. Les deux états précédents sont dans
 l'historique git.
 
-**Depuis le fond blanc du 23 septembre, ce filet est posé à l'intérieur du carreau**
-(`box-shadow:inset 0 0 0 2px #FFFFFF`, bordure ramenée au noir du carreau) : par
-l'extérieur, un filet blanc se fondrait dans la page et le carreau n'aurait plus
-l'air d'en porter un. Le carreau garde sa taille, le filet sa largeur, et l'îlot noir
-reste le seul endroit de la section où quelque chose est sombre.
+**Le fond blanc du 23 septembre l'avait fait passer à l'intérieur du carreau**
+(`box-shadow:inset 0 0 0 2px #FFFFFF`) : par l'extérieur, un filet blanc se fondait
+dans la page claire et le carreau n'avait plus l'air d'en porter un. Le noir plat du
+même soir a rendu la bordure à sa place, à l'extérieur, où elle se détache de nouveau.
+Retenir la règle plutôt que le code : **le filet doit se voir contre le fond de la
+page, pas seulement contre le carreau.**
 
 - **Le sens contraire est un `animation-direction:reverse`** sur la même image-clé :
   la piste va de `-50%` à `0` au lieu de l'inverse. Comme chaque piste porte deux
@@ -844,54 +853,52 @@ confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé
 téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur, ses
 deux crochets d'angle jaunes sont masqués — celui du bas tombait sur le bouton du
 téléphone. Pour remesurer : capturer la page entière, puis chercher les bandes
-horizontales sans un pixel plus sombre que `#E0E0E0` ; les cartes `#F4F4F1` passent
-pour du vide, à retrancher à la main. C'est la méthode de la journée du fond blanc,
-revenue avec lui le 23 septembre. Sur fond sombre elle se renverse — les bandes où
-aucun pixel ne dépasse `#1E1E1E`, cartes et panneaux à retrancher de même.
+horizontales où aucun pixel ne dépasse `#1E1E1E` ; les cartes `#0E0E0E` passent pour
+du vide, à retrancher à la main. Sur fond clair la méthode se renverse — les bandes
+sans un pixel plus sombre que `#E0E0E0`, cartes à retrancher de même.
 
-**Sur fond clair, le jaune ne sert plus qu'en aplat.** Il ne se lit pas en texte sur
-du blanc — 1,5:1 —, donc rien de ce qui compte ne peut être écrit en jaune. Il garde
-les trois rôles que le propriétaire lui a donnés le 21 septembre (« Augmente un peu le
-jaune sur le site. Tu mettras un jaune très lisible dans les parties les plus
-importantes »), mais en posant du texte sombre dessus plutôt qu'en colorant le texte :
+**Sur fond sombre, le jaune redevient de l'encre.** Le fond blanc l'avait condamné à
+l'aplat — il n'y tient pas en texte, 1,5:1 ; sur le noir il mesure 13:1 et reprend
+donc les trois rôles que le propriétaire lui a donnés le 21 septembre (« Augmente un
+peu le jaune sur le site. Tu mettras un jaune très lisible dans les parties les plus
+importantes ») :
 
-- **les actions**, inchangées : « Réserver un échange », « Recevoir », « Nous
-  contacter », « Réserver mon appel », « Lire le blog », le carré à la flèche du menu,
-  le lien d'évitement et la pastille de l'assistant ;
-- **les mots accentués des grands titres** : `.display em` reste à l'encre, souligné
-  d'un trait de surligneur jaune posé sous le bas des lettres — un dégradé, pas une
-  bordure, pour qu'il suive un mot coupé en deux lignes. Même traitement pour les
-  italiques du corps de texte : une seule règle `em` les porte tous, et les îlots
-  noirs la défont pour y rendre le jaune ;
-- **les chiffres et les numéros** : les numéros 01 à 05 de « Ce qu'on installe » et de
-  l'IA générative (`.offer__no`, `.pilier__no`) passent sur une pastille jaune, les
-  icônes des quatre chiffres (`.figure .figure__ico`) dans un disque jaune, et les
-  coches des deux pages de guide dans une pastille jaune. Les chiffres eux-mêmes
-  (`.figure b`) reviennent à l'encre : un aplat sous des caractères de 3,7 rem
-  pèserait trop lourd. Les numéros des cinq étapes (`.step__no`) et les mots du
-  manifeste (`.manifesto .punch em`) restent en jaune plein : ils sont dans des îlots
-  noirs.
+- **les actions** : « Réserver un échange », « Recevoir », « Nous contacter »,
+  « Réserver mon appel », « Lire le blog », le carré à la flèche du menu, le lien
+  d'évitement et la pastille de l'assistant ;
+- **les mots accentués des grands titres** : une seule règle, `.display em`, pour le
+  titre d'accueil, celui de chaque section, celui du blog et ceux des pages de guide —
+  deux mots par écran, jamais plus. Les italiques du corps de texte, eux, restent
+  blancs : la serif suffit à les détacher ;
+- **les chiffres et les numéros** : les quatre chiffres de « Ce à quoi vous engager »
+  (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles (`.step__no`,
+  `.pilier__no`, `.offer__no`), les mots du manifeste (`.manifesto .punch em`) et les
+  coches des deux pages de guide.
 
-**Reste hors du jaune**, et doit y rester : les survols des cartes, qui se cernent
-d'encre — un filet jaune ne se verrait pas sur le blanc ; le halo du hero, où le jaune
-n'est qu'une teinte à 22 % ; et l'icône de l'encart « Guide gratuit » du bandeau des
-cinq étapes, qui décore un lien sans rien énoncer. Les aplats cliquables, eux, sont
-jaunes partout, survols compris (voir ci-dessous).
+**Les pastilles et les disques du fond blanc sont partis avec lui** : numéros, icônes
+des chiffres et coches redeviennent du trait jaune posé à même la page. Ne pas les
+remettre sur fond sombre — un aplat jaune y crie, là où sur blanc il était la seule
+façon de lire la couleur.
 
-**Contrastes**, le fond ayant changé : l'encre `#141414` donne 18,2:1 sur le blanc et
-17,1:1 sur les cartes `#F4F4F1` ; les gris `#4E4E49` et `#6B6B66`, 8,4:1 et 5,3:1 sur
-le blanc, 7,5:1 et 4,75:1 sur une carte — tous au-dessus du seuil AA de 4,5:1. Le
-texte posé sur un aplat jaune reste `--on-yellow` (#141414), soit 12,18:1. `--mur`
-(#8A8A84), qui ne sert plus qu'au blog, donne 3,5:1, au-dessus du seuil de 3:1 d'un
-élément d'interface.
+**Reste hors du jaune**, et doit y rester : les italiques du corps de texte ; tous les
+survols, qui prennent `--mur` pour un filet ou le blanc pour un aplat ; le cercle de
+la photo de la signature ; les soulignés du pied de page et des pages légales ; et
+l'icône de l'encart « Guide gratuit ». Les aplats cliquables, eux, sont jaunes partout
+(voir ci-dessous).
 
-Les quatre règles qui se sont succédé, pour mémoire : jusqu'au 20 septembre, le jaune
+**Contrastes**, le fond ayant changé : `#FFCC00` donne 15,3:1 sur le fond `#000000` et
+14,4:1 sur les cartes `#0E0E0E` — très au-dessus du seuil AAA de 7:1. Le blanc
+`#FFFFFF` donne 21:1, les gris `#B4B4B0` et `#8A8A86` 11,4:1 et 6,6:1. Le texte posé
+sur un aplat jaune reste `--on-yellow` (#141414), soit 12,18:1.
+
+Les cinq règles qui se sont succédé, pour mémoire : jusqu'au 20 septembre, le jaune
 tenait quatre rôles — le trait fin, l'icône, le mot en italique, l'aplat de ce qui se
 clique ; le 20, il n'a gardé que l'aplat et le titre d'accueil ; le 21, il a repris le
-titre de section, l'icône et le chiffre ; le 23, le fond blanc l'a ramené à l'aplat
-seul, sans rien lui retirer de ce qu'il marque. Toutes les retouches vivent dans le
-bloc « FOND BLANC » de `index.html`, que le blog et les articles recopient — sauf les
-coches, qui sont un SVG en ligne dans la feuille propre de chaque page de guide.
+titre de section, l'icône et le chiffre ; le 23 au matin, le fond blanc l'a ramené à
+l'aplat seul ; le 23 au soir, le noir plat lui a rendu le trait. Toutes les retouches
+vivent dans le bloc « NOIR PLAT » de `index.html`, que le blog et les articles
+recopient — sauf les coches, qui sont un SVG en ligne dans la feuille propre de chaque
+page de guide.
 
 **Les aplats cliquables sont jaunes**, depuis le 14 septembre 2026. Le propriétaire
 est revenu sur le retrait des aplats en nommant le carré à la flèche de la barre du
@@ -909,12 +916,12 @@ et `cgc.html`, qui sont indépendantes. L'italique reste rare : quinze occurrenc
 la page d'accueil, une sur le blog, une dans les CGV. Toutes ont été mesurées sur leur
 fond réel, entre 11,97:1 et 13,89:1.
 
-**Ce n'est plus vrai depuis le 20 septembre 2026.** Sur le noir profond, les italiques
-du corps de texte étaient passés au blanc et ceux des grands titres étaient restés
-jaunes. Depuis le fond blanc du 23 septembre, **tous sont à l'encre, soulignés d'un
-trait de surligneur jaune** — l'écriture de la journée du 19, revenue avec le fond.
-Seuls les italiques des îlots noirs gardent le jaune plein. La règle vit dans chaque
-feuille : le bloc « FOND BLANC » de `index.html`, puis les feuilles de `cgv.html`,
+**Ce n'est plus vrai depuis le 20 septembre 2026** : les italiques du corps de texte
+sont blancs, seuls ceux des grands titres restent jaunes. Le fond blanc du
+23 septembre les avait tous mis à l'encre, soulignés d'un trait de surligneur jaune ;
+le noir plat du même soir a rendu cette écriture inutile et elle est repartie avec
+lui — l'historique git la garde, elle a déjà servi deux fois. La règle vit dans chaque
+feuille : le bloc « NOIR PLAT » de `index.html`, puis les feuilles de `cgv.html`,
 `cgc.html`, des deux guides et de leurs pages de remerciement.
 
 **Le `.skip-link` suit la règle des aplats cliquables**, quelle qu'elle soit. Il avait
@@ -964,15 +971,15 @@ navigateur :
   demande explicite du propriétaire du 16 septembre 2026, et les deux rangs en sens
   contraires celle du 21. Mouvement réduit et survol l'arrêtent déjà.
 - `cramped-padding` sur les quatre `<p>` des figures — même cause : le padding est
-  porté par les enfants. Le détecteur ne le lève que sur fond sombre : il a disparu
-  avec le fond blanc du 23 septembre, comme il l'avait fait le 19.
+  porté par les enfants. Le détecteur ne le lève que sur fond sombre : absent les deux
+  journées de fond blanc, revenu avec le noir.
 - `pulsing-dot` sur `.assistant__msg--attente span` — les trois points ne vivent que
   pendant qu'une réponse de l'assistant se prépare, et disparaissent au premier
   morceau reçu : c'est un état réel et passager, pas une animation de décor. Consigné
   dans `.impeccable/config.json`. Les deux autres signalements levés par la pastille
   ont été corrigés : la mention passée de 11,5 à 12,8 px, et l'ombre du panneau
-  retirée — la bordure suffit. Depuis le fond blanc, la pastille elle-même porte de
-  nouveau une ombre, qui la pose au-dessus de la page.
+  retirée — sur le noir de la page, la bordure suffit. L'ombre que le fond blanc avait
+  rendue à la pastille est repartie avec lui.
 - Sur `scripts/guide/guide.html`, `tight-leading` (« 0,13 »), `oversized-h1`
   (« 7392px ») et `all-caps-body` — le détecteur lit mal les unités d'impression (pt,
   mm). Les étiquettes en capitales, là comme dans `guide.html`, font une trentaine de
