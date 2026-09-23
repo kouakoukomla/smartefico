@@ -787,15 +787,10 @@ em{color:var(--yellow)}
   background:var(--ink-3);border-radius:50%}
 .ba__col--apres li::before{background:var(--ink);transform:rotate(45deg);border-radius:0}
 
-/* ---------- public ciblé ---------- */
-.aud{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,16rem),1fr));
-  padding:0;margin:0}
-.aud li{list-style:none;background:var(--surface);border:1px solid var(--line);
-  padding:1rem 1.15rem;display:flex;align-items:flex-start;gap:.75rem;font-weight:500;
-  transition:border-color .2s ease}
-.aud li:hover{border-color:var(--yellow)}
-.aud li::before{content:"";width:.55rem;height:.55rem;background:var(--ink);flex:none;
-  transform:rotate(45deg);margin-top:.5rem}
+/* La section « Avec qui l'agence travaille » et son style .aud ont été
+   retirés le 23 septembre 2026 : la FAQ donnait la même liste de clients,
+   mot pour mot, dans « Avec quel type d'entreprises travaillez-vous ? ».
+   L'historique git les garde. */
 
 /* ---------- l'IA générative ----------
    Cinq cartes et une sixième, l'appel à prendre contact : trois colonnes sur
@@ -1148,7 +1143,7 @@ h1.display em{color:var(--yellow)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
-.figure:hover,.offer:hover,.agent:hover,.aud li:hover,.mc:hover,
+.figure:hover,.offer:hover,.agent:hover,.mc:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .pilier--appel{border-color:var(--line)}
 .step__tete:focus-visible,.guide-lien:focus-visible{outline-color:var(--ink)}
@@ -1785,23 +1780,6 @@ h1.display em{color:var(--yellow)}
           <p>Le système s'installe sur votre boîte mail, vos Google Sheets, votre CRM. Vous n'avez rien de nouveau à apprendre, et rien à remplacer.</p>
         </article>
       </div>
-    </section>
-
-    <!-- ============ PUBLIC CIBLÉ ============ -->
-    <section class="wrap" id="public">
-      <div class="head head--centre">
-        <h2 class="display">Avec qui <em>l'agence travaille</em>.</h2>
-      </div>
-      <ul class="aud">
-        <li>PME, ETI et grands comptes</li>
-        <li>Entrepreneurs et dirigeants B2B ou B2C</li>
-        <li>Agences marketing et immobilières</li>
-        <li>Cabinets d'avocats</li>
-        <li>Gestionnaires de patrimoine</li>
-        <li>Agences d'assurances</li>
-        <li>Consultants et coachs premium</li>
-        <li>Passionnés de l'IA et de l'automatisation no-code</li>
-      </ul>
     </section>
 
     <!-- ============ LA CHAÎNE / MASTERCLASS ============

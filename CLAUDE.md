@@ -255,13 +255,33 @@ installe » (`#resultats`), puis après le bandeau des cinq étapes ; et « Avan
 (`#avant-apres`), qui suivait ce bandeau, est remonté juste avant « Ce qu'on
 installe ». L'accueil enchaîne donc : hero, marques, `#apport`, `#chiffres`,
 `#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
-`#agents` (placés l'un contre l'autre le même jour, l'IA générative d'abord), « Trois
-raisons » (`#pourquoi`), puis « Avec qui l'agence travaille » (`#public`), passée
-après « Trois raisons » le même jour, toujours à sa demande. La première pile s'arrête
+`#agents` (placés l'un contre l'autre le même jour, l'IA générative d'abord) et
+« Trois raisons » (`#pourquoi`). « Avec qui l'agence travaille » (`#public`) suivait
+« Trois raisons » depuis le 19 septembre ; elle a été **supprimée le 23 septembre
+2026** (voir plus bas). La première pile s'arrête
 avant le bandeau, la seconde s'ouvre sur l'IA générative. Le menu suit l'ordre de la
 page : « Avant/Après » y est passé devant « Services », sans rien changer à sa
 largeur. Aucun texte visible ne dépend de cet ordre — « Les quatre scénarios plus
 haut », dans « Trois raisons », désigne les agents, qui restent au-dessus.
+
+**Plus de section « Avec qui l'agence travaille ».** Le propriétaire a demandé le
+23 septembre 2026 de réduire le nombre de sections de l'accueil, qui en comptait
+quinze. Quatre répétaient ce qu'une autre disait déjà — « Avec qui l'agence
+travaille », « Ce à quoi vous engager », « Ce qu'on vous apporte » et « Trois
+raisons » ; il a choisi la première, et elle seule.
+
+C'était la seule duplication littérale : ses huit types de clients sont repris **mot
+pour mot** par la question « Avec quel type d'entreprises travaillez-vous ? » de la
+FAQ, qui paraît quelques centaines de pixels plus bas. Rien n'a donc été perdu, et la
+page gagne 297 px. Sont partis avec elle son style `.aud` et son `.aud li:hover` de la
+règle de survol commune ; aucun lien de menu ne pointait dessus, et aucun texte ne la
+citait. L'historique git la garde.
+
+**Les trois autres restent, et les raisons de les garder sont notées** : « Ce à quoi
+vous engager » porte les compteurs animés, un argument visuel que rien ne remplace ;
+« Ce qu'on vous apporte » porte le manifeste, ses quatre phrases écrites avec lui le
+19 septembre ; « Trois raisons » est la seule section qui formule une objection et y
+répond.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, s'est d'abord placée juste avant la chaîne. Le 19, à la demande
