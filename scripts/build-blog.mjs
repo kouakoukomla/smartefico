@@ -236,8 +236,7 @@ const styleBlog = `<style>
 .blog-top__brand img{width:2rem;height:2rem}
 /* Deux liens à droite : le guide gratuit (guide.html), à l'encre pleine parce
    que c'est une invitation, puis le retour au site, en gris. Au survol, un
-   trait gris clair les souligne : depuis le noir profond (20 septembre 2026),
-   le jaune est réservé aux actions. Sur téléphone, ils
+   trait gris les souligne. Sur téléphone, ils
    passent l'un sous l'autre plutôt que de pousser la marque. */
 .blog-top__liens{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.35rem 1.4rem;text-align:right}
 .blog-top__guide{color:var(--ink);text-decoration:none}
@@ -332,7 +331,7 @@ function tete({ titre, description, url, image }) {
 <meta name="twitter:card" content="summary_large_image">
 ${favicon}
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#050507">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
