@@ -678,8 +678,14 @@ em{color:var(--yellow)}
    leur côté, qu'un demi-écart (style en ligne de leurs <div class="stack">) :
    pile et panneau additionnés, il restait 135 px de vide au-dessus du titre
    et sous les étapes, contre 77 entre les autres sections. Resserré le
-   19 septembre 2026. */
-.invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(2rem,4.5vw,3.5rem)}
+   19 septembre 2026.
+
+   Resserré une seconde fois le 23 septembre 2026, dernier de la série après
+   les en-têtes, les cartes et le bloc contact : clamp(2rem,4.5vw,3.5rem) →
+   clamp(1.4rem,3vw,2.35rem), soit 56 px à 38 px à 1 280 px. Le rapport au
+   bloc contact est conservé — le bandeau reste à peu près aux trois quarts
+   de sa marge, comme avant. */
+.invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(1.4rem,3vw,2.35rem)}
 .invert .lead{color:#B5B5B1}
 .invert .display{color:#FFF}
 /* Les cinq etapes sont des panneaux depliants, poses cote a cote. Elles

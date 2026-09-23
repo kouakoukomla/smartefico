@@ -883,11 +883,18 @@ bloc contact ») : sa marge verticale passe de `clamp(2.25rem,6vw,4.5rem)` à
 bouge pas** : sur un panneau pleine largeur elle ne pèse rien en hauteur, et la rogner
 collerait le texte au bord sur téléphone.
 
-**Ce que les quatre resserrements du 23 septembre rendent ensemble** : la page
-d'accueil passe de 10 436 px à **9 871 px** à 1 280 px de large, soit 565 px, sans
-qu'aucun contenu ne disparaisse. N'ont pas été touchés, et ne devraient pas l'être
-sans demande : `--gap` entre les sections, et la marge intérieure du bandeau des cinq
-étapes, qui est un panneau et non une carte.
+**Le bandeau des cinq étapes a fermé la série** (« Réduis aussi la marge du bandeau
+des cinq étapes ») : `.invert` passe de `clamp(2rem,4.5vw,3.5rem)` à
+`clamp(1.4rem,3vw,2.35rem)`, soit 56 px à 38 px à 1 280 px. C'est son second
+resserrement, après celui du 19 septembre. **Le rapport au bloc contact est
+conservé** — le bandeau reste à peu près aux trois quarts de sa marge, comme avant :
+deux panneaux noirs qui ne se traitent pas l'un sans l'autre.
+
+**Ce que les cinq resserrements du 23 septembre rendent ensemble** : la page d'accueil
+passe de 10 436 px à **9 834 px** à 1 280 px de large, soit 602 px, sans qu'aucun
+contenu ne disparaisse. **N'a pas été touché, et ne devrait pas l'être sans
+demande** : `--gap`, l'écart entre deux sections, qui tient le rythme de la page
+entière et qu'il avait lui-même réglé le 19 septembre.
 
 La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
