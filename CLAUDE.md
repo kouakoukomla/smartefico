@@ -694,11 +694,24 @@ anneaux, la zone des courbes, et les boîtes et couleurs des huit grands chiffre
 IA · … · Conversion » (`.ticker`) a été retirée le 16 septembre 2026 à la demande du
 propriétaire, avec son style. Ne pas la remettre.
 
-**À sa place, les marques clientes défilent**, demande du même jour : sous le titre
-« Elles m'ont fait confiance », un seul rang pleine largeur de grands carreaux noirs
-arrondis, logos en silhouette blanche. Le titre était d'abord « Marques avec
-lesquelles j'ai travaillé » ; le propriétaire a voulu « travaillées », forme fautive
-après « avec lesquelles », puis a choisi cette reformulation.
+**À sa place, les marques clientes défilent**, demande du même jour : un rang pleine
+largeur de grands carreaux noirs arrondis, logos en silhouette blanche.
+
+**Le titre en est à sa quatrième écriture** : « Marques avec lesquelles j'ai
+travaillé », puis « travaillées » — forme fautive après « avec lesquelles » —, puis
+« Elles m'ont fait confiance. », et depuis le 23 septembre 2026
+**« +10 CEOs & Entreprises nous font confiance. »**, mot pour mot sa demande. Le point
+final est de Claude, pour que le titre s'aligne sur tous les autres de la page, qui en
+portent un ; l'insécable de « +10 CEOs » évite que le chiffre reste seul en bout de
+ligne. Le mot en italique reste « confiance », qui garde donc son trait de surligneur
+jaune.
+
+**Ce titre annonce plus de clients que la section n'en montre** : le rail ne porte que
+deux logos, les deux seuls que PRODUCT.md autorise à citer. Le chiffre vient du
+propriétaire, sur sa propre activité — ce n'est pas un chiffre de performance inventé,
+et la règle « aucun chiffre non vérifié » ne s'y applique donc pas de la même façon.
+Il lui a été signalé le jour même. Si d'autres logos arrivent, l'écart se referme ;
+sinon, c'est son affirmation, et elle l'engage.
 
 **Deux rangs en sens contraires, filet blanc sur carreau noir**, depuis le
 21 septembre 2026 : « Dans cette section "Elles m'ont fait confiance" tu mettras
@@ -813,7 +826,7 @@ Mesuré sur toute la page à quatre largeurs, quatre endroits dépassaient nette
 
 - **le hero**, qui avait une hauteur minimale (`min(42rem,80svh)`) supérieure à son
   contenu : le surplus se centrait autour du texte, et il y avait 180 px entre les
-  boutons et « Elles m'ont fait confiance » sur ordinateur, plus de 100 px au-dessus
+  boutons et le titre des marques sur ordinateur, plus de 100 px au-dessus
   et au-dessous du texte sur tablette. Hauteur minimale retirée, marges ramenées à
   `clamp(2rem,4.5vw,3.5rem)` en haut et `clamp(.75rem,1.5vw,1.25rem)` en bas ;
 - **le bandeau des cinq étapes** (`.invert`) : la pile de part et d'autre et le
