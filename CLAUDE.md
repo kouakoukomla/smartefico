@@ -451,10 +451,13 @@ Le même jour, un second paragraphe, dans la version détaillée qu'il a choisie
 nomme les services tiers : la vidéo YouTube en mode de confidentialité renforcée, qui
 peut enregistrer des informations dès l'arrivée puisqu'elle se lance seule ; Tally,
 qui héberge les formulaires ; Google Fonts, qui reçoit l'adresse IP du visiteur au
-chargement de la police des titres — il a préféré le déclarer plutôt que d'héberger
-la police sur le site. À tenir vrai : installer une mesure d'audience ou un pixel,
-couper l'autoplay, héberger la police ou changer d'outil de formulaire oblige à
-retoucher cet article, avec son accord.
+chargement des polices du site — il a préféré le déclarer plutôt que de les héberger
+lui-même. **« des polices du site » a remplacé « de la police des titres » le
+23 septembre 2026**, avec son accord explicite, le jour où Poppins est arrivée sur le
+corps du texte et sur les pages légales elles-mêmes : la phrase d'avant restait vraie
+sur le fond mais ne décrivait plus le bon usage. À tenir vrai : installer une mesure
+d'audience ou un pixel, couper l'autoplay, héberger les polices ou changer d'outil de
+formulaire oblige à retoucher cet article, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
@@ -977,11 +980,13 @@ dois utiliser ce type de caractère. »
 **Les pages légales chargent désormais une police distante**, elles qui n'en
 chargeaient aucune : elles n'avaient pas besoin d'Instrument Serif, leurs italiques
 étant du texte courant. C'est la seule entorse nouvelle à la règle des pages
-autoportantes. **L'article 9 des CGC dit que Google Fonts reçoit l'adresse IP « au
-chargement de la police des titres »** : la phrase reste vraie sur le fond — Google
-Fonts est bien utilisé, il reçoit bien l'adresse IP — mais « des titres » est devenu
-imprécis, puisque c'est maintenant le corps du texte, et sur toutes les pages. La
-correction a été proposée au propriétaire ; l'article ne se touche qu'avec son accord.
+autoportantes. **L'article 9 des CGC a été corrigé en conséquence**, le même jour et
+sur accord explicite du propriétaire : « la police des titres » y est devenue « les
+polices du site ». La phrase d'avant restait vraie sur le fond — Google Fonts est bien
+utilisé, il reçoit bien l'adresse IP — mais elle ne décrivait plus le bon usage,
+puisque c'est désormais le corps du texte, et sur toutes les pages, y compris celle
+que le visiteur lit à ce moment-là. Le texte vit dans `cgc.html` ; `sync-legal.mjs` le
+recopie dans la fenêtre de l'accueil.
 
 **Helvetica Now Text est commerciale, et rien ne la charge** — aucun `@font-face`,
 aucune feuille distante. Elle ne s'affiche que chez les visiteurs qui la possèdent
