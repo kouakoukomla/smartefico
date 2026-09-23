@@ -1907,7 +1907,16 @@ h1.display em{color:var(--yellow)}
       peuvent comporter des erreurs. N'y écrivez pas d'informations sensibles.</p>
   </section>
   <button class="assistant__ouvrir" type="button" aria-expanded="false" aria-controls="assistant-panneau">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3.5h16A2.5 2.5 0 0 1 22.5 6v9.5A2.5 2.5 0 0 1 20 18H9.3l-4.8 3.8V18H4a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 4 3.5z"/></svg>
+    <!-- Bulle au point d'interrogation, 23 septembre 2026 : « tu peux installer
+         un icône plus parlant ». L'ancienne était une bulle en aplat, muette —
+         elle disait « message » et laissait le libellé porter le sens, ce qui
+         ne marche pas sur téléphone, où le libellé est masqué (voir
+         .assistant__etiquette sous 30 rem). Au trait et à bouts ronds, comme
+         les autres icônes du site, et non plus en aplat. Deux pistes écartées
+         par le propriétaire sur rendu à taille réelle : une étincelle, qui
+         annonçait l'IA mais s'empâtait à 21 px, et deux bulles. -->
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.8a8.2 8.2 0 0 1-12.2 7.2L3.2 20.8l1.8-5.2A8.2 8.2 0 1 1 21 11.8z"/><path d="M9.9 9.3a2.3 2.3 0 0 1 4.3 1.1c0 1.6-2.2 1.9-2.2 3.3" stroke-width="2"/><path d="M12 16.4v.02" stroke-width="2.4"/></svg>
     <span class="assistant__etiquette">Une question&nbsp;?</span>
   </button>
 </div>

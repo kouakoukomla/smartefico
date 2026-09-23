@@ -402,6 +402,15 @@ Choisi parmi trois options — assistant IA sur
 mesure, assistant guidé sans IA, outil tout fait — pour montrer sur son propre site ce
 que l'agence vend : des agents IA qui qualifient.
 
+- **Son icône est une bulle au point d'interrogation**, au trait et à bouts ronds
+  comme les autres icônes du site, depuis le 23 septembre 2026 (« tu peux installer un
+  icône plus parlant »). L'ancienne était une bulle en aplat, muette : elle disait
+  « message » et laissait le libellé porter le sens — ce qui ne marche pas sur
+  téléphone, où `.assistant__etiquette` est masquée sous 30 rem et où l'icône reste
+  seule. **C'est à cette taille-là qu'il faut juger une icône ici**, pas agrandie :
+  une étincelle, qui aurait annoncé l'IA, s'y empâtait, et le propriétaire l'a écartée
+  sur rendu à taille réelle, avec une variante à deux bulles. Le dessin vit dans le
+  markup, entre les repères `ASSISTANT:START/END`.
 - **Quatre fichiers.** `api/chat.js`, la fonction serveur ; `lib/contexte-assistant.js`,
   le texte du site qu'elle donne à Claude, **généré** par `scripts/build-assistant.mjs`
   à partir du `<main>` de `index.html`, `guide.html` et `guide-ia.html` et de la
