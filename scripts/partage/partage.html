@@ -11,13 +11,15 @@
      Passée au fond blanc le même jour, avec le site, puis au noir profond le
      20 septembre, avec lui encore (la version du noir pur reste en
      assets/og-smartefico.jpg : des partages déjà faits y pointent).
-     Le 23 septembre, trois demandes du propriétaire à la suite : le portrait
-     noir et blanc de la signature, le retrait du filet jaune, puis le fond
-     blanc, qui la remet aux codes du site. Sur une carte blanche, le titre
-     et le nom de la marque passent à l'encre et le jaune ne tient plus que
-     l'aplat — il ne se lit pas en texte sur du blanc.
+     Le 23 septembre, quatre demandes du propriétaire à la suite : le portrait
+     noir et blanc de la signature, le retrait du filet jaune, le fond blanc,
+     qui la remet aux codes du site, puis le logo complet. Sur une carte
+     blanche, le titre et le nom de la marque passent à l'encre et le jaune ne
+     tient plus que l'aplat — il ne se lit pas en texte sur du blanc — et le
+     logo prend sa plaque noire (assets/logo.png), sans quoi son contour blanc
+     se perdrait dans la carte.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-blanc.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-blanc-2.jpg.
      Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
      la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
      viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
@@ -44,9 +46,9 @@ html,body{margin:0;background:#FFFFFF}
   background:url("../../assets/Portrait3.jpg") 50% 50%/cover no-repeat}
 /* Plus de filet entre le texte et la photo, retiré le 23 septembre 2026 à la
    demande du propriétaire (« Enlève le cadre jaune de l'image »). Il avait
-   été posé en jaune le 21 parce qu'en gris on ne le voyait pas ; le fond
-   gris clair du portrait noir et blanc tranche seul sur le noir de la carte,
-   et l'arête se voit sans qu'on la dessine. */
+   été posé en jaune le 21 parce qu'en gris on ne le voyait pas. Sur la carte
+   blanche, le gris du fond de la photo suffit à poser l'arête, plus
+   discrètement que sur le noir — ne pas en redessiner un. */
 .texte{position:absolute;left:64px;top:0;bottom:0;width:630px;display:flex;flex-direction:column;
   justify-content:center}
 .marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}
@@ -71,7 +73,7 @@ p{margin:0}
 <div class="carte">
   <div class="photo"></div>
   <div class="texte">
-    <div class="marque"><img src="../../assets/logo-clair.png" alt=""><span>SMARTEFICO</span></div>
+    <div class="marque"><img src="../../assets/logo.png" alt=""><span>SMARTEFICO</span></div>
     <h1>Générez des <em>leads&nbsp;qualifiés</em> pour vos offres et mettez l’<em>IA&nbsp;générative</em> au service de votre performance.</h1>
     <p class="cible">PME, ETI, grands comptes et dirigeants.</p>
     <p class="tel">+33 7 51 59 96 36</p>

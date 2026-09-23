@@ -1,5 +1,5 @@
 ---
 portrait: assets/Portrait3.jpg
 logo: assets/logo-clair.png
-og_image: assets/og-smartefico-blanc.jpg
+og_image: assets/og-smartefico-blanc-2.jpg
 ---
