@@ -763,7 +763,15 @@ il faudrait une vidéo, à produire hors du dépôt.
 
 **Le portrait est de nouveau le noir et blanc**, `assets/Portrait3.jpg`, depuis le
 23 septembre 2026, à la demande du propriétaire (« Remplace l'image de "Emmanuel
-Kouakou" en mettant plutôt celle-ci : Portrait3 »). 900 x 1200, 201 Ko. Le cadrage
+Kouakou" en mettant plutôt celle-ci : Portrait3 »). **800 x 1067, 111 Ko**, allégé le
+même jour, toujours à sa demande (« allège Portrait3 ») : il arrivait à 900 x 1200 et
+196 Ko, là où le site tourne plutôt autour de 50. Réencodé sur place — l'historique
+git garde l'original —, en JPEG progressif mozjpeg de qualité 84. 800 px suffisent :
+la photo ne s'affiche jamais plus large que 24 rem, soit 384 px, et 768 px sur un
+écran à double densité. Le passage en vrai niveau de gris a été mesuré et écarté :
+l'image est déjà parfaitement neutre (écart R/V/B nul), ses plans de chrominance ne
+coûtent donc presque rien et la conversion ne gagnait qu'un kilo-octet. Comparés au
+format d'affichage, l'avant et l'après sont indiscernables. Le cadrage
 du cercle, `object-position: center 18%`, lui convient sans retouche : le visage
 garde de l'air au-dessus et les bras croisés tiennent dans le bas du disque. Son
 fond gris clair se pose sans heurt sur la page blanche, à l'intérieur de l'anneau
@@ -772,7 +780,8 @@ jaune.
 Il se déclare dans le back office (`content/pages/visuels.md`, champ `portrait`) et
 non dans `index.html`, que `sync-content.mjs` réécrit. Après le changement :
 `node scripts/sync-content.mjs`, puis `node scripts/build-standalone.mjs`, qui
-réencode l'image en base64 dans la copie autonome — celle-ci passe de 446 à 638 Ko.
+réencode l'image en base64 dans la copie autonome. Celle-ci était montée de 446 à
+638 Ko avec le portrait d'origine ; elle retombe à 524 Ko une fois celui-ci allégé.
 
 Le portrait couleur qu'il remplace, `assets/portrait-emmanuel-kouakou.jpg` (900 px,
 53 Ko), vient de « Mon image.jpg » (dans son dossier `IMG/` et à la racine du site,

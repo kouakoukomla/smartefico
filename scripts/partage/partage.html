@@ -38,10 +38,12 @@ html,body{margin:0;background:#FFFFFF}
 .carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#141414;
   background:radial-gradient(52rem 34rem at 30% -6rem,rgba(255,204,0,.22),transparent 70%) #FFFFFF;
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif}
-/* Le portrait noir et blanc (900 x 1200) a presque exactement les
-   proportions du panneau (470 x 630) : `cover` ne rogne que deux pixels de
-   large, et la photo paraît entière, du haut du crâne aux bras croisés. Le
-   point de mire n'a donc plus rien à corriger. */
+/* Le portrait noir et blanc (800 x 1067, allégé le 23 septembre 2026 — il
+   faisait 900 x 1200) a presque exactement les proportions du panneau
+   (470 x 630) : `cover` ne rogne que deux pixels de large, et la photo
+   paraît entière, du haut du crâne aux bras croisés. Le point de mire n'a
+   donc rien à corriger. 800 px pour un panneau de 470 : la carte est
+   photographiée à 1200 x 630 sans redoublement de densité. */
 .photo{position:absolute;top:0;right:0;width:470px;height:630px;
   background:url("../../assets/Portrait3.jpg") 50% 50%/cover no-repeat}
 /* Plus de filet entre le texte et la photo, retiré le 23 septembre 2026 à la
