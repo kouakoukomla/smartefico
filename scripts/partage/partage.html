@@ -11,32 +11,28 @@
      Passée au fond blanc le même jour, avec le site, puis au noir profond le
      20 septembre, avec lui encore (la version du noir pur reste en
      assets/og-smartefico.jpg : des partages déjà faits y pointent).
-     Le 23 septembre, quatre demandes du propriétaire à la suite : le portrait
+     Le 23 septembre, cinq demandes du propriétaire à la suite : le portrait
      noir et blanc de la signature, le retrait du filet jaune, le fond blanc,
-     qui la remet aux codes du site, puis le logo complet. Sur une carte
-     blanche, le titre et le nom de la marque passent à l'encre et le jaune ne
-     tient plus que l'aplat — il ne se lit pas en texte sur du blanc — et le
-     logo prend sa plaque noire (assets/logo.png), sans quoi son contour blanc
-     se perdrait dans la carte.
+     le logo complet, puis le retour au noir — le site ayant lui-même repris un
+     noir plat le soir même. La carte suit donc de nouveau les codes sombres :
+     fond #000000 sans dégradé, texte blanc, jaune en encre, logo sans plaque.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-blanc-2.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-plat.jpg.
      Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
      la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
      viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
      LinkedIn, Facebook et WhatsApp gardent une image en mémoire par adresse. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
 <style>
-/* Mêmes codes que le site depuis qu'il est blanc : fond #FFFFFF, encre
-   #141414, et le jaune en aplat sous du texte sombre — il ne se lit pas en
-   texte sur du blanc (1,5:1). Il paraît donc deux fois : le trait de
-   surligneur sous les deux mots accentués du titre, comme sur la page
-   d'accueil, et la pastille du numéro, qui tient lieu de bouton. Le nom de
-   la marque, jaune du temps du fond noir, revient à l'encre. La ligne
-   d'audience et le titre sont du texte courant, à l'encre eux aussi.
-   Le halo du haut reprend celui du hero : du jaune très dilué. */
-html,body{margin:0;background:#FFFFFF}
-.carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#141414;
-  background:radial-gradient(52rem 34rem at 30% -6rem,rgba(255,204,0,.22),transparent 70%) #FFFFFF;
+/* Mêmes codes que le site depuis qu'il est au noir plat : fond #000000
+   **sans dégradé** — la carte est aussi plate que la page —, texte blanc, et
+   le jaune en encre, qui s'y lit à 15:1. Il paraît trois fois : le nom de la
+   marque, les deux mots accentués du titre, et la pastille du numéro, qui
+   tient lieu de bouton. La ligne d'audience et le reste du titre sont du
+   texte courant, en blanc. */
+html,body{margin:0;background:#000000}
+.carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#FFFFFF;
+  background:#000000;
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif}
 /* Le portrait noir et blanc (800 x 1067, allégé le 23 septembre 2026 — il
    faisait 900 x 1200) a presque exactement les proportions du panneau
@@ -48,23 +44,21 @@ html,body{margin:0;background:#FFFFFF}
   background:url("../../assets/Portrait3.jpg") 50% 50%/cover no-repeat}
 /* Plus de filet entre le texte et la photo, retiré le 23 septembre 2026 à la
    demande du propriétaire (« Enlève le cadre jaune de l'image »). Il avait
-   été posé en jaune le 21 parce qu'en gris on ne le voyait pas. Sur la carte
-   blanche, le gris du fond de la photo suffit à poser l'arête, plus
-   discrètement que sur le noir — ne pas en redessiner un. */
+   été posé en jaune le 21 parce qu'entre deux surfaces sombres on ne le
+   voyait pas ; depuis, la photo est le noir et blanc, dont le fond gris clair
+   tranche franchement sur le noir de la carte. L'arête se voit sans qu'on la
+   dessine — ne pas en redessiner une. */
 .texte{position:absolute;left:64px;top:0;bottom:0;width:630px;display:flex;flex-direction:column;
   justify-content:center}
 .marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}
 .marque img{width:78px;height:78px;display:block}
-.marque span{color:#141414;font-weight:700;font-size:19px;letter-spacing:.14em}
+.marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
 h1{margin:0;font-weight:800;font-size:54px;line-height:1.05;letter-spacing:-.032em}
-/* Les deux mots accentués : à l'encre, soulignés d'un trait de surligneur
-   jaune posé sous le bas des lettres, exactement comme les `.display em` du
-   site. Le trait est un dégradé et non une bordure : il suit la jambe des
-   lettres descendantes et s'arrête à la fin du mot. */
+/* Les deux mots accentués : en jaune plein, comme les `.display em` du site
+   sur fond sombre. Le trait de surligneur du fond blanc est reparti avec lui —
+   il n'avait de raison d'être que là où le jaune ne se lit pas. */
 h1 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
-  font-weight:400;color:#141414;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em;
-  background-image:linear-gradient(to top,transparent .1em,#FFCC00 .1em,#FFCC00 .4em,transparent .4em);
-  background-repeat:no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  font-weight:400;color:#FFCC00;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
 p{margin:0}
 .cible{margin-top:30px;font-size:27px;font-weight:600}
 .tel{align-self:flex-start;margin-top:14px;padding:9px 22px 10px;border-radius:999px;
@@ -75,7 +69,7 @@ p{margin:0}
 <div class="carte">
   <div class="photo"></div>
   <div class="texte">
-    <div class="marque"><img src="../../assets/logo.png" alt=""><span>SMARTEFICO</span></div>
+    <div class="marque"><img src="../../assets/logo-clair.png" alt=""><span>SMARTEFICO</span></div>
     <h1>Générez des <em>leads&nbsp;qualifiés</em> pour vos offres et mettez l’<em>IA&nbsp;générative</em> au service de votre performance.</h1>
     <p class="cible">PME, ETI, grands comptes et dirigeants.</p>
     <p class="tel">+33 7 51 59 96 36</p>
