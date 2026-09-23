@@ -213,7 +213,10 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
-**« Ce qu'on vous apporte » (`#apport`) résume le titre d'accueil**, depuis le
+**« Ce qu'on vous apporte » (`#apport`) a été supprimée le 23 septembre 2026**, à la
+demande du propriétaire, qui réduisait le nombre de sections. Ce qui suit décrit ce
+qu'elle était, parce que son manifeste peut resservir et que l'historique git le
+garde. Elle résumait le titre d'accueil depuis le
 19 septembre 2026. Le propriétaire l'a fait remonter juste après les marques, avant
 « Agents IA », et a demandé de la résumer « de sorte que cela exprime mieux mon grand
 titre » : « Générez des leads qualifiés pour vos offres et mettez l'IA générative au
@@ -243,8 +246,20 @@ texte d'origine, resserré :
 Sont partis : les deux premiers paragraphes d'introduction, fondus dans les cartes, et
 les six panneaux dépliants `.livrable` avec leurs textes cachés, dont le détail vit
 désormais dans `#ia` — l'historique git les garde si on voulait y revenir. Les cartes
-réutilisent le composant `.pilier` de `#ia`. Le lien « Expertises » du menu y mène
-toujours, et reste le premier : l'ordre du menu suit encore celui de la page.
+réutilisaient le composant `.pilier` de `#ia`, qui reste en place.
+
+**Ce qui est parti avec elle, le 23 septembre 2026** : son markup, son style
+(`.apports`, `.apport__manifeste`, `.apport__volet`, et `.manifesto` tout entier, que
+rien d'autre n'appelait), la règle `.manifesto .punch em` du bloc de thème, et **le
+lien « Expertises » du menu**, qui pointait sur elle et n'aurait plus mené nulle part.
+Le menu passe donc à six liens plus « Contact », et respire d'autant. L'ordre du menu
+suit toujours celui de la page.
+
+**Le manifeste est parti avec la section** : ses quatre phrases — deux du propriétaire
+sur les leads, deux de Claude sur l'IA générative, écrites le 19 septembre — ne
+paraissent plus nulle part. Il a été prévenu. Le bloc se replacerait ailleurs d'un
+seul tenant si l'envie revenait : c'était un `div.manifesto` autonome, avec son fond
+noir et ses deux volets.
 
 Le même jour, « Ce à quoi vous engager » (`#chiffres`) et « Ne nous croyez pas sur
 parole, observez » (`#preuves`) l'ont suivie, ensemble et toujours avant « Agents IA »,
@@ -253,7 +268,8 @@ aussi à sa demande (voir « Plus de captures de preuves » dans Design). Puis, 
 le même jour et à sa demande, « Agents IA » (`#agents`) est passé après « Ce qu'on
 installe » (`#resultats`), puis après le bandeau des cinq étapes ; et « Avant, après »
 (`#avant-apres`), qui suivait ce bandeau, est remonté juste avant « Ce qu'on
-installe ». L'accueil enchaîne donc : hero, marques, `#apport`, `#chiffres`,
+installe ». L'accueil enchaîne donc, depuis le retrait de `#apport` : hero, marques,
+`#chiffres`,
 `#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
 `#agents` (placés l'un contre l'autre le même jour, l'IA générative d'abord) et
 « Trois raisons » (`#pourquoi`). « Avec qui l'agence travaille » (`#public`) suivait
@@ -277,11 +293,15 @@ page gagne 297 px. Sont partis avec elle son style `.aud` et son `.aud li:hover`
 règle de survol commune ; aucun lien de menu ne pointait dessus, et aucun texte ne la
 citait. L'historique git la garde.
 
-**Les trois autres restent, et les raisons de les garder sont notées** : « Ce à quoi
-vous engager » porte les compteurs animés, un argument visuel que rien ne remplace ;
-« Ce qu'on vous apporte » porte le manifeste, ses quatre phrases écrites avec lui le
-19 septembre ; « Trois raisons » est la seule section qui formule une objection et y
-répond.
+**Il a demandé « Ce qu'on vous apporte » dans la foulée**, prévenu qu'elle portait le
+manifeste. Elle coûtait 697 px, la plus lourde des quatre. L'accueil est donc passé de
+quinze à **treize sections** dans la soirée, et de 9 546 à **8 552 px**.
+
+**Les deux dernières candidates restent, et les raisons de les garder sont notées** :
+« Ce à quoi vous engager » porte les compteurs animés, un argument visuel que rien ne
+remplace ; « Trois raisons » est la seule section qui formule une objection et y
+répond. Aucune des deux n'est une duplication : les retirer, c'est choisir de ne plus
+dire quelque chose.
 
 **La section « L'IA générative au service de votre performance » (`#ia`)**, demandée
 le 18 septembre 2026, s'est d'abord placée juste avant la chaîne. Le 19, à la demande
