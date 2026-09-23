@@ -362,7 +362,7 @@ em{color:var(--yellow)}
    page n'écrit toujours chaque logo qu'une fois. Il est décoratif, donc
    aria-hidden, et ses carreaux démarrent décalés d'un cran pour que les deux
    rangs ne s'alignent pas verticalement. */
-.marques{--tuile:clamp(14rem,26vw,28rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
+.marques{--tuile:clamp(9rem,16vw,17rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
 .marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
   margin:0;padding:0 1.25rem;list-style:none}
 /* Filet blanc sur carreau noir, 21 septembre 2026, au terme de trois
@@ -374,11 +374,16 @@ em{color:var(--yellow)}
 
    Les logos sont les silhouettes blanches d'origine. Le temps de l'aplat
    jaune, il avait fallu les noircir au filtre, le blanc ne s'y voyant pas ;
-   ce filtre est parti avec l'aplat. 2 px et non 1 : la mesure vient du
-   filet jaune, et le blanc, plus contrasté encore sur ce noir, la garde
-   pour que les deux rangs pèsent pareil. */
+   ce filtre est parti avec l'aplat.
+
+   Le 23 septembre 2026 au soir, le propriétaire a demandé de diminuer la
+   taille des logos et des filets. Le carreau passe de clamp(14rem,26vw,28rem)
+   à clamp(9rem,16vw,17rem) — les logos suivent seuls, leur hauteur étant un
+   calc() sur --tuile — et le filet de 2 px à 1 px. Les 2 px venaient d'un
+   carreau une fois et demie plus grand, où un pixel se perdait ; à cette
+   taille-là il se voit. */
 .marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
-  background:var(--ground);border:2px solid var(--ink);border-radius:14px;
+  background:var(--ground);border:1px solid var(--ink);border-radius:14px;
   transition:border-color .2s ease}
 /* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
    ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
@@ -1075,14 +1080,24 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .video-scene::before{background:none}
 .video-scene__cadre{box-shadow:0 18px 44px -28px #000}
 
-/* Les mots en italique sont jaunes dans les grands titres — deux mots par
-   écran. Dans le corps de texte ils restent blancs : la serif suffit. */
-em{color:var(--ink)}
-.display em{color:var(--yellow)}
+/* MOINS DE JAUNE — demande du propriétaire du 23 septembre 2026 au soir
+   (« Réduis le jaune sur le site »), la même qu'il avait faite le 20 et
+   défaite le 21. Le jaune ne marque donc plus que deux choses : **ce qui se
+   clique**, et **les deux mots accentués du titre d'accueil**. Le titre de
+   page des guides et du blog le gardent aussi, ce sont leurs h1.
 
-/* Les numéros des trois grilles et les quatre chiffres clés portent le
-   jaune ; l'icône du guide reste blanche, elle décore un lien. */
-.figure b{color:var(--yellow)}
+   Tout le reste rentre : les titres de section (h2), les numéros des trois
+   grilles, les quatre chiffres clés et leurs icônes, les mots du manifeste,
+   les coches des pages de guide. Numéros en gris, icônes et chiffres en
+   blanc — c'est le réglage du 20 septembre, repris tel quel. */
+em{color:var(--ink)}
+.display em{color:var(--ink)}
+h1.display em{color:var(--yellow)}
+.figure b{color:var(--ink)}
+.figure .figure__ico{color:var(--ink)}
+.step__no,.pilier__no,.offer__no{color:var(--ink-3)}
+.offer:hover .offer__no{color:var(--ink)}
+.manifesto .punch em{color:var(--ink)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
@@ -1263,7 +1278,7 @@ em{color:var(--ink)}
          plus, rien d'autre. -->
     <section class="marques" aria-labelledby="marques-titre">
       <div class="wrap head head--centre">
-        <h2 class="display" id="marques-titre">+10&nbsp;CEOs &amp; Entreprises nous font <em>confiance</em>.</h2>
+        <h2 class="display" id="marques-titre">CEOs &amp; Entreprises nous font <em>confiance</em>.</h2>
       </div>
       <div class="marques__rang">
         <ul class="marques__piste">

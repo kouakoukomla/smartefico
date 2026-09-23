@@ -707,21 +707,19 @@ propriétaire, avec son style. Ne pas la remettre.
 **À sa place, les marques clientes défilent**, demande du même jour : un rang pleine
 largeur de grands carreaux noirs arrondis, logos en silhouette blanche.
 
-**Le titre en est à sa quatrième écriture** : « Marques avec lesquelles j'ai
+**Le titre en est à sa cinquième écriture** : « Marques avec lesquelles j'ai
 travaillé », puis « travaillées » — forme fautive après « avec lesquelles » —, puis
-« Elles m'ont fait confiance. », et depuis le 23 septembre 2026
-**« +10 CEOs & Entreprises nous font confiance. »**, mot pour mot sa demande. Le point
-final est de Claude, pour que le titre s'aligne sur tous les autres de la page, qui en
-portent un ; l'insécable de « +10 CEOs » évite que le chiffre reste seul en bout de
-ligne. Le mot en italique reste « confiance », qui garde donc son trait de surligneur
-jaune.
+« Elles m'ont fait confiance. », puis, le 23 septembre 2026, « +10 CEOs & Entreprises
+nous font confiance. », et **« CEOs & Entreprises nous font confiance. »** quelques
+heures plus tard, le propriétaire ayant demandé de retirer le « +10 ». Le point final
+est de Claude, pour que le titre s'aligne sur tous les autres de la page, qui en
+portent un ; il n'a pas été discuté. Le mot en italique reste « confiance ».
 
-**Ce titre annonce plus de clients que la section n'en montre** : le rail ne porte que
-deux logos, les deux seuls que PRODUCT.md autorise à citer. Le chiffre vient du
-propriétaire, sur sa propre activité — ce n'est pas un chiffre de performance inventé,
-et la règle « aucun chiffre non vérifié » ne s'y applique donc pas de la même façon.
-Il lui a été signalé le jour même. Si d'autres logos arrivent, l'écart se referme ;
-sinon, c'est son affirmation, et elle l'engage.
+**Le retrait du « +10 » referme un écart signalé** : le rail ne porte que deux logos,
+les deux seuls que PRODUCT.md autorise à citer, et le titre en annonçait plus de dix
+juste au-dessus. Claude le lui avait dit le jour même ; le titre ne chiffre plus rien.
+S'il voulait y remettre un nombre, la règle reste la même : c'est une affirmation sur
+sa propre activité, elle l'engage, et il vaut mieux que les logos suivent.
 
 **Deux rangs en sens contraires, filet blanc sur carreau noir**, depuis le
 21 septembre 2026 : « Dans cette section "Elles m'ont fait confiance" tu mettras
@@ -755,9 +753,13 @@ page, pas seulement contre le carreau.**
   sont lus par les lecteurs d'écran, comme avant.
 - Ses carreaux démarrent **décalés d'un cran** (le premier `<li>` passe à la fin) :
   sans cela, les deux rangs s'aligneraient verticalement.
-- **Le filet fait 2 px, pas 1.** La mesure vient du filet jaune, où un pixel se
-  perdait à cette taille de carreau ; le blanc la garde pour que les deux rangs pèsent
-  pareil. Les logos restent les silhouettes blanches d'origine. Le temps de l'aplat
+- **Carreaux et filet ont maigri le 23 septembre 2026 au soir**, à sa demande
+  (« Tu dois diminuer la taille des logos et des filets »). Le carreau passe de
+  `clamp(14rem,26vw,28rem)` à `clamp(9rem,16vw,17rem)`, et **les logos suivent tout
+  seuls** : leur hauteur est un `calc()` sur `--tuile`, il n'y a donc qu'une valeur à
+  changer. Le filet passe de 2 px à 1 px — les 2 px venaient d'un carreau une fois et
+  demie plus grand, où un pixel se perdait. Les logos restent les silhouettes blanches
+  d'origine. Le temps de l'aplat
   jaune, il avait fallu les noircir par un `filter:brightness(0)` — blanc sur jaune ne
   se voit pas (1,07:1) ; ce filtre est parti avec l'aplat, et le site n'en porte de
   nouveau aucun.
@@ -859,28 +861,27 @@ horizontales où aucun pixel ne dépasse `#1E1E1E` ; les cartes `#0E0E0E` passen
 du vide, à retrancher à la main. Sur fond clair la méthode se renverse — les bandes
 sans un pixel plus sombre que `#E0E0E0`, cartes à retrancher de même.
 
-**Sur fond sombre, le jaune redevient de l'encre.** Le fond blanc l'avait condamné à
-l'aplat — il n'y tient pas en texte, 1,5:1 ; sur le noir il mesure 13:1 et reprend
-donc les trois rôles que le propriétaire lui a donnés le 21 septembre (« Augmente un
-peu le jaune sur le site. Tu mettras un jaune très lisible dans les parties les plus
-importantes ») :
+**Le jaune ne marque plus que deux choses**, depuis le 23 septembre 2026 au soir :
+« Réduis le jaune sur le site ». C'est, dans l'esprit, la demande du 20 septembre,
+qu'il avait défaite le 21 avant de la refaire ici. Les deux rôles qui restent :
 
-- **les actions** : « Réserver un échange », « Recevoir », « Nous contacter »,
+- **ce qui se clique** : « Réserver un échange », « Recevoir », « Nous contacter »,
   « Réserver mon appel », « Lire le blog », le carré à la flèche du menu, le lien
   d'évitement et la pastille de l'assistant ;
-- **les mots accentués des grands titres** : une seule règle, `.display em`, pour le
-  titre d'accueil, celui de chaque section, celui du blog et ceux des pages de guide —
-  deux mots par écran, jamais plus. Les italiques du corps de texte, eux, restent
-  blancs : la serif suffit à les détacher ;
-- **les chiffres et les numéros** : les quatre chiffres de « Ce à quoi vous engager »
-  (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles (`.step__no`,
-  `.pilier__no`, `.offer__no`), les mots du manifeste (`.manifesto .punch em`) et les
-  coches des deux pages de guide.
+- **les deux mots accentués du titre d'accueil** — `h1.display em` et non
+  `.display em` : les titres de section sont des `h2` et passent au blanc. Les pages
+  de guide et le blog gardent le jaune sur le leur, ce sont leurs `h1`.
 
-**Les pastilles et les disques du fond blanc sont partis avec lui** : numéros, icônes
-des chiffres et coches redeviennent du trait jaune posé à même la page. Ne pas les
-remettre sur fond sombre — un aplat jaune y crie, là où sur blanc il était la seule
-façon de lire la couleur.
+**Sont rentrés** : les titres de section, les quatre chiffres de « Ce à quoi vous
+engager » (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles
+(`.step__no`, `.pilier__no`, `.offer__no`), les mots du manifeste
+(`.manifesto .punch em`) et les coches des deux pages de guide. Numéros en gris
+(`--ink-3`), icônes et chiffres en blanc — le réglage du 20 septembre, repris tel
+quel.
+
+**Les pastilles et les disques du fond blanc sont partis avec lui** : ils n'avaient de
+raison d'être que là où le jaune ne se lit pas en texte. Ne pas les remettre sur fond
+sombre.
 
 **Reste hors du jaune**, et doit y rester : les italiques du corps de texte ; tous les
 survols, qui prennent `--mur` pour un filet ou le blanc pour un aplat ; le cercle de
@@ -888,16 +889,19 @@ la photo de la signature ; les soulignés du pied de page et des pages légales 
 l'icône de l'encart « Guide gratuit ». Les aplats cliquables, eux, sont jaunes partout
 (voir ci-dessous).
 
-**Contrastes**, le fond ayant changé : `#FFCC00` donne 15,3:1 sur le fond `#000000` et
-14,4:1 sur les cartes `#0E0E0E` — très au-dessus du seuil AAA de 7:1. Le blanc
+**Contrastes** : `#FFCC00` donne 15,3:1 sur le fond `#000000` et 14,4:1 sur les cartes
+`#0E0E0E` — très au-dessus du seuil AAA de 7:1. Ce n'est donc pas la lisibilité qui
+l'a fait reculer, c'est sa quantité. Le blanc
 `#FFFFFF` donne 21:1, les gris `#B4B4B0` et `#8A8A86` 11,4:1 et 6,6:1. Le texte posé
 sur un aplat jaune reste `--on-yellow` (#141414), soit 12,18:1.
 
-Les cinq règles qui se sont succédé, pour mémoire : jusqu'au 20 septembre, le jaune
+Les six règles qui se sont succédé, pour mémoire : jusqu'au 20 septembre, le jaune
 tenait quatre rôles — le trait fin, l'icône, le mot en italique, l'aplat de ce qui se
 clique ; le 20, il n'a gardé que l'aplat et le titre d'accueil ; le 21, il a repris le
 titre de section, l'icône et le chiffre ; le 23 au matin, le fond blanc l'a ramené à
-l'aplat seul ; le 23 au soir, le noir plat lui a rendu le trait. Toutes les retouches
+l'aplat seul ; le 23 au soir, le noir plat lui a rendu le trait, puis « Réduis le
+jaune » l'a remis au réglage du 20. **Deux allers-retours en trois jours : ne pas
+s'attacher à un réglage, et le garder dans le seul bloc de thème.** Toutes les retouches
 vivent dans le bloc « NOIR PLAT » de `index.html`, que le blog et les articles
 recopient — sauf les coches, qui sont un SVG en ligne dans la feuille propre de chaque
 page de guide.
