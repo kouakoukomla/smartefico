@@ -1,5 +1,5 @@
 ---
-portrait: assets/portrait-emmanuel-kouakou.jpg
+portrait: assets/Portrait3.jpg
 logo: assets/logo-clair.png
 og_image: assets/og-smartefico-jaune.jpg
 ---

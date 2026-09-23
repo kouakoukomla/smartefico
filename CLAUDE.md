@@ -725,14 +725,26 @@ ensuite. Il l'a fait retirer quelques heures plus tard : « elle ne doit pas bou
 Ne pas remettre d'animation sur ce portrait sans sa demande. Pour un vrai mouvement,
 il faudrait une vidéo, à produire hors du dépôt.
 
-Le portrait lui-même a changé le même jour, à sa demande : c'est désormais « Mon
-image.jpg » (dans son dossier `IMG/` et à la racine du site, ignoré par git), en
-couleur sur fond ocre, servi en `assets/portrait-emmanuel-kouakou.jpg` — 900 px de
-large, 53 Ko, au lieu des 3,6 Mo de l'original. Il se déclare dans le back office
-(`content/pages/visuels.md`, champ `portrait`) et non dans `index.html`, que
-`sync-content.mjs` réécrit. Le cadrage du cercle, `object-position: center 18%`,
-lui convient sans retouche. L'ancien portrait noir et blanc, `assets/Portrait3.jpg`,
-reste dans le dépôt, inutilisé.
+**Le portrait est de nouveau le noir et blanc**, `assets/Portrait3.jpg`, depuis le
+23 septembre 2026, à la demande du propriétaire (« Remplace l'image de "Emmanuel
+Kouakou" en mettant plutôt celle-ci : Portrait3 »). 900 x 1200, 201 Ko. Le cadrage
+du cercle, `object-position: center 18%`, lui convient sans retouche : le visage
+garde de l'air au-dessus et les bras croisés tiennent dans le bas du disque. Son
+fond gris clair se pose sans heurt sur la page blanche, à l'intérieur de l'anneau
+jaune.
+
+Il se déclare dans le back office (`content/pages/visuels.md`, champ `portrait`) et
+non dans `index.html`, que `sync-content.mjs` réécrit. Après le changement :
+`node scripts/sync-content.mjs`, puis `node scripts/build-standalone.mjs`, qui
+réencode l'image en base64 dans la copie autonome — celle-ci passe de 446 à 638 Ko.
+
+Le portrait couleur qu'il remplace, `assets/portrait-emmanuel-kouakou.jpg` (900 px,
+53 Ko), vient de « Mon image.jpg » (dans son dossier `IMG/` et à la racine du site,
+ignoré par git), en couleur sur fond ocre, réduit depuis les 3,6 Mo de l'original.
+Il avait tenu du 18 au 23 septembre et reste dans le dépôt, inutilisé — comme
+`Portrait3.jpg` l'était avant lui. **C'est lui, et non le noir et blanc, qui paraît
+encore dans l'image d'aperçu de partage** (`scripts/partage/partage.html`) : le
+propriétaire n'a demandé que celui de la page.
 
 Un piège relevé pendant cet essai, et qui vaut pour toute animation future : **un
 `clip-path` posé sur la cible d'un `IntersectionObserver` ramène son taux de
