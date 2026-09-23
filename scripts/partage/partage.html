@@ -11,31 +11,39 @@
      Passée au fond blanc le même jour, avec le site, puis au noir profond le
      20 septembre, avec lui encore (la version du noir pur reste en
      assets/og-smartefico.jpg : des partages déjà faits y pointent).
+     Le 23 septembre, elle reprend le portrait noir et blanc de la signature
+     et perd son filet jaune, à la demande du propriétaire. Elle garde en
+     revanche son fond noir : il n'a pas demandé qu'elle suive le fond blanc
+     du site, et une carte sombre se détache mieux dans un fil de LinkedIn.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-jaune.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-nb.jpg.
      Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
      la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
      viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
      LinkedIn, Facebook et WhatsApp gardent une image en mémoire par adresse. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
 <style>
-/* Mêmes codes que le site : fond noir profond #050507, texte blanc, et le
-   jaune sur ce que l'image a de plus important, comme un écran du site
-   depuis le 21 septembre 2026 — le nom de la marque, les mots accentués du
-   titre (en Instrument Serif italique), le filet qui sépare le texte du
-   portrait, et la pastille du numéro, qui tient lieu de bouton. La ligne
-   d'audience reste blanche : c'est du texte courant. */
+/* Fond noir profond #050507, texte blanc, et le jaune sur ce que l'image a
+   de plus important : le nom de la marque, les mots accentués du titre (en
+   Instrument Serif italique) et la pastille du numéro, qui tient lieu de
+   bouton. Le filet qui séparait le texte du portrait est parti le
+   23 septembre 2026 ; le jaune y paraît donc trois fois et non quatre. La
+   ligne d'audience reste blanche : c'est du texte courant. */
 html,body{margin:0;background:#050507}
 .carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#F5F5F3;
   background:radial-gradient(52rem 34rem at 30% -6rem,#14141C,transparent 70%) #050507;
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif}
-/* Le visage occupe le haut du portrait (900 x 1350) : 12 % le garde entier. */
+/* Le portrait noir et blanc (900 x 1200) a presque exactement les
+   proportions du panneau (470 x 630) : `cover` ne rogne que deux pixels de
+   large, et la photo paraît entière, du haut du crâne aux bras croisés. Le
+   point de mire n'a donc plus rien à corriger. */
 .photo{position:absolute;top:0;right:0;width:470px;height:630px;
-  background:url("../../assets/portrait-emmanuel-kouakou.jpg") 50% 12%/cover no-repeat}
-/* Le filet qui sépare le texte de la photo est jaune depuis le 21 septembre
-   2026 : c'est la seule arête de l'image, et elle porte la couleur au lieu
-   de la subir. En gris #34343D, on ne la voyait pas. */
-.photo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:#FFCC00}
+  background:url("../../assets/Portrait3.jpg") 50% 50%/cover no-repeat}
+/* Plus de filet entre le texte et la photo, retiré le 23 septembre 2026 à la
+   demande du propriétaire (« Enlève le cadre jaune de l'image »). Il avait
+   été posé en jaune le 21 parce qu'en gris on ne le voyait pas ; le fond
+   gris clair du portrait noir et blanc tranche seul sur le noir de la carte,
+   et l'arête se voit sans qu'on la dessine. */
 .texte{position:absolute;left:64px;top:0;bottom:0;width:630px;display:flex;flex-direction:column;
   justify-content:center}
 .marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}

@@ -93,26 +93,39 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico-jaune.jpg`** (1200 x 630, 78 Ko), sur
-  le noir profond du site : le titre d'accueil entier, ses deux moitiés à égalité et
-  ses mots accentués en Instrument Serif jaune ; le portrait couleur de la signature à
-  droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes et dirigeants. »
-  et le numéro, sur une pastille jaune. Sa source est `scripts/partage/partage.html`,
-  photographiée par `node scripts/build-partage.mjs` (Chrome sans fenêtre, puis `sharp`
-  en JPEG) ; le nom du fichier écrit est la constante `FICHIER` du script.
-- **Le jaune y suit celui du site**, refait le 21 septembre 2026 avec lui, à la demande
-  du propriétaire (« Refais l'image de partage avec le nouveau jaune »). Il y paraît
-  désormais quatre fois et non deux : le logo, le nom **SMARTEFICO** passé du blanc au
-  jaune, les deux mots accentués du titre, et la pastille du numéro. Le filet de 6 px
-  qui séparait le texte du portrait, en gris `#34343D`, passe à 8 px de jaune : c'est
-  la seule arête de l'image, on ne la voyait pas. La ligne d'audience reste blanche,
-  c'est du texte courant. L'image n'a ni chiffre ni numéro : les deux autres emplois du
-  jaune sur le site n'ont rien à y marquer.
-- Elle a suivi les fonds du site : `og-smartefico.jpg` (noir pur, 19 septembre) et
-  `og-smartefico-noir.jpg` (noir profond, jaune réduit, 20 septembre), qui restent dans
-  le dépôt parce que des partages y pointent peut-être. Une version sur fond blanc a
-  existé le 19 septembre sans jamais être mise en ligne — le fond a changé avant — et
-  n'a pas été gardée : l'historique git la retrouve.
+- L'image est désormais **`assets/og-smartefico-nb.jpg`** (1200 x 630, 98 Ko), sur le
+  noir profond : le titre d'accueil entier, ses deux moitiés à égalité et ses mots
+  accentués en Instrument Serif jaune ; le portrait **noir et blanc** de la signature
+  à droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes et
+  dirigeants. » et le numéro, sur une pastille jaune. Sa source est
+  `scripts/partage/partage.html`, photographiée par `node scripts/build-partage.mjs`
+  (Chrome sans fenêtre, puis `sharp` en JPEG) ; le nom du fichier écrit est la
+  constante `FICHIER` du script.
+- **Le portrait noir et blanc et la fin du filet**, 23 septembre 2026, deux demandes
+  du propriétaire à la suite : « Refais l'image de partage avec le portrait noir et
+  blanc », puis « Enlève le cadre jaune de l'image ». Le portrait est
+  `assets/Portrait3.jpg`, celui que la page d'accueil venait de reprendre. Ses
+  proportions (900 x 1200) sont presque celles du panneau (470 x 630) : `cover` ne
+  rogne que deux pixels de large, la photo paraît entière, et le point de mire de
+  12 % qui gardait le visage du portrait couleur n'a plus rien à corriger — il est
+  revenu à 50 %. Le filet de 8 px qui séparait le texte de la photo est parti avec la
+  seconde demande : le fond gris clair du noir et blanc tranche seul sur le noir de la
+  carte, et l'arête se voit sans qu'on la dessine. **Le jaune n'y paraît donc plus que
+  trois fois** : le logo et le nom SMARTEFICO, les deux mots accentués du titre, et la
+  pastille du numéro. La ligne d'audience reste blanche, c'est du texte courant.
+- **Elle garde le fond noir, alors que le site est blanc depuis le 23 septembre.** Le
+  propriétaire n'a demandé ni l'un ni l'autre le jour où le fond a changé, et il a
+  ensuite demandé le portrait sans parler du fond : il reste donc noir. Sa source est
+  la seule du dépôt à porter encore `#050507`. Une carte sombre se détache aussi mieux
+  dans un fil de LinkedIn — mais si le fond blanc devait la gagner, c'est une demande
+  à lui, pas une correction à faire d'office.
+- Elle a suivi les fonds du site tant qu'ils étaient sombres : `og-smartefico.jpg`
+  (noir pur, 19 septembre), `og-smartefico-noir.jpg` (noir profond, jaune réduit,
+  20 septembre) et `og-smartefico-jaune.jpg` (portrait couleur, filet jaune,
+  21 septembre), qui restent dans le dépôt parce que des partages y pointent
+  peut-être. Une version sur fond blanc a existé le 19 septembre sans jamais être mise
+  en ligne — le fond a changé avant — et n'a pas été gardée : l'historique git la
+  retrouve.
 - Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
   d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
   l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
@@ -124,15 +137,10 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   pilotées, agents IA, formation et accompagnement de vos équipes. » La
   `meta description` pour les moteurs de recherche, qui parlait déjà des deux, n'a pas
   bougé.
-- **Elle n'a pas suivi le fond blanc du 23 septembre 2026** : elle reste sur le noir
-  profond, comme la veille. Le propriétaire n'a demandé que le fond du site, et une
-  refonte de l'aperçu coûte un nouveau nom de fichier et le rafraîchissement des
-  aperçus déjà en cache. Sa source, `scripts/partage/partage.html`, est la seule du
-  dépôt à porter encore `#050507`.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
-  l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg` et
-  `og-smartefico-noir.jpg` restent dans le dépôt, inutilisées — des partages anciens y
-  pointent peut-être. Après une refonte, les aperçus déjà mis en
+  l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg`,
+  `og-smartefico-noir.jpg` et `og-smartefico-jaune.jpg` restent dans le dépôt,
+  inutilisées — des partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
   cache ne changent pas d'eux-mêmes : LinkedIn se rafraîchit par son Post Inspector,
   Facebook par son outil de débogage (« Scrape again ») ; WhatsApp n'a pas d'outil et
   garde son aperçu un moment — partager en attendant une adresse légèrement
@@ -742,9 +750,9 @@ Le portrait couleur qu'il remplace, `assets/portrait-emmanuel-kouakou.jpg` (900 
 53 Ko), vient de « Mon image.jpg » (dans son dossier `IMG/` et à la racine du site,
 ignoré par git), en couleur sur fond ocre, réduit depuis les 3,6 Mo de l'original.
 Il avait tenu du 18 au 23 septembre et reste dans le dépôt, inutilisé — comme
-`Portrait3.jpg` l'était avant lui. **C'est lui, et non le noir et blanc, qui paraît
-encore dans l'image d'aperçu de partage** (`scripts/partage/partage.html`) : le
-propriétaire n'a demandé que celui de la page.
+`Portrait3.jpg` l'était avant lui. Il a paru quelques heures de plus dans l'image
+d'aperçu de partage, que le propriétaire a fait refaire le même jour avec le noir et
+blanc : plus aucune page ni aucune image ne le cite.
 
 Un piège relevé pendant cet essai, et qui vaut pour toute animation future : **un
 `clip-path` posé sur la cible d'un `IntersectionObserver` ramène son taux de
