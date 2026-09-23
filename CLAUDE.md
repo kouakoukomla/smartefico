@@ -619,9 +619,19 @@ l'adaptant à ce que la page a gagné depuis.
   partage, elle, a rejoint le fond blanc le jour même, en deux temps et à sa demande
   (voir « L'aperçu de partage ») : rafraîchir les aperçus déjà en cache reste au
   propriétaire, Claude n'a de session sur aucun réseau.
-- Le logo de la page est `logo-clair.png`, sur transparence : c'est son contour blanc
-  qui disparaît sur le blanc, et le sigle jaune et noir qui le porte. Il reste lisible
-  partout, et inchangé sur les îlots noirs où il paraît — menu et pied de page.
+- **Deux fichiers de logo, et le fond décide lequel.** `assets/logo.png` est le logo
+  complet : contour blanc épais sur sa plaque noire. `assets/logo-clair.png` est le
+  même sans la plaque, sur transparence — son contour blanc ne se voit donc que sur du
+  sombre, et sur du blanc il ne reste que l'hexagone noir au sigle jaune. Le
+  23 septembre 2026, le propriétaire a demandé de remettre le blanc (« Remets le logo
+  blanc sur le fond blanc ») : **sur fond clair, c'est `logo.png`** — en-tête du blog
+  et de chaque article (écrit dans `entete` de `build-blog.mjs`), en-tête des deux
+  pages de guide et de leurs pages de remerciement. Les pages légales l'utilisaient
+  déjà dans leur barre du haut. **Sur les îlots restés noirs, c'est `logo-clair.png`**,
+  où le contour se voit sans plaque : menu et pied de page de l'accueil — que le champ
+  `logo` du back office renseigne, et qu'il ne faut donc pas basculer là — et le
+  panneau de l'assistant. Interrogé avant de trancher : il n'a voulu le changement que
+  sur les pages, pas dans l'image de partage.
 
 **Le violet n'existe que dans le contour animé de la barre de navigation**, demandé par
 le propriétaire le 14 septembre 2026 : un filet dégradé jaune et violet, et deux éclats —

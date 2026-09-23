@@ -42,6 +42,13 @@ em{color:var(--ink);background-image:linear-gradient(to top,transparent .1em,var
 
 .haut{display:flex;justify-content:center;padding-top:clamp(1.75rem,4vw,2.75rem)}
 .marque{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:-.03em;font-size:1.3rem;text-decoration:none}
+/* Sur fond clair, c'est assets/logo.png — le logo complet, contour blanc sur
+   sa plaque noire. logo-clair.png, qui est le même sans la plaque, garde son
+   contour blanc pour lui : sur du blanc il disparaît, et il ne reste que
+   l'hexagone noir. Le propriétaire a demandé le 23 septembre 2026 de remettre
+   le blanc (« Remets le logo blanc sur le fond blanc »). Les îlots restés
+   noirs — menu, pied de page, panneau de l'assistant — gardent logo-clair.png,
+   où le contour se voit déjà. */
 .marque img{width:2.6rem;height:2.6rem;object-fit:contain}
 
 .merci{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.2rem;
@@ -79,7 +86,7 @@ em{color:var(--ink);background-image:linear-gradient(to top,transparent .1em,var
 <body>
 
 <header class="haut">
-  <a class="marque" href="index.html"><img src="assets/logo-clair.png" alt="" width="512" height="512">SmartEfico</a>
+  <a class="marque" href="index.html"><img src="assets/logo.png" alt="" width="512" height="512">SmartEfico</a>
 </header>
 
 <main class="wrap merci">
