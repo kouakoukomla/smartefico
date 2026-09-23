@@ -877,11 +877,17 @@ relatifs entre composants — `.figure` (2rem → 1,5rem au plus large), `.offer
 `.guide-lien--large` et `.mc__corps` (1,5 → 1,15). Les valeurs `vw` des `clamp()`
 suivent le même quart. Le blanc chapô-contenu passe alors à **59 px**.
 
-**Ce que les trois resserrements du 23 septembre rendent ensemble** : la page d'accueil
-passe de 10 436 px à **9 919 px** à 1 280 px de large, soit 517 px, sans qu'aucun
-contenu ne disparaisse. N'ont pas été touchés, et ne devraient pas l'être sans
-demande : `--gap` entre les sections, la marge intérieure du bloc contact et celle du
-bandeau des cinq étapes, qui sont des panneaux et non des cartes.
+**Le bloc contact a suivi**, quatrième demande de la série (« Réduis aussi la marge du
+bloc contact ») : sa marge verticale passe de `clamp(2.25rem,6vw,4.5rem)` à
+`clamp(1.6rem,4.2vw,3rem)`, soit 72 px à 48 px à 1 280 px. **Sa marge horizontale ne
+bouge pas** : sur un panneau pleine largeur elle ne pèse rien en hauteur, et la rogner
+collerait le texte au bord sur téléphone.
+
+**Ce que les quatre resserrements du 23 septembre rendent ensemble** : la page
+d'accueil passe de 10 436 px à **9 871 px** à 1 280 px de large, soit 565 px, sans
+qu'aucun contenu ne disparaisse. N'ont pas été touchés, et ne devraient pas l'être
+sans demande : `--gap` entre les sections, et la marge intérieure du bandeau des cinq
+étapes, qui est un panneau et non une carte.
 
 La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
@@ -1042,8 +1048,9 @@ Fonts — restaient Poppins et Montserrat, et Poppins était son premier exemple
 navigateur :
 
 - `cramped-padding` — le détecteur mesure le padding du conteneur, alors que ce sont
-  les enfants qui le portent (24 px dans les cartes depuis le 23 septembre 2026, 38 px
-  avant ; 64 px dans le bloc contact). Ajouter du padding doublerait les marges.
+  les enfants qui le portent (24 px dans les cartes et 48 px dans le bloc contact
+  depuis le 23 septembre 2026 ; 38 px et 72 px avant). Ajouter du padding doublerait
+  les marges.
 - `flat-type-hierarchy` sur les pages légales — le détecteur ne sait pas lire `clamp()`
   et ne voit donc jamais les `h1` et `h2`. L'échelle réelle compte trois paliers nets.
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la

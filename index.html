@@ -879,9 +879,15 @@ h2.head__eyebrow{font-weight:600;margin:0}
    Une seule colonne, centrée : un titre, une phrase, un bouton. Les règles
    des deux anciennes colonnes sont parties avec le markup qu’elles
    servaient — coordonnées, panneau détaché, liste de repères. */
+/* Marge verticale resserrée le 23 septembre 2026 : « Réduis aussi la marge du
+   bloc contact », après les en-têtes et les cartes. Elle passe de
+   clamp(2.25rem,6vw,4.5rem) à clamp(1.6rem,4.2vw,3rem), soit 72 px à 48 px à
+   1 280 px de large. La marge horizontale ne bouge pas : sur un panneau qui
+   prend toute la largeur, elle ne pèse rien en hauteur, et la rogner
+   collerait le texte au bord sur téléphone. */
 .contact{display:flex;flex-direction:column;align-items:center;text-align:center;
   gap:clamp(1rem,2.4vw,1.5rem);background:var(--noir);color:#F3F3F3;
-  padding:clamp(2.25rem,6vw,4.5rem) clamp(1.5rem,3.2vw,2.25rem);
+  padding:clamp(1.6rem,4.2vw,3rem) clamp(1.5rem,3.2vw,2.25rem);
   border:1px solid var(--line);border-radius:1.4rem}
 /* « Très grand », demandé par le propriétaire : au-dessus de tous les autres
    titres de section, juste sous celui d’accueil. Pas de max-width, c’est
