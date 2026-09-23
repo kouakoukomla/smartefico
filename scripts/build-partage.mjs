@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
  * Fabrique l'image affichée quand le lien du site est partagé (LinkedIn,
- * WhatsApp, Facebook…) : assets/og-smartefico-nb.jpg depuis qu'elle a repris
- * le portrait noir et blanc et perdu son filet, le 23 septembre 2026. Les
- * trois versions précédentes restent dans le dépôt pour les partages déjà
- * faits : og-smartefico.jpg (noir pur), og-smartefico-noir.jpg (noir
- * profond, jaune réduit) et og-smartefico-jaune.jpg (portrait couleur).
+ * WhatsApp, Facebook…) : assets/og-smartefico-blanc.jpg depuis qu'elle est
+ * passée au fond blanc du site, le 23 septembre 2026. Les quatre versions
+ * précédentes restent dans le dépôt pour les partages déjà faits :
+ * og-smartefico.jpg (noir pur), og-smartefico-noir.jpg (noir profond, jaune
+ * réduit), og-smartefico-jaune.jpg (portrait couleur) et og-smartefico-nb.jpg
+ * (fond noir, portrait noir et blanc).
  *
  *   node scripts/build-partage.mjs
  *
@@ -28,7 +29,7 @@ import sharp from 'sharp';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(racine, 'scripts', 'partage', 'partage.html');
-const FICHIER = 'og-smartefico-nb.jpg';
+const FICHIER = 'og-smartefico-blanc.jpg';
 const sortie = join(racine, 'assets', FICHIER);
 
 const chrome = [

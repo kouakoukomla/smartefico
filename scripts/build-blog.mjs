@@ -380,7 +380,7 @@ for (const a of articles) {
   const description = a.excerpt || '';
   const url = `${SITE}/${a.page}`;
   const cover = a.cover ? urlImage(a.cover) : '';
-  const image = cover ? `${SITE}/${cover}` : `${SITE}/assets/og-smartefico-nb.jpg`;
+  const image = cover ? `${SITE}/${cover}` : `${SITE}/assets/og-smartefico-blanc.jpg`;
   const corpsHtml = marked.parse(a.body || '');
 
   const html = `<!doctype html>
@@ -432,7 +432,7 @@ ${tete({
   titre: 'Blog — SmartEfico',
   description: "Articles et idées sur l'acquisition, l'IA et l'automatisation, par Emmanuel Kouakou (SmartEfico).",
   url: `${SITE}/blog.html`,
-  image: `${SITE}/assets/og-smartefico-nb.jpg`,
+  image: `${SITE}/assets/og-smartefico-blanc.jpg`,
 })}
 <body>
 ${entete}

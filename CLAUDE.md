@@ -93,11 +93,11 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico-nb.jpg`** (1200 x 630, 98 Ko), sur le
-  noir profond : le titre d'accueil entier, ses deux moitiés à égalité et ses mots
-  accentués en Instrument Serif jaune ; le portrait **noir et blanc** de la signature
-  à droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes et
-  dirigeants. » et le numéro, sur une pastille jaune. Sa source est
+- L'image est désormais **`assets/og-smartefico-blanc.jpg`** (1200 x 630, 97 Ko), sur
+  le blanc du site : le titre d'accueil entier, ses deux moitiés à égalité et ses mots
+  accentués en Instrument Serif surlignés de jaune ; le portrait **noir et blanc** de
+  la signature à droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes
+  et dirigeants. » et le numéro, sur une pastille jaune. Sa source est
   `scripts/partage/partage.html`, photographiée par `node scripts/build-partage.mjs`
   (Chrome sans fenêtre, puis `sharp` en JPEG) ; le nom du fichier écrit est la
   constante `FICHIER` du script.
@@ -113,19 +113,28 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   carte, et l'arête se voit sans qu'on la dessine. **Le jaune n'y paraît donc plus que
   trois fois** : le logo et le nom SMARTEFICO, les deux mots accentués du titre, et la
   pastille du numéro. La ligne d'audience reste blanche, c'est du texte courant.
-- **Elle garde le fond noir, alors que le site est blanc depuis le 23 septembre.** Le
-  propriétaire n'a demandé ni l'un ni l'autre le jour où le fond a changé, et il a
-  ensuite demandé le portrait sans parler du fond : il reste donc noir. Sa source est
-  la seule du dépôt à porter encore `#050507`. Une carte sombre se détache aussi mieux
-  dans un fil de LinkedIn — mais si le fond blanc devait la gagner, c'est une demande
-  à lui, pas une correction à faire d'office.
-- Elle a suivi les fonds du site tant qu'ils étaient sombres : `og-smartefico.jpg`
-  (noir pur, 19 septembre), `og-smartefico-noir.jpg` (noir profond, jaune réduit,
-  20 septembre) et `og-smartefico-jaune.jpg` (portrait couleur, filet jaune,
-  21 septembre), qui restent dans le dépôt parce que des partages y pointent
-  peut-être. Une version sur fond blanc a existé le 19 septembre sans jamais être mise
-  en ligne — le fond a changé avant — et n'a pas été gardée : l'historique git la
-  retrouve.
+- **Elle est passée au fond blanc le 23 septembre**, troisième demande de la journée
+  après le portrait et le filet : « Mets l'image de partage sur fond blanc aussi ».
+  Elle suit donc les codes du site sur une carte claire, et le jaune y perd le texte
+  pour ne garder que l'aplat : le titre et le nom **SMARTEFICO**, jaune du temps du
+  fond noir, passent à l'encre `#141414` ; les deux mots accentués gardent leur
+  Instrument Serif italique mais reçoivent le **trait de surligneur** des `.display em`
+  de l'accueil ; la pastille du numéro ne change pas. Le halo du haut reprend celui du
+  hero, du jaune à 22 %. **Le jaune n'y paraît donc plus que deux fois.**
+- **Aucun filet ne sépare plus le texte de la photo**, et il ne faut pas en remettre un
+  sans sa demande : il l'a fait retirer le jour même. Sur la carte blanche, le fond
+  gris clair du portrait noir et blanc suffit à poser l'arête, plus discrètement que
+  sur le noir. Le revers, signalé au propriétaire avant qu'il ne redemande le blanc :
+  **une carte claire se fond dans un fil de LinkedIn**, qui est blanc lui aussi, là où
+  la carte sombre s'en détachait. C'est son choix, assumé.
+- Elle a suivi les fonds du site : `og-smartefico.jpg` (noir pur, 19 septembre),
+  `og-smartefico-noir.jpg` (noir profond, jaune réduit, 20 septembre),
+  `og-smartefico-jaune.jpg` (portrait couleur, filet jaune, 21 septembre) et
+  `og-smartefico-nb.jpg` (fond noir, portrait noir et blanc, sans filet, 23 septembre
+  — en ligne moins d'une heure), qui restent toutes dans le dépôt parce que des
+  partages y pointent peut-être. Une première version sur fond blanc avait existé le
+  19 septembre sans jamais être mise en ligne — le fond du site avait changé avant —
+  et n'a pas été gardée : l'historique git la retrouve.
 - Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
   d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
   l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
@@ -139,8 +148,8 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   bougé.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
   l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg`,
-  `og-smartefico-noir.jpg` et `og-smartefico-jaune.jpg` restent dans le dépôt,
-  inutilisées — des partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
+  `og-smartefico-noir.jpg`, `og-smartefico-jaune.jpg` et `og-smartefico-nb.jpg`
+  restent dans le dépôt, inutilisées — des partages anciens y pointent peut-être. Après une refonte, les aperçus déjà mis en
   cache ne changent pas d'eux-mêmes : LinkedIn se rafraîchit par son Post Inspector,
   Facebook par son outil de débogage (« Scrape again ») ; WhatsApp n'a pas d'outil et
   garde son aperçu un moment — partager en attendant une adresse légèrement
@@ -606,11 +615,10 @@ l'adaptant à ce que la page a gagné depuis.
   sont plus relevées mais creusées : leur gris très clair se pose sur le blanc. Le
   hero garde son halo, passé au jaune très dilué, et le halo de la vidéo, bleu sur le
   noir, passe à un gris de 10 %.
-- **N'ont pas changé** : les deux guides PDF, qui sont des images, et l'image d'aperçu
-  de partage, restée sur le noir profond du 21 septembre (voir « L'aperçu de
-  partage »). C'est la seule pièce du site qui ne suit pas ce fond : la refaire
-  demande un nouveau nom de fichier et de rafraîchir les aperçus déjà en cache, ce qui
-  revient au propriétaire.
+- **N'ont pas changé** : les deux guides PDF, qui sont des images. L'image d'aperçu de
+  partage, elle, a rejoint le fond blanc le jour même, en deux temps et à sa demande
+  (voir « L'aperçu de partage ») : rafraîchir les aperçus déjà en cache reste au
+  propriétaire, Claude n'a de session sur aucun réseau.
 - Le logo de la page est `logo-clair.png`, sur transparence : c'est son contour blanc
   qui disparaît sur le blanc, et le sigle jaune et noir qui le porte. Il reste lisible
   partout, et inchangé sur les îlots noirs où il paraît — menu et pied de page.

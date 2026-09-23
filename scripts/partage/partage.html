@@ -11,27 +11,30 @@
      Passée au fond blanc le même jour, avec le site, puis au noir profond le
      20 septembre, avec lui encore (la version du noir pur reste en
      assets/og-smartefico.jpg : des partages déjà faits y pointent).
-     Le 23 septembre, elle reprend le portrait noir et blanc de la signature
-     et perd son filet jaune, à la demande du propriétaire. Elle garde en
-     revanche son fond noir : il n'a pas demandé qu'elle suive le fond blanc
-     du site, et une carte sombre se détache mieux dans un fil de LinkedIn.
+     Le 23 septembre, trois demandes du propriétaire à la suite : le portrait
+     noir et blanc de la signature, le retrait du filet jaune, puis le fond
+     blanc, qui la remet aux codes du site. Sur une carte blanche, le titre
+     et le nom de la marque passent à l'encre et le jaune ne tient plus que
+     l'aplat — il ne se lit pas en texte sur du blanc.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-nb.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-blanc.jpg.
      Le titre est celui de l'accueil, mot pour mot ; le portrait est celui de
      la signature ; « PME, ETI, grands comptes et dirigeants » et le numéro
      viennent de l'ancienne image. Changer le nom du fichier à chaque refonte :
      LinkedIn, Facebook et WhatsApp gardent une image en mémoire par adresse. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
 <style>
-/* Fond noir profond #050507, texte blanc, et le jaune sur ce que l'image a
-   de plus important : le nom de la marque, les mots accentués du titre (en
-   Instrument Serif italique) et la pastille du numéro, qui tient lieu de
-   bouton. Le filet qui séparait le texte du portrait est parti le
-   23 septembre 2026 ; le jaune y paraît donc trois fois et non quatre. La
-   ligne d'audience reste blanche : c'est du texte courant. */
-html,body{margin:0;background:#050507}
-.carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#F5F5F3;
-  background:radial-gradient(52rem 34rem at 30% -6rem,#14141C,transparent 70%) #050507;
+/* Mêmes codes que le site depuis qu'il est blanc : fond #FFFFFF, encre
+   #141414, et le jaune en aplat sous du texte sombre — il ne se lit pas en
+   texte sur du blanc (1,5:1). Il paraît donc deux fois : le trait de
+   surligneur sous les deux mots accentués du titre, comme sur la page
+   d'accueil, et la pastille du numéro, qui tient lieu de bouton. Le nom de
+   la marque, jaune du temps du fond noir, revient à l'encre. La ligne
+   d'audience et le titre sont du texte courant, à l'encre eux aussi.
+   Le halo du haut reprend celui du hero : du jaune très dilué. */
+html,body{margin:0;background:#FFFFFF}
+.carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#141414;
+  background:radial-gradient(52rem 34rem at 30% -6rem,rgba(255,204,0,.22),transparent 70%) #FFFFFF;
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif}
 /* Le portrait noir et blanc (900 x 1200) a presque exactement les
    proportions du panneau (470 x 630) : `cover` ne rogne que deux pixels de
@@ -48,10 +51,16 @@ html,body{margin:0;background:#050507}
   justify-content:center}
 .marque{display:flex;align-items:center;gap:16px;margin-bottom:30px}
 .marque img{width:78px;height:78px;display:block}
-.marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
+.marque span{color:#141414;font-weight:700;font-size:19px;letter-spacing:.14em}
 h1{margin:0;font-weight:800;font-size:54px;line-height:1.05;letter-spacing:-.032em}
+/* Les deux mots accentués : à l'encre, soulignés d'un trait de surligneur
+   jaune posé sous le bas des lettres, exactement comme les `.display em` du
+   site. Le trait est un dégradé et non une bordure : il suit la jambe des
+   lettres descendantes et s'arrête à la fin du mot. */
 h1 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
-  font-weight:400;color:#FFCC00;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
+  font-weight:400;color:#141414;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em;
+  background-image:linear-gradient(to top,transparent .1em,#FFCC00 .1em,#FFCC00 .4em,transparent .4em);
+  background-repeat:no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 p{margin:0}
 .cible{margin-top:30px;font-size:27px;font-weight:600}
 .tel{align-self:flex-start;margin-top:14px;padding:9px 22px 10px;border-radius:999px;
