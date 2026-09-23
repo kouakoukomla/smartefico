@@ -455,8 +455,10 @@ em{color:var(--yellow)}
    l'icône, et la bordure qui s'éclaire au survol.
    Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
    plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
+/* Marge intérieure rabotée d'un quart le 23 septembre 2026, avec toute la
+   famille des cartes : 2rem → 1,5rem au plus large. */
 .figure{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:.5rem;
+  padding:clamp(1.05rem,2.25vw,1.5rem);display:flex;flex-direction:column;gap:.5rem;
   transition:border-color .2s ease}
 .figure:hover{border-color:var(--yellow)}
 .figure .figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
@@ -480,7 +482,7 @@ em{color:var(--yellow)}
 .offers{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:46rem){.offers{grid-template-columns:repeat(2,1fr)}}
 .offer{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.8rem;
+  padding:clamp(1.15rem,2.25vw,1.65rem);display:flex;flex-direction:column;gap:.8rem;
   transition:border-color .2s ease}
 .offer:hover{border-color:var(--yellow)}
 .offer__no{font-weight:800;font-size:1.6rem;line-height:1;color:var(--yellow);
@@ -553,7 +555,7 @@ em{color:var(--yellow)}
 .mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
   object-fit:cover;object-position:center 12%;background:var(--noir-2)}
 .mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
-  padding:clamp(1.1rem,2.4vw,1.5rem)}
+  padding:clamp(.85rem,1.8vw,1.15rem)}
 .mc__date{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
   padding:.35rem .7rem;border-radius:3px}
 .mc h3{font-size:1.05rem;letter-spacing:-.02em}
@@ -761,7 +763,7 @@ em{color:var(--yellow)}
 .ba{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
 .ba__col{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.4rem,3vw,2.1rem);display:flex;flex-direction:column;gap:1rem}
+  padding:clamp(1.05rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:1rem}
 /* La colonne d’arrivée était un aplat jaune plein. Elle se distingue
    désormais par sa clarté, pas par sa couleur : fond noir comme l’autre,
    bordure plus vive, texte en blanc plein contre le gris d’en face. */
@@ -797,7 +799,7 @@ em{color:var(--yellow)}
 @media (min-width:46rem){.piliers{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:64rem){.piliers{grid-template-columns:repeat(3,1fr)}}
 .pilier{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.85rem}
+  padding:clamp(1.15rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:.85rem}
 .pilier__tete{display:flex;align-items:baseline;gap:.8rem}
 .pilier__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
   letter-spacing:-.05em;color:var(--yellow);flex:none}
@@ -828,7 +830,7 @@ em{color:var(--yellow)}
    étant prise par l'appel à prendre contact. Il s'habille comme les cartes
    voisines et son icône s'aligne sur leurs numéros. */
 .guide-lien--large{grid-column:1/-1;background:var(--surface);border:1px solid var(--line);
-  padding:1rem clamp(1.5rem,3vw,2.1rem);transition:border-color .2s ease}
+  padding:.8rem clamp(1.15rem,2.25vw,1.55rem);transition:border-color .2s ease}
 /* Sur téléphone, cette ligne tenait sur quatre lignes, serrée contre le
    bouton : le bouton passe dessous, aligné sur le texte (icône + écart). */
 @media (max-width:30rem){
@@ -841,7 +843,7 @@ em{color:var(--yellow)}
 .why{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.why{grid-template-columns:repeat(3,1fr)}}
 .why article{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.5rem,3vw,2.1rem);display:flex;flex-direction:column;gap:.75rem}
+  padding:clamp(1.15rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:.75rem}
 .why .mono{color:var(--ink-2);display:flex;align-items:center;gap:.55rem}
 .why .mono::before{content:"";width:.55rem;height:.55rem;background:var(--ink);
   flex:none;transform:rotate(45deg)}

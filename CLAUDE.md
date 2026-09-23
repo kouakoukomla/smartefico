@@ -865,11 +865,23 @@ du titre d'accueil. Leur interlignage avait déjà suivi, la règle étant commu
 (`.display`, 0,95) ; restait l'air autour. `.head` passe d'un écart de `.8rem` à
 `.55rem` entre le titre et le chapô, et d'une marge basse de
 `clamp(1.25rem,2.4vw,2rem)` à `clamp(.85rem,1.6vw,1.35rem)`. Mesuré à 1 280 px : le
-blanc titre-chapô tombe de 17 à 13 px, et le blanc chapô-contenu de 77 à 67 px. **Le
-second bouge moins que la marge retirée** — la moitié de ces 67 px vient de la marge
-intérieure des cartes, pas de l'en-tête ; y toucher demanderait de rouvrir `.figure`,
-`.offer` et consorts, ce qui n'a pas été fait. L'écart entre deux sections ne bouge
-pas non plus : c'est `--gap`, et il tient le rythme de toute la page.
+blanc titre-chapô tombe de 17 à 13 px, et le blanc chapô-contenu de 77 à 67 px. L'écart
+entre deux sections ne bouge pas : c'est `--gap`, et il tient le rythme de toute la
+page.
+
+**Les marges intérieures des cartes ont suivi**, dans la foulée et à sa demande
+(« Réduis aussi la marge intérieure des cartes ») : c'est de là que venait la moitié
+des 67 px restants. Toute la famille est rabotée d'un quart, en gardant les écarts
+relatifs entre composants — `.figure` (2rem → 1,5rem au plus large), `.offer`
+(2,2 → 1,65), `.ba__col`, `.pilier`, `.why article` (2,1 → 1,55),
+`.guide-lien--large` et `.mc__corps` (1,5 → 1,15). Les valeurs `vw` des `clamp()`
+suivent le même quart. Le blanc chapô-contenu passe alors à **59 px**.
+
+**Ce que les trois resserrements du 23 septembre rendent ensemble** : la page d'accueil
+passe de 10 436 px à **9 919 px** à 1 280 px de large, soit 517 px, sans qu'aucun
+contenu ne disparaisse. N'ont pas été touchés, et ne devraient pas l'être sans
+demande : `--gap` entre les sections, la marge intérieure du bloc contact et celle du
+bandeau des cinq étapes, qui sont des panneaux et non des cartes.
 
 La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
@@ -1029,9 +1041,9 @@ Fonts — restaient Poppins et Montserrat, et Poppins était son premier exemple
 **Signalements d'impeccable à ne pas « corriger »**, vérifiés un par un dans le
 navigateur :
 
-- `cramped-padding` (~67) — le détecteur mesure le padding du conteneur, alors que ce
-  sont les enfants qui le portent (38 px dans les cartes, 64 px dans le bloc contact).
-  Ajouter du padding doublerait les marges.
+- `cramped-padding` — le détecteur mesure le padding du conteneur, alors que ce sont
+  les enfants qui le portent (24 px dans les cartes depuis le 23 septembre 2026, 38 px
+  avant ; 64 px dans le bloc contact). Ajouter du padding doublerait les marges.
 - `flat-type-hierarchy` sur les pages légales — le détecteur ne sait pas lire `clamp()`
   et ne voit donc jamais les `h1` et `h2`. L'échelle réelle compte trois paliers nets.
 - `marquee` sur `.marques--defile .marques__piste` — la boucle horizontale est la
