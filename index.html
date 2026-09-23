@@ -75,10 +75,13 @@
      demande par le proprietaire le 14 septembre 2026. Nulle part ailleurs. */
   --violet:#9D4DFF;
   --violet-hi:#C49BFF;
-  /* Rythme entre les sections. Etait a 8vw plafonne a 6.5rem, soit 102 px
-     sur un ecran de 1280 : quinze fois cet ecart sur une page de 10 800 px,
-     ce qui la faisait respirer trop fort. Resserre d un tiers. */
-  --gap:clamp(2.5rem,5.4vw,4.5rem);
+  /* Rythme entre les sections, et le seul reglage de la page dont l effet se
+     voit partout a la fois : la pile l applique quinze fois. Il valait 8vw
+     plafonne a 6.5rem — 102 px a 1280 — puis clamp(2.5rem,5.4vw,4.5rem), soit
+     69 px, resserre d un tiers le 19 septembre 2026. Resserre de nouveau d un
+     quart le 23 septembre, en dernier d une serie de six et apres un avis
+     contraire de Claude, que le proprietaire a ecarte : 69 px -> 50 px. */
+  --gap:clamp(1.8rem,3.9vw,3.25rem);
 }
 
 *,*::before,*::after{box-sizing:border-box}

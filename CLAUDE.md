@@ -841,7 +841,8 @@ zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`.
 
 **Pas plus de vide qu'il n'en faut**, demande du propriétaire du 19 septembre 2026 :
 « supprime les endroits où il y a trop d'espace ». Entre deux sections, la page
-laisse environ 77 px à 1 440 px de large (`--gap` de la pile, plus l'interlignage).
+laissait environ 77 px à 1 440 px de large (`--gap` de la pile, plus l'interlignage)
+— environ 58 px depuis le 23 septembre 2026, voir plus bas.
 Mesuré sur toute la page à quatre largeurs, quatre endroits dépassaient nettement :
 
 - **le hero**, qui avait une hauteur minimale (`min(42rem,80svh)`) supérieure à son
@@ -890,11 +891,17 @@ resserrement, après celui du 19 septembre. **Le rapport au bloc contact est
 conservé** — le bandeau reste à peu près aux trois quarts de sa marge, comme avant :
 deux panneaux noirs qui ne se traitent pas l'un sans l'autre.
 
-**Ce que les cinq resserrements du 23 septembre rendent ensemble** : la page d'accueil
-passe de 10 436 px à **9 834 px** à 1 280 px de large, soit 602 px, sans qu'aucun
-contenu ne disparaisse. **N'a pas été touché, et ne devrait pas l'être sans
-demande** : `--gap`, l'écart entre deux sections, qui tient le rythme de la page
-entière et qu'il avait lui-même réglé le 19 septembre.
+**`--gap` a fini par y passer aussi** (« Réduis aussi l'écart entre les sections »),
+sixième et dernière demande de la série. Il passe de `clamp(2.5rem,5.4vw,4.5rem)` à
+`clamp(1.8rem,3.9vw,3.25rem)`, soit 69 px à 50 px à 1 280 px. **Claude avait
+conseillé de le laisser** — c'est le seul réglage de la page dont l'effet se voit
+partout à la fois, la pile l'applique quinze fois — et le propriétaire a écarté
+l'avis. À 288 px gagnés d'un seul jeton, il avait le meilleur rendement de la série.
+
+**Ce que les six resserrements du 23 septembre rendent ensemble** : la page d'accueil
+passe de 10 436 px à **9 546 px** à 1 280 px de large, soit **890 px**, sans qu'aucun
+contenu ne disparaisse. Il ne reste plus de réserve de vide évidente sur cette page :
+la suite se paierait en marges de composants, c'est-à-dire en lisibilité.
 
 La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fait
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
