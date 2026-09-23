@@ -263,7 +263,10 @@ const styleBlog = `<style>
 .article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
   text-decoration-thickness:.15em;text-underline-offset:.22em}
 .article__meta{color:var(--ink-3);margin:0 0 .6rem}
-.article__title{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+/* Le titre de l'article est un grand titre : il garde la pile Helvetica,
+   comme les .display de l'accueil. Le reste de l'article est en Poppins. */
+.article__title{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
 /* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
    20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
    L'affiche perd son filet : sur une image claire il ne servait à rien, et
@@ -337,7 +340,7 @@ ${favicon}
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
 ${styleSite}
 ${styleBlog}
 </head>`;

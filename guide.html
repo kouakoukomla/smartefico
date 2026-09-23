@@ -42,7 +42,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
 <style>
 /* Mêmes codes que index.html : noir plat depuis le 23 septembre 2026,
    au soir — fond #000000 sans dégradé, cartes relevées à #0E0E0E, sur le
@@ -58,7 +58,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--ground);color:var(--ink);
-  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:"Poppins","Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -87,7 +87,9 @@ em{color:var(--ink)}
 .accroche{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem;
   padding-block:clamp(2rem,5vw,3.25rem) clamp(1.75rem,4vw,2.5rem)}
 .etiquette{font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.display{font-weight:800;letter-spacing:-.042em;line-height:1.02;text-wrap:balance;
+/* Le grand titre garde la pile Helvetica, comme ceux de l'accueil. */
+.display{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:800;letter-spacing:-.042em;line-height:1.02;text-wrap:balance;
   overflow-wrap:break-word;font-size:clamp(2.3rem,5.6vw,4.4rem);max-width:18ch}
 .display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
   font-weight:400;letter-spacing:-.01em;padding-right:.04em}

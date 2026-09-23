@@ -497,13 +497,17 @@ Sur `guide.html` même, le « Guide gratuit » du pied de page pointe vers `#for
 un lien vers la page la rechargerait, et **aucun lien de cette page ne doit mener
 directement au PDF**, qui ne se donne qu'après l'inscription.
 
-**Le menu est désormais plein à 70 rem.** À 1 120 px, le seuil où il s'affiche en
-ligne, il reste 41 px entre la marque et les liens et 63 px avant « Contact », mesurés
-sous Windows, où la graisse 800 tombe sur Arial Black, la plus large des polices de la
-pile. Ces deux marges valaient 28 px et 36 px jusqu'au 18 septembre 2026, quand le
-propriétaire a renommé « Actualités » en « Chaîne » — la section ne montre plus que sa
-vidéo. Le mot plus court rend une quarantaine de pixels, pas de quoi ajouter un
-huitième lien : celui-là ne tiendrait toujours pas sans relever le seuil.
+**Le menu respire de nouveau depuis Poppins.** À 1 120 px, le seuil où il s'affiche en
+ligne, il reste **63 px** entre la marque et les liens et **106 px** avant
+« Contact » — mesurés sur une capture de la barre, en relevant les colonnes qui
+portent de l'encre. Ces marges valaient 41 px et 63 px la veille encore : la graisse
+800 tombait alors sur Arial Black sous Windows, la plus large des polices de la pile,
+là où Poppins 800 est nettement plus étroite. Elles valaient 28 px et 36 px jusqu'au
+18 septembre 2026, quand le propriétaire a renommé « Actualités » en « Chaîne ».
+
+**Un huitième lien reste hors de portée** malgré ces 106 px : il faudrait aussi tenir
+sur les écrans juste au-dessus du seuil, et la marge y fond. Remesurer avant d'en
+ajouter un, la méthode est celle décrite ci-dessus.
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
@@ -941,17 +945,43 @@ ce fichier annonçait Bricolage Grotesque, Schibsted Grotesk et DM Mono : aucune
 trois n'apparaît nulle part, ni dans `index.html`, ni dans le blog, ni dans les
 articles, ni dans les pages légales.
 
-- Titres et texte — `"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif`.
-  Le display est en graisse 800, chasse `-.035em` (`-.042em` sur le `h1`),
-  interlignage 1,02.
-- Mots accentués — `"Instrument Serif","Times New Roman",Georgia,serif` en italique,
-  dans les `<em>` des titres, en jaune. Les `<em>` du corps de texte restent en
-  Helvetica, italiques et jaunes eux aussi. C'est la seule feuille Google Fonts
-  chargée, et elle ne
-  demande que l'italique (`family=Instrument+Serif:ital@1`) : un Instrument Serif
-  droit n'existe pas sur ces pages.
+**Deux polices, et c'est le niveau de titre qui décide**, depuis le 23 septembre 2026
+au soir. Le propriétaire a fourni une capture et une description — « une sans-serif
+moderne, géométrique et épurée, comme Poppins, Montserrat, Inter ou Proxima Nova » —
+avec une consigne précise : « **Ne touche pas aux grands titres.** Pour les autres, tu
+dois utiliser ce type de caractère. »
+
+- **Grands titres — la pile Helvetica**, inchangée :
+  `"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif`, graisse 800,
+  chasse `-.035em` (`-.042em` sur le `h1`), interlignage 1,02. Elle ne vit plus que
+  sur quatre déclarations : `.display` (accueil, guides, pages de remerciement, titre
+  du blog), le `h1` des pages légales, et `.article__title` dans `build-blog.mjs`.
+  **Toute nouvelle règle de titre doit la redéclarer**, sinon elle hérite de Poppins.
+- **Tout le reste — Poppins**, posée devant la pile Helvetica et non à sa place :
+  `"Poppins","Helvetica Now Text",…`. Si Google Fonts ne répond pas, la page retombe
+  sur la typographie d'avant, intacte. Graisses chargées : 400, 500, 600, 700 et 800
+  sur l'accueil, les guides et le blog ; 400 à 700 sur les pages légales, qui n'ont
+  pas de 800. **Poppins a été choisie parce que c'est le premier exemple de sa
+  description et le seul de sa liste qui ne soit pas proscrit ici — Inter l'est.**
+- **Mots accentués — `"Instrument Serif","Times New Roman",Georgia,serif`** en
+  italique, dans les `<em>` des titres, en jaune sur le titre d'accueil seulement
+  depuis « Réduis le jaune ». La feuille ne demande que l'italique
+  (`family=Instrument+Serif:ital@1`) : un Instrument Serif droit n'existe pas sur ces
+  pages.
 - La classe `.mono` **ne porte aucune police monospace.** Elle vaut
   `font-family:inherit`, en capitales avec un fort suivi. Le nom trompe.
+- **`.nav__links a` porte un `word-spacing:.1em`** que Poppins a rendu nécessaire : son
+  espace-mot est étroite, et en capitales grasses « GUIDE GRATUIT » se lisait presque
+  d'un seul mot. Un dixième de cadratin rouvre l'espace sans pousser le menu.
+
+**Les pages légales chargent désormais une police distante**, elles qui n'en
+chargeaient aucune : elles n'avaient pas besoin d'Instrument Serif, leurs italiques
+étant du texte courant. C'est la seule entorse nouvelle à la règle des pages
+autoportantes. **L'article 9 des CGC dit que Google Fonts reçoit l'adresse IP « au
+chargement de la police des titres »** : la phrase reste vraie sur le fond — Google
+Fonts est bien utilisé, il reçoit bien l'adresse IP — mais « des titres » est devenu
+imprécis, puisque c'est maintenant le corps du texte, et sur toutes les pages. La
+correction a été proposée au propriétaire ; l'article ne se touche qu'avec son accord.
 
 **Helvetica Now Text est commerciale, et rien ne la charge** — aucun `@font-face`,
 aucune feuille distante. Elle ne s'affiche que chez les visiteurs qui la possèdent
@@ -963,7 +993,10 @@ police annoncée.
 Instrument **Sans** a été retirée parce qu'impeccable la signale comme sur-utilisée
 par les interfaces générées. À ne pas confondre avec Instrument **Serif** ci-dessus,
 qui reste en place. Ne pas revenir vers Instrument Sans, ni vers Inter, Roboto,
-Fraunces, Geist, Plus Jakarta Sans ou Space Grotesk.
+Fraunces, Geist, Plus Jakarta Sans ou Space Grotesk. **Cette liste a servi le
+23 septembre 2026** : le propriétaire proposait « Poppins, Montserrat, Inter ou
+Proxima Nova », Inter est proscrite, Proxima Nova est commerciale et absente de Google
+Fonts — restaient Poppins et Montserrat, et Poppins était son premier exemple.
 
 **Signalements d'impeccable à ne pas « corriger »**, vérifiés un par un dans le
 navigateur :

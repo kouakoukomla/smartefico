@@ -43,7 +43,7 @@
      titres. Le reste de la page tourne sur la pile Helvetica du système. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
 
 <!-- Pose un marqueur avant le premier rendu : le menu du téléphone ne se
      replie derrière son bouton que si JavaScript est bien là. Sans lui, les
@@ -87,7 +87,13 @@ body{
   margin:0;
   background:var(--ground);
   color:var(--ink);
-  font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  /* Poppins pour tout le corps du site, demande du propriétaire du
+     23 septembre 2026 au soir, sur un modèle qu'il a fourni : une
+     géométrique moderne et arrondie. Les grands titres, eux, ne bougent
+     pas — ils gardent la pile Helvetica, déclarée sur .display. Poppins
+     passe devant plutôt que de remplacer : si Google Fonts ne répond pas,
+     la page retombe sur la pile d'avant, intacte. */
+  font-family:"Poppins","Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:1rem;
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
@@ -107,6 +113,9 @@ a{color:inherit}
 
 /* ---------- typographie ----------
    Fort écart entre le display et le corps, comme chez eux. */
+/* Les grands titres gardent la pile Helvetica : « Ne touche pas aux grands
+   titres », 23 septembre 2026. C'est la seule déclaration qui la porte encore
+   sur cette page, avec celle des mots accentués en Instrument Serif. */
 .display{
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.035em;line-height:1.02;
@@ -114,7 +123,7 @@ a{color:inherit}
 }
 h1.display{font-size:clamp(2.6rem,6.4vw,5.8rem);letter-spacing:-.042em;max-width:20ch}
 h2.display{font-size:clamp(1.85rem,4vw,3rem)}
-h3{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;
+h3{font-weight:700;
   letter-spacing:-.02em;font-size:1.2rem;line-height:1.25;margin:0}
 p{margin:0}
 .lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--ink-2);max-width:56ch}
@@ -198,6 +207,10 @@ p{margin:0}
    on ouvre légèrement l interlettrage, sans quoi les mots se collent. */
 .nav__links a{text-decoration:none;color:var(--ink);font-size:.88rem;
   font-weight:800;letter-spacing:.02em;padding-block:.35rem;
+  /* Poppins a une espace-mot étroite : en capitales et en graisse 800,
+     « GUIDE GRATUIT » se lisait presque d'un seul mot. Un dixième de cadratin
+     suffit à rouvrir l'espace sans pousser le menu. */
+  word-spacing:.1em;
   text-transform:uppercase;
   white-space:nowrap;
   border-bottom:2px solid transparent;
