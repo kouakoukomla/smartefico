@@ -325,6 +325,35 @@ onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, 
 est plein. Sous la grille, sur toute sa largeur, un encart mène à son propre guide
 gratuit (voir `guide-ia.html` plus bas).
 
+**Les cinq leviers se replient depuis le 25 septembre 2026**, à la demande du
+propriétaire : « tu mettras les informations […] dans des onglets cachés comme tu as
+mis les éléments sous "Cinq étapes, du système au multi-scaling" ». Chacun est devenu
+un `<details class="pilier pilier--repli">` : le `<summary>` porte le numéro, le titre
+et le chevron, et le `.pilier__corps` cache le texte et les quatre étiquettes. Rien du
+texte n'a bougé.
+
+- **Même mécanique que `.step`, mais pas sa peau.** Le chevron est le même dessin, une
+  seule déclaration pour les deux composants, et les marges du sommaire reprennent
+  celles de `.step__tete` au pixel près (1,05 rem / 1,2 rem) : les deux accordéons de
+  la page se lisent à la même densité. La surface, elle, reste celle de la section
+  (`--surface`, filet `--line`), sinon les cinq leviers se seraient détachés de la
+  carte d'appel et de l'encart du guide, qui restent des cartes pleines.
+- **La marge passe de la carte au sommaire**, sans quoi un panneau fermé matelasse
+  deux fois. C'est ce que `.pilier--repli` fait, et lui seul : les cartes `.pilier` de
+  `#exemples`, qui n'ont pas ce modificateur, ne bougent pas.
+- **Un panneau fermé ne s'étire pas à la hauteur de sa rangée** (`align-self:start`) :
+  sans cela, 04 et 05 prenaient celle de la carte d'appel, à côté.
+- **La carte d'appel est devenue un bandeau pleine largeur**, posé juste au-dessus de
+  l'encart du guide. Elle était la seule chose haute de sa rangée et laissait 250 px de
+  vide sous les panneaux — ce que des panneaux repliés sont précisément censés
+  supprimer. Son texte se met en ligne au-dessus de 46 rem (titre, phrase, puis le
+  bouton et sa mention, regroupés dans un `.pilier__action` pour ne jamais se séparer)
+  et se réempile en dessous. Le `justify-content:center` de la carte a dû être défait
+  en mode ligne : il centrait le bouton quand il passait à la ligne suivante.
+- **Aucun panneau n'est ouvert à l'arrivée**, comme les cinq étapes et la FAQ (voir
+  Design). À 1 280 px, un panneau fermé fait 86 px contre 245 px ouvert, la section
+  tombe à 605 px et l'accueil reprend **310 px**.
+
 **« Exemples d'applications de l'IA » (`#exemples`) et sa page**, demandées le
 25 septembre 2026 : « juste avant agent IA je veux créer un onglet "Exemples
 d'applications de l'IA par secteur, département et métier, Explorez les différents cas
@@ -950,7 +979,9 @@ vous apporte » (`.livrable`, panneaux retirés le lendemain avec la réécritur
 section) et la première question de la FAQ (`.qa`). Chacun portait
 `open` pour montrer que les autres se déplient ; le chevron ou le « + » de chaque
 titre le dit seul. Celui de la FAQ était posé par `sync-content.mjs`, qui écrit la
-zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`.
+zone FAQ : c'est là qu'il faudrait le remettre, jamais dans `index.html`. **Les cinq
+leviers de `#ia`, repliables depuis le 25 septembre 2026, suivent la même règle** :
+aucun `open` dans le markup.
 
 **Pas plus de vide qu'il n'en faut**, demande du propriétaire du 19 septembre 2026 :
 « supprime les endroits où il y a trop d'espace ». Entre deux sections, la page

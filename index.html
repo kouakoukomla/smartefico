@@ -710,12 +710,15 @@ em{color:var(--yellow)}
 .step__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
   letter-spacing:-.05em;color:var(--yellow);flex:none}
 .step h3{color:#FFF;font-size:1.05rem;flex:1;min-width:0}
-/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert. */
-.step__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
+/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert.
+   Le meme dessin sert aux cinq etapes et aux cinq leviers de #ia, repliables
+   depuis le 25 septembre 2026 : une seule declaration, deux composants. */
+.step__chevron,.pilier__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
   border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
   transform:rotate(45deg);transition:transform .2s ease}
-.step[open] .step__chevron{transform:rotate(-135deg);margin-top:.25rem}
-@media (prefers-reduced-motion:reduce){.step__chevron{transition:none}}
+.step[open] .step__chevron,.pilier[open] .pilier__chevron{transform:rotate(-135deg);
+  margin-top:.25rem}
+@media (prefers-reduced-motion:reduce){.step__chevron,.pilier__chevron{transition:none}}
 .step__corps{padding:0 1.2rem 1.2rem}
 .step__corps .chips{margin-top:0}
 .step p{color:#B5B5B1;font-size:.95rem}
@@ -791,11 +794,57 @@ em{color:var(--yellow)}
    première rangée perd 60 px. */
 .pilier__puces{list-style:none;padding:0;margin:0;padding-top:.4rem}
 .pilier .chip{background:transparent;border-color:#3A3A38;padding:.3rem .55rem;font-size:.8rem}
+/* Cinq leviers repliables, demande du proprietaire du 25 septembre 2026 :
+   « dans des onglets caches comme tu as mis les elements sous "Cinq etapes" ».
+   Meme mecanique que .step — un <details>, un <summary> qui porte le numero,
+   le titre et le chevron, un corps pour le texte et les etiquettes — mais la
+   peau de la section reste celle de ses voisines (surface #0E0E0E, filet
+   --line), sinon les cinq leviers se detacheraient de la carte d appel et de
+   l encart du guide, qui restent des cartes pleines.
+
+   La marge passe de la carte au sommaire et au corps : sur un panneau ferme,
+   une carte deja matelassee ajouterait sa marge a celle du sommaire. Les
+   cartes de #exemples, qui n ont pas ce modificateur, ne bougent pas. */
+/* Un panneau ferme ne s etire pas a la hauteur de sa rangee : sans cela, 04
+   et 05 prenaient celle de la carte d appel, a cote, et laissaient deux
+   grands vides. C est le align-items:start de la grille des cinq etapes,
+   pose ici sur les seuls panneaux : les cartes pleines de #exemples et la
+   carte d appel continuent de s aligner entre elles. */
+.pilier--repli{padding:0;gap:0;align-self:start}
+/* Les memes marges que .step__tete, au pixel pres : les deux accordeons de
+   la page se lisent a la meme densite, et le detecteur d impeccable, qui ne
+   sait pas lire un clamp(), cesse de croire la marge nulle. */
+.pilier--repli .pilier__tete{cursor:pointer;list-style:none;padding:1.05rem 1.2rem}
+.pilier--repli .pilier__tete::-webkit-details-marker{display:none}
+.pilier--repli .pilier__tete:focus-visible{outline:3px solid var(--yellow);
+  outline-offset:-3px}
+.pilier--repli h3{flex:1;min-width:0}
+.pilier--repli:hover,.pilier--repli[open]{border-color:#4A4A47}
+.pilier__corps{display:flex;flex-direction:column;gap:.85rem;padding:0 1.2rem 1.2rem}
 /* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
    fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
    aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
    celui de la section Contact : aucun formulaire n'est incrusté ici. */
 .pilier--appel{border-color:var(--yellow);justify-content:center}
+/* Depuis que les cinq leviers se replient (25 septembre 2026), la carte d
+   appel etait seule a etre haute : sa rangee gardait sa hauteur et laissait
+   250 px de vide sous les panneaux 04 et 05. Elle passe donc sur toute la
+   largeur, juste au-dessus de l encart du guide, et son texte se met en
+   ligne des qu il y a la place. */
+.pilier--appel{grid-column:1/-1}
+/* Le bouton et sa mention ne se separent pas : ils forment un bloc, sinon la
+   mention reste seule sur sa ligne quand le bandeau se replie. */
+.pilier__action{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem}
+@media (min-width:46rem){
+  /* justify-content:flex-start defait le centrage de la carte : sur une
+     deuxieme ligne, le bloc du bouton se posait au milieu. */
+  .pilier--appel{flex-direction:row;align-items:center;justify-content:flex-start;
+    gap:1.25rem 1.75rem;flex-wrap:wrap}
+  .pilier--appel h3{flex:1 1 17rem}
+  .pilier--appel p:not(.pilier__note){flex:2 1 22rem;margin:0}
+  .pilier--appel .pilier__action{flex:0 0 auto;margin-top:0}
+  .pilier--appel .btn{margin-top:0}
+}
 .pilier--appel h3{font-size:clamp(1.3rem,2.2vw,1.55rem);line-height:1.2}
 .pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
 .pilier__note{color:var(--ink-3);font-size:.85rem}
@@ -1117,7 +1166,9 @@ h1.display em{color:var(--yellow)}
 .figure:hover,.offer:hover,.agent:hover,.mc:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .pilier--appel{border-color:var(--line)}
-.step__tete:focus-visible,.guide-lien:focus-visible{outline-color:var(--ink)}
+.step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
+.guide-lien:focus-visible{outline-color:var(--ink)}
+.pilier--repli:hover,.pilier--repli[open]{border-color:var(--mur)}
 
 /* Les survols secondaires passent au blanc : le jaune est réservé aux
    boutons d'action eux-mêmes. */
@@ -1494,76 +1545,93 @@ h1.display em{color:var(--yellow)}
         <p class="lead">SmartEfico vous accompagne à chaque étape de votre transformation&nbsp;: de la définition de votre stratégie au déploiement d’outils performants, jusqu’à l’amélioration continue de vos usages.</p>
       </div>
       <div class="piliers">
-        <article class="pilier">
-          <div class="pilier__tete">
+        <details class="pilier pilier--repli">
+          <summary class="pilier__tete">
             <span class="pilier__no" aria-hidden="true">01</span>
             <h3><span class="pilier__cache">01 — </span>Former</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Développez les compétences IA de vos équipes grâce à des formations personnalisées, basées sur vos métiers et vos cas d’usage réels.</p>
+            <ul class="chips pilier__puces">
+              <li class="chip">Formations pratiques</li>
+              <li class="chip">Bibliothèque de prompts</li>
+              <li class="chip">Supports personnalisés</li>
+              <li class="chip">Plan de progression</li>
+            </ul>
           </div>
-          <p>Développez les compétences IA de vos équipes grâce à des formations personnalisées, basées sur vos métiers et vos cas d’usage réels.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Formations pratiques</li>
-            <li class="chip">Bibliothèque de prompts</li>
-            <li class="chip">Supports personnalisés</li>
-            <li class="chip">Plan de progression</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
+        </details>
+        <details class="pilier pilier--repli">
+          <summary class="pilier__tete">
             <span class="pilier__no" aria-hidden="true">02</span>
             <h3><span class="pilier__cache">02 — </span>Conseiller</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Identifiez les meilleures opportunités pour votre activité. Nous analysons vos processus, détectons les tâches à automatiser et construisons une feuille de route adaptée à vos priorités.</p>
+            <ul class="chips pilier__puces">
+              <li class="chip">Audit IA</li>
+              <li class="chip">Diagnostic des processus</li>
+              <li class="chip">Cas d’usage prioritaires</li>
+              <li class="chip">Estimation du ROI</li>
+            </ul>
           </div>
-          <p>Identifiez les meilleures opportunités pour votre activité. Nous analysons vos processus, détectons les tâches à automatiser et construisons une feuille de route adaptée à vos priorités.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Audit IA</li>
-            <li class="chip">Diagnostic des processus</li>
-            <li class="chip">Cas d’usage prioritaires</li>
-            <li class="chip">Estimation du ROI</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
+        </details>
+        <details class="pilier pilier--repli">
+          <summary class="pilier__tete">
             <span class="pilier__no" aria-hidden="true">03</span>
             <h3><span class="pilier__cache">03 — </span>Sensibiliser</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Aidez vos collaborateurs à comprendre les possibilités, les limites et les risques de l’intelligence artificielle. Nous vous accompagnons également dans la définition de règles d’utilisation claires et sécurisées.</p>
+            <ul class="chips pilier__puces">
+              <li class="chip">Conférences</li>
+              <li class="chip">Ateliers pratiques</li>
+              <li class="chip">Bonnes pratiques</li>
+              <li class="chip">Gouvernance IA</li>
+            </ul>
           </div>
-          <p>Aidez vos collaborateurs à comprendre les possibilités, les limites et les risques de l’intelligence artificielle. Nous vous accompagnons également dans la définition de règles d’utilisation claires et sécurisées.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Conférences</li>
-            <li class="chip">Ateliers pratiques</li>
-            <li class="chip">Bonnes pratiques</li>
-            <li class="chip">Gouvernance IA</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
+        </details>
+        <details class="pilier pilier--repli">
+          <summary class="pilier__tete">
             <span class="pilier__no" aria-hidden="true">04</span>
             <h3><span class="pilier__cache">04 — </span>Déployer</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Passez de l’idée à l’action avec des assistants IA et des workflows d’automatisation connectés à vos outils existants.</p>
+            <ul class="chips pilier__puces">
+              <li class="chip">Agents IA</li>
+              <li class="chip">Automatisations Make et n8n</li>
+              <li class="chip">Intégrations CRM</li>
+              <li class="chip">Documentation et prise en main</li>
+            </ul>
           </div>
-          <p>Passez de l’idée à l’action avec des assistants IA et des workflows d’automatisation connectés à vos outils existants.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Agents IA</li>
-            <li class="chip">Automatisations Make et n8n</li>
-            <li class="chip">Intégrations CRM</li>
-            <li class="chip">Documentation et prise en main</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
+        </details>
+        <details class="pilier pilier--repli">
+          <summary class="pilier__tete">
             <span class="pilier__no" aria-hidden="true">05</span>
             <h3><span class="pilier__cache">05 — </span>Accompagner</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Nous suivons les performances de vos solutions, optimisons les automatisations et identifions régulièrement de nouvelles opportunités d’amélioration.</p>
+            <ul class="chips pilier__puces">
+              <li class="chip">Suivi des performances</li>
+              <li class="chip">Optimisation continue</li>
+              <li class="chip">Veille technologique</li>
+              <li class="chip">Nouveaux cas d’usage</li>
+            </ul>
           </div>
-          <p>Nous suivons les performances de vos solutions, optimisons les automatisations et identifions régulièrement de nouvelles opportunités d’amélioration.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Suivi des performances</li>
-            <li class="chip">Optimisation continue</li>
-            <li class="chip">Veille technologique</li>
-            <li class="chip">Nouveaux cas d’usage</li>
-          </ul>
-        </article>
+        </details>
         <aside class="pilier pilier--appel" aria-labelledby="ia-appel">
           <h3 id="ia-appel">Prêt à intégrer l’IA dans votre activité&nbsp;?</h3>
           <p>Commençons par identifier les tâches que vous pouvez automatiser pour gagner du temps, améliorer votre efficacité et accélérer votre croissance.</p>
-          <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=section-ia" target="_blank" rel="noopener">Nous contacter <span aria-hidden="true">&nbsp;↗</span></a>
-          <p class="pilier__note">Formulaire Tally · nouvel onglet</p>
+          <div class="pilier__action">
+            <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=section-ia" target="_blank" rel="noopener">Nous contacter <span aria-hidden="true">&nbsp;↗</span></a>
+            <p class="pilier__note">Formulaire Tally · nouvel onglet</p>
+          </div>
         </aside>
         <a class="guide-lien guide-lien--large" href="guide-ia.html?utm_source=site&amp;utm_medium=section-ia">
           <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
