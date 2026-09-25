@@ -824,13 +824,16 @@ propriétaire, avec son style. Ne pas la remettre.
 **À sa place, les marques clientes défilent**, demande du même jour : un rang pleine
 largeur de grands carreaux noirs arrondis, logos en silhouette blanche.
 
-**Le titre en est à sa cinquième écriture** : « Marques avec lesquelles j'ai
+**Le titre en est à sa sixième écriture** : « Marques avec lesquelles j'ai
 travaillé », puis « travaillées » — forme fautive après « avec lesquelles » —, puis
 « Elles m'ont fait confiance. », puis, le 23 septembre 2026, « +10 CEOs & Entreprises
-nous font confiance. », et **« CEOs & Entreprises nous font confiance. »** quelques
-heures plus tard, le propriétaire ayant demandé de retirer le « +10 ». Le point final
-est de Claude, pour que le titre s'aligne sur tous les autres de la page, qui en
-portent un ; il n'a pas été discuté. Le mot en italique reste « confiance ».
+nous font confiance. », puis « CEOs & Entreprises nous font confiance. » quelques
+heures plus tard, le propriétaire ayant demandé de retirer le « +10 », et enfin
+**« Ils nous ont fait confiance. »**, le 25 septembre 2026, à sa demande. Il revient
+ainsi, au pronom près, à la troisième écriture : le passé composé, et plus personne de
+nommé. Le point final est de Claude, pour que le titre s'aligne sur tous les autres de
+la page, qui en portent un ; il n'a jamais été discuté, et il a survécu aux six
+écritures. Le mot en italique reste « confiance » depuis la troisième.
 
 **Le retrait du « +10 » referme un écart signalé** : le rail ne porte que deux logos,
 les deux seuls que PRODUCT.md autorise à citer, et le titre en annonçait plus de dix
