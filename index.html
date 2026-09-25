@@ -774,6 +774,14 @@ em{color:var(--yellow)}
    pour que le « 01 — Former » du propriétaire se lise d'un coup d'œil. Le
    numéro écrit en gros est caché aux lecteurs d'écran, qui lisent celui,
    visuellement masqué, placé dans le titre. */
+/* Le titre de la section tient sur deux lignes, demande du proprietaire du
+   25 septembre 2026. Une largeur en ch plutot qu un <br> : elle suit la
+   taille du texte au lieu de couper toujours au meme mot, et sur telephone
+   la coupe reste celle du navigateur. A 1 280 px, la bande des deux lignes
+   se joue entre 22 et 30 ch ; 26 ch est au milieu, de quoi encaisser une
+   police de substitution plus large. text-wrap:balance, herite de .display,
+   repartit les deux lignes. */
+#ia .head .display{max-width:26ch;margin-inline:auto}
 .piliers{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:46rem){.piliers{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:64rem){.piliers{grid-template-columns:repeat(3,1fr)}}

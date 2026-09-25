@@ -325,6 +325,15 @@ onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, 
 est plein. Sous la grille, sur toute sa largeur, un encart mène à son propre guide
 gratuit (voir `guide-ia.html` plus bas).
 
+**Son titre tient sur deux lignes**, demande du propriétaire du 25 septembre 2026, par
+une largeur maximale de 26 ch sur le seul `#ia` — pas un `<br>`, qui couperait toujours
+au même mot quelle que soit la taille de l'écran. `text-wrap:balance`, hérité de
+`.display`, répartit les deux lignes : « L'IA générative au service » / « de votre
+performance. » À 1 280 px, la bande des deux lignes se joue entre 22 et 30 ch, d'où
+les 26 ch, au milieu — assez de marge pour une police de substitution plus large. Deux
+lignes de 480 px jusqu'aux plus grands écrans ; trois en dessous, comme avant, le
+titre faisant 48 caractères.
+
 **Les cinq leviers se replient depuis le 25 septembre 2026**, à la demande du
 propriétaire : « tu mettras les informations […] dans des onglets cachés comme tu as
 mis les éléments sous "Cinq étapes, du système au multi-scaling" ». Chacun est devenu
