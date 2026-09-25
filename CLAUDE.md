@@ -252,8 +252,9 @@ réutilisaient le composant `.pilier` de `#ia`, qui reste en place.
 (`.apports`, `.apport__manifeste`, `.apport__volet`, et `.manifesto` tout entier, que
 rien d'autre n'appelait), la règle `.manifesto .punch em` du bloc de thème, et **le
 lien « Expertises » du menu**, qui pointait sur elle et n'aurait plus mené nulle part.
-Le menu passe donc à six liens plus « Contact », et respire d'autant. L'ordre du menu
-suit toujours celui de la page.
+Le menu passe donc à six liens plus « Contact », et respire d'autant — jusqu'au
+25 septembre 2026, où « Exemples » a repris la place libérée. L'ordre du menu suit
+toujours celui de la page.
 
 **Le manifeste est parti avec la section** : ses quatre phrases — deux du propriétaire
 sur les leads, deux de Claude sur l'IA générative, écrites le 19 septembre — ne
@@ -271,7 +272,9 @@ installe » (`#resultats`), puis après le bandeau des cinq étapes ; et « Avan
 installe ». L'accueil enchaîne donc, depuis le retrait de `#apport` : hero, marques,
 `#chiffres`,
 `#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
-`#agents` (placés l'un contre l'autre le même jour, l'IA générative d'abord) et
+`#exemples` (venue s'intercaler le 25 septembre 2026, « juste avant agent IA »),
+`#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
+jour) et
 « Trois raisons » (`#pourquoi`). « Avec qui l'agence travaille » (`#public`) suivait
 « Trois raisons » depuis le 19 septembre ; elle a été **supprimée le 23 septembre
 2026** (voir plus bas). La première pile s'arrête
@@ -321,6 +324,59 @@ du jaune — et son bouton « Nous contacter » ouvre le formulaire `D4LJDR` dan
 onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, qui
 est plein. Sous la grille, sur toute sa largeur, un encart mène à son propre guide
 gratuit (voir `guide-ia.html` plus bas).
+
+**« Exemples d'applications de l'IA » (`#exemples`) et sa page**, demandées le
+25 septembre 2026 : « juste avant agent IA je veux créer un onglet "Exemples
+d'applications de l'IA par secteur, département et métier, Explorez les différents cas
+d'usage de l'intelligence artificielle" […] tu mettras les informations de cette page
+[…] Tu dois résumer et après créer une page qui illustre tout cela », sur le modèle de
+`demarretonaventure.com/ex-applications-ia`.
+
+- **La section résume, la page développe.** Sur l'accueil, entre `#ia` et `#agents` :
+  le titre et l'accroche du propriétaire mot pour mot, trois cartes — Par secteur, Par
+  département, Par métier —, et l'encart pleine largeur qui mène à `exemples-ia.html`.
+  **Elle n'introduit aucun style** : les cartes sont des `.pilier` sans numéro et
+  l'encart est le `.guide-lien--large` de la section voisine, avec une icône de grille
+  à quatre carreaux au lieu de la flèche de téléchargement. Elle coûte 535 px, plus
+  l'écart de 50 px.
+- **La page est autoportante**, feuille propre comme les CGV, les CGC et les deux
+  guides, en-tête et pied repris du blog. Neuf parties : ce qui rend un exemple
+  utilisable (cinq conditions), six familles d'usages, neuf secteurs, seize
+  départements, quinze métiers, le tableau « apport / contrôle indispensable », trois
+  repères officiels (CNIL, EUR-Lex, ANSSI — vérifiés, le lien ANSSI redirige vers
+  `messervices.cyber.gouv.fr`), les cinq étapes qui mènent de l'exemple au projet, et
+  la FAQ. Elle finit sur le formulaire `D4LJDR`, en `utm_medium=page-exemples`.
+- **La source n'est pas recopiée.** Son hub aligne près de 280 pages « département » et
+  autant de « métier » ; on en a gardé la charpente et l'idée directrice — un exemple
+  ne vaut que relié à un processus, des données, un risque, une validation humaine et
+  un indicateur —, et tout le texte a été réécrit. Les usages sont décrits au
+  conditionnel de la capacité (« peut », « aide à ») et chaque carte de secteur porte
+  son point de vigilance : aucun chiffre de résultat, aucun montant, aucun client, et
+  rien qui délègue une qualification juridique, fiscale, médicale ou une notation de
+  personne.
+- **Un septième lien est revenu au menu**, « Exemples », entre « Services » et
+  « Chaîne » — l'ordre du menu suit toujours celui de la page. Il rend au menu
+  exactement la largeur qu'il avait avant le retrait d'« Expertises » : mesuré à
+  1 120 px, il reste **62 px** entre la marque et les liens et **103 px** avant
+  « Contact » (63 et 106 px du temps d'« Expertises », qui était un peu plus large).
+  Le menu est de nouveau plein : un huitième lien reste hors de portée.
+- **Elle est le quatrième lien du site vers `guide-ia.html`** — en-tête, accroche et
+  pied de la page —, en `utm_medium=page-exemples`. L'encart de `#ia` n'est donc plus
+  le seul chemin vers ce guide, contrairement à ce qui est écrit plus bas.
+- **L'assistant la connaît** : `build-assistant.mjs` lit désormais son `<main>` comme
+  ceux de l'accueil et des deux guides, et `api/chat.js` porte un `LIEN_EXEMPLES` avec
+  une consigne — quand le visiteur demande ce que l'IA ferait dans son secteur, son
+  département ou son métier, l'orienter vers cette page. Le contexte passe d'environ
+  21 000 à **31 300 caractères** : c'est le préfixe mis en cache, relu au dixième du
+  prix à partir de la deuxième question, mais il est à savoir si l'on compte les
+  centimes.
+- **Signalements d'impeccable propres à la page**, tous vérifiés faux dans le
+  navigateur : `cramped-padding` sur `.dept` (13,6 px de marge verticale mesurés),
+  sur les `<li>` de `.etapes` (18,4 px sur les quatre côtés, la même valeur que
+  `.carte`, qui n'est pas signalée) et sur les conteneurs à filet `.depts` et `.faq`
+  — c'est la famille déjà connue, où le détecteur attribue la marge au mauvais
+  élément. Le `all-caps-body` de l'étiquette d'accroche, lui, était juste : elle est
+  passée de 42 à 19 caractères.
 
 **Le formulaire de contact `D4LJDR`** (https://tally.so/r/D4LJDR), créé le même jour
 sur le modèle fourni par le propriétaire : titre « Passez à la vitesse supérieure avec
@@ -413,9 +469,10 @@ que l'agence vend : des agents IA qui qualifient.
   markup, entre les repères `ASSISTANT:START/END`.
 - **Quatre fichiers.** `api/chat.js`, la fonction serveur ; `lib/contexte-assistant.js`,
   le texte du site qu'elle donne à Claude, **généré** par `scripts/build-assistant.mjs`
-  à partir du `<main>` de `index.html`, `guide.html` et `guide-ia.html` et de la
-  liste des articles ; la pastille elle-même, entre les repères `ASSISTANT:START/END` de
-  `index.html`, avec son style et son script dans la page comme tout le reste ; et
+  à partir du `<main>` de `index.html`, `guide.html`, `guide-ia.html` et
+  `exemples-ia.html` et de la liste des articles ; la pastille elle-même, entre les
+  repères `ASSISTANT:START/END` de `index.html`, avec son style et son script dans la
+  page comme tout le reste ; et
   `vercel.json`, qui donne 60 s à la fonction. GitHub Actions régénère le contexte
   après chaque enregistrement du back office ; après une retouche de `index.html` à la
   main, relancer `build-assistant.mjs` avant de pousser.
@@ -559,7 +616,9 @@ là où Poppins 800 est nettement plus étroite. Elles valaient 28 px et 36 px j
 
 **Un huitième lien reste hors de portée** malgré ces 106 px : il faudrait aussi tenir
 sur les écrans juste au-dessus du seuil, et la marge y fond. Remesurer avant d'en
-ajouter un, la méthode est celle décrite ci-dessus.
+ajouter un, la méthode est celle décrite ci-dessus. Le septième est revenu le
+25 septembre 2026 avec « Exemples » — 62 px et 103 px —, après le retrait
+d'« Expertises » qui l'avait libéré ; le menu est donc de nouveau plein.
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
@@ -612,7 +671,9 @@ qui « contienne toutes les informations » des cinq cartes et parle de chacune 
   et dans les guillemets). Le propriétaire est invité à le relire.
 - L'encart `.guide-lien--large` de `#ia` y mène, avec
   `utm_source=site&utm_medium=section-ia` comme le bouton « Nous contacter » voisin :
-  Tally range ces inscriptions à part. C'est le seul lien du site vers cette page ; le
+  Tally range ces inscriptions à part. Ce fut le seul lien du site vers cette page
+  jusqu'au 25 septembre 2026, où `exemples-ia.html` lui en a donné trois de plus
+  (en-tête, accroche, pied), en `utm_medium=page-exemples` ; le
   menu, le pied de page, le blog et la sixième case de la méthode désignent toujours le
   guide des 5 étapes. Sa ligne dit « Les 5 leviers de l'IA générative et leurs fiches à
   remplir, en PDF ». Sur téléphone, le bouton « Recevoir » passe sous le texte.

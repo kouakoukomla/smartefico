@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exemples d'applications de l'IA par secteur, département et métier — SmartEfico</title>
+<meta name="description" content="Explorez les cas d'usage de l'intelligence artificielle en entreprise : six familles d'usages, des exemples par secteur, par département et par métier, et la grille de lecture pour passer de l'exemple au projet.">
+<meta name="author" content="Emmanuel Kouakou">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     Page « Exemples d'applications de l'IA », demandée par le propriétaire
+     le 25 septembre 2026, avec sa section d'accueil (#exemples, juste avant
+     les agents IA). Elle développe ce que la section résume : les six
+     familles d'usages, les exemples par secteur, par département et par
+     métier, le tableau de décision, les repères officiels, les cinq étapes
+     qui mènent de l'exemple au projet, et la FAQ.
+
+     Page autoportante, comme les autres : sa feuille de style est ici, et
+     rien d'externe sauf les polices. Aucun chiffre de résultat, aucun
+     montant, aucun client cité, aucune ville — voir les contraintes de
+     contenu de CLAUDE.md. Les exemples décrivent ce que l'IA peut faire,
+     jamais ce qu'elle a obtenu.
+
+     Adresse de référence : https://smartefico.com. Si le domaine change,
+     elle est à remplacer ici aussi (canonique + Open Graph + Twitter).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<link rel="canonical" href="https://smartefico.com/exemples-ia.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartEfico">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://smartefico.com/exemples-ia.html">
+<meta property="og:title" content="Exemples d'applications de l'IA par secteur, département et métier">
+<meta property="og:description" content="Explorez les différents cas d'usage de l'intelligence artificielle : six familles d'usages, des exemples par secteur, par département et par métier, et la grille de lecture pour en faire un projet.">
+<meta property="og:image" content="https://smartefico.com/assets/og-smartefico-plat.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SmartEfico — générez des leads qualifiés et mettez l'IA générative au service de votre performance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exemples d'applications de l'IA par secteur, département et métier">
+<meta name="twitter:description" content="Explorez les différents cas d'usage de l'intelligence artificielle : six familles d'usages, des exemples par secteur, par département et par métier, et la grille de lecture pour en faire un projet.">
+<meta name="twitter:image" content="https://smartefico.com/assets/og-smartefico-plat.jpg">
+
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<style>
+/* Mêmes codes que index.html : noir plat depuis le 23 septembre 2026 au soir
+   — fond #000000 sans dégradé, cartes relevées à #0E0E0E, filets #1F1F1F.
+   Le jaune ne marque que deux choses : ce qui se clique, et les mots
+   accentués du grand titre, qui est un h1 comme celui des guides. Les titres
+   de section (h2) sont blancs. La feuille est propre à la page, comme celles
+   des CGV, des CGC et des deux guides. */
+:root{
+  --ground:#000000;--surface:#0E0E0E;--ink:#FFFFFF;--ink-2:#B4B4B0;--ink-3:#8A8A86;
+  --line:#1F1F1F;--mur:#333333;--yellow:#FFCC00;--yellow-hi:#FFE04D;--on-yellow:#141414;
+  /* Le rythme entre les sections de l'accueil, à l'identique. */
+  --gap:clamp(1.8rem,3.9vw,3.25rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:2rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Poppins","Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+p,h1,h2,h3,ul,ol{margin:0}
+ul,ol{padding:0}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.skip-link{position:fixed;top:1rem;left:1rem;z-index:100;transform:translateY(-200%);
+  padding:.8rem 1rem;background:var(--yellow);color:var(--on-yellow);font-weight:700;
+  border-radius:.5rem}
+.skip-link:focus{transform:translateY(0)}
+.wrap{width:min(100% - 2.5rem,74rem);margin-inline:auto}
+/* Les italiques du corps de texte sont blancs ; seul le grand titre garde le
+   jaune, comme celui des guides et du blog. */
+em{color:var(--ink)}
+
+/* ---------- typographie ---------- */
+.display{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:800;letter-spacing:-.035em;line-height:.95;text-wrap:balance;
+  overflow-wrap:break-word}
+h1.display{font-size:clamp(2.2rem,4.8vw,3.9rem);letter-spacing:-.042em;max-width:26ch}
+h1.display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
+  font-style:italic;font-weight:400;letter-spacing:-.01em;padding-right:.04em;
+  color:var(--yellow)}
+h2.display{font-size:clamp(1.7rem,3.4vw,2.6rem)}
+h3{font-weight:700;letter-spacing:-.02em;font-size:1.15rem;line-height:1.25}
+.lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--ink-2);max-width:58ch}
+.mono{font-family:inherit;font-weight:600;font-size:.875rem;letter-spacing:.08em;
+  text-transform:uppercase}
+
+/* ---------- en-tête, comme celui du blog ---------- */
+.haut{display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.5rem;
+  flex-wrap:wrap;padding-block:1.25rem;border-bottom:1px solid var(--line)}
+.haut__marque{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+/* Sur fond sombre, logo-clair.png : le logo sans plaque, dont le contour
+   blanc se détache seul. logo.png, qui porte la sienne, ne sert que sur fond
+   clair. */
+.haut__marque img{width:2.1rem;height:2.1rem;object-fit:contain}
+.haut__liens{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+.haut__liens a{color:var(--ink-2);text-decoration:none;font-size:.78rem}
+.haut__liens a:hover{color:var(--ink)}
+
+/* ---------- rythme général ---------- */
+main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)}
+.head{display:flex;flex-direction:column;gap:.55rem;
+  margin-bottom:clamp(.85rem,1.6vw,1.35rem)}
+.head--centre{align-items:center;text-align:center}
+.head--centre .lead{margin-inline:auto}
+.eyebrow{color:var(--ink-3)}
+
+/* ---------- accroche ---------- */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem;
+  padding-top:clamp(2rem,5vw,3.5rem)}
+.hero .lead{max-width:62ch}
+.hero__texte{color:var(--ink-2);max-width:72ch;font-size:1.02rem}
+.boutons{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:.35rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:3rem;padding:.75rem 1.4rem;border-radius:999px;border:1px solid transparent;
+  font-weight:700;text-decoration:none;
+  transition:background-color .18s ease,transform .18s ease}
+.btn--solid{background:var(--yellow);color:var(--on-yellow)}
+.btn--solid:hover{background:var(--yellow-hi);transform:translateY(-2px)}
+.btn--line{border-color:var(--ink);color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:#0A0A0A;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+/* ---------- grilles de cartes ---------- */
+.grille{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.grille{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.grille--3{grid-template-columns:repeat(3,1fr)}}
+/* Marge intérieure alignée sur celle des cartes de l'accueil, rabotée d'un
+   quart le 23 septembre 2026 (« Réduis aussi la marge intérieure des
+   cartes »). */
+.carte{background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.15rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:.7rem;
+  transition:border-color .2s ease}
+.carte:hover{border-color:var(--mur)}
+@media (prefers-reduced-motion:reduce){.carte{transition:none}}
+.carte__no{font-weight:800;font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:.9;
+  letter-spacing:-.05em;color:var(--ink-3)}
+.carte p{color:var(--ink-2);font-size:.98rem}
+.liste{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.liste li{position:relative;padding-left:1.15rem;color:var(--ink-2);font-size:.95rem;
+  line-height:1.5}
+.liste li::before{content:"";position:absolute;left:0;top:.6rem;width:.4rem;height:.4rem;
+  background:var(--ink-3);transform:rotate(45deg)}
+/* Le point de vigilance ferme chaque carte de secteur : collé en bas, il
+   aligne les filets d'une rangée à l'autre. */
+.note{color:var(--ink-3);font-size:.85rem;border-top:1px solid var(--line);
+  padding-top:.7rem;margin-top:auto}
+.note strong{color:var(--ink-2);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:1px solid #3A3A38;padding:.28rem .55rem;font-size:.78rem;color:var(--ink-2);
+  border-radius:999px}
+
+/* ---------- départements : deux colonnes de lignes ---------- */
+.depts{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+@media (min-width:56rem){.depts{grid-template-columns:repeat(2,1fr);column-gap:2.5rem}}
+.dept{border-bottom:1px solid var(--line);padding-block:.85rem}
+.dept h3{font-size:1rem}
+.dept p{color:var(--ink-2);font-size:.92rem;margin-top:.15rem}
+
+/* ---------- tableau de décision ---------- */
+.tableau-cadre{overflow-x:auto}
+.tableau{width:100%;min-width:38rem;border-collapse:collapse;font-size:.95rem}
+.tableau th,.tableau td{text-align:left;vertical-align:top;padding:.85rem .9rem;
+  border-bottom:1px solid var(--line)}
+.tableau thead th{color:var(--ink);font-weight:600;font-size:.78rem;letter-spacing:.08em;
+  text-transform:uppercase;border-bottom-color:var(--mur)}
+.tableau tbody th{color:var(--ink);font-weight:600}
+.tableau td{color:var(--ink-2)}
+
+/* ---------- repères officiels ---------- */
+.reperes{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:56rem){.reperes{grid-template-columns:repeat(3,1fr)}}
+.repere{background:var(--surface);border:1px solid var(--line);padding:1.2rem;
+  display:flex;flex-direction:column;gap:.3rem;text-decoration:none;
+  transition:border-color .2s ease}
+.repere:hover{border-color:var(--mur)}
+@media (prefers-reduced-motion:reduce){.repere{transition:none}}
+.repere .mono{color:var(--ink-3);font-size:.72rem}
+.repere strong{color:var(--ink);font-size:1.02rem;letter-spacing:-.02em}
+.repere span{color:var(--ink-2);font-size:.9rem}
+
+/* ---------- cinq étapes ---------- */
+.etapes{list-style:none;counter-reset:etape;display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.etapes{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.etapes{grid-template-columns:repeat(3,1fr)}}
+.etapes li{counter-increment:etape;background:var(--surface);border:1px solid var(--line);
+  padding:clamp(1.15rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:.5rem}
+.etapes li::before{content:"0" counter(etape);font-weight:800;
+  font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:.9;letter-spacing:-.05em;
+  color:var(--ink-3)}
+.etapes h3{font-size:1.1rem}
+.etapes p{color:var(--ink-2);font-size:.96rem}
+
+/* ---------- questions ---------- */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
+  padding:1.25rem 0;cursor:pointer;list-style:none;font-weight:700;font-size:1.05rem;
+  letter-spacing:-.015em;transition:color .18s ease}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{color:var(--ink-2)}
+.qa summary::after{content:"+";color:var(--ink);font-size:1.5rem;line-height:.8;flex:none;
+  transition:transform .22s ease}
+.qa[open] summary::after{transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){.qa summary,.qa summary::after{transition:none}}
+.qa p{color:var(--ink-2);padding-bottom:1.35rem;max-width:64ch}
+
+/* ---------- appel, calé sur le bloc contact de l'accueil ---------- */
+.appel{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(1rem,2.4vw,1.5rem);background:#0A0A0A;border:1px solid var(--line);
+  border-radius:1.4rem;padding:clamp(1.6rem,4.2vw,3rem) clamp(1.5rem,3.2vw,2.25rem)}
+.appel .lead{max-width:52ch}
+.appel__note{color:var(--ink-3);font-size:.85rem}
+
+/* ---------- pied ---------- */
+.bas{border-top:1px solid var(--line);padding-block:1.5rem 2.25rem;display:flex;
+  flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;color:var(--ink-3);
+  font-size:.88rem}
+.bas nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+.bas a{color:var(--ink-2);text-decoration:none}
+.bas a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#familles">Aller au contenu</a>
+
+<header class="wrap haut">
+  <a class="haut__marque" href="index.html">
+    <img src="assets/logo-clair.png" alt="SmartEfico" width="512" height="512">
+    <span class="mono">SmartEfico</span>
+  </a>
+  <nav class="haut__liens" aria-label="Liens du site">
+    <a class="mono" href="guide-ia.html?utm_source=site&amp;utm_medium=page-exemples">Guide gratuit</a>
+    <a class="mono" href="index.html">Retour au site ↗</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ ACCROCHE ============ -->
+  <section class="wrap hero">
+    <span class="mono eyebrow">Cas d'usage de l'IA</span>
+    <h1 class="display">Exemples d'applications de l'IA par secteur, département et <em>métier</em>.</h1>
+    <p class="lead">Explorez les différents cas d'usage de l'intelligence artificielle.</p>
+    <p class="hero__texte">Un exemple ne sert pas à être recopié. Il sert à reconnaître, chez vous,
+      une tâche assez proche de la sienne pour qu'on puisse la cadrer, l'essayer et la mesurer.
+      Cette page rassemble des usages classés de trois façons — par secteur, par département,
+      par métier — et les grilles de lecture qui permettent d'en faire un projet plutôt qu'une
+      démonstration.</p>
+    <div class="boutons">
+      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Échanger sur votre contexte IA <span aria-hidden="true">↗</span></a>
+      <a class="btn btn--line" href="guide-ia.html?utm_source=site&amp;utm_medium=page-exemples">Recevoir le guide gratuit</a>
+    </div>
+  </section>
+
+  <!-- ============ CE QUI REND UN EXEMPLE UTILISABLE ============ -->
+  <section class="wrap" id="lecture">
+    <div class="head">
+      <h2 class="display">Ce qui rend un exemple utilisable.</h2>
+      <p class="lead">Un cas d'usage devient exploitable quand cinq choses sont posées. Tant
+        qu'une manque, il reste une idée — intéressante, mais impossible à lancer.</p>
+    </div>
+    <div class="grille grille--3">
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">01</span>
+        <h3>Un processus nommé</h3>
+        <p>Quelle tâche, à quel moment de la journée, faite par qui, et à partir de quoi. Un
+          usage qui s'applique « au service commercial » n'est pas encore un usage.</p>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">02</span>
+        <h3>Des données accessibles</h3>
+        <p>D'où elles viennent, qui les détient, à quelle fréquence elles changent, dans quel
+          état elles sont. La quantité compte moins que la disponibilité et la cohérence.</p>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">03</span>
+        <h3>Un niveau de risque assumé</h3>
+        <p>Ce que coûte une erreur, ce que la réglementation impose, ce qui touche à des
+          données personnelles. Tous les usages ne se valent pas de ce côté-là.</p>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">04</span>
+        <h3>Une validation humaine</h3>
+        <p>Qui relit, qui corrige, qui signe. Une sortie d'IA est une proposition : le point
+          de contrôle fait partie du cas d'usage, il ne s'ajoute pas après.</p>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">05</span>
+        <h3>Un indicateur de résultat</h3>
+        <p>Ce que vous regarderez pour savoir si ça marche : délai de traitement, nombre de
+          reprises, temps passé, taux de réponse au premier contact.</p>
+      </article>
+      <article class="carte">
+        <h3>Et une question de départ</h3>
+        <p>Cherchez-vous à gagner du temps, à réduire les erreurs, à mieux prioriser, à
+          répondre plus vite ou à sécuriser une obligation&nbsp;? La réponse trie la liste
+          plus vite que n'importe quel catalogue.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ LES SIX FAMILLES D'USAGES ============ -->
+  <section class="wrap" id="familles">
+    <div class="head">
+      <h2 class="display">Six familles d'usages.</h2>
+      <p class="lead">Presque tous les exemples des pages suivantes rentrent dans l'une de ces
+        six familles. Les reconnaître évite de traiter chaque idée comme un projet neuf.</p>
+    </div>
+    <div class="grille grille--3">
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">01</span>
+        <h3>Retrouver l'information</h3>
+        <p>Interroger en langage courant les documents de l'entreprise et obtenir une réponse
+          accompagnée de ses sources, au lieu de chercher dans les dossiers.</p>
+        <ul class="chips">
+          <li class="chip">Recherche documentaire</li>
+          <li class="chip">Réponse sourcée</li>
+          <li class="chip">Synthèse de dossier</li>
+        </ul>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">02</span>
+        <h3>Automatiser le répétitif</h3>
+        <p>Trier, classer, extraire, pré-remplir, rapprocher. Les gains se voient vite et le
+          processus n'a pas besoin d'être refait pour en profiter.</p>
+        <ul class="chips">
+          <li class="chip">Tri des demandes</li>
+          <li class="chip">Extraction de données</li>
+          <li class="chip">Rapprochement</li>
+        </ul>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">03</span>
+        <h3>Produire un premier jet</h3>
+        <p>Compte rendu, courriel, fiche, réponse type, support de présentation. L'IA propose,
+          la personne garde la main sur le fond et la signature.</p>
+        <ul class="chips">
+          <li class="chip">Comptes rendus</li>
+          <li class="chip">Réponses types</li>
+          <li class="chip">Fiches et supports</li>
+        </ul>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">04</span>
+        <h3>Aider à décider</h3>
+        <p>Mettre en évidence un écart, un signal, une priorité, un dossier à traiter d'abord.
+          La décision reste celle de l'équipe, mieux informée.</p>
+        <ul class="chips">
+          <li class="chip">Priorisation</li>
+          <li class="chip">Analyse d'écarts</li>
+          <li class="chip">Signaux faibles</li>
+        </ul>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">05</span>
+        <h3>Fiabiliser les opérations</h3>
+        <p>Contrôler la cohérence, repérer les oublis et les anomalies, rappeler une règle au
+          bon moment. La valeur est ici dans l'erreur évitée.</p>
+        <ul class="chips">
+          <li class="chip">Contrôle de cohérence</li>
+          <li class="chip">Détection d'anomalies</li>
+          <li class="chip">Rappels de règles</li>
+        </ul>
+      </article>
+      <article class="carte">
+        <span class="carte__no" aria-hidden="true">06</span>
+        <h3>Personnaliser les échanges</h3>
+        <p>Adapter un message, une relance ou une recommandation au profil, à l'historique et
+          au moment, sans réécrire chaque fois depuis la page blanche.</p>
+        <ul class="chips">
+          <li class="chip">Messages adaptés</li>
+          <li class="chip">Relances</li>
+          <li class="chip">Recommandations</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PAR SECTEUR ============ -->
+  <section class="wrap" id="secteurs">
+    <div class="head">
+      <h2 class="display">Par secteur.</h2>
+      <p class="lead">Les usages se transposent d'un secteur à l'autre&nbsp;; les contraintes,
+        non. Ce sont elles qui décident de l'ordre dans lequel on avance.</p>
+    </div>
+    <div class="grille grille--3">
+      <article class="carte">
+        <h3>Industrie et production</h3>
+        <ul class="liste">
+          <li>Retrouver une procédure ou un plan dans la documentation technique.</li>
+          <li>Préparer les comptes rendus d'incident et les fiches de maintenance.</li>
+          <li>Repérer les écarts entre le prévu et le réalisé sur un ordre de fabrication.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> une consigne de sécurité ne se
+          résume pas. L'IA renvoie au document, elle ne le remplace pas.</p>
+      </article>
+      <article class="carte">
+        <h3>Santé et médico-social</h3>
+        <ul class="liste">
+          <li>Alléger l'administratif : courriers, comptes rendus, pièces à réunir.</li>
+          <li>Orienter les demandes entrantes vers le bon service ou le bon formulaire.</li>
+          <li>Préparer les supports de formation et les rappels de bonnes pratiques.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> aucun usage clinique. Données de
+          santé, donc minimisation, hébergement et accès à cadrer avant tout essai.</p>
+      </article>
+      <article class="carte">
+        <h3>Banque, assurance et gestion</h3>
+        <ul class="liste">
+          <li>Classer les pièces d'un dossier et signaler celles qui manquent.</li>
+          <li>Résumer un contrat ou une note et en extraire les dates et les montants clés.</li>
+          <li>Préparer une grille de questions avant un entretien ou une revue de dossier.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> la qualification juridique ou
+          fiscale reste au professionnel. L'IA prépare, elle ne conclut pas.</p>
+      </article>
+      <article class="carte">
+        <h3>Immobilier et gestion locative</h3>
+        <ul class="liste">
+          <li>Qualifier les demandes entrantes et rappeler les informations manquantes.</li>
+          <li>Rédiger un premier jet d'annonce à partir des caractéristiques du bien.</li>
+          <li>Réunir les pièces d'un dossier locataire et en vérifier la complétude.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> une annonce engage. Elle se relit,
+          et les critères de sélection restent des règles écrites, pas des déductions.</p>
+      </article>
+      <article class="carte">
+        <h3>Secteur public et collectivités</h3>
+        <ul class="liste">
+          <li>Instruire un dossier d'urbanisme : repérer les règles applicables au zonage.</li>
+          <li>Préparer une réunion : notes, ordre du jour, relevé de décisions.</li>
+          <li>Répondre aux demandes courantes des usagers en citant le texte de référence.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> la décision administrative est
+          motivée par un agent. La traçabilité des sources n'est pas une option.</p>
+      </article>
+      <article class="carte">
+        <h3>Commerce et e-commerce</h3>
+        <ul class="liste">
+          <li>Rédiger et décliner les fiches produits à partir des données du catalogue.</li>
+          <li>Trier les messages du service client et proposer une réponse à valider.</li>
+          <li>Résumer les avis et les retours pour en sortir les motifs récurrents.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> une caractéristique produit ne
+          s'invente pas. La source reste la fiche technique, jamais la formulation.</p>
+      </article>
+      <article class="carte">
+        <h3>Transport et logistique</h3>
+        <ul class="liste">
+          <li>Extraire les informations des documents de transport et les recouper.</li>
+          <li>Préparer les réponses aux réclamations à partir de l'historique du dossier.</li>
+          <li>Signaler les écarts de délai et les dossiers à traiter en priorité.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> les données d'exploitation changent
+          vite. Un usage utile est un usage branché sur la version à jour.</p>
+      </article>
+      <article class="carte">
+        <h3>Conseil, ingénierie et services</h3>
+        <ul class="liste">
+          <li>Préparer un rendez-vous : synthèse du compte, historique, points ouverts.</li>
+          <li>Transformer des notes en compte rendu et en liste d'actions.</li>
+          <li>Réutiliser les livrables passés pour bâtir une première trame.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> les documents de mission sont
+          confidentiels. Le périmètre des données accessibles se décide en premier.</p>
+      </article>
+      <article class="carte">
+        <h3>Formation et enseignement</h3>
+        <ul class="liste">
+          <li>Décliner un contenu en supports, exercices et quiz à plusieurs niveaux.</li>
+          <li>Répondre aux questions courantes des apprenants en citant le module concerné.</li>
+          <li>Résumer les retours de fin de session pour ajuster le programme.</li>
+        </ul>
+        <p class="note"><strong>Vigilance&nbsp;:</strong> l'évaluation d'une personne ne se
+          délègue pas. L'IA aide à préparer, pas à noter.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PAR DÉPARTEMENT ============ -->
+  <section class="wrap" id="departements">
+    <div class="head">
+      <h2 class="display">Par département.</h2>
+      <p class="lead">C'est souvent la bonne maille pour un premier périmètre : un département
+        a ses processus, ses outils et ses indicateurs déjà en place.</p>
+    </div>
+    <div class="depts">
+      <div class="dept">
+        <h3>Direction générale</h3>
+        <p>Synthèse des tableaux de bord, préparation de comité, veille concurrentielle,
+          relecture des notes de cadrage.</p>
+      </div>
+      <div class="dept">
+        <h3>Marketing</h3>
+        <p>Déclinaison des messages par cible, analyse des retours de campagne, production des
+          variantes créatives, structuration des contenus.</p>
+      </div>
+      <div class="dept">
+        <h3>Commercial</h3>
+        <p>Qualification des demandes, préparation de rendez-vous, comptes rendus d'entretien,
+          relances personnalisées, suivi des opportunités.</p>
+      </div>
+      <div class="dept">
+        <h3>Relation et service client</h3>
+        <p>Tri et routage des demandes, réponse proposée à valider, base de connaissances
+          tenue à jour, repérage des motifs de contact récurrents.</p>
+      </div>
+      <div class="dept">
+        <h3>Administration des ventes</h3>
+        <p>Saisie assistée des commandes, contrôle de cohérence des documents, suivi des
+          pièces manquantes, préparation des relances de facturation.</p>
+      </div>
+      <div class="dept">
+        <h3>Finance et comptabilité</h3>
+        <p>Extraction des pièces, rapprochement, préparation des écritures, réponse aux
+          demandes de justificatifs, note de synthèse mensuelle.</p>
+      </div>
+      <div class="dept">
+        <h3>Contrôle de gestion</h3>
+        <p>Explication des écarts, rappel des règles de calcul, mise en forme des tableaux de
+          bord, justification des chiffres devant les métiers.</p>
+      </div>
+      <div class="dept">
+        <h3>Ressources humaines</h3>
+        <p>Tri des candidatures sur critères écrits, préparation des grilles d'entretien,
+          réponses aux questions courantes des salariés, supports d'intégration.</p>
+      </div>
+      <div class="dept">
+        <h3>Juridique et conformité</h3>
+        <p>Résumé et comparaison de contrats, repérage des clauses à revoir, veille sur un
+          texte, préparation d'une grille d'obligations à vérifier.</p>
+      </div>
+      <div class="dept">
+        <h3>Achats et approvisionnement</h3>
+        <p>Comparaison des offres reçues, préparation des appels d'offres, suivi des
+          engagements fournisseurs, synthèse des conditions négociées.</p>
+      </div>
+      <div class="dept">
+        <h3>Production et opérations</h3>
+        <p>Accès rapide aux procédures, comptes rendus d'intervention, priorisation des
+          dossiers, détection des écarts de traitement.</p>
+      </div>
+      <div class="dept">
+        <h3>Logistique et supply chain</h3>
+        <p>Lecture des documents de transport, réponses aux réclamations, suivi des délais,
+          préparation des points d'exploitation.</p>
+      </div>
+      <div class="dept">
+        <h3>Communication</h3>
+        <p>Déclinaison d'un message sur plusieurs canaux, relecture, revue de presse,
+          préparation des éléments de réponse.</p>
+      </div>
+      <div class="dept">
+        <h3>Système d'information</h3>
+        <p>Tri des tickets, première réponse documentée, rédaction et mise à jour des
+          procédures, synthèse des incidents.</p>
+      </div>
+      <div class="dept">
+        <h3>Qualité, HSE et audit interne</h3>
+        <p>Préparation des grilles de contrôle, relevé des non-conformités, rappel des règles
+          applicables, structuration des rapports.</p>
+      </div>
+      <div class="dept">
+        <h3>Formation interne</h3>
+        <p>Construction des parcours, production des supports et des exercices, réponses aux
+          questions des équipes, suivi des cas d'usage remontés du terrain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAR MÉTIER ============ -->
+  <section class="wrap" id="metiers">
+    <div class="head">
+      <h2 class="display">Par métier.</h2>
+      <p class="lead">Un cas d'usage ne devient concret qu'ancré dans un rôle : les documents
+        qu'on ouvre, les décisions qu'on prend, les gestes qu'on répète dans la journée.</p>
+    </div>
+    <div class="grille grille--3">
+      <article class="carte">
+        <h3>Ingénieur d'affaires</h3>
+        <p>Préparer un rendez-vous à partir de l'historique du compte, transformer ses notes en
+          compte rendu et en actions, faire remonter les arguments déjà utilisés.</p>
+      </article>
+      <article class="carte">
+        <h3>Contrôleur de gestion</h3>
+        <p>Expliquer un écart en remontant aux règles de calcul et au référentiel, mettre en
+          forme un tableau de bord, préparer les réponses aux questions des métiers.</p>
+      </article>
+      <article class="carte">
+        <h3>Gestionnaire de contrats</h3>
+        <p>Comparer deux versions, repérer les clauses qui sortent du standard, sortir les
+          dates et les engagements, préparer la fiche de synthèse.</p>
+      </article>
+      <article class="carte">
+        <h3>Agent immobilier</h3>
+        <p>Qualifier une demande entrante, rédiger un premier jet d'annonce, vérifier qu'un
+          dossier est complet avant de le transmettre.</p>
+      </article>
+      <article class="carte">
+        <h3>Chargé de recrutement</h3>
+        <p>Trier les candidatures sur des critères écrits, préparer une grille d'entretien,
+          rédiger les retours aux candidats.</p>
+      </article>
+      <article class="carte">
+        <h3>Conseiller clientèle</h3>
+        <p>Obtenir une réponse déjà sourcée dans la base de connaissances, reformuler, garder
+          la même réponse d'un conseiller à l'autre.</p>
+      </article>
+      <article class="carte">
+        <h3>Technicien support</h3>
+        <p>Retrouver la procédure applicable, rédiger le compte rendu d'intervention, proposer
+          les premières vérifications à partir des symptômes décrits.</p>
+      </article>
+      <article class="carte">
+        <h3>Comptable</h3>
+        <p>Extraire les informations d'une pièce, la rapprocher, préparer l'écriture et
+          signaler ce qui manque ou ne concorde pas.</p>
+      </article>
+      <article class="carte">
+        <h3>Assistant de direction</h3>
+        <p>Préparer un ordre du jour, relever les décisions d'une réunion, mettre en forme les
+          courriers et suivre les points ouverts.</p>
+      </article>
+      <article class="carte">
+        <h3>Chef de projet</h3>
+        <p>Consolider les comptes rendus, tenir la liste des risques et des actions, préparer
+          un point d'avancement lisible par le comité.</p>
+      </article>
+      <article class="carte">
+        <h3>Chargé d'urbanisme</h3>
+        <p>Instruire un dossier en remontant les règles applicables au zonage, préparer la
+          réunion d'examen, garder trace des sources de chaque avis.</p>
+      </article>
+      <article class="carte">
+        <h3>Fiscaliste</h3>
+        <p>Classer les pièces, suivre une veille, produire une synthèse documentaire — la
+          qualification, elle, reste professionnelle.</p>
+      </article>
+      <article class="carte">
+        <h3>Documentaliste et bibliothécaire</h3>
+        <p>Indexer un fonds, répondre à une demande documentaire en citant ses sources,
+          préparer une médiation autour d'une sélection.</p>
+      </article>
+      <article class="carte">
+        <h3>Formateur</h3>
+        <p>Décliner un contenu en supports et exercices, adapter le niveau, répondre aux
+          questions récurrentes en renvoyant au bon module.</p>
+      </article>
+      <article class="carte">
+        <h3>Chargé de communication</h3>
+        <p>Décliner un message par canal, relire, préparer une revue de presse et les éléments
+          de réponse aux demandes courantes.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ TABLEAU DE DÉCISION ============ -->
+  <section class="wrap" id="decision">
+    <div class="head">
+      <h2 class="display">Ce que l'IA peut faire, et ce qui reste à contrôler.</h2>
+      <p class="lead">Cinq situations qui reviennent dans presque tous les projets. À gauche ce
+        qu'on peut confier à l'outil, à droite ce qui ne se délègue pas.</p>
+    </div>
+    <div class="tableau-cadre">
+      <table class="tableau">
+        <thead>
+          <tr>
+            <th scope="col">Situation</th>
+            <th scope="col">Apport possible de l'IA</th>
+            <th scope="col">Contrôle indispensable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Données personnelles</th>
+            <td>Aider à repérer, résumer ou classer les informations utiles à un dossier.</td>
+            <td>Minimiser les données transmises, vérifier la base légale, limiter les accès et
+              la durée de conservation.</td>
+          </tr>
+          <tr>
+            <th scope="row">Usage réglementé</th>
+            <td>Préparer une grille de questions et la liste des obligations à vérifier.</td>
+            <td>Ne jamais confier la qualification juridique, fiscale ou médicale à l'outil.</td>
+          </tr>
+          <tr>
+            <th scope="row">Traçabilité</th>
+            <td>Journaliser les sources utilisées, les réponses produites et les corrections
+              apportées.</td>
+            <td>Prévoir qui revoit, à quelle fréquence, et comment une erreur se corrige en
+              amont.</td>
+          </tr>
+          <tr>
+            <th scope="row">Contenu diffusé à l'extérieur</th>
+            <td>Produire un premier jet, décliner un message, proposer des variantes.</td>
+            <td>Une relecture humaine avant publication, et la vérification de chaque fait
+              avancé.</td>
+          </tr>
+          <tr>
+            <th scope="row">Décision qui engage</th>
+            <td>Réunir les éléments, mettre en évidence un écart, proposer une priorisation.</td>
+            <td>La décision et sa motivation restent à la personne qui en répond.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ REPÈRES OFFICIELS ============ -->
+  <section class="wrap" id="reperes">
+    <div class="head">
+      <h2 class="display">Repères officiels.</h2>
+      <p class="lead">Trois sources publiques à garder sous la main quand un usage touche aux
+        données personnelles, à la réglementation ou à la sécurité.</p>
+    </div>
+    <div class="reperes">
+      <a class="repere" href="https://www.cnil.fr/fr/intelligence-artificielle" target="_blank" rel="noopener">
+        <span class="mono">CNIL</span>
+        <strong>Intelligence artificielle et RGPD</strong>
+        <span>Les recommandations de la CNIL sur le développement et l'usage des systèmes
+          d'IA. ↗</span>
+      </a>
+      <a class="repere" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">
+        <span class="mono">EUR-Lex</span>
+        <strong>Règlement européen sur l'IA</strong>
+        <span>Le texte du règlement (UE) 2024/1689, et sa classification des usages par
+          niveau de risque. ↗</span>
+      </a>
+      <a class="repere" href="https://cyber.gouv.fr/publications/recommandations-de-securite-pour-un-systeme-dia-generative" target="_blank" rel="noopener">
+        <span class="mono">ANSSI</span>
+        <strong>Sécuriser un système d'IA générative</strong>
+        <span>Les recommandations de sécurité de l'ANSSI pour déployer un système d'IA
+          génératif. ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ DE L'EXEMPLE AU PROJET ============ -->
+  <section class="wrap" id="projet">
+    <div class="head">
+      <h2 class="display">De l'exemple au projet, en cinq étapes.</h2>
+      <p class="lead">Deux pièges à éviter : lancer trop large dès le départ, ou multiplier les
+        essais sans jamais rien mettre en service.</p>
+    </div>
+    <ol class="etapes">
+      <li>
+        <h3>Qualifier le besoin</h3>
+        <p>Décrire la tâche, le volume concerné, ce qui coince aujourd'hui et ce qu'on attend.
+          Sans cette description, le reste flotte.</p>
+      </li>
+      <li>
+        <h3>Choisir un périmètre pilote</h3>
+        <p>Un cas limité mais représentatif, sur un processus stable et bien connu des
+          équipes. Assez petit pour être livré, assez vrai pour prouver quelque chose.</p>
+      </li>
+      <li>
+        <h3>Vérifier les prérequis</h3>
+        <p>Données, outils en place, sécurité, rôles, et un responsable interne qui porte le
+          sujet. C'est là que la plupart des projets se bloquent, pas dans la technique.</p>
+      </li>
+      <li>
+        <h3>Mesurer</h3>
+        <p>Un ou deux indicateurs décidés avant de commencer : temps passé, délai de
+          traitement, reprises évitées, délai de première réponse.</p>
+      </li>
+      <li>
+        <h3>Préparer le déploiement</h3>
+        <p>Qui utilise, qui valide, qui corrige, qui suit. La formation et les règles
+          d'utilisation font partie de la mise en service, pas de la suite.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ QUESTIONS ============ -->
+  <section class="wrap" id="questions">
+    <div class="head">
+      <h2 class="display">Questions fréquentes.</h2>
+    </div>
+    <div class="faq">
+      <details class="qa">
+        <summary>Comment choisir parmi plusieurs exemples&nbsp;?</summary>
+        <p>Partez du métier concerné, puis comparez sur trois critères : la valeur pour
+          l'équipe, la faisabilité avec les données que vous avez déjà, et le niveau de risque.
+          Le bon exemple est celui qui règle un problème reconnu sur un périmètre assez clair
+          pour être essayé rapidement.</p>
+      </details>
+      <details class="qa">
+        <summary>Faut-il commencer par un usage simple ou par un cas stratégique&nbsp;?</summary>
+        <p>Par un usage simple mais visible, dans la plupart des organisations. L'objectif du
+          premier cas n'est pas de transformer l'entreprise : c'est de prouver la valeur,
+          d'installer l'habitude et de construire une méthode avant de viser plus haut.</p>
+      </details>
+      <details class="qa">
+        <summary>Faut-il choisir par métier, par secteur ou par département&nbsp;?</summary>
+        <p>Par métier si vous cherchez des idées pour une équipe précise, parce que c'est là
+          que les tâches sont décrites. Par département si vous cadrez un premier périmètre,
+          parce que les processus et les indicateurs y existent déjà. Le secteur, lui, sert
+          surtout à lire les contraintes : réglementation, données sensibles, volumes.</p>
+      </details>
+      <details class="qa">
+        <summary>Ces exemples valent-ils pour tous les secteurs&nbsp;?</summary>
+        <p>Les usages se transposent souvent, les contraintes jamais. Un même tri de demandes
+          ne se déploie pas de la même façon selon que les documents contiennent des données
+          de santé ou un catalogue produits. C'est l'adaptation au contexte qui fait le
+          travail, pas le choix de l'exemple.</p>
+      </details>
+      <details class="qa">
+        <summary>Et si mon entreprise débute complètement sur l'IA&nbsp;?</summary>
+        <p>Prenez un irritant que tout le monde reconnaît, choisissez l'exemple qui s'en
+          approche le plus, et traitez-le comme un pilote avec un indicateur. C'est la façon
+          la plus courte de passer d'une intention générale à une démarche de projet — et
+          c'est exactement ce que SmartEfico installe avec ses clients.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ APPEL ============ -->
+  <section class="wrap">
+    <div class="appel">
+      <h2 class="display">Un exemple vous parle&nbsp;?</h2>
+      <p class="lead">Parlons de votre contexte : vos processus, vos données, vos contraintes.
+        Nous repartons avec un premier périmètre et ce qu'il demande pour être essayé.</p>
+      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Nous contacter <span aria-hidden="true">↗</span></a>
+      <p class="appel__note">Formulaire Tally · nouvel onglet</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap bas">
+  <span class="mono">© 2026 SmartEfico</span>
+  <nav aria-label="Liens du site">
+    <a href="index.html">Accueil</a>
+    <a href="guide-ia.html?utm_source=site&amp;utm_medium=page-exemples">Guide gratuit</a>
+    <a href="blog.html">Blog</a>
+    <a href="cgv.html">CGV</a>
+    <a href="cgc.html">CGC</a>
+  </nav>
+</footer>
+</body>
+</html>
