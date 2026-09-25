@@ -283,6 +283,18 @@ page : « Avant/Après » y est passé devant « Services », sans rien changer 
 largeur. Aucun texte visible ne dépend de cet ordre — « Les quatre scénarios plus
 haut », dans « Trois raisons », désigne les agents, qui restent au-dessus.
 
+**« Avant, après » parle des deux moitiés du titre d'accueil depuis le
+25 septembre 2026**, à la demande du propriétaire : « adapte cette partie à mon
+activité principale ». Elle ne parlait que d'acquisition. Son chapô nomme désormais
+les deux pièges — le pipeline instable, et les équipes prises par des tâches que l'IA
+sait déjà prendre — et **une sixième paire de lignes** a été ajoutée sur l'IA
+générative : « Chacun essaie l'IA dans son coin, sans méthode ni règles communes. »
+face à « Vos équipes sont formées, outillées et tenues par des règles d'usage
+claires. » — ce que promettent les leviers Former et Sensibiliser de `#ia`. Les cinq
+paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes se
+lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
+sinon l'appariement se décale. La section passe de 507 à 580 px.
+
 **`#resultats` s'appelle « Ce que nous installons se *mesure*. » depuis le
 25 septembre 2026**, à la demande du propriétaire. Elle s'appelait « Ce qu'on
 installe, et ce qu'on *mesure dessus*. », sur deux lignes que séparait un `<br>` ;
