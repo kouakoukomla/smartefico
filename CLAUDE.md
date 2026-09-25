@@ -283,6 +283,15 @@ page : « Avant/Après » y est passé devant « Services », sans rien changer 
 largeur. Aucun texte visible ne dépend de cet ordre — « Les quatre scénarios plus
 haut », dans « Trois raisons », désigne les agents, qui restent au-dessus.
 
+**`#resultats` s'appelle « Ce que nous installons se *mesure*. » depuis le
+25 septembre 2026**, à la demande du propriétaire. Elle s'appelait « Ce qu'on
+installe, et ce qu'on *mesure dessus*. », sur deux lignes que séparait un `<br>` ;
+c'est sous cet ancien nom qu'elle apparaît dans l'historique des déplacements
+ci-dessus. Le titre passe au « nous » du reste du site, tient sur une ligne — le
+`<br>` est parti avec —, garde le point final de tous les titres de la page, et
+l'italique se resserre sur « mesure ». L'ancre, le lien « Services » du menu et le
+texte de la section n'ont pas bougé.
+
 **Plus de section « Avec qui l'agence travaille ».** Le propriétaire a demandé le
 23 septembre 2026 de réduire le nombre de sections de l'accueil, qui en comptait
 quinze. Quatre répétaient ce qu'une autre disait déjà — « Avec qui l'agence
