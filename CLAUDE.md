@@ -394,6 +394,12 @@ d'usage de l'intelligence artificielle" […] tu mettras les informations de cet
 - **La section résume, la page développe.** Sur l'accueil, entre `#ia` et `#agents` :
   le titre et l'accroche du propriétaire mot pour mot, trois cartes — Par secteur, Par
   département, Par métier —, et l'encart pleine largeur qui mène à `exemples-ia.html`.
+  **« secteur, département et métier » est en italique** depuis le 25 septembre 2026,
+  à sa demande : c'est le plus long `<em>` de tous les titres de la page, mais il est
+  blanc — `.display em` — et non jaune, le jaune ne restant qu'aux `h1`. La coupe des
+  deux lignes tombe juste devant lui, l'italique tient donc la seconde ligne entière.
+  Le `h1` de `exemples-ia.html` n'a pas suivi : son `<em>` est jaune, et quatre mots
+  jaunes au lieu d'un y changeraient la dose de couleur de la page.
   **Elle n'introduit aucun style** : les cartes sont des `.pilier` sans numéro et
   l'encart est le `.guide-lien--large` de la section voisine, avec une icône de grille
   à quatre carreaux au lieu de la flèche de téléchargement. Elle coûte 535 px, plus
