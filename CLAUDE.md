@@ -236,6 +236,34 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
+**« Ce qu'on vous apporte » (`#apport`) est revenue le 28 septembre 2026**, à la
+demande du propriétaire, juste avant « Ce à quoi vous engager » : « Avant "ce à quoi
+vous engager" mettre la partie », suivie de son texte, qui est repris **mot pour
+mot** — c'est le manifeste de la première version du site (20 août), augmenté de
+« On n'est pas ici pour vous rendre "famous" », « On ne fait qu'une chose et on le
+fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
+
+- **Forme** : le titre « Ce qu'on vous *apporte*. » (l'italique est celui de la
+  version supprimée), la phrase « famous » en chapô, sans point final, comme dans
+  son texte ; puis une seule carte centrée (`.manifeste`, 46 rem au plus), en trois
+  blocs séparés par un filet court. Chaque bloc s'ouvre sur une phrase forte, dans
+  la pile et la graisse des grands titres, suivie de lignes en gris.
+- **Ce qui vient de Claude**, et rien d'autre : l'italique sur « cash » et « moins de
+  3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
+  dans « 3 mois » ; « Quelques chiffres : », son texte, posé en étiquette `.mono` sous
+  la carte, où il annonce la section suivante. Les guillemets “famous” sont les
+  siens, laissés à l'anglaise.
+- **« Démultiplier vos ventes haute gamme en moins de 3 mois »** est une promesse de
+  résultat. Elle est de lui et figurait déjà sur le site jusqu'au 23 septembre ;
+  l'assistant, lui, garde sa consigne de n'en faire aucune.
+- **Pas de lien au menu** : il n'en a pas demandé. La place existe, depuis le départ
+  de « Chaîne ».
+- La section fait 626 px à 1 280 px de large ; la page passe de 6 906 à **7 582 px**.
+  Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
+  détecteur d'impeccable la lise.
+
+Ce qui suit décrit sa version précédente et son retrait.
+
 **« Ce qu'on vous apporte » (`#apport`) a été supprimée le 23 septembre 2026**, à la
 demande du propriétaire, qui réduisait le nombre de sections. Ce qui suit décrit ce
 qu'elle était, parce que son manifeste peut resservir et que l'historique git le
@@ -292,8 +320,8 @@ aussi à sa demande (voir « Plus de captures de preuves » dans Design). Puis, 
 le même jour et à sa demande, « Agents IA » (`#agents`) est passé après « Ce qu'on
 installe » (`#resultats`), puis après le bandeau des cinq étapes ; et « Avant, après »
 (`#avant-apres`), qui suivait ce bandeau, est remonté juste avant « Ce qu'on
-installe ». L'accueil enchaîne donc, depuis le retrait de `#apport` : hero, marques,
-`#chiffres`,
+installe ». L'accueil enchaîne donc : hero, marques, `#apport` (revenue le
+28 septembre 2026), `#chiffres`,
 `#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
 `#exemples` (venue s'intercaler le 25 septembre 2026, « juste avant agent IA »),
 `#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
