@@ -256,8 +256,9 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **« Démultiplier vos ventes haute gamme en moins de 3 mois »** est une promesse de
   résultat. Elle est de lui et figurait déjà sur le site jusqu'au 23 septembre ;
   l'assistant, lui, garde sa consigne de n'en faire aucune.
-- **Pas de lien au menu** : il n'en a pas demandé. La place existe, depuis le départ
-  de « Chaîne ».
+- **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
+  « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
+  depuis le départ de « Chaîne ».
 - La section fait 626 px à 1 280 px de large ; la page passe de 6 906 à **7 582 px**.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
