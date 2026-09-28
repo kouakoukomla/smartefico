@@ -465,12 +465,22 @@ gratuit (voir `guide-ia.html` plus bas).
 propriétaire, avec son titre, sa phrase (« Commençons par identifier les tâches que
 vous pouvez automatiser… »), son bouton « Nous contacter » et sa mention « Formulaire
 Tally · nouvel onglet ». Sont partis avec elle `.pilier--appel`, `.pilier__action`,
-`.pilier__note` et la ligne `.pilier--appel` du bloc « NOIR PLAT ». La section passe
-des cinq leviers repliés à l'encart du guide ; la case vide à côté de 04 et 05 existait
-déjà, la carte d'appel étant en pleine largeur. **L'accueil ne mène donc plus au
-formulaire `D4LJDR`** : il reste accessible depuis la dernière page du guide PDF de
-l'IA, `guide-ia-merci.html` et `exemples-ia.html`. La section tombe à 400 px à
-1 280 px, et la page à **7 079 px**. Ce qui suit décrit la carte telle qu'elle était.
+`.pilier__note` et la ligne `.pilier--appel` du bloc « NOIR PLAT ». **L'accueil ne
+mène donc plus au formulaire `D4LJDR`** : il reste accessible depuis la dernière page
+du guide PDF de l'IA, `guide-ia-merci.html` et `exemples-ia.html`.
+
+**L'encart du guide a pris la case vide le même jour**, à sa demande (« met le guide
+[…] juste dans le trou à droite de "Accompagner" ») : il était en pleine largeur sous
+la grille, il en est désormais la sixième case, comme `.guide-lien` dans la grille des
+cinq étapes. Un modificateur `.guide-lien--case` (`grid-column:auto`) le fait, sans
+toucher à `.guide-lien--large`, que l'encart « Explorer les cas d'usage » de
+`#exemples` garde en pleine largeur. Sa marge verticale passe à 0,4 rem et son
+interlignage à 1,22 pour qu'il ait la hauteur d'un levier fermé : **62 px des deux
+côtés à 1 280 px et au-delà**. Entre 1 120 et 1 280 px, sa phrase passe sur trois
+lignes et il dépasse de 13 px ; en deux colonnes, de 4 px ; sur téléphone il suit 05,
+bouton sous le texte, comme avant. La section tombe à **321 px** à 1 280 px (400 avec
+l'encart sous la grille), et la page à **6 999 px**. Ce qui suit décrit la carte
+d'appel telle qu'elle était.
 
 **Son titre tient sur deux lignes**, demande du propriétaire du 25 septembre 2026, par
 une largeur maximale de 26 ch sur le seul `#ia` — pas un `<br>`, qui couperait toujours

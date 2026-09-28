@@ -734,6 +734,16 @@ em{color:var(--yellow)}
   padding:.8rem clamp(1.15rem,2.25vw,1.55rem);transition:border-color .2s ease}
 /* Sur téléphone, cette ligne tenait sur quatre lignes, serrée contre le
    bouton : le bouton passe dessous, aligné sur le texte (icône + écart). */
+/* Dans la sixième case de #ia depuis le 28 septembre 2026, à la demande du
+   propriétaire (« juste dans le trou à droite de "Accompagner" ») : la carte
+   d’appel partie, la case à côté de 05 était vide. Il garde l’habit des
+   cartes voisines ; seul son placement change. L’encart des exemples, lui,
+   reste en pleine largeur. */
+/* Sa marge verticale est resserrée pour qu’il ait la hauteur d’un levier
+   fermé : sa ligne de texte passe sur deux lignes dans une case, et il
+   dépassait de 15 px sous « 05 Accompagner ». */
+.guide-lien--case{grid-column:auto;padding-block:.4rem}
+.guide-lien--case .guide-lien__texte{line-height:1.22}
 @media (max-width:30rem){
   .guide-lien--large{flex-wrap:wrap}
   .guide-lien--large .guide-lien__texte{flex-basis:calc(100% - 2.8rem)}
