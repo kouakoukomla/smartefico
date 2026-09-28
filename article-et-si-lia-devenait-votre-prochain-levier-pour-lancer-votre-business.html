@@ -446,11 +446,11 @@ em{color:var(--yellow)}
    Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
    plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 /* ---------- ce qu'on vous apporte ----------
-   Le manifeste du propriétaire, revenu le 28 septembre 2026, ramené le jour
-   même à son seul dernier bloc : une carte centrée, qui s'ouvre sur une
-   phrase forte, dans la graisse et la pile des grands titres (qu'une règle
-   de titre doit redéclarer, sinon elle hérite de Poppins), suivie de deux
-   lignes plus discrètes. Tailles déjà à −15 %, comme le reste du site. */
+   Le manifeste du propriétaire, revenu le 28 septembre 2026 et retouché
+   plusieurs fois le jour même : une carte centrée, en deux blocs séparés par
+   un filet court. Chacun s'ouvre sur une phrase forte, dans la graisse et la
+   pile des grands titres (qu'une règle de titre doit redéclarer, sinon elle
+   hérite de Poppins), suivie de lignes plus discrètes. Tailles déjà à −15 %, comme le reste du site. */
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
 .manifeste{background:var(--surface);border:1px solid var(--line);
@@ -462,6 +462,9 @@ em{color:var(--yellow)}
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.025em;line-height:1.2;text-wrap:balance;
   font-size:clamp(1.02rem,1.7vw,1.28rem)}
+/* « rendez-vous » ne se coupe pas à son trait d’union. */
+.manifeste__bloc{white-space:nowrap}
+.manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
 

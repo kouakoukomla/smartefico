@@ -474,11 +474,11 @@ em{color:var(--yellow)}
    Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
    plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 /* ---------- ce qu'on vous apporte ----------
-   Le manifeste du propriétaire, revenu le 28 septembre 2026, ramené le jour
-   même à son seul dernier bloc : une carte centrée, qui s'ouvre sur une
-   phrase forte, dans la graisse et la pile des grands titres (qu'une règle
-   de titre doit redéclarer, sinon elle hérite de Poppins), suivie de deux
-   lignes plus discrètes. Tailles déjà à −15 %, comme le reste du site. */
+   Le manifeste du propriétaire, revenu le 28 septembre 2026 et retouché
+   plusieurs fois le jour même : une carte centrée, en deux blocs séparés par
+   un filet court. Chacun s'ouvre sur une phrase forte, dans la graisse et la
+   pile des grands titres (qu'une règle de titre doit redéclarer, sinon elle
+   hérite de Poppins), suivie de lignes plus discrètes. Tailles déjà à −15 %, comme le reste du site. */
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
 .manifeste{background:var(--surface);border:1px solid var(--line);
@@ -490,6 +490,9 @@ em{color:var(--yellow)}
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.025em;line-height:1.2;text-wrap:balance;
   font-size:clamp(1.02rem,1.7vw,1.28rem)}
+/* « rendez-vous » ne se coupe pas à son trait d’union. */
+.manifeste__bloc{white-space:nowrap}
+.manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
 
@@ -1269,15 +1272,18 @@ h1.display em{color:var(--yellow)}
          Revenue le 28 septembre 2026, à la demande du propriétaire, avec son
          manifeste de la première version du site (20 août). Adaptée le jour
          même pour porter les deux moitiés du titre d’accueil, puis ramenée, à
-         sa demande encore, à son seul dernier bloc : la promesse et les deux
-         phrases qui la suivent. Le détail est dans CLAUDE.md. -->
+         sa demande encore, à deux blocs : la thèse, puis la promesse. Le détail
+         est dans CLAUDE.md. -->
     <section class="wrap" id="apport">
       <div class="head head--centre">
         <h2 class="display">Ce qu’on vous <em>apporte</em>.</h2>
         <p class="lead">On n’est pas ici pour vous rendre “famous”</p>
       </div>
       <div class="manifeste">
-        <p class="manifeste__fort">Démultiplier vos ventes haute gamme en <em>moins de 3&nbsp;mois</em>, et mettre l’IA générative au travail dans vos équipes.</p>
+        <p class="manifeste__fort">On fait deux choses, et on les fait bien&nbsp;: vous rapporter des <span class="manifeste__bloc">rendez-vous</span> qualifiés pour vos offres high&nbsp;ticket, et mettre l’IA générative au service de votre performance.</p>
+        <p>Rien d’autre.</p>
+        <hr>
+        <p class="manifeste__fort">Démultiplier vos ventes moyenne et haute gamme en <em>moins de 3&nbsp;mois</em>, et mettre l’IA générative au travail dans vos équipes.</p>
         <p>C’est ce qu’on apporte à chacun de nos clients.</p>
         <p>Si c’est ce que vous cherchez, alors on est l’agence qu’il vous faut.</p>
       </div>

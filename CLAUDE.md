@@ -286,6 +286,17 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
   nous » — les deux phrases les plus anciennes du site — ne paraissent donc plus nulle
   part, pas plus que « L'IA ne remplacera personne… ». Les blocs décrits ci-dessus
   sont dans l'historique git.
+- **État actuel, dernière demande du 28 septembre** : il a fourni lui-même le texte
+  entier de la carte, **en deux blocs**. La thèse d'abord — « On fait deux choses, et
+  on les fait bien : vous rapporter des rendez-vous qualifiés pour vos offres high
+  ticket, et mettre l'IA générative au service de votre performance. », puis « Rien
+  d'autre. » —, un filet court, puis la promesse, où **« haute gamme » devient
+  « moyenne et haute gamme »** (écho du « middle & haute gamme » du 20 août) :
+  « Démultiplier vos ventes moyenne et haute gamme en *moins de 3 mois*, et mettre
+  l'IA générative au travail dans vos équipes. », « C'est ce qu'on apporte à chacun
+  de nos clients. », « Si c'est ce que vous cherchez, alors on est l'agence qu'il vous
+  faut. ». Le filet (`.manifeste hr`) et `.manifeste__bloc` sont revenus avec le
+  premier bloc.
 - **Mise en forme de Claude**, pour le reste : l'italique sur « cash » et « moins de
   3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
   dans « 3 mois ». Les guillemets “famous” sont les siens, laissés à l'anglaise.
@@ -298,9 +309,10 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
   « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
   depuis le départ de « Chaîne ».
-- La section fait **317 px** à 1 280 px de large, réduite à son dernier bloc (809 px
-  avec les quatre blocs, 586 px avec le texte d'origine, 626 px avec « Quelques
-  chiffres : ») ; la page passe de 6 906 à **7 273 px**.
+- La section fait **484 px** à 1 280 px de large avec ses deux blocs (490 px sur
+  téléphone) ; la page passe de 6 906 à **7 439 px**. Pour mémoire, au fil de la
+  journée : 586 px avec le texte d'origine, 626 px avec « Quelques chiffres : »,
+  809 px avec quatre blocs, 317 px avec le seul dernier.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
 
