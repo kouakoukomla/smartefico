@@ -297,6 +297,9 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
   de nos clients. », « Si c'est ce que vous cherchez, alors on est l'agence qu'il vous
   faut. ». Le filet (`.manifeste hr`) et `.manifeste__bloc` sont revenus avec le
   premier bloc.
+- **Plus de chapô** : « On n'est pas ici pour vous rendre “famous” » est parti le même
+  soir, à sa demande (« supprime "On n'est pas ici pour vous rendre “famous”" »). Le
+  titre « Ce qu'on vous *apporte*. » mène droit à la carte.
 - **Mise en forme de Claude**, pour le reste : l'italique sur « cash » et « moins de
   3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
   dans « 3 mois ». Les guillemets “famous” sont les siens, laissés à l'anglaise.
@@ -309,10 +312,10 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
   « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
   depuis le départ de « Chaîne ».
-- La section fait **484 px** à 1 280 px de large avec ses deux blocs (490 px sur
-  téléphone) ; la page passe de 6 906 à **7 439 px**. Pour mémoire, au fil de la
-  journée : 586 px avec le texte d'origine, 626 px avec « Quelques chiffres : »,
-  809 px avec quatre blocs, 317 px avec le seul dernier.
+- La section fait **451 px** à 1 280 px de large, deux blocs sans chapô ; la page
+  passe de 6 906 à **7 407 px**. Pour mémoire, au fil de la journée : 586 px avec le
+  texte d'origine, 626 px avec « Quelques chiffres : », 809 px avec quatre blocs,
+  317 px avec le seul dernier, 484 px avec deux blocs et le chapô.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
 
