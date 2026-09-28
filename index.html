@@ -512,111 +512,6 @@ em{color:var(--yellow)}
   text-transform:none;letter-spacing:.02em;font-size:.82rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
-/* ---------- blog et actualités ----------
-   Rail horizontal : les masterclass puis les articles du blog, dans un seul
-   fil que le visiteur fait défiler au doigt, à la molette ou avec les deux
-   flèches. scroll-snap cale chaque carte en place, si bien qu'on ne
-   s'arrête jamais sur une demi-carte.
-
-   Le défilement est manuel et non automatique : un fil qui avance seul
-   obligerait le lecteur à courir après les cartes.
-
-   Les flèches ne s'affichent que pour un pointeur fin — au doigt, on fait
-   glisser. */
-.rail{position:relative}
-/* `safe center` et non `center` : les cartes se groupent au milieu quand elles
-   tiennent dans la largeur, et repassent au bord dès qu'il faut faire défiler.
-   Un `center` sec pousserait la première carte hors d'atteinte à gauche sur
-   téléphone — le défaut classique d'un conteneur défilant centré. */
-.rail__piste{display:flex;align-items:stretch;justify-content:safe center;
-  gap:clamp(1rem,3vw,1.5rem);
-  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
-  padding-bottom:.75rem;scrollbar-width:thin;
-  scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain}
-.rail__piste > *{flex:0 0 min(84%,21rem);scroll-snap-align:start}
-.rail__fleche{position:absolute;top:calc(50% - 1.4rem);z-index:2;display:none;
-  width:2.8rem;height:2.8rem;border-radius:999px;border:1px solid var(--line);
-  background:rgba(0,0,0,.72);color:var(--ink);font-size:1.4rem;line-height:1;
-  cursor:pointer;align-items:center;justify-content:center;
-  transition:background-color .18s ease,border-color .18s ease,opacity .18s ease}
-.rail__fleche:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
-.rail__fleche[disabled]{opacity:.25;cursor:default}
-.rail__fleche[disabled]:hover{background:rgba(0,0,0,.72);border-color:var(--line);color:var(--ink)}
-.rail__fleche--prec{left:-.6rem}
-.rail__fleche--suiv{right:-.6rem}
-/* pointeur fin = souris ou trackpad : les flèches apparaissent, et
-   uniquement si le script a constaté qu'il y a de quoi défiler */
-@media (pointer:fine){.rail--defilable .rail__fleche{display:flex}}
-@media (prefers-reduced-motion:reduce){.rail__piste{scroll-behavior:auto}}
-
-/* une carte du rail : visuel en haut, texte dessous, bouton en bas */
-.mc{background:var(--surface);border:1px solid var(--line);
-  display:flex;flex-direction:column;overflow:hidden;
-  transition:border-color .2s ease}
-.mc:hover{border-color:var(--yellow)}
-.mc__affiche{display:block;border-bottom:1px solid var(--line)}
-/* Tous les visuels du rail sont rognés en bandeau, affiches de masterclass
-   comprises. */
-/* La carte est en 2:1. Une affiche carrée ou en portrait n'y montre qu'une
-   bande horizontale : prise au centre, elle tombe sous le menton et le visage
-   disparaît au-dessus de la fenêtre. 12 % le pose à 30 % de la hauteur de la
-   carte sur les affiches en service, mesuré : l'affiche de masterclass
-   (1000x1250), celle de l'article « Et si l'IA devenait… » (1400x1749) et la
-   photo à la pancarte (1254x1254), qui ont toutes le visage autour du
-   cinquième supérieur. D'où cette valeur par défaut, plutôt qu'un cas par
-   carte.
-   Une affiche déjà large — un visuel 16:9, comme celui de l'article du
-   17 septembre 2026 — n'a presque rien à perdre : elle demande 50 %, qui
-   centre la bande et ne rogne que le vide en haut et en bas. C'est ce que fait
-   le champ « Cadrage de la vignette » du back office (`cover_position`),
-   article par article. */
-.mc__affiche img{display:block;width:100%;aspect-ratio:2/1;
-  object-fit:cover;object-position:center 12%;background:var(--noir-2)}
-.mc__corps{display:flex;flex-direction:column;gap:.7rem;flex:1;
-  padding:clamp(.85rem,1.8vw,1.15rem)}
-.mc__date{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
-  padding:.35rem .7rem;border-radius:3px}
-.mc h3{font-size:1.05rem;letter-spacing:-.02em}
-/* Toutes les cartes du rail ont la même hauteur : leurs bas sont alignés.
-   Aucune ne porte plus de texte courant — date, titre et bouton seulement.
-   Ce reste sert au cas « aucune date ouverte », seule carte a en afficher. */
-.mc p{color:var(--ink-2);font-size:.92rem}
-/* Le bouton se cale en bas de la carte. Les cartes d'articles n'affichent
-   que la date et le titre : sans cela leur bouton remonterait coller au titre,
-   alors que celui des masterclass reste poussé vers le bas par le texte. */
-.mc .btn{align-self:flex-start;margin-top:auto}
-/* ---------- la vidéo de la chaîne ----------
-   Elle était la dernière carte du rail. Depuis le 18 septembre 2026 elle tient
-   la section seule — le propriétaire a retiré la carte d'article et celle du
-   blog — et n'a donc plus à s'aligner sur une rangée : plein format 16:9,
-   centrée, 54 rem au plus, soit une fois et demie la largeur de trois cartes.
-   Sous 54 rem elle prend toute la largeur disponible.
-   Elle démarre d'elle-même et en sourdine, demande du propriétaire du même
-   jour : aucun navigateur ne laisse une vidéo se lancer avec le son sans un
-   geste du visiteur, et le bouton du lecteur le rend en un clic.
-   youtube-nocookie.com plutôt que youtube.com : même lecteur, sans cookie de
-   suivi tant que la lecture n'est pas lancée. Plus de `loading=lazy` : le
-   lecteur doit être prêt à l'arrivée, pas à l'approche. */
-/* La vidéo de la chaîne : coins arrondis et halo, demande du propriétaire du
-   20 septembre 2026 (« Arrange la vidéo youtube et rends la jolie sur le
-   site, les bords un peu arrondi »). Le halo est un ::before posé derrière le
-   cadre : il détache l'écran du noir profond sans rien ajouter de jaune, et
-   l'ombre portée le pose au-dessus de la page. Le markup, lui, est écrit par
-   sync-content.mjs : il ne se retouche pas ici. */
-.video-scene{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
-.video-scene::before{content:"";position:absolute;z-index:-1;pointer-events:none;
-  left:50%;top:-8%;width:min(124%,70rem);height:100%;transform:translateX(-50%);
-  background:radial-gradient(56% 60% at 50% 45%,rgba(158,168,255,.16),transparent 74%)}
-.video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
-  background:#000;border:0;
-  border-radius:clamp(.9rem,1.8vw,1.35rem);
-  /* Safari laisse une iframe déborder d'un coin arrondi tant que son cadre
-     n'a pas son propre plan de rendu : d'où le translateZ. */
-  isolation:isolate;transform:translateZ(0);
-  /* Pas de filet autour : l'image est claire, elle se détache seule, et un
-     filet fin doublé d'une ombre large est un signalement d'impeccable. */
-  box-shadow:0 18px 44px -28px #000}
-.video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
 /* ---------- appel au blog ----------
    Le bloc se fond dans le noir de la page : le bouton en est la seule tache
    claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
@@ -951,27 +846,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
   transition:background-color .18s ease,transform .18s ease}
 .contact__btn:hover,.contact__btn:focus-visible{background:var(--yellow-hi);transform:translateY(-2px)}
 .contact__note{color:var(--ink-3);font-size:.85rem}
-/* Signature : bloc autonome et centré, posé sur le fond de page entre le
-   bloc de contact et les réseaux. */
-/* Pas de padding vertical : cette section n'a pas de fond, sa marge
-   intérieure se serait ajoutée à l'écart que la pile ménage déjà. */
-.signature{display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:.5rem}
-/* height:auto est indispensable : sans lui l attribut height du HTML fait loi,
-   aspect-ratio est ignore, et la photo s etire. */
-/* Portrait rond et large, cercle a l anneau jaune. Le cadre carre (aspect 1)
-   rogne la photo verticale ; object-position remonte vers le visage pour qu il
-   reste centre. Anneau jaune plein et net, sans halo diffus. */
-.signature__photo{width:clamp(14rem,36vw,24rem);height:auto;aspect-ratio:1;
-  border-radius:50%;object-fit:cover;object-position:center 18%;
-  margin-bottom:1.6rem;
-  box-shadow:0 0 0 7px var(--yellow),0 0 0 10px #000}
-/* La photo ne bouge pas : demande du propriétaire du 18 septembre 2026, le
-   jour même où un dévoilement animé lui avait été ajouté. Voir CLAUDE.md. */
-.signature__nom{font-weight:800;letter-spacing:-.03em;color:var(--ink);
-  font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.15}
-.signature__role{color:var(--ink-2)}
-.signature__mot{color:var(--ink-2);font-size:1rem;max-width:44ch}
 
 /* ---------- icônes réseaux ---------- */
 .icons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
@@ -1162,9 +1036,6 @@ h2.head__eyebrow{font-weight:600;margin:0}
    du hero reste, c'est un décor de section et non le fond de la page. */
 .hero__bg .glow{background:radial-gradient(46rem 34rem at 24% 42%,rgba(255,204,0,.10),transparent 62%)}
 .hero__bg .brackets::before,.hero__bg .brackets::after{border-color:#2A2A2A}
-/* Le halo de la vidéo suit le fond plat : il ne reste que l'ombre portée. */
-.video-scene::before{background:none}
-.video-scene__cadre{box-shadow:0 18px 44px -28px #000}
 
 /* MOINS DE JAUNE — demande du propriétaire du 23 septembre 2026 au soir
    (« Réduis le jaune sur le site »), la même qu'il avait faite le 20 et
@@ -1186,7 +1057,7 @@ h1.display em{color:var(--yellow)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
-.figure:hover,.offer:hover,.agent:hover,.mc:hover,
+.figure:hover,.offer:hover,.agent:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .pilier--appel{border-color:var(--line)}
 .step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
@@ -1195,14 +1066,13 @@ h1.display em{color:var(--yellow)}
 
 /* Les survols secondaires passent au blanc : le jaune est réservé aux
    boutons d'action eux-mêmes. */
-.btn--line:hover,.rail__fleche:hover,.icons a:hover,.assistant__suggestion:hover,
+.btn--line:hover,.icons a:hover,.assistant__suggestion:hover,
 .assistant__fermer:hover{background:var(--ink);border-color:var(--ink);color:#0A0A0A}
 .nav__links a:hover{border-bottom-color:var(--ink)}
 .assistant__msg--bot a:hover{color:var(--ink)}
 .doc-modal__close:hover{border-color:var(--ink);color:var(--ink)}
 .doc-modal__foot a,.doc-modal__body .contact-box a{border-bottom-color:var(--mur)}
-/* Le cercle de la photo et les soulignés du pied passent au gris. */
-.signature__photo{box-shadow:0 0 0 7px var(--mur),0 0 0 10px var(--ground)}
+/* Les soulignés du pied passent au gris. */
 .foot__links a{border-bottom-color:var(--mur)}
 
 </style>
@@ -1318,7 +1188,6 @@ h1.display em{color:var(--yellow)}
       <a href="#avant-apres">Avant/Après</a>
       <a href="#resultats">Services</a>
       <a href="#exemples">Exemples</a>
-      <a href="#agenda">Chaîne</a>
       <a href="blog.html">Blog</a>
       <a href="guide.html">Guide gratuit</a>
       <a href="#questions">FAQ</a>
@@ -1861,52 +1730,6 @@ h1.display em{color:var(--yellow)}
       </div>
     </section>
 
-    <!-- ============ LA CHAÎNE / MASTERCLASS ============
-         Section pilotée par le back office (Pages CMS).
-         Les masterclass sont éditées dans content/masterclasses/*.md, puis la
-         zone MASTERCLASS:START/END est régénérée par scripts/sync-content.mjs
-         (automatiquement, via GitHub Actions, à chaque enregistrement dans le CMS).
-         Ne pas éditer le contenu à la main entre les repères.
-
-         Le 18 septembre 2026, le propriétaire a retiré les deux dernières
-         cartes — le dernier article, puis le blog. La vidéo de la chaîne tient
-         la section seule, au centre et en grand, hors du rail. Le rail ne sert
-         plus qu'aux masterclass et se cache tant qu'aucune date n'est ouverte
-         (voir le script du rail, en bas de page). -->
-    <section class="wrap" id="agenda">
-      <div class="head head--centre">
-        <h2 class="display">Ma chaîne, <em>en clair</em>.</h2>
-        <p class="lead">Des méthodes concrètes pour mettre l'IA au travail dans votre activité. Les prochaines masterclass s'afficheront ici.</p>
-      </div>
-      <div class="rail">
-        <div class="rail__piste" id="rail-actus">
-        <!-- MASTERCLASS:START -->
-        <!-- Section générée par scripts/sync-content.mjs à partir de
-             content/masterclasses/*.md (back office). NE PAS éditer à la main. -->
-
-        <!-- MASTERCLASS:END -->
-        </div>
-        <button class="rail__fleche rail__fleche--prec" type="button"
-                aria-controls="rail-actus" aria-label="Voir les cartes précédentes">&#8249;</button>
-        <button class="rail__fleche rail__fleche--suiv" type="button"
-                aria-controls="rail-actus" aria-label="Voir les cartes suivantes">&#8250;</button>
-      </div>
-      <!-- VIDEO:START -->
-      <!-- Zone générée par scripts/sync-content.mjs à partir de
-           content/pages/video.md (back office). NE PAS éditer à la main. -->
-      <div class="video-scene">
-        <div class="video-scene__cadre">
-          <iframe src="https://www.youtube-nocookie.com/embed/ajMUqXU_c0U?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1"
-            title="Lancer un business solo avec l'IA : les 3 questions qui changent tout"
-            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
-           target="_blank" rel="noopener">Voir la chaîne</a>
-      </div>
-      <!-- VIDEO:END -->
-    </section>
-
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
     <section class="wrap" id="questions">
       <div class="head head--centre">
@@ -1977,8 +1800,8 @@ h1.display em{color:var(--yellow)}
     </section>
 
     <!-- ============ APPEL AU BLOG ============
-         Entre le contact et la signature : le lecteur vient de voir comment
-         joindre, on lui propose de lire avant de découvrir qui parle. Le fond
+         Entre le contact et le pied de page : le lecteur vient de voir
+         comment joindre, on lui propose de lire avant de partir. Le fond
          reste noir, c'est le bouton jaune qui porte le regard. -->
     <section class="blog-cta">
       <div class="wrap blog-cta__in">
@@ -1986,17 +1809,6 @@ h1.display em{color:var(--yellow)}
         <p class="blog-cta__titre display">Envie d'aller plus loin&nbsp;? Découvrez mes articles sur le blog.</p>
         <a class="blog-cta__btn" href="blog.html">Lire le blog</a>
       </div>
-    </section>
-
-    <!-- ============ SIGNATURE ============
-         Bloc à part, entre le contact et les réseaux : le visage derrière le
-         « Appelez-moi » du chapô. Jusqu'ici la page parlait à la première
-         personne sans jamais dire qui parlait. -->
-    <section class="wrap signature">
-      <!-- VISUEL_PORTRAIT:START --><img class="signature__photo" src="assets/Portrait3.jpg" alt="Emmanuel Kouakou" loading="lazy"><!-- VISUEL_PORTRAIT:END -->
-      <b class="signature__nom">Emmanuel Kouakou</b>
-      <span class="signature__role mono">Fondateur de SmartEfico</span>
-      <p class="signature__mot">C'est moi qui prends l'appel, qui lis vos réponses et qui installe les systèmes décrits sur cette page.</p>
     </section>
 
     <footer class="wrap foot">
@@ -2392,42 +2204,6 @@ h1.display em{color:var(--yellow)}
   else if (large.addListener) large.addListener(suivre);
 })();
 
-
-// Rail « blog et actualités » : les deux flèches font avancer la piste d'une
-// carte, et se désactivent aux extrémités. Tout marche déjà sans ce script —
-// la piste se fait glisser au doigt et à la molette ; les flèches ne sont
-// qu'un raccourci, et restent cachées tant qu'il n'y a rien à faire défiler.
-(function () {
-  document.querySelectorAll('.rail').forEach(function (rail) {
-    var piste = rail.querySelector('.rail__piste');
-    var prec = rail.querySelector('.rail__fleche--prec');
-    var suiv = rail.querySelector('.rail__fleche--suiv');
-    if (!piste || !prec || !suiv) return;
-
-    // Depuis que la vidéo a quitté le rail, celui-ci ne porte que les
-    // masterclass : sans date ouverte, il est vide et ne laisserait qu'un
-    // blanc entre le titre et la vidéo. Sans script, ce blanc fait douze
-    // pixels sur fond noir — invisible.
-    if (!piste.children.length) { rail.hidden = true; return; }
-
-    function pas() {
-      var carte = piste.firstElementChild;
-      var ecart = parseFloat(window.getComputedStyle(piste).columnGap) || 0;
-      return carte ? carte.getBoundingClientRect().width + ecart : piste.clientWidth * 0.8;
-    }
-    function etat() {
-      var reste = piste.scrollWidth - piste.clientWidth;
-      rail.classList.toggle('rail--defilable', reste > 4);
-      prec.disabled = piste.scrollLeft <= 4;
-      suiv.disabled = piste.scrollLeft >= reste - 4;
-    }
-    prec.addEventListener('click', function () { piste.scrollBy({ left: -pas() }); });
-    suiv.addEventListener('click', function () { piste.scrollBy({ left: pas() }); });
-    piste.addEventListener('scroll', etat, { passive: true });
-    window.addEventListener('resize', etat);
-    etat();
-  });
-})();
 
 // Assistant de discussion — le serveur est api/chat.js. La page tient
 // l'historique et le renvoie en entier à chaque question : l'API de Claude ne

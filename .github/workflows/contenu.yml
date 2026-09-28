@@ -1,7 +1,7 @@
 name: Régénérer le site après édition du contenu
 
-# Se déclenche quand le back office (Pages CMS) enregistre une masterclass ou un
-# article, c'est-à-dire quand un fichier de content/ (ou un script/config) change
+# Se déclenche quand le back office (Pages CMS) enregistre un article, une
+# question de la FAQ ou un visuel, c'est-à-dire quand un fichier de content/ (ou un script/config) change
 # sur main. Ne se déclenche PAS sur les fichiers HTML régénérés : pas de boucle.
 on:
   push:
@@ -45,7 +45,7 @@ jobs:
       - name: Optimiser les images de assets/
         run: node scripts/optimize-images.mjs
 
-      - name: Régénérer la section Masterclass dans index.html
+      - name: Régénérer les zones du back office dans index.html
         run: node scripts/sync-content.mjs
 
       - name: Générer le blog (blog.html + pages d'articles)

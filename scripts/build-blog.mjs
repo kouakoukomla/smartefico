@@ -252,8 +252,9 @@ const styleBlog = `<style>
 @media(min-width:46rem){.post-list{grid-template-columns:repeat(2,1fr)}}
 .post-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
 .post-card:hover{border-color:var(--mur);transform:translateY(-2px)}
-/* Même cadrage que les cartes du rail de index.html : la bande 2:1 prise au
-   centre coupe le visage, 12 % le pose à 30 % de la hauteur. */
+/* Cadrage repris des cartes du rail de l'accueil, retiré le 28 septembre
+   2026 : la bande 2:1 prise au centre coupe le visage, 12 % le pose à 30 %
+   de la hauteur. */
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
@@ -419,8 +420,8 @@ if (articles.length === 0) {
   cartes = articles
     .map((a) => {
       const cover = a.cover ? urlImage(a.cover) : '';
-      // Comme dans le rail de index.html : la vignette ne montre que la date et
-      // le titre. Le résumé reste utilisé pour la description de la page de
+      // Comme dans l'ancien rail de l'accueil : la vignette ne montre que la
+      // date et le titre. Le résumé reste utilisé pour la description de la page de
       // l'article et pour les aperçus de partage.
       return `        <a class="post-card" href="${escAttr(a.page)}">
 ${cover ? `          <img class="post-card__cover" src="${escAttr(cover)}" alt="" loading="lazy"${cadrage(a)}>\n` : ''}          <div class="post-card__body">

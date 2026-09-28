@@ -275,7 +275,10 @@ installe ». L'accueil enchaîne donc, depuis le retrait de `#apport` : hero, ma
 `#exemples` (venue s'intercaler le 25 septembre 2026, « juste avant agent IA »),
 `#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
 jour) et
-« Trois raisons » (`#pourquoi`). « Avec qui l'agence travaille » (`#public`) suivait
+« Trois raisons » (`#pourquoi`), puis la FAQ, le contact, l'appel au blog et le pied
+de page — « Ma chaîne, en clair » (`#agenda`), entre « Trois raisons » et la FAQ, et
+la signature, sous l'appel au blog, ont été **supprimées le 28 septembre 2026** (voir
+plus bas). « Avec qui l'agence travaille » (`#public`) suivait
 « Trois raisons » depuis le 19 septembre ; elle a été **supprimée le 23 septembre
 2026** (voir plus bas). La première pile s'arrête
 avant le bandeau, la seconde s'ouvre sur l'IA générative. Le menu suit l'ordre de la
@@ -462,8 +465,37 @@ toujours vers `81VkKx`. Le guide de l'IA générative y renvoie depuis sa derni�
 (`utm_source=guide-ia-pdf`) et depuis sa page de remerciement (`utm_source=guide-ia`) :
 ses sujets sont justement les cinq leviers du guide.
 
-**La section « Ma chaîne, en clair » ne montre plus que la vidéo de la chaîne**,
-depuis le 18 septembre 2026. Elle s'appelait « Blog et évènements à venir » ; le
+**Plus de section « Ma chaîne, en clair », ni de signature, depuis le 28 septembre
+2026.** Le propriétaire a demandé les deux d'un coup : « supprime la partie et la vidéo
+youtube "Ma chaîne, en clair" […] Tu vas supprimer aussi ma photo en bas et mes
+informations ». Ce qui suit sur la chaîne, les masterclass et le portrait décrit donc
+ce qui a existé ; l'historique git garde tout.
+
+- **Sont partis de `index.html`** : la section `#agenda` (vidéo YouTube, rail des
+  masterclass, bouton « Voir la chaîne »), la section `.signature` (portrait, nom,
+  « Fondateur de SmartEfico », phrase), leur style (`.rail`, `.mc`, `.video-scene`,
+  `.signature`, et leurs lignes du bloc « NOIR PLAT »), le script du rail, et le lien
+  **« Chaîne »** du menu. Le menu passe à six liens plus « Contact ».
+- **Et du back office** : les zones `VIDEO`, `MASTERCLASS` et `VISUEL_PORTRAIT` de
+  `sync-content.mjs` (sans quoi le script, qui échoue sur un repère absent, aurait
+  cassé le workflow au premier enregistrement), les formulaires « masterclass »,
+  « Vidéo » et « Photo de profil » de `.pages.yml`, et les fichiers
+  `content/pages/video.md` et `content/masterclasses/…` — la seule masterclass,
+  celle du 3 octobre 2026, était déjà dépubliée.
+- **Restent** : l'icône YouTube du pied de page, qui mène toujours à la chaîne ; le
+  fondateur dans le JSON-LD, invisible ; `assets/Portrait3.jpg`, dont se sert l'image
+  de partage (`scripts/partage/partage.html`), qui montre donc toujours le portrait.
+- **La page passe de 8 924 à 7 590 px** à 1 280 px de large (697 px pour la chaîne,
+  537 px pour la signature, et deux écarts de pile). La copie autonome tombe de 530 à
+  369 Ko sans le portrait encodé.
+- **L'article « Bienvenue sur le blog »** renvoie encore aux « masterclass » par
+  `index.html#agenda` : l'ancre n'existe plus, le lien mène en haut de l'accueil. Son
+  texte est celui du propriétaire, à retoucher dans le back office s'il le souhaite.
+- Le texte de l'accueil reste à la première personne (« Ce qu'on me demande », « mes
+  articles ») sans plus dire qui parle : la signature était ce qui nommait le « je ».
+
+**La section « Ma chaîne, en clair » ne montrait plus que la vidéo de la chaîne**,
+du 18 au 28 septembre 2026. Elle s'appelait « Blog et évènements à venir » ; le
 propriétaire a vidé son rail en trois temps :
 les articles adossés à un évènement, puis la carte du dernier article publié — posée la
 veille, dans une zone `ARTICLE_UNE` placée avant les masterclass — puis celle du blog.
@@ -628,7 +660,11 @@ lui-même. **« des polices du site » a remplacé « de la police des titres »
 corps du texte et sur les pages légales elles-mêmes : la phrase d'avant restait vraie
 sur le fond mais ne décrivait plus le bon usage. À tenir vrai : installer une mesure
 d'audience ou un pixel, couper l'autoplay, héberger les polices ou changer d'outil de
-formulaire oblige à retoucher cet article, avec son accord.
+formulaire oblige à retoucher cet article, avec son accord. **C'est le cas depuis le
+28 septembre 2026** : la vidéo est partie avec « Ma chaîne, en clair », et plus
+aucune page n'intègre YouTube. La phrase qui la décrit (« La vidéo de la page
+d'accueil est servie par YouTube… dès son arrivée. ») est devenue fausse ; son
+retrait lui a été proposé le jour même, et attend son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
@@ -684,6 +720,10 @@ sur les écrans juste au-dessus du seuil, et la marge y fond. Remesurer avant d'
 ajouter un, la méthode est celle décrite ci-dessus. Le septième est revenu le
 25 septembre 2026 avec « Exemples » — 62 px et 103 px —, après le retrait
 d'« Expertises » qui l'avait libéré ; le menu est donc de nouveau plein.
+**« Chaîne » est parti le 28 septembre 2026** avec sa section : six liens, et la
+place d'un septième de nouveau libre. Mesurées sur les boîtes des éléments (et non
+sur l'encre, comme les chiffres ci-dessus, qui en sont un peu plus courts) : environ
+87 px entre la marque et les liens, 154 px avant « Contact ».
 
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
@@ -964,7 +1004,11 @@ page, pas seulement contre le carreau.**
 
 Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
 
-**La photo de la signature ne bouge pas**, décision du propriétaire du 18 septembre
+**La signature, portrait compris, a été supprimée le 28 septembre 2026** (voir
+Architecture). Les deux paragraphes qui suivent la décrivent telle qu'elle était ; le
+portrait survit dans l'image de partage.
+
+**La photo de la signature ne bougeait pas**, décision du propriétaire du 18 septembre
 2026. Le même jour, il avait demandé que « le personnage en bas commence à croiser les
 bras et à sourire quand on arrive sur la page » ; une photo ne bouge pas, et le geste
 avait été rendu par un dévoilement de haut en bas, visage d'abord, bras croisés

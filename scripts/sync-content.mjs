@@ -3,10 +3,12 @@
  * Régénère les zones « pilotées par le back office » de index.html à partir des
  * fichiers de content/ (édités via Pages CMS) :
  *   - HERO_TITLE / HERO_SUB : accroche et sous-titre du hero (content/pages/accueil.md)
- *   - VISUEL_*               : portrait, logo, image de partage (content/pages/visuels.md)
- *   - VIDEO                  : vidéo « à l'intérieur » (content/pages/video.md)
+ *   - VISUEL_*               : logo, image de partage (content/pages/visuels.md)
  *   - FAQ                    : questions fréquentes (content/faq/*.md)
- *   - MASTERCLASS            : évènements (content/masterclasses/*.md)
+ *
+ * Les zones VIDEO, MASTERCLASS et VISUEL_PORTRAIT sont parties le 28 septembre
+ * 2026 avec la section « Ma chaîne, en clair » et la signature, que le
+ * propriétaire a fait retirer de l'accueil. L'historique git garde leur code.
  *
  * Même principe que sync-legal.mjs : chaque zone est réécrite entre ses repères
  *   <!-- ZONE:START --> … <!-- ZONE:END -->
@@ -22,8 +24,6 @@ const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 // --- utilitaires ------------------------------------------------------------
 const escTexte = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const escAttr = (s = '') =>
-  String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const cheminRelatif = (s = '') => String(s).trim().replace(/^\/+/, '');
 // URL d'image sûre : encode les espaces (%20) tout en gardant les « / ».
 const urlImage = (s = '') => encodeURI(cheminRelatif(s));
@@ -145,20 +145,12 @@ if (accueil.hero_subtitle) {
   resume.push('hero : sous-titre');
 }
 
-// --- VISUELS (portrait, logo, image de partage) -----------------------------
+// --- VISUELS (logo, image de partage) ----------------------------------------
 // Les balises sont régénérées en entier : les dimensions viennent du CSS
-// (.logo et .signature__photo), donc changer d'image ne déforme jamais rien.
+// (.logo), donc changer d'image ne déforme jamais rien.
 const SITE = 'https://smartefico.com';
 const visuels = lireFichier('content/pages/visuels.md');
 
-if (visuels.portrait) {
-  index = injecter(
-    index,
-    'VISUEL_PORTRAIT',
-    `<img class="signature__photo" src="${urlImage(visuels.portrait)}" alt="Emmanuel Kouakou" loading="lazy">`
-  );
-  resume.push('visuel : portrait');
-}
 if (visuels.logo) {
   const logo = urlImage(visuels.logo);
   index = injecter(index, 'VISUEL_LOGO_NAV', `<img class="logo" src="${logo}" alt="SmartEfico">`);
@@ -170,57 +162,6 @@ if (visuels.og_image) {
   index = injecter(index, 'VISUEL_OG', `<meta property="og:image" content="${og}">`);
   index = injecter(index, 'VISUEL_TWITTER', `<meta name="twitter:image" content="${og}">`);
   resume.push('visuel : image de partage');
-}
-
-// --- VIDÉO « à l'intérieur » -----------------------------------------------
-// Le champ accepte n'importe laquelle des formes que YouTube distribue :
-// watch?v=, youtu.be/, /embed/, /shorts/, /live/. On n'en garde que
-// l'identifiant, puis on le remonte sur youtube-nocookie.com — même lecteur,
-// sans cookie de suivi tant que le visiteur n'a pas lancé la lecture.
-function idYoutube(url) {
-  if (!url) return null;
-  const m = String(url).trim().match(
-    /(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})/
-  );
-  return m ? m[1] : /^[A-Za-z0-9_-]{11}$/.test(String(url).trim()) ? String(url).trim() : null;
-}
-
-const video = lireFichier('content/pages/video.md');
-
-// La vidéo tient seule la section « Ma chaîne, en clair » — « Blog et évènements
-// à venir » jusqu'au 18 septembre 2026 — depuis ce jour-là : le propriétaire y a
-// retiré la carte du dernier article et celle du blog. Elle n'est donc plus une carte du rail mais un bloc à part,
-// posé après lui, en 16:9 et au centre.
-//
-// Elle démarre seule (`autoplay=1`), forcément en sourdine (`mute=1`) : c'est
-// la condition posée par tous les navigateurs, et `allow="autoplay…"` est ce
-// qui l'autorise pour un cadre d'un autre domaine. `playsinline=1` évite que
-// l'iPhone bascule en plein écran. Plus de `loading="lazy"` : le lecteur doit
-// être prêt à l'arrivée sur la page.
-const idVideo = idYoutube(video.youtube_url);
-if (idVideo) {
-  const titre = video.titre || 'Vidéo SmartEfico';
-  index = injecter(
-    index,
-    'VIDEO',
-    `\n      <!-- Zone générée par scripts/sync-content.mjs à partir de\n` +
-      `           content/pages/video.md (back office). NE PAS éditer à la main. -->\n` +
-      `      <div class="video-scene">\n` +
-      `        <div class="video-scene__cadre">\n` +
-      `          <iframe src="https://www.youtube-nocookie.com/embed/${idVideo}?rel=0&amp;autoplay=1&amp;mute=1&amp;playsinline=1"\n` +
-      `            title="${escAttr(titre)}"\n` +
-      `            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"\n` +
-      `            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n` +
-      `        </div>\n` +
-      `        <a class="btn btn--line" href="https://www.youtube.com/@smartefico"\n` +
-      `           target="_blank" rel="noopener">Voir la chaîne</a>\n` +
-      `      </div>\n      `
-  );
-  resume.push('vidéo : ' + idVideo);
-} else if (video.youtube_url) {
-  console.warn(
-    `Vidéo ignorée : « ${video.youtube_url} » ne contient pas d'identifiant YouTube reconnaissable.`
-  );
 }
 
 // --- FAQ --------------------------------------------------------------------
@@ -246,49 +187,6 @@ if (faq.length) {
   index = injecter(index, 'FAQ', html);
   resume.push(`FAQ : ${faq.length} questions`);
 }
-
-// --- MASTERCLASS ------------------------------------------------------------
-const evenements = lireCollection('content/masterclasses')
-  .filter((e) => versBool(e.published))
-  .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
-
-function carteMc(e) {
-  const titre = escTexte(e.title || 'Masterclass');
-  const date = escTexte(e.date_label || '');
-  const lien = escAttr((e.tally_url || '#appel').trim() || '#appel');
-  const externe = /^https?:/i.test(lien) ? ' target="_blank" rel="noopener"' : '';
-  const poster = e.poster ? urlImage(e.poster) : '';
-  // La carte ne porte pas la description du .md : elle n'affiche que la date,
-  // le titre et le bouton, comme les cartes d'articles du meme rail.
-  // L'affiche est DANS la carte, en tête : le rail aligne des
-  // cartes entières, plus une grille affiche-à-gauche / texte-à-droite.
-  const affiche = poster
-    ? `          <a class="mc__affiche" href="${lien}"${externe} aria-label="Affiche de la masterclass — s'inscrire">
-            <img src="${poster}" alt="Affiche de la masterclass « ${escAttr(e.title || '')} »" loading="lazy">
-          </a>\n`
-    : '';
-  return (
-    `        <article class="mc">\n` +
-    affiche +
-    `          <div class="mc__corps">
-            <span class="mc__date mono">${date}</span>
-            <h3>${titre}</h3>
-            <a class="btn btn--line" href="${lien}"${externe}>S'inscrire</a>
-          </div>
-        </article>`
-  );
-}
-
-// Sans évènement publié, la zone reste vide : le rail se referme sur l'article
-// et la carte du blog. Une fiche « aucune date ouverte pour le moment » tenait
-// cette place auparavant ; elle annonçait une absence, ce qui coûte plus qu'un
-// rail plus court. Dépublier un évènement le fait donc vraiment disparaître.
-const mc = evenements.map(carteMc).join('\n');
-const avertMc =
-  '\n        <!-- Section générée par scripts/sync-content.mjs à partir de\n' +
-  '             content/masterclasses/*.md (back office). NE PAS éditer à la main. -->\n';
-index = injecter(index, 'MASTERCLASS', avertMc + mc + '\n        ');
-resume.push(`masterclass : ${evenements.length} évènement(s)`);
 
 writeFileSync(join(racine, 'index.html'), index, 'utf8');
 console.log(resume.join(' · '));

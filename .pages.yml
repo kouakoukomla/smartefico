@@ -7,45 +7,6 @@ media:
   output: assets
 
 content:
-  - name: masterclasses
-    label: masterclass
-    icon: calendar
-    type: collection
-    path: content/masterclasses
-    view:
-      fields:
-        - title
-        - date_label
-        - published
-    fields:
-      - name: title
-        label: Titre
-        type: string
-        required: true
-      - name: date_label
-        label: Date (texte affiché)
-        type: string
-        description: "Ex. : Samedi 3 octobre 2026 · 19h00 GMT · 3h · en ligne"
-      - name: poster
-        label: Affiche
-        type: image
-        description: "Image de l'affiche (rangée dans assets/)."
-      - name: tally_url
-        label: Lien d'inscription
-        type: string
-        description: "Lien du formulaire Tally, ex. https://tally.so/r/BzJr5Q"
-      - name: published
-        label: Publiée sur le site
-        type: boolean
-        default: true
-      - name: order
-        label: Ordre d'affichage
-        type: number
-        default: 1
-      - name: body
-        label: Description
-        type: text
-
   - name: articles
     label: Articles (blog)
     icon: file-text
@@ -137,10 +98,6 @@ content:
     type: file
     path: content/pages/visuels.md
     fields:
-      - name: portrait
-        label: Photo de profil (bas de page)
-        type: image
-        description: "Votre portrait, affiché en rond avec l'anneau jaune."
       - name: logo
         label: Logo
         type: image
@@ -149,18 +106,3 @@ content:
         label: Image de partage
         type: image
         description: "Aperçu affiché quand le lien du site est partagé (LinkedIn, WhatsApp…). Idéalement 1200 x 630 px."
-
-  - name: video
-    label: Vidéo (Blog et évènements)
-    icon: video
-    type: file
-    path: content/pages/video.md
-    fields:
-      - name: youtube_url
-        label: Lien de la vidéo YouTube
-        type: text
-        description: "Collez l'adresse de la vidéo à montrer en dernière carte de « Blog et évènements à venir ». Toutes les formes marchent : youtube.com/watch?v=…, youtu.be/…, /shorts/…. Publiez une nouvelle vidéo, remplacez le lien ici, la page suit. Videz le champ pour retirer la carte."
-      - name: titre
-        label: Titre de la vidéo
-        type: text
-        description: "Affiché sur la carte, sous le lecteur. Reprenez le titre YouTube."
