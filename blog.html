@@ -514,6 +514,23 @@ em{color:var(--yellow)}
   text-transform:none;letter-spacing:.02em;font-size:.75rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
+/* ---------- pour qui ----------
+   Deux cartes .pilier côte à côte, une par profil, 28 septembre 2026. Le mot
+   en italique des titres de carte prend l'Instrument Serif des grands titres.
+   Les trois situations de chaque carte forment une liste à petits tirets,
+   sous un filet, pour se lire d'un coup d'œil. */
+.pour-qui{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.pour-qui{grid-template-columns:repeat(2,1fr)}}
+.pour-qui h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
+  font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
+/* margin-top:auto cale la liste au bas de la carte : les deux listes
+   s’alignent même quand les phrases au-dessus n’ont pas la même longueur. */
+.pour-qui__signes{list-style:none;margin:auto 0 0;padding:.85rem 0 0;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:.45rem}
+.pour-qui__signes li{position:relative;padding-left:1.1rem;color:var(--ink-2)}
+.pour-qui__signes li::before{content:"";position:absolute;left:0;top:.72em;
+  width:.55rem;height:1px;background:var(--ink-3)}
+
 /* ---------- agents IA ---------- */
 .agents{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}

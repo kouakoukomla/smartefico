@@ -542,6 +542,23 @@ em{color:var(--yellow)}
   text-transform:none;letter-spacing:.02em;font-size:.75rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
+/* ---------- pour qui ----------
+   Deux cartes .pilier côte à côte, une par profil, 28 septembre 2026. Le mot
+   en italique des titres de carte prend l'Instrument Serif des grands titres.
+   Les trois situations de chaque carte forment une liste à petits tirets,
+   sous un filet, pour se lire d'un coup d'œil. */
+.pour-qui{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:46rem){.pour-qui{grid-template-columns:repeat(2,1fr)}}
+.pour-qui h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
+  font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
+/* margin-top:auto cale la liste au bas de la carte : les deux listes
+   s’alignent même quand les phrases au-dessus n’ont pas la même longueur. */
+.pour-qui__signes{list-style:none;margin:auto 0 0;padding:.85rem 0 0;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:.45rem}
+.pour-qui__signes li{position:relative;padding-left:1.1rem;color:var(--ink-2)}
+.pour-qui__signes li::before{content:"";position:absolute;left:0;top:.72em;
+  width:.55rem;height:1px;background:var(--ink-3)}
+
 /* ---------- agents IA ---------- */
 .agents{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
@@ -1604,6 +1621,40 @@ h1.display em{color:var(--yellow)}
           <span class="guide-lien__texte"><strong>Explorer les cas d'usage</strong><span>Six familles d'usages, les exemples par secteur, département et métier, et ce qui reste à contrôler</span></span>
           <span class="guide-lien__bouton">Explorer</span>
         </a>
+      </div>
+    </section>
+
+    <!-- ============ POUR QUI ============
+         Demandée le 28 septembre 2026, juste avant « Agents IA » : les deux
+         profils de clients, formulés par Claude à partir de la demande du
+         propriétaire (offres moyenne et haute gamme ; besoin d'intégrer l'IA
+         dans ses process). Les secteurs restent dans la FAQ (« Avec quel type
+         d'entreprises travaillez-vous ? ») : les recopier ici referait le
+         doublon qui avait fait supprimer « Avec qui l'agence travaille ». -->
+    <section class="wrap" id="pour-qui">
+      <div class="head head--centre">
+        <h2 class="display">Pour <em>qui</em>&nbsp;?</h2>
+        <p class="lead">Deux profils d’entreprises, et bien souvent, les deux à la fois.</p>
+      </div>
+      <div class="pour-qui">
+        <article class="pilier">
+          <h3>Vous vendez des offres <em>moyenne et haute gamme</em></h3>
+          <p>Vos offres ne s’achètent pas en un clic. Il vous faut moins de contacts, mais les bons&nbsp;: des interlocuteurs qui ont le besoin, le budget et le pouvoir de décider.</p>
+          <ul class="pour-qui__signes">
+            <li>Vos ventes passent par un rendez-vous ou un devis.</li>
+            <li>Chaque client gagné justifie un vrai suivi commercial.</li>
+            <li>Votre pipeline dépend encore de l’effort fourni ce mois-ci.</li>
+          </ul>
+        </article>
+        <article class="pilier">
+          <h3>Vous voulez intégrer l’<em>IA</em> dans vos process</h3>
+          <p>L’IA doit travailler pour vos équipes, et non l’inverse&nbsp;: des cas d’usage choisis, des outils qui s’ajoutent aux vôtres, des équipes formées pour s’en servir.</p>
+          <ul class="pour-qui__signes">
+            <li>Vos équipes répètent chaque jour les mêmes tâches.</li>
+            <li>Chacun essaie l’IA dans son coin, sans méthode ni règles communes.</li>
+            <li>Vous tenez à garder les outils que vous avez déjà.</li>
+          </ul>
+        </article>
       </div>
     </section>
 

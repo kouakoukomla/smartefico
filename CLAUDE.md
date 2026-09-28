@@ -381,6 +381,8 @@ installe ». L'accueil enchaîne donc : hero, marques, `#apport` (revenue le
 28 septembre 2026), `#chiffres`,
 `#avant-apres`, `#resultats`, le bandeau des cinq étapes (`#methode`), `#ia`,
 `#exemples` (venue s'intercaler le 25 septembre 2026, « juste avant agent IA »),
+`#pour-qui` (« Pour *qui* ? », venue s'intercaler à son tour le 28 septembre 2026,
+voir plus bas),
 `#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
 jour) et
 « Trois raisons » (`#pourquoi`), puis la FAQ, le contact et le pied de page — « Ma
@@ -434,6 +436,37 @@ ci-dessus. Le titre passe au « nous » du reste du site, tient sur une ligne �
 `<br>` est parti avec —, garde le point final de tous les titres de la page, et
 l'italique se resserre sur « mesure ». L'ancre, le lien « Services » du menu et le
 texte de la section n'ont pas bougé.
+
+**« Pour *qui* ? » (`#pour-qui`), depuis le 28 septembre 2026**, juste avant « Agents
+IA », à la demande du propriétaire : « avant "agent ia" tu dois mettre "Pour qui ?" ;
+dans pour qui tu dois mettre des clients middle et haute gamme et ceux qui ont besoin
+d'intégrer l'ia dans leur process (fais une bonne reformulation) ». **Tout le texte
+est de Claude**, à partir de cette consigne et de phrases que le site portait déjà :
+
+- chapô : « Deux profils d'entreprises, et bien souvent, les deux à la fois. » ;
+- carte 1, « Vous vendez des offres *moyenne et haute gamme* » (« moyenne », comme
+  dans le manifeste, où il a lui-même remplacé « middle ») : le besoin — « Vos offres
+  ne s'achètent pas en un clic. Il vous faut moins de contacts, mais les bons : des
+  interlocuteurs qui ont le besoin, le budget et le pouvoir de décider. » —, puis trois
+  situations : un rendez-vous ou un devis avant la vente, un client gagné qui justifie
+  un vrai suivi, un pipeline qui « dépend encore de l'effort fourni ce mois-ci »
+  (écho d'une ligne à lui dans « Avant, après ») ;
+- carte 2, « Vous voulez intégrer l'*IA* dans vos process » : « L'IA doit travailler
+  pour vos équipes, et non l'inverse : des cas d'usage choisis, des outils qui
+  s'ajoutent aux vôtres, des équipes formées pour s'en servir. », puis : des tâches
+  répétées chaque jour, « Chacun essaie l'IA dans son coin, sans méthode ni règles
+  communes » (repris d'« Avant, après »), et l'envie de garder ses outils (écho de
+  « On se branche sur vos outils », dans « Trois raisons »).
+
+**Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
+type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a
+fait supprimer « Avec qui l'agence travaille ». Aucun chiffre, aucun montant, aucune
+promesse. Deux cartes `.pilier` dans une grille `.pour-qui` (deux colonnes dès
+46 rem) ; le mot en italique des titres de carte en Instrument Serif ; les trois
+situations en liste à tirets (`.pour-qui__signes`), calée en bas de carte par
+`margin-top:auto` pour que les deux listes s'alignent. 351 px à 1 280 px, 808 px sur
+téléphone ; la page passe à **7 400 px**. Pas de lien au menu, qui n'en a pas reçu
+la demande.
 
 **Plus de section « Avec qui l'agence travaille ».** Le propriétaire a demandé le
 23 septembre 2026 de réduire le nombre de sections de l'accueil, qui en comptait
