@@ -250,16 +250,18 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
   la pile et la graisse des grands titres, suivie de lignes en gris.
 - **Ce qui vient de Claude**, et rien d'autre : l'italique sur « cash » et « moins de
   3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
-  dans « 3 mois » ; « Quelques chiffres : », son texte, posé en étiquette `.mono` sous
-  la carte, où il annonce la section suivante. Les guillemets “famous” sont les
-  siens, laissés à l'anglaise.
+  dans « 3 mois ». Les guillemets “famous” sont les siens, laissés à l'anglaise.
+- **« Quelques chiffres : » est reparti le jour même** (« supprime "Quelques
+  chiffres :" »). Il était posé en étiquette `.mono` sous la carte, pour annoncer la
+  section suivante ; la carte mène désormais droit à « Ce à quoi vous engager ».
 - **« Démultiplier vos ventes haute gamme en moins de 3 mois »** est une promesse de
   résultat. Elle est de lui et figurait déjà sur le site jusqu'au 23 septembre ;
   l'assistant, lui, garde sa consigne de n'en faire aucune.
 - **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
   « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
   depuis le départ de « Chaîne ».
-- La section fait 626 px à 1 280 px de large ; la page passe de 6 906 à **7 582 px**.
+- La section fait 586 px à 1 280 px de large (626 px avec « Quelques
+  chiffres : ») ; la page passe de 6 906 à **7 541 px**.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
 
