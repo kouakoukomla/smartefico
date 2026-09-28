@@ -410,10 +410,12 @@ paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes 
 lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
 sinon l'appariement se décale. La section passe de 507 à 580 px.
 
-**`#resultats` s'appelle « Notre méthode *SmartClient*. » depuis le 28 septembre
-2026**, à la demande du propriétaire (« Au lieu de "Ce que nous installons se
-mesure." mets plutôt "Notre méthode SmartClient" »). Le point final et l'italique
-sur « SmartClient » sont de Claude, pour suivre tous les autres titres de la page,
+**`#resultats` s'appelle « Notre méthode *ClientlyEfico*. » depuis le 28 septembre
+2026**, à la demande du propriétaire, en deux temps le même jour : « Au lieu de "Ce
+que nous installons se mesure." mets plutôt "Notre méthode SmartClient" », puis
+« remplace "smartclient" par "ClientlyEfico" » — graphie reprise telle qu'il l'a
+écrite, C et E capitales. Le point final et l'italique sur le nom de la méthode
+sont de Claude, pour suivre tous les autres titres de la page,
 qui portent chacun les deux ; son texte n'en avait pas. Tient sur une ligne, à
 1 280 px comme sur téléphone. L'ancre `#resultats` et le chapô (« Chaque système
 arrive avec son tableau de bord… ») n'ont pas bougé. **Le lien du menu qui y mène
