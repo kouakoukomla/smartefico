@@ -1300,13 +1300,18 @@ dois utiliser ce type de caractère. »
   espace-mot est étroite, et en capitales grasses « GUIDE GRATUIT » se lisait presque
   d'un seul mot. Un dixième de cadratin rouvre l'espace sans pousser le menu.
 
-**Toutes les tailles de texte ont perdu 10 % le 28 septembre 2026**, à la demande du
-propriétaire : « Regarde tout le site et réduis la taille de tous les écrits du site ;
-les caractères sont trop grands ». Poppins, à grand œil, paraît plus grosse que
-l'Helvetica d'avant à taille égale. La règle appliquée, pour qu'une retouche future
-reste cohérente :
+**Toutes les tailles de texte ont perdu 15 % le 28 septembre 2026**, en deux demandes
+du propriétaire le même jour : « Regarde tout le site et réduis la taille de tous les
+écrits du site ; les caractères sont trop grands », d'abord appliqué à −10 % et mis en
+ligne, puis « Réduis encore de 15 % », qu'il a précisé, sur question, comme −15 % au
+total par rapport aux tailles d'origine — et non 15 % de plus, qui aurait mis le
+texte courant à 12,2 px. Poppins, à grand œil, paraît plus grosse que l'Helvetica
+d'avant à taille égale. La règle appliquée, pour qu'une retouche future reste
+cohérente :
 
-- **chaque `font-size` en rem, px ou vw est multiplié par 0,9**, bornes et terme
+- **chaque `font-size` en rem, px ou vw est multiplié par 0,85** à partir des tailles
+  d'origine (celles du commit `511eb61`), et non par-dessus le −10 %, pour ne pas
+  empiler deux arrondis ; bornes et terme
   central des `clamp()` compris, sur toutes les feuilles du site : `index.html` (donc
   le blog et les articles, qui la recopient), le CSS propre de `build-blog.mjs`,
   `cgv.html`, `cgc.html`, les deux guides, leurs deux pages de remerciement et
@@ -1320,13 +1325,19 @@ reste cohérente :
 - **ni les marges ni les largeurs** : seules les lettres rapetissent. Les boutons du
   hero gardent leur `min-width` de 14 rem et leur `min-height` de 3,25 rem.
 
-Mesuré à 1 280 px : texte courant 16 → **14,4 px**, chapô du hero 18,4 → 16,6 px,
-titre d'accueil 82 → **74 px**, titres de section 48 → 43 px, menu 14,1 → 12,7 px ;
-pages légales 15 → 13,5 px. La page d'accueil passe de 7 590 à **7 143 px**. Le titre
-de `#ia` tient toujours sur deux lignes (26 ch, qui suivent la police). Aucun
-débordement à 375 px, aucun texte visible sous 12 px sur l'accueil. **Les marges du
-menu relevées plus haut sont périmées** : les liens ont rétréci, il y a davantage de
-place — remesurer avant d'ajouter un lien.
+Mesuré à 1 280 px : texte courant 16 → **13,6 px**, chapô du hero 18,4 → 15,6 px,
+titre d'accueil 82 → **70 px**, titres de section 48 → 41 px, menu 14,1 → 12 px
+(plancher) ; pages légales 15 → 12,75 px. La page d'accueil passe de 7 590 à
+**6 906 px**. Le titre de `#ia` tient toujours sur deux lignes (26 ch, qui suivent la
+police). Aucun débordement à 375 px, aucun texte visible sous 12 px sur l'accueil.
+
+**Le plancher de 12 px commence à tasser le bas de l'échelle** : sur l'accueil, 74
+textes y sont désormais — menu, étiquettes `.mono`, mentions, dates —, qui étaient
+entre 12,8 et 14 px à l'origine et ne se distinguent plus par la taille. Réduire
+encore ne toucherait plus qu'aux titres et au texte courant, et écraserait la
+hiérarchie par le bas : au-delà, il faudrait baisser le plancher, c'est-à-dire la
+lisibilité. **Les marges du menu relevées plus haut sont périmées** : les liens ont
+rétréci, il y a davantage de place — remesurer avant d'ajouter un lien.
 
 **Les pages légales chargent désormais une police distante**, elles qui n'en
 chargeaient aucune : elles n'avaient pas besoin d'Instrument Serif, leurs italiques

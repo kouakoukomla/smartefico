@@ -69,7 +69,7 @@ body{
      passe devant plutôt que de remplacer : si Google Fonts ne répond pas,
      la page retombe sur la pile d'avant, intacte. */
   font-family:"Poppins","Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:.9rem;
+  font-size:.85rem;
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
@@ -103,14 +103,14 @@ a{color:inherit}
   font-weight:800;letter-spacing:-.035em;line-height:.95;
   text-wrap:balance;overflow-wrap:break-word;margin:0;
 }
-h1.display{font-size:clamp(2.34rem,5.76vw,5.22rem);letter-spacing:-.042em;max-width:20ch}
-h2.display{font-size:clamp(1.665rem,3.6vw,2.7rem)}
+h1.display{font-size:clamp(2.21rem,5.44vw,4.93rem);letter-spacing:-.042em;max-width:20ch}
+h2.display{font-size:clamp(1.573rem,3.4vw,2.55rem)}
 h3{font-weight:700;
-  letter-spacing:-.02em;font-size:1.08rem;line-height:1.25;margin:0}
+  letter-spacing:-.02em;font-size:1.02rem;line-height:1.25;margin:0}
 p{margin:0}
-.lead{font-size:clamp(.9rem,1.35vw,1.035rem);color:var(--ink-2);max-width:56ch}
+.lead{font-size:clamp(.85rem,1.275vw,.977rem);color:var(--ink-2);max-width:56ch}
 .mono{font-family:inherit;font-weight:600;
-  font-size:.788rem;letter-spacing:.08em;text-transform:uppercase}
+  font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
 
 /* ---------- logo ---------- */
 .logo{width:2.1rem;height:2.1rem;flex:none;object-fit:contain}
@@ -180,14 +180,14 @@ p{margin:0}
   .nav__trace--fond{opacity:1}
 }
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;
-  font-weight:800;letter-spacing:-.03em;font-size:1.035rem;flex:none}
+  font-weight:800;letter-spacing:-.03em;font-size:.977rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
 .nav__links{display:none;gap:clamp(1rem,1.8vw,1.5rem);margin-inline:auto}
 @media (min-width:70rem){.nav__links{display:flex}}
 /* liens de navigation : très gras et à pleine encre, comme demandé.
    En majuscules, une chasse négative resserre trop : on la remet à zéro et
    on ouvre légèrement l interlettrage, sans quoi les mots se collent. */
-.nav__links a{text-decoration:none;color:var(--ink);font-size:.792rem;
+.nav__links a{text-decoration:none;color:var(--ink);font-size:.75rem;
   font-weight:800;letter-spacing:.02em;padding-block:.35rem;
   /* Poppins a une espace-mot étroite : en capitales et en graisse 800,
      « GUIDE GRATUIT » se lisait presque d'un seul mot. Un dixième de cadratin
@@ -201,12 +201,12 @@ p{margin:0}
 /* appel à l'action : un libellé en toutes lettres, puis un carré jaune à la
    flèche — comme dans le modèle. Le carré reste seul quand la place manque. */
 .nav__cta{display:flex;align-items:center;gap:.9rem;text-decoration:none;
-  color:var(--ink);font-weight:700;font-size:.855rem;letter-spacing:-.015em;
+  color:var(--ink);font-weight:700;font-size:.808rem;letter-spacing:-.015em;
   white-space:nowrap;flex:none;margin-left:auto}
 .nav__cta-texte{transition:opacity .18s ease}
 .nav__cta:hover .nav__cta-texte{opacity:.65}
 .nav__fleche{display:grid;place-items:center;width:2.65rem;height:2.65rem;flex:none;
-  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:1.035rem;line-height:1;
+  color:var(--on-yellow);background:var(--yellow);border-radius:9px;font-size:.977rem;line-height:1;
   transition:background-color .18s ease,transform .18s ease}
 .nav__cta:hover .nav__fleche{background:var(--yellow-hi);transform:translate(2px,-2px)}
 /* Le libellé s efface tant que la marque, le bouton du menu et l appel ne
@@ -231,14 +231,14 @@ p{margin:0}
    jaune réclament 343 px et la barre se coupait en deux sous 352 px. */
 @media (max-width:22rem){
   .nav__in{gap:.55rem;padding-left:.85rem}
-  .brand{font-size:.9rem;gap:.4rem}
+  .brand{font-size:.85rem;gap:.4rem}
 }
 /* En deçà (écran de couverture des pliables), même resserrée la barre se
    chevauchait : le logo seul tient lieu de marque, il reste cliquable et
    ramène en haut de page. */
 @media (max-width:19rem){
   .brand{font-size:0;gap:0}
-  .brand .logo{font-size:.9rem}
+  .brand .logo{font-size:.85rem}
 }
 
 /* ---------- menu déroulant, sous le seuil d affichage en ligne ---------- */
@@ -257,7 +257,7 @@ p{margin:0}
   .js .nav--ouvert .nav__links{display:flex;flex-direction:column;
     gap:.3rem;padding:.7rem .25rem .35rem}
   /* en liste, chaque entrée devient une cible tactile pleine largeur */
-  .js .nav--ouvert .nav__links a{font-size:.855rem;padding:.8rem 1rem;
+  .js .nav--ouvert .nav__links a{font-size:.808rem;padding:.8rem 1rem;
     border-bottom:0;border-radius:9px;
     transition:background-color .18s ease}
   .js .nav--ouvert .nav__links a:hover,
@@ -333,7 +333,7 @@ em{color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:.5rem}
 /* Les deux voies de contact restent lisibles et de même taille. */
 .hero__actions{gap:.75rem;width:100%}
-.hero__actions .btn{font-size:.9rem;min-height:3.25rem;
+.hero__actions .btn{font-size:.85rem;min-height:3.25rem;
   padding:.85rem 1.4rem;justify-content:center;min-width:14rem}
 .hero__actions .btn--solid{background:var(--yellow);color:var(--on-yellow)}
 .hero__actions .btn--solid:hover{background:var(--yellow-hi)}
@@ -342,7 +342,7 @@ em{color:var(--yellow)}
   .hero__actions .btn{width:100%;min-width:0}
 }
 .btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;
-  font-size:.882rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
+  font-size:.833rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
 .btn--solid{background:var(--yellow);color:var(--on-yellow)}
 .btn--solid:hover{background:var(--yellow-hi);color:var(--on-yellow);transform:translateY(-2px)}
@@ -454,11 +454,11 @@ em{color:var(--yellow)}
 .figure .figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
 .figure__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
   stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.figure b{font-weight:800;font-size:clamp(2.34rem,4.95vw,3.33rem);line-height:1;
+.figure b{font-weight:800;font-size:clamp(2.21rem,4.675vw,3.145rem);line-height:1;
   letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
 /* Enfants directs seulement : les compteurs posent leurs propres span dans
    le chiffre, qui doivent garder la taille et le blanc du titre. */
-.figure > span{color:var(--ink-2);font-size:.846rem;margin-top:.1rem}
+.figure > span{color:var(--ink-2);font-size:.799rem;margin-top:.1rem}
 /* Compteurs : chaque chiffre part de zéro et monte jusqu'à sa valeur quand il
    entre à l'écran (script en bas de page). Pendant qu'il défile, le lecteur
    d'écran lit la valeur finale, cachée à l'œil, et ignore celle qui bouge.
@@ -475,10 +475,10 @@ em{color:var(--yellow)}
   padding:clamp(1.15rem,2.25vw,1.65rem);display:flex;flex-direction:column;gap:.8rem;
   transition:border-color .2s ease}
 .offer:hover{border-color:var(--yellow)}
-.offer__no{font-weight:800;font-size:1.44rem;line-height:1;color:var(--yellow);
+.offer__no{font-weight:800;font-size:1.36rem;line-height:1;color:var(--yellow);
   letter-spacing:-.04em;transition:color .2s ease}
 .offer:hover .offer__no{color:var(--yellow-hi)}
-.offer p{color:var(--ink-2);font-size:.882rem}
+.offer p{color:var(--ink-2);font-size:.833rem}
 .kpi{margin-top:.4rem;display:inline-flex;align-items:center;gap:.5rem;
   background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);padding:.4rem .7rem;
   text-transform:none;letter-spacing:.02em;font-size:.75rem;align-self:flex-start}
@@ -492,10 +492,10 @@ em{color:var(--yellow)}
 .blog-cta{padding-block:0}
 .blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
 .blog-cta__oeil{color:var(--ink-3)}
-.blog-cta__titre{font-size:clamp(.945rem,2.34vw,1.35rem);color:var(--ink);
+.blog-cta__titre{font-size:clamp(.893rem,2.21vw,1.275rem);color:var(--ink);
   max-width:34ch;line-height:1.15}
 .blog-cta__btn{display:inline-flex;align-items:center;background:var(--yellow);
-  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:.81rem;
+  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:.765rem;
   padding:.7rem 1.4rem;border-radius:999px;
   transition:transform .18s ease,background-color .18s ease}
 .blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:var(--yellow-hi);
@@ -538,11 +538,11 @@ em{color:var(--yellow)}
 .agent__tag{align-self:flex-start;background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);
   padding:.25rem .6rem;margin-top:.4rem}
 .agent h3,.agent p{padding-inline:.25rem}
-.agent p{color:var(--ink-2);font-size:.9rem}
+.agent p{color:var(--ink-2);font-size:.85rem}
 
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
 .chip{border:1px solid var(--line);background:var(--surface);padding:.34rem .7rem;
-  color:var(--ink-2);font-size:.765rem}
+  color:var(--ink-2);font-size:.75rem}
 
 /* La section « Ce qu'on vous apporte » et son style — .apports, le
    manifeste en bandeau (.manifesto) et ses volets — ont été retirés le
@@ -589,9 +589,9 @@ em{color:var(--yellow)}
   padding:1.05rem 1.2rem;list-style:none}
 .step__tete::-webkit-details-marker{display:none}
 .step__tete:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
-.step__no{font-weight:800;font-size:clamp(1.35rem,2.52vw,1.8rem);line-height:.9;
+.step__no{font-weight:800;font-size:clamp(1.275rem,2.38vw,1.7rem);line-height:.9;
   letter-spacing:-.05em;color:var(--yellow);flex:none}
-.step h3{color:#FFF;font-size:.945rem;flex:1;min-width:0}
+.step h3{color:#FFF;font-size:.893rem;flex:1;min-width:0}
 /* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert.
    Le meme dessin sert aux cinq etapes et aux cinq leviers de #ia, repliables
    depuis le 25 septembre 2026 : une seule declaration, deux composants. */
@@ -603,7 +603,7 @@ em{color:var(--yellow)}
 @media (prefers-reduced-motion:reduce){.step__chevron,.pilier__chevron{transition:none}}
 .step__corps{padding:0 1.2rem 1.2rem}
 .step__corps .chips{margin-top:0}
-.step p{color:#B5B5B1;font-size:.855rem}
+.step p{color:#B5B5B1;font-size:.808rem}
 .step .chip{border-color:#3A3A3A;background:transparent;color:#C9C9C6}
 /* Sixième case : le lien vers le guide gratuit (guide.html), qui reprend ces
    cinq étapes, demandé le 17 septembre 2026. Cinq panneaux sur trois colonnes
@@ -618,10 +618,10 @@ em{color:var(--yellow)}
 .guide-lien__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
   stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .guide-lien__texte{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
-.guide-lien__texte strong{color:#FFF;font-size:.945rem;letter-spacing:-.02em}
-.guide-lien__texte span{color:#B5B5B1;font-size:.765rem}
+.guide-lien__texte strong{color:#FFF;font-size:.893rem;letter-spacing:-.02em}
+.guide-lien__texte span{color:#B5B5B1;font-size:.75rem}
 .guide-lien__bouton{flex:none;background:var(--yellow);color:var(--on-yellow);font-weight:700;
-  font-size:.81rem;padding:.55rem 1rem;border-radius:999px;transition:background-color .18s ease}
+  font-size:.765rem;padding:.55rem 1rem;border-radius:999px;transition:background-color .18s ease}
 .guide-lien:hover .guide-lien__bouton{background:var(--yellow-hi)}
 @media (prefers-reduced-motion:reduce){.guide-lien__bouton{transition:none}}
 
@@ -638,7 +638,7 @@ em{color:var(--yellow)}
 .ba__col--apres .ba__titre{color:var(--ink)}
 .ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
 .ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
-  font-size:.882rem;line-height:1.5}
+  font-size:.833rem;line-height:1.5}
 .ba__col--apres li{color:var(--ink);font-weight:500}
 .ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
   background:var(--ink-3);border-radius:50%}
@@ -670,9 +670,9 @@ em{color:var(--yellow)}
 .pilier{background:var(--surface);border:1px solid var(--line);
   padding:clamp(1.15rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:.85rem}
 .pilier__tete{display:flex;align-items:baseline;gap:.8rem}
-.pilier__no{font-weight:800;font-size:clamp(1.35rem,2.52vw,1.8rem);line-height:.9;
+.pilier__no{font-weight:800;font-size:clamp(1.275rem,2.38vw,1.7rem);line-height:.9;
   letter-spacing:-.05em;color:var(--yellow);flex:none}
-.pilier h3{color:#FFF;font-size:1.125rem;letter-spacing:-.02em}
+.pilier h3{color:#FFF;font-size:1.063rem;letter-spacing:-.02em}
 .pilier p{color:var(--ink-2)}
 .pilier__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);
   white-space:nowrap}
@@ -735,9 +735,9 @@ em{color:var(--yellow)}
   .pilier--appel .pilier__action{flex:0 0 auto;margin-top:0}
   .pilier--appel .btn{margin-top:0}
 }
-.pilier--appel h3{font-size:clamp(1.17rem,1.98vw,1.395rem);line-height:1.2}
+.pilier--appel h3{font-size:clamp(1.105rem,1.87vw,1.318rem);line-height:1.2}
 .pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
-.pilier__note{color:var(--ink-3);font-size:.765rem}
+.pilier__note{color:var(--ink-3);font-size:.75rem}
 /* Le guide gratuit de cette section, demandé le 18 septembre 2026 : il
    reprend les cinq cartes, une fiche par levier, et mène à sa propre page,
    guide-ia.html. Même encart que la sixième case de la méthode
@@ -768,11 +768,11 @@ em{color:var(--yellow)}
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .qa{border-bottom:1px solid var(--line)}
 .qa summary{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
-  padding:1.25rem 0;cursor:pointer;list-style:none;font-weight:700;font-size:.945rem;
+  padding:1.25rem 0;cursor:pointer;list-style:none;font-weight:700;font-size:.893rem;
   letter-spacing:-.015em;transition:color .18s ease}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary:hover{color:var(--ink-2)}
-.qa summary::after{content:"+";color:var(--ink);font-size:1.35rem;line-height:.8;flex:none;
+.qa summary::after{content:"+";color:var(--ink);font-size:1.275rem;line-height:.8;flex:none;
   transition:transform .22s ease}
 .qa[open] summary::after{transform:rotate(45deg)}
 .qa p{color:var(--ink-2);padding-bottom:1.35rem;max-width:64ch}
@@ -807,17 +807,17 @@ h2.head__eyebrow{font-weight:600;margin:0}
 /* « Très grand », demandé par le propriétaire : au-dessus de tous les autres
    titres de section, juste sous celui d’accueil. Pas de max-width, c’est
    text-wrap:balance, hérité de .display, qui répartit les lignes. */
-.contact .display{color:#FFF;font-size:clamp(1.98rem,5.76vw,3.96rem);
+.contact .display{color:#FFF;font-size:clamp(1.87rem,5.44vw,3.74rem);
   letter-spacing:-.04em;line-height:1.02}
-.contact__phrase{color:#B5B5B1;font-size:clamp(.9rem,1.44vw,1.08rem);
+.contact__phrase{color:#B5B5B1;font-size:clamp(.85rem,1.36vw,1.02rem);
   line-height:1.5;max-width:52ch}
 .contact__btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   background:var(--yellow);color:var(--on-yellow);text-decoration:none;font-weight:700;
-  font-size:.945rem;padding:.95rem 1.8rem;border-radius:999px;margin-top:.5rem;
+  font-size:.893rem;padding:.95rem 1.8rem;border-radius:999px;margin-top:.5rem;
   min-height:3.25rem;max-width:100%;text-align:center;
   transition:background-color .18s ease,transform .18s ease}
 .contact__btn:hover,.contact__btn:focus-visible{background:var(--yellow-hi);transform:translateY(-2px)}
-.contact__note{color:var(--ink-3);font-size:.765rem}
+.contact__note{color:var(--ink-3);font-size:.75rem}
 
 /* ---------- icônes réseaux ---------- */
 .icons{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
@@ -835,7 +835,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .foot__brand{display:flex;align-items:center;gap:.7rem}
 .foot__legal{border-top:1px solid var(--line);padding-top:1.6rem;
   display:flex;flex-direction:column;align-items:center;gap:.85rem;text-align:center}
-.foot__copy{color:var(--ink);font-size:.9rem;font-weight:600}
+.foot__copy{color:var(--ink);font-size:.85rem;font-weight:600}
 .foot__links{display:flex;align-items:center;gap:.7rem;color:var(--ink-3)}
 .foot__links a{color:var(--ink-2);text-decoration:none;font-weight:500;
   border-bottom:2px solid var(--yellow);padding-bottom:.1rem;transition:color .18s ease}
@@ -849,9 +849,9 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .doc-modal__bar{position:sticky;top:0;z-index:2;background:var(--noir);color:#FFF;
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:.9rem clamp(1.1rem,3vw,2rem)}
-.doc-modal__bar b{font-weight:700;letter-spacing:-.02em;font-size:.945rem}
+.doc-modal__bar b{font-weight:700;letter-spacing:-.02em;font-size:.893rem}
 .doc-modal__close{background:none;border:1px solid #444;color:#C9C9C6;border-radius:999px;
-  padding:.4rem .9rem;cursor:pointer;font:inherit;font-size:.81rem;
+  padding:.4rem .9rem;cursor:pointer;font:inherit;font-size:.765rem;
   transition:border-color .18s ease,color .18s ease}
 .doc-modal__close:hover{border-color:var(--yellow);color:var(--yellow)}
 .doc-modal__body{padding:clamp(1.25rem,3vw,2rem) clamp(1.1rem,3vw,2rem) 0;
@@ -859,15 +859,15 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .doc-modal__foot{position:sticky;bottom:0;background:var(--surface);
   border-top:1px solid var(--line);padding:1rem clamp(1.1rem,3vw,2rem);
   display:flex;flex-wrap:wrap;gap:.6rem 1rem;justify-content:space-between;
-  align-items:center;color:var(--ink-2);font-size:.81rem}
+  align-items:center;color:var(--ink-2);font-size:.765rem}
 .doc-modal__foot a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow)}
 .doc-modal__body section{border-top:1px solid var(--line);padding-block:1.5rem}
 .doc-modal__body section:first-child{border-top:0;padding-top:0}
 .doc-modal__body h2{font-weight:700;letter-spacing:-.02em;line-height:1.2;
-  font-size:1.17rem;margin:0 0 .9rem;display:flex;gap:.8rem;align-items:baseline;color:var(--ink)}
+  font-size:1.105rem;margin:0 0 .9rem;display:flex;gap:.8rem;align-items:baseline;color:var(--ink)}
 .doc-modal__body h2 .num{color:var(--ground);background:var(--ink);padding:0 .35rem;
   flex:none;letter-spacing:-.03em}
-.doc-modal__body h3{font-weight:700;font-size:1.17rem;margin:1.4rem 0 .5rem}
+.doc-modal__body h3{font-weight:700;font-size:1.105rem;margin:1.4rem 0 .5rem}
 .doc-modal__body p{margin:0 0 .85rem;color:var(--ink-2)}
 .doc-modal__body ul{margin:0 0 .85rem;padding:0;list-style:none;
   display:flex;flex-direction:column;gap:.4rem}
@@ -879,7 +879,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
   font-weight:600;color:var(--ground);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .doc-modal__body .contact-box{border:1px solid var(--line);background:var(--ground);
   padding:1.1rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
-.doc-modal__body .contact-box a{font-weight:700;font-size:1.08rem;letter-spacing:-.02em;
+.doc-modal__body .contact-box a{font-weight:700;font-size:1.02rem;letter-spacing:-.02em;
   text-decoration:none;border-bottom:2px solid var(--yellow);overflow-wrap:anywhere;color:var(--ink)}
 .doc-modal__body .legal-name,.doc-modal__body .maj,.doc-modal__body .mono{color:var(--ink-2)}
 
@@ -897,7 +897,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .assistant[hidden],.assistant__panneau[hidden],.assistant__suggestions[hidden]{display:none}
 .assistant__ouvrir{display:inline-flex;align-items:center;gap:.55rem;min-height:3.25rem;
   padding:.75rem 1.2rem .75rem .95rem;border:0;border-radius:999px;cursor:pointer;
-  background:var(--yellow);color:var(--on-yellow);font:inherit;font-weight:700;font-size:.882rem;
+  background:var(--yellow);color:var(--on-yellow);font:inherit;font-weight:700;font-size:.833rem;
   transition:background-color .18s ease,transform .18s ease}
 .assistant__ouvrir:hover{background:var(--yellow-hi);transform:translateY(-2px)}
 .assistant__ouvrir svg{width:1.35rem;height:1.35rem;flex:none}
@@ -911,12 +911,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
   letter-spacing:-.01em}
 .assistant__titre img{width:1.75rem;height:1.75rem}
 .assistant__fermer{flex:none;width:2.4rem;height:2.4rem;border-radius:50%;cursor:pointer;
-  border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:1.215rem;
+  border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:1.148rem;
   line-height:1;transition:background-color .18s ease,border-color .18s ease,color .18s ease}
 .assistant__fermer:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
 .assistant__fil{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:1rem;
   display:flex;flex-direction:column;gap:.7rem}
-.assistant__msg{max-width:88%;padding:.7rem .9rem;border-radius:.85rem;font-size:.855rem;
+.assistant__msg{max-width:88%;padding:.7rem .9rem;border-radius:.85rem;font-size:.808rem;
   line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 .assistant__msg--bot{align-self:flex-start;background:var(--noir-2);color:var(--ink);
   border-top-left-radius:.25rem}
@@ -934,7 +934,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
 .assistant__msg--attente span:nth-child(3){animation-delay:.3s}
 @keyframes assistant-points{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
 .assistant__suggestions{display:flex;flex-wrap:wrap;gap:.45rem;padding:0 1rem .85rem}
-.assistant__suggestion{font:inherit;font-size:.765rem;padding:.45rem .8rem;border-radius:999px;
+.assistant__suggestion{font:inherit;font-size:.75rem;padding:.45rem .8rem;border-radius:999px;
   cursor:pointer;border:1px solid #3A3A38;background:transparent;color:var(--ink);
   transition:background-color .18s ease,border-color .18s ease,color .18s ease}
 .assistant__suggestion:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
@@ -944,7 +944,7 @@ h2.head__eyebrow{font-weight:600;margin:0}
    moment où l'on touche le champ. */
 .assistant__saisie textarea{flex:1;resize:none;min-height:2.75rem;max-height:7.5rem;
   padding:.65rem .85rem;border-radius:.7rem;border:1px solid var(--line);background:var(--surface);
-  color:var(--ink);font:inherit;font-size:.9rem;line-height:1.4}
+  color:var(--ink);font:inherit;font-size:.85rem;line-height:1.4}
 .assistant__saisie textarea::placeholder{color:var(--ink-3)}
 .assistant__saisie textarea:focus-visible{outline:2px solid var(--yellow);outline-offset:1px}
 .assistant__envoyer{flex:none;width:2.75rem;height:2.75rem;border-radius:50%;border:0;cursor:pointer;
@@ -1076,7 +1076,7 @@ h1.display em{color:var(--yellow)}
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
-.post-card h2{font-size:.945rem;letter-spacing:-.02em}
+.post-card h2{font-size:.893rem;letter-spacing:-.02em}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
 .article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
@@ -1085,16 +1085,16 @@ h1.display em{color:var(--yellow)}
 /* Le titre de l'article est un grand titre : il garde la pile Helvetica,
    comme les .display de l'accueil. Le reste de l'article est en Poppins. */
 .article__title{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:clamp(1.62rem,3.6vw,2.52rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+  font-size:clamp(1.53rem,3.4vw,2.38rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
 /* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
    20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
    L'affiche perd son filet : sur une image claire il ne servait à rien, et
    doublé d'une ombre il lèverait un signalement d'impeccable. */
 .article__cover{width:100%;border-radius:clamp(.9rem,2.2vw,1.35rem);margin-bottom:1.6rem;
   box-shadow:0 18px 44px -28px #000}
-.article__body{color:var(--ink);font-size:.972rem;line-height:1.7}
-.article__body h2{font-size:1.35rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
-.article__body h3{font-size:1.08rem;margin:1.6rem 0 .5rem}
+.article__body{color:var(--ink);font-size:.918rem;line-height:1.7}
+.article__body h2{font-size:1.275rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
+.article__body h3{font-size:1.02rem;margin:1.6rem 0 .5rem}
 .article__body p{margin:0 0 1.1rem;color:var(--ink-2)}
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -1105,7 +1105,7 @@ h1.display em{color:var(--yellow)}
    min-height ne sert donc que de place tenue pendant le chargement — il doit
    rester bas, sinon il empecherait le cadre de se retrecir. */
 .tally{margin-top:3rem}
-.tally h2{font-size:clamp(1.17rem,2.7vw,1.62rem);letter-spacing:-.02em;margin:0 0 1.2rem}
+.tally h2{font-size:clamp(1.105rem,2.55vw,1.53rem);letter-spacing:-.02em;margin:0 0 1.2rem}
 .tally__frame{display:block;width:100%;border:0;min-height:24rem;background:var(--surface);border-radius:.9rem}
 /* Repli, pose par le script si embed.js ne se charge pas : la hauteur
    redevient fixe. Les paliers viennent de mesures prises en ouvrant le
@@ -1121,7 +1121,7 @@ h1.display em{color:var(--yellow)}
 @media(min-width:30rem){.tally__frame--repli{min-height:2820px}}
 @media(min-width:36rem){.tally__frame--repli{min-height:2620px}}
 @media(min-width:46.5rem){.tally__frame--repli{min-height:2400px}}
-.tally__alt{color:var(--ink-3);font-size:.81rem;margin-top:.9rem}
+.tally__alt{color:var(--ink-3);font-size:.765rem;margin-top:.9rem}
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .tally__alt a:hover{color:var(--ink);text-decoration-color:var(--mur);text-decoration-thickness:.15em}
 .article__body blockquote{border-left:3px solid var(--mur);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}
