@@ -93,14 +93,27 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico-plat.jpg`** (1200 x 630, 96 Ko),
-  sur le noir plat du site : le titre d'accueil entier, ses deux moitiés à égalité et
-  ses mots accentués en Instrument Serif jaune ; le nom **SMARTEFICO** en jaune et le
-  logo sans plaque ; le portrait **noir et blanc** de la signature à droite ; et, repris de l'ancienne image, « PME, ETI, grands comptes
-  et dirigeants. » et le numéro, sur une pastille jaune. Sa source est
+- L'image est désormais **`assets/og-smartefico-texte.jpg`** (1200 x 630, 74 Ko),
+  **sans portrait** depuis le 28 septembre 2026 (« Enlève aussi mon portrait de
+  l'image de partage »), le jour où la signature a quitté l'accueil. Sur le noir plat
+  du site : le titre d'accueil entier, ses deux moitiés à égalité et ses mots
+  accentués en Instrument Serif jaune ; le nom **SMARTEFICO** en jaune et le logo sans
+  plaque ; et, repris de l'ancienne image, « PME, ETI, grands comptes et
+  dirigeants. » et le numéro, sur une pastille jaune. Sa source est
   `scripts/partage/partage.html`, photographiée par `node scripts/build-partage.mjs`
   (Chrome sans fenêtre, puis `sharp` en JPEG) ; le nom du fichier écrit est la
   constante `FICHIER` du script.
+- **Sans la photo, le texte court sur toute la carte** (64 px de marge des deux
+  côtés, au lieu de s'arrêter à 630 px) et le titre passe de 54 à **78 px**, en quatre
+  lignes égalisées par `text-wrap:balance` : à 66 px, il s'arrêtait vers 920 px et
+  laissait à droite le vide de l'ancienne photo. Pour que le bloc tienne en hauteur,
+  le logo passe de 78 à 64 px et les écarts verticaux se resserrent : il reste
+  environ 42 px au-dessus et 45 px au-dessous. **La pastille des métiers du hero n'y
+  figure pas** — elle n'a pas été demandée ici.
+- **`assets/Portrait3.jpg` n'est plus servi par rien** : ni page, ni image. Il reste
+  dans le dépôt, comme le portrait couleur avant lui.
+
+Ce qui suit retrace les versions précédentes, avec portrait.
 - **Le portrait noir et blanc et la fin du filet**, 23 septembre 2026, deux demandes
   du propriétaire à la suite : « Refais l'image de partage avec le portrait noir et
   blanc », puis « Enlève le cadre jaune de l'image ». Le portrait est
@@ -142,8 +155,8 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
 - Elle se déclare dans le back office (`content/pages/visuels.md`, champ `og_image`),
   d'où `sync-content.mjs` la recopie dans les zones `VISUEL_OG` et `VISUEL_TWITTER` de
   l'accueil. Elle est aussi écrite en dur dans le JSON-LD de `index.html`, dans les
-  balises de `guide.html` et `guide-ia.html`, et dans `build-blog.mjs` (image par
-  défaut du blog et des articles sans couverture).
+  balises de `guide.html`, `guide-ia.html` et `exemples-ia.html`, et dans
+  `build-blog.mjs` (image par défaut du blog et des articles sans couverture).
 - Titre de l'aperçu (et de l'onglet) : « SmartEfico — Leads qualifiés et IA générative
   au service de votre performance ». Description : « Des rendez-vous qualifiés pour
   vos offres, et l'IA générative au service de votre performance : publicités
@@ -153,7 +166,8 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
   l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg`,
   `og-smartefico-noir.jpg`, `og-smartefico-jaune.jpg`, `og-smartefico-nb.jpg`,
-  `og-smartefico-blanc.jpg` et `og-smartefico-blanc-2.jpg` restent dans le dépôt,
+  `og-smartefico-blanc.jpg`, `og-smartefico-blanc-2.jpg` et `og-smartefico-plat.jpg`
+  (noir plat avec portrait, du 23 au 28 septembre) restent dans le dépôt,
   inutilisées — des partages anciens y pointent peut-être. **Cinq noms ont été brûlés
   le 23 septembre** : il a fait refaire l'image cinq fois dans la journée, le fond du
   site ayant lui-même changé deux fois. Chaque refonte lui coûte un passage par le
@@ -483,8 +497,9 @@ ce qui a existé ; l'historique git garde tout.
   `content/pages/video.md` et `content/masterclasses/…` — la seule masterclass,
   celle du 3 octobre 2026, était déjà dépubliée.
 - **Restent** : l'icône YouTube du pied de page, qui mène toujours à la chaîne ; le
-  fondateur dans le JSON-LD, invisible ; `assets/Portrait3.jpg`, dont se sert l'image
-  de partage (`scripts/partage/partage.html`), qui montre donc toujours le portrait.
+  fondateur dans le JSON-LD, invisible ; `assets/Portrait3.jpg`, dans le dépôt mais
+  plus servi par rien — l'image de partage l'a perdu le même jour, à sa demande
+  (voir « L'aperçu de partage »).
 - **La page passe de 8 924 à 7 590 px** à 1 280 px de large (697 px pour la chaîne,
   537 px pour la signature, et deux écarts de pile). La copie autonome tombe de 530 à
   369 Ko sans le portrait encodé.
@@ -1007,8 +1022,8 @@ page, pas seulement contre le carreau.**
 Voir PRODUCT.md pour les deux clients et leur droit d'être cités.
 
 **La signature, portrait compris, a été supprimée le 28 septembre 2026** (voir
-Architecture). Les deux paragraphes qui suivent la décrivent telle qu'elle était ; le
-portrait survit dans l'image de partage.
+Architecture). Les deux paragraphes qui suivent la décrivent telle qu'elle était. Le
+portrait a quitté l'image de partage le même jour : plus rien ne l'affiche.
 
 **La photo de la signature ne bougeait pas**, décision du propriétaire du 18 septembre
 2026. Le même jour, il avait demandé que « le personnage en bas commence à croiser les

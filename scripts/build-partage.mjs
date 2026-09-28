@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
  * Fabrique l'image affichée quand le lien du site est partagé (LinkedIn,
- * WhatsApp, Facebook…) : assets/og-smartefico-plat.jpg depuis que le site
- * est repassé au noir plat, le 23 septembre 2026 au soir. Les six versions
- * précédentes restent dans le dépôt pour les partages déjà faits :
+ * WhatsApp, Facebook…) : assets/og-smartefico-texte.jpg depuis le 28 septembre
+ * 2026, sans portrait. Les sept versions précédentes restent dans le dépôt
+ * pour les partages déjà faits : og-smartefico-plat.jpg (noir plat, portrait
+ * noir et blanc),
  * og-smartefico.jpg (noir pur), og-smartefico-noir.jpg (noir profond, jaune
  * réduit), og-smartefico-jaune.jpg (portrait couleur), og-smartefico-nb.jpg
  * (fond noir, portrait noir et blanc), og-smartefico-blanc.jpg (fond blanc,
@@ -30,7 +31,7 @@ import sharp from 'sharp';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(racine, 'scripts', 'partage', 'partage.html');
-const FICHIER = 'og-smartefico-plat.jpg';
+const FICHIER = 'og-smartefico-texte.jpg';
 const sortie = join(racine, 'assets', FICHIER);
 
 const chrome = [
