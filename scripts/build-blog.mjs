@@ -258,7 +258,7 @@ const styleBlog = `<style>
 .post-card__cover{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:center 12%;display:block;background:var(--noir-2)}
 .post-card__body{padding:1rem;display:flex;flex-direction:column;gap:.4rem}
 .post-card__date{color:var(--ink-3)}
-.post-card h2{font-size:1.05rem;letter-spacing:-.02em}
+.post-card h2{font-size:.945rem;letter-spacing:-.02em}
 .article{max-width:44rem;padding-block:clamp(1.5rem,4vw,2.5rem)}
 .article__back{display:inline-block;color:var(--ink-2);text-decoration:none;margin-bottom:1.5rem}
 .article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
@@ -267,16 +267,16 @@ const styleBlog = `<style>
 /* Le titre de l'article est un grand titre : il garde la pile Helvetica,
    comme les .display de l'accueil. Le reste de l'article est en Poppins. */
 .article__title{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+  font-size:clamp(1.62rem,3.6vw,2.52rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
 /* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
    20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
    L'affiche perd son filet : sur une image claire il ne servait à rien, et
    doublé d'une ombre il lèverait un signalement d'impeccable. */
 .article__cover{width:100%;border-radius:clamp(.9rem,2.2vw,1.35rem);margin-bottom:1.6rem;
   box-shadow:0 18px 44px -28px #000}
-.article__body{color:var(--ink);font-size:1.08rem;line-height:1.7}
-.article__body h2{font-size:1.5rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
-.article__body h3{font-size:1.2rem;margin:1.6rem 0 .5rem}
+.article__body{color:var(--ink);font-size:.972rem;line-height:1.7}
+.article__body h2{font-size:1.35rem;margin:2rem 0 .6rem;letter-spacing:-.02em}
+.article__body h3{font-size:1.08rem;margin:1.6rem 0 .5rem}
 .article__body p{margin:0 0 1.1rem;color:var(--ink-2)}
 .article__body ul,.article__body ol{color:var(--ink-2);margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem}
 .article__body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -287,7 +287,7 @@ const styleBlog = `<style>
    min-height ne sert donc que de place tenue pendant le chargement — il doit
    rester bas, sinon il empecherait le cadre de se retrecir. */
 .tally{margin-top:3rem}
-.tally h2{font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;margin:0 0 1.2rem}
+.tally h2{font-size:clamp(1.17rem,2.7vw,1.62rem);letter-spacing:-.02em;margin:0 0 1.2rem}
 .tally__frame{display:block;width:100%;border:0;min-height:24rem;background:var(--surface);border-radius:.9rem}
 /* Repli, pose par le script si embed.js ne se charge pas : la hauteur
    redevient fixe. Les paliers viennent de mesures prises en ouvrant le
@@ -303,7 +303,7 @@ const styleBlog = `<style>
 @media(min-width:30rem){.tally__frame--repli{min-height:2820px}}
 @media(min-width:36rem){.tally__frame--repli{min-height:2620px}}
 @media(min-width:46.5rem){.tally__frame--repli{min-height:2400px}}
-.tally__alt{color:var(--ink-3);font-size:.9rem;margin-top:.9rem}
+.tally__alt{color:var(--ink-3);font-size:.81rem;margin-top:.9rem}
 .tally__alt a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .tally__alt a:hover{color:var(--ink);text-decoration-color:var(--mur);text-decoration-thickness:.15em}
 .article__body blockquote{border-left:3px solid var(--mur);margin:1.4rem 0;padding:.3rem 0 .3rem 1.1rem;color:var(--ink-2);font-style:italic}

@@ -1300,6 +1300,34 @@ dois utiliser ce type de caractère. »
   espace-mot est étroite, et en capitales grasses « GUIDE GRATUIT » se lisait presque
   d'un seul mot. Un dixième de cadratin rouvre l'espace sans pousser le menu.
 
+**Toutes les tailles de texte ont perdu 10 % le 28 septembre 2026**, à la demande du
+propriétaire : « Regarde tout le site et réduis la taille de tous les écrits du site ;
+les caractères sont trop grands ». Poppins, à grand œil, paraît plus grosse que
+l'Helvetica d'avant à taille égale. La règle appliquée, pour qu'une retouche future
+reste cohérente :
+
+- **chaque `font-size` en rem, px ou vw est multiplié par 0,9**, bornes et terme
+  central des `clamp()` compris, sur toutes les feuilles du site : `index.html` (donc
+  le blog et les articles, qui la recopient), le CSS propre de `build-blog.mjs`,
+  `cgv.html`, `cgc.html`, les deux guides, leurs deux pages de remerciement et
+  `exemples-ia.html` ;
+- **plancher de 12 px** : rien ne descend dessous, et ce qui y était déjà ne bouge
+  pas — la pastille des métiers reste à 12 px, les étiquettes `.72rem` de
+  `exemples-ia.html` à 11,5 px, comme avant ;
+- **ne bougent pas** : les tailles en `em` et en `%`, qui suivent leur parent ; le
+  texte des schémas SVG des agents (`.flux__mot`, 13 px), qui vit dans le repère de
+  son `viewBox` ; les guides PDF et l'image de partage, qui sont des images ;
+- **ni les marges ni les largeurs** : seules les lettres rapetissent. Les boutons du
+  hero gardent leur `min-width` de 14 rem et leur `min-height` de 3,25 rem.
+
+Mesuré à 1 280 px : texte courant 16 → **14,4 px**, chapô du hero 18,4 → 16,6 px,
+titre d'accueil 82 → **74 px**, titres de section 48 → 43 px, menu 14,1 → 12,7 px ;
+pages légales 15 → 13,5 px. La page d'accueil passe de 7 590 à **7 143 px**. Le titre
+de `#ia` tient toujours sur deux lignes (26 ch, qui suivent la police). Aucun
+débordement à 375 px, aucun texte visible sous 12 px sur l'accueil. **Les marges du
+menu relevées plus haut sont périmées** : les liens ont rétréci, il y a davantage de
+place — remesurer avant d'ajouter un lien.
+
 **Les pages légales chargent désormais une police distante**, elles qui n'en
 chargeaient aucune : elles n'avaient pas besoin d'Instrument Serif, leurs italiques
 étant du texte courant. C'est la seule entorse nouvelle à la règle des pages
