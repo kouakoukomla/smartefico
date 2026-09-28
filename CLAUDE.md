@@ -384,8 +384,12 @@ installe ». L'accueil enchaîne donc : hero, marques, `#apport` (revenue le
 `#pour-qui` (« Pour *qui* ? », venue s'intercaler à son tour le 28 septembre 2026,
 voir plus bas),
 `#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
-jour) et
-« Trois raisons » (`#pourquoi`), puis la FAQ, le contact et le pied de page — « Ma
+jour), puis la FAQ, le contact et le pied de page. **« Trois raisons, *pas une de
+plus* » (`#pourquoi`), qui suivait les agents, a été supprimée le 28 septembre
+2026**, à sa demande, avec son style (`.why`) : ses trois cartes — « L'ordre n'est pas
+négociable », « Les agents tournent déjà », « On se branche sur vos outils » — ne
+paraissent plus nulle part, et la page passe de 7 400 à **7 070 px**. Un signalement
+d'impeccable est parti avec elle (`flat-type-hierarchy`). « Ma
 chaîne, en clair » (`#agenda`), entre « Trois raisons » et la FAQ, et la signature,
 sous l'appel au blog, ont été **supprimées le 28 septembre 2026** (voir plus bas).
 **L'appel au blog lui-même** (`.blog-cta` : « Le blog », « Envie d'aller plus
@@ -398,7 +402,7 @@ passe de 7 407 à **7 226 px** à 1 280 px de large. « Avec qui l'agence travai
 avant le bandeau, la seconde s'ouvre sur l'IA générative. Le menu suit l'ordre de la
 page : « Avant/Après » y est passé devant « Services », sans rien changer à sa
 largeur. Aucun texte visible ne dépend de cet ordre — « Les quatre scénarios plus
-haut », dans « Trois raisons », désigne les agents, qui restent au-dessus.
+haut », dans « Trois raisons », désignait les agents, et la section est partie.
 
 **« Avant, après » parle des deux moitiés du titre d'accueil depuis le
 25 septembre 2026**, à la demande du propriétaire : « adapte cette partie à mon
@@ -456,7 +460,8 @@ est de Claude**, à partir de cette consigne et de phrases que le site portait d
   s'ajoutent aux vôtres, des équipes formées pour s'en servir. », puis : des tâches
   répétées chaque jour, « Chacun essaie l'IA dans son coin, sans méthode ni règles
   communes » (repris d'« Avant, après »), et l'envie de garder ses outils (écho de
-  « On se branche sur vos outils », dans « Trois raisons »).
+  « On se branche sur vos outils », dans « Trois raisons », supprimée le même soir :
+  la ligne tient seule).
 
 **Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
 type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a
@@ -485,7 +490,11 @@ citait. L'historique git la garde.
 manifeste. Elle coûtait 697 px, la plus lourde des quatre. L'accueil est donc passé de
 quinze à **treize sections** dans la soirée, et de 9 546 à **8 552 px**.
 
-**Les deux dernières candidates restent, et les raisons de les garder sont notées** :
+**« Trois raisons » est partie le 28 septembre 2026**, à sa demande, malgré la raison
+notée ci-dessous : c'était son choix, et le paragraphe reste pour mémoire.
+
+**Les deux dernières candidates restaient, et les raisons de les garder étaient
+notées** :
 « Ce à quoi vous engager » porte les compteurs animés, un argument visuel que rien ne
 remplace ; « Trois raisons » est la seule section qui formule une objection et y
 répond. Aucune des deux n'est une duplication : les retirer, c'est choisir de ne plus
