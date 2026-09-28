@@ -155,6 +155,13 @@ p{margin:0}
   padding:.5rem .5rem .5rem 1.35rem;
   border:1px solid var(--line);
   box-shadow:0 1px 3px rgba(0,0,0,.5)}
+/* Barre raccourcie le 28 septembre 2026, à la demande du propriétaire (« réduis
+   cette bande, c'est trop long ») : 56 rem au plus au lieu des 74 de la page,
+   centrée. Mesuré à 1 280 px : marque, six liens et « Contact » occupent
+   environ 790 px ; la barre en faisait 1 184, dont 430 de vide. Il en reste
+   une centaine. Sous 56 rem (tablette, téléphone), rien ne change : .wrap
+   est déjà plus étroit. Un septième lien demanderait d'élargir d'autant. */
+.nav__in{max-width:56rem}
 /* ---------- contour anime de la barre ----------
    Un contour jaune et violet, et deux eclats qui en font le tour, demande du
    proprietaire le 14 septembre 2026.

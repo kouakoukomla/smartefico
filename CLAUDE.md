@@ -831,6 +831,15 @@ sur les écrans juste au-dessus du seuil, et la marge y fond. Remesurer avant d'
 ajouter un, la méthode est celle décrite ci-dessus. Le septième est revenu le
 25 septembre 2026 avec « Exemples » — 62 px et 103 px —, après le retrait
 d'« Expertises » qui l'avait libéré ; le menu est donc de nouveau plein.
+**La barre elle-même a raccourci le même jour**, à sa demande (« réduis cette bande,
+c'est trop long ») : `.nav__in` est plafonné à **56 rem** (896 px) et centré, au lieu
+de suivre les 74 rem de la page. Elle faisait 1 184 px à 1 280 px de large, dont
+environ 430 de vide autour des liens. Mesuré sur les boîtes : 56 px entre la marque
+et les liens et 90 px avant « Contact » à 1 280 px ; 61 et 100 px au seuil de
+1 120 px, où la barre tient toujours sur une ligne. Sous 56 rem, rien ne change, et
+le menu du téléphone s'ouvre comme avant. **Les chiffres qui suivent sont donc
+périmés, et un septième lien ne tiendrait plus** sans élargir la barre d'autant.
+
 **« Chaîne » est parti le 28 septembre 2026** avec sa section : six liens, et la
 place d'un septième de nouveau libre. Mesurées sur les boîtes des éléments (et non
 sur l'encre, comme les chiffres ci-dessus, qui en sont un peu plus courts) : environ
