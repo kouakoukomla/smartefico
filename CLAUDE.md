@@ -1103,6 +1103,19 @@ qu'il avait défaite le 21 avant de la refaire ici. Les deux rôles qui restent 
   `.display em` : les titres de section sont des `h2` et passent au blanc. Les pages
   de guide et le blog gardent le jaune sur le leur, ce sont leurs `h1`.
 
+**Une exception, voulue : la pastille des métiers du hero** (`.hero__metiers`),
+demandée le 28 septembre 2026 — « écrire ceci en caractère très petit au milieu :
+Lead / Conseil / Formation / Automatisation / Outils sur mesure », avant le titre
+d'accueil. D'abord posée en gris, avec ses barres ; puis, le même jour, sur un modèle
+qu'il a fourni (une pastille bleue « OPEN SOURCE · MIT LICENSE · … ») : « au lieu des
+slash met cet exemple […] mais en couleur jaune or ». D'où les points médians, les
+capitales espacées (`.16em`), le filet et le fond jaunes à faible opacité (32 % et
+6 %), le texte en `--yellow`. **C'est le seul jaune de la page qui ne se clique pas**,
+hors titre d'accueil : son choix, pas un oubli de la règle ci-dessus. Écrite en dur
+dans `index.html`, hors des zones de `sync-content.mjs`. Des espaces insécables avant
+chaque point et dans « Outils sur mesure » : sur téléphone, elle passe sur deux lignes
+et coupe après « Formation · », jamais au milieu d'un métier.
+
 **Sont rentrés** : les titres de section, les quatre chiffres de « Ce à quoi vous
 engager » (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles
 (`.step__no`, `.pilier__no`, `.offer__no`), les mots du manifeste
@@ -1264,13 +1277,20 @@ navigateur :
   (« 7392px ») et `all-caps-body` — le détecteur lit mal les unités d'impression (pt,
   mm). Les étiquettes en capitales, là comme dans `guide.html`, font une trentaine de
   caractères, comme `.mono` sur le site.
+- `all-caps-body` sur `.hero__metiers` (« 63 chars ») — les capitales espacées sont
+  celles du modèle fourni par le propriétaire le 28 septembre 2026. Non consigné dans
+  `.impeccable/config.json` : la règle ne s'y écarte que pour tout un fichier, et
+  elle doit continuer de surveiller le reste de l'accueil.
 - `tight-leading` — vise des titres à 1,15, où un interlignage serré est correct. Un
   troisième est mesuré à « 1,30 » sous une règle « il faut ≥ 1,30 ».
 
 ## Environnement Windows
 
 - Node n'est pas dans le `PATH` de l'outil Bash. Préfixer :
-  `export PATH="$PATH:/c/Program Files/nodejs"`.
+  `export PATH="$PATH:/c/Program Files/nodejs"`. Le 28 septembre 2026, ce dossier
+  n'existait plus ; le Node livré avec l'éditeur Zed a servi à sa place, `npx`
+  compris : `export PATH="/c/Users/kouak/AppData/Local/Zed/node/node-v24.11.0-win-x64:$PATH"`.
+  Le numéro de version change avec les mises à jour de Zed.
 - Git Bash convertit `origin/main:.gitignore` en chemin Windows. Utiliser
   `MSYS_NO_PATHCONV=1 git show origin/main:.gitignore`.
 - PowerShell 5.1 lit les `.ps1` en ANSI : un chemin accentué s'y corrompt. Résoudre le

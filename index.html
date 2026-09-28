@@ -304,13 +304,19 @@ p{margin:0}
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;gap:1.6rem;position:relative;z-index:2}
 /* Les cinq métiers, en très petit au-dessus du titre : demande du
-   propriétaire du 28 septembre 2026. En gris et non en jaune, qui ne marque
-   que ce qui se clique et les deux mots du titre. Les espaces insécables
-   avant chaque barre et dans « Outils sur mesure » font couper la ligne
-   après une barre, jamais au milieu d'un métier. La marge négative la
-   rapproche du titre qu'elle introduit. */
-.hero__metiers{font-size:.8rem;font-weight:500;letter-spacing:.04em;
-  color:var(--ink-2);text-wrap:balance;margin-bottom:-.7rem}
+   propriétaire du 28 septembre 2026, d'abord en gris et séparés par des
+   barres, puis le même jour sur le modèle qu'il a fourni : une pastille à
+   filet, capitales très espacées, points médians, « en couleur jaune or ».
+   C'est le seul jaune de la page qui ne se clique pas, hors titre d'accueil :
+   son choix. Les espaces insécables avant chaque point et dans « Outils sur
+   mesure » font couper la ligne après un point, jamais au milieu d'un
+   métier. Le suivi laisse une espace après la dernière lettre : la marge
+   de droite la retranche, sans quoi le texte paraît décalé à gauche. */
+.hero__metiers{font-size:.75rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--yellow);text-wrap:balance;
+  padding:.55rem calc(1.15rem - .16em) .55rem 1.15rem;border-radius:999px;
+  border:1px solid rgba(255,204,0,.32);background:rgba(255,204,0,.06);
+  margin-bottom:-.5rem}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
    (règle pointillée, crochets d'angle, coordonnée) et carte « scénario » en
    filigrane. Volontairement PAS de grille décorative : un fond en grille de
@@ -1339,7 +1345,7 @@ h1.display em{color:var(--yellow)}
 
       </div>
     <div class="wrap hero__in">
-      <p class="hero__metiers">Lead&nbsp;/ Conseil&nbsp;/ Formation&nbsp;/ Automatisation&nbsp;/ Outils&nbsp;sur&nbsp;mesure</p>
+      <p class="hero__metiers">Lead&nbsp;· Conseil&nbsp;· Formation&nbsp;· Automatisation&nbsp;· Outils&nbsp;sur&nbsp;mesure</p>
       <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> pour vos offres et mettez l'<em>IA générative</em> au service de votre performance.<!-- HERO_TITLE:END --></h1>
       <p class="lead"><!-- HERO_SUB:START -->Pour les PME et ETI : nous connectons vos publicités, votre tunnel de rendez-vous et vos agents IA pour qualifier chaque demande et la transmettre à votre équipe commerciale.<!-- HERO_SUB:END --></p>
       <div class="hero__actions">
