@@ -383,10 +383,14 @@ installe ». L'accueil enchaîne donc : hero, marques, `#apport` (revenue le
 `#exemples` (venue s'intercaler le 25 septembre 2026, « juste avant agent IA »),
 `#agents` (que l'IA générative précédait déjà, placés l'un contre l'autre le même
 jour) et
-« Trois raisons » (`#pourquoi`), puis la FAQ, le contact, l'appel au blog et le pied
-de page — « Ma chaîne, en clair » (`#agenda`), entre « Trois raisons » et la FAQ, et
-la signature, sous l'appel au blog, ont été **supprimées le 28 septembre 2026** (voir
-plus bas). « Avec qui l'agence travaille » (`#public`) suivait
+« Trois raisons » (`#pourquoi`), puis la FAQ, le contact et le pied de page — « Ma
+chaîne, en clair » (`#agenda`), entre « Trois raisons » et la FAQ, et la signature,
+sous l'appel au blog, ont été **supprimées le 28 septembre 2026** (voir plus bas).
+**L'appel au blog lui-même** (`.blog-cta` : « Le blog », « Envie d'aller plus
+loin ? Découvrez mes articles sur le blog. », bouton « Lire le blog »), entre le
+contact et le pied de page, est parti le même jour, à sa demande, avec son style. Le
+blog n'est plus annoncé sur l'accueil que par le lien « Blog » du menu ; la page
+passe de 7 407 à **7 226 px** à 1 280 px de large. « Avec qui l'agence travaille » (`#public`) suivait
 « Trois raisons » depuis le 19 septembre ; elle a été **supprimée le 23 septembre
 2026** (voir plus bas). La première pile s'arrête
 avant le bandeau, la seconde s'ouvre sur l'IA générative. Le menu suit l'ordre de la
@@ -1266,7 +1270,7 @@ sans un pixel plus sombre que `#E0E0E0`, cartes à retrancher de même.
 qu'il avait défaite le 21 avant de la refaire ici. Les deux rôles qui restent :
 
 - **ce qui se clique** : « Réserver un échange », « Recevoir », « Nous contacter »,
-  « Réserver mon appel », « Lire le blog », le carré à la flèche du menu, le lien
+  « Réserver mon appel », le carré à la flèche du menu, le lien
   d'évitement et la pastille de l'assistant ;
 - **les deux mots accentués du titre d'accueil** — `h1.display em` et non
   `.display em` : les titres de section sont des `h2` et passent au blanc. Les pages

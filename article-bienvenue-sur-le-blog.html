@@ -514,23 +514,6 @@ em{color:var(--yellow)}
   text-transform:none;letter-spacing:.02em;font-size:.75rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
 
-/* ---------- appel au blog ----------
-   Le bloc se fond dans le noir de la page : le bouton en est la seule tache
-   claire, et donc ce que l'œil trouve en premier. Même paire de couleurs que
-   le carré de la barre de navigation : blanc plein, texte noir. */
-/* Sans fond non plus : l'écart de la pile suffit à l'isoler. */
-.blog-cta{padding-block:0}
-.blog-cta__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
-.blog-cta__oeil{color:var(--ink-3)}
-.blog-cta__titre{font-size:clamp(.893rem,2.21vw,1.275rem);color:var(--ink);
-  max-width:34ch;line-height:1.15}
-.blog-cta__btn{display:inline-flex;align-items:center;background:var(--yellow);
-  color:var(--on-yellow);text-decoration:none;font-weight:700;font-size:.765rem;
-  padding:.7rem 1.4rem;border-radius:999px;
-  transition:transform .18s ease,background-color .18s ease}
-.blog-cta__btn:hover,.blog-cta__btn:focus-visible{background:var(--yellow-hi);
-  transform:translateY(-2px)}
-
 /* ---------- agents IA ---------- */
 .agents{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:52rem){.agents{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
