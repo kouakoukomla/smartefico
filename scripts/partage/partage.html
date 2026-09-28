@@ -19,20 +19,22 @@
      Le 28 septembre 2026, le portrait est parti, à la demande du propriétaire
      (« Enlève aussi mon portrait de l'image de partage »), le jour où il l'avait
      fait retirer du bas de l'accueil avec sa signature. Le texte prend toute la
-     largeur de la carte.
+     largeur de la carte. Le même jour, la pastille des métiers du hero l'a
+     rejointe (« Ajoute la pastille des métiers dans l'image de partage »),
+     au-dessus du titre comme sur l'accueil.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-texte.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-metiers.jpg.
      Le titre est celui de l'accueil, mot pour mot ; « PME, ETI, grands comptes
      et dirigeants » et le numéro viennent de l'ancienne image. Changer le nom
      du fichier à chaque refonte : LinkedIn, Facebook et WhatsApp gardent une
      image en mémoire par adresse. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@500&amp;display=block">
 <style>
 /* Mêmes codes que le site depuis qu'il est au noir plat : fond #000000
    **sans dégradé** — la carte est aussi plate que la page —, texte blanc, et
-   le jaune en encre, qui s'y lit à 15:1. Il paraît trois fois : le nom de la
-   marque, les deux mots accentués du titre, et la pastille du numéro, qui
-   tient lieu de bouton. La ligne d'audience et le reste du titre sont du
+   le jaune en encre, qui s'y lit à 15:1. Il paraît quatre fois : le nom de la
+   marque, la pastille des métiers, les deux mots accentués du titre, et la
+   pastille du numéro, qui tient lieu de bouton. La ligne d'audience et le reste du titre sont du
    texte courant, en blanc. */
 html,body{margin:0;background:#000000}
 .carte{position:relative;width:1200px;height:630px;overflow:hidden;color:#FFFFFF;
@@ -45,18 +47,27 @@ html,body{margin:0;background:#000000}
    dernière restait courte et le bloc paraissait pencher à gauche. */
 .texte{position:absolute;left:64px;right:64px;top:0;bottom:0;display:flex;flex-direction:column;
   justify-content:center}
-.marque{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-.marque img{width:64px;height:64px;display:block}
+.marque{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.marque img{width:56px;height:56px;display:block}
 .marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
-h1{margin:0;font-weight:800;font-size:78px;line-height:1.05;letter-spacing:-.032em;
+h1{margin:0;font-weight:800;font-size:70px;line-height:1.05;letter-spacing:-.032em;
   text-wrap:balance}
+/* La pastille des métiers, celle du hero de l'accueil (.hero__metiers) :
+   mêmes capitales espacées, même filet et même voile jaunes, en Poppins comme
+   sur le site. Plus grande qu'à l'écran (17 px contre 12) : l'image est
+   réduite de moitié dans un fil LinkedIn. Elle coûte une ligne de hauteur, que
+   le titre rend en passant de 78 à 70 px, le logo de 64 à 56 px. */
+.metiers{align-self:flex-start;margin:0 0 14px;padding:9px calc(20px - .14em) 9px 20px;
+  border-radius:999px;border:1.5px solid rgba(255,204,0,.36);background:rgba(255,204,0,.07);
+  color:#FFCC00;font-family:"Poppins","Helvetica Neue",Arial,sans-serif;font-weight:500;
+  font-size:17px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 /* Les deux mots accentués : en jaune plein, comme les `.display em` du site
    sur fond sombre. Le trait de surligneur du fond blanc est reparti avec lui —
    il n'avait de raison d'être que là où le jaune ne se lit pas. */
 h1 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
   font-weight:400;color:#FFCC00;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
 p{margin:0}
-.cible{margin-top:22px;font-size:27px;font-weight:600}
+.cible{margin-top:18px;font-size:27px;font-weight:600}
 .tel{align-self:flex-start;margin-top:12px;padding:9px 22px 10px;border-radius:999px;
   background:#FFCC00;color:#141414;font-size:25px;font-weight:700;letter-spacing:.01em}
 </style>
@@ -65,6 +76,7 @@ p{margin:0}
 <div class="carte">
   <div class="texte">
     <div class="marque"><img src="../../assets/logo-clair.png" alt=""><span>SMARTEFICO</span></div>
+    <p class="metiers">Lead · Conseil · Formation · Automatisation · Outils sur mesure</p>
     <h1>Générez des <em>leads&nbsp;qualifiés</em> pour vos offres et mettez l’<em>IA&nbsp;générative</em> au service de votre performance.</h1>
     <p class="cible">PME, ETI, grands comptes et dirigeants.</p>
     <p class="tel">+33 7 51 59 96 36</p>

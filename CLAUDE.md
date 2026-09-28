@@ -93,13 +93,16 @@ L'ancienne image, `assets/og-cover.jpg` (12 septembre), montrait le portrait noi
 blanc et ne mettait en grand que la moitié « leads qualifiés » du titre ; le titre et
 la description de l'aperçu ne parlaient eux aussi que des leads.
 
-- L'image est désormais **`assets/og-smartefico-texte.jpg`** (1200 x 630, 74 Ko),
+- L'image est désormais **`assets/og-smartefico-metiers.jpg`** (1200 x 630, 78 Ko),
   **sans portrait** depuis le 28 septembre 2026 (« Enlève aussi mon portrait de
-  l'image de partage »), le jour où la signature a quitté l'accueil. Sur le noir plat
-  du site : le titre d'accueil entier, ses deux moitiés à égalité et ses mots
-  accentués en Instrument Serif jaune ; le nom **SMARTEFICO** en jaune et le logo sans
-  plaque ; et, repris de l'ancienne image, « PME, ETI, grands comptes et
-  dirigeants. » et le numéro, sur une pastille jaune. Sa source est
+  l'image de partage »), le jour où la signature a quitté l'accueil, et **avec la
+  pastille des métiers** du hero, ajoutée le même jour (« Ajoute la pastille des
+  métiers dans l'image de partage »). Sur le noir plat du site : le logo sans plaque
+  et le nom **SMARTEFICO** en jaune ; la pastille « LEAD · CONSEIL · FORMATION ·
+  AUTOMATISATION · OUTILS SUR MESURE » ; le titre d'accueil entier, ses deux moitiés
+  à égalité et ses mots accentués en Instrument Serif jaune ; et, repris de l'ancienne
+  image, « PME, ETI, grands comptes et dirigeants. » et le numéro, sur une pastille
+  jaune. Sa source est
   `scripts/partage/partage.html`, photographiée par `node scripts/build-partage.mjs`
   (Chrome sans fenêtre, puis `sharp` en JPEG) ; le nom du fichier écrit est la
   constante `FICHIER` du script.
@@ -107,9 +110,14 @@ la description de l'aperçu ne parlaient eux aussi que des leads.
   côtés, au lieu de s'arrêter à 630 px) et le titre passe de 54 à **78 px**, en quatre
   lignes égalisées par `text-wrap:balance` : à 66 px, il s'arrêtait vers 920 px et
   laissait à droite le vide de l'ancienne photo. Pour que le bloc tienne en hauteur,
-  le logo passe de 78 à 64 px et les écarts verticaux se resserrent : il reste
-  environ 42 px au-dessus et 45 px au-dessous. **La pastille des métiers du hero n'y
-  figure pas** — elle n'a pas été demandée ici.
+  le logo passe de 78 à 64 px et les écarts verticaux se resserrent.
+- **La pastille des métiers coûte une ligne de hauteur**, rendue par le titre
+  (78 → 70 px) et le logo (64 → 56 px) : il reste environ 40 px au-dessus et
+  au-dessous du bloc. Elle reprend `.hero__metiers` — capitales espacées, filet et
+  voile jaunes à faible opacité, Poppins 500 (seule police de l'image chargée pour
+  elle) — mais en 17 px au lieu de 12, l'image étant réduite de moitié dans un fil
+  LinkedIn. **Le jaune y paraît donc quatre fois** : le nom, la pastille des
+  métiers, les deux mots du titre et la pastille du numéro.
 - **`assets/Portrait3.jpg` n'est plus servi par rien** : ni page, ni image. Il reste
   dans le dépôt, comme le portrait couleur avant lui.
 
@@ -166,9 +174,10 @@ Ce qui suit retrace les versions précédentes, avec portrait.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
   l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg`,
   `og-smartefico-noir.jpg`, `og-smartefico-jaune.jpg`, `og-smartefico-nb.jpg`,
-  `og-smartefico-blanc.jpg`, `og-smartefico-blanc-2.jpg` et `og-smartefico-plat.jpg`
-  (noir plat avec portrait, du 23 au 28 septembre) restent dans le dépôt,
-  inutilisées — des partages anciens y pointent peut-être. **Cinq noms ont été brûlés
+  `og-smartefico-blanc.jpg`, `og-smartefico-blanc-2.jpg`, `og-smartefico-plat.jpg`
+  (noir plat avec portrait, du 23 au 28 septembre) et `og-smartefico-texte.jpg`
+  (sans portrait ni pastille, en ligne quelques minutes le 28 septembre) restent
+  dans le dépôt, inutilisées — des partages anciens y pointent peut-être. **Cinq noms ont été brûlés
   le 23 septembre** : il a fait refaire l'image cinq fois dans la journée, le fond du
   site ayant lui-même changé deux fois. Chaque refonte lui coûte un passage par le
   Post Inspector, donc grouper ce qui peut l'être avant de régénérer — et, quand le
