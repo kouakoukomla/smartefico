@@ -331,9 +331,10 @@ p{margin:0}
 .hero__bg .brackets::before{top:0;right:0;border-top:1.5px solid var(--yellow);border-right:1.5px solid var(--yellow)}
 .hero__bg .brackets::after{bottom:0;left:0;border-bottom:1.5px solid var(--yellow);border-left:1.5px solid var(--yellow)}
 
-
-}
-
+/* La règle pointillée disparaît sous 60 rem. Une accolade orpheline, juste
+   au-dessus, annulait cette requête média depuis le 14 septembre 2026 : le
+   navigateur lisait « } @media (max-width:60rem) » comme un sélecteur
+   invalide et jetait la règle entière. Retirée le 28 septembre 2026. */
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
 }

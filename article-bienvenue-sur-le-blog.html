@@ -275,6 +275,20 @@ p{margin:0}
 .hero__in{padding-block:clamp(2rem,4.5vw,3.5rem) clamp(.75rem,1.5vw,1.25rem);
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;gap:1.6rem;position:relative;z-index:2}
+/* Les cinq métiers, en très petit au-dessus du titre : demande du
+   propriétaire du 28 septembre 2026, d'abord en gris et séparés par des
+   barres, puis le même jour sur le modèle qu'il a fourni : une pastille à
+   filet, capitales très espacées, points médians, « en couleur jaune or ».
+   C'est le seul jaune de la page qui ne se clique pas, hors titre d'accueil :
+   son choix. Les espaces insécables avant chaque point et dans « Outils sur
+   mesure » font couper la ligne après un point, jamais au milieu d'un
+   métier. Le suivi laisse une espace après la dernière lettre : la marge
+   de droite la retranche, sans quoi le texte paraît décalé à gauche. */
+.hero__metiers{font-size:.75rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--yellow);text-wrap:balance;
+  padding:.55rem calc(1.15rem - .16em) .55rem 1.15rem;border-radius:999px;
+  border:1px solid rgba(255,204,0,.32);background:rgba(255,204,0,.06);
+  margin-bottom:-.5rem}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
    (règle pointillée, crochets d'angle, coordonnée) et carte « scénario » en
    filigrane. Volontairement PAS de grille décorative : un fond en grille de
@@ -289,9 +303,10 @@ p{margin:0}
 .hero__bg .brackets::before{top:0;right:0;border-top:1.5px solid var(--yellow);border-right:1.5px solid var(--yellow)}
 .hero__bg .brackets::after{bottom:0;left:0;border-bottom:1.5px solid var(--yellow);border-left:1.5px solid var(--yellow)}
 
-
-}
-
+/* La règle pointillée disparaît sous 60 rem. Une accolade orpheline, juste
+   au-dessus, annulait cette requête média depuis le 14 septembre 2026 : le
+   navigateur lisait « } @media (max-width:60rem) » comme un sélecteur
+   invalide et jetait la règle entière. Retirée le 28 septembre 2026. */
 @media (max-width:60rem){
   .hero__bg .ruler{display:none}
 }
@@ -682,12 +697,15 @@ em{color:var(--yellow)}
 .step__no{font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);line-height:.9;
   letter-spacing:-.05em;color:var(--yellow);flex:none}
 .step h3{color:#FFF;font-size:1.05rem;flex:1;min-width:0}
-/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert. */
-.step__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
+/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert.
+   Le meme dessin sert aux cinq etapes et aux cinq leviers de #ia, repliables
+   depuis le 25 septembre 2026 : une seule declaration, deux composants. */
+.step__chevron,.pilier__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
   border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
   transform:rotate(45deg);transition:transform .2s ease}
-.step[open] .step__chevron{transform:rotate(-135deg);margin-top:.25rem}
-@media (prefers-reduced-motion:reduce){.step__chevron{transition:none}}
+.step[open] .step__chevron,.pilier[open] .pilier__chevron{transform:rotate(-135deg);
+  margin-top:.25rem}
+@media (prefers-reduced-motion:reduce){.step__chevron,.pilier__chevron{transition:none}}
 .step__corps{padding:0 1.2rem 1.2rem}
 .step__corps .chips{margin-top:0}
 .step p{color:#B5B5B1;font-size:.95rem}
@@ -743,6 +761,14 @@ em{color:var(--yellow)}
    pour que le « 01 — Former » du propriétaire se lise d'un coup d'œil. Le
    numéro écrit en gros est caché aux lecteurs d'écran, qui lisent celui,
    visuellement masqué, placé dans le titre. */
+/* Le titre de la section tient sur deux lignes, demande du proprietaire du
+   25 septembre 2026. Une largeur en ch plutot qu un <br> : elle suit la
+   taille du texte au lieu de couper toujours au meme mot, et sur telephone
+   la coupe reste celle du navigateur. A 1 280 px, la bande des deux lignes
+   se joue entre 22 et 30 ch ; 26 ch est au milieu, de quoi encaisser une
+   police de substitution plus large. text-wrap:balance, herite de .display,
+   repartit les deux lignes. */
+#ia .head .display{max-width:26ch;margin-inline:auto}
 .piliers{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:46rem){.piliers{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:64rem){.piliers{grid-template-columns:repeat(3,1fr)}}
@@ -763,11 +789,57 @@ em{color:var(--yellow)}
    première rangée perd 60 px. */
 .pilier__puces{list-style:none;padding:0;margin:0;padding-top:.4rem}
 .pilier .chip{background:transparent;border-color:#3A3A38;padding:.3rem .55rem;font-size:.8rem}
+/* Cinq leviers repliables, demande du proprietaire du 25 septembre 2026 :
+   « dans des onglets caches comme tu as mis les elements sous "Cinq etapes" ».
+   Meme mecanique que .step — un <details>, un <summary> qui porte le numero,
+   le titre et le chevron, un corps pour le texte et les etiquettes — mais la
+   peau de la section reste celle de ses voisines (surface #0E0E0E, filet
+   --line), sinon les cinq leviers se detacheraient de la carte d appel et de
+   l encart du guide, qui restent des cartes pleines.
+
+   La marge passe de la carte au sommaire et au corps : sur un panneau ferme,
+   une carte deja matelassee ajouterait sa marge a celle du sommaire. Les
+   cartes de #exemples, qui n ont pas ce modificateur, ne bougent pas. */
+/* Un panneau ferme ne s etire pas a la hauteur de sa rangee : sans cela, 04
+   et 05 prenaient celle de la carte d appel, a cote, et laissaient deux
+   grands vides. C est le align-items:start de la grille des cinq etapes,
+   pose ici sur les seuls panneaux : les cartes pleines de #exemples et la
+   carte d appel continuent de s aligner entre elles. */
+.pilier--repli{padding:0;gap:0;align-self:start}
+/* Les memes marges que .step__tete, au pixel pres : les deux accordeons de
+   la page se lisent a la meme densite, et le detecteur d impeccable, qui ne
+   sait pas lire un clamp(), cesse de croire la marge nulle. */
+.pilier--repli .pilier__tete{cursor:pointer;list-style:none;padding:1.05rem 1.2rem}
+.pilier--repli .pilier__tete::-webkit-details-marker{display:none}
+.pilier--repli .pilier__tete:focus-visible{outline:3px solid var(--yellow);
+  outline-offset:-3px}
+.pilier--repli h3{flex:1;min-width:0}
+.pilier--repli:hover,.pilier--repli[open]{border-color:#4A4A47}
+.pilier__corps{display:flex;flex-direction:column;gap:.85rem;padding:0 1.2rem 1.2rem}
 /* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
    fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
    aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
    celui de la section Contact : aucun formulaire n'est incrusté ici. */
 .pilier--appel{border-color:var(--yellow);justify-content:center}
+/* Depuis que les cinq leviers se replient (25 septembre 2026), la carte d
+   appel etait seule a etre haute : sa rangee gardait sa hauteur et laissait
+   250 px de vide sous les panneaux 04 et 05. Elle passe donc sur toute la
+   largeur, juste au-dessus de l encart du guide, et son texte se met en
+   ligne des qu il y a la place. */
+.pilier--appel{grid-column:1/-1}
+/* Le bouton et sa mention ne se separent pas : ils forment un bloc, sinon la
+   mention reste seule sur sa ligne quand le bandeau se replie. */
+.pilier__action{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem}
+@media (min-width:46rem){
+  /* justify-content:flex-start defait le centrage de la carte : sur une
+     deuxieme ligne, le bloc du bouton se posait au milieu. */
+  .pilier--appel{flex-direction:row;align-items:center;justify-content:flex-start;
+    gap:1.25rem 1.75rem;flex-wrap:wrap}
+  .pilier--appel h3{flex:1 1 17rem}
+  .pilier--appel p:not(.pilier__note){flex:2 1 22rem;margin:0}
+  .pilier--appel .pilier__action{flex:0 0 auto;margin-top:0}
+  .pilier--appel .btn{margin-top:0}
+}
 .pilier--appel h3{font-size:clamp(1.3rem,2.2vw,1.55rem);line-height:1.2}
 .pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
 .pilier__note{color:var(--ink-3);font-size:.85rem}
@@ -1089,7 +1161,9 @@ h1.display em{color:var(--yellow)}
 .figure:hover,.offer:hover,.agent:hover,.mc:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .pilier--appel{border-color:var(--line)}
-.step__tete:focus-visible,.guide-lien:focus-visible{outline-color:var(--ink)}
+.step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
+.guide-lien:focus-visible{outline-color:var(--ink)}
+.pilier--repli:hover,.pilier--repli[open]{border-color:var(--mur)}
 
 /* Les survols secondaires passent au blanc : le jaune est réservé aux
    boutons d'action eux-mêmes. */

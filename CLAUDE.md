@@ -1087,7 +1087,12 @@ La page d'accueil y perd de 270 à 430 px selon la largeur, et « Elles m'ont fa
 confiance » entre dans le premier écran d'un ordinateur. Effet de bord réglé : sur
 téléphone (35 rem et moins), où les boutons du hero prennent toute la largeur, ses
 deux crochets d'angle jaunes sont masqués — celui du bas tombait sur le bouton du
-téléphone. Pour remesurer : capturer la page entière, puis chercher les bandes
+téléphone. La règle pointillée verticale du hero (`.hero__bg .ruler`) part, elle,
+sous 60 rem ; **elle ne partait pas du 14 au 28 septembre 2026** : une accolade `}`
+orpheline, laissée juste avant sa requête média, faisait jeter la requête entière au
+navigateur, et la ligne traversait le texte sur téléphone. Retirée à la demande du
+propriétaire. Une accolade de trop dans une feuille ne produit aucune erreur : elle
+annule en silence la règle qui la suit. Pour remesurer : capturer la page entière, puis chercher les bandes
 horizontales où aucun pixel ne dépasse `#1E1E1E` ; les cartes `#0E0E0E` passent pour
 du vide, à retrancher à la main. Sur fond clair la méthode se renverse — les bandes
 sans un pixel plus sombre que `#E0E0E0`, cartes à retrancher de même.
