@@ -663,8 +663,10 @@ d'audience ou un pixel, couper l'autoplay, héberger les polices ou changer d'ou
 formulaire oblige à retoucher cet article, avec son accord. **C'est le cas depuis le
 28 septembre 2026** : la vidéo est partie avec « Ma chaîne, en clair », et plus
 aucune page n'intègre YouTube. La phrase qui la décrit (« La vidéo de la page
-d'accueil est servie par YouTube… dès son arrivée. ») est devenue fausse ; son
-retrait lui a été proposé le jour même, et attend son accord.
+d'accueil est servie par YouTube… dès son arrivée. ») était devenue fausse ; son
+retrait lui a été proposé le jour même, et il l'a validé (« Valide la phrase des
+CGC »). L'article ne nomme donc plus que Tally et Google Fonts. Si une vidéo revient
+sur le site, la phrase doit revenir avec elle, avec son accord.
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
