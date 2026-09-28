@@ -446,12 +446,11 @@ em{color:var(--yellow)}
    Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
    plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 /* ---------- ce qu'on vous apporte ----------
-   Le manifeste du propriétaire, revenu le 28 septembre 2026 : une colonne
-   centrée, dans l'ordre exact de son texte. Chaque bloc s'ouvre sur une
+   Le manifeste du propriétaire, revenu le 28 septembre 2026, ramené le jour
+   même à son seul dernier bloc : une carte centrée, qui s'ouvre sur une
    phrase forte, dans la graisse et la pile des grands titres (qu'une règle
-   de titre doit redéclarer, sinon elle hérite de Poppins), suivie de lignes
-   plus discrètes ; un filet court sépare les blocs. Tailles déjà à −15 %,
-   comme le reste du site. */
+   de titre doit redéclarer, sinon elle hérite de Poppins), suivie de deux
+   lignes plus discrètes. Tailles déjà à −15 %, comme le reste du site. */
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
 .manifeste{background:var(--surface);border:1px solid var(--line);
@@ -465,9 +464,6 @@ em{color:var(--yellow)}
   font-size:clamp(1.02rem,1.7vw,1.28rem)}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
-/* « rendez-vous » ne se coupe pas à son trait d’union. */
-.manifeste__bloc{white-space:nowrap}
-.manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 
 /* Marge intérieure rabotée d'un quart le 23 septembre 2026, avec toute la
    famille des cartes : 2rem → 1,5rem au plus large. */
