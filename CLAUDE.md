@@ -410,8 +410,18 @@ paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes 
 lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
 sinon l'appariement se décale. La section passe de 507 à 580 px.
 
-**`#resultats` s'appelle « Ce que nous installons se *mesure*. » depuis le
-25 septembre 2026**, à la demande du propriétaire. Elle s'appelait « Ce qu'on
+**`#resultats` s'appelle « Notre méthode *SmartClient*. » depuis le 28 septembre
+2026**, à la demande du propriétaire (« Au lieu de "Ce que nous installons se
+mesure." mets plutôt "Notre méthode SmartClient" »). Le point final et l'italique
+sur « SmartClient » sont de Claude, pour suivre tous les autres titres de la page,
+qui portent chacun les deux ; son texte n'en avait pas. Tient sur une ligne, à
+1 280 px comme sur téléphone. L'ancre `#resultats`, le lien « Services » du menu et
+le chapô (« Chaque système arrive avec son tableau de bord… ») n'ont pas bougé. À
+noter : le bandeau qui suit s'appelle « Cinq étapes, du système au multi-scaling »
+et son ancre est `#methode` — deux « méthodes » se suivent désormais.
+
+**Avant cela, `#resultats` s'appelait « Ce que nous installons se *mesure*. »**,
+depuis le 25 septembre 2026, à la demande du propriétaire. Elle s'appelait « Ce qu'on
 installe, et ce qu'on *mesure dessus*. », sur deux lignes que séparait un `<br>` ;
 c'est sous cet ancien nom qu'elle apparaît dans l'historique des déplacements
 ci-dessus. Le titre passe au « nous » du reste du site, tient sur une ligne — le
