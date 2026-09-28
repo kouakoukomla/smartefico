@@ -248,7 +248,34 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
   son texte ; puis une seule carte centrée (`.manifeste`, 46 rem au plus), en trois
   blocs séparés par un filet court. Chaque bloc s'ouvre sur une phrase forte, dans
   la pile et la graisse des grands titres, suivie de lignes en gris.
-- **Ce qui vient de Claude**, et rien d'autre : l'italique sur « cash » et « moins de
+- **Le manifeste a été adapté le jour même**, à sa demande : « Modifie ceci et
+  adapte-le […] de sorte que cela cadre avec mon thème : "Générez des leads qualifiés
+  pour vos offres et mettez l'IA générative au service de votre performance." » Son
+  texte ne parlait que des leads, et « On ne fait qu'une chose » contredisait la
+  seconde moitié du titre. Il tient désormais en **quatre blocs** :
+  1. la thèse, sur les deux moitiés — « On fait deux choses, et on les fait bien :
+     vous rapporter des rendez-vous qualifiés pour vos offres high ticket, et mettre
+     l'IA générative au service de votre performance. », puis son « Rien d'autre. » ;
+  2. les leads, **ses phrases intactes** — « Personne ne vous connaîtra… *cash*… »,
+     « Le buzz, très peu pour nous. », « Les ventes, c'est ce qui nous fait
+     vibrer. » ;
+  3. l'IA, **sur le même modèle** — « L'IA ne remplacera personne chez vous, mais
+     elle fera gagner du *temps* à vos équipes. » (écrite par Claude le 19 septembre
+     pour l'ancien manifeste, et validée alors), « L'IA gadget, très peu pour
+     nous. », « Des outils que vos équipes utilisent vraiment, c'est ce qui nous
+     fait vibrer. » ;
+  4. la promesse — sa phrase « Démultiplier vos ventes haute gamme en *moins de
+     3 mois* », prolongée de « , et mettre l'IA générative au travail dans vos
+     équipes. », puis ses deux phrases de fin, « C'est ce qu'on apporte à chacun de
+     nos clients. » et « Si c'est ce que vous cherchez, alors on est l'agence qu'il
+     vous faut. », qui passe en dernier pour clore.
+
+  **Aucun chiffre ni aucune promesse n'a été ajouté** : le seul délai reste le sien,
+  et il ne porte que sur les ventes. Le titre et le chapô « famous » n'ont pas bougé.
+  Les phrases fortes passent de 34 à 40 ch de large, sans quoi la première tenait
+  sur cinq lignes ; « rendez-vous » est protégé de la coupure à son trait d'union
+  (`.manifeste__bloc`), et « high ticket » par une espace insécable.
+- **Mise en forme de Claude**, pour le reste : l'italique sur « cash » et « moins de
   3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
   dans « 3 mois ». Les guillemets “famous” sont les siens, laissés à l'anglaise.
 - **« Quelques chiffres : » est reparti le jour même** (« supprime "Quelques
@@ -260,8 +287,9 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
   « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
   depuis le départ de « Chaîne ».
-- La section fait 586 px à 1 280 px de large (626 px avec « Quelques
-  chiffres : ») ; la page passe de 6 906 à **7 541 px**.
+- La section fait **809 px** à 1 280 px de large depuis l'adaptation (586 px avec le
+  texte d'origine, 626 px avec « Quelques chiffres : ») ; la page passe de 6 906 à
+  **7 765 px**. 831 px sur téléphone.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
 

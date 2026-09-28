@@ -459,12 +459,14 @@ em{color:var(--yellow)}
   display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center}
 @media (min-width:46rem){.manifeste{padding:1.9rem 2.2rem}}
 .manifeste p{color:var(--ink-2);font-size:.9rem;max-width:44ch}
-.manifeste .manifeste__fort{color:var(--ink);max-width:34ch;
+.manifeste .manifeste__fort{color:var(--ink);max-width:40ch;
   font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.025em;line-height:1.2;text-wrap:balance;
   font-size:clamp(1.02rem,1.7vw,1.28rem)}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
+/* « rendez-vous » ne se coupe pas à son trait d’union. */
+.manifeste__bloc{white-space:nowrap}
 .manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 
 /* Marge intérieure rabotée d'un quart le 23 septembre 2026, avec toute la
