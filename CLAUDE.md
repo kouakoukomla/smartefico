@@ -415,8 +415,12 @@ sinon l'appariement se décale. La section passe de 507 à 580 px.
 mesure." mets plutôt "Notre méthode SmartClient" »). Le point final et l'italique
 sur « SmartClient » sont de Claude, pour suivre tous les autres titres de la page,
 qui portent chacun les deux ; son texte n'en avait pas. Tient sur une ligne, à
-1 280 px comme sur téléphone. L'ancre `#resultats`, le lien « Services » du menu et
-le chapô (« Chaque système arrive avec son tableau de bord… ») n'ont pas bougé. À
+1 280 px comme sur téléphone. L'ancre `#resultats` et le chapô (« Chaque système
+arrive avec son tableau de bord… ») n'ont pas bougé. **Le lien du menu qui y mène
+s'appelle « Méthode » depuis le même jour** (« Renomme le lien "Services" du menu en
+"Méthode" ») : il s'appelait « Services », nom sous lequel il apparaît dans les
+paragraphes plus anciens de ce fichier. Plus court d'une lettre, il ne change rien à
+la tenue de la barre — 60 px et 99 px de marge au seuil de 1 120 px. À
 noter : le bandeau qui suit s'appelle « Cinq étapes, du système au multi-scaling »
 et son ancre est `#methode` — deux « méthodes » se suivent désormais.
 
