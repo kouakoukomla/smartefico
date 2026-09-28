@@ -724,33 +724,6 @@ em{color:var(--yellow)}
 .pilier--repli h3{flex:1;min-width:0}
 .pilier--repli:hover,.pilier--repli[open]{border-color:#4A4A47}
 .pilier__corps{display:flex;flex-direction:column;gap:.85rem;padding:0 1.2rem 1.2rem}
-/* La sixième carte appelle à prendre contact. Son filet jaune — le « trait
-   fin », l'un des quatre rôles du jaune — la distingue des cinq autres sans
-   aplat. Le bouton ouvre le formulaire D4LJDR dans un nouvel onglet, comme
-   celui de la section Contact : aucun formulaire n'est incrusté ici. */
-.pilier--appel{border-color:var(--yellow);justify-content:center}
-/* Depuis que les cinq leviers se replient (25 septembre 2026), la carte d
-   appel etait seule a etre haute : sa rangee gardait sa hauteur et laissait
-   250 px de vide sous les panneaux 04 et 05. Elle passe donc sur toute la
-   largeur, juste au-dessus de l encart du guide, et son texte se met en
-   ligne des qu il y a la place. */
-.pilier--appel{grid-column:1/-1}
-/* Le bouton et sa mention ne se separent pas : ils forment un bloc, sinon la
-   mention reste seule sur sa ligne quand le bandeau se replie. */
-.pilier__action{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem}
-@media (min-width:46rem){
-  /* justify-content:flex-start defait le centrage de la carte : sur une
-     deuxieme ligne, le bloc du bouton se posait au milieu. */
-  .pilier--appel{flex-direction:row;align-items:center;justify-content:flex-start;
-    gap:1.25rem 1.75rem;flex-wrap:wrap}
-  .pilier--appel h3{flex:1 1 17rem}
-  .pilier--appel p:not(.pilier__note){flex:2 1 22rem;margin:0}
-  .pilier--appel .pilier__action{flex:0 0 auto;margin-top:0}
-  .pilier--appel .btn{margin-top:0}
-}
-.pilier--appel h3{font-size:clamp(1.105rem,1.87vw,1.318rem);line-height:1.2}
-.pilier--appel .btn{align-self:flex-start;margin-top:.35rem}
-.pilier__note{color:var(--ink-3);font-size:.75rem}
 /* Le guide gratuit de cette section, demandé le 18 septembre 2026 : il
    reprend les cinq cartes, une fiche par levier, et mène à sa propre page,
    guide-ia.html. Même encart que la sixième case de la méthode
@@ -1044,7 +1017,6 @@ h1.display em{color:var(--yellow)}
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
 .figure:hover,.offer:hover,.agent:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
-.pilier--appel{border-color:var(--line)}
 .step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
 .guide-lien:focus-visible{outline-color:var(--ink)}
 .pilier--repli:hover,.pilier--repli[open]{border-color:var(--mur)}

@@ -461,6 +461,17 @@ onglet, avec `utm_source=site&utm_medium=section-ia`. Pas de lien dans le menu, 
 est plein. Sous la grille, sur toute sa largeur, un encart mène à son propre guide
 gratuit (voir `guide-ia.html` plus bas).
 
+**La sixième carte a été supprimée le 28 septembre 2026**, à la demande du
+propriétaire, avec son titre, sa phrase (« Commençons par identifier les tâches que
+vous pouvez automatiser… »), son bouton « Nous contacter » et sa mention « Formulaire
+Tally · nouvel onglet ». Sont partis avec elle `.pilier--appel`, `.pilier__action`,
+`.pilier__note` et la ligne `.pilier--appel` du bloc « NOIR PLAT ». La section passe
+des cinq leviers repliés à l'encart du guide ; la case vide à côté de 04 et 05 existait
+déjà, la carte d'appel étant en pleine largeur. **L'accueil ne mène donc plus au
+formulaire `D4LJDR`** : il reste accessible depuis la dernière page du guide PDF de
+l'IA, `guide-ia-merci.html` et `exemples-ia.html`. La section tombe à 400 px à
+1 280 px, et la page à **7 079 px**. Ce qui suit décrit la carte telle qu'elle était.
+
 **Son titre tient sur deux lignes**, demande du propriétaire du 25 septembre 2026, par
 une largeur maximale de 26 ch sur le seul `#ia` — pas un `<br>`, qui couperait toujours
 au même mot quelle que soit la taille de l'écran. `text-wrap:balance`, hérité de
@@ -899,8 +910,9 @@ qui « contienne toutes les informations » des cinq cartes et parle de chacune 
   aucun client cité, et la typographie française (espace insécable avant « ? », « : »,
   et dans les guillemets). Le propriétaire est invité à le relire.
 - L'encart `.guide-lien--large` de `#ia` y mène, avec
-  `utm_source=site&utm_medium=section-ia` comme le bouton « Nous contacter » voisin :
-  Tally range ces inscriptions à part. Ce fut le seul lien du site vers cette page
+  `utm_source=site&utm_medium=section-ia`, comme le faisait le bouton « Nous
+  contacter » voisin jusqu'à son retrait le 28 septembre 2026 : Tally range ces
+  inscriptions à part. Ce fut le seul lien du site vers cette page
   jusqu'au 25 septembre 2026, où `exemples-ia.html` lui en a donné trois de plus
   (en-tête, accroche, pied), en `utm_medium=page-exemples` ; le
   menu, le pied de page, le blog et la sixième case de la méthode désignent toujours le
@@ -1269,7 +1281,7 @@ sans un pixel plus sombre que `#E0E0E0`, cartes à retrancher de même.
 « Réduis le jaune sur le site ». C'est, dans l'esprit, la demande du 20 septembre,
 qu'il avait défaite le 21 avant de la refaire ici. Les deux rôles qui restent :
 
-- **ce qui se clique** : « Réserver un échange », « Recevoir », « Nous contacter »,
+- **ce qui se clique** : « Réserver un échange », « Recevoir »,
   « Réserver mon appel », le carré à la flèche du menu, le lien
   d'évitement et la pastille de l'assistant ;
 - **les deux mots accentués du titre d'accueil** — `h1.display em` et non
