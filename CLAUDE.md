@@ -300,6 +300,18 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **Plus de chapô** : « On n'est pas ici pour vous rendre “famous” » est parti le même
   soir, à sa demande (« supprime "On n'est pas ici pour vous rendre “famous”" »). Le
   titre « Ce qu'on vous *apporte*. » mène droit à la carte.
+- **Pleine largeur depuis le 29 septembre 2026**, à sa demande (« Tu dois étendre
+  cette partie sur la page ») : la carte ne s'arrête plus à 46 rem, elle prend les
+  74 rem de la page comme les autres sections. Pour que les phrases ne courent pas
+  sur 1 000 px, chaque bloc est enveloppé dans un `.manifeste__volet` et les deux se
+  mettent **côte à côte dès 52 rem** — la thèse à gauche, la promesse à droite —,
+  séparés par un filet vertical `--mur`. Sous 52 rem, ils s'empilent comme avant,
+  avec le filet court horizontal (`hr`), masqué au-dessus. **Deux détours pour
+  impeccable**, qui levait `cramped-padding` sur le second volet : sa marge latérale
+  est en valeur fixe (1,75 rem) et non en `clamp()`, et le filet vertical est une
+  ombre intérieure (`box-shadow:inset 1px 0 0`) et non une `border-left` — même
+  rendu au pixel près, mais le détecteur ne la prend plus pour une bordure collée
+  au texte.
 - **Mise en forme de Claude**, pour le reste : l'italique sur « cash » et « moins de
   3 mois », repris de la version du 20 août ; les espaces insécables avant « : » et
   dans « 3 mois ». Les guillemets “famous” sont les siens, laissés à l'anglaise.
@@ -312,10 +324,11 @@ fait bien… high ticket. », « Rien d'autre. » et « Quelques chiffres : ».
 - **Pas de lien au menu, par choix** : la question lui a été posée, il a répondu
   « pas de lien au menu ». Ne pas en ajouter sans sa demande, même si la place existe
   depuis le départ de « Chaîne ».
-- La section fait **451 px** à 1 280 px de large, deux blocs sans chapô ; la page
-  passe de 6 906 à **7 407 px**. Pour mémoire, au fil de la journée : 586 px avec le
-  texte d'origine, 626 px avec « Quelques chiffres : », 809 px avec quatre blocs,
-  317 px avec le seul dernier, 484 px avec deux blocs et le chapô.
+- La section fait **284 px** à 1 280 px de large depuis la pleine largeur (carte de
+  1 184 px, 251 px de haut à 900 px, 421 px sur téléphone) ; la page tombe à
+  **6 903 px**. Pour mémoire : 586 px avec le texte d'origine, 626 px avec
+  « Quelques chiffres : », 809 px avec quatre blocs, 317 px avec le seul dernier,
+  484 px avec deux blocs et le chapô, 451 px sans le chapô, en carte de 46 rem.
   Sa marge intérieure est écrite en valeurs fixes, pas en `clamp()`, pour que le
   détecteur d'impeccable la lise.
 
