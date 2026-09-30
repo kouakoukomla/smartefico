@@ -1530,38 +1530,15 @@ hiérarchie par le bas : au-delà, il faudrait baisser le plancher, c'est-à-dir
 lisibilité. **Les marges du menu relevées plus haut sont périmées** : les liens ont
 rétréci, il y a davantage de place — remesurer avant d'ajouter un lien.
 
-**Tout le reste a perdu 15 % le 30 septembre 2026** : « réduis la taille de tout le
-site de 15% ». Trois lectures lui ont été proposées ; il a choisi **« tout sauf le
-texte »**, le texte étant déjà au plancher de 12 px en bas de l'échelle. La mécanique,
-sur les neuf feuilles de la règle précédente :
-
-- **`html{font-size:85%}`** : le rem vaut 13,6 px au lieu de 16, et tout ce qui s'y
-  exprime — marges, écarts, `--gap`, largeur de page (`.wrap`, 74 rem = 1 006 px au
-  lieu de 1 184), cartes, boutons, logos, carreaux des marques — rapetisse d'un
-  coup. En pourcentage, le réglage de taille de police du visiteur reste respecté ;
-- **chaque `font-size` en rem est divisé par 0,85**, si bien que le texte garde
-  exactement sa taille calculée — le plancher de 12 px s'écrit désormais `.8824rem`
-  (`.882rem` donnait 11,995 px, sous le seuil) ;
-- **les termes en `vw` hors `font-size` sont multipliés par 0,85**, pour que les
-  `clamp()` rapetissent aussi dans leur plage fluide ;
-- **ne bougent pas** : les `px` (filets, bordures), les `em` et les `ch`, qui suivent
-  le texte, et les requêtes média, que le navigateur calcule toujours sur 16 px quelle
-  que soit la racine — les seuils de mise en page tombent donc aux mêmes largeurs
-  d'écran.
-
-**La barre de menu a dû être rouverte** : à 56 rem, elle ne faisait plus que 761 px,
-et ses liens, dont le texte n'a pas rétréci, ne laissaient que 22 px à côté de la
-marque. Elle est plafonnée à **61,5 rem (836 px)** — toujours moins que les 896 d'avant
-— : 46 px et 75 px de marge à 1 280 px, 50 et 84 px au seuil de 1 120 px, sur une
-ligne. La page d'accueil passe de 6 903 à **6 569 px**, et les carreaux des marques
-entrent dans le premier écran d'un ordinateur. Aucun débordement à 375 px, sur aucune
-page ; aucun texte visible sous 12 px.
-
-**Deux signalements `tight-leading` nouveaux sur l'accueil (« 1,20 ») et un déplacé sur
-`cgv.html` (1,04 → « 0,88 ») sont des artefacts** : le détecteur mêle la racine à
-85 % et celle de 16 px. Aucun interlignage du site n'est écrit en rem ou en px, ils
-suivent tous le texte ; mesurés dans le navigateur, les titres des CGV sont à 0,98
-et 1,15, comme avant. À ne pas « corriger ».
+**Une réduction de « tout sauf le texte » de 15 % a été essayée et annulée le
+30 septembre 2026.** À sa demande (« réduis la taille de tout le site de 15% », lu
+avec lui comme « tout sauf le texte »), la racine est passée à `85%` sur toutes les
+feuilles, les `font-size` en rem compensées (÷ 0,85), les `vw` hors police réduits
+d'autant, et la barre de menu rouverte à 61,5 rem ; mise en ligne (commit
+`57309b4`), puis annulée le jour même (« annule cette réduction de 15% ») par un
+`git revert` qui rend exactement l'état d'avant. Si elle revient, tout est dans ce
+commit — dont le piège du plancher : à racine 85 %, 12 px s'écrit `.8824rem`, et
+`.882rem` tombe à 11,995 px.
 
 **Les pages légales chargent désormais une police distante**, elles qui n'en
 chargeaient aucune : elles n'avaient pas besoin d'Instrument Serif, leurs italiques
