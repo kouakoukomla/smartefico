@@ -25,10 +25,12 @@
   --line:#1F1F1F;--mur:#333333;--yellow:#FFCC00;--yellow-hi:#FFE04D;--on-yellow:#141414;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+/* Racine à 85 % depuis le 30 septembre 2026 : « tout sauf le texte »
+   rapetisse de 15 %, les font-size en rem étant compensées (÷ 0,85). */
+html{font-size:85%;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--ground);color:var(--ink);min-height:100svh;display:flex;flex-direction:column;
   font-family:"Poppins","Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:.85rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+  font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 p,h1,h2{margin:0}
@@ -39,8 +41,8 @@ p,h1,h2{margin:0}
 em{color:var(--ink)}
 .display em{color:var(--yellow)}
 
-.haut{display:flex;justify-content:center;padding-top:clamp(1.75rem,4vw,2.75rem)}
-.marque{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:-.03em;font-size:1.105rem;text-decoration:none}
+.haut{display:flex;justify-content:center;padding-top:clamp(1.75rem,3.4vw,2.75rem)}
+.marque{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:-.03em;font-size:1.3rem;text-decoration:none}
 /* Sur fond sombre, c'est assets/logo-clair.png : le logo sans plaque, dont
    le contour blanc se détache seul sur le noir. assets/logo.png, qui porte
    sa plaque, ne sert que sur fond clair — il y a servi du 23 septembre 2026
@@ -48,15 +50,15 @@ em{color:var(--ink)}
 .marque img{width:2.6rem;height:2.6rem;object-fit:contain}
 
 .merci{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.2rem;
-  padding-block:clamp(2.5rem,7vw,4.5rem)}
-.etiquette{font-weight:600;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  padding-block:clamp(2.5rem,5.95vw,4.5rem)}
+.etiquette{font-weight:600;font-size:.8824rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 /* Le grand titre garde la pile Helvetica, comme ceux de l'accueil. */
 .display{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;letter-spacing:-.042em;line-height:1.02;text-wrap:balance;
-  font-size:clamp(1.955rem,5.1vw,3.4rem)}
+  font-size:clamp(2.3rem,5.1vw,4rem)}
 .display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;font-style:italic;
   font-weight:400;letter-spacing:-.01em;padding-right:.04em}
-.lead{color:var(--ink-2);font-size:clamp(.867rem,1.36vw,.977rem);max-width:46ch}
+.lead{color:var(--ink-2);font-size:clamp(1.02rem,1.36vw,1.149rem);max-width:46ch}
 
 .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:.6rem;width:100%}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.25rem;
@@ -69,13 +71,13 @@ em{color:var(--ink)}
 @media (max-width:35rem){.actions .btn{width:100%}}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
 
-.suite{margin-top:clamp(1.5rem,4vw,2.5rem);background:var(--surface);border:1px solid var(--line);
-  border-radius:14px;padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;align-items:center;gap:.8rem}
-.suite h2{font-size:clamp(1.105rem,2.04vw,1.36rem);font-weight:800;letter-spacing:-.025em}
+.suite{margin-top:clamp(1.5rem,3.4vw,2.5rem);background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:clamp(1.4rem,2.55vw,2rem);display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.suite h2{font-size:clamp(1.3rem,2.04vw,1.6rem);font-weight:800;letter-spacing:-.025em}
 .suite p{color:var(--ink-2);max-width:44ch}
 
 .bas{border-top:1px solid var(--line);padding-block:1.5rem 2.25rem;display:flex;flex-wrap:wrap;
-  gap:.5rem 1.5rem;justify-content:space-between;color:var(--ink-3);font-size:.75rem}
+  gap:.5rem 1.5rem;justify-content:space-between;color:var(--ink-3);font-size:.8824rem}
 .bas nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
 .bas a{color:var(--ink-2);text-decoration:none}
 .bas a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
