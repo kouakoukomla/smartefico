@@ -319,9 +319,13 @@ p{margin:0}
    mesure » font couper la ligne après un point, jamais au milieu d'un
    métier. Le suivi laisse une espace après la dernière lettre : la marge
    de droite la retranche, sans quoi le texte paraît décalé à gauche. */
-.hero__metiers{font-size:.75rem;font-weight:500;letter-spacing:.16em;
+/* Réduite le 30 septembre 2026, à la demande du propriétaire (« réduis ceci
+   et son filet ») : 12 → 11 px, seule exception au plancher de 12 px du site,
+   tolérable pour une étiquette en capitales espacées ; suivi .16 → .14em et
+   cadre resserré (marges .55/1.15 → .38/.85rem). */
+.hero__metiers{font-size:.6875rem;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--yellow);text-wrap:balance;
-  padding:.55rem calc(1.15rem - .16em) .55rem 1.15rem;border-radius:999px;
+  padding:.38rem calc(.85rem - .14em) .38rem .85rem;border-radius:999px;
   border:1px solid rgba(255,204,0,.32);background:rgba(255,204,0,.06);
   margin-bottom:-.5rem}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »

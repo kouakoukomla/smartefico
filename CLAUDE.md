@@ -1380,7 +1380,12 @@ capitales espacées (`.16em`), le filet et le fond jaunes à faible opacité (32
 hors titre d'accueil : son choix, pas un oubli de la règle ci-dessus. Écrite en dur
 dans `index.html`, hors des zones de `sync-content.mjs`. Des espaces insécables avant
 chaque point et dans « Outils sur mesure » : sur téléphone, elle passe sur deux lignes
-et coupe après « Formation · », jamais au milieu d'un métier.
+et coupe après « Formation · », jamais au milieu d'un métier. **Réduite le
+30 septembre 2026**, à sa demande (« réduis ceci et son filet ») : texte de 12 à
+**11 px** (`.6875rem`) — **seule exception au plancher de 12 px du site**, tolérable
+pour une étiquette de capitales espacées —, suivi de `.16em` à `.14em`, cadre resserré
+(marges `.55rem`/`1.15rem` → `.38rem`/`.85rem`). Le filet garde son 1 px et sa teinte.
+La pastille passe à 496 × 31 px à 1 280 px ; aucun nouveau signalement d'impeccable.
 
 **Sont rentrés** : les titres de section, les quatre chiffres de « Ce à quoi vous
 engager » (`.figure b`) et leurs icônes, les numéros 01 à 05 des trois grilles
