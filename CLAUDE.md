@@ -1033,32 +1033,14 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Fond blanc depuis le 5 octobre 2026**, sur tout le site, à la demande du
-propriétaire (« mets le fond du site en blanc et adapte les autres couleurs aux
-différentes palettes »). Ce qui suit sur le « noir plat » décrit l'état du 23 septembre
-au 5 octobre ; l'historique git le garde.
-
-- **Palette** : fond `#FFFFFF`, cartes `#F4F4F1`, encre `#141414`, gris `#4E4E49` et
-  `#6B6B66`, filets `#DEDED9`, `--mur` `#8A8A84`. `theme-color` vaut `#FFFFFF`.
-- **Sur `index.html`**, le bloc « FOND BLANC » remplace « NOIR PLAT » à la fin du
-  `<style>` ; le blog et les articles le recopient. Les autres pages ont repris, dans
-  leur feuille propre, le fond blanc du 23 septembre (patch du commit `d71e697` appliqué
-  à l'envers), avec deux écarts : le surligneur jaune ne vit que sous les mots du grand
-  titre (`.display em`), plus sous chaque italique, et les coches des guides sont à
-  l'encre, sans pastille.
-- **Îlots restés noirs** (jetons du noir plat redéclarés sur eux) : barre de
-  navigation, carreaux des marques (filet blanc passé à l'intérieur, `inset`),
-  manifeste, bandeau des cinq étapes, écrans des schémas d'agents, contact, pied de
-  page (devenu panneau arrondi), panneau de l'assistant, barre des fenêtres légales,
-  carte du formulaire des guides, bloc d'appel d'`exemples-ia.html`.
-- **Le jaune** : aplats cliquables inchangés ; les deux mots du titre d'accueil (et des
-  `h1` des guides, du blog, d'`exemples-ia.html`) passent à l'encre sur trait de
-  surligneur jaune ; la pastille des métiers en or foncé `#6B5200` sur voile jaune 16 %
-  (6,9:1). Survols secondaires à l'encre.
-- **Logos** : `logo.png` (avec plaque) revient sur les en-têtes des guides, de leurs
-  pages de remerciement, du blog, des articles et d'`exemples-ia.html` ; les îlots
-  sombres gardent `logo-clair.png`. Le champ `logo` du back office ne bouge pas.
-- **Non refaits** : l'image de partage (toujours noire) et les guides PDF.
+**Un fond blanc a été essayé et annulé le 5 octobre 2026.** À sa demande (« mets le
+fond du site en blanc et adapte les autres couleurs aux différentes palettes »), tout
+le site est passé au blanc — bloc « FOND BLANC » à la place de « NOIR PLAT », îlots
+noirs pour le menu, les marques, le manifeste, le bandeau des cinq étapes, le contact,
+le pied et l'assistant, surligneur jaune sous les mots du titre — et a été mis en ligne
+(commit `48d6506`), puis annulé le jour même (« reviens sur le précédent site, j'annule
+ceci ») par un `git revert`. Le noir plat ci-dessous reste l'état en vigueur. Si le
+blanc revient, tout est dans ce commit.
 
 **Noir plat depuis le 23 septembre 2026, au soir**, sur tout le site. Le propriétaire
 a donné un modèle — « Tu peux adapter mon site au fond d'écran de celui-ci :
