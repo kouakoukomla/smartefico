@@ -846,8 +846,8 @@ que l'agence vend : des agents IA qui qualifient.
   - **Six mois** : le script efface chaque nuit, vers 3 h, les lignes plus anciennes,
     où qu'elles soient dans la feuille. Changer `CONSERVATION_MOIS` oblige à changer
     les deux textes qui l'annoncent, avec son accord.
-  - **Les deux textes, proposés par Claude le 6 octobre 2026, en attente de sa
-    validation** :
+  - **Les deux textes, proposés par Claude et validés par lui le 6 octobre 2026**
+    (« Je valide les textes ») :
     la mention sous le champ — « Les échanges sont conservés six mois pour améliorer
     le service : n'y écrivez pas d'informations sensibles. » — et la fin de la ligne
     de l'article 10 des CGC (« Sous-traitance IA »), qui disait « SmartEfico n'en
