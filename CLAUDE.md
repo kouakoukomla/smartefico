@@ -760,9 +760,15 @@ Choisi parmi trois options — assistant IA sur
 mesure, assistant guidé sans IA, outil tout fait — pour montrer sur son propre site ce
 que l'agence vend : des agents IA qui qualifient.
 
-- **Son icône est une bulle au point d'interrogation**, au trait et à bouts ronds
-  comme les autres icônes du site, depuis le 23 septembre 2026 (« tu peux installer un
-  icône plus parlant »). L'ancienne était une bulle en aplat, muette : elle disait
+- **Son icône est un casque-micro** depuis le 6 octobre 2026 (« je veux changer
+  l'icône du bot »), choisi par le propriétaire parmi quatre pistes rendues à taille
+  réelle sur la pastille, avec et sans libellé : un robot, la bulle à trois points, le
+  casque-micro et le logo SmartEfico (dont le sigle jaune ne se lit plus à 21 px).
+  Même dessin au trait, 1,8 de graisse, bouts ronds. Ce qui suit décrit la bulle au
+  point d'interrogation qu'il remplace.
+- **Son icône était une bulle au point d'interrogation**, au trait et à bouts ronds
+  comme les autres icônes du site, du 23 septembre 2026 (« tu peux installer un
+  icône plus parlant ») au 6 octobre. L'ancienne était une bulle en aplat, muette : elle disait
   « message » et laissait le libellé porter le sens — ce qui ne marche pas sur
   téléphone, où `.assistant__etiquette` est masquée sous 30 rem et où l'icône reste
   seule. **C'est à cette taille-là qu'il faut juger une icône ici**, pas agrandie :
