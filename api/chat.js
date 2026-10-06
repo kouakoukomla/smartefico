@@ -18,8 +18,12 @@
  * toute demande hors sujet à SmartEfico, et l'arrêt de la génération quand
  * le visiteur s'en va. Le vrai garde-fou reste la limite de dépense mensuelle
  * posée dans la console d'Anthropic : rien ici ne peut la remplacer.
+ *
+ * Chaque échange est recopié dans une feuille Google, conservé six mois
+ * (voir journaliser, plus bas, et scripts/assistant/journal.gs).
  */
 import Anthropic from '@anthropic-ai/sdk';
+import { waitUntil } from '@vercel/functions';
 import { CONTEXTE_SITE } from '../lib/contexte-assistant.js';
 
 const MODELE = 'claude-opus-5';
@@ -167,6 +171,44 @@ function conversation(corps) {
   return total <= LIMITES.total ? propre : null;
 }
 
+// Le numéro de conversation est tiré au hasard par la page, une fois par
+// visite : il ne sert qu'à regrouper les questions d'un même visiteur dans le
+// journal, et ne dit rien de lui.
+function numeroDe(corps) {
+  const n = corps && typeof corps.conversation === 'string' ? corps.conversation : '';
+  return /^[a-z0-9]{4,24}$/i.test(n) ? n : '';
+}
+
+// Chaque échange — la question et la réponse telle que le visiteur l'a lue —
+// part dans une feuille Google, par le script Apps Script de
+// scripts/assistant/journal.gs. Son adresse de déploiement est la variable
+// ASSISTANT_GOOGLE_SHEET du projet Vercel : sans elle, rien n'est enregistré.
+// Ni adresse IP, ni rien d'autre qui identifie le visiteur. C'est la feuille
+// qui efface ce qui a plus de six mois, comme le disent les CGC (article 10)
+// et la mention sous le champ de saisie. L'envoi part après la réponse
+// (waitUntil) : le visiteur n'attend pas le tableur, et un tableur en panne
+// ne casse pas la discussion — il laisse une ligne d'erreur dans les journaux.
+function journaliser(numero, question, reponse) {
+  const adresse = process.env.ASSISTANT_GOOGLE_SHEET;
+  if (!adresse) return;
+  const envoi = fetch(adresse, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+    body: JSON.stringify({ date: new Date().toISOString(), conversation: numero, question, reponse }),
+    signal: AbortSignal.timeout(15000),
+  })
+    .then(async (r) => {
+      const statut = r.ok ? (await r.json().catch(() => ({}))).statut : null;
+      if (statut !== 'ok') {
+        console.error(JSON.stringify({ assistant: 'journal', http: r.status, statut: statut ?? null }));
+      }
+    })
+    .catch((e) => {
+      console.error(JSON.stringify({ assistant: 'journal', type: e?.name ?? null }));
+    });
+  waitUntil(envoi);
+}
+
 function refuser(res, statut, code) {
   res.statusCode = statut;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -216,9 +258,11 @@ export default async function handler(req, res) {
     return;
   }
 
+  let corps = null;
   let messages = null;
   try {
-    messages = conversation(await lireCorps(req));
+    corps = await lireCorps(req);
+    messages = conversation(corps);
   } catch {
     messages = null;
   }
@@ -261,24 +305,30 @@ export default async function handler(req, res) {
     if (!res.writableEnded) flux.abort();
   });
 
-  let ecrit = false;
-  flux.on('text', (morceau) => {
+  const numero = numeroDe(corps);
+  const question = messages[messages.length - 1].content;
+  // Tout ce qui part vers le visiteur passe par ici, pour que le journal
+  // garde la réponse exactement telle qu'il l'a lue.
+  let lu = '';
+  function ecrire(texte) {
     ouvrirFlux(res);
-    res.write(morceau);
-    ecrit = true;
-  });
+    res.write(texte);
+    lu += texte;
+  }
+
+  flux.on('text', ecrire);
 
   try {
     const message = await flux.finalMessage();
-    ouvrirFlux(res);
     if (message.stop_reason === 'refusal') {
-      res.write((ecrit ? '\n\n' : '') + REFUS);
+      ecrire((lu ? '\n\n' : '') + REFUS);
     } else if (message.stop_reason === 'max_tokens') {
-      res.write(' […]');
-    } else if (!ecrit) {
-      res.write(COUPURE);
+      ecrire(' […]');
+    } else if (!lu) {
+      ecrire(COUPURE);
     }
     res.end();
+    journaliser(numero, question, lu);
     // Une ligne par réponse dans les journaux de Vercel, sans le contenu de la
     // conversation : de quoi suivre la consommation et vérifier que le cache
     // sert (cache_read doit dépasser zéro dès la deuxième question).
@@ -293,16 +343,24 @@ export default async function handler(req, res) {
       sortie: u.output_tokens,
     }));
   } catch (erreur) {
-    if (erreur instanceof Anthropic.APIUserAbortError || res.writableEnded) return;
+    if (erreur instanceof Anthropic.APIUserAbortError) {
+      const debut = lu.trim();
+      journaliser(numero, question, `${debut}${debut ? ' ' : ''}[le visiteur a quitté avant la fin de la réponse]`);
+      return;
+    }
+    if (res.writableEnded) return;
     console.error(JSON.stringify({
       assistant: 'erreur',
       type: erreur?.constructor?.name,
       statut: erreur?.status ?? null,
     }));
     if (res.headersSent) {
-      res.end(`\n\n${COUPURE}`);
+      ecrire(`\n\n${COUPURE}`);
+      res.end();
+      journaliser(numero, question, lu);
       return;
     }
     refuser(res, erreur instanceof Anthropic.APIError && erreur.status === 400 ? 400 : 502, 'service');
+    journaliser(numero, question, '[pas de réponse : le service était indisponible]');
   }
 }

@@ -780,8 +780,9 @@ que l'agence vend : des agents IA qui qualifient.
   à partir du `<main>` de `index.html`, `guide.html`, `guide-ia.html` et
   `exemples-ia.html` et de la liste des articles ; la pastille elle-même, entre les
   repères `ASSISTANT:START/END` de `index.html`, avec son style et son script dans la
-  page comme tout le reste ; et
-  `vercel.json`, qui donne 60 s à la fonction. GitHub Actions régénère le contexte
+  page comme tout le reste ;
+  `vercel.json`, qui donne 60 s à la fonction ; et, hors du site, le script de la
+  feuille des conversations, `scripts/assistant/journal.gs` (voir plus bas). GitHub Actions régénère le contexte
   après chaque enregistrement du back office ; après une retouche de `index.html` à la
   main, relancer `build-assistant.mjs` avant de pousser.
 - **La clé n'est jamais dans le dépôt**, qui est public : c'est une variable du projet
@@ -823,15 +824,42 @@ que l'agence vend : des agents IA qui qualifient.
   (`assistant: "reponse"`, tokens lus en cache, écrits, produits) sans rien du contenu
   échangé : `cache_lu` doit dépasser zéro dès la deuxième question, sinon le cache ne
   sert pas.
-- **Rien n'est conservé par le site.** La page tient l'historique en mémoire et le
-  renvoie entier à chaque question ; il disparaît avec l'onglet. Pas de cookie, rien
-  ne part avant que le visiteur écrive, et la mention sous le champ dit que les
-  réponses viennent d'une IA et qu'il ne faut pas y écrire de données sensibles.
-  L'article 10 des CGC (« Sous-traitance IA ») le cite depuis le 18 septembre 2026 :
-  une ligne proposée puis validée par le propriétaire, ajoutée à sa liste d'outils —
-  « l'assistant de discussion du site, qui transmet les questions des visiteurs à
-  Claude (Anthropic) pour en générer les réponses ; SmartEfico n'en conserve aucune
-  copie ».
+- **Les conversations sont enregistrées dans une feuille Google, six mois**, depuis
+  le 6 octobre 2026. Le propriétaire a demandé à les lire (« comment faire pour voir
+  les discussions que le bot fait »), puis a choisi Google Sheets, les conversations
+  complètes et six mois de conservation. Jusque-là, rien n'était conservé nulle part.
+  - **Le chemin** : `api/chat.js` envoie, après chaque réponse, la question et la
+    réponse telle que le visiteur l'a lue à un script Apps Script collé dans la
+    feuille (`scripts/assistant/journal.gs`, qui documente sa mise en place). Son
+    adresse de déploiement `/exec` est la variable Vercel **`ASSISTANT_GOOGLE_SHEET`** :
+    sans elle, rien n'est enregistré et la discussion marche comme avant. Cette
+    adresse suffit pour écrire dans la feuille — elle ne vit que dans Vercel. L'envoi
+    passe par `waitUntil` (`@vercel/functions`) : le visiteur n'attend pas le
+    tableur, et un tableur en panne laisse une ligne `assistant: "journal"` dans les
+    journaux sans casser la réponse.
+  - **Une ligne par échange** : date, numéro de conversation, question, réponse. Le
+    numéro est tiré au hasard par la page à chaque visite et regroupe les questions
+    d'un même visiteur ; **rien d'autre ne l'identifie** — ni IP, ni page, ni
+    navigateur. Une réponse interrompue ou absente est notée entre crochets. Un texte
+    qui commence par `=`, `+`, `-` ou `@` reçoit une apostrophe, sans quoi un visiteur
+    ferait calculer une formule à la feuille.
+  - **Six mois** : le script efface chaque nuit, vers 3 h, les lignes plus anciennes,
+    où qu'elles soient dans la feuille. Changer `CONSERVATION_MOIS` oblige à changer
+    les deux textes qui l'annoncent, avec son accord.
+  - **Les deux textes, proposés par Claude le 6 octobre 2026, en attente de sa
+    validation** :
+    la mention sous le champ — « Les échanges sont conservés six mois pour améliorer
+    le service : n'y écrivez pas d'informations sensibles. » — et la fin de la ligne
+    de l'article 10 des CGC (« Sous-traitance IA »), qui disait « SmartEfico n'en
+    conserve aucune copie » depuis le 18 septembre 2026 et dit désormais
+    « SmartEfico enregistre les échanges dans un tableur Google Sheets, sans
+    l'adresse IP ni aucun autre identifiant du visiteur, pour améliorer le service,
+    et les supprime au bout de six mois ».
+  - **Ce qui ne change pas** : la page tient toujours l'historique en mémoire et le
+    renvoie entier à chaque question, pas de cookie, rien ne part avant que le
+    visiteur écrive, et l'assistant ne demande ni nom, ni e-mail, ni téléphone — ce
+    qui limite ce que la feuille peut contenir de personnel. Un visiteur peut
+    toujours en écrire de lui-même.
 - **La pastille appelle toujours `https://smartefico.com/api/chat`**, y compris depuis
   les copies servies par `vercel.app` et Pages : d'où la liste d'origines. Les autres
   projets Vercel reliés au dépôt déploient eux aussi la fonction, mais sans clé ;
@@ -843,7 +871,9 @@ que l'agence vend : des agents IA qui qualifient.
   de Vercel) et, dans Chrome sans fenêtre, un `fetch` détourné vers ce serveur ont
   suffi à éprouver le 18 septembre 2026 le flux, les liens, l'historique, les erreurs,
   le débit et le refus. Le premier vrai appel se fait en production, une fois la clé
-  posée.
+  posée. Le journal s'éprouve de même, avec une fausse feuille qui répond comme Apps
+  Script (un 302, puis `{"statut":"ok"}`) ; `journal.gs` lui-même, avec un faux
+  `SpreadsheetApp` dans un `vm` de Node.
 
 **Aucune mesure d'audience, par choix.** Le 18 septembre 2026, le propriétaire a
 demandé un tableau de bord des visites ; le site n'en mesurait aucune, et n'en mesure
@@ -853,8 +883,9 @@ Google Analytics ». Ne pas installer de mesure sans sa demande. S'il y revient 
 Google Analytics impose en France un bandeau de consentement, que le site n'a pas ;
 Vercel Web Analytics s'en passe. Les chiffres disponibles sans rien installer : l'onglet
 Observability du projet Vercel (volume de requêtes), les onglets Submissions et
-Insights de chaque formulaire Tally, YouTube Studio, et les journaux de l'assistant
-(tokens seulement, jamais le contenu).
+Insights de chaque formulaire Tally, YouTube Studio, les journaux de l'assistant
+(tokens seulement, jamais le contenu) et, depuis le 6 octobre 2026, sa feuille Google
+des conversations (voir plus haut).
 
 L'article 9 des CGC (« Cookies & tracking ») annonçait des « cookies analytiques,
 marketing et techniques » que le site ne posait pas. Sur proposition, le propriétaire
@@ -1626,6 +1657,11 @@ navigateur :
   n'existait plus ; le Node livré avec l'éditeur Zed a servi à sa place, `npx`
   compris : `export PATH="/c/Users/kouak/AppData/Local/Zed/node/node-v24.11.0-win-x64:$PATH"`.
   Le numéro de version change avec les mises à jour de Zed.
+- L'aperçu de Claude Code (`.claude/launch.json`, ignoré par git) lance `serve` par
+  le `node.exe` de Zed, sur le `build/main.js` resté dans le cache de npx
+  (`npm-cache/_npx/…/node_modules/serve`) : lancé par `npx.cmd`, il échouait, Node
+  n'étant pas dans le `PATH`. Si le cache est vidé, relancer une fois
+  `npx --yes serve .` depuis Bash (avec le `PATH` ci-dessus) et corriger le chemin.
 - Git Bash convertit `origin/main:.gitignore` en chemin Windows. Utiliser
   `MSYS_NO_PATHCONV=1 git show origin/main:.gitignore`.
 - PowerShell 5.1 lit les `.ps1` en ANSI : un chemin accentué s'y corrompt. Résoudre le

@@ -1908,7 +1908,8 @@ h1.display em{color:var(--yellow)}
       </button>
     </form>
     <p class="assistant__mention">Réponses générées par une IA (Claude, d'Anthropic) : elles
-      peuvent comporter des erreurs. N'y écrivez pas d'informations sensibles.</p>
+      peuvent comporter des erreurs. Les échanges sont conservés six mois pour améliorer
+      le service : n'y écrivez pas d'informations sensibles.</p>
   </section>
   <button class="assistant__ouvrir" type="button" aria-expanded="false" aria-controls="assistant-panneau">
     <!-- Casque-micro, 6 octobre 2026 : « je veux changer l'icône du bot »,
@@ -2173,7 +2174,7 @@ h1.display em{color:var(--yellow)}
         <li>outils de résumé</li>
         <li>systèmes publicitaires (API Conversion)</li>
         <li>systèmes de notifications instantanées</li>
-        <li>l'assistant de discussion du site, qui transmet les questions des visiteurs à Claude (Anthropic) pour en générer les réponses&nbsp;; SmartEfico n'en conserve aucune copie</li>
+        <li>l'assistant de discussion du site, qui transmet les questions des visiteurs à Claude (Anthropic) pour en générer les réponses&nbsp;; SmartEfico enregistre les échanges dans un tableur Google Sheets, sans l'adresse IP ni aucun autre identifiant du visiteur, pour améliorer le service, et les supprime au bout de six mois</li>
       </ul>
       <p>Tous ces outils respectent les règles RGPD.</p>
     </section>
@@ -2242,7 +2243,8 @@ h1.display em{color:var(--yellow)}
 // Assistant de discussion — le serveur est api/chat.js. La page tient
 // l'historique et le renvoie en entier à chaque question : l'API de Claude ne
 // garde rien d'une requête à l'autre. La réponse arrive en texte brut, morceau
-// par morceau, et s'affiche à mesure.
+// par morceau, et s'affiche à mesure. Le serveur recopie chaque échange dans
+// le journal des conversations, conservé six mois.
 (function () {
   var racine = document.getElementById('assistant');
   if (!racine || !window.fetch || !window.TextDecoder || !window.AbortController) return;
@@ -2276,6 +2278,9 @@ h1.display em{color:var(--yellow)}
   var historique = [];
   var enCours = false;
   var accueilli = false;
+  // Tiré au hasard à chaque visite, il regroupe les questions d'un même
+  // visiteur dans le journal des conversations, sans rien dire de lui.
+  var CONVERSATION = Date.now().toString(36).slice(-4) + Math.random().toString(36).slice(2, 8);
 
   racine.hidden = false;
 
@@ -2357,7 +2362,7 @@ h1.display em{color:var(--yellow)}
     fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: historique })
+      body: JSON.stringify({ messages: historique, conversation: CONVERSATION })
     })
       .then(function (reponse) {
         if (!reponse.ok || !reponse.body) {
