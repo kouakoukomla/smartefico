@@ -635,6 +635,16 @@ d'usage de l'intelligence artificielle" […] tu mettras les informations de cet
 - **Elle est le quatrième lien du site vers `guide-ia.html`** — en-tête, accroche et
   pied de la page —, en `utm_medium=page-exemples`. L'encart de `#ia` n'est donc plus
   le seul chemin vers ce guide, contrairement à ce qui est écrit plus bas.
+- **Un petit onglet « Recevoir le guide gratuitement » clôt la section d'accueil**,
+  demandé le 9 octobre 2026 (« ajouter un petit onglet "recevoir le guide
+  gratuitement" »). Une pastille jaune centrée sous l'encart « Explorer les cas
+  d'usage » (`.exemples__guide`), icône de téléchargement et même taille que le
+  bouton des encarts voisins ; elle mène à `guide-ia.html` — le guide de l'IA
+  générative, celui qui colle au sujet de la section, et non celui des cinq étapes —
+  avec `utm_source=site&utm_medium=section-exemples`, pour que Tally range ces
+  inscriptions à part. C'est le seul style que la section ajoute : un aplat jaune de
+  ce qui se clique, l'un des deux rôles permis du jaune. Une ligne sur téléphone, sans
+  débordement ; aucun nouveau signalement d'impeccable.
 - **L'assistant la connaît** : `build-assistant.mjs` lit désormais son `<main>` comme
   ceux de l'accueil et des deux guides, et `api/chat.js` porte un `LIEN_EXEMPLES` avec
   une consigne — quand le visiteur demande ce que l'IA ferait dans son secteur, son

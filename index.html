@@ -811,6 +811,19 @@ em{color:var(--yellow)}
   .guide-lien--large .guide-lien__texte{flex-basis:calc(100% - 2.8rem)}
   .guide-lien--large .guide-lien__bouton{margin-left:2.8rem}
 }
+/* Le petit onglet « Recevoir le guide gratuitement » sous les cartes de
+   #exemples, demandé le 9 octobre 2026. Une pastille jaune centrée, de la
+   taille du bouton des encarts voisins (.guide-lien__bouton) : c'est un aplat
+   de ce qui se clique, l'un des deux rôles permis du jaune. */
+.exemples__guide{display:flex;justify-content:center;margin-top:1rem}
+.exemples__guide a{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
+  color:var(--on-yellow);font-weight:700;font-size:.765rem;padding:.55rem 1.1rem;
+  border-radius:999px;text-decoration:none;transition:background-color .18s ease}
+.exemples__guide a:hover{background:var(--yellow-hi)}
+.exemples__guide a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.exemples__guide svg{flex:none;width:1rem;height:1rem;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){.exemples__guide a{transition:none}}
 
 /* ---------- questions ---------- */
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
@@ -1633,6 +1646,12 @@ h1.display em{color:var(--yellow)}
           <span class="guide-lien__bouton">Explorer</span>
         </a>
       </div>
+      <p class="exemples__guide">
+        <a href="guide-ia.html?utm_source=site&amp;utm_medium=section-exemples">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+          Recevoir le guide gratuitement
+        </a>
+      </p>
     </section>
 
     <!-- ============ POUR QUI ============
