@@ -679,6 +679,26 @@ toujours vers `81VkKx`. Le guide de l'IA générative y renvoie depuis sa derni�
 (`utm_source=guide-ia-pdf`) et depuis sa page de remerciement (`utm_source=guide-ia`) :
 ses sujets sont justement les cinq leviers du guide.
 
+**« Ma chaîne, *en clair*. » (`#chaine`) est revenue le 13 octobre 2026**, à la
+demande du propriétaire : « Je veux mettre cette vidéo […] avant "Ce qu'on me demande
+avant de commencer." », avec https://www.youtube.com/watch?v=Uge1VlfPbd8 (« Générez
+des leads qualifiés pour vos offres et mettez l'IA générative à votre service »). Elle
+reprend la place, le titre et le cadre de l'ancienne section, entre `#agents` et la
+FAQ, **sans chapô, sans rail, sans lien au menu**, avec le bouton « Voir la chaîne »
+vers `@smartefico`. Trois différences voulues :
+
+- **lecture au clic**, `loading="lazy"`, plus d'`autoplay` : posée en bas de page,
+  une vidéo lancée à l'arrivée serait déjà entamée quand le visiteur l'atteint ;
+- **écrite en dur** dans `index.html`, hors du back office : la zone `VIDEO` de
+  `sync-content.mjs` n'a pas été remise ;
+- **ancre `#chaine`** et non `#agenda` : le lien « masterclass » de l'article
+  « Bienvenue sur le blog » mène toujours en haut de l'accueil.
+
+Le style `.video-scene` revient, directement à l'état noir plat (ombre portée, sans
+halo). 610 px à 800 px de large ; aucun signalement nouveau d'impeccable. **L'article 9
+des CGC doit renommer YouTube** (voir « Aucune mesure d'audience ») : la phrase a été
+proposée le jour même, à faire valider avant la mise en ligne.
+
 **Plus de section « Ma chaîne, en clair », ni de signature, depuis le 28 septembre
 2026.** Le propriétaire a demandé les deux d'un coup : « supprime la partie et la vidéo
 youtube "Ma chaîne, en clair" […] Tu vas supprimer aussi ma photo en bas et mes

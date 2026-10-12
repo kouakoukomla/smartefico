@@ -783,6 +783,37 @@ em{color:var(--yellow)}
   .guide-lien--large .guide-lien__texte{flex-basis:calc(100% - 2.8rem)}
   .guide-lien--large .guide-lien__bouton{margin-left:2.8rem}
 }
+/* Le petit onglet « Recevoir le guide gratuitement » sous les cartes de
+   #exemples, demandé le 9 octobre 2026. Une pastille jaune centrée, de la
+   taille du bouton des encarts voisins (.guide-lien__bouton) : c'est un aplat
+   de ce qui se clique, l'un des deux rôles permis du jaune. */
+.exemples__guide{display:flex;justify-content:center;margin-top:1rem}
+.exemples__guide a{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
+  color:var(--on-yellow);font-weight:700;font-size:.765rem;padding:.55rem 1.1rem;
+  border-radius:999px;text-decoration:none;transition:background-color .18s ease}
+.exemples__guide a:hover{background:var(--yellow-hi)}
+.exemples__guide a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.exemples__guide svg{flex:none;width:1rem;height:1rem;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){.exemples__guide a{transition:none}}
+
+/* ---------- la vidéo de la chaîne ----------
+   Revenue le 13 octobre 2026, à la demande du propriétaire, juste avant la
+   FAQ — la place qu'occupait « Ma chaîne, en clair » jusqu'au 28 septembre.
+   Même cadre qu'alors : 16:9, centré, 54 rem au plus, coins arrondis, ombre
+   portée et pas de halo (le fond est plat). Lecture au clic, et non plus
+   d'elle-même : posée en bas de page, une vidéo lancée à l'arrivée serait
+   déjà bien entamée quand le visiteur l'atteint. youtube-nocookie.com : même
+   lecteur, sans cookie de suivi tant que la lecture n'est pas lancée. */
+.video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
+  background:#000;border:0;
+  border-radius:clamp(.9rem,1.8vw,1.35rem);
+  /* Safari laisse une iframe déborder d'un coin arrondi tant que son cadre
+     n'a pas son propre plan de rendu : d'où le translateZ. */
+  isolation:isolate;transform:translateZ(0);
+  box-shadow:0 18px 44px -28px #000}
+.video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
 
 /* ---------- questions ---------- */
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
