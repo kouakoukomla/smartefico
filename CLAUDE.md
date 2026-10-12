@@ -687,8 +687,16 @@ reprend la place, le titre et le cadre de l'ancienne section, entre `#agents` et
 FAQ, **sans chapô, sans rail, sans lien au menu**, avec le bouton « Voir la chaîne »
 vers `@smartefico`. Trois différences voulues :
 
-- **lecture au clic**, `loading="lazy"`, plus d'`autoplay` : posée en bas de page,
-  une vidéo lancée à l'arrivée serait déjà entamée quand le visiteur l'atteint ;
+- **elle démarre seule, en sourdine, quand elle entre à l'écran** — et non à
+  l'arrivée sur la page, comme l'ancienne, où posée si bas elle serait déjà entamée
+  (elle dure 31 s). Mise en ligne d'abord en lecture au clic, puis, le même jour, à
+  sa demande : « Fais démarrer la vidéo toute seule, en sourdine ». Un script en bas
+  de page retire la source du lecteur tant qu'il est hors de vue, puis la repose
+  avec `autoplay=1&mute=1&playsinline=1` quand le cadre passe le dernier quart de
+  l'écran ; `allow="autoplay; …"` l'autorise. Sans script, sans
+  `IntersectionObserver` ou sous `prefers-reduced-motion`, le lecteur garde sa
+  source d'origine (`loading="lazy"`) : lecture au clic. Dans l'aperçu de Claude
+  Code, le démarrage n'a lieu que si le panneau est affiché ;
 - **écrite en dur** dans `index.html`, hors du back office : la zone `VIDEO` de
   `sync-content.mjs` n'a pas été remise ;
 - **ancre `#chaine`** et non `#agenda` : le lien « masterclass » de l'article

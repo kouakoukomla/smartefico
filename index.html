@@ -829,10 +829,11 @@ em{color:var(--yellow)}
    Revenue le 13 octobre 2026, à la demande du propriétaire, juste avant la
    FAQ — la place qu'occupait « Ma chaîne, en clair » jusqu'au 28 septembre.
    Même cadre qu'alors : 16:9, centré, 54 rem au plus, coins arrondis, ombre
-   portée et pas de halo (le fond est plat). Lecture au clic, et non plus
-   d'elle-même : posée en bas de page, une vidéo lancée à l'arrivée serait
-   déjà bien entamée quand le visiteur l'atteint. youtube-nocookie.com : même
-   lecteur, sans cookie de suivi tant que la lecture n'est pas lancée. */
+   portée et pas de halo (le fond est plat). Elle démarre seule, en sourdine,
+   quand elle entre à l'écran (voir le script en bas de page), et non à
+   l'arrivée sur la page : posée si bas, elle serait déjà entamée quand le
+   visiteur l'atteint. youtube-nocookie.com : même lecteur, sans cookie de
+   suivi tant que la lecture n'est pas lancée. */
 .video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
 .video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
   background:#000;border:0;
@@ -1817,7 +1818,8 @@ h1.display em{color:var(--yellow)}
          Une vidéo de la chaîne YouTube, demandée par le propriétaire le
          13 octobre 2026 juste avant la FAQ. Le titre est celui qu'il avait
          choisi pour la section du même rôle, retirée le 28 septembre. Écrite
-         en dur : aucune zone du back office ne la régénère. -->
+         en dur : aucune zone du back office ne la régénère. Le démarrage seul,
+         en sourdine, est fait par un script en bas de page. -->
     <section class="wrap" id="chaine">
       <div class="head head--centre">
         <h2 class="display">Ma chaîne, <em>en clair</em>.</h2>
@@ -1827,7 +1829,7 @@ h1.display em{color:var(--yellow)}
           <iframe src="https://www.youtube-nocookie.com/embed/Uge1VlfPbd8?rel=0"
             title="Générez des leads qualifiés pour vos offres et mettez l'IA générative à votre service"
             loading="lazy"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
@@ -2642,6 +2644,28 @@ h1.display em{color:var(--yellow)}
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 1 });
   compteurs.forEach(function (el) { guet.observe(el); });
+})();
+
+// Vidéo de la chaîne : elle démarre seule, en sourdine, quand elle entre à
+// l'écran — demande du propriétaire du 13 octobre 2026. Le lecteur perd sa
+// source tant qu'il est hors de vue, puis la retrouve avec autoplay=1&mute=1 :
+// aucun navigateur ne lance une vidéo avec le son sans un geste du visiteur.
+// Sans ce script, sans IntersectionObserver ou quand le visiteur demande moins
+// de mouvement, il garde sa source d'origine : lecture au clic.
+(function () {
+  var lecteur = document.querySelector('.video-scene__cadre iframe');
+  if (!lecteur || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var source = lecteur.getAttribute('src');
+  lecteur.removeAttribute('src');
+  // Le cadre doit avoir passé le dernier quart de l'écran.
+  var guet = new IntersectionObserver(function (entrees) {
+    if (!entrees[0].isIntersecting) return;
+    guet.disconnect();
+    lecteur.src = source + (source.indexOf('?') < 0 ? '?' : '&') +
+      'autoplay=1&mute=1&playsinline=1';
+  }, { rootMargin: '0px 0px -25% 0px' });
+  guet.observe(lecteur.parentNode);
 })();
 
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le
