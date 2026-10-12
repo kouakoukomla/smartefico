@@ -696,8 +696,8 @@ vers `@smartefico`. Trois différences voulues :
 
 Le style `.video-scene` revient, directement à l'état noir plat (ombre portée, sans
 halo). 610 px à 800 px de large ; aucun signalement nouveau d'impeccable. **L'article 9
-des CGC doit renommer YouTube** (voir « Aucune mesure d'audience ») : la phrase a été
-proposée le jour même, à faire valider avant la mise en ligne.
+des CGC nomme de nouveau YouTube** (voir « Aucune mesure d'audience »), dans une phrase
+proposée par Claude et validée par lui le jour même (« Je valide la phrase »).
 
 **Plus de section « Ma chaîne, en clair », ni de signature, depuis le 28 septembre
 2026.** Le propriétaire a demandé les deux d'un coup : « supprime la partie et la vidéo
@@ -938,7 +938,11 @@ aucune page n'intègre YouTube. La phrase qui la décrit (« La vidéo de la pag
 d'accueil est servie par YouTube… dès son arrivée. ») était devenue fausse ; son
 retrait lui a été proposé le jour même, et il l'a validé (« Valide la phrase des
 CGC »). L'article ne nomme donc plus que Tally et Google Fonts. Si une vidéo revient
-sur le site, la phrase doit revenir avec elle, avec son accord.
+sur le site, la phrase doit revenir avec elle, avec son accord. **C'est fait depuis le
+13 octobre 2026**, avec le retour de la vidéo (lecture au clic, cette fois) : « La vidéo
+de la page d'accueil est servie par YouTube en mode de confidentialité renforcée ; son
+lecteur se charge à l'approche de la vidéo, et YouTube peut alors enregistrer des
+informations sur le terminal du visiteur. » Validée par lui (« Je valide la phrase »).
 
 **Une page d'atterrissage à part : `guide.html`**, demandée le 17 septembre 2026 sur le
 modèle d'une page « Free download workbook ». Elle n'a pas de menu et se partage en
