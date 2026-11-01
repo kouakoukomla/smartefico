@@ -1825,9 +1825,10 @@ Trois corrections, faites le même jour à sa demande (« Oui, corrige-les ») :
   étaient tous servis sur smartefico.com. Rien de secret — le dépôt est public —
   mais `CLAUDE.md` y décrivait les limites de l'assistant. **Ne jamais y ajouter
   `api`, `lib`, `assets` ni `package*.json`** : la fonction de l'assistant en a
-  besoin. GitHub Pages, lui, sert toujours tout. Après la mise en ligne,
-  `https://smartefico.com/CLAUDE.md` doit répondre 404 : la documentation de Vercel
-  ne dit pas en toutes lettres que ce fichier vaut pour les déploiements depuis Git.
+  besoin. GitHub Pages, lui, sert toujours tout. **Vérifié en production le jour
+  même** : `.vercelignore` vaut bien pour les déploiements depuis Git — `CLAUDE.md`,
+  `.pages.yml`, `scripts/` et `.github/` répondent 404, les pages et `assets/` 200, et
+  `/api/chat` répond toujours.
 - **Dépendances** : `sharp` passe de 0.33 à **0.35.5** (failles de libvips, libheif
   et librsvg), et `zod` est forcé à **4.6.6 ou plus** par `overrides` dans
   `package.json` (épuisement de mémoire) — il vient du SDK d'Anthropic et de
