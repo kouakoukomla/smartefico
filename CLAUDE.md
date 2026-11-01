@@ -1139,6 +1139,32 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Maquette « Dopamine », 1er novembre 2026 au soir, en attente de son avis** : « essaie
+d'adapter mon site à ceci : https://www.dopaminestudio.io/ ». Commitée en local, **pas
+mise en ligne** ; l'accueil seul — le blog, les guides et les pages légales n'ont pas
+suivi. Tout tient dans le bloc « DOPAMINE », à la fin du `<style>` de `index.html`,
+plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts.
+
+- **Relevé dans les feuilles de la référence**, le navigateur intégré refusant le
+  site : noir plat, titres sans gras (graisse 400, 120 % d'interligne), texte en 300,
+  étiquettes en IBM Plex Mono sur pastille de verre, boutons en pilule, cartes
+  arrondies, FAQ en cartes séparées.
+- **Ce qui change** : les grands titres quittent la pile Helvetica 800 pour Poppins
+  400 (interligne 1,04, mesuré sans contact entre les lignes) — la consigne « Ne
+  touche pas aux grands titres » du 23 septembre cède à cette demande-ci ; les h2
+  passent de 41 à 44 px ; numéros, puces, menu, étiquettes et pastille des métiers
+  en IBM Plex Mono ; chiffres clés en 300 ; cartes arrondies à 18 px ; bouton
+  secondaire en verre ; FAQ en cartes.
+- **N'entrent pas** : son vert fluo `#CCFF00` (charte noir, jaune, blanc, comme pour
+  aicliently.com), Space Grotesk (proscrite), sa photo de hero en pleine hauteur,
+  ses étiquettes au-dessus de chaque titre de section (retirées du site à sa
+  demande, voir plus bas) et son logo géant en pied de page.
+- **Mesuré** : la page passe d'environ 6 685 à 6 860 px à 1 280 px ; menu à 61 et
+  102 px de marge à 1 280 px, 55 et 90 px à 900 px ; rien ne déborde à 375 px.
+  impeccable : aucun signalement nouveau, deux de moins (`italic-serif-display`).
+- **S'il valide** : passer le blog (`build-blog.mjs` recopie la feuille), puis les
+  autres feuilles. **S'il refuse** : `git revert` du commit.
+
 **Plus de marques ni de vidéo depuis le 1er novembre 2026**, à la demande du
 propriétaire : « Supprime maintenant "Ils nous ont fait confiance" et supprime aussi
 la vidéo Youtube ». Sont partis de `index.html` la section `.marques` (titre, deux
