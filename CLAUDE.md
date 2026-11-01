@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Site vitrine de SmartEfico (agence d'acquisition et d'automatisation IA), en français.
 Trois pages HTML statiques, sans framework, sans étape de compilation. Le contenu de
-`index.html` est directement ce qui est servi. Une seule pièce tourne côté serveur :
-la fonction Vercel `api/chat.js`, qui fait parler l'assistant de discussion (voir
-Architecture).
+`index.html` est directement ce qui est servi. Plus rien ne tourne côté serveur
+depuis le 1er novembre 2026 : la fonction `api/chat.js` est partie avec l'assistant
+de discussion (voir Architecture).
 
 ## Commandes
 
@@ -15,7 +15,6 @@ node scripts/sync-legal.mjs        # après toute modification de cgv.html ou cg
 node scripts/build-standalone.mjs  # régénère index-autonome.html
 node scripts/build-guide.mjs guide     # après toute modification de scripts/guide/guide.html
 node scripts/build-guide.mjs guide-ia  # après toute modification de scripts/guide/guide-ia.html
-node scripts/build-assistant.mjs   # après toute modification de index.html, guide.html ou guide-ia.html
 node scripts/build-partage.mjs     # après toute modification de scripts/partage/partage.html
 npx --yes serve .                  # aperçu local sur http://localhost:3000
 ```
@@ -789,7 +788,23 @@ publiés le même jour se départagent par l'ordre des fichiers, et non par l'he
 d'enregistrement — c'est le cas des deux articles du 5 septembre 2026. Pour décider
 lequel paraît en premier sur `blog.html`, il faut changer une date.
 
-**Un assistant de discussion répond aux visiteurs**, demandé par le propriétaire le
+**Plus d'assistant de discussion depuis le 1er novembre 2026**, à la demande du
+propriétaire (« je veux que tu supprime le bot du site »), le jour de l'audit de
+sécurité qui avait montré qu'on pouvait l'appeler hors du site. Tout est parti : la
+pastille, son style et son script (entre les anciens repères `ASSISTANT:START/END`),
+`api/chat.js`, `lib/contexte-assistant.js`, `scripts/build-assistant.mjs`,
+`scripts/assistant/journal.gs`, l'étape du workflow, l'entrée `functions` de
+`vercel.json`, les dépendances `@anthropic-ai/sdk` et `@vercel/functions` (et
+l'`override` de `zod` qui les suivait), et l'exception `pulsing-dot` d'impeccable.
+Le blog a été régénéré, sa feuille recopiant celle de l'accueil. **Restent hors du
+dépôt, à la charge du propriétaire** : la clé `cle_smartefico` dans Vercel et dans la
+console Anthropic (à révoquer), la variable `ASSISTANT_GOOGLE_SHEET`, et la feuille
+Google des conversations, dont le script continue de purger chaque nuit les lignes de
+plus de six mois. **La ligne de l'article 10 des CGC** qui décrit l'assistant n'a pas
+été touchée : c'est son texte, et le retrait lui a été proposé. Ce qui suit décrit
+l'assistant tel qu'il était ; l'historique git le garde entier.
+
+**Un assistant de discussion répondait aux visiteurs**, demandé par le propriétaire le
 18 septembre 2026 : une pastille jaune « Une question ? » en bas à droite de
 `index.html` ouvre un panneau branché sur Claude. Il répond sur SmartEfico, cerne la
 situation du visiteur et l'oriente vers `81VkKx` ou vers celui des deux guides qui
@@ -1795,6 +1810,10 @@ tenu : aucun secret dans le dépôt ni dans son historique (clé, jeton, adresse
 l'assistant n'écrit qu'en `textContent` et ne fait des liens que des adresses
 `http(s)` ; l'écouteur `message` des pages de guide filtre l'origine `tally.so` ; le
 journal neutralise les formules ; le workflow ne se déclenche que sur `push`.
+
+**Ce risque a disparu avec l'assistant, retiré le soir même** (voir Architecture) :
+le site n'a plus aucune fonction serveur. Ce qui suit est l'état constaté pendant
+l'audit.
 
 **Le seul risque réel est financier** : l'assistant peut être appelé hors du site.
 Un `curl` avec `Origin: https://smartefico.com` passe la vérification d'origine —
