@@ -37,8 +37,10 @@ p,h1,h2{margin:0}
    italique sont à l'encre. Seuls ceux du grand titre portent un trait de
    surligneur jaune, comme sur l'accueil (fond blanc du 5 octobre 2026). */
 em{color:var(--ink)}
-.display em{/* rouge de la charte (1er novembre 2026), 5,3:1 sur le blanc */
-  color:#D7141A}
+.display em{/* surligneur jaune épais sous l encre (1er novembre 2026) */
+  color:var(--ink);background-image:linear-gradient(to top,transparent .04em,var(--yellow) .04em,
+  var(--yellow) .44em,transparent .44em);background-repeat:no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
 
 .haut{display:flex;justify-content:center;padding-top:clamp(1.75rem,4vw,2.75rem)}
 .marque{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:-.03em;font-size:1.105rem;text-decoration:none}

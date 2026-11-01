@@ -86,8 +86,10 @@ em{color:var(--ink)}
 h1.display{font-size:clamp(1.87rem,4.08vw,3.315rem);letter-spacing:-.042em;max-width:26ch}
 h1.display em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.01em;padding-right:.04em;
-  /* rouge de la charte (1er novembre 2026), 5,3:1 sur le blanc */
-  color:#D7141A}
+  /* surligneur jaune épais sous l encre (1er novembre 2026) */
+  color:var(--ink);background-image:linear-gradient(to top,transparent .04em,var(--yellow) .04em,
+  var(--yellow) .44em,transparent .44em);background-repeat:no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
 h2.display{font-size:clamp(1.445rem,2.89vw,2.21rem)}
 h3{font-weight:700;letter-spacing:-.02em;font-size:.977rem;line-height:1.25}
 .lead{font-size:clamp(.85rem,1.275vw,.977rem);color:var(--ink-2);max-width:58ch}
@@ -215,8 +217,8 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
 
 /* ---------- appel, calé sur le bloc contact de l'accueil ---------- */
 .appel{display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:clamp(1rem,2.4vw,1.5rem);background:#0A0A0A;border:1px solid #1F1F1F;
-  --ink:#FFFFFF;--ink-2:#B4B4B0;--ink-3:#8A8A86;--ground:#000000;color:var(--ink);
+  gap:clamp(1rem,2.4vw,1.5rem);background:#F4F4F1;border:1px solid var(--line);
+  color:var(--ink);
   border-radius:1.4rem;padding:clamp(1.6rem,4.2vw,3rem) clamp(1.5rem,3.2vw,2.25rem)}
 .appel .lead{max-width:52ch}
 .appel__note{color:var(--ink-3);font-size:.75rem}

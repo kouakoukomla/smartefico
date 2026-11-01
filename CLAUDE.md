@@ -1139,6 +1139,32 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Plus de blocs noirs, et plus de rouge dans les textes, depuis le 1er novembre 2026
+au soir** — demande du propriétaire, après la mise en ligne du rouge : « Fait passer
+les blocs noirs en blanc. Tu mettras les écrits qui sont en rouge, change les en jaune
+et tu soulignes ou tu le mets de sorte que cela soit plus visible ».
+
+- **Les îlots noirs sont partis** (règle `.nav__in,.marque,.manifeste,…` du bloc
+  « FOND BLANC » remplacée) : menu, manifeste, bandeau des cinq étapes, schémas
+  d'agents, contact, pied de page, barre des fenêtres légales, barre du haut de
+  `cgv.html`/`cgc.html` et bloc d'appel d'`exemples-ia.html` passent au clair
+  (`--surface` `#F4F4F1` pour les panneaux). Les couleurs écrites en dur pour le noir
+  (`#FFF`, `#B5B5B1`, `#333`…) sont reprises une à une dans le bloc de thème.
+- **Les logos clients** sont noircis par `filter:brightness(0)` sur des carreaux
+  blancs à filet d'encre ; **le logo du menu et du pied** passe à `logo.png` (avec
+  plaque) par le champ `logo` du back office (`content/pages/visuels.md`), la règle
+  « plaque noire sur fond clair » l'imposant.
+- **Reste noire, volontairement : la carte du formulaire des deux pages de guide**.
+  Le formulaire Tally y est réglé texte blanc sur fond transparent, dans Tally : une
+  carte claire le rendrait illisible. La passer au blanc demanderait de changer aussi
+  les couleurs du formulaire dans Tally (`0Q47ZN`, `LZ8MLz`).
+- **Les mots en italique des grands titres** ne sont plus rouges : à l'encre, sur un
+  **trait de surligneur jaune épais** (de .04em à .44em de hauteur, plus large que
+  celui du 5 octobre), sur toutes les pages. Le jaune ne se lit pas en lettres sur du
+  blanc (1,5:1), d'où le surligneur plutôt que du texte jaune.
+- **Le rouge ne reste que dans le contour animé du menu** et le souligné de ses liens
+  au survol : ce ne sont pas des écrits.
+
 **Blanc, jaune et rouge depuis le 1er novembre 2026**, à la demande du propriétaire
 (« je veux que tu mettes le site en blanc, jaune, rouge »). Le fond blanc du 5 octobre
 a été réappliqué tel quel (revert de son annulation `44812ad`), **îlots noirs

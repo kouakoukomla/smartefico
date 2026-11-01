@@ -44,17 +44,18 @@ a{color:inherit}
 .mono{font-family:inherit;font-weight:600;
   font-size:.75rem;letter-spacing:.16em;text-transform:uppercase}
 
-/* barre du haut, en noir comme le site */
-.top{background:var(--black);color:#FFFFFF;border-bottom:1px solid var(--line)}
+/* barre du haut, claire depuis le 1er novembre 2026 (« Fait passer les
+   blocs noirs en blanc ») ; le logo garde sa plaque, faite pour le clair */
+.top{background:#F4F4F1;color:var(--ink);border-bottom:1px solid var(--line)}
 .top__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding-block:.7rem}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;
   letter-spacing:-.01em}
 .brand img{width:2.15rem;height:2.15rem;flex:none;object-fit:contain}
 .back{text-decoration:none;border:1px solid var(--line);border-radius:999px;
-  padding:.45rem 1rem;color:#C9C9C3;white-space:nowrap;
+  padding:.45rem 1rem;color:var(--ink-2);white-space:nowrap;
   transition:border-color .18s ease,color .18s ease}
-.back:hover{border-color:var(--yellow);color:var(--yellow)}
+.back:hover{border-color:var(--ink);color:var(--ink)}
 
 header.doc{padding-block:clamp(2.5rem,7vw,4.5rem) clamp(1.5rem,4vw,2.5rem)}
 header.doc .mono{color:var(--ink-2)}

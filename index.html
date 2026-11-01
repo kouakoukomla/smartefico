@@ -1014,20 +1014,39 @@ h2.head__eyebrow{font-weight:600;margin:0}
 }
 ::selection{background:var(--yellow);color:var(--on-yellow)}
 
-/* Les îlots sombres : les jetons du noir plat. */
-.nav__in,.marque,.manifeste,.invert,.agent figure,.contact,.foot,
-.doc-modal__bar{
-  --ground:#000000;--surface:#0E0E0E;--ink:#FFFFFF;--ink-2:#B4B4B0;--ink-3:#8A8A86;
-  --line:#1F1F1F;--noir:#0A0A0A;--noir-2:#151515;--mur:#333333;color:var(--ink)}
+/* Plus d îlots noirs depuis le 1er novembre 2026 (« Fait passer les blocs
+   noirs en blanc ») : menu, marques, manifeste, bandeau des cinq étapes,
+   schémas d agents, contact, pied de page et barre des fenêtres légales
+   prennent les jetons clairs. Leurs couleurs écrites en dur pour le noir
+   sont reprises une à une ci-dessous. */
+.invert,.contact,.doc-modal__bar{background:var(--surface);color:var(--ink)}
+.invert .display,.head--sombre .display,.contact .display,.step h3,
+.guide-lien__texte strong{color:var(--ink)}
+.invert .lead,.head--sombre .lead,.step p,.contact__phrase,
+.guide-lien__texte span{color:var(--ink-2)}
+.step{background:var(--ground);border-color:var(--line)}
+.step:hover,.step[open]{border-color:var(--mur)}
+.step .chip{border-color:#CFCFC9;color:var(--ink-2)}
+.flux__ligne{stroke:#B8B8B2}
+.flux__noeud{stroke:#B8B8B2}
+.doc-modal__bar{border-bottom:1px solid var(--line)}
+.doc-modal__close{border-color:#CFCFC9;color:var(--ink-2)}
+/* Les logos clients sont des silhouettes blanches : sur le carreau blanc,
+   un filtre les noircit. */
+.marque{background:var(--ground);border-color:var(--ink);box-shadow:none}
+.marque__logo{filter:brightness(0)}
 
 /* Les italiques sont à l'encre. Ceux du titre d'accueil gardent le jaune,
    en trait de surligneur posé sous le bas des lettres. */
 em{color:var(--ink)}
-/* Les mots en italique des grands titres sont rouges, sur le blanc comme
-   dans les ilots noirs, où le rouge s eclaircit pour rester lisible. */
-.display em,h1.display em{color:var(--rouge)}
-.manifeste .display em,.invert .display em,.contact .display em,
-.manifeste em,.invert h2 em,.contact h2 em{color:var(--rouge-hi)}
+/* Les mots en italique des grands titres : en rouge le temps d une
+   journée, puis en jaune, « souligné ou mis de sorte que cela soit plus
+   visible » (1er novembre 2026). Le jaune ne se lit pas en lettres sur le
+   blanc : il passe en trait de surligneur épais, sous des lettres à l encre. */
+.display em,h1.display em,.manifeste__fort em{color:var(--ink);
+  background-image:linear-gradient(to top,transparent .04em,var(--yellow) .04em,
+  var(--yellow) .44em,transparent .44em);background-repeat:no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
 
 /* Pastille des métiers : or foncé sur voile jaune (6,9:1). */
 .hero__metiers{color:#6B5200;border-color:rgba(230,184,0,.75);background:rgba(255,204,0,.16)}
@@ -1071,9 +1090,9 @@ em{color:var(--ink)}
 .doc-modal__foot a,.doc-modal__body .contact-box a{border-bottom-color:var(--mur)}
 .foot__links a{border-bottom-color:var(--mur)}
 
-/* Le pied de page devient un panneau noir, comme le bloc de contact : le
-   logo reste sur son sombre, et la page finit sur un bloc franc. */
-.foot{background:var(--noir);border:1px solid var(--line);border-radius:1.4rem;
+/* Le pied de page reste un panneau arrondi, désormais clair comme le bloc
+   de contact. */
+.foot{background:var(--surface);border:1px solid var(--line);border-radius:1.4rem;
   padding:2rem clamp(1.5rem,3.2vw,2.25rem);margin-bottom:clamp(.75rem,2vw,1.25rem)}
 
 
@@ -1181,7 +1200,7 @@ em{color:var(--ink)}
     </svg>
     <a class="brand" href="#top">
       <!-- LOGO : remplacez assets/logo.png par votre fichier, il se met à jour partout -->
-      <!-- VISUEL_LOGO_NAV:START --><img class="logo" src="assets/logo-clair.png" alt="SmartEfico"><!-- VISUEL_LOGO_NAV:END -->
+      <!-- VISUEL_LOGO_NAV:START --><img class="logo" src="assets/logo.png" alt="SmartEfico"><!-- VISUEL_LOGO_NAV:END -->
       SmartEfico
     </a>
     <div class="nav__links" id="nav-menu">
@@ -1860,7 +1879,7 @@ em{color:var(--ink)}
     <footer class="wrap foot">
       <div class="foot__row">
       <span class="foot__brand">
-        <!-- VISUEL_LOGO_PIED:START --><img class="logo" src="assets/logo-clair.png" alt=""><!-- VISUEL_LOGO_PIED:END -->
+        <!-- VISUEL_LOGO_PIED:START --><img class="logo" src="assets/logo.png" alt=""><!-- VISUEL_LOGO_PIED:END -->
         <span class="mono">SmartEfico</span>
       </span>
       <span class="icons">
