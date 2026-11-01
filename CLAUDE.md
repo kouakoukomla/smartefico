@@ -1037,6 +1037,16 @@ place d'un septième de nouveau libre. Mesurées sur les boîtes des éléments 
 sur l'encre, comme les chiffres ci-dessus, qui en sont un peu plus courts) : environ
 87 px entre la marque et les liens, 154 px avant « Contact ».
 
+**Les liens tiennent en ligne dès 56 rem (896 px) depuis le 1er novembre 2026**, et
+non plus 70 rem (1 120 px) : « Ramène-moi les noms sur le haut de l'onglet, là où il
+y a "contact" ». Sur son écran, la barre ne montrait que la marque, le bouton du menu
+et « Contact » — un portable de 1 366 px réglé à 125 % n'affiche que 1 093 px. Le seuil
+change à trois endroits : `@media (min-width:56rem)` sur `.nav__links`, le
+`max-width:55.99rem` du menu déroulant, et le `matchMedia` du script qui referme ce
+menu. Mesuré sur les boîtes : 61 et 101 px de marge à 1 093 px, 49 et 79 px à
+900 px ; à 820 px il n'en restait que 24, d'où le seuil. Sous 56 rem, bouton du menu
+comme avant. Les liens restent au centre de la barre.
+
 - Le formulaire est le Tally **`0Q47ZN`**, créé pour elle : prénom, nom, e-mail,
   téléphone facultatif (France par défaut), « Êtes-vous dirigeant(e) d'entreprise ? »,
   consentement obligatoire, et trois champs cachés `utm_source`, `utm_medium`,

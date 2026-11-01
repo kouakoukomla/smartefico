@@ -218,7 +218,12 @@ p{margin:0}
   font-weight:800;letter-spacing:-.03em;font-size:.977rem;flex:none}
 /* les liens occupent le centre, entre la marque et l'appel à l'action */
 .nav__links{display:none;gap:clamp(1rem,1.8vw,1.5rem);margin-inline:auto}
-@media (min-width:70rem){.nav__links{display:flex}}
+/* En ligne dès 56 rem (896 px), et non plus 70 rem, depuis le 1er novembre
+   2026, à la demande du propriétaire (« ramène-moi les noms sur le haut ») :
+   un portable de 1 366 px réglé à 125 % n'affiche que 1 093 px, et les liens
+   y passaient sous le bouton du menu. Mesuré à 900 px : 64 px de marge de
+   chaque côté des liens ; à 820, il n'en reste que 24. */
+@media (min-width:56rem){.nav__links{display:flex}}
 /* liens de navigation : très gras et à pleine encre, comme demandé.
    En majuscules, une chasse négative resserre trop : on la remet à zéro et
    on ouvre légèrement l interlettrage, sans quoi les mots se collent. */
@@ -277,7 +282,7 @@ p{margin:0}
 }
 
 /* ---------- menu déroulant, sous le seuil d affichage en ligne ---------- */
-@media (max-width:69.99rem){
+@media (max-width:55.99rem){
   .nav__in{flex-wrap:wrap}
   /* les liens passent sous la marque, sur toute la largeur de la pilule.
      display:flex annule le display:none de la règle de base : c est ce qui
@@ -2158,7 +2163,7 @@ h1.display em{color:var(--yellow)}
 
   // écran élargi ou téléphone tourné : les liens repassent en ligne,
   // l état ouvert n aurait plus de sens et laisserait la croix affichée
-  var large = window.matchMedia("(min-width:70rem)");
+  var large = window.matchMedia("(min-width:56rem)");
   var suivre = function (m) { if (m.matches) poser(false); };
   if (large.addEventListener) large.addEventListener("change", suivre);
   else if (large.addListener) large.addListener(suivre);
