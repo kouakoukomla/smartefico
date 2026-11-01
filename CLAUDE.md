@@ -1157,6 +1157,16 @@ centré entre « Agents IA » et la FAQ, vers `youtube.com/watch?v=Uge1VlfPbd8` 
 nouvel onglet. Un simple lien ne charge rien de YouTube : l'article 9 n'a pas à en
 parler.
 
+**Tous les italiques sont jaunes depuis le 1er novembre 2026** (« Tu dois écrire en
+couleur jaune les écrits qui sont en italique ») : les mots des titres de section
+(`h2`), des titres de carte, du manifeste et du texte courant (« closers »,
+« setter »…), et plus seulement ceux du titre d'accueil. Une règle
+`em,.display em,h1.display em{color:var(--yellow)}` dans le bloc « NOIR PLAT » de
+`index.html` (donc le blog et les articles), et `em{color:var(--yellow)}` dans les
+feuilles de `cgv.html`, `cgc.html`, des deux guides, de leurs pages de remerciement et
+d'`exemples-ia.html`. Le paragraphe « Le jaune ne marque plus que deux choses » plus
+bas ne vaut donc plus pour les italiques.
+
 **Noir plat de nouveau depuis le 1er novembre 2026 au soir.** Dans la même journée,
 le site est passé en blanc, jaune et rouge (commits `bb3e190`, `3587f1a`), puis ses
 blocs noirs au blanc avec les titres en surligneur jaune (`7922b7c`), tout cela mis en
