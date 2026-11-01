@@ -1139,79 +1139,26 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Plus de blocs noirs, et plus de rouge dans les textes, depuis le 1er novembre 2026
-au soir** — demande du propriétaire, après la mise en ligne du rouge : « Fait passer
-les blocs noirs en blanc. Tu mettras les écrits qui sont en rouge, change les en jaune
-et tu soulignes ou tu le mets de sorte que cela soit plus visible ».
+**Noir plat de nouveau depuis le 1er novembre 2026 au soir.** Dans la même journée,
+le site est passé en blanc, jaune et rouge (commits `bb3e190`, `3587f1a`), puis ses
+blocs noirs au blanc avec les titres en surligneur jaune (`7922b7c`), tout cela mis en
+ligne ; le propriétaire l'a ensuite jugé « pas joli » et a demandé « tout en noir ».
+Les trois commits ont été annulés d'un seul `git revert` : le site est revenu, au
+caractère près (hors ce fichier), à l'état du commit `7bf56ed` — noir plat, violet dans
+le contour du menu, `logo-clair.png` dans le champ `logo`. **Ce qui suit sur le blanc
+et le rouge décrit donc un état annulé**, gardé dans l'historique git ; le « noir
+plat » plus bas redevient l'état en vigueur. Leçon : sur ce site, **un changement de
+couleur se montre en maquette avant d'être mis en ligne**, et la mise en ligne ne
+vaut validation que pour ce qui a été vu.
 
-- **Les îlots noirs sont partis** (règle `.nav__in,.marque,.manifeste,…` du bloc
-  « FOND BLANC » remplacée) : menu, manifeste, bandeau des cinq étapes, schémas
-  d'agents, contact, pied de page, barre des fenêtres légales, barre du haut de
-  `cgv.html`/`cgc.html` et bloc d'appel d'`exemples-ia.html` passent au clair
-  (`--surface` `#F4F4F1` pour les panneaux). Les couleurs écrites en dur pour le noir
-  (`#FFF`, `#B5B5B1`, `#333`…) sont reprises une à une dans le bloc de thème.
-- **Les logos clients** sont noircis par `filter:brightness(0)` sur des carreaux
-  blancs à filet d'encre ; **le logo du menu et du pied** passe à `logo.png` (avec
-  plaque) par le champ `logo` du back office (`content/pages/visuels.md`), la règle
-  « plaque noire sur fond clair » l'imposant.
-- **Reste noire, volontairement : la carte du formulaire des deux pages de guide**.
-  Le formulaire Tally y est réglé texte blanc sur fond transparent, dans Tally : une
-  carte claire le rendrait illisible. La passer au blanc demanderait de changer aussi
-  les couleurs du formulaire dans Tally (`0Q47ZN`, `LZ8MLz`).
-- **Les mots en italique des grands titres** ne sont plus rouges : à l'encre, sur un
-  **trait de surligneur jaune épais** (de .04em à .44em de hauteur, plus large que
-  celui du 5 octobre), sur toutes les pages. Le jaune ne se lit pas en lettres sur du
-  blanc (1,5:1), d'où le surligneur plutôt que du texte jaune.
-- **Le rouge ne reste que dans le contour animé du menu** et le souligné de ses liens
-  au survol : ce ne sont pas des écrits.
-
-**Blanc, jaune et rouge depuis le 1er novembre 2026**, à la demande du propriétaire
-(« je veux que tu mettes le site en blanc, jaune, rouge »). Le fond blanc du 5 octobre
-a été réappliqué tel quel (revert de son annulation `44812ad`), **îlots noirs
-compris**, sur sa réponse à la maquette : « garde les blocs noir ». Le rouge arrive
-avec deux rôles, et deux seulement :
-
-- **les mots en italique des grands titres** (`.display em`, `h1` comme `h2`), en
-  `--rouge` `#D7141A` (5,3:1 sur blanc) ; dans les îlots noirs (manifeste, bandeau des
-  cinq étapes, contact), en `--rouge-hi` `#FF4B3E`. Le trait de surligneur jaune sous
-  les mots du titre d'accueil est parti : il faisait doublon avec le rouge. Les pages à
-  feuille propre (deux guides, leurs pages de remerciement, `exemples-ia.html`) ont
-  reçu le même `#D7141A` sur leur `h1` ;
-- **le contour animé de la barre de navigation**, où il remplace le violet — jetons
-  `--violet`/`--violet-hi` et classes `nav__*--violet` renommés en `--rouge`. **Le
-  violet n'existe donc plus nulle part** ; ce qui est écrit plus bas sur lui décrit
-  l'état d'avant. Le souligné des liens du menu au survol est rouge aussi.
-
-**Le jaune garde ce qui se clique**, et la pastille des métiers (or foncé sur voile
-jaune). Il ne sert jamais de texte sur le blanc, où il ne se lit pas. Non refaits :
-l'image de partage (toujours noire et jaune) et les guides PDF.
-
-**Fond blanc depuis le 5 octobre 2026**, sur tout le site, à la demande du
-propriétaire (« mets le fond du site en blanc et adapte les autres couleurs aux
-différentes palettes »). Ce qui suit sur le « noir plat » décrit l'état du 23 septembre
-au 5 octobre ; l'historique git le garde.
-
-- **Palette** : fond `#FFFFFF`, cartes `#F4F4F1`, encre `#141414`, gris `#4E4E49` et
-  `#6B6B66`, filets `#DEDED9`, `--mur` `#8A8A84`. `theme-color` vaut `#FFFFFF`.
-- **Sur `index.html`**, le bloc « FOND BLANC » remplace « NOIR PLAT » à la fin du
-  `<style>` ; le blog et les articles le recopient. Les autres pages ont repris, dans
-  leur feuille propre, le fond blanc du 23 septembre (patch du commit `d71e697` appliqué
-  à l'envers), avec deux écarts : le surligneur jaune ne vit que sous les mots du grand
-  titre (`.display em`), plus sous chaque italique, et les coches des guides sont à
-  l'encre, sans pastille.
-- **Îlots restés noirs** (jetons du noir plat redéclarés sur eux) : barre de
-  navigation, carreaux des marques (filet blanc passé à l'intérieur, `inset`),
-  manifeste, bandeau des cinq étapes, écrans des schémas d'agents, contact, pied de
-  page (devenu panneau arrondi), panneau de l'assistant, barre des fenêtres légales,
-  carte du formulaire des guides, bloc d'appel d'`exemples-ia.html`.
-- **Le jaune** : aplats cliquables inchangés ; les deux mots du titre d'accueil (et des
-  `h1` des guides, du blog, d'`exemples-ia.html`) passent à l'encre sur trait de
-  surligneur jaune ; la pastille des métiers en or foncé `#6B5200` sur voile jaune 16 %
-  (6,9:1). Survols secondaires à l'encre.
-- **Logos** : `logo.png` (avec plaque) revient sur les en-têtes des guides, de leurs
-  pages de remerciement, du blog, des articles et d'`exemples-ia.html` ; les îlots
-  sombres gardent `logo-clair.png`. Le champ `logo` du back office ne bouge pas.
-- **Non refaits** : l'image de partage (toujours noire) et les guides PDF.
+**Un fond blanc a été essayé et annulé le 5 octobre 2026.** À sa demande (« mets le
+fond du site en blanc et adapte les autres couleurs aux différentes palettes »), tout
+le site est passé au blanc — bloc « FOND BLANC » à la place de « NOIR PLAT », îlots
+noirs pour le menu, les marques, le manifeste, le bandeau des cinq étapes, le contact,
+le pied et l'assistant, surligneur jaune sous les mots du titre — et a été mis en ligne
+(commit `48d6506`), puis annulé le jour même (« reviens sur le précédent site, j'annule
+ceci ») par un `git revert`. Le noir plat ci-dessous reste l'état en vigueur. Si le
+blanc revient, tout est dans ce commit.
 
 **Noir plat depuis le 23 septembre 2026, au soir**, sur tout le site. Le propriétaire
 a donné un modèle — « Tu peux adapter mon site au fond d'écran de celui-ci :
