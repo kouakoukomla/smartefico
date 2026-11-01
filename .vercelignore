@@ -1,0 +1,18 @@
+# Fichiers du dépôt qui ne font pas partie du site : Vercel ne les envoie pas,
+# ils ne sont donc pas servis sur smartefico.com. Le dépôt est public, rien de
+# secret n'y est ; c'est surtout CLAUDE.md, qui décrit les limites de
+# l'assistant, qu'il est inutile de laisser à une adresse du site.
+# Ne jamais y mettre api/, lib/ (lu par api/chat.js), assets/, package.json
+# ni package-lock.json : la fonction de l'assistant en a besoin.
+# GitHub Pages ne lit pas ce fichier et continue de tout servir.
+CLAUDE.md
+PRODUCT.md
+README.md
+.pages.yml
+.github
+.impeccable
+scripts
+content
+.git-blame-ignore-revs
+.gitattributes
+.nojekyll

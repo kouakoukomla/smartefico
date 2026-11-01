@@ -854,7 +854,8 @@ que l'agence vend : des agents IA qui qualifient.
   minutes ; 21 messages, 1 200 caractères par question et 16 000 au total ; la
   génération coupée quand le visiteur quitte la page. Le compteur d'IP vit dans la
   mémoire d'une instance que Vercel recycle : il arrête un visiteur trop pressé, pas
-  une attaque. **Le vrai garde-fou est la limite de dépense mensuelle posée dans la
+  une attaque. La liste d'origines non plus : un script hors navigateur écrit
+  l'en-tête `Origin` qu'il veut (vérifié le 1er novembre 2026, voir Sécurité). **Le vrai garde-fou est la limite de dépense mensuelle posée dans la
   console d'Anthropic**, et une clé réservée au site, révocable seule.
 - **Coût estimé** : environ 5 000 tokens de préfixe, relus au dixième du prix à partir
   de la deuxième question, soit de l'ordre de 5 à 10 centimes pour une conversation
@@ -1784,3 +1785,58 @@ tous**, code compris. Rien de secret ne doit entrer dans le dépôt.
 
 `index-autonome.html` est exclu du dépôt : servi en ligne, il ferait doublon avec la
 page d'accueil.
+
+## Sécurité
+
+Audit demandé par le propriétaire le 1er novembre 2026 (« vérifie mon site pour voir
+s'il y a un souci de sécurité »). **Aucune faille grave.** Ce qui a été vérifié et
+tenu : aucun secret dans le dépôt ni dans son historique (clé, jeton, adresse
+`/exec` du journal) ; la clé Anthropic seulement côté serveur ; la bulle de
+l'assistant n'écrit qu'en `textContent` et ne fait des liens que des adresses
+`http(s)` ; l'écouteur `message` des pages de guide filtre l'origine `tally.so` ; le
+journal neutralise les formules ; le workflow ne se déclenche que sur `push`.
+
+**Le seul risque réel est financier** : l'assistant peut être appelé hors du site.
+Un `curl` avec `Origin: https://smartefico.com` passe la vérification d'origine —
+constaté en production avec un corps invalide, arrêté en 400, donc sans appel payant.
+Le débit par IP ne tient pas face à des adresses tournantes. **Le plafond de dépense
+mensuel de la console Anthropic reste le seul vrai garde-fou** ; il n'a pas pu être
+vérifié d'ici, c'est au propriétaire de s'assurer qu'il est posé et bas. Pour aller
+plus loin : une règle de limitation de débit du pare-feu Vercel sur `/api/chat`, ou
+un compteur partagé (Redis).
+
+Trois corrections, faites le même jour à sa demande (« Oui, corrige-les ») :
+
+- **En-têtes de sécurité** dans `vercel.json`, sur toutes les réponses :
+  `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`,
+  `Permissions-Policy` (caméra, micro, position) et une `Content-Security-Policy`
+  **volontairement partielle** — `frame-ancestors`, `base-uri`, `object-src`,
+  `form-action`, `upgrade-insecure-requests`. Elle ne restreint ni les scripts, ni les
+  styles, ni les cadres, ni les connexions : tout le site est en `<script>` et
+  `<style>` en ligne, et Tally, YouTube et Google Fonts chargent leurs propres
+  ressources. Une liste blanche complète demanderait des empreintes de chaque script,
+  à refaire à chaque retouche. Ne pas mettre `autoplay`, `accelerometer` ou
+  `gyroscope` dans `Permissions-Policy` : le lecteur YouTube de `#chaine` les
+  demande. Vérifié dans un serveur local qui applique ces en-têtes : accueil, guide,
+  article à formulaire, assistant, aucune violation dans la console. **GitHub Pages
+  ne lit pas `vercel.json`** : sa copie reste sans ces en-têtes.
+- **`.vercelignore`** retire du site ce qui n'en fait pas partie : `CLAUDE.md`,
+  `PRODUCT.md`, `README.md`, `.pages.yml`, `.github`, `scripts`, `content`… Ils
+  étaient tous servis sur smartefico.com. Rien de secret — le dépôt est public —
+  mais `CLAUDE.md` y décrivait les limites de l'assistant. **Ne jamais y ajouter
+  `api`, `lib`, `assets` ni `package*.json`** : la fonction de l'assistant en a
+  besoin. GitHub Pages, lui, sert toujours tout. Après la mise en ligne,
+  `https://smartefico.com/CLAUDE.md` doit répondre 404 : la documentation de Vercel
+  ne dit pas en toutes lettres que ce fichier vaut pour les déploiements depuis Git.
+- **Dépendances** : `sharp` passe de 0.33 à **0.35.5** (failles de libvips, libheif
+  et librsvg), et `zod` est forcé à **4.6.6 ou plus** par `overrides` dans
+  `package.json` (épuisement de mémoire) — il vient du SDK d'Anthropic et de
+  `@vercel/functions`, qui ne l'utilisent pas sur les messages des visiteurs.
+  `npm audit` : 0 vulnérabilité. sharp 0.35 demande Node 20.9 ou plus : le workflow
+  passe à **Node 24**, Node 20 n'étant plus maintenu depuis avril 2026. Éprouvé :
+  les appels de sharp des trois scripts sur des copies, `optimize-images.mjs` (rien à
+  optimiser, aucun fichier touché), et `api/chat.js` contre une fausse API Messages.
+
+**Le reste de la sécurité tient aux comptes**, pas au code : le back office est le
+compte GitHub, la clé vit chez Vercel, les conversations dans Google. La double
+authentification sur GitHub, Vercel, Google, Anthropic et Tally lui a été conseillée.

@@ -31,9 +31,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # 24 et non 20 : Node 20 n'est plus maintenu depuis avril 2026, et sharp
+      # 0.35 en demande au moins 20.9.
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       # « npm ci » est reproductible, mais le lockfile peut avoir été généré sous
       # Windows : sharp a des binaires par plateforme, d'où le repli sur install.
