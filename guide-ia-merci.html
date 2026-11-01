@@ -17,7 +17,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@1&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
 <style>
 /* Même feuille de base que guide.html, noir plat compris. */
 :root{
@@ -79,6 +79,21 @@ em{color:var(--yellow)}
 .bas nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
 .bas a{color:var(--ink-2);text-decoration:none}
 .bas a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* Style « Dopamine », 1er novembre 2026, comme guide.html : grand titre en
+   Poppins 400, étiquette en pastille de verre, bouton à filet en verre. */
+:root{--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --verre:rgba(255,255,255,.07);--verre-filet:rgba(255,255,255,.14)}
+.display{font-family:inherit;font-weight:400;letter-spacing:-.036em;line-height:1.06}
+.display em{letter-spacing:0;font-size:1.04em}
+.marque{font-weight:600;letter-spacing:-.02em}
+.etiquette{font-family:var(--mono);font-weight:500;letter-spacing:.06em;color:#D6D6D2;
+  padding:.45rem .9rem;border-radius:999px;border:1px solid var(--verre-filet);background:var(--verre)}
+.lead{font-weight:300;color:#CFCFCB}
+.btn{font-weight:500}
+.btn--filet{border-color:var(--verre-filet);background:var(--verre)}
+.suite{border-radius:18px}
+.suite h2{font-weight:500;letter-spacing:-.02em}
 </style>
 </head>
 <body>

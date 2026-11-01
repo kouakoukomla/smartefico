@@ -45,7 +45,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@1&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
 <style>
 /* Mêmes codes que index.html : noir plat depuis le 23 septembre 2026 au soir
    — fond #000000 sans dégradé, cartes relevées à #0E0E0E, filets #1F1F1F.
@@ -227,6 +227,38 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
 .bas nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
 .bas a{color:var(--ink-2);text-decoration:none}
 .bas a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* Style « Dopamine », 1er novembre 2026, comme l'accueil (voir CLAUDE.md,
+   Design) : titres en Poppins 400 au lieu de la pile Helvetica 800,
+   étiquettes, numéros et puces en IBM Plex Mono, cartes arrondies, bouton à
+   filet en verre, FAQ en cartes séparées. */
+:root{--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --verre:rgba(255,255,255,.07);--verre-filet:rgba(255,255,255,.14);
+  --surface:#101010;--line:#262626}
+.display{font-family:inherit;font-weight:400;letter-spacing:-.032em;line-height:1.04}
+h1.display{letter-spacing:-.038em}
+h2.display{font-size:clamp(1.55rem,3.2vw,2.4rem)}
+h1.display em{letter-spacing:0;font-size:1.04em}
+h3{font-weight:500;letter-spacing:-.012em}
+.lead{font-weight:300;color:#CFCFCB}
+.mono{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.carte__no,.etapes li::before{font-family:var(--mono);font-weight:400;letter-spacing:0;
+  font-size:clamp(.95rem,1.5vw,1.1rem);line-height:1}
+.chip{font-family:var(--mono);font-weight:500;letter-spacing:.04em;border-color:transparent;
+  background:var(--verre);color:#D6D6D2}
+.carte,.repere,.etapes li{border-radius:18px}
+.appel{border-radius:24px}
+.btn{font-weight:500}
+.btn--line{border-color:var(--verre-filet);background:var(--verre)}
+.tableau thead th{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.repere strong{font-weight:600}
+.faq{border-top:0;gap:.5rem}
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  transition:border-color .2s ease}
+.qa:hover,.qa[open]{border-color:var(--mur)}
+.qa summary{font-weight:500;padding:1rem 1.25rem;align-items:center}
+.qa summary::after{line-height:1}
+.qa p{padding:0 1.25rem 1.1rem}
 </style>
 </head>
 <body>

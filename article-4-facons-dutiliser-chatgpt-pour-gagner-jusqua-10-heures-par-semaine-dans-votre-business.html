@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@1&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
 <style>
 /* =========================================================
    SmartEfico — fond blanc depuis le 23 septembre 2026.
@@ -936,6 +936,111 @@ em,.display em,h1.display em{color:var(--yellow)}
 /* Les soulignés du pied passent au gris. */
 .foot__links a{border-bottom-color:var(--mur)}
 
+/* =========================================================
+   DOPAMINE — maquette du 1er novembre 2026, à la demande du propriétaire
+   (« essaie d'adapter mon site à ceci : https://www.dopaminestudio.io/ »).
+
+   Relevé dans les feuilles de style de la référence, son site étant fermé
+   au navigateur intégré : fond #000 plat ; titres en géométrique de
+   graisse 400, sans gras ; texte courant en 300 ; étiquettes en IBM Plex
+   Mono 12 px sur une pastille de verre (blanc à 10 %, flou) ; boutons en
+   pilule, le secondaire en verre ; cartes arrondies de 14 à 24 px, cernées
+   d'un filet clair ; FAQ en cartes séparées.
+
+   N'entrent pas : son vert fluo #CCFF00 (la charte reste noir, jaune,
+   blanc, comme pour aicliently.com) et Space Grotesk, sa police de texte,
+   proscrite ici. Poppins, déjà chargée, tient lieu de son Avant Garde : les
+   grands titres quittent la pile Helvetica et le 800.
+
+   Tout tient dans ce bloc : le retirer rend le noir plat d'avant, à la
+   police IBM Plex Mono et à la graisse 300 de Poppins près dans le lien
+   Google Fonts.
+   ========================================================= */
+:root{
+  --surface:#101010;
+  --line:#262626;
+  --verre:rgba(255,255,255,.07);
+  --verre-filet:rgba(255,255,255,.14);
+  --rayon:18px;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+/* Titres : la géométrique en graisse 400. Un interlignage de 0,95 ne vaut
+   que pour une graisse noire ; à 400, Poppins a besoin d'air entre les
+   lignes, sans quoi les jambages touchent les accents de la ligne suivante. */
+.display{font-family:"Poppins","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:400;letter-spacing:-.032em;line-height:1.04}
+h1.display{letter-spacing:-.038em;max-width:21ch}
+h2.display{font-size:clamp(1.65rem,3.6vw,2.75rem)}
+.display em{letter-spacing:0;font-size:1.04em}
+h3{font-weight:500;letter-spacing:-.012em}
+.lead{font-weight:300;color:#CFCFCB}
+.contact .display{line-height:1.04;letter-spacing:-.035em}
+.guide-lien__texte strong{font-weight:600}
+.foot__copy{font-weight:500}
+.manifeste .manifeste__fort{font-family:inherit;font-weight:400;letter-spacing:-.02em;line-height:1.3}
+
+/* Étiquettes, numéros, puces : la monospace de la référence. */
+.mono,.kpi,.chip,.agent__tag{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.flux__mot{font-family:var(--mono)}
+.step__no,.pilier__no,.offer__no{font-family:var(--mono);font-weight:400;letter-spacing:0;
+  font-size:clamp(.95rem,1.5vw,1.1rem);line-height:1}
+.pilier__tete{align-items:center}
+
+/* La pastille des métiers devient une étiquette de verre, en monospace. */
+.hero__metiers{font-family:var(--mono);font-weight:400;letter-spacing:.08em;
+  padding:.45rem calc(.9rem - .08em) .45rem .9rem;
+  border:1px solid var(--verre-filet);background:var(--verre);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+
+/* Puces en pilule de verre, sans filet. */
+.chip,.kpi,.agent__tag,.step .chip,.pilier .chip{border-radius:999px;border-color:transparent;
+  background:var(--verre);color:#D6D6D2}
+.kpi{background:var(--verre)}
+
+/* Chiffres clés : grands et fins. */
+.figure b{font-weight:300;letter-spacing:-.04em}
+
+/* Cartes : arrondies, filet clair. */
+.manifeste,.figure,.offer,.agent,.pilier,.ba__col,.guide-lien--large{
+  border-radius:var(--rayon);border-color:var(--line)}
+.step{border-radius:14px;border-color:var(--line)}
+.agent figure{border-radius:12px}
+.contact{border-radius:24px}
+.nav__in{background:#0C0C0C}
+
+/* Boutons : pilules, le secondaire en verre. */
+.btn{font-weight:500;padding:.95rem 1.9rem}
+.btn--line{border-color:var(--verre-filet);background:var(--verre);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.contact__btn,.guide-lien__bouton,.exemples__guide a{font-weight:600}
+
+/* Menu : capitales en monospace, sans gras. */
+.brand{font-weight:600;letter-spacing:-.02em}
+.nav__links a{font-family:var(--mono);font-weight:500;letter-spacing:.04em;word-spacing:0}
+.nav__cta{font-weight:500}
+
+/* FAQ : une carte par question, comme la référence. */
+.faq{border-top:0;gap:.5rem}
+/* La marge est portée par le sommaire et la réponse, pas par la carte : le
+   détecteur d'impeccable la cherche sur les enfants. */
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  transition:border-color .2s ease}
+.qa:hover,.qa[open]{border-color:var(--mur)}
+.qa summary{font-weight:500;padding:1rem 1.25rem;align-items:center}
+.qa summary::after{line-height:1}
+.qa p{padding:0 1.25rem 1.1rem}
+
+/* Fenêtres des CGV et CGC : mêmes réglages que les pages légales. Le numéro
+   d'article devient une pastille de verre en monospace. */
+.doc-modal{border-radius:var(--rayon);overflow:hidden}
+.doc-modal__body h2,.doc-modal__body h3{font-weight:500}
+.doc-modal__body h2 .num{font-family:var(--mono);font-weight:500;font-size:.8em;letter-spacing:0;
+  color:var(--ink);background:var(--verre);border:1px solid var(--verre-filet);
+  border-radius:999px;padding:.1rem .6rem;align-self:center}
+.doc-modal__body .contact-box{border-radius:14px}
+.doc-modal__body .mark,.doc-modal__body .warn{border-radius:4px}
+
 </style>
 <style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
@@ -971,10 +1076,11 @@ em,.display em,h1.display em{color:var(--yellow)}
 .article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
   text-decoration-thickness:.15em;text-underline-offset:.22em}
 .article__meta{color:var(--ink-3);margin:0 0 .6rem}
-/* Le titre de l'article est un grand titre : il garde la pile Helvetica,
-   comme les .display de l'accueil. Le reste de l'article est en Poppins. */
-.article__title{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:clamp(1.53rem,3.4vw,2.38rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+/* Le titre de l'article suit les .display de l'accueil : Poppins en graisse
+   400 depuis le style « Dopamine » du 1er novembre 2026 (il gardait jusque-là
+   la pile Helvetica). */
+.article__title{font-family:inherit;font-weight:400;
+  font-size:clamp(1.53rem,3.4vw,2.38rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 1.3rem}
 /* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
    20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
    L'affiche perd son filet : sur une image claire il ne servait à rien, et
@@ -1025,6 +1131,11 @@ em,.display em,h1.display em{color:var(--yellow)}
 .blog-foot a{color:var(--ink-2);text-decoration:none}
 .blog-foot a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
   text-decoration-thickness:.15em;text-underline-offset:.22em}
+/* Style « Dopamine » (1er novembre 2026) : titres sans gras, code en
+   monospace, cartes à l'arrondi de celles de l'accueil. */
+.post-card{border-radius:var(--rayon)}
+.post-card h2,.article__body h2,.article__body h3,.tally h2{font-weight:500}
+.article__body code{font-family:var(--mono)}
 </style>
 </head>
 <body>

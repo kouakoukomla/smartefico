@@ -15,7 +15,7 @@
      chargement passe par Google Fonts, déjà nommé à l'article 9 des CGC. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
 <style>
 :root{
   --black:#0A0A0A;
@@ -99,6 +99,19 @@ footer.doc a{text-decoration:none;border-bottom:1px solid var(--mur)}
 footer.doc a:hover{color:var(--ink)}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
+
+/* Style « Dopamine », 1er novembre 2026, comme l'accueil (voir CLAUDE.md,
+   Design) : titre en Poppins 400 au lieu de la pile Helvetica 800, étiquettes
+   et numéros d'article en IBM Plex Mono, pastilles de verre. */
+:root{--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --verre:rgba(255,255,255,.07);--verre-filet:rgba(255,255,255,.14)}
+h1{font-family:inherit;font-weight:400;letter-spacing:-.032em;line-height:1.06}
+h2,h3{font-weight:500}
+.mono{font-family:var(--mono);font-weight:500;letter-spacing:.08em}
+h2 .num{font-family:var(--mono);font-weight:500;font-size:.8em;letter-spacing:0;
+  color:var(--ink);background:var(--verre);border:1px solid var(--verre-filet);
+  border-radius:999px;padding:.1rem .6rem;align-self:center}
+.back{background:var(--verre);border-color:var(--verre-filet)}
 </style>
 </head>
 <body>

@@ -264,10 +264,11 @@ const styleBlog = `<style>
 .article__back:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
   text-decoration-thickness:.15em;text-underline-offset:.22em}
 .article__meta{color:var(--ink-3);margin:0 0 .6rem}
-/* Le titre de l'article est un grand titre : il garde la pile Helvetica,
-   comme les .display de l'accueil. Le reste de l'article est en Poppins. */
-.article__title{font-family:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:clamp(1.53rem,3.4vw,2.38rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 1.3rem}
+/* Le titre de l'article suit les .display de l'accueil : Poppins en graisse
+   400 depuis le style « Dopamine » du 1er novembre 2026 (il gardait jusque-là
+   la pile Helvetica). */
+.article__title{font-family:inherit;font-weight:400;
+  font-size:clamp(1.53rem,3.4vw,2.38rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 1.3rem}
 /* Images arrondies comme la vidéo de l'accueil, demande du propriétaire du
    20 septembre 2026 (« Rends aussi les images du blog un peu arrondies »).
    L'affiche perd son filet : sur une image claire il ne servait à rien, et
@@ -318,6 +319,11 @@ const styleBlog = `<style>
 .blog-foot a{color:var(--ink-2);text-decoration:none}
 .blog-foot a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mur);
   text-decoration-thickness:.15em;text-underline-offset:.22em}
+/* Style « Dopamine » (1er novembre 2026) : titres sans gras, code en
+   monospace, cartes à l'arrondi de celles de l'accueil. */
+.post-card{border-radius:var(--rayon)}
+.post-card h2,.article__body h2,.article__body h3,.tally h2{font-weight:500}
+.article__body code{font-family:var(--mono)}
 </style>`;
 
 function tete({ titre, description, url, image }) {
@@ -341,7 +347,7 @@ ${favicon}
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@1&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
 ${styleSite}
 ${styleBlog}
 </head>`;

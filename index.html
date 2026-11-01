@@ -1059,6 +1059,16 @@ h3{font-weight:500;letter-spacing:-.012em}
 .qa summary::after{line-height:1}
 .qa p{padding:0 1.25rem 1.1rem}
 
+/* Fenêtres des CGV et CGC : mêmes réglages que les pages légales. Le numéro
+   d'article devient une pastille de verre en monospace. */
+.doc-modal{border-radius:var(--rayon);overflow:hidden}
+.doc-modal__body h2,.doc-modal__body h3{font-weight:500}
+.doc-modal__body h2 .num{font-family:var(--mono);font-weight:500;font-size:.8em;letter-spacing:0;
+  color:var(--ink);background:var(--verre);border:1px solid var(--verre-filet);
+  border-radius:999px;padding:.1rem .6rem;align-self:center}
+.doc-modal__body .contact-box{border-radius:14px}
+.doc-modal__body .mark,.doc-modal__body .warn{border-radius:4px}
+
 </style>
 
 <!-- Rattache SmartEfico et ses profils à une seule entité, pour Google

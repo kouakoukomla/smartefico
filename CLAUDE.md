@@ -1139,16 +1139,26 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Style « Dopamine » sur l'accueil depuis le 1er novembre 2026 au soir** : « essaie
-d'adapter mon site à ceci : https://www.dopaminestudio.io/ », puis, sur le rendu,
-« Mets-le en ligne » (commit `deb8781`). **L'accueil seul** — le blog, les guides et
-les pages légales n'ont pas suivi : le prochain passage de `build-blog.mjs` (back
-office ou workflow) recopiera la feuille de l'accueil dans le blog et les articles,
-sans autre demande. Son lien Google Fonts, lui, est écrit à part dans
-`build-blog.mjs` et ne charge ni IBM Plex Mono ni Poppins 300 : le blog
-retomberait sur la monospace du système. À aligner sur celui de l'accueil quand le
-blog suivra — retoucher ce script déclenche le workflow, donc une régénération. Tout tient dans le bloc « DOPAMINE », à la fin du `<style>` de `index.html`,
-plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts.
+**Style « Dopamine » sur tout le site depuis le 1er novembre 2026 au soir** :
+« essaie d'adapter mon site à ceci : https://www.dopaminestudio.io/ », puis, sur le
+rendu, « Mets-le en ligne » pour l'accueil (commit `deb8781`), puis « Oui, tout le
+site ». Sur l'accueil, tout tient dans le bloc « DOPAMINE », à la fin du `<style>`,
+plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts ; le blog
+et les articles le reçoivent en recopiant cette feuille.
+
+- **Les autres pages** ont chacune leur bloc « Style Dopamine » en fin de feuille,
+  avec le même lien de polices : `cgv.html`, `cgc.html`, `guide.html`,
+  `guide-ia.html`, leurs deux pages de remerciement et `exemples-ia.html`. Le blog
+  a aussi le sien, dans `styleBlog` de `build-blog.mjs`, dont le lien de polices a
+  été aligné sur l'accueil — sans quoi il retombait sur la monospace du système.
+  Titres en Poppins 400 partout, y compris `.article__title` et le `h1` des pages
+  légales ; numéros d'article des CGV et CGC (et de leurs fenêtres sur l'accueil)
+  en pastille de verre monospace ; étiquettes des guides en pastille de verre.
+- **N'ont pas suivi** : les deux guides PDF et l'image de partage, qui sont des
+  images — les refaire voudrait une demande, et pour l'image un nouveau nom.
+- **La pile Helvetica ne sert plus à aucun titre** : les paragraphes de ce fichier
+  qui la décrivent pour les grands titres (« Polices, telles qu'elles sont… ») sont
+  périmés sur ce point.
 
 - **Relevé dans les feuilles de la référence**, le navigateur intégré refusant le
   site : noir plat, titres sans gras (graisse 400, 120 % d'interligne), texte en 300,
@@ -1167,9 +1177,11 @@ plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts.
 - **Mesuré** : la page passe d'environ 6 685 à 6 860 px à 1 280 px ; menu à 61 et
   102 px de marge à 1 280 px, 55 et 90 px à 900 px ; rien ne déborde à 375 px.
   impeccable : aucun signalement nouveau, deux de moins (`italic-serif-display`).
-- **Reste à faire, sur sa demande** : les feuilles propres des autres pages
-  (`cgv.html`, `cgc.html`, les deux guides, leurs pages de remerciement,
-  `exemples-ia.html`). **Pour revenir en arrière** : `git revert deb8781`.
+  Sur les dix pages ensemble : 99 signalements avant les autres pages, 87 après,
+  aucun nouveau ; rien ne déborde à 375 px (le tableau d'`exemples-ia.html` défile
+  dans son cadre, comme avant).
+- **Pour revenir en arrière** : `git revert` des deux commits, celui de l'accueil
+  (`deb8781`) et celui des autres pages, puis `node scripts/build-blog.mjs`.
 
 **Plus de marques ni de vidéo depuis le 1er novembre 2026**, à la demande du
 propriétaire : « Supprime maintenant "Ils nous ont fait confiance" et supprime aussi
