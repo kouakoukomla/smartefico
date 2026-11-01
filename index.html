@@ -392,6 +392,8 @@ em{color:var(--yellow)}
 .btn--solid:hover{background:var(--yellow-hi);color:var(--on-yellow);transform:translateY(-2px)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
+/* lien seul vers la vidéo YouTube, centré entre les agents et la FAQ */
+.lien-video{display:flex;justify-content:center}
 
 /* ---------- en-tête de section ---------- */
 /* Espace resserré le 23 septembre 2026 : « Réduis aussi l'espace des titres
@@ -1630,6 +1632,13 @@ h1.display em{color:var(--yellow)}
       </div>
 
     </section>
+
+    <!-- ============ LIEN VERS LA VIDÉO ============
+         Le lecteur YouTube a quitté la page le 1er novembre 2026 ; le lien
+         vers la vidéo est revenu le même jour, à la demande du propriétaire.
+         Un simple lien : rien de YouTube ne se charge sur la page. -->
+    <p class="lien-video"><a class="btn btn--line" href="https://www.youtube.com/watch?v=Uge1VlfPbd8"
+       target="_blank" rel="noopener">Voir la vidéo sur YouTube&nbsp;↗</a></p>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
     <section class="wrap" id="questions">

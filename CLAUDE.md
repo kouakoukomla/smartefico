@@ -1151,6 +1151,11 @@ Ce qui est écrit plus bas sur les marques et la vidéo décrit ce qui a existé
 **La phrase YouTube de l'article 9 des CGC est repartie le même jour**, sur
 proposition validée par lui (« Oui, retire-la ») : l'article ne nomme plus que Tally
 et Google Fonts. Si une vidéo revient, la phrase revient avec elle, avec son accord.
+**Un lien vers la vidéo est revenu le même soir** (« ramène le lien qui amène vers la
+vidéo Youtube ») : un bouton à filet « Voir la vidéo sur YouTube ↗ » (`.lien-video`),
+centré entre « Agents IA » et la FAQ, vers `youtube.com/watch?v=Uge1VlfPbd8` dans un
+nouvel onglet. Un simple lien ne charge rien de YouTube : l'article 9 n'a pas à en
+parler.
 
 **Noir plat de nouveau depuis le 1er novembre 2026 au soir.** Dans la même journée,
 le site est passé en blanc, jaune et rouge (commits `bb3e190`, `3587f1a`), puis ses
