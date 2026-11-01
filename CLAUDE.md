@@ -1148,6 +1148,9 @@ de démarrage en sourdine. L'accueil passe du hero directement à « Ce qu'on vo
 apporte », et de « Agents IA » à la FAQ ; il fait **6 589 px** à 1 280 px. Restent :
 l'icône YouTube du pied de page, les logos clients dans `assets/` et dans PRODUCT.md.
 Ce qui est écrit plus bas sur les marques et la vidéo décrit ce qui a existé.
+**La phrase YouTube de l'article 9 des CGC est repartie le même jour**, sur
+proposition validée par lui (« Oui, retire-la ») : l'article ne nomme plus que Tally
+et Google Fonts. Si une vidéo revient, la phrase revient avec elle, avec son accord.
 
 **Noir plat de nouveau depuis le 1er novembre 2026 au soir.** Dans la même journée,
 le site est passé en blanc, jaune et rouge (commits `bb3e190`, `3587f1a`), puis ses
