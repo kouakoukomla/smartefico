@@ -800,8 +800,9 @@ Le blog a été régénéré, sa feuille recopiant celle de l'accueil. **Restent
 dépôt, à la charge du propriétaire** : la clé `cle_smartefico` dans Vercel et dans la
 console Anthropic (à révoquer), la variable `ASSISTANT_GOOGLE_SHEET`, et la feuille
 Google des conversations, dont le script continue de purger chaque nuit les lignes de
-plus de six mois. **La ligne de l'article 10 des CGC** qui décrit l'assistant n'a pas
-été touchée : c'est son texte, et le retrait lui a été proposé. Ce qui suit décrit
+plus de six mois. **La ligne de l'article 10 des CGC** qui décrivait l'assistant et
+le tableur est partie le même jour, sur proposition validée par lui (« Oui,
+retire-la ») ; la liste ne nomme plus que les quatre autres outils. Ce qui suit décrit
 l'assistant tel qu'il était ; l'historique git le garde entier.
 
 **Un assistant de discussion répondait aux visiteurs**, demandé par le propriétaire le
