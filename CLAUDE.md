@@ -1139,6 +1139,16 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Plus de marques ni de vidéo depuis le 1er novembre 2026**, à la demande du
+propriétaire : « Supprime maintenant "Ils nous ont fait confiance" et supprime aussi
+la vidéo Youtube ». Sont partis de `index.html` la section `.marques` (titre, deux
+logos clients, rangs qui défilent), son style et son script, et la section `#chaine`
+(lecteur YouTube, bouton « Voir la chaîne »), son style `.video-scene` et son script
+de démarrage en sourdine. L'accueil passe du hero directement à « Ce qu'on vous
+apporte », et de « Agents IA » à la FAQ ; il fait **6 589 px** à 1 280 px. Restent :
+l'icône YouTube du pied de page, les logos clients dans `assets/` et dans PRODUCT.md.
+Ce qui est écrit plus bas sur les marques et la vidéo décrit ce qui a existé.
+
 **Noir plat de nouveau depuis le 1er novembre 2026 au soir.** Dans la même journée,
 le site est passé en blanc, jaune et rouge (commits `bb3e190`, `3587f1a`), puis ses
 blocs noirs au blanc avec les titres en surligneur jaune (`7922b7c`), tout cela mis en

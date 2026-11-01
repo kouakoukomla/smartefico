@@ -365,72 +365,6 @@ em{color:var(--yellow)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
-/* ---------- marques ----------
-   Demande du propriétaire du 16 septembre 2026 : de grands carreaux qui
-   défilent, logos en blanc sur le noir. Les logos sont des silhouettes
-   blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
-
-   Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
-   (.marques--defile), deux rangs pleine largeur glissent en sens contraires :
-   le premier vers la gauche, le second vers la droite. Le second rang avait
-   été retiré le 16 septembre 2026 ; le propriétaire l'a redemandé le 21,
-   avec les carreaux en jaune (« 2 menus déroulants, le 1er dans un sens et
-   le deuxième dans le sens opposé, les cadres déroulant en jaune »).
-
-   Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
-   repart, sans saut. L'écart est une marge à droite de chaque carreau, et
-   non un gap : un gap laisserait à la piste un écart de moins que deux
-   moitiés, et la boucle sauterait d'autant. Le sens contraire est un simple
-   animation-direction:reverse sur la même image-clé — la piste va de -50 % à
-   0 au lieu de l'inverse, et boucle aussi bien.
-
-   Le second rang est fabriqué par le script, qui recopie le premier : la
-   page n'écrit toujours chaque logo qu'une fois. Il est décoratif, donc
-   aria-hidden, et ses carreaux démarrent décalés d'un cran pour que les deux
-   rangs ne s'alignent pas verticalement. */
-.marques{--tuile:clamp(9rem,16vw,17rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
-.marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
-  margin:0;padding:0 1.25rem;list-style:none}
-/* Filet blanc sur carreau noir, 21 septembre 2026, au terme de trois
-   demandes du propriétaire dans la journée : « les cadres déroulant en
-   jaune », rendu par un aplat plein ; puis « mets plutôt le filet jaune sur
-   carreau noir » ; puis « mets juste le filet plutôt en blanc ». Le jaune
-   a donc quitté cette section, où il ne reste que dans le mot en italique
-   du titre.
-
-   Les logos sont les silhouettes blanches d'origine. Le temps de l'aplat
-   jaune, il avait fallu les noircir au filtre, le blanc ne s'y voyant pas ;
-   ce filtre est parti avec l'aplat.
-
-   Le 23 septembre 2026 au soir, le propriétaire a demandé de diminuer la
-   taille des logos et des filets. Le carreau passe de clamp(14rem,26vw,28rem)
-   à clamp(9rem,16vw,17rem) — les logos suivent seuls, leur hauteur étant un
-   calc() sur --tuile — et le filet de 2 px à 1 px. Les 2 px venaient d'un
-   carreau une fois et demie plus grand, où un pixel se perdait ; à cette
-   taille-là il se voit. */
-.marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
-  background:var(--ground);border:1px solid var(--ink);border-radius:14px;
-  transition:border-color .2s ease}
-/* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
-   ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
-.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
-.marque__logo--sceau{height:calc(var(--tuile) * .42)}
-.marques--defile .marques__rang{overflow:hidden}
-.marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
-  padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
-.marques--defile .marque{margin-right:var(--ecart)}
-@keyframes marques-defile{to{transform:translateX(-50%)}}
-/* Le second rang remonte la piste : même image-clé, jouée à l'envers. */
-.marques__rang--retour{margin-top:var(--ecart)}
-.marques--defile .marques__rang--retour .marques__piste{animation-direction:reverse}
-/* Au survol, le rang s'arrête, et c'est tout : le filet est déjà blanc, il
-   n'y a rien de plus clair à lui donner sur ce noir. L'arrêt du rang est le
-   retour. */
-@media (hover:hover){
-  .marques__rang:hover .marques__piste{animation-play-state:paused}
-}
-@media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
-
 /* ---------- en-tête de section ---------- */
 /* Espace resserré le 23 septembre 2026 : « Réduis aussi l'espace des titres
    de section ». Leur interlignage avait déjà suivi celui du titre d'accueil,
@@ -801,25 +735,6 @@ em{color:var(--yellow)}
 .exemples__guide svg{flex:none;width:1rem;height:1rem;display:block;fill:none;stroke:currentColor;
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (prefers-reduced-motion:reduce){.exemples__guide a{transition:none}}
-
-/* ---------- la vidéo de la chaîne ----------
-   Revenue le 13 octobre 2026, à la demande du propriétaire, juste avant la
-   FAQ — la place qu'occupait « Ma chaîne, en clair » jusqu'au 28 septembre.
-   Même cadre qu'alors : 16:9, centré, 54 rem au plus, coins arrondis, ombre
-   portée et pas de halo (le fond est plat). Elle démarre seule, en sourdine,
-   quand elle entre à l'écran (voir le script en bas de page), et non à
-   l'arrivée sur la page : posée si bas, elle serait déjà entamée quand le
-   visiteur l'atteint. youtube-nocookie.com : même lecteur, sans cookie de
-   suivi tant que la lecture n'est pas lancée. */
-.video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
-.video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
-  background:#000;border:0;
-  border-radius:clamp(.9rem,1.8vw,1.35rem);
-  /* Safari laisse une iframe déborder d'un coin arrondi tant que son cadre
-     n'a pas son propre plan de rendu : d'où le translateZ. */
-  isolation:isolate;transform:translateZ(0);
-  box-shadow:0 18px 44px -28px #000}
-.video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
 
 /* ---------- questions ---------- */
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}

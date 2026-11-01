@@ -393,72 +393,6 @@ em{color:var(--yellow)}
 .btn--line{border-color:var(--ink);color:var(--ink)}
 .btn--line:hover{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow);transform:translateY(-2px)}
 
-/* ---------- marques ----------
-   Demande du propriétaire du 16 septembre 2026 : de grands carreaux qui
-   défilent, logos en blanc sur le noir. Les logos sont des silhouettes
-   blanches sur transparence (scripts/silhouettes-logos.mjs), pas un filtre.
-
-   Sans script, les carreaux d'origine sont centrés et s'enroulent. Avec lui
-   (.marques--defile), deux rangs pleine largeur glissent en sens contraires :
-   le premier vers la gauche, le second vers la droite. Le second rang avait
-   été retiré le 16 septembre 2026 ; le propriétaire l'a redemandé le 21,
-   avec les carreaux en jaune (« 2 menus déroulants, le 1er dans un sens et
-   le deuxième dans le sens opposé, les cadres déroulant en jaune »).
-
-   Chaque piste porte deux moitiés identiques : elle recule d'une moitié puis
-   repart, sans saut. L'écart est une marge à droite de chaque carreau, et
-   non un gap : un gap laisserait à la piste un écart de moins que deux
-   moitiés, et la boucle sauterait d'autant. Le sens contraire est un simple
-   animation-direction:reverse sur la même image-clé — la piste va de -50 % à
-   0 au lieu de l'inverse, et boucle aussi bien.
-
-   Le second rang est fabriqué par le script, qui recopie le premier : la
-   page n'écrit toujours chaque logo qu'une fois. Il est décoratif, donc
-   aria-hidden, et ses carreaux démarrent décalés d'un cran pour que les deux
-   rangs ne s'alignent pas verticalement. */
-.marques{--tuile:clamp(9rem,16vw,17rem);--ecart:clamp(.75rem,1.4vw,1.25rem)}
-.marques__piste{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--ecart);
-  margin:0;padding:0 1.25rem;list-style:none}
-/* Filet blanc sur carreau noir, 21 septembre 2026, au terme de trois
-   demandes du propriétaire dans la journée : « les cadres déroulant en
-   jaune », rendu par un aplat plein ; puis « mets plutôt le filet jaune sur
-   carreau noir » ; puis « mets juste le filet plutôt en blanc ». Le jaune
-   a donc quitté cette section, où il ne reste que dans le mot en italique
-   du titre.
-
-   Les logos sont les silhouettes blanches d'origine. Le temps de l'aplat
-   jaune, il avait fallu les noircir au filtre, le blanc ne s'y voyant pas ;
-   ce filtre est parti avec l'aplat.
-
-   Le 23 septembre 2026 au soir, le propriétaire a demandé de diminuer la
-   taille des logos et des filets. Le carreau passe de clamp(14rem,26vw,28rem)
-   à clamp(9rem,16vw,17rem) — les logos suivent seuls, leur hauteur étant un
-   calc() sur --tuile — et le filet de 2 px à 1 px. Les 2 px venaient d'un
-   carreau une fois et demie plus grand, où un pixel se perdait ; à cette
-   taille-là il se voit. */
-.marque{flex:none;display:grid;place-items:center;width:var(--tuile);aspect-ratio:16/9;
-  background:var(--ground);border:1px solid var(--ink);border-radius:14px;
-  transition:border-color .2s ease}
-/* Le sceau de l'ambassade est un disque dense : à la hauteur du logotype,
-   ses deux lignes de texte se fondraient en gris. Il prend plus de place. */
-.marque__logo{width:auto;height:calc(var(--tuile) * .34);max-width:70%;object-fit:contain}
-.marque__logo--sceau{height:calc(var(--tuile) * .42)}
-.marques--defile .marques__rang{overflow:hidden}
-.marques--defile .marques__piste{flex-wrap:nowrap;justify-content:flex-start;gap:0;
-  padding:0;width:max-content;animation:marques-defile var(--duree,60s) linear infinite}
-.marques--defile .marque{margin-right:var(--ecart)}
-@keyframes marques-defile{to{transform:translateX(-50%)}}
-/* Le second rang remonte la piste : même image-clé, jouée à l'envers. */
-.marques__rang--retour{margin-top:var(--ecart)}
-.marques--defile .marques__rang--retour .marques__piste{animation-direction:reverse}
-/* Au survol, le rang s'arrête, et c'est tout : le filet est déjà blanc, il
-   n'y a rien de plus clair à lui donner sur ce noir. L'arrêt du rang est le
-   retour. */
-@media (hover:hover){
-  .marques__rang:hover .marques__piste{animation-play-state:paused}
-}
-@media (prefers-reduced-motion:reduce){.marques__piste{animation:none}}
-
 /* ---------- en-tête de section ---------- */
 /* Espace resserré le 23 septembre 2026 : « Réduis aussi l'espace des titres
    de section ». Leur interlignage avait déjà suivi celui du titre d'accueil,
@@ -830,25 +764,6 @@ em{color:var(--yellow)}
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (prefers-reduced-motion:reduce){.exemples__guide a{transition:none}}
 
-/* ---------- la vidéo de la chaîne ----------
-   Revenue le 13 octobre 2026, à la demande du propriétaire, juste avant la
-   FAQ — la place qu'occupait « Ma chaîne, en clair » jusqu'au 28 septembre.
-   Même cadre qu'alors : 16:9, centré, 54 rem au plus, coins arrondis, ombre
-   portée et pas de halo (le fond est plat). Elle démarre seule, en sourdine,
-   quand elle entre à l'écran (voir le script en bas de page), et non à
-   l'arrivée sur la page : posée si bas, elle serait déjà entamée quand le
-   visiteur l'atteint. youtube-nocookie.com : même lecteur, sans cookie de
-   suivi tant que la lecture n'est pas lancée. */
-.video-scene{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
-.video-scene__cadre{width:min(100%,54rem);aspect-ratio:16/9;overflow:hidden;
-  background:#000;border:0;
-  border-radius:clamp(.9rem,1.8vw,1.35rem);
-  /* Safari laisse une iframe déborder d'un coin arrondi tant que son cadre
-     n'a pas son propre plan de rendu : d'où le translateZ. */
-  isolation:isolate;transform:translateZ(0);
-  box-shadow:0 18px 44px -28px #000}
-.video-scene__cadre iframe{display:block;width:100%;height:100%;border:0}
-
 /* ---------- questions ---------- */
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .qa{border-bottom:1px solid var(--line)}
@@ -1197,24 +1112,6 @@ h1.display em{color:var(--yellow)}
   </section>
 
   <div class="stack" style="padding-block:var(--gap) calc(var(--gap) / 2)">
-
-    <!-- ============ MARQUES ============
-         Chaque logo n'est écrit qu'une fois. Le script en bas de page les
-         recopie en deux rangs de carreaux qui défilent en sens contraires ;
-         sans lui, ou sous prefers-reduced-motion, les carreaux d'origine
-         restent côte à côte, immobiles. Pour ajouter une marque : un <li> de
-         plus, rien d'autre. -->
-    <section class="marques" aria-labelledby="marques-titre">
-      <div class="wrap head head--centre">
-        <h2 class="display" id="marques-titre">Ils nous ont fait <em>confiance</em>.</h2>
-      </div>
-      <div class="marques__rang">
-        <ul class="marques__piste">
-          <li class="marque"><img class="marque__logo" src="assets/client-menouveve.png" alt="Aménouvévé Logistique" width="731" height="682"></li>
-          <li class="marque"><img class="marque__logo marque__logo--sceau" src="assets/client-ambassade-togo.png" alt="Ambassade du Togo au Maroc" width="348" height="349"></li>
-        </ul>
-      </div>
-    </section>
 
     <!-- ============ CE QU'ON VOUS APPORTE ============
          Revenue le 28 septembre 2026, à la demande du propriétaire, avec son
@@ -1734,29 +1631,6 @@ h1.display em{color:var(--yellow)}
 
     </section>
 
-    <!-- ============ LA CHAÎNE ============
-         Une vidéo de la chaîne YouTube, demandée par le propriétaire le
-         13 octobre 2026 juste avant la FAQ. Le titre est celui qu'il avait
-         choisi pour la section du même rôle, retirée le 28 septembre. Écrite
-         en dur : aucune zone du back office ne la régénère. Le démarrage seul,
-         en sourdine, est fait par un script en bas de page. -->
-    <section class="wrap" id="chaine">
-      <div class="head head--centre">
-        <h2 class="display">Ma chaîne, <em>en clair</em>.</h2>
-      </div>
-      <div class="video-scene">
-        <div class="video-scene__cadre">
-          <iframe src="https://www.youtube-nocookie.com/embed/Uge1VlfPbd8?rel=0"
-            title="Générez des leads qualifiés pour vos offres et mettez l'IA générative à votre service"
-            loading="lazy"
-            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <a class="btn btn--line" href="https://www.youtube.com/@smartefico"
-           target="_blank" rel="noopener">Voir la chaîne</a>
-      </div>
-    </section>
-
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
     <section class="wrap" id="questions">
       <div class="head head--centre">
@@ -2169,78 +2043,6 @@ h1.display em{color:var(--yellow)}
   else if (large.addListener) large.addListener(suivre);
 })();
 
-// Marques : deux rangs de carreaux qui défilent en sens contraires. La page
-// n'écrit chaque logo qu'une fois ; le script recopie le rang pour en faire
-// un second, puis remplit chaque piste d'assez de carreaux pour qu'une de
-// ses deux moitiés couvre l'écran le plus large que la fenêtre puisse
-// prendre. Les carreaux d'origine du premier rang restent en tête : ce sont
-// les seuls que lisent les lecteurs d'écran. Les copies et tout le second
-// rang leur sont masqués.
-(function () {
-  var section = document.querySelector('.marques');
-  if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var premier = section.querySelector('.marques__rang');
-  if (!premier) return;
-  var n = premier.querySelector('.marques__piste').children.length;
-  if (!n) return;
-
-  var CADENCE = 0.12; // carreaux qui passent par seconde
-
-  // Le second rang : une copie décorative du premier, décalée d'un cran pour
-  // que les carreaux ne s'alignent pas d'un rang à l'autre.
-  var second = premier.cloneNode(true);
-  second.classList.add('marques__rang--retour');
-  second.setAttribute('aria-hidden', 'true');
-  second.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-  var pisteSeconde = second.querySelector('.marques__piste');
-  if (n > 1) pisteSeconde.appendChild(pisteSeconde.firstElementChild);
-  premier.parentNode.insertBefore(second, premier.nextSibling);
-
-  section.classList.add('marques--defile');
-
-  var rangs = [premier, second].map(function (rang) {
-    var piste = rang.querySelector('.marques__piste');
-    return { piste: piste, modeles: Array.prototype.slice.call(piste.children) };
-  });
-
-  function copie(rang, i) {
-    var li = rang.modeles[i % n].cloneNode(true);
-    li.setAttribute('aria-hidden', 'true');
-    li.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-    return li;
-  }
-
-  // Un nombre de carreaux par moitié multiple du nombre de logos : la
-  // seconde moitié reprend exactement où la première a commencé.
-  var parMoitie = 0;
-  function construire() {
-    var ref = rangs[0].modeles[0];
-    var pas = ref.getBoundingClientRect().width +
-      parseFloat(window.getComputedStyle(ref).marginRight);
-    // Tant que le carreau n'est pas posé, la mesure ne vaut rien : une page
-    // qu'aucune fenêtre ne dessine rend une largeur nulle et une marge vide,
-    // donc un pas NaN. Sans ce garde-fou, la piste restait à ses deux
-    // carreaux et --duree recevait « NaNs », que le navigateur rejette.
-    // C'est le cas dans l'aperçu de Claude Code quand le panneau est masqué.
-    // On repasse au chargement et à chaque redimensionnement.
-    if (!(pas > 0)) return;
-    var large = Math.max(window.innerWidth, screen.width, screen.height);
-    var voulu = n * Math.ceil(large / pas / n);
-    if (voulu <= parMoitie) return;
-    parMoitie = voulu;
-    rangs.forEach(function (rang) {
-      while (rang.piste.children.length > n) rang.piste.removeChild(rang.piste.lastChild);
-      for (var i = n; i < 2 * parMoitie; i++) rang.piste.appendChild(copie(rang, i));
-    });
-    section.style.setProperty('--duree', (parMoitie / CADENCE).toFixed(1) + 's');
-  }
-  construire();
-  // Une fenêtre agrandie, ou un zoom arrière, peut dépasser l'écran : on complète.
-  window.addEventListener('resize', construire);
-  // Et si la mise en page n'était pas faite au premier passage, on y revient.
-  window.addEventListener('load', construire);
-})();
-
 // Compteurs de « Ce à quoi vous engager » : chaque chiffre repart de zéro et
 // monte vite jusqu'à sa valeur quand il entre à l'écran, une seule fois. La
 // valeur finale est écrite dans la page : sans ce script, sans
@@ -2301,28 +2103,6 @@ h1.display em{color:var(--yellow)}
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 1 });
   compteurs.forEach(function (el) { guet.observe(el); });
-})();
-
-// Vidéo de la chaîne : elle démarre seule, en sourdine, quand elle entre à
-// l'écran — demande du propriétaire du 13 octobre 2026. Le lecteur perd sa
-// source tant qu'il est hors de vue, puis la retrouve avec autoplay=1&mute=1 :
-// aucun navigateur ne lance une vidéo avec le son sans un geste du visiteur.
-// Sans ce script, sans IntersectionObserver ou quand le visiteur demande moins
-// de mouvement, il garde sa source d'origine : lecture au clic.
-(function () {
-  var lecteur = document.querySelector('.video-scene__cadre iframe');
-  if (!lecteur || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var source = lecteur.getAttribute('src');
-  lecteur.removeAttribute('src');
-  // Le cadre doit avoir passé le dernier quart de l'écran.
-  var guet = new IntersectionObserver(function (entrees) {
-    if (!entrees[0].isIntersecting) return;
-    guet.disconnect();
-    lecteur.src = source + (source.indexOf('?') < 0 ? '?' : '&') +
-      'autoplay=1&mute=1&playsinline=1';
-  }, { rootMargin: '0px 0px -25% 0px' });
-  guet.observe(lecteur.parentNode);
 })();
 
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le
