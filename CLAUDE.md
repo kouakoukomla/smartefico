@@ -1139,10 +1139,15 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
-**Maquette « Dopamine », 1er novembre 2026 au soir, en attente de son avis** : « essaie
-d'adapter mon site à ceci : https://www.dopaminestudio.io/ ». Commitée en local, **pas
-mise en ligne** ; l'accueil seul — le blog, les guides et les pages légales n'ont pas
-suivi. Tout tient dans le bloc « DOPAMINE », à la fin du `<style>` de `index.html`,
+**Style « Dopamine » sur l'accueil depuis le 1er novembre 2026 au soir** : « essaie
+d'adapter mon site à ceci : https://www.dopaminestudio.io/ », puis, sur le rendu,
+« Mets-le en ligne » (commit `deb8781`). **L'accueil seul** — le blog, les guides et
+les pages légales n'ont pas suivi : le prochain passage de `build-blog.mjs` (back
+office ou workflow) recopiera la feuille de l'accueil dans le blog et les articles,
+sans autre demande. Son lien Google Fonts, lui, est écrit à part dans
+`build-blog.mjs` et ne charge ni IBM Plex Mono ni Poppins 300 : le blog
+retomberait sur la monospace du système. À aligner sur celui de l'accueil quand le
+blog suivra — retoucher ce script déclenche le workflow, donc une régénération. Tout tient dans le bloc « DOPAMINE », à la fin du `<style>` de `index.html`,
 plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts.
 
 - **Relevé dans les feuilles de la référence**, le navigateur intégré refusant le
@@ -1162,8 +1167,9 @@ plus IBM Plex Mono et la graisse 300 de Poppins dans le lien Google Fonts.
 - **Mesuré** : la page passe d'environ 6 685 à 6 860 px à 1 280 px ; menu à 61 et
   102 px de marge à 1 280 px, 55 et 90 px à 900 px ; rien ne déborde à 375 px.
   impeccable : aucun signalement nouveau, deux de moins (`italic-serif-display`).
-- **S'il valide** : passer le blog (`build-blog.mjs` recopie la feuille), puis les
-  autres feuilles. **S'il refuse** : `git revert` du commit.
+- **Reste à faire, sur sa demande** : les feuilles propres des autres pages
+  (`cgv.html`, `cgc.html`, les deux guides, leurs pages de remerciement,
+  `exemples-ia.html`). **Pour revenir en arrière** : `git revert deb8781`.
 
 **Plus de marques ni de vidéo depuis le 1er novembre 2026**, à la demande du
 propriétaire : « Supprime maintenant "Ils nous ont fait confiance" et supprime aussi
