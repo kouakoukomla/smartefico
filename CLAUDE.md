@@ -1139,6 +1139,27 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Blanc, jaune et rouge depuis le 1er novembre 2026**, à la demande du propriétaire
+(« je veux que tu mettes le site en blanc, jaune, rouge »). Le fond blanc du 5 octobre
+a été réappliqué tel quel (revert de son annulation `44812ad`), **îlots noirs
+compris**, sur sa réponse à la maquette : « garde les blocs noir ». Le rouge arrive
+avec deux rôles, et deux seulement :
+
+- **les mots en italique des grands titres** (`.display em`, `h1` comme `h2`), en
+  `--rouge` `#D7141A` (5,3:1 sur blanc) ; dans les îlots noirs (manifeste, bandeau des
+  cinq étapes, contact), en `--rouge-hi` `#FF4B3E`. Le trait de surligneur jaune sous
+  les mots du titre d'accueil est parti : il faisait doublon avec le rouge. Les pages à
+  feuille propre (deux guides, leurs pages de remerciement, `exemples-ia.html`) ont
+  reçu le même `#D7141A` sur leur `h1` ;
+- **le contour animé de la barre de navigation**, où il remplace le violet — jetons
+  `--violet`/`--violet-hi` et classes `nav__*--violet` renommés en `--rouge`. **Le
+  violet n'existe donc plus nulle part** ; ce qui est écrit plus bas sur lui décrit
+  l'état d'avant. Le souligné des liens du menu au survol est rouge aussi.
+
+**Le jaune garde ce qui se clique**, et la pastille des métiers (or foncé sur voile
+jaune). Il ne sert jamais de texte sur le blanc, où il ne se lit pas. Non refaits :
+l'image de partage (toujours noire et jaune) et les guides PDF.
+
 **Fond blanc depuis le 5 octobre 2026**, sur tout le site, à la demande du
 propriétaire (« mets le fond du site en blanc et adapte les autres couleurs aux
 différentes palettes »). Ce qui suit sur le « noir plat » décrit l'état du 23 septembre
