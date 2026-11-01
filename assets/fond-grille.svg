@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1440" viewBox="0 0 1440 1440">
+  <!-- Fond du site, demandé le 2 novembre 2026 sur une image fournie par le
+       propriétaire : grille de 72 px en traits de 2 px très sombres, grands arcs
+       et diagonales en pointillés un cran plus clairs. Le carreau se raccorde
+       sur ses quatre bords : les tracés sont dessinés une fois dans #m, puis
+       recopiés décalés de 1 440 px dans les huit directions. -->
+  <defs>
+    <pattern id="g" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M1 0V72M0 1H72" fill="none" stroke="#161616" stroke-width="2"/>
+    </pattern>
+    <g id="m" fill="none" stroke-width="2">
+      <g stroke="#2C2C2C">
+        <circle cx="360" cy="-230" r="340"/>
+        <circle cx="40" cy="760" r="620"/>
+        <circle cx="720" cy="1040" r="300"/>
+      </g>
+      <path stroke="#333333" stroke-dasharray="14 10" d="M120 560L560 120M940 40L1340 440M600 1180L900 880"/>
+    </g>
+  </defs>
+  <rect width="1440" height="1440" fill="url(#g)"/>
+  <use href="#m"/>
+  <use href="#m" x="-1440"/><use href="#m" x="1440"/>
+  <use href="#m" y="-1440"/><use href="#m" y="1440"/>
+  <use href="#m" x="-1440" y="-1440"/><use href="#m" x="1440" y="-1440"/>
+  <use href="#m" x="-1440" y="1440"/><use href="#m" x="1440" y="1440"/>
+</svg>

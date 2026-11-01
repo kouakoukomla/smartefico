@@ -94,6 +94,11 @@ em{color:var(--yellow)}
 .btn--filet{border-color:var(--verre-filet);background:var(--verre)}
 .suite{border-radius:18px}
 .suite h2{font-weight:500;letter-spacing:-.02em}
+
+/* Fond à grille, 2 novembre 2026, comme l’accueil (voir CLAUDE.md, Design) :
+   un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
 </style>
 </head>
 <body>

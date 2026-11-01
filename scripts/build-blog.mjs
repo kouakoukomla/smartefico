@@ -324,6 +324,12 @@ const styleBlog = `<style>
 .post-card{border-radius:var(--rayon)}
 .post-card h2,.article__body h2,.article__body h3,.tally h2{font-weight:500}
 .article__body code{font-family:var(--mono)}
+/* Fond à grille (2 novembre 2026) : sur une page d'article, le texte court
+   sur toute la colonne (44 rem), la grille s'efface donc sous elle et ne
+   reste que dans les marges. */
+body:has(.article)::before{
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(50% - 28rem),transparent calc(50% - 23rem),transparent calc(50% + 23rem),#000 calc(50% + 28rem));
+  mask-image:linear-gradient(90deg,#000 calc(50% - 28rem),transparent calc(50% - 23rem),transparent calc(50% + 23rem),#000 calc(50% + 28rem))}
 </style>`;
 
 function tete({ titre, description, url, image }) {

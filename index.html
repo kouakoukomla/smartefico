@@ -335,8 +335,9 @@ p{margin:0}
   margin-bottom:-.5rem}
 /* Fond du hero : halo jaune pour la profondeur + repères « ingénierie »
    (règle pointillée, crochets d'angle, coordonnée) et carte « scénario » en
-   filigrane. Volontairement PAS de grille décorative : un fond en grille de
-   hairlines est un motif typique d'interface générée. */
+   filigrane. Il n'avait volontairement pas de grille décorative, motif
+   typique d'interface générée ; toute la page en porte une depuis le
+   2 novembre 2026, à la demande du propriétaire (voir le bloc DOPAMINE). */
 .hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero__bg .glow{position:absolute;inset:0;
   background:radial-gradient(46rem 34rem at 24% 42%,rgba(255,204,0,.16),transparent 62%)}
@@ -1068,6 +1069,18 @@ h3{font-weight:500;letter-spacing:-.012em}
   border-radius:999px;padding:.1rem .6rem;align-self:center}
 .doc-modal__body .contact-box{border-radius:14px}
 .doc-modal__body .mark,.doc-modal__body .warn{border-radius:4px}
+
+/* Fond à grille, 2 novembre 2026, sur une image fournie par le propriétaire
+   (« là où il y a des endroits sans écrits sur le site tu peux mettre ce
+   fond ») : un calque fixe derrière toute la page, que les cartes, opaques,
+   recouvrent. Le carreau (assets/fond-grille.svg) est calé en haut au centre
+   de l'écran. La barre du menu reste opaque pour cacher ce qui défile
+   dessous, mais porte le même carreau au même calage : la grille passe sous
+   elle sans couture. La règle pointillée du hero part, doublon de la grille. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
+.nav{background:var(--ground) url("assets/fond-grille.svg") center top/1440px 1440px repeat}
+.hero__bg .ruler{display:none}
 
 </style>
 

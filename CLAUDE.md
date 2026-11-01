@@ -1139,6 +1139,35 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Fond à grille sur tout le site, 2 novembre 2026**, sur une image fournie par le
+propriétaire : « là où il y a des endroits sans écrits sur le site tu peux mettre ce
+fond ». Mesurée : grille de 72 px en traits de 2 px `#161616`, grands arcs et
+diagonales en pointillés `#333` sur le noir.
+
+- **`assets/fond-grille.svg`**, un carreau de 1 440 px redessiné en vecteur (pas
+  l'image elle-même, qui ne se raccorde pas : 211 px de haut pour une grille de 72),
+  qui se raccorde sur ses quatre bords — les tracés sont dessinés une fois puis
+  recopiés décalés de 1 440 px dans les huit directions. Pour le retoucher, garder
+  la grille multiple de 72 et le carreau multiple de 72.
+- **Un calque fixe** (`body::before`, `position:fixed`, `z-index:-1`), calé en haut
+  au centre de l'écran : la grille ne défile pas, le contenu passe dessus. Les
+  cartes, opaques, la recouvrent ; titres et chapôs posés sur la page sont dessus.
+  La barre du menu de l'accueil, opaque pour cacher ce qui défile dessous, porte
+  le même carreau au même calage : la grille passe sous elle sans couture. La règle
+  pointillée du hero est partie, doublon de la grille.
+- **Effacée sous les colonnes de lecture** : sur les CGV, les CGC (colonne de
+  52 rem) et les pages d'articles (44 rem, par `body:has(.article)` dans
+  `styleBlog`), un `mask-image` la retire sous le texte et ne la laisse que dans
+  les marges — le texte y court sur toute la colonne. Sur téléphone, ces pages n'en
+  montrent donc presque plus.
+- **Reste sans grille, par choix** : le bandeau des cinq étapes (`.invert`), panneau
+  plein `#0A0A0A` qui se lit désormais comme une bande calme ; la barre du haut des
+  pages légales ; les fenêtres CGV/CGC. Le rendre transparent suffirait à y faire
+  passer la grille.
+- `index-autonome.html` l'embarque en base64, `build-standalone.mjs` remplaçant
+  toute chaîne `"assets/…"`, CSS compris. Aucun signalement d'impeccable de plus
+  (87 avant, 87 après, sur dix pages).
+
 **Style « Dopamine » sur tout le site depuis le 1er novembre 2026 au soir** :
 « essaie d'adapter mon site à ceci : https://www.dopaminestudio.io/ », puis, sur le
 rendu, « Mets-le en ligne » pour l'accueil (commit `deb8781`), puis « Oui, tout le
