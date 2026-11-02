@@ -1151,7 +1151,8 @@ diagonales en pointillés `#333` sur le noir.
   la grille multiple de 72 et le carreau multiple de 72.
 - **Un calque fixe** (`body::before`, `position:fixed`, `z-index:-1`), calé en haut
   au centre de l'écran : la grille ne défile pas, le contenu passe dessus. Les
-  cartes, opaques, la recouvrent ; titres et chapôs posés sur la page sont dessus.
+  cartes, opaques, la recouvrent ; les textes posés sur la page reçoivent un
+  aplat noir depuis le même jour (voir le paragraphe suivant).
   La barre du menu de l'accueil, opaque pour cacher ce qui défile dessous, porte
   le même carreau au même calage : la grille passe sous elle sans couture. La règle
   pointillée du hero est partie, doublon de la grille.
@@ -1167,6 +1168,44 @@ diagonales en pointillés `#333` sur le noir.
 - `index-autonome.html` l'embarque en base64, `build-standalone.mjs` remplaçant
   toute chaîne `"assets/…"`, CSS compris. Aucun signalement d'impeccable de plus
   (87 avant, 87 après, sur dix pages).
+
+**Fond noir sous les écrits, 2 novembre 2026**, à sa demande, le même jour :
+« n'importe où il y a une écriture, tu mettras un fond noir avant de mettre les
+écrits ». La grille ne passe plus derrière aucun texte.
+
+- **Un aplat noir prolongé d'une ombre noire**, le jeton `--plaque`
+  (`0 0 1.25rem .75rem`) déclaré dans chaque feuille : la grille s'efface en
+  fondu autour des mots au lieu de s'arrêter net. Le fondu est un choix de
+  Claude ; un bord franc ne demanderait que de retirer l'ombre.
+- **Ce qui le reçoit** : sur l'accueil, les en-têtes de section (`.head>*`) et le
+  pied (marque, copyright, liens) ; sur le blog et les articles, en plus,
+  l'en-tête et le pied (`styleBlog`) ; sur les deux guides, la marque, l'accroche,
+  la colonne de texte (`.offre__texte`) et le pied ; sur leurs pages de
+  remerciement, la marque, le titre, le chapô et le pied ; sur
+  `exemples-ia.html`, l'en-tête, l'accroche, les en-têtes de section, la liste des
+  départements et le tableau d'un seul tenant, et le pied. Les CGV, les CGC et
+  la colonne des articles n'avaient déjà plus de grille sous le texte.
+- **Dans le hero, l'aplat passe sous le halo jaune** : posé en `::before` au rang
+  -1, entre la grille et le décor, il efface l'une sans éteindre l'autre. D'où
+  `.hero__in{z-index:auto}` : il ne doit plus former de contexte d'empilement.
+- **Les pastilles et boutons de verre posés sur la grille deviennent opaques**
+  (`.hero__metiers`, `.btn--line`, `.etiquette`, le bouton secondaire des pages
+  de remerciement) : même teinte, celle du verre sur du noir. Leur survol est
+  intact.
+- **Sur `exemples-ia.html`, les en-têtes alignés à gauche** prennent la largeur
+  de leur texte (`align-items:flex-start`), sans quoi l'aplat du titre courait
+  sur toute la page. Sur l'accueil, le titre de `#exemples`, sur deux lignes
+  équilibrées, garde une boîte pleine largeur : son aplat aussi.
+- **Vérifié** par un relevé de tous les textes dont aucun ancêtre n'a de fond
+  opaque, à 1 280 px, sur l'accueil, les deux guides, leurs pages de
+  remerciement, les exemples, le blog, un article et les CGV (dans la colonne
+  sans grille) : il n'en reste plus, hors titre et chapô
+  du hero (leur aplat est un pseudo-élément, que le relevé ne voit pas, vérifié
+  à l'œil). Aucun débordement à 375 px. impeccable : 61 signalements avant,
+  61 après, sur les huit pages touchées.
+- **Pour la suite** : un texte ajouté hors d'une carte doit rejoindre la liste
+  de sélecteurs de la règle `--plaque` de sa feuille, sinon la grille repasse
+  derrière lui.
 
 **Style « Dopamine » sur tout le site depuis le 1er novembre 2026 au soir** :
 « essaie d'adapter mon site à ceci : https://www.dopaminestudio.io/ », puis, sur le

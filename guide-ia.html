@@ -165,6 +165,13 @@ em{color:var(--yellow)}
    un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
+/* Fond noir sous les écrits, 2 novembre 2026, comme l’accueil (voir
+   CLAUDE.md, Design) : chaque texte posé sur la grille reçoit un aplat noir,
+   adouci par une ombre noire ; l’étiquette de verre devient opaque. */
+:root{--plaque:0 0 1.25rem .75rem var(--ground)}
+.marque,.accroche .display,.accroche .lead,.offre__texte,.bas>span,.bas nav{
+  background:var(--ground);box-shadow:var(--plaque)}
+.etiquette{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
 </style>
 </head>
 <body>

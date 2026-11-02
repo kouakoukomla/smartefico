@@ -99,6 +99,14 @@ em{color:var(--yellow)}
    un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
+/* Fond noir sous les écrits, 2 novembre 2026, comme l’accueil (voir
+   CLAUDE.md, Design) : chaque texte posé sur la grille reçoit un aplat noir,
+   adouci par une ombre noire ; l’étiquette et le bouton de verre deviennent
+   opaques. Celui de la carte « Et ensuite ? » n’en a pas besoin. */
+:root{--plaque:0 0 1.25rem .75rem var(--ground)}
+.marque,.merci>.display,.merci>.lead,.bas>span,.bas nav{
+  background:var(--ground);box-shadow:var(--plaque)}
+.etiquette,.actions .btn--filet:not(:hover){background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
 </style>
 </head>
 <body>

@@ -1082,6 +1082,26 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .nav{background:var(--ground) url("assets/fond-grille.svg") center top/1440px 1440px repeat}
 .hero__bg .ruler{display:none}
 
+/* Fond noir sous les écrits, 2 novembre 2026, à la demande du propriétaire
+   (« n'importe où il y a une écriture, tu mettras un fond noir avant de
+   mettre les écrits ») : la grille ne passe plus derrière un texte. Chaque
+   texte posé à même la page reçoit un aplat noir, prolongé d'une ombre noire
+   qui l'adoucit — la grille s'efface en fondu autour des mots au lieu de
+   s'arrêter net. Les cartes, déjà opaques, n'en ont pas besoin. */
+:root{--plaque:0 0 1.25rem .75rem var(--ground)}
+.head>*,.foot__brand,.foot__copy,.foot__links{background:var(--ground);box-shadow:var(--plaque)}
+/* Dans le hero, l'aplat passe sous le halo jaune : posé en ::before au rang
+   -1, entre la grille et le décor, il efface l'une sans éteindre l'autre.
+   D'où .hero__in sans z-index : il ne doit plus former de contexte
+   d'empilement, sans quoi l'aplat repasserait au-dessus du halo. */
+.hero__in{z-index:auto}
+.hero__in .display,.hero__in .lead{position:relative}
+.hero__in .display::before,.hero__in .lead::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:var(--ground);box-shadow:var(--plaque)}
+/* La pastille des métiers et le bouton de verre deviennent opaques : même
+   teinte, celle du verre posé sur du noir. */
+.hero__metiers,.btn--line{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
+
 </style>
 
 <!-- Rattache SmartEfico et ses profils à une seule entité, pour Google

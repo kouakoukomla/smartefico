@@ -330,6 +330,11 @@ const styleBlog = `<style>
 body:has(.article)::before{
   -webkit-mask-image:linear-gradient(90deg,#000 calc(50% - 28rem),transparent calc(50% - 23rem),transparent calc(50% + 23rem),#000 calc(50% + 28rem));
   mask-image:linear-gradient(90deg,#000 calc(50% - 28rem),transparent calc(50% - 23rem),transparent calc(50% + 23rem),#000 calc(50% + 28rem))}
+/* Fond noir sous les écrits (2 novembre 2026) : la règle et --plaque
+   viennent de la feuille de l'accueil ; l'en-tête et le pied du blog, posés
+   sur la grille hors de la colonne, les reçoivent aussi. */
+.blog-top__brand,.blog-top__liens,.blog-foot>.mono,.blog-foot__liens{
+  background:var(--ground);box-shadow:var(--plaque)}
 </style>`;
 
 function tete({ titre, description, url, image }) {

@@ -264,6 +264,18 @@ h3{font-weight:500;letter-spacing:-.012em}
    un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
+/* Fond noir sous les écrits, 2 novembre 2026, comme l’accueil (voir
+   CLAUDE.md, Design) : chaque texte posé sur la grille reçoit un aplat noir,
+   adouci par une ombre noire. Les en-têtes de section, alignés à gauche,
+   reprennent la largeur de leur texte, sans quoi l’aplat du titre courrait
+   sur toute la page. La liste des départements et le tableau, posés à même
+   la page, reçoivent le leur d’un seul tenant ; le bouton de verre devient
+   opaque. */
+:root{--plaque:0 0 1.25rem .75rem var(--ground)}
+.head:not(.head--centre){align-items:flex-start}
+.haut__marque,.haut__liens,.hero>:not(.boutons),.head>*,.depts,.tableau-cadre,.bas>span,.bas nav{
+  background:var(--ground);box-shadow:var(--plaque)}
+.btn--line{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
 </style>
 </head>
 <body>
