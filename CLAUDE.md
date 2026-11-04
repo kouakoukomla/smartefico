@@ -428,8 +428,13 @@ paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes 
 lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
 sinon l'appariement se décale. La section passe de 507 à 580 px.
 
-**`#resultats` s'appelle « Notre méthode *ClientlyEfico*. » depuis le 28 septembre
-2026**, à la demande du propriétaire, en deux temps le même jour : « Au lieu de "Ce
+**`#resultats` s'appelle « Notre *méthode*. » depuis le 4 novembre 2026**, à sa demande
+(« au lieu de "Notre méthode ClientlyEfico." met plutot "Notre méthode" ») : le nom
+« ClientlyEfico » ne paraît plus nulle part sur le site, et l'italique passe sur
+« méthode », pour suivre les autres titres. Ce qui suit décrit l'état précédent.
+
+**`#resultats` s'est appelée « Notre méthode *ClientlyEfico*. » à partir du
+28 septembre 2026**, à la demande du propriétaire, en deux temps le même jour : « Au lieu de "Ce
 que nous installons se mesure." mets plutôt "Notre méthode SmartClient" », puis
 « remplace "smartclient" par "ClientlyEfico" » — graphie reprise telle qu'il l'a
 écrite, C et E capitales. Le point final et l'italique sur le nom de la méthode
