@@ -506,8 +506,16 @@ l'autre. » Carte 2 : « L'IA doit faire gagner du temps à vos équipes, avec l
 que vous avez déjà. » ; « Vos équipes refont chaque jour les mêmes tâches. »,
 « Chacun essaie l'IA dans son coin, sans règles communes. » **Plus de filet** au-dessus
 des listes (`border-top` retiré), et les tirets des puces sont devenus des points :
-n'en remettre aucun sans sa demande. 301 px à 1 280 px. Ce qui suit décrit la
-première version.
+n'en remettre aucun sans sa demande. 301 px à 1 280 px. **Puis encore résumées, et
+sans contour**, le même jour (« enlève les contours pour ceci, résume mais fais de
+sorte qu'on distingue les deux ») : `.pour-qui .pilier{border:0}`, et les deux cartes
+se distinguent par leur fond et par un numéro **01** / **02** (`.pilier__tete`,
+`.pilier__no`, lu « 01 — » par les lecteurs d'écran). Carte 1 : « Il vous faut moins
+de contacts, mais des clients prêts à acheter. » ; « Vente sur rendez-vous ou sur
+devis. », « Des ventes qui varient d'un mois à l'autre. » Carte 2 : « L'IA doit faire
+gagner du temps à vos équipes, avec vos outils actuels. » ; « Les mêmes tâches,
+refaites chaque jour. », « Chacun teste l'IA dans son coin. » 177 px par carte à
+1 280 px. Ce qui suit décrit la première version.
 
 **Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
 type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a

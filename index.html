@@ -445,6 +445,9 @@ em{color:var(--yellow)}
    Les deux situations de chaque carte forment une liste à petits points,
    sans filet (demande du 5 novembre 2026), pour se lire d'un coup d'œil. */
 .pour-qui{display:grid;gap:1rem;grid-template-columns:1fr}
+/* Sans contour depuis le 5 novembre 2026, à sa demande : le fond des cartes et
+   leurs numéros 01 et 02 suffisent à distinguer les deux profils. */
+.pour-qui .pilier{border:0}
 @media (min-width:46rem){.pour-qui{grid-template-columns:repeat(2,1fr)}}
 .pour-qui h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
@@ -1493,19 +1496,25 @@ h3{font-weight:500;letter-spacing:-.012em}
       </div>
       <div class="pour-qui">
         <article class="pilier">
-          <h3>Vous vendez des offres <em>moyenne et haute gamme</em></h3>
-          <p>Vos clients prennent le temps de décider. Il vous faut moins de contacts, mais les bons&nbsp;: ceux qui ont le besoin, le budget et le pouvoir de dire oui.</p>
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">01</span>
+            <h3><span class="pilier__cache">01 — </span>Vous vendez des offres <em>moyenne et haute gamme</em></h3>
+          </div>
+          <p>Il vous faut moins de contacts, mais des clients prêts à acheter.</p>
           <ul class="pour-qui__signes">
-            <li>Vous vendez sur rendez-vous ou sur devis.</li>
-            <li>Vos ventes varient trop d’un mois à l’autre.</li>
+            <li>Vente sur rendez-vous ou sur devis.</li>
+            <li>Des ventes qui varient d’un mois à l’autre.</li>
           </ul>
         </article>
         <article class="pilier">
-          <h3>Vous voulez intégrer l’<em>IA</em> dans vos process</h3>
-          <p>L’IA doit faire gagner du temps à vos équipes, avec les outils que vous avez déjà.</p>
+          <div class="pilier__tete">
+            <span class="pilier__no" aria-hidden="true">02</span>
+            <h3><span class="pilier__cache">02 — </span>Vous voulez intégrer l’<em>IA</em> dans vos process</h3>
+          </div>
+          <p>L’IA doit faire gagner du temps à vos équipes, avec vos outils actuels.</p>
           <ul class="pour-qui__signes">
-            <li>Vos équipes refont chaque jour les mêmes tâches.</li>
-            <li>Chacun essaie l’IA dans son coin, sans règles communes.</li>
+            <li>Les mêmes tâches, refaites chaque jour.</li>
+            <li>Chacun teste l’IA dans son coin.</li>
           </ul>
         </article>
       </div>
