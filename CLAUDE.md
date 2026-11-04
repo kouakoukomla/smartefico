@@ -1257,7 +1257,8 @@ dans les repères, qui fait partie du texte.
 **Le menu de l'accueil a changé le 5 novembre 2026**, à sa demande : « Exemples »
 devient « IA & Performance » (toujours vers `#exemples`, qui ouvre le panneau dans
 `#ia`), et « Blog » devient « Outils », vers `#agents` (« Déploiement Agent IA »).
-**L'accueil ne mène donc plus au blog** : ce lien était le seul. Menu : Méthode,
+Le blog, qui n'avait plus d'autre lien sur l'accueil, a été ajouté au pied de page
+le même jour, à sa demande, devant « Guide gratuit ». Menu : Méthode,
 IA & Performance, Outils, Librairie, FAQ, plus « Contact » ; 66 et 112 px de marge
 à 900 px.
 
