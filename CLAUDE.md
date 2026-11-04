@@ -526,7 +526,14 @@ de contacts, mais des clients prêts à acheter. » ; « Vente sur rendez-vous o
 devis. », « Des ventes qui varient d'un mois à l'autre. » Carte 2 : « L'IA doit faire
 gagner du temps à vos équipes, avec vos outils actuels. » ; « Les mêmes tâches,
 refaites chaque jour. », « Chacun teste l'IA dans son coin. » 177 px par carte à
-1 280 px. Ce qui suit décrit la première version.
+1 280 px. **Puis sans fond**, toujours le 5 novembre 2026 (« Fais la même chose
+pour cette partie aussi », après les cartes de `#resultats`) : `background:none`,
+ni fond ni contour, les numéros 01 / 02 et l'écart de grille distinguent les deux
+profils. Chapô : « Deux profils, souvent les deux à la fois. » Carte 1 : « Moins de
+contacts, mais des clients prêts à acheter. » ; « Vente sur rendez-vous ou devis. »,
+« Ventes irrégulières d'un mois à l'autre. » Carte 2 : « Du temps gagné pour vos
+équipes, avec vos outils actuels. » ; « Des tâches répétées chaque jour. », « Chacun
+teste l'IA dans son coin. » Ce qui suit décrit la première version.
 
 **Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
 type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a
