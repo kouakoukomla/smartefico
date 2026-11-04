@@ -816,10 +816,26 @@ posées : **la vente passe par Amazon**, une page dédiée, un lien « Livres »
   n'est pas consultable d'ici, ni par le navigateur intégré ni par les outils de
   lecture : c'est le propriétaire qui fournit les liens et qui contrôle leur
   destination.
-- **Le menu passe à sept liens plus « Contact »**, « Livres » après « Guide gratuit » :
-  34 et 49 px de marge à 900 px de large, sur une ligne. Remesurer avant d'en ajouter
-  un autre. « Livres » est aussi au pied de l'accueil, et dans l'en-tête et le pied du
-  blog (`build-blog.mjs`).
+- **« Librairie Amazon » remplace « Livres » depuis le 4 novembre 2026**, à sa demande
+  (« Au lieu de "Livres" […] met l'icone "Librairie amazon" et met le lien sur la
+  première façade du site très visible ») : dans le menu, avec un livre ouvert au trait
+  (symbole `i-livres`), au pied de l'accueil et dans l'en-tête et le pied du blog
+  (`build-blog.mjs`), sur ces deux derniers sans icône. **Un bouton jaune du même nom
+  est entré dans le hero**, entre « Réserver un échange » et le téléphone : trois
+  boutons sur une ligne dès 900 px, empilés sur téléphone. Le logo d'Amazon n'est pas
+  repris : c'est une marque déposée, et le bouton mène à `livres.html`, pas à Amazon.
+- **« Guide gratuit » a quitté le menu de l'accueil le même jour**, à sa demande. Il
+  reste au pied de l'accueil, dans la sixième case des cinq étapes, et dans l'en-tête
+  et le pied du blog. **Le menu tombe à cinq liens** — Méthode, Exemples, Blog,
+  Librairie Amazon, FAQ — plus « Contact » : 74 et 127 px de marge à 900 px de large.
+
+**« Ce à quoi vous engager » (`#chiffres`) et « Avant, après » (`#avant-apres`) ont été
+supprimées le 4 novembre 2026**, à sa demande. Sont partis avec elles leur style
+(`.figures`, `.figure`, `.compteur__*`, `.ba`), le script des compteurs et le lien
+« Avant/Après » du menu. L'accueil passe de « Ce qu'on vous apporte » à « Notre méthode
+*ClientlyEfico*. » et fait **6 070 px** à 1 280 px. Ce qui est écrit dans ce fichier sur
+ces deux sections, leurs compteurs et leur sixième paire de lignes décrit ce qui a
+existé ; l'historique git les garde.
 
 **Plus d'assistant de discussion depuis le 1er novembre 2026**, à la demande du
 propriétaire (« je veux que tu supprime le bot du site »), le jour de l'audit de

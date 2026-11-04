@@ -350,6 +350,13 @@ em{color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:.5rem}
 /* Les deux voies de contact restent lisibles et de même taille. */
 .hero__actions{gap:.75rem;width:100%}
+/* L'icône de la librairie : un livre ouvert au trait, comme les autres icônes
+   du site. Le logo d'Amazon n'est pas repris : c'est une marque déposée. */
+.ico-livres{width:1.15rem;height:1.15rem;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero__actions .ico-livres{margin-right:.5rem}
+.nav__librairie{display:inline-flex;align-items:center;gap:.4rem}
+.nav__librairie .ico-livres{color:var(--yellow);width:1rem;height:1rem}
 .hero__actions .btn{font-size:.85rem;min-height:3.25rem;
   padding:.85rem 1.4rem;justify-content:center;min-width:14rem}
 .hero__actions .btn--solid{background:var(--yellow);color:var(--on-yellow)}
@@ -389,15 +396,6 @@ em{color:var(--yellow)}
 .head--centre{align-items:center;text-align:center}
 .head--centre .lead{margin-inline:auto}
 
-/* ---------- chiffres ---------- */
-.figures{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:38rem){.figures{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:64rem){.figures{grid-template-columns:repeat(4,1fr)}}
-/* Icône filaire jaune, traitement « repère technique ». Le filet jaune qui
-   coiffait chaque carte est parti le 14 septembre 2026 : il ne reste que
-   l'icône, et la bordure qui s'éclaire au survol.
-   Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
-   plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 /* ---------- ce qu'on vous apporte ----------
    Le manifeste du propriétaire, revenu le 28 septembre 2026 et retouché
    plusieurs fois le jour même : une carte centrée, en deux blocs séparés par
@@ -433,29 +431,6 @@ em{color:var(--yellow)}
 .manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
-
-/* Marge intérieure rabotée d'un quart le 23 septembre 2026, avec toute la
-   famille des cartes : 2rem → 1,5rem au plus large. */
-.figure{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.05rem,2.25vw,1.5rem);display:flex;flex-direction:column;gap:.5rem;
-  transition:border-color .2s ease}
-.figure:hover{border-color:var(--yellow)}
-.figure .figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
-.figure__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
-  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.figure b{font-weight:800;font-size:clamp(2.21rem,4.675vw,3.145rem);line-height:1;
-  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
-/* Enfants directs seulement : les compteurs posent leurs propres span dans
-   le chiffre, qui doivent garder la taille et le blanc du titre. */
-.figure > span{color:var(--ink-2);font-size:.799rem;margin-top:.1rem}
-/* Compteurs : chaque chiffre part de zéro et monte jusqu'à sa valeur quand il
-   entre à l'écran (script en bas de page). Pendant qu'il défile, le lecteur
-   d'écran lit la valeur finale, cachée à l'œil, et ignore celle qui bouge.
-   Le chiffre mobile est calé à droite dans la largeur de la valeur finale :
-   en passant de 9 à 10, « 24 » ne pousse pas « h/24 ». */
-.compteur__vu{display:inline-block;text-align:right}
-.compteur__lu{position:absolute;width:1px;height:1px;overflow:hidden;
-  clip-path:inset(50%);white-space:nowrap;user-select:none}
 
 /* ---------- ce qu'on installe ---------- */
 .offers{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -613,25 +588,6 @@ em{color:var(--yellow)}
   font-size:.765rem;padding:.55rem 1rem;border-radius:999px;transition:background-color .18s ease}
 .guide-lien:hover .guide-lien__bouton{background:var(--yellow-hi)}
 @media (prefers-reduced-motion:reduce){.guide-lien__bouton{transition:none}}
-
-/* ---------- avant / après ---------- */
-.ba{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
-.ba__col{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.05rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:1rem}
-/* La colonne d’arrivée était un aplat jaune plein. Elle se distingue
-   désormais par sa clarté, pas par sa couleur : fond noir comme l’autre,
-   bordure plus vive, texte en blanc plein contre le gris d’en face. */
-.ba__col--apres{border-color:#3A3A38}
-.ba__titre{color:var(--ink-2)}
-.ba__col--apres .ba__titre{color:var(--ink)}
-.ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
-.ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
-  font-size:.833rem;line-height:1.5}
-.ba__col--apres li{color:var(--ink);font-weight:500}
-.ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
-  background:var(--ink-3);border-radius:50%}
-.ba__col--apres li::before{background:var(--ink);transform:rotate(45deg);border-radius:0}
 
 /* La section « Avec qui l'agence travaille » et son style .aud ont été
    retirés le 23 septembre 2026 : la FAQ donnait la même liste de clients,
@@ -915,14 +871,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
    1er novembre 2026 (« Tu dois écrire en couleur jaune les écrits qui sont
    en italique ») : 15,3:1 sur le noir, 14,4:1 sur les cartes. */
 em,.display em,h1.display em{color:var(--yellow)}
-.figure b{color:var(--ink)}
-.figure .figure__ico{color:var(--ink)}
 .step__no,.pilier__no,.offer__no{color:var(--ink-3)}
 .offer:hover .offer__no{color:var(--ink)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
-.figure:hover,.offer:hover,.agent:hover,
+.offer:hover,.agent:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
 .guide-lien:focus-visible{outline-color:var(--ink)}
@@ -1000,10 +954,9 @@ h3{font-weight:500;letter-spacing:-.012em}
 .kpi{background:var(--verre)}
 
 /* Chiffres clés : grands et fins. */
-.figure b{font-weight:300;letter-spacing:-.04em}
 
 /* Cartes : arrondies, filet clair. */
-.manifeste,.figure,.offer,.agent,.pilier,.ba__col,.guide-lien--large{
+.manifeste,.offer,.agent,.pilier,.guide-lien--large{
   border-radius:var(--rayon);border-color:var(--line)}
 .step{border-radius:14px;border-color:var(--line)}
 .agent figure{border-radius:12px}
@@ -1190,7 +1143,7 @@ body:has(.article)::before{
     </a>
     <nav class="blog-top__liens" aria-label="Liens du site">
       <a class="blog-top__guide mono" href="guide.html">Guide gratuit</a>
-      <a class="blog-top__guide mono" href="livres.html">Livres</a>
+      <a class="blog-top__guide mono" href="livres.html">Librairie Amazon</a>
       <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
     </nav>
   </header>
@@ -1235,7 +1188,7 @@ body:has(.article)::before{
     <span class="mono">© 2026 SmartEfico</span>
     <span class="blog-foot__liens">
       <a class="mono" href="guide.html">Guide gratuit</a>
-      <a class="mono" href="livres.html">Livres</a>
+      <a class="mono" href="livres.html">Librairie Amazon</a>
       <a class="mono" href="index.html">Accueil</a>
     </span>
   </footer>

@@ -378,6 +378,13 @@ em{color:var(--yellow)}
 .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:.5rem}
 /* Les deux voies de contact restent lisibles et de même taille. */
 .hero__actions{gap:.75rem;width:100%}
+/* L'icône de la librairie : un livre ouvert au trait, comme les autres icônes
+   du site. Le logo d'Amazon n'est pas repris : c'est une marque déposée. */
+.ico-livres{width:1.15rem;height:1.15rem;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero__actions .ico-livres{margin-right:.5rem}
+.nav__librairie{display:inline-flex;align-items:center;gap:.4rem}
+.nav__librairie .ico-livres{color:var(--yellow);width:1rem;height:1rem}
 .hero__actions .btn{font-size:.85rem;min-height:3.25rem;
   padding:.85rem 1.4rem;justify-content:center;min-width:14rem}
 .hero__actions .btn--solid{background:var(--yellow);color:var(--on-yellow)}
@@ -417,15 +424,6 @@ em{color:var(--yellow)}
 .head--centre{align-items:center;text-align:center}
 .head--centre .lead{margin-inline:auto}
 
-/* ---------- chiffres ---------- */
-.figures{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:38rem){.figures{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:64rem){.figures{grid-template-columns:repeat(4,1fr)}}
-/* Icône filaire jaune, traitement « repère technique ». Le filet jaune qui
-   coiffait chaque carte est parti le 14 septembre 2026 : il ne reste que
-   l'icône, et la bordure qui s'éclaire au survol.
-   Le sélecteur de l'icône est doublé pour passer devant `.figure > span`,
-   plus spécifique d'un cran, qui la laissait grise jusqu'au 16 septembre 2026. */
 /* ---------- ce qu'on vous apporte ----------
    Le manifeste du propriétaire, revenu le 28 septembre 2026 et retouché
    plusieurs fois le jour même : une carte centrée, en deux blocs séparés par
@@ -461,29 +459,6 @@ em{color:var(--yellow)}
 .manifeste hr{width:3rem;border:0;border-top:1px solid var(--mur);margin:.6rem 0}
 .manifeste__fort em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.04em}
-
-/* Marge intérieure rabotée d'un quart le 23 septembre 2026, avec toute la
-   famille des cartes : 2rem → 1,5rem au plus large. */
-.figure{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.05rem,2.25vw,1.5rem);display:flex;flex-direction:column;gap:.5rem;
-  transition:border-color .2s ease}
-.figure:hover{border-color:var(--yellow)}
-.figure .figure__ico{color:var(--yellow);width:1.65rem;height:1.65rem;margin-bottom:.35rem}
-.figure__ico svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
-  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.figure b{font-weight:800;font-size:clamp(2.21rem,4.675vw,3.145rem);line-height:1;
-  letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
-/* Enfants directs seulement : les compteurs posent leurs propres span dans
-   le chiffre, qui doivent garder la taille et le blanc du titre. */
-.figure > span{color:var(--ink-2);font-size:.799rem;margin-top:.1rem}
-/* Compteurs : chaque chiffre part de zéro et monte jusqu'à sa valeur quand il
-   entre à l'écran (script en bas de page). Pendant qu'il défile, le lecteur
-   d'écran lit la valeur finale, cachée à l'œil, et ignore celle qui bouge.
-   Le chiffre mobile est calé à droite dans la largeur de la valeur finale :
-   en passant de 9 à 10, « 24 » ne pousse pas « h/24 ». */
-.compteur__vu{display:inline-block;text-align:right}
-.compteur__lu{position:absolute;width:1px;height:1px;overflow:hidden;
-  clip-path:inset(50%);white-space:nowrap;user-select:none}
 
 /* ---------- ce qu'on installe ---------- */
 .offers{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -641,25 +616,6 @@ em{color:var(--yellow)}
   font-size:.765rem;padding:.55rem 1rem;border-radius:999px;transition:background-color .18s ease}
 .guide-lien:hover .guide-lien__bouton{background:var(--yellow-hi)}
 @media (prefers-reduced-motion:reduce){.guide-lien__bouton{transition:none}}
-
-/* ---------- avant / après ---------- */
-.ba{display:grid;gap:1rem;grid-template-columns:1fr}
-@media (min-width:46rem){.ba{grid-template-columns:repeat(2,1fr)}}
-.ba__col{background:var(--surface);border:1px solid var(--line);
-  padding:clamp(1.05rem,2.25vw,1.55rem);display:flex;flex-direction:column;gap:1rem}
-/* La colonne d’arrivée était un aplat jaune plein. Elle se distingue
-   désormais par sa clarté, pas par sa couleur : fond noir comme l’autre,
-   bordure plus vive, texte en blanc plein contre le gris d’en face. */
-.ba__col--apres{border-color:#3A3A38}
-.ba__titre{color:var(--ink-2)}
-.ba__col--apres .ba__titre{color:var(--ink)}
-.ba__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
-.ba__col li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-2);
-  font-size:.833rem;line-height:1.5}
-.ba__col--apres li{color:var(--ink);font-weight:500}
-.ba__col li::before{content:"";width:.5rem;height:.5rem;flex:none;margin-top:.48rem;
-  background:var(--ink-3);border-radius:50%}
-.ba__col--apres li::before{background:var(--ink);transform:rotate(45deg);border-radius:0}
 
 /* La section « Avec qui l'agence travaille » et son style .aud ont été
    retirés le 23 septembre 2026 : la FAQ donnait la même liste de clients,
@@ -943,14 +899,12 @@ h2.head__eyebrow{font-weight:600;margin:0}
    1er novembre 2026 (« Tu dois écrire en couleur jaune les écrits qui sont
    en italique ») : 15,3:1 sur le noir, 14,4:1 sur les cartes. */
 em,.display em,h1.display em{color:var(--yellow)}
-.figure b{color:var(--ink)}
-.figure .figure__ico{color:var(--ink)}
 .step__no,.pilier__no,.offer__no{color:var(--ink-3)}
 .offer:hover .offer__no{color:var(--ink)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
-.figure:hover,.offer:hover,.agent:hover,
+.offer:hover,.agent:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
 .step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
 .guide-lien:focus-visible{outline-color:var(--ink)}
@@ -1028,10 +982,9 @@ h3{font-weight:500;letter-spacing:-.012em}
 .kpi{background:var(--verre)}
 
 /* Chiffres clés : grands et fins. */
-.figure b{font-weight:300;letter-spacing:-.04em}
 
 /* Cartes : arrondies, filet clair. */
-.manifeste,.figure,.offer,.agent,.pilier,.ba__col,.guide-lien--large{
+.manifeste,.offer,.agent,.pilier,.guide-lien--large{
   border-radius:var(--rayon);border-color:var(--line)}
 .step{border-radius:14px;border-color:var(--line)}
 .agent figure{border-radius:12px}
@@ -1181,6 +1134,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></symbol>
   <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.03-2.82h-3.2v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1 0-5.2c.27 0 .53.04.78.12V9.55a5.9 5.9 0 0 0-.78-.05 5.79 5.79 0 1 0 5.79 5.79V8.9a7.45 7.45 0 0 0 4.35 1.39V7.1a4.35 4.35 0 0 1-3.32-1.28z"/></symbol>
   <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></symbol>
+  <symbol id="i-livres" viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.7 4.5 4 4.5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1c3.7 0 6.2.5 8 2 1.8-1.5 4.3-2 8-2a1 1 0 0 0 1-1v-12a1 1 0 0 0-1-1c-3.7 0-6.2.5-8 2Z"/><path d="M12 6.5v14"/></symbol>
   <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></symbol>
   <symbol id="i-substack" viewBox="0 0 24 24"><path d="M3 3h18v2.7H3V3zm0 5.35h18v2.7H3v-2.7zM3 13.7 12 18.4l9-4.7V21l-9-4.7L3 21v-7.3z"/></symbol>
 </svg>
@@ -1211,13 +1165,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </a>
     <div class="nav__links" id="nav-menu">
       <!-- l'ordre du menu suit celui de la page ; les pages à part,
-           le blog, le guide gratuit et les livres, se suivent -->
-      <a href="#avant-apres">Avant/Après</a>
+           le blog et la librairie, se suivent -->
       <a href="#resultats">Méthode</a>
       <a href="#exemples">Exemples</a>
       <a href="blog.html">Blog</a>
-      <a href="guide.html">Guide gratuit</a>
-      <a href="livres.html">Livres</a>
+      <a class="nav__librairie" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie Amazon</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Ouvrir le menu"
@@ -1248,6 +1200,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       <p class="lead"><!-- HERO_SUB:START -->Pour les PME et ETI : nous connectons vos publicités, votre tunnel de rendez-vous et vos agents IA pour qualifier chaque demande et la transmettre à votre équipe commerciale.<!-- HERO_SUB:END --></p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Réserver un échange</a>
+        <a class="btn btn--solid" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie Amazon</a>
         <a class="btn btn--line" href="tel:+33751599636">+33 7 51 59 96 36</a>
       </div>
     </div>
@@ -1275,68 +1228,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <p class="manifeste__fort">Démultiplier vos ventes moyenne et haute gamme en <em>moins de 3&nbsp;mois</em>, et mettre l’IA générative au travail dans vos équipes.</p>
         <p>C’est ce qu’on apporte à chacun de nos clients.</p>
         <p>Si c’est ce que vous cherchez, alors on est l’agence qu’il vous faut.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ QUELQUES CHIFFRES ============ -->
-    <section class="wrap" id="chiffres">
-      <div class="head head--centre">
-        <h2 class="display">Ce à quoi <em>vous engager</em>.</h2>
-      </div>
-      <div class="figures">
-        <p class="figure">
-          <span class="figure__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <b><data class="compteur" value="3">3</data> mois</b><span>l'horizon sur lequel on travaille pour démultiplier vos ventes</span>
-        </p>
-        <p class="figure">
-          <span class="figure__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h4v-4h4v-4h4v-4h4"/></svg></span>
-          <b><data class="compteur" value="5">5</data></b><span>étapes, de la création du système à l'extension aux autres canaux</span>
-        </p>
-        <p class="figure">
-          <span class="figure__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>
-          <b><data class="compteur" value="24">24</data> h/24</b><span>vos demandes entrantes qualifiées, week-ends compris</span>
-        </p>
-        <p class="figure">
-          <span class="figure__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.2 10.9l7.5-3.6M8.2 13.1l7.5 3.6"/></svg></span>
-          <b><data class="compteur" value="3">3</data></b><span>régies publicitaires pilotées — Meta, LinkedIn, TikTok</span>
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ AVANT / APRÈS ============
-         Persuade sans citer aucun client : chaque ligne de la colonne gauche
-         vient de la description que le propriétaire fait lui-même du problème,
-         chaque ligne de droite d'une capacité décrite ailleurs sur cette page.
-         Placée avant « Ce qu'on installe » le 19 septembre 2026, à la demande
-         du propriétaire. -->
-    <section class="wrap" id="avant-apres">
-      <div class="head head--centre">
-        <h2 class="display">Avant, <em>après</em>.</h2>
-        <p class="lead">La plupart des dirigeants qu'on rencontre sont piégés dans l'opérationnel : un pipeline commercial instable d'un côté, des équipes qui passent leurs journées sur des tâches que l'IA sait déjà prendre de l'autre. Voici ce que le système déplace, ligne par ligne.</p>
-      </div>
-      <div class="ba">
-        <div class="ba__col ba__col--avant">
-          <span class="ba__titre mono">Sans système</span>
-          <ul>
-            <li>La prospection avance quand quelqu'un trouve le temps de s'y mettre.</li>
-            <li>Un lead qui arrive attend qu'on pense à le rappeler.</li>
-            <li>Le pipeline dépend de l'effort fourni ce mois-ci.</li>
-            <li>Les tâches répétitives occupent quelqu'un dont le temps devrait aller ailleurs.</li>
-            <li>Chacun essaie l'IA dans son coin, sans méthode ni règles communes.</li>
-            <li>On sait que ça marche « plutôt bien », sans pouvoir le montrer.</li>
-          </ul>
-        </div>
-        <div class="ba__col ba__col--apres">
-          <span class="ba__titre mono">Avec SmartEfico</span>
-          <ul>
-            <li>Les campagnes tournent en continu sur Meta, LinkedIn et TikTok.</li>
-            <li>Chaque lead est qualifié, classé et transmis à la bonne personne dans la seconde.</li>
-            <li>Les campagnes sont ajustées chaque semaine sur les retours du terrain.</li>
-            <li>Les demandes courantes sont traitées par des agents, 24&nbsp;h/24.</li>
-            <li>Vos équipes sont formées, outillées et tenues par des règles d'usage claires.</li>
-            <li>Un tableau de bord affiche les indicateurs dès la première semaine.</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -1869,7 +1760,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <p class="foot__links">
           <a href="guide.html">Guide gratuit</a>
           <span aria-hidden="true">|</span>
-          <a href="livres.html">Livres</a>
+          <a href="livres.html">Librairie Amazon</a>
           <span aria-hidden="true">|</span>
           <!-- Les href des CGV et CGC restent de vrais liens : ils fonctionnent sur le
                site déployé et si JavaScript est désactivé. Le script ouvre la fenêtre
@@ -2192,68 +2083,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   var suivre = function (m) { if (m.matches) poser(false); };
   if (large.addEventListener) large.addEventListener("change", suivre);
   else if (large.addListener) large.addListener(suivre);
-})();
-
-// Compteurs de « Ce à quoi vous engager » : chaque chiffre repart de zéro et
-// monte vite jusqu'à sa valeur quand il entre à l'écran, une seule fois. La
-// valeur finale est écrite dans la page : sans ce script, sans
-// IntersectionObserver ou quand le visiteur demande moins de mouvement, elle
-// s'affiche telle quelle.
-(function () {
-  var compteurs = Array.prototype.filter.call(
-    document.querySelectorAll('.compteur'),
-    function (el) { return !isNaN(parseInt(el.getAttribute('value'), 10)); }
-  );
-  if (!compteurs.length || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var DUREE = 1400;   // ms, de zéro à la valeur
-  var DECALAGE = 120; // ms entre deux cartes qui entrent ensemble à l'écran
-
-  // Largeurs lues d'abord, en em pour suivre la taille fluide du titre.
-  var largeurs = compteurs.map(function (el) {
-    return el.getBoundingClientRect().width / parseFloat(window.getComputedStyle(el).fontSize);
-  });
-  compteurs.forEach(function (el, i) {
-    var lu = document.createElement('span');
-    lu.className = 'compteur__lu';
-    lu.textContent = el.textContent;
-    var vu = document.createElement('span');
-    vu.className = 'compteur__vu';
-    vu.setAttribute('aria-hidden', 'true');
-    vu.style.minWidth = largeurs[i] + 'em';
-    vu.textContent = '0';
-    el.textContent = '';
-    el.appendChild(lu);
-    el.appendChild(vu);
-  });
-
-  function lancer(el, retard) {
-    var cible = parseInt(el.getAttribute('value'), 10);
-    var texte = el.firstChild.textContent;
-    var vu = el.lastChild;
-    var depart = null;
-    function image(t) {
-      if (depart === null) depart = t + retard;
-      var p = Math.min(Math.max((t - depart) / DUREE, 0), 1);
-      // rapide au départ, freine en approchant de la valeur
-      vu.textContent = Math.round(cible * (1 - Math.pow(1 - p, 3))).toLocaleString('fr-FR');
-      if (p < 1) requestAnimationFrame(image);
-      else el.textContent = texte; // retour au texte d'origine, sans les deux span
-    }
-    requestAnimationFrame(image);
-  }
-
-  // Le chiffre démarre une fois entier à l'écran, un peu au-dessus du bas.
-  var guet = new IntersectionObserver(function (entrees) {
-    var rang = 0;
-    entrees.forEach(function (entree) {
-      if (!entree.isIntersecting) return;
-      guet.unobserve(entree.target);
-      lancer(entree.target, DECALAGE * rang++);
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 1 });
-  compteurs.forEach(function (el) { guet.observe(el); });
 })();
 
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le
