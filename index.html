@@ -656,16 +656,6 @@ em{color:var(--yellow)}
   padding:.8rem clamp(1.15rem,2.25vw,1.55rem);transition:border-color .2s ease}
 /* Sur téléphone, cette ligne tenait sur quatre lignes, serrée contre le
    bouton : le bouton passe dessous, aligné sur le texte (icône + écart). */
-/* Dans la sixième case de #ia depuis le 28 septembre 2026, à la demande du
-   propriétaire (« juste dans le trou à droite de "Accompagner" ») : la carte
-   d’appel partie, la case à côté de 05 était vide. Il garde l’habit des
-   cartes voisines ; seul son placement change. L’encart des exemples, lui,
-   reste en pleine largeur. */
-/* Sa marge verticale est resserrée pour qu’il ait la hauteur d’un levier
-   fermé : sa ligne de texte passe sur deux lignes dans une case, et il
-   dépassait de 15 px sous « 05 Accompagner ». */
-.guide-lien--case{grid-column:auto;padding-block:.4rem}
-.guide-lien--case .guide-lien__texte{line-height:1.22}
 @media (max-width:30rem){
   .guide-lien--large{flex-wrap:wrap}
   .guide-lien--large .guide-lien__texte{flex-basis:calc(100% - 2.8rem)}
@@ -675,9 +665,15 @@ em{color:var(--yellow)}
    #exemples, demandé le 9 octobre 2026. Une pastille jaune centrée, de la
    taille du bouton des encarts voisins (.guide-lien__bouton) : c'est un aplat
    de ce qui se clique, l'un des deux rôles permis du jaune. */
-/* Le panneau « Exemples » prend toute la largeur de la grille de #ia. Ses
-   trois cartes passent au noir, pour se détacher de la surface du panneau. */
-.exemples-onglet{grid-column:1/-1}
+/* Le panneau « Exemples » tient la sixième case de #ia, à droite de
+   « Accompagner ». Une case est trop étroite pour ses trois cartes : ouvert, il
+   prend toute la largeur. Ses cartes passent au noir pour se détacher de la
+   surface du panneau. */
+.exemples-onglet[open]{grid-column:1/-1}
+/* Fermé, son titre tient sur deux lignes : resserré, il garde la hauteur des
+   cinq leviers à côté de lui. */
+.exemples-onglet:not([open]) .pilier__tete{padding-block:.7rem}
+.exemples-onglet:not([open]) h3{font-size:.867rem;line-height:1.2}
 .exemples-onglet .pilier{background:var(--ground)}
 .exemples-onglet h4{margin:0;color:#FFF;font-size:1.063rem;font-weight:500;letter-spacing:-.02em}
 .exemples__guide{display:flex;justify-content:center;margin-top:1rem}
@@ -1304,9 +1300,8 @@ h3{font-weight:500;letter-spacing:-.012em}
          l'IA dans une entreprise. Titre, accroche, textes et étiquettes sont les siens, mot
          pour mot. Une sixième carte, « Prêt à intégrer l’IA dans votre
          activité ? », menait au formulaire de contact Tally D4LJDR ; elle est
-         partie le 28 septembre 2026, à sa demande. Le lien vers le guide gratuit
-         propre à cette section (guide-ia.html) tient la sixième case, et le
-         panneau « Exemples » ferme la grille. -->
+         partie le 28 septembre 2026, à sa demande. Le panneau « Exemples » tient
+         la sixième case depuis le 4 novembre 2026. -->
     <section class="wrap" id="ia">
       <div class="head head--centre">
         <h2 class="display">L’IA générative au service de votre <em>performance</em>.</h2>
@@ -1393,11 +1388,6 @@ h3{font-weight:500;letter-spacing:-.012em}
             </ul>
           </div>
         </details>
-        <a class="guide-lien guide-lien--large guide-lien--case" href="guide-ia.html?utm_source=site&amp;utm_medium=section-ia">
-          <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
-          <span class="guide-lien__texte"><strong>Le guide gratuit</strong><span>Les 5 leviers de l’IA générative et leurs fiches à remplir, en PDF</span></span>
-          <span class="guide-lien__bouton">Recevoir</span>
-        </a>
         <!-- Le panneau « Exemples », replié, depuis le 4 novembre 2026 : il était une
              section à part, entre #ia et #pour-qui. Le lien du menu l'ouvre, par
              un script en bas de page. -->

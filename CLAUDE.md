@@ -607,8 +607,15 @@ texte n'a bougé.
 
 **« Exemples » n'est plus une section depuis le 4 novembre 2026** : à sa demande
 (« Ajoute toute cette partie dans un petit onglet de "L'IA générative au service de
-votre performance." »), c'est un panneau replié de `#ia`, sous les cinq leviers, sur
-toute la largeur de la grille (`details.pilier--repli.exemples-onglet`). L'ancre
+votre performance." »), c'est un panneau replié de `#ia`
+(`details.pilier--repli.exemples-onglet`). **Il tient la sixième case, à droite
+d'« Accompagner », depuis le même jour** : à sa demande, il y remplace l'encart « Le
+guide gratuit » (« supprime […] et remplace par l'onglet »), parti avec son style
+`.guide-lien--case`. Fermé, son titre resserré tient sur deux lignes à la hauteur des
+leviers ; ouvert, il prend toute la largeur (`[open]{grid-column:1/-1}`), une case
+étant trop étroite pour ses trois cartes. `guide-ia.html` reste accessible par « Recevoir
+le guide gratuitement », à l'intérieur du panneau. Ses inscriptions ne viennent donc
+plus de `utm_medium=section-ia`, mais de `section-exemples`. L'ancre
 `#exemples` passe sur ce panneau ; **le lien « Exemples » du menu l'ouvre**, par un
 script en bas de page, comme une adresse `/#exemples`. Son contenu n'a pas changé : le
 titre tient dans le sommaire et ses trois cartes passent au noir pour se détacher du
