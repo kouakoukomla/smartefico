@@ -646,6 +646,11 @@ em{color:var(--yellow)}
    #exemples, demandé le 9 octobre 2026. Une pastille jaune centrée, de la
    taille du bouton des encarts voisins (.guide-lien__bouton) : c'est un aplat
    de ce qui se clique, l'un des deux rôles permis du jaune. */
+/* Le panneau « Exemples » prend toute la largeur de la grille de #ia. Ses
+   trois cartes passent au noir, pour se détacher de la surface du panneau. */
+.exemples-onglet{grid-column:1/-1}
+.exemples-onglet .pilier{background:var(--ground)}
+.exemples-onglet h4{margin:0;color:#FFF;font-size:1.063rem;font-weight:500;letter-spacing:-.02em}
 .exemples__guide{display:flex;justify-content:center;margin-top:1rem}
 .exemples__guide a{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
   color:var(--on-yellow);font-weight:700;font-size:.765rem;padding:.55rem 1.1rem;

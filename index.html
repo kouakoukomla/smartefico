@@ -674,6 +674,11 @@ em{color:var(--yellow)}
    #exemples, demandé le 9 octobre 2026. Une pastille jaune centrée, de la
    taille du bouton des encarts voisins (.guide-lien__bouton) : c'est un aplat
    de ce qui se clique, l'un des deux rôles permis du jaune. */
+/* Le panneau « Exemples » prend toute la largeur de la grille de #ia. Ses
+   trois cartes passent au noir, pour se détacher de la surface du panneau. */
+.exemples-onglet{grid-column:1/-1}
+.exemples-onglet .pilier{background:var(--ground)}
+.exemples-onglet h4{margin:0;color:#FFF;font-size:1.063rem;font-weight:500;letter-spacing:-.02em}
 .exemples__guide{display:flex;justify-content:center;margin-top:1rem}
 .exemples__guide a{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow);
   color:var(--on-yellow);font-weight:700;font-size:.765rem;padding:.55rem 1.1rem;
@@ -1297,9 +1302,9 @@ h3{font-weight:500;letter-spacing:-.012em}
          l'IA dans une entreprise. Titre, accroche, textes et étiquettes sont les siens, mot
          pour mot. Une sixième carte, « Prêt à intégrer l’IA dans votre
          activité ? », menait au formulaire de contact Tally D4LJDR ; elle est
-         partie le 28 septembre 2026, à sa demande. Dessous, sur toute la
-         largeur, le lien vers le guide gratuit propre à cette section
-         (guide-ia.html), dans le même encart que celui de la méthode. -->
+         partie le 28 septembre 2026, à sa demande. Le lien vers le guide gratuit
+         propre à cette section (guide-ia.html) tient la sixième case, et le
+         panneau « Exemples » ferme la grille. -->
     <section class="wrap" id="ia">
       <div class="head head--centre">
         <h2 class="display">L’IA générative au service de votre <em>performance</em>.</h2>
@@ -1391,76 +1396,64 @@ h3{font-weight:500;letter-spacing:-.012em}
           <span class="guide-lien__texte"><strong>Le guide gratuit</strong><span>Les 5 leviers de l’IA générative et leurs fiches à remplir, en PDF</span></span>
           <span class="guide-lien__bouton">Recevoir</span>
         </a>
-      </div>
-    </section>
-
-    <!-- ============ EXEMPLES D'APPLICATIONS DE L'IA ============
-         Demandée par le propriétaire le 25 septembre 2026, « juste avant
-         agent IA », sur le modèle de la page hub
-         demarretonaventure.com/ex-applications-ia : trois entrées — secteur,
-         département, métier — et un encart vers la page qui les développe,
-         exemples-ia.html. Le titre et l'accroche sont les siens, mot pour mot.
-
-         Aucun style nouveau : les trois cartes sont des .pilier sans numéro
-         et l'encart du bas est le .guide-lien--large de la section voisine,
-         qui prend toute la largeur de la grille. Son icône est une grille de
-         quatre carreaux, au trait comme les autres. -->
-    <section class="wrap" id="exemples">
-      <div class="head head--centre">
-        <h2 class="display">Exemples d'applications de l'IA par <em>secteur, département et métier</em>.</h2>
-        <p class="lead">Explorez les différents cas d'usage de l'intelligence artificielle.</p>
-      </div>
-      <div class="piliers">
-        <article class="pilier">
-          <div class="pilier__tete">
-            <h3>Par secteur</h3>
+        <!-- Le panneau « Exemples », replié, depuis le 4 novembre 2026 : il était une
+             section à part, entre #ia et #pour-qui. Le lien du menu l'ouvre, par
+             un script en bas de page. -->
+        <details class="pilier pilier--repli exemples-onglet" id="exemples">
+          <summary class="pilier__tete">
+            <h3>Exemples d'applications de l'IA par secteur, département et métier</h3>
+            <span class="pilier__chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="pilier__corps">
+            <p>Explorez les différents cas d'usage de l'intelligence artificielle.</p>
+            <div class="piliers">
+              <article class="pilier">
+                <h4>Par secteur</h4>
+                <p>Les usages se transposent d'un secteur à l'autre ; les contraintes, non. Données sensibles, réglementation, volumes : ce sont elles qui décident de l'ordre dans lequel on avance.</p>
+                <ul class="chips pilier__puces">
+                  <li class="chip">Industrie</li>
+                  <li class="chip">Santé</li>
+                  <li class="chip">Immobilier</li>
+                  <li class="chip">Secteur public</li>
+                  <li class="chip">Commerce</li>
+                </ul>
+              </article>
+              <article class="pilier">
+                <h4>Par département</h4>
+                <p>C'est souvent la bonne maille pour un premier périmètre : un département a déjà ses processus, ses outils et ses indicateurs, et sait ce qui lui coûte du temps.</p>
+                <ul class="chips pilier__puces">
+                  <li class="chip">Commercial</li>
+                  <li class="chip">Relation client</li>
+                  <li class="chip">Finance</li>
+                  <li class="chip">RH</li>
+                  <li class="chip">Juridique</li>
+                </ul>
+              </article>
+              <article class="pilier">
+                <h4>Par métier</h4>
+                <p>Un cas d'usage ne devient concret qu'ancré dans un rôle : les documents qu'on ouvre, les décisions qu'on prend, les gestes qu'on répète dans la journée.</p>
+                <ul class="chips pilier__puces">
+                  <li class="chip">Ingénieur d'affaires</li>
+                  <li class="chip">Contrôleur de gestion</li>
+                  <li class="chip">Gestionnaire de contrats</li>
+                  <li class="chip">Agent immobilier</li>
+                </ul>
+              </article>
+              <a class="guide-lien guide-lien--large" href="exemples-ia.html">
+                <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg></span>
+                <span class="guide-lien__texte"><strong>Explorer les cas d'usage</strong><span>Six familles d'usages, les exemples par secteur, département et métier, et ce qui reste à contrôler</span></span>
+                <span class="guide-lien__bouton">Explorer</span>
+              </a>
+            </div>
+            <p class="exemples__guide">
+              <a href="guide-ia.html?utm_source=site&amp;utm_medium=section-exemples">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+                Recevoir le guide gratuitement
+              </a>
+            </p>
           </div>
-          <p>Les usages se transposent d'un secteur à l'autre ; les contraintes, non. Données sensibles, réglementation, volumes : ce sont elles qui décident de l'ordre dans lequel on avance.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Industrie</li>
-            <li class="chip">Santé</li>
-            <li class="chip">Immobilier</li>
-            <li class="chip">Secteur public</li>
-            <li class="chip">Commerce</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
-            <h3>Par département</h3>
-          </div>
-          <p>C'est souvent la bonne maille pour un premier périmètre : un département a déjà ses processus, ses outils et ses indicateurs, et sait ce qui lui coûte du temps.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Commercial</li>
-            <li class="chip">Relation client</li>
-            <li class="chip">Finance</li>
-            <li class="chip">RH</li>
-            <li class="chip">Juridique</li>
-          </ul>
-        </article>
-        <article class="pilier">
-          <div class="pilier__tete">
-            <h3>Par métier</h3>
-          </div>
-          <p>Un cas d'usage ne devient concret qu'ancré dans un rôle : les documents qu'on ouvre, les décisions qu'on prend, les gestes qu'on répète dans la journée.</p>
-          <ul class="chips pilier__puces">
-            <li class="chip">Ingénieur d'affaires</li>
-            <li class="chip">Contrôleur de gestion</li>
-            <li class="chip">Gestionnaire de contrats</li>
-            <li class="chip">Agent immobilier</li>
-          </ul>
-        </article>
-        <a class="guide-lien guide-lien--large" href="exemples-ia.html">
-          <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg></span>
-          <span class="guide-lien__texte"><strong>Explorer les cas d'usage</strong><span>Six familles d'usages, les exemples par secteur, département et métier, et ce qui reste à contrôler</span></span>
-          <span class="guide-lien__bouton">Explorer</span>
-        </a>
+        </details>
       </div>
-      <p class="exemples__guide">
-        <a href="guide-ia.html?utm_source=site&amp;utm_medium=section-exemples">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
-          Recevoir le guide gratuitement
-        </a>
-      </p>
     </section>
 
     <!-- ============ POUR QUI ============
@@ -2023,6 +2016,18 @@ h3{font-weight:500;letter-spacing:-.012em}
   var suivre = function (m) { if (m.matches) poser(false); };
   if (large.addEventListener) large.addEventListener("change", suivre);
   else if (large.addListener) large.addListener(suivre);
+})();
+
+// Le lien « Exemples » du menu mène à un panneau replié : il l'ouvre aussi.
+(function () {
+  var panneau = document.getElementById('exemples');
+  if (!panneau) return;
+  var ouvrir = function () { if (location.hash === '#exemples') panneau.open = true; };
+  ouvrir();
+  window.addEventListener('hashchange', ouvrir);
+  document.querySelectorAll('a[href="#exemples"]').forEach(function (lien) {
+    lien.addEventListener('click', function () { panneau.open = true; });
+  });
 })();
 
 // Ouvre les documents légaux dans la page. Si <dialog> n'est pas géré par le

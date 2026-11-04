@@ -605,6 +605,16 @@ texte n'a bougé.
   Design). À 1 280 px, un panneau fermé fait 86 px contre 245 px ouvert, la section
   tombe à 605 px et l'accueil reprend **310 px**.
 
+**« Exemples » n'est plus une section depuis le 4 novembre 2026** : à sa demande
+(« Ajoute toute cette partie dans un petit onglet de "L'IA générative au service de
+votre performance." »), c'est un panneau replié de `#ia`, sous les cinq leviers, sur
+toute la largeur de la grille (`details.pilier--repli.exemples-onglet`). L'ancre
+`#exemples` passe sur ce panneau ; **le lien « Exemples » du menu l'ouvre**, par un
+script en bas de page, comme une adresse `/#exemples`. Son contenu n'a pas changé : le
+titre tient dans le sommaire et ses trois cartes passent au noir pour se détacher du
+panneau. Elles portent un `h4` sans `.pilier__tete`, que `.pilier--repli` rendrait
+cliquable. La page tombe à **5 449 px** à 1 280 px. Ce qui suit décrit la section.
+
 **« Exemples d'applications de l'IA » (`#exemples`) et sa page**, demandées le
 25 septembre 2026 : « juste avant agent IA je veux créer un onglet "Exemples
 d'applications de l'IA par secteur, département et métier, Explorez les différents cas
