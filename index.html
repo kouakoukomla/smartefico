@@ -407,7 +407,8 @@ em{color:var(--yellow)}
    d'une ligne plus discrète. Tailles déjà à −15 %, comme le reste du site. */
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
-.manifeste{background:var(--surface);border:1px solid var(--line);
+/* Sans filet depuis le 5 novembre 2026, à sa demande : le fond seul dessine la carte. */
+.manifeste{background:var(--surface);border:0;
   padding:1.4rem 1.3rem;
   display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center}
 @media (min-width:46rem){.manifeste{padding:1.9rem 2.2rem}}

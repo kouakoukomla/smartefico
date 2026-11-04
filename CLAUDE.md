@@ -248,7 +248,8 @@ l'IA générative au travail dans vos équipes. », puis « Si c'est ce que vous
 on est l'agence qu'il vous faut. » Sont partis : « Rien d'autre. », « C'est ce qu'on
 apporte à chacun de nos clients. », la mention des rendez-vous high ticket, les deux
 volets, le filet et `.manifeste__bloc`. La carte garde toute la largeur ; la phrase
-forte s'arrête à 56 ch. Ce qui suit décrit les états précédents.
+forte s'arrête à 56 ch. **Sans contour depuis le 5 novembre 2026**, à sa demande (« enlève
+le filet ici aussi ») : `border:0`, le fond `--surface` dessine seul la carte. Ce qui suit décrit les états précédents.
 
 **« Ce qu'on vous apporte » (`#apport`) est revenue le 28 septembre 2026**, à la
 demande du propriétaire, juste avant « Ce à quoi vous engager » : « Avant "ce à quoi
