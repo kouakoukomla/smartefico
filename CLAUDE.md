@@ -535,8 +535,9 @@ contacts, mais des clients prêts à acheter. » ; « Vente sur rendez-vous ou d
 équipes, avec vos outils actuels. » ; « Des tâches répétées chaque jour. », « Chacun
 teste l'IA dans son coin. » **Le contour est revenu le même jour** (« Mets juste des
 limites à cela comme au niveau de "Notre méthode" ») : sans fond, avec le filet
-`--line` de `.pilier`, comme les cartes de `#resultats`. Ce qui suit décrit la
-première version.
+`--line` de `.pilier`, comme les cartes de `#resultats`. **Coins carrés** sur ces deux sections,
+le même jour (« ne mets pas arrondis, mets des carrés ») : `border-radius:0`, les
+autres cartes du site gardent leurs 18 px. Ce qui suit décrit la première version.
 
 **Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
 type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a
