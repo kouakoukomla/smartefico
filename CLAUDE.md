@@ -195,6 +195,11 @@ Ce qui suit retrace les versions précédentes, avec portrait.
 la section Contact ne contient plus d'`iframe` : un bouton « Réserver mon appel » mène
 à `https://tally.so/r/81VkKx` dans un nouvel onglet.
 
+**Le bloc contact (« Devenez rentable maintenant ! ») est carré et sans fond depuis
+le 5 novembre 2026**, à sa demande (« supprimer les arrondis ou le fond ») :
+`.contact{border-radius:0;background:none}` dans le bloc de thème, le filet `--line`
+reste, comme les cartes de `#resultats`.
+
 **Et cette section ne fait plus rien d’autre.** Le 14 septembre 2026, le propriétaire
 l'a ramenée à un titre, une phrase et ce bouton. Le téléphone et les deux adresses
 email qui y vivaient sont partis : le téléphone reste dans le hero, `contact.aintegrate`
