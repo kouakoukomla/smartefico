@@ -441,19 +441,19 @@ em{color:var(--yellow)}
 /* ---------- pour qui ----------
    Deux cartes .pilier côte à côte, une par profil, 28 septembre 2026. Le mot
    en italique des titres de carte prend l'Instrument Serif des grands titres.
-   Les trois situations de chaque carte forment une liste à petits tirets,
-   sous un filet, pour se lire d'un coup d'œil. */
+   Les deux situations de chaque carte forment une liste à petits points,
+   sans filet (demande du 5 novembre 2026), pour se lire d'un coup d'œil. */
 .pour-qui{display:grid;gap:1rem;grid-template-columns:1fr}
 @media (min-width:46rem){.pour-qui{grid-template-columns:repeat(2,1fr)}}
 .pour-qui h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
 /* margin-top:auto cale la liste au bas de la carte : les deux listes
    s’alignent même quand les phrases au-dessus n’ont pas la même longueur. */
-.pour-qui__signes{list-style:none;margin:auto 0 0;padding:.85rem 0 0;border-top:1px solid var(--line);
+.pour-qui__signes{list-style:none;margin:auto 0 0;padding:.35rem 0 0;
   display:flex;flex-direction:column;gap:.45rem}
 .pour-qui__signes li{position:relative;padding-left:1.1rem;color:var(--ink-2)}
-.pour-qui__signes li::before{content:"";position:absolute;left:0;top:.72em;
-  width:.55rem;height:1px;background:var(--ink-3)}
+.pour-qui__signes li::before{content:"";position:absolute;left:.1rem;top:.62em;
+  width:.3rem;height:.3rem;border-radius:50%;background:var(--ink-3)}
 
 /* ---------- agents IA ---------- */
 .agents{display:grid;gap:1rem;grid-template-columns:1fr}
@@ -1493,20 +1493,18 @@ h3{font-weight:500;letter-spacing:-.012em}
       <div class="pour-qui">
         <article class="pilier">
           <h3>Vous vendez des offres <em>moyenne et haute gamme</em></h3>
-          <p>Vos offres ne s’achètent pas en un clic. Il vous faut moins de contacts, mais les bons&nbsp;: des interlocuteurs qui ont le besoin, le budget et le pouvoir de décider.</p>
+          <p>Vos clients prennent le temps de décider. Il vous faut moins de contacts, mais les bons&nbsp;: ceux qui ont le besoin, le budget et le pouvoir de dire oui.</p>
           <ul class="pour-qui__signes">
-            <li>Vos ventes passent par un rendez-vous ou un devis.</li>
-            <li>Chaque client gagné justifie un vrai suivi commercial.</li>
-            <li>Votre pipeline dépend encore de l’effort fourni ce mois-ci.</li>
+            <li>Vous vendez sur rendez-vous ou sur devis.</li>
+            <li>Vos ventes varient trop d’un mois à l’autre.</li>
           </ul>
         </article>
         <article class="pilier">
           <h3>Vous voulez intégrer l’<em>IA</em> dans vos process</h3>
-          <p>L’IA doit travailler pour vos équipes, et non l’inverse&nbsp;: des cas d’usage choisis, des outils qui s’ajoutent aux vôtres, des équipes formées pour s’en servir.</p>
+          <p>L’IA doit faire gagner du temps à vos équipes, avec les outils que vous avez déjà.</p>
           <ul class="pour-qui__signes">
-            <li>Vos équipes répètent chaque jour les mêmes tâches.</li>
-            <li>Chacun essaie l’IA dans son coin, sans méthode ni règles communes.</li>
-            <li>Vous tenez à garder les outils que vous avez déjà.</li>
+            <li>Vos équipes refont chaque jour les mêmes tâches.</li>
+            <li>Chacun essaie l’IA dans son coin, sans règles communes.</li>
           </ul>
         </article>
       </div>

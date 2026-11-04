@@ -495,6 +495,19 @@ est de Claude**, à partir de cette consigne et de phrases que le site portait d
   « On se branche sur vos outils », dans « Trois raisons », supprimée le même soir :
   la ligne tient seule).
 
+**Résumées le 5 novembre 2026**, à sa demande (« Résume cette partie pour que cela
+soit simple et facile à comprendre ; surtout ne mets pas de filet ») : chaque carte
+garde son titre, une phrase et **deux** situations au lieu de trois. Texte de Claude.
+Carte 1 : « Vos clients prennent le temps de décider. Il vous faut moins de contacts,
+mais les bons : ceux qui ont le besoin, le budget et le pouvoir de dire oui. » ;
+« Vous vendez sur rendez-vous ou sur devis. », « Vos ventes varient trop d'un mois à
+l'autre. » Carte 2 : « L'IA doit faire gagner du temps à vos équipes, avec les outils
+que vous avez déjà. » ; « Vos équipes refont chaque jour les mêmes tâches. »,
+« Chacun essaie l'IA dans son coin, sans règles communes. » **Plus de filet** au-dessus
+des listes (`border-top` retiré), et les tirets des puces sont devenus des points :
+n'en remettre aucun sans sa demande. 301 px à 1 280 px. Ce qui suit décrit la
+première version.
+
 **Les secteurs n'y sont pas, volontairement** : ils vivent dans la FAQ (« Avec quel
 type d'entreprises travaillez-vous ? »), et les recopier referait le doublon qui a
 fait supprimer « Avec qui l'agence travaille ». Aucun chiffre, aucun montant, aucune
