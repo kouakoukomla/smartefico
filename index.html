@@ -445,9 +445,9 @@ em{color:var(--yellow)}
    Les deux situations de chaque carte forment une liste à petits points,
    sans filet (demande du 5 novembre 2026), pour se lire d'un coup d'œil. */
 .pour-qui{display:grid;gap:1rem;grid-template-columns:1fr}
-/* Sans contour depuis le 5 novembre 2026, à sa demande : le fond des cartes et
-   leurs numéros 01 et 02 suffisent à distinguer les deux profils. */
-.pour-qui .pilier{border:0;background:none}
+/* Sans fond depuis le 5 novembre 2026, à sa demande, mais avec le filet des
+   cartes de « Notre méthode » (celui de .pilier, gardé) : même allure. */
+.pour-qui .pilier{background:none}
 @media (min-width:46rem){.pour-qui{grid-template-columns:repeat(2,1fr)}}
 .pour-qui h3 em{font-family:"Instrument Serif","Times New Roman",Georgia,serif;
   font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.12em;padding-right:.04em}
