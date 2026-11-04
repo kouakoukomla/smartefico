@@ -1188,6 +1188,16 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Le titre d'accueil a changé le 4 novembre 2026**, à sa demande : « Générez des
+*leads qualifiés* et mettez l'*IA* à votre service. » remplace la phrase longue, citée
+ailleurs dans ce fichier sous sa forme d'alors. Le point final, les deux mots accentués
+et l'espace insécable de « leads qualifiés » sont de Claude. Le texte vit dans
+`content/pages/accueil.md`, d'où `sync-content.mjs` l'écrit dans la zone `HERO_TITLE`.
+« Rend ce titre plus visible » : `.hero__in h1.display` passe en Poppins 500, de
+70 à 95 px à 1 280 px, 41,6 px sur téléphone. La règle se limite au hero, le blog
+recopiant cette feuille. **N'ont pas suivi** : l'image de partage, le `<title>` et les
+descriptions, qui portent encore l'ancienne formulation.
+
 **Fond entièrement noir depuis le 4 novembre 2026** (« Mets mon site en fond totalement
 noir »), sur les dix pages, le blog et les articles compris. Sont partis : le calque de
 grille (`body::before`), son `mask-image` sur les CGV, les CGC et les articles, le

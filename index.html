@@ -928,6 +928,10 @@ em,.display em,h1.display em{color:var(--yellow)}
 .display{font-family:"Poppins","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:400;letter-spacing:-.032em;line-height:1.04}
 h1.display{letter-spacing:-.038em;max-width:21ch}
+/* Le titre d'accueil, plus visible (4 novembre 2026) : plus grand et plus
+   gras. Limité au hero, car le blog recopie cette feuille et a son propre h1. */
+.hero__in h1.display{font-size:clamp(2.6rem,7.4vw,6.4rem);font-weight:500;
+  letter-spacing:-.04em;line-height:1.02;max-width:17ch}
 h2.display{font-size:clamp(1.65rem,3.6vw,2.75rem)}
 .display em{letter-spacing:0;font-size:1.04em}
 h3{font-weight:500;letter-spacing:-.012em}
@@ -1155,7 +1159,7 @@ h3{font-weight:500;letter-spacing:-.012em}
   <section class="hero">
     <div class="wrap hero__in">
       <p class="hero__metiers">Lead&nbsp;· Conseil&nbsp;· Formation&nbsp;· Automatisation&nbsp;· Outils&nbsp;sur&nbsp;mesure</p>
-      <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> pour vos offres et mettez l'<em>IA générative</em> au service de votre performance.<!-- HERO_TITLE:END --></h1>
+      <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> et mettez l'<em>IA</em> à votre service.<!-- HERO_TITLE:END --></h1>
       <p class="lead"><!-- HERO_SUB:START -->Pour les PME et ETI : nous connectons vos publicités, votre tunnel de rendez-vous et vos agents IA pour qualifier chaque demande et la transmettre à votre équipe commerciale.<!-- HERO_SUB:END --></p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#contact">Réserver un échange</a>
