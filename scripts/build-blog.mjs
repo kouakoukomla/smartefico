@@ -344,6 +344,7 @@ function tete({ titre, description, url, image }) {
 <link rel="canonical" href="${escAttr(url)}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SmartEfico">
+<meta property="fb:app_id" content="1145110034608876">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="${escAttr(url)}">
 <meta property="og:title" content="${escAttr(titre)}">

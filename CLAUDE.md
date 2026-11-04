@@ -170,6 +170,11 @@ Ce qui suit retrace les versions précédentes, avec portrait.
   pilotées, agents IA, formation et accompagnement de vos équipes. » La
   `meta description` pour les moteurs de recherche, qui parlait déjà des deux, n'a pas
   bougé.
+- **`<meta property="fb:app_id" content="1145110034608876">` est sur toutes les pages**
+  depuis le 4 novembre 2026, à sa demande : l'identifiant de son application Meta,
+  public, écrit en dur dans chaque page et dans `build-blog.mjs`. Une page ajoutée doit
+  le reprendre. Il ne change rien à l'aperçu : il évite seulement l'avertissement de
+  l'outil de débogage de Facebook.
 - **Changer le nom du fichier à chaque refonte** : les réseaux gardent en mémoire
   l'image d'une adresse donnée. `og-cover.jpg`, `og-smartefico.jpg`,
   `og-smartefico-noir.jpg`, `og-smartefico-jaune.jpg`, `og-smartefico-nb.jpg`,
