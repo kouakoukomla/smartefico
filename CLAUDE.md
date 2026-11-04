@@ -1222,6 +1222,25 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Tout ce qui se clique porte un signe depuis le 4 novembre 2026**, à sa demande (« Tous
+les icones cliquables sur le site doit revêtir un signe »), en CSS sur toutes les feuilles :
+
+- **Boutons** : une flèche `→` en `::after` (`.btn`, `.contact__btn`,
+  `.guide-lien__bouton`, `.exemples__guide a`), `↓` pour un téléchargement. Elle glisse au
+  survol. Les `↗` écrits à la main dans ces boutons sont partis : **n'en plus écrire**.
+  `.btn--attente` n'en a pas, il ne se clique pas.
+- **Icônes des réseaux** : contour jaune et pastille jaune `↗` en haut à droite.
+- **Panneaux** : chevrons et « + » de la FAQ passent en jaune.
+- **Cartes du blog** : « Lire l'article → » en bas de carte (`styleBlog`).
+
+Non touchés : les liens de texte du menu et des pieds de page, et le `↗` d'« exemples-ia »
+dans les repères, qui fait partie du texte.
+
+**Le hero n'a plus que deux boutons jaunes le même jour**, à sa demande : « Librairie »
+et « Écrire sur WhatsApp ». « Réserver un échange » en est parti : la section Contact
+reste accessible par « Contact » dans le menu. **« Librairie » remplace « Librairie
+Amazon » partout**, nom sous lequel elle apparaît ailleurs dans ce fichier.
+
 **`#agents` s'appelle « Déploiement *Agent IA*. » depuis le 4 novembre 2026**, à sa
 demande. Son chapô, de Claude sur sa consigne (« sois simple et compréhensible ») :
 « Voici quatre exemples d'agents IA que nous mettons en place. » Il remplace « Ce ne

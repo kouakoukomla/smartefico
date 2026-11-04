@@ -322,6 +322,9 @@ const styleBlog = `<style>
 /* Style « Dopamine » (1er novembre 2026) : titres sans gras, code en
    monospace, cartes à l'arrondi de celles de l'accueil. */
 .post-card{border-radius:var(--rayon)}
+/* Signe cliquable (voir CLAUDE.md, Design). */
+.post-card__body{flex:1}
+.post-card__body::after{content:"Lire l'article →";margin-top:auto;padding-top:.3rem;color:var(--yellow);font-size:.75rem;font-weight:600}
 .post-card h2,.article__body h2,.article__body h3,.tally h2{font-weight:500}
 .article__body code{font-family:var(--mono)}
 /* Fond noir sous les écrits (2 novembre 2026) : la règle et --plaque
@@ -365,7 +368,7 @@ const entete = `  <header class="blog-top wrap">
     </a>
     <nav class="blog-top__liens" aria-label="Liens du site">
       <a class="blog-top__guide mono" href="guide.html">Guide gratuit</a>
-      <a class="blog-top__guide mono" href="livres.html">Librairie Amazon</a>
+      <a class="blog-top__guide mono" href="livres.html">Librairie</a>
       <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
     </nav>
   </header>`;
@@ -374,7 +377,7 @@ const pied = `  <footer class="wrap blog-foot">
     <span class="mono">© ${new Date().getFullYear()} SmartEfico</span>
     <span class="blog-foot__liens">
       <a class="mono" href="guide.html">Guide gratuit</a>
-      <a class="mono" href="livres.html">Librairie Amazon</a>
+      <a class="mono" href="livres.html">Librairie</a>
       <a class="mono" href="index.html">Accueil</a>
     </span>
   </footer>`;

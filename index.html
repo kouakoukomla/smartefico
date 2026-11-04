@@ -358,8 +358,7 @@ em{color:var(--yellow)}
    du site. Le logo d'Amazon n'est pas repris : c'est une marque déposée. */
 .ico-livres{width:1.15rem;height:1.15rem;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.hero__actions .ico-livres{margin-right:.5rem}
-.ico-wa{width:1.15rem;height:1.15rem;flex:none;fill:currentColor;margin-right:.5rem}
+.ico-wa{width:1.15rem;height:1.15rem;flex:none;fill:currentColor}
 .nav__librairie{display:inline-flex;align-items:center;gap:.4rem}
 .nav__librairie .ico-livres{color:var(--yellow);width:1rem;height:1rem}
 .hero__actions .btn{font-size:.85rem;min-height:3.25rem;
@@ -1022,6 +1021,30 @@ h3{font-weight:500;letter-spacing:-.012em}
    teinte, celle du verre posé sur du noir. */
 .hero__metiers,.btn--line{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
 
+
+/* Signe cliquable, 4 novembre 2026 (voir CLAUDE.md, Design) : tout ce qui se
+   clique porte une flèche ou un signe jaune. */
+.btn{gap:.5rem}
+.btn::after{content:"→";display:inline-block;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn[download]::after{content:"↓"}
+.btn[download]:hover::after{transform:translateY(3px)}
+.btn--attente::after{content:none}
+@media (prefers-reduced-motion:reduce){.btn::after{transition:none}.btn:hover::after{transform:none}}
+.contact__btn::after,.exemples__guide a::after{content:"→";display:inline-block;transition:transform .18s ease}
+.contact__btn:hover::after,.exemples__guide a:hover::after{transform:translateX(3px)}
+.guide-lien__bouton::after{content:"→";display:inline-block;margin-left:.35rem;transition:transform .18s ease}
+.guide-lien:hover .guide-lien__bouton::after{transform:translateX(3px)}
+.step__chevron,.pilier__chevron{border-color:var(--yellow)}
+.qa summary::after{color:var(--yellow)}
+/* Les icônes des réseaux : un contour jaune et une pastille à flèche. */
+.icons a{position:relative;border-color:var(--yellow)}
+.icons a::after{content:"↗";position:absolute;top:-.3rem;right:-.3rem;width:1.05rem;height:1.05rem;
+  display:grid;place-items:center;border-radius:50%;background:var(--yellow);color:var(--on-yellow);
+  font-size:.75rem;font-weight:700;line-height:1}
+@media (prefers-reduced-motion:reduce){
+  .contact__btn::after,.exemples__guide a::after,.guide-lien__bouton::after{transition:none;transform:none!important}
+}
 </style>
 
 <!-- Rattache SmartEfico et ses profils à une seule entité, pour Google
@@ -1137,7 +1160,7 @@ h3{font-weight:500;letter-spacing:-.012em}
       <a href="#resultats">Méthode</a>
       <a href="#exemples">Exemples</a>
       <a href="blog.html">Blog</a>
-      <a class="nav__librairie" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie Amazon</a>
+      <a class="nav__librairie" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie</a>
       <a href="#questions">FAQ</a>
     </div>
     <button class="nav__burger" type="button" aria-label="Ouvrir le menu"
@@ -1160,9 +1183,8 @@ h3{font-weight:500;letter-spacing:-.012em}
       <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> et mettez l'<em>IA</em> à votre service.<!-- HERO_TITLE:END --></h1>
       <p class="lead"><!-- HERO_SUB:START -->Pour les PME et ETI : nous connectons vos publicités, votre tunnel de rendez-vous et vos agents IA pour qualifier chaque demande et la transmettre à votre équipe commerciale.<!-- HERO_SUB:END --></p>
       <div class="hero__actions">
-        <a class="btn btn--solid" href="#contact">Réserver un échange</a>
-        <a class="btn btn--solid" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie Amazon</a>
-        <a class="btn btn--line" href="https://wa.me/33751599636" target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Écrire sur WhatsApp</a>
+        <a class="btn btn--solid" href="livres.html"><svg class="ico-livres" aria-hidden="true"><use href="#i-livres"></use></svg>Librairie</a>
+        <a class="btn btn--solid" href="https://wa.me/33751599636" target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Écrire sur WhatsApp</a>
       </div>
     </div>
   </section>
@@ -1604,7 +1626,7 @@ h3{font-weight:500;letter-spacing:-.012em}
          vers la vidéo est revenu le même jour, à la demande du propriétaire.
          Un simple lien : rien de YouTube ne se charge sur la page. -->
     <p class="lien-video"><a class="btn btn--line" href="https://www.youtube.com/watch?v=Uge1VlfPbd8"
-       target="_blank" rel="noopener">Voir la vidéo sur YouTube&nbsp;↗</a></p>
+       target="_blank" rel="noopener">Voir la vidéo sur YouTube</a></p>
 
     <!-- ============ QUESTIONS FRÉQUENTES ============ -->
     <section class="wrap" id="questions">
@@ -1669,7 +1691,7 @@ h3{font-weight:500;letter-spacing:-.012em}
           système d’acquisition avec des Ads et l’IA, et mettre l’IA générative au
           service de votre performance.</p>
         <a class="contact__btn" href="https://tally.so/r/81VkKx" target="_blank" rel="noopener">
-          Réserver mon appel <span aria-hidden="true">↗</span>
+          Réserver mon appel
         </a>
         <p class="contact__note">Formulaire Tally · nouvel onglet</p>
       </div>
@@ -1695,7 +1717,7 @@ h3{font-weight:500;letter-spacing:-.012em}
         <p class="foot__links">
           <a href="guide.html">Guide gratuit</a>
           <span aria-hidden="true">|</span>
-          <a href="livres.html">Librairie Amazon</a>
+          <a href="livres.html">Librairie</a>
           <span aria-hidden="true">|</span>
           <!-- Les href des CGV et CGC restent de vrais liens : ils fonctionnent sur le
                site déployé et si JavaScript est désactivé. Le script ouvre la fenêtre

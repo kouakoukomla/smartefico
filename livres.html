@@ -144,6 +144,16 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
 /* Fond noir sous les écrits posés sur la grille, comme sur le reste du site. */
 .haut__marque,.haut__liens,.hero>*,.mention,.bas>span,.bas nav{
   background:var(--ground);box-shadow:var(--plaque)}
+
+/* Signe cliquable, 4 novembre 2026 (voir CLAUDE.md, Design) : tout ce qui se
+   clique porte une flèche ou un signe jaune. */
+.btn{gap:.5rem}
+.btn::after{content:"→";display:inline-block;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn[download]::after{content:"↓"}
+.btn[download]:hover::after{transform:translateY(3px)}
+.btn--attente::after{content:none}
+@media (prefers-reduced-motion:reduce){.btn::after{transition:none}.btn:hover::after{transform:none}}
 </style>
 </head>
 <body>
@@ -181,7 +191,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>25 modèles prêts à l'emploi</li>
             <li>15 cas pratiques pas à pas</li>
           </ul>
-          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HQ2SCJ72" target="_blank" rel="noopener">Voir sur Amazon ↗</a>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HQ2SCJ72" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 
@@ -196,7 +206,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>13 consignes prêtes à l'emploi</li>
             <li>Un plan de 90 jours</li>
           </ul>
-          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HNHVNLB1" target="_blank" rel="noopener">Voir sur Amazon ↗</a>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HNHVNLB1" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 
@@ -210,7 +220,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>45 prompts prêts à l'emploi</li>
             <li>Pensé pour les devis, les relances et les chantiers</li>
           </ul>
-          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HPVGB969" target="_blank" rel="noopener">Voir sur Amazon ↗</a>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HPVGB969" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 
@@ -225,7 +235,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>100 prompts</li>
             <li>Une checklist avant publication</li>
           </ul>
-          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0H4CV76V4" target="_blank" rel="noopener">Voir sur Amazon ↗</a>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0H4CV76V4" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 
@@ -255,7 +265,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>Environ 15 minutes par dessin</li>
             <li>Grand format, dessins imprimés au recto seul</li>
           </ul>
-          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HPFBD7TP" target="_blank" rel="noopener">Voir sur Amazon ↗</a>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HPFBD7TP" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 

@@ -103,6 +103,16 @@ em{color:var(--yellow)}
 .marque,.merci>.display,.merci>.lead,.bas>span,.bas nav{
   background:var(--ground);box-shadow:var(--plaque)}
 .etiquette,.actions .btn--filet:not(:hover){background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
+
+/* Signe cliquable, 4 novembre 2026 (voir CLAUDE.md, Design) : tout ce qui se
+   clique porte une flèche ou un signe jaune. */
+.btn{gap:.5rem}
+.btn::after{content:"→";display:inline-block;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn[download]::after{content:"↓"}
+.btn[download]:hover::after{transform:translateY(3px)}
+.btn--attente::after{content:none}
+@media (prefers-reduced-motion:reduce){.btn::after{transition:none}.btn:hover::after{transform:none}}
 </style>
 </head>
 <body>
@@ -125,7 +135,7 @@ em{color:var(--yellow)}
     <h2 id="suite-titre">Et ensuite&nbsp;?</h2>
     <p>Vos fiches remplies, apportez-les à un premier échange : on regarde ensemble vos
       équipes, vos processus et ce que l'IA peut y reprendre.</p>
-    <a class="btn btn--filet" href="https://tally.so/r/D4LJDR?utm_source=guide-ia" target="_blank" rel="noopener">Nous contacter ↗</a>
+    <a class="btn btn--filet" href="https://tally.so/r/D4LJDR?utm_source=guide-ia" target="_blank" rel="noopener">Nous contacter</a>
   </section>
 </main>
 

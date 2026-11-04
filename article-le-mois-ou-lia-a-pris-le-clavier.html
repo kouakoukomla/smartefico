@@ -330,8 +330,7 @@ em{color:var(--yellow)}
    du site. Le logo d'Amazon n'est pas repris : c'est une marque déposée. */
 .ico-livres{width:1.15rem;height:1.15rem;flex:none;fill:none;stroke:currentColor;
   stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.hero__actions .ico-livres{margin-right:.5rem}
-.ico-wa{width:1.15rem;height:1.15rem;flex:none;fill:currentColor;margin-right:.5rem}
+.ico-wa{width:1.15rem;height:1.15rem;flex:none;fill:currentColor}
 .nav__librairie{display:inline-flex;align-items:center;gap:.4rem}
 .nav__librairie .ico-livres{color:var(--yellow);width:1rem;height:1rem}
 .hero__actions .btn{font-size:.85rem;min-height:3.25rem;
@@ -994,6 +993,30 @@ h3{font-weight:500;letter-spacing:-.012em}
    teinte, celle du verre posé sur du noir. */
 .hero__metiers,.btn--line{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
 
+
+/* Signe cliquable, 4 novembre 2026 (voir CLAUDE.md, Design) : tout ce qui se
+   clique porte une flèche ou un signe jaune. */
+.btn{gap:.5rem}
+.btn::after{content:"→";display:inline-block;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn[download]::after{content:"↓"}
+.btn[download]:hover::after{transform:translateY(3px)}
+.btn--attente::after{content:none}
+@media (prefers-reduced-motion:reduce){.btn::after{transition:none}.btn:hover::after{transform:none}}
+.contact__btn::after,.exemples__guide a::after{content:"→";display:inline-block;transition:transform .18s ease}
+.contact__btn:hover::after,.exemples__guide a:hover::after{transform:translateX(3px)}
+.guide-lien__bouton::after{content:"→";display:inline-block;margin-left:.35rem;transition:transform .18s ease}
+.guide-lien:hover .guide-lien__bouton::after{transform:translateX(3px)}
+.step__chevron,.pilier__chevron{border-color:var(--yellow)}
+.qa summary::after{color:var(--yellow)}
+/* Les icônes des réseaux : un contour jaune et une pastille à flèche. */
+.icons a{position:relative;border-color:var(--yellow)}
+.icons a::after{content:"↗";position:absolute;top:-.3rem;right:-.3rem;width:1.05rem;height:1.05rem;
+  display:grid;place-items:center;border-radius:50%;background:var(--yellow);color:var(--on-yellow);
+  font-size:.75rem;font-weight:700;line-height:1}
+@media (prefers-reduced-motion:reduce){
+  .contact__btn::after,.exemples__guide a::after,.guide-lien__bouton::after{transition:none;transform:none!important}
+}
 </style>
 <style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
@@ -1087,6 +1110,9 @@ h3{font-weight:500;letter-spacing:-.012em}
 /* Style « Dopamine » (1er novembre 2026) : titres sans gras, code en
    monospace, cartes à l'arrondi de celles de l'accueil. */
 .post-card{border-radius:var(--rayon)}
+/* Signe cliquable (voir CLAUDE.md, Design). */
+.post-card__body{flex:1}
+.post-card__body::after{content:"Lire l'article →";margin-top:auto;padding-top:.3rem;color:var(--yellow);font-size:.75rem;font-weight:600}
 .post-card h2,.article__body h2,.article__body h3,.tally h2{font-weight:500}
 .article__body code{font-family:var(--mono)}
 /* Fond noir sous les écrits (2 novembre 2026) : la règle et --plaque
@@ -1104,7 +1130,7 @@ h3{font-weight:500;letter-spacing:-.012em}
     </a>
     <nav class="blog-top__liens" aria-label="Liens du site">
       <a class="blog-top__guide mono" href="guide.html">Guide gratuit</a>
-      <a class="blog-top__guide mono" href="livres.html">Librairie Amazon</a>
+      <a class="blog-top__guide mono" href="livres.html">Librairie</a>
       <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
     </nav>
   </header>
@@ -1218,7 +1244,7 @@ h3{font-weight:500;letter-spacing:-.012em}
     <span class="mono">© 2026 SmartEfico</span>
     <span class="blog-foot__liens">
       <a class="mono" href="guide.html">Guide gratuit</a>
-      <a class="mono" href="livres.html">Librairie Amazon</a>
+      <a class="mono" href="livres.html">Librairie</a>
       <a class="mono" href="index.html">Accueil</a>
     </span>
   </footer>

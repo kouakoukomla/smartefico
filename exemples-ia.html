@@ -272,6 +272,17 @@ h3{font-weight:500;letter-spacing:-.012em}
 .haut__marque,.haut__liens,.hero>:not(.boutons),.head>*,.depts,.tableau-cadre,.bas>span,.bas nav{
   background:var(--ground);box-shadow:var(--plaque)}
 .btn--line{background:linear-gradient(var(--verre),var(--verre)) var(--ground)}
+
+/* Signe cliquable, 4 novembre 2026 (voir CLAUDE.md, Design) : tout ce qui se
+   clique porte une flèche ou un signe jaune. */
+.btn{gap:.5rem}
+.btn::after{content:"→";display:inline-block;transition:transform .18s ease}
+.btn:hover::after{transform:translateX(3px)}
+.btn[download]::after{content:"↓"}
+.btn[download]:hover::after{transform:translateY(3px)}
+.btn--attente::after{content:none}
+@media (prefers-reduced-motion:reduce){.btn::after{transition:none}.btn:hover::after{transform:none}}
+.qa summary::after{color:var(--yellow)}
 </style>
 </head>
 <body>
@@ -301,7 +312,7 @@ h3{font-weight:500;letter-spacing:-.012em}
       par métier — et les grilles de lecture qui permettent d'en faire un projet plutôt qu'une
       démonstration.</p>
     <div class="boutons">
-      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Échanger sur votre contexte IA <span aria-hidden="true">↗</span></a>
+      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Échanger sur votre contexte IA</a>
       <a class="btn btn--line" href="guide-ia.html?utm_source=site&amp;utm_medium=page-exemples">Recevoir le guide gratuit</a>
     </div>
   </section>
@@ -873,7 +884,7 @@ h3{font-weight:500;letter-spacing:-.012em}
       <h2 class="display">Un exemple vous parle&nbsp;?</h2>
       <p class="lead">Parlons de votre contexte : vos processus, vos données, vos contraintes.
         Nous repartons avec un premier périmètre et ce qu'il demande pour être essayé.</p>
-      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Nous contacter <span aria-hidden="true">↗</span></a>
+      <a class="btn btn--solid" href="https://tally.so/r/D4LJDR?utm_source=site&amp;utm_medium=page-exemples" target="_blank" rel="noopener">Nous contacter</a>
       <p class="appel__note">Formulaire Tally · nouvel onglet</p>
     </div>
   </section>
