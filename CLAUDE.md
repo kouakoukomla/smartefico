@@ -1220,6 +1220,12 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**`#agents` s'appelle « Déploiement *Agent IA*. » depuis le 4 novembre 2026**, à sa
+demande. Son chapô, de Claude sur sa consigne (« sois simple et compréhensible ») :
+« Voici quatre exemples d'agents IA que nous mettons en place. » Il remplace « Ce ne
+sont pas des maquettes : ce sont les scénarios réellement construits… ». Le point final
+et l'italique sont de Claude, pour suivre les autres titres.
+
 **Le bouton du téléphone est devenu un lien WhatsApp le 4 novembre 2026**, à sa demande
 (« Remplace mon numéro de téléphone par mon lien whatsapp »). Dans le hero, « Écrire sur
 WhatsApp » (icône `i-whatsapp`) mène à `https://wa.me/33751599636` dans un nouvel onglet ;
