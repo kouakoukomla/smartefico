@@ -1188,6 +1188,20 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Fond entièrement noir depuis le 4 novembre 2026** (« Mets mon site en fond totalement
+noir »), sur les dix pages, le blog et les articles compris. Sont partis : le calque de
+grille (`body::before`), son `mask-image` sur les CGV, les CGC et les articles, le
+carreau de la barre du menu, et tout `.hero__bg` — halo jaune et crochets d'angle.
+`--noir` (accueil), `--black` (pages légales) et le fond de `.appel` passent de
+`#0A0A0A` à `#000000` : le bandeau des cinq étapes, le bloc contact et les barres
+légales se fondent donc dans la page. **Restent relevées, par choix** : les cartes
+(`--surface`), sans quoi seul leur filet les dessinerait, et le contour animé du menu.
+`assets/fond-grille.svg` reste dans le dépôt, inutilisé. Le jeton `--plaque` et l'aplat
+noir sous les écrits restent aussi, désormais invisibles : ne les retirer que si la
+grille est écartée pour de bon. Pour revenir à la grille : `git revert` du commit de ce
+changement, puis `node scripts/build-blog.mjs`. Ce qui suit sur la grille et le halo
+décrit ce qui a existé.
+
 **Fond à grille sur tout le site, 2 novembre 2026**, sur une image fournie par le
 propriétaire : « là où il y a des endroits sans écrits sur le site tu peux mettre ce
 fond ». Mesurée : grille de 72 px en traits de 2 px `#161616`, grands arcs et

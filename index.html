@@ -338,31 +338,7 @@ p{margin:0}
    filigrane. Il n'avait volontairement pas de grille décorative, motif
    typique d'interface générée ; toute la page en porte une depuis le
    2 novembre 2026, à la demande du propriétaire (voir le bloc DOPAMINE). */
-.hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.hero__bg .glow{position:absolute;inset:0;
-  background:radial-gradient(46rem 34rem at 24% 42%,rgba(255,204,0,.16),transparent 62%)}
-.hero__bg .ruler{position:absolute;top:0;bottom:0;left:2.2rem;width:1px;
-  background:repeating-linear-gradient(to bottom,var(--line) 0 6px,transparent 6px 12px)}
-.hero__bg .brackets{position:absolute;inset:clamp(1rem,3vw,2rem)}
-.hero__bg .brackets::before,.hero__bg .brackets::after{content:"";position:absolute;width:22px;height:22px}
-.hero__bg .brackets::before{top:0;right:0;border-top:1.5px solid var(--yellow);border-right:1.5px solid var(--yellow)}
-.hero__bg .brackets::after{bottom:0;left:0;border-bottom:1.5px solid var(--yellow);border-left:1.5px solid var(--yellow)}
 
-/* La règle pointillée disparaît sous 60 rem. Une accolade orpheline, juste
-   au-dessus, annulait cette requête média depuis le 14 septembre 2026 : le
-   navigateur lisait « } @media (max-width:60rem) » comme un sélecteur
-   invalide et jetait la règle entière. Retirée le 28 septembre 2026. */
-@media (max-width:60rem){
-  .hero__bg .ruler{display:none}
-}
-/* Sur téléphone, les boutons du hero prennent toute la largeur : depuis que
-   le hero a perdu sa hauteur minimale (19 septembre 2026), le crochet du bas
-   tombait sur le coin du bouton du téléphone. Les deux crochets partent
-   ensemble, comme la règle sous 60 rem, plutôt que de rendre au hero la
-   marge qu'on vient de lui retirer. */
-@media (max-width:35rem){
-  .hero__bg .brackets{display:none}
-}
 
 /* Tous les mots en italique sont jaunes. La regle valait jusqu ici pour le
    seul titre d accueil ; le proprietaire l a etendue a tout le site le
@@ -875,15 +851,13 @@ h2.head__eyebrow{font-weight:600;margin:0}
   --ink-2:#B4B4B0;
   --ink-3:#8A8A86;
   --line:#1F1F1F;
-  --noir:#0A0A0A;
+  --noir:#000000;
   --noir-2:#151515;
   /* le filet du survol, à la place du jaune */
   --mur:#333333;
 }
 /* Le fond est plat, comme chez la référence : pas de halo sur body. Celui
    du hero reste, c'est un décor de section et non le fond de la page. */
-.hero__bg .glow{background:radial-gradient(46rem 34rem at 24% 42%,rgba(255,204,0,.10),transparent 62%)}
-.hero__bg .brackets::before,.hero__bg .brackets::after{border-color:#2A2A2A}
 
 /* MOINS DE JAUNE — demande du propriétaire du 23 septembre 2026 au soir
    (« Réduis le jaune sur le site »), la même qu'il avait faite le 20 et
@@ -1023,17 +997,9 @@ h3{font-weight:500;letter-spacing:-.012em}
 .doc-modal__body .contact-box{border-radius:14px}
 .doc-modal__body .mark,.doc-modal__body .warn{border-radius:4px}
 
-/* Fond à grille, 2 novembre 2026, sur une image fournie par le propriétaire
-   (« là où il y a des endroits sans écrits sur le site tu peux mettre ce
-   fond ») : un calque fixe derrière toute la page, que les cartes, opaques,
-   recouvrent. Le carreau (assets/fond-grille.svg) est calé en haut au centre
-   de l'écran. La barre du menu reste opaque pour cacher ce qui défile
-   dessous, mais porte le même carreau au même calage : la grille passe sous
-   elle sans couture. La règle pointillée du hero part, doublon de la grille. */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
-.nav{background:var(--ground) url("assets/fond-grille.svg") center top/1440px 1440px repeat}
-.hero__bg .ruler{display:none}
+/* Fond noir pur, sans grille ni halo : voir CLAUDE.md, Design. La barre du
+   menu reste opaque pour cacher ce qui défile dessous. */
+.nav{background:var(--ground)}
 
 /* Fond noir sous les écrits, 2 novembre 2026, à la demande du propriétaire
    (« n'importe où il y a une écriture, tu mettras un fond noir avant de
@@ -1187,13 +1153,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <!-- fond : halo + repères techniques + carte « scénario » en filigrane -->
-    <div class="hero__bg" aria-hidden="true">
-      <div class="glow"></div>
-      <div class="ruler"></div>
-      <div class="brackets"></div>
-
-      </div>
     <div class="wrap hero__in">
       <p class="hero__metiers">Lead&nbsp;· Conseil&nbsp;· Formation&nbsp;· Automatisation&nbsp;· Outils&nbsp;sur&nbsp;mesure</p>
       <h1 class="display"><!-- HERO_TITLE:START -->Générez des <em>leads qualifiés</em> pour vos offres et mettez l'<em>IA générative</em> au service de votre performance.<!-- HERO_TITLE:END --></h1>
@@ -1271,7 +1230,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
   <!-- ============ MÉTHODE D'ACQUISITION ============
        Le commentaire disait « section blanche » : c est faux depuis que les
-       aplats ont saute. `.invert` vaut var(--noir), un cran au-dessus du fond
+       aplats ont saute. `.invert` vaut var(--noir), le même noir que le fond
        de page, et c est la seule chose qui la detache. -->
   <section class="invert" id="methode">
     <div class="wrap">

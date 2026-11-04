@@ -215,7 +215,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
 
 /* ---------- appel, calé sur le bloc contact de l'accueil ---------- */
 .appel{display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:clamp(1rem,2.4vw,1.5rem);background:#0A0A0A;border:1px solid var(--line);
+  gap:clamp(1rem,2.4vw,1.5rem);background:var(--ground);border:1px solid var(--line);
   border-radius:1.4rem;padding:clamp(1.6rem,4.2vw,3rem) clamp(1.5rem,3.2vw,2.25rem)}
 .appel .lead{max-width:52ch}
 .appel__note{color:var(--ink-3);font-size:.75rem}
@@ -260,10 +260,6 @@ h3{font-weight:500;letter-spacing:-.012em}
 .qa summary::after{line-height:1}
 .qa p{padding:0 1.25rem 1.1rem}
 
-/* Fond à grille, 2 novembre 2026, comme l’accueil (voir CLAUDE.md, Design) :
-   un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
 /* Fond noir sous les écrits, 2 novembre 2026, comme l’accueil (voir
    CLAUDE.md, Design) : chaque texte posé sur la grille reçoit un aplat noir,
    adouci par une ombre noire. Les en-têtes de section, alignés à gauche,

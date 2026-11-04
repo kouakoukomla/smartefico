@@ -161,10 +161,6 @@ em{color:var(--yellow)}
 .carte{border-radius:18px}
 .aller{font-weight:600}
 
-/* Fond à grille, 2 novembre 2026, comme l’accueil (voir CLAUDE.md, Design) :
-   un calque fixe derrière la page, que les cartes, opaques, recouvrent. */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:url("assets/fond-grille.svg") center top/1440px 1440px repeat}
 /* Fond noir sous les écrits, 2 novembre 2026, comme l’accueil (voir
    CLAUDE.md, Design) : chaque texte posé sur la grille reçoit un aplat noir,
    adouci par une ombre noire ; l’étiquette de verre devient opaque. */
