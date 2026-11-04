@@ -1254,6 +1254,13 @@ les icones cliquables sur le site doit revêtir un signe »), en CSS sur toutes 
 Non touchés : les liens de texte du menu et des pieds de page, et le `↗` d'« exemples-ia »
 dans les repères, qui fait partie du texte.
 
+**Le menu de l'accueil a changé le 5 novembre 2026**, à sa demande : « Exemples »
+devient « IA & Performance » (toujours vers `#exemples`, qui ouvre le panneau dans
+`#ia`), et « Blog » devient « Outils », vers `#agents` (« Déploiement Agent IA »).
+**L'accueil ne mène donc plus au blog** : ce lien était le seul. Menu : Méthode,
+IA & Performance, Outils, Librairie, FAQ, plus « Contact » ; 66 et 112 px de marge
+à 900 px.
+
 **Le hero n'a plus que deux boutons jaunes le même jour**, à sa demande : « Librairie »
 et « Écrire sur WhatsApp ». « Réserver un échange » en est parti : la section Contact
 reste accessible par « Contact » dans le menu. **« Librairie » remplace « Librairie
