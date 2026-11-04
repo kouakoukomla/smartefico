@@ -1245,7 +1245,9 @@ les icones cliquables sur le site doit revêtir un signe »), en CSS sur toutes 
   `.guide-lien__bouton`, `.exemples__guide a`), `↓` pour un téléchargement. Elle glisse au
   survol. Les `↗` écrits à la main dans ces boutons sont partis : **n'en plus écrire**.
   `.btn--attente` n'en a pas, il ne se clique pas.
-- **Icônes des réseaux** : contour jaune et pastille jaune `↗` en haut à droite.
+- **Icônes des réseaux** : contour jaune seul. La pastille `↗` qu'elles portaient est
+  partie le 5 novembre 2026, à sa demande (« enlève les flèches […] uniquement sur les
+  icones de réseaux sociaux »).
 - **Panneaux** : chevrons et « + » de la FAQ passent en jaune.
 - **Cartes du blog** : « Lire l'article → » en bas de carte (`styleBlog`).
 

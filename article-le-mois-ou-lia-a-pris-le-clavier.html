@@ -1010,11 +1010,8 @@ h3{font-weight:500;letter-spacing:-.012em}
 .guide-lien:hover .guide-lien__bouton::after{transform:translateX(3px)}
 .step__chevron,.pilier__chevron{border-color:var(--yellow)}
 .qa summary::after{color:var(--yellow)}
-/* Les icônes des réseaux : un contour jaune et une pastille à flèche. */
-.icons a{position:relative;border-color:var(--yellow)}
-.icons a::after{content:"↗";position:absolute;top:-.3rem;right:-.3rem;width:1.05rem;height:1.05rem;
-  display:grid;place-items:center;border-radius:50%;background:var(--yellow);color:var(--on-yellow);
-  font-size:.75rem;font-weight:700;line-height:1}
+/* Les icônes des réseaux : un contour jaune, sans flèche (5 novembre 2026). */
+.icons a{border-color:var(--yellow)}
 @media (prefers-reduced-motion:reduce){
   .contact__btn::after,.exemples__guide a::after,.guide-lien__bouton::after{transition:none;transform:none!important}
 }
