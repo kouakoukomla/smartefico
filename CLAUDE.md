@@ -444,6 +444,17 @@ paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes 
 lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
 sinon l'appariement se décale. La section passe de 507 à 580 px.
 
+**Les quatre cartes de `#resultats` sont sans fond et résumées depuis le 5 novembre
+2026**, à sa demande (« Enlève les fond […] et résume pour que cela soit simple à
+comprendre ») : `#resultats .offer` et `#resultats .kpi` perdent leur fond, le
+filet des cartes reste. Textes de Claude, titres inchangés : « Repère et relance vos
+prospects sur Meta, LinkedIn et TikTok, automatiquement. » (Prospects repérés par
+semaine) ; « L'IA trie les demandes selon vos règles : vos vendeurs ne parlent qu'à
+des clients prêts à acheter. » (Rendez-vous vraiment qualifiés) ; « Réponses aux
+emails et aux questions fréquentes, 24 h/24, avec votre ton. » (Demandes traitées
+sans vous) ; « Un seul contenu de départ, publié sur tous vos canaux. » (Contenus
+publiés et temps gagné). Le mot « closers » ne paraît plus. 544 px à 1 280 px.
+
 **`#resultats` s'appelle « Notre *méthode*. » depuis le 4 novembre 2026**, à sa demande
 (« au lieu de "Notre méthode ClientlyEfico." met plutot "Notre méthode" ») : le nom
 « ClientlyEfico » ne paraît plus nulle part sur le site, et l'italique passe sur
