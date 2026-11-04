@@ -645,7 +645,17 @@ em{color:var(--yellow)}
 /* Fermé, son titre tient sur deux lignes : resserré, il garde la hauteur des
    cinq leviers à côté de lui. */
 .exemples-onglet:not([open]) .pilier__tete{padding-block:.7rem}
-.exemples-onglet:not([open]) h3{font-size:.867rem;line-height:1.2}
+.exemples-onglet:not([open]) h3{font-size:.9rem;line-height:1.2}
+/* Très visible depuis le 4 novembre 2026, à sa demande : le sommaire est un
+   aplat jaune, comme tout ce qui se clique. */
+.exemples-onglet,.exemples-onglet:hover,.exemples-onglet[open]{border-color:var(--yellow);overflow:hidden}
+.exemples-onglet>.pilier__tete{background:var(--yellow);transition:background-color .18s ease}
+.exemples-onglet>.pilier__tete:hover{background:var(--yellow-hi)}
+.exemples-onglet>.pilier__tete:focus-visible{outline:3px solid var(--on-yellow);outline-offset:-5px}
+.exemples-onglet>.pilier__tete h3{color:var(--on-yellow);font-weight:600}
+.exemples-onglet>.pilier__tete .pilier__chevron{border-color:var(--on-yellow)}
+.exemples-onglet[open]>.pilier__corps{padding-top:1rem}
+@media (prefers-reduced-motion:reduce){.exemples-onglet>.pilier__tete{transition:none}}
 .exemples-onglet .pilier{background:var(--ground)}
 .exemples-onglet h4{margin:0;color:#FFF;font-size:1.063rem;font-weight:500;letter-spacing:-.02em}
 .exemples__guide{display:flex;justify-content:center;margin-top:1rem}

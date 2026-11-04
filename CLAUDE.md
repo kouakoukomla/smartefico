@@ -613,7 +613,9 @@ d'« Accompagner », depuis le même jour** : à sa demande, il y remplace l'enc
 guide gratuit » (« supprime […] et remplace par l'onglet »), parti avec son style
 `.guide-lien--case`. Fermé, son titre resserré tient sur deux lignes à la hauteur des
 leviers ; ouvert, il prend toute la largeur (`[open]{grid-column:1/-1}`), une case
-étant trop étroite pour ses trois cartes. `guide-ia.html` reste accessible par « Recevoir
+étant trop étroite pour ses trois cartes. **Son sommaire est un aplat jaune depuis le
+même jour** (« rends très visible cette partie »), texte `--on-yellow`, Poppins 600,
+le seul des six : c'est le rôle du jaune, ce qui se clique. `guide-ia.html` reste accessible par « Recevoir
 le guide gratuitement », à l'intérieur du panneau. Ses inscriptions ne viennent donc
 plus de `utm_medium=section-ia`, mais de `section-exemples`. L'ancre
 `#exemples` passe sur ce panneau ; **le lien « Exemples » du menu l'ouvre**, par un
