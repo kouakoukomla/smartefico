@@ -1,4 +1,4 @@
 ---
 logo: assets/logo-clair.png
-og_image: assets/og-smartefico-metiers.jpg
+og_image: assets/og-smartefico-accroche.jpg
 ---

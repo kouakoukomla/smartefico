@@ -23,7 +23,7 @@
      rejointe (« Ajoute la pastille des métiers dans l'image de partage »),
      au-dessus du titre comme sur l'accueil.
      Ce fichier n'est pas une page du site : scripts/build-partage.mjs le
-     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-metiers.jpg.
+     photographie dans Chrome sans fenêtre et écrit assets/og-smartefico-accroche.jpg.
      Le titre est celui de l'accueil, mot pour mot ; « PME, ETI, grands comptes
      et dirigeants » et le numéro viennent de l'ancienne image. Changer le nom
      du fichier à chaque refonte : LinkedIn, Facebook et WhatsApp gardent une
@@ -50,8 +50,9 @@ html,body{margin:0;background:#000000}
 .marque{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .marque img{width:56px;height:56px;display:block}
 .marque span{color:#FFCC00;font-weight:700;font-size:19px;letter-spacing:.14em}
-h1{margin:0;font-weight:800;font-size:70px;line-height:1.05;letter-spacing:-.032em;
-  text-wrap:balance}
+/* Le titre court du 4 novembre 2026, en Poppins 500 comme sur l'accueil. */
+h1{margin:0;font-family:"Poppins","Helvetica Neue",Arial,sans-serif;font-weight:500;
+  font-size:92px;line-height:1.04;letter-spacing:-.04em;text-wrap:balance}
 /* La pastille des métiers, celle du hero de l'accueil (.hero__metiers) :
    mêmes capitales espacées, même filet et même voile jaunes, en Poppins comme
    sur le site. Plus grande qu'à l'écran (17 px contre 12) : l'image est
@@ -77,7 +78,7 @@ p{margin:0}
   <div class="texte">
     <div class="marque"><img src="../../assets/logo-clair.png" alt=""><span>SMARTEFICO</span></div>
     <p class="metiers">Lead · Conseil · Formation · Automatisation · Outils sur mesure</p>
-    <h1>Générez des <em>leads&nbsp;qualifiés</em> pour vos offres et mettez l’<em>IA&nbsp;générative</em> au service de votre performance.</h1>
+    <h1>Générez des <em>leads&nbsp;qualifiés</em> et mettez l’<em>IA</em> à votre service.</h1>
     <p class="cible">PME, ETI, grands comptes et dirigeants.</p>
     <p class="tel">+33 7 51 59 96 36</p>
   </div>

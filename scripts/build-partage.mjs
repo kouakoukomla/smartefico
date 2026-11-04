@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Fabrique l'image affichée quand le lien du site est partagé (LinkedIn,
- * WhatsApp, Facebook…) : assets/og-smartefico-metiers.jpg depuis le
- * 28 septembre 2026 — sans portrait, avec la pastille des métiers du hero. Les
- * huit versions précédentes restent dans le dépôt pour les partages déjà
- * faits : og-smartefico-texte.jpg (sans portrait ni pastille, en ligne
+ * WhatsApp, Facebook…) : assets/og-smartefico-accroche.jpg depuis le
+ * 4 novembre 2026 — avec le titre court de l'accueil. Les neuf versions
+ * précédentes restent dans le dépôt pour les partages déjà faits :
+ * og-smartefico-metiers.jpg (sans portrait, titre long), og-smartefico-texte.jpg (sans portrait ni pastille, en ligne
  * quelques minutes), og-smartefico-plat.jpg (noir plat, portrait noir et
  * blanc),
  * og-smartefico.jpg (noir pur), og-smartefico-noir.jpg (noir profond, jaune
@@ -33,7 +33,7 @@ import sharp from 'sharp';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(racine, 'scripts', 'partage', 'partage.html');
-const FICHIER = 'og-smartefico-metiers.jpg';
+const FICHIER = 'og-smartefico-accroche.jpg';
 const sortie = join(racine, 'assets', FICHIER);
 
 const chrome = [

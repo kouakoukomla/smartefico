@@ -1195,8 +1195,20 @@ et l'espace insécable de « leads qualifiés » sont de Claude. Le texte vit da
 `content/pages/accueil.md`, d'où `sync-content.mjs` l'écrit dans la zone `HERO_TITLE`.
 « Rend ce titre plus visible » : `.hero__in h1.display` passe en Poppins 500, de
 70 à 95 px à 1 280 px, 41,6 px sur téléphone. La règle se limite au hero, le blog
-recopiant cette feuille. **N'ont pas suivi** : l'image de partage, le `<title>` et les
-descriptions, qui portent encore l'ancienne formulation.
+recopiant cette feuille.
+
+**L'aperçu de partage l'a suivi le même jour**, à sa demande (« Oui, aligne-les »).
+L'image est désormais **`assets/og-smartefico-accroche.jpg`** (68 Ko) : titre court en
+Poppins 500 à 92 px, comme l'accueil, le reste inchangé. `og-smartefico-metiers.jpg`
+reste dans le dépôt pour les partages déjà faits. Titre d'onglet et d'aperçu :
+« SmartEfico — Générez des leads qualifiés et mettez l'IA à votre service ». Description
+d'aperçu : « Des leads qualifiés pour vos offres, et l'IA à votre service : publicités
+pilotées, agents IA, formation et accompagnement de vos équipes. » La `meta description`
+dit de même « met l'IA à votre service », et le texte `alt` de l'image suit sur toutes
+les pages. **Gardent l'ancienne formule, volontairement** : la section `#ia`, le guide
+de l'IA générative, qui porte ce titre, et le manifeste, qui est le texte du
+propriétaire. Les paragraphes de « L'aperçu de partage » plus haut décrivent l'image
+précédente pour le titre long.
 
 **Fond entièrement noir depuis le 4 novembre 2026** (« Mets mon site en fond totalement
 noir »), sur les dix pages, le blog et les articles compris. Sont partis : le calque de
