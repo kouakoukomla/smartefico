@@ -235,6 +235,16 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
+**La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
+2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
+Claude, sans rien ajouter à ses deux blocs : « On fait deux choses, et on les fait
+bien : démultiplier vos ventes moyenne et haute gamme en *moins de 3 mois*, et mettre
+l'IA générative au travail dans vos équipes. », puis « Si c'est ce que vous cherchez,
+on est l'agence qu'il vous faut. » Sont partis : « Rien d'autre. », « C'est ce qu'on
+apporte à chacun de nos clients. », la mention des rendez-vous high ticket, les deux
+volets, le filet et `.manifeste__bloc`. La carte garde toute la largeur ; la phrase
+forte s'arrête à 56 ch. Ce qui suit décrit les états précédents.
+
 **« Ce qu'on vous apporte » (`#apport`) est revenue le 28 septembre 2026**, à la
 demande du propriétaire, juste avant « Ce à quoi vous engager » : « Avant "ce à quoi
 vous engager" mettre la partie », suivie de son texte, qui est repris **mot pour
