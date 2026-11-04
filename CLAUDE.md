@@ -841,9 +841,20 @@ posées : **la vente passe par Amazon**, une page dédiée, un lien « Livres »
   l'IA, L'agent immobilier augmenté et le coloriage « Mon coin cosy », ajouté à sa
   demande. Avec six cartes, les deux sections d'abord prévues auraient laissé un trou.
   Un nombre impair de livres en rouvrirait un.
-- **L'agent immobilier augmenté n'a pas de lien** : il n'était pas dans la liste du
-  4 novembre 2026, et son bouton dit « Bientôt disponible ». L'EPUB de ce jour-là porte
-  encore des « [À compléter] » : à régler avant publication.
+- **Un septième livre depuis le 5 novembre 2026 : « Venue d'ailleurs », de Gifty
+  Kouakou** (`B0GCCPRF2Z`), sur toute la largeur en bas de grille (`.livre--large`) :
+  c'est le seul livre de la page dont il n'est pas l'auteur, d'où son nom sur la carte.
+  Texte résumé par Claude à partir de la présentation fournie. La couverture
+  (`venue-d-ailleurs.jpg`, 304 x 345) vient d'une capture d'écran d'Amazon, recadrée
+  pour retirer ses boutons, ce qui retire aussi le nom de l'autrice : la remplacer par le
+  fichier d'origine si le propriétaire le fournit. **La page s'appelle « La *librairie*. »
+  depuis ce jour** : l'ancien titre, « Des livres pour mettre l'IA au *travail*. », ne
+  valait plus pour un témoignage. Le titre d'onglet, les descriptions et le chapô ont
+  suivi.
+- **L'agent immobilier augmenté a son lien depuis le 5 novembre 2026**
+  (`B0HQGLMMK4`), après un jour en « Bientôt disponible ». L'EPUB du 4 novembre portait
+  encore des « [À compléter] » : le propriétaire en a été prévenu, la version publiée
+  n'a pas pu être contrôlée d'ici.
 - **Textes de Claude, à relire par le propriétaire**, tirés des seules couvertures et
   des sommaires : aucune promesse ajoutée. Les couvertures, elles, portent les
   siennes (« gagner 10 heures par semaine »).
