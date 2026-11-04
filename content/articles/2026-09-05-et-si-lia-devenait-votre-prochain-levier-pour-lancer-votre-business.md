@@ -48,7 +48,7 @@ Pendant que certains découvrent encore l’IA, d’autres commencent déjà à 
 👉 **Réservez votre place maintenant :**  
 **[tally.so/r/BzJr5Q](https://tally.so/r/BzJr5Q)**
 
-📲 **WhatsApp : +33 7 51 59 96 36**
+📲 **[WhatsApp : +33 7 51 59 96 36](https://wa.me/33751599636)**
 
 **Votre prochaine activité peut commencer par une idée.**  
 **Mais elle peut aller beaucoup plus vite avec l’IA.**

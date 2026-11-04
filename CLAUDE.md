@@ -1213,6 +1213,14 @@ des affirmations fausses sur son entreprise.
 
 ## Design
 
+**Le bouton du téléphone est devenu un lien WhatsApp le 4 novembre 2026**, à sa demande
+(« Remplace mon numéro de téléphone par mon lien whatsapp »). Dans le hero, « Écrire sur
+WhatsApp » (icône `i-whatsapp`) mène à `https://wa.me/33751599636` dans un nouvel onglet ;
+le numéro de l'article du 5 septembre 2026 porte le même lien. **Gardent le numéro
+d'appel** : le JSON-LD (`telephone`), l'image de partage et les deux guides PDF, qu'il
+faudrait refaire. Les passages de ce fichier qui parlent du « téléphone » du hero
+décrivent ce bouton avant ce changement.
+
 **Le titre d'accueil a changé le 4 novembre 2026**, à sa demande : « Générez des
 *leads qualifiés* et mettez l'*IA* à votre service. » remplace la phrase longue, citée
 ailleurs dans ce fichier sous sa forme d'alors. Le point final, les deux mots accentués
