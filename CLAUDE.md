@@ -788,6 +788,39 @@ publiés le même jour se départagent par l'ordre des fichiers, et non par l'he
 d'enregistrement — c'est le cas des deux articles du 5 septembre 2026. Pour décider
 lequel paraît en premier sur `blog.html`, il faut changer une date.
 
+**Une page `livres.html`, depuis le 4 novembre 2026**, à la demande du propriétaire
+(« je veux mettre mes livres en vente sur mon site web »). Ses choix, par questions
+posées : **la vente passe par Amazon**, une page dédiée, un lien « Livres » au menu.
+
+- **Aucun prix sur la page** : la règle « Aucun montant, nulle part » tient, Amazon
+  affiche le prix et gère paiement, impression et livraison. Les CGV n'ont donc pas
+  bougé, et l'article 9 des CGC non plus : un simple lien ne charge rien d'Amazon. Une
+  vente directe demanderait au contraire des prix, un compte de paiement et des CGV
+  pour les particuliers, avec son accord.
+- **Six livres, dans une seule grille de deux colonnes** : Claude rendu simple, le
+  Manuel ChatGPT de la TPE, ChatGPT et Claude pour les artisans, le Copywriting avec
+  l'IA, L'agent immobilier augmenté et le coloriage « Mon coin cosy », ajouté à sa
+  demande. Avec six cartes, les deux sections d'abord prévues auraient laissé un trou.
+  Un nombre impair de livres en rouvrirait un.
+- **L'agent immobilier augmenté n'a pas de lien** : il n'était pas dans la liste du
+  4 novembre 2026, et son bouton dit « Bientôt disponible ». L'EPUB de ce jour-là porte
+  encore des « [À compléter] » : à régler avant publication.
+- **Textes de Claude, à relire par le propriétaire**, tirés des seules couvertures et
+  des sommaires : aucune promesse ajoutée. Les couvertures, elles, portent les
+  siennes (« gagner 10 heures par semaine »).
+- **Les couvertures** sont dans `assets/livres/`, en 520 px de large. Celle de « Mon
+  coin cosy » a été extraite de son PDF, seul fichier disponible.
+- **Pour brancher un livre** : le `<span class="btn btn--attente">` de sa carte cède
+  la place au même `<a class="btn btn--solid">` que les autres, en adresse courte
+  (`https://www.amazon.fr/dp/` puis l'ASIN), sans les paramètres de recherche. Amazon
+  n'est pas consultable d'ici, ni par le navigateur intégré ni par les outils de
+  lecture : c'est le propriétaire qui fournit les liens et qui contrôle leur
+  destination.
+- **Le menu passe à sept liens plus « Contact »**, « Livres » après « Guide gratuit » :
+  34 et 49 px de marge à 900 px de large, sur une ligne. Remesurer avant d'en ajouter
+  un autre. « Livres » est aussi au pied de l'accueil, et dans l'en-tête et le pied du
+  blog (`build-blog.mjs`).
+
 **Plus d'assistant de discussion depuis le 1er novembre 2026**, à la demande du
 propriétaire (« je veux que tu supprime le bot du site »), le jour de l'audit de
 sécurité qui avait montré qu'on pouvait l'appeler hors du site. Tout est parti : la

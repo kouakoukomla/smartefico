@@ -371,6 +371,7 @@ const entete = `  <header class="blog-top wrap">
     </a>
     <nav class="blog-top__liens" aria-label="Liens du site">
       <a class="blog-top__guide mono" href="guide.html">Guide gratuit</a>
+      <a class="blog-top__guide mono" href="livres.html">Livres</a>
       <a class="blog-top__back mono" href="index.html">Retour au site ↗</a>
     </nav>
   </header>`;
@@ -379,6 +380,7 @@ const pied = `  <footer class="wrap blog-foot">
     <span class="mono">© ${new Date().getFullYear()} SmartEfico</span>
     <span class="blog-foot__liens">
       <a class="mono" href="guide.html">Guide gratuit</a>
+      <a class="mono" href="livres.html">Livres</a>
       <a class="mono" href="index.html">Accueil</a>
     </span>
   </footer>`;
