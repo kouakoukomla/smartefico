@@ -255,7 +255,9 @@ on est l'agence qu'il vous faut. » Sont partis : « Rien d'autre. », « C'est 
 apporte à chacun de nos clients. », la mention des rendez-vous high ticket, les deux
 volets, le filet et `.manifeste__bloc`. La carte garde toute la largeur ; la phrase
 forte s'arrête à 56 ch. **Sans contour depuis le 5 novembre 2026**, à sa demande (« enlève
-le filet ici aussi ») : `border:0`, le fond `--surface` dessine seul la carte. Ce qui suit décrit les états précédents.
+le filet ici aussi ») : `border:0`, le fond `--surface` dessine seul la carte. **Plus de fond
+non plus**, le même jour (« supprime le fond d'écran de… ») : `background:none`, le
+texte se pose directement sur la page. Ce qui suit décrit les états précédents.
 
 **« Ce qu'on vous apporte » (`#apport`) est revenue le 28 septembre 2026**, à la
 demande du propriétaire, juste avant « Ce à quoi vous engager » : « Avant "ce à quoi
