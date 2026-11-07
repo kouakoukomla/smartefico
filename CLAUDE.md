@@ -1549,7 +1549,8 @@ et Google Fonts. Si une vidéo revient, la phrase revient avec elle, avec son ac
 vidéo Youtube ») : un bouton à filet « Voir la vidéo sur YouTube ↗ » (`.lien-video`),
 centré entre « Agents IA » et la FAQ, vers `youtube.com/watch?v=Uge1VlfPbd8` dans un
 nouvel onglet. Un simple lien ne charge rien de YouTube : l'article 9 n'a pas à en
-parler.
+parler. **Il est jaune depuis le 7 novembre 2026**, à sa demande (« mettre cet onglet en
+jaune ») : `btn--solid` au lieu de `btn--line`, comme les boutons du hero.
 
 **Tous les italiques sont jaunes depuis le 1er novembre 2026** (« Tu dois écrire en
 couleur jaune les écrits qui sont en italique ») : les mots des titres de section
