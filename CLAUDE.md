@@ -1387,7 +1387,12 @@ se changent dans le tableau `mots` du script en bas de `index.html`. Le texte du
 n'a pas bougé : le script part du premier `<em>` du titre, et le texte complet reste lu par
 les lecteurs d'écran. Cette expression a sa propre ligne, même sans script, pour que la page
 ne bouge pas pendant la frappe : le titre passe donc de trois à quatre lignes. Sous mouvement
-réduit, il reste immobile.
+réduit, il reste immobile. **Deux lignes dès 46 rem**, le même jour, à sa demande : « Générez
+des … » puis « et mettez l'IA à votre service. », sans coupure (`white-space:nowrap`), le
+retour à la ligne étant posé en CSS (`::after`) puisque le texte vient du back office. Pour
+tenir, le titre passe de `clamp(2.6rem,7.4vw,6.4rem)` à `clamp(2.6rem,6.4vw,5.4rem)`, soit
+82 px au lieu de 95 à 1 280 px (seconde ligne : 103 à 1 162 px). **Le téléphone garde ses
+quatre lignes** : deux y demanderaient un titre d'environ 23 px.
 
 **L'aperçu de partage l'a suivi le même jour**, à sa demande (« Oui, aligne-les »).
 L'image est désormais **`assets/og-smartefico-accroche.jpg`** (68 Ko) : titre court en

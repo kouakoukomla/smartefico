@@ -869,6 +869,14 @@ h1.display{letter-spacing:-.038em;max-width:21ch}
    ne bougent donc pas pendant la frappe. Le texte complet reste lu par les
    lecteurs d'écran (.hero__mot-lu) ; le script est en bas de page. */
 .hero__in h1.display>em:first-of-type{display:block;white-space:nowrap}
+/* Deux lignes dès 46 rem, à sa demande : « Générez des … » puis le reste. La taille
+   est calée pour que la seconde ligne tienne sans se couper. Le retour à la ligne
+   vient du CSS, le titre étant écrit par le back office. */
+@media (min-width:46rem){
+  .hero__in h1.display{font-size:clamp(2.6rem,6.4vw,5.4rem);max-width:none;white-space:nowrap}
+  .hero__in h1.display>em:first-of-type{display:inline}
+  .hero__in h1.display>em:first-of-type::after{content:"\A";white-space:pre}
+}
 .hero__mot-lu{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .hero__curseur{font-family:"Poppins","Helvetica Neue",Helvetica,Arial,sans-serif;font-style:normal;
   font-weight:500;margin-left:.04em;animation:hero-curseur 1s step-end infinite}
