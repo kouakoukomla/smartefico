@@ -246,6 +246,13 @@ dur, mesurée en ouvrant le formulaire seul. Les mesures de la version précéde
 à titre de repère : cadre de 239 px → 1532 px de haut, 294 → 1389, 493 → 1268,
 807 → 1208. Elles sont à refaire, le formulaire ayant pu changer depuis.
 
+**« Ce qu'on vous apporte » tient en une seule phrase depuis le 7 novembre 2026**, à sa
+demande (« Résume cette partie et sois clair dans la promesse ») : « Nous démultiplions
+vos ventes moyenne et haute gamme en *moins de 3 mois*, et nous mettons l'IA générative
+au travail dans vos équipes. » Réécriture de Claude, sans rien ajouter : le délai reste
+le sien et ne porte que sur les ventes. Sont partis « On fait deux choses, et on les
+fait bien » et « Si c'est ce que vous cherchez, on est l'agence qu'il vous faut. »
+
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
 Claude, sans rien ajouter à ses deux blocs : « On fait deux choses, et on les fait
