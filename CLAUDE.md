@@ -1552,7 +1552,10 @@ nouvel onglet. Un simple lien ne charge rien de YouTube : l'article 9 n'a pas à
 parler. **Il est jaune depuis le 7 novembre 2026**, à sa demande (« mettre cet onglet en
 jaune ») : `btn--solid` au lieu de `btn--line`, comme les boutons du hero. **Il s'appelle
 « Accéder à ma chaîne YouTube » depuis le même jour**, à sa demande, et mène donc à la
-chaîne (`@smartefico`) et non plus à la vidéo.
+chaîne et non plus à la vidéo. **La chaîne est `https://www.youtube.com/@smartemmak`** depuis
+le même jour, à sa demande : `@smartefico` répond 404. Corrigée sur ce bouton, l'icône du pied
+de page et les deux `sameAs` du JSON-LD de l'accueil. Les sources des deux guides PDF
+(`scripts/guide/guide.html` et `guide-ia.html`) portent encore l'ancienne adresse.
 
 **Tous les italiques sont jaunes depuis le 1er novembre 2026** (« Tu dois écrire en
 couleur jaune les écrits qui sont en italique ») : les mots des titres de section
