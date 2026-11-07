@@ -380,7 +380,7 @@ em{color:var(--yellow)}
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
 /* Sans fond depuis le 5 novembre 2026. Encadrée depuis le 7 novembre 2026, à sa
-   demande : même filet et mêmes coins carrés que les cartes de Notre méthode. */
+   demande, avec le filet des cartes de Notre méthode ; coins arrondis (18 px) à sa demande. */
 .manifeste{background:none;border:1px solid var(--line);border-radius:var(--rayon);
   padding:1.4rem 1.3rem;
   display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center}
@@ -887,7 +887,7 @@ h3{font-weight:500;letter-spacing:-.012em}
 .contact .display{line-height:1.04;letter-spacing:-.035em}
 .guide-lien__texte strong{font-weight:600}
 .foot__copy{font-weight:500}
-.manifeste .manifeste__fort{font-family:inherit;font-weight:400;letter-spacing:-.02em;line-height:1.65}
+.manifeste .manifeste__fort{font-family:inherit;font-weight:400;letter-spacing:-.02em;line-height:1.3}
 
 /* Étiquettes, numéros, puces : la monospace de la référence. */
 .mono,.kpi,.chip,.agent__tag{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
