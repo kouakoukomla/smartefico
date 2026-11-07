@@ -264,8 +264,12 @@ chaque semaine » est une promesse de sa main : aucune mesure du site ne l'étay
 **La phrase est encadrée depuis le même jour**, à sa demande (« Encadre ceci ») : `.manifeste`
 reprend le filet `--line` et les coins carrés des cartes de « Notre méthode », toujours sans
 fond, sur toute la largeur de la page, et retrouve une marge intérieure en haut comme en bas.
-Le cadre annule le « sans contour » du 5 novembre 2026 décrit plus bas. 167 px de cadre à
-1 280 px, 183 px sur téléphone ; la page fait **4 653 px** à 1 280 px.
+Le cadre annule le « sans contour » du 5 novembre 2026 décrit plus bas. **Plus grande et
+plus large**, le même jour (« Écris ce texte plus grand et élargis cela sur l'espace ») : la
+limite de 56 ch est levée et la taille passe de `clamp(1.02rem,1.7vw,1.28rem)` à
+`clamp(1.3rem,3vw,2.6rem)`, soit 20 → **38 px** à 1 280 px, en trois lignes équilibrées de
+980 px dans un cadre de 1 184 ; 27 px à 900 px, 21 px et six lignes sur téléphone. Cadre de
+259 px à 1 280 px ; la page fait **4 756 px**.
 
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
