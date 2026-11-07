@@ -257,6 +257,10 @@ d'espace » avec le titre) : `.manifeste` n'a plus de `padding-top`, héritage d
 qui n'a plus de fond. Il ne reste que la marge de `.head`, comme sous les autres titres.
 **Interligne de la phrase à 1,65**, le même jour (« bien respirable avec des espaces
 interligne ») : il valait 1,3, dans le bloc « DOPAMINE ».
+**Son texte a changé le même jour, écrit par lui, mot pour mot** : « Plus de ventes sur vos
+produits moyen et haut de gamme en *moins de 3 mois*, et des équipes qui gagnent des heures
+chaque semaine grâce à l'IA générative. » Il remplace la phrase citée ci-dessus. « Des heures
+chaque semaine » est une promesse de sa main : aucune mesure du site ne l'étaye.
 
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
