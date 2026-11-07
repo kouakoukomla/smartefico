@@ -1354,6 +1354,17 @@ et l'espace insécable de « leads qualifiés » sont de Claude. Le texte vit da
 70 à 95 px à 1 280 px, 41,6 px sur téléphone. La règle se limite au hero, le blog
 recopiant cette feuille.
 
+**Le début du titre s'écrit tout seul depuis le 7 novembre 2026**, à sa demande, sur un
+enregistrement d'écran (« mets le début du titre dynamique comme ceci ») : « Générez des »
+reste fixe, puis « leads qualifiés », « rendez-vous » et « ventes » se tapent et s'effacent
+à tour de rôle, avec un curseur `_` jaune (100 ms par lettre à la frappe, 50 à l'effacement,
+2,2 s de pause). Les deux derniers mots sont un choix de Claude, à valider par lui : ils
+se changent dans le tableau `mots` du script en bas de `index.html`. Le texte du back office
+n'a pas bougé : le script part du premier `<em>` du titre, et le texte complet reste lu par
+les lecteurs d'écran. Cette expression a sa propre ligne, même sans script, pour que la page
+ne bouge pas pendant la frappe : le titre passe donc de trois à quatre lignes. Sous mouvement
+réduit, il reste immobile.
+
 **L'aperçu de partage l'a suivi le même jour**, à sa demande (« Oui, aligne-les »).
 L'image est désormais **`assets/og-smartefico-accroche.jpg`** (68 Ko) : titre court en
 Poppins 500 à 92 px, comme l'accueil, le reste inchangé. `og-smartefico-metiers.jpg`

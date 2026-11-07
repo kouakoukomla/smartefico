@@ -934,6 +934,15 @@ h1.display{letter-spacing:-.038em;max-width:21ch}
    gras. Limité au hero, car le blog recopie cette feuille et a son propre h1. */
 .hero__in h1.display{font-size:clamp(2.6rem,7.4vw,6.4rem);font-weight:500;
   letter-spacing:-.04em;line-height:1.02;max-width:17ch}
+/* Le début du titre s'écrit tout seul (7 novembre 2026). La première expression
+   en italique a sa propre ligne, même sans script : le reste du titre et la page
+   ne bougent donc pas pendant la frappe. Le texte complet reste lu par les
+   lecteurs d'écran (.hero__mot-lu) ; le script est en bas de page. */
+.hero__in h1.display>em:first-of-type{display:block;white-space:nowrap}
+.hero__mot-lu{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.hero__curseur{font-family:"Poppins","Helvetica Neue",Helvetica,Arial,sans-serif;font-style:normal;
+  font-weight:500;margin-left:.04em;animation:hero-curseur 1s step-end infinite}
+@keyframes hero-curseur{50%{opacity:0}}
 h2.display{font-size:clamp(1.65rem,3.6vw,2.75rem)}
 .display em{letter-spacing:0;font-size:1.04em}
 h3{font-weight:500;letter-spacing:-.012em}
@@ -2092,6 +2101,49 @@ h3{font-weight:500;letter-spacing:-.012em}
       if (e.target === boite) boite.close();
     });
   });
+})();
+
+// Le début du titre d'accueil s'écrit tout seul : l'expression en italique
+// s'efface, la suivante se tape. Le titre vit dans le back office : le script
+// part donc de son premier <em>, sans rien changer au texte écrit dans la page.
+// Sans script ou sous mouvement réduit, le titre reste tel quel.
+(function () {
+  var mot = document.querySelector('.hero__in h1.display em');
+  if (!mot || !window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var mots = [mot.textContent, 'rendez-vous', 'ventes'];
+  var lu = document.createElement('span');
+  var vu = document.createElement('span');
+  var curseur = document.createElement('span');
+  lu.className = 'hero__mot-lu';
+  lu.textContent = mots[0];
+  vu.setAttribute('aria-hidden', 'true');
+  vu.textContent = mots[0];
+  curseur.className = 'hero__curseur';
+  curseur.setAttribute('aria-hidden', 'true');
+  curseur.textContent = '_';
+  mot.textContent = '';
+  mot.append(lu, vu, curseur);
+
+  var rang = 0;
+  var lettres = mots[0].length;
+  var efface = true;
+
+  function pas() {
+    lettres += efface ? -1 : 1;
+    vu.textContent = mots[rang].slice(0, lettres);
+    if (efface && lettres === 0) {
+      efface = false;
+      rang = (rang + 1) % mots.length;
+      setTimeout(pas, 300);
+    } else if (!efface && lettres === mots[rang].length) {
+      efface = true;
+      setTimeout(pas, 2200);
+    } else {
+      setTimeout(pas, efface ? 50 : 100);
+    }
+  }
+  setTimeout(pas, 2200);
 })();
 </script>
 </body>
