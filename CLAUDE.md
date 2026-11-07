@@ -1550,7 +1550,9 @@ vidéo Youtube ») : un bouton à filet « Voir la vidéo sur YouTube ↗ » (`.
 centré entre « Agents IA » et la FAQ, vers `youtube.com/watch?v=Uge1VlfPbd8` dans un
 nouvel onglet. Un simple lien ne charge rien de YouTube : l'article 9 n'a pas à en
 parler. **Il est jaune depuis le 7 novembre 2026**, à sa demande (« mettre cet onglet en
-jaune ») : `btn--solid` au lieu de `btn--line`, comme les boutons du hero.
+jaune ») : `btn--solid` au lieu de `btn--line`, comme les boutons du hero. **Il s'appelle
+« Accéder à ma chaîne YouTube » depuis le même jour**, à sa demande, et mène donc à la
+chaîne (`@smartefico`) et non plus à la vidéo.
 
 **Tous les italiques sont jaunes depuis le 1er novembre 2026** (« Tu dois écrire en
 couleur jaune les écrits qui sont en italique ») : les mots des titres de section
