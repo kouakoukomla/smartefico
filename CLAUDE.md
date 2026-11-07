@@ -269,7 +269,9 @@ plus large**, le même jour (« Écris ce texte plus grand et élargis cela sur 
 limite de 56 ch est levée et la taille passe de `clamp(1.02rem,1.7vw,1.28rem)` à
 `clamp(1.3rem,3vw,2.6rem)`, soit 20 → **38 px** à 1 280 px, en trois lignes équilibrées de
 980 px dans un cadre de 1 184 ; 27 px à 900 px, 21 px et six lignes sur téléphone. Cadre de
-259 px à 1 280 px ; la page fait **4 756 px**.
+259 px à 1 280 px ; la page fait **4 756 px**. **Coins arrondis**, le même jour (« arrondis les
+angles ») : `border-radius:var(--rayon)`, 18 px, comme les autres cartes du site ; celles de
+« Notre méthode » et de « Pour qui ? » restent carrées.
 
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
