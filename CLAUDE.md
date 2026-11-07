@@ -464,6 +464,24 @@ paires d'origine, qui sont de lui, n'ont pas bougé d'un mot. Les deux colonnes 
 lisent ligne à ligne : **une ligne ajoutée d'un côté en appelle une de l'autre**,
 sinon l'appariement se décale. La section passe de 507 à 580 px.
 
+**« Notre *méthode*. » et « Cinq étapes, du système au multi-scaling » ne font plus
+qu'une section depuis le 7 novembre 2026**, à sa demande (« Associe les 2 grands onglets
+en un seul onglet. Résume et réunis les infos de sorte qu'elles soient concises et bien
+compréhensibles de tous »). Ancre `#resultats`, lien « Méthode » du menu. Textes de Claude,
+sans rien ajouter. Chapô : « Quatre outils, installés en cinq étapes : chacune s'appuie sur
+la précédente. Un tableau de bord vous permet de tout suivre dès la première semaine. »
+Deux cartes côte à côte (`.offer`, sans fond, coins carrés), « Ce que nous installons »
+(les quatre outils et leur indicateur) et « Dans quel ordre » (les cinq étapes, une ligne
+chacune, visibles sans clic), en listes `.methode`, puis l'encart du guide gratuit en
+pleine largeur. Les noms des outils et des étapes n'ont pas changé : le guide PDF porte
+ceux des étapes. **Sont partis** : la section `#methode` (`.invert`) et ses panneaux
+dépliants avec leur style (`.steps`, `.step*`), le détail des étiquettes (Copywriting,
+Montage, Tableau de bord…) et la mention des publicités sur ChatGPT ou Perplexity ; les
+deux piles de la page n'en font plus qu'une. Rien ne menait à `#methode` hors de la page.
+Ce qui, dans ce fichier, décrit le bandeau et ses cinq panneaux décrit ce qui a existé ;
+l'historique git les garde. 637 px à 1 280 px, 1 198 px sur téléphone ; la page fait
+**4 931 px** à 1 280 px. Ce qui suit décrit l'état précédent.
+
 **Les quatre cartes de `#resultats` sont sans fond et résumées depuis le 5 novembre
 2026**, à sa demande (« Enlève les fond […] et résume pour que cela soit simple à
 comprendre ») : `#resultats .offer` et `#resultats .kpi` perdent leur fond, le

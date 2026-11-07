@@ -439,6 +439,13 @@ em{color:var(--yellow)}
   background:var(--noir-2);color:var(--ink-2);border:1px solid var(--line);padding:.4rem .7rem;
   text-transform:none;letter-spacing:.02em;font-size:.75rem;align-self:flex-start}
 .kpi::before{content:"↗";font-size:1.1em;line-height:1}
+/* Notre méthode, 7 novembre 2026 : les outils et les étapes, côte à côte. */
+.methode{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
+.methode li{display:grid;grid-template-columns:auto 1fr;column-gap:.8rem}
+.methode .offer__no{font-size:.8rem;line-height:1.6}
+.methode h4{margin:0;font-size:.9rem;font-weight:500;color:var(--ink);line-height:1.3}
+.methode p{margin-top:.15rem}
+.methode .kpi{margin-top:.35rem;display:flex}
 
 /* ---------- pour qui ----------
    Deux cartes .pilier côte à côte, une par profil, 28 septembre 2026. Le mot
@@ -513,63 +520,14 @@ em{color:var(--yellow)}
    et il se replacerait ailleurs d'un bloc. Le composant .pilier reste, #ia
    s'en sert. */
 
-/* ---------- méthode : bloc sombre ---------- */
-/* Marge intérieure alignée sur l'autre panneau noir de la page, .contact.
-   À var(--gap) elle venait s'ajouter à l'écart que la pile ménage déjà
-   autour du panneau, ce qui creusait un vide de plus de 200 px avant le
-   titre. (.book est cité dans l'historique : ce panneau-là a fusionné
-   avec .contact.) Les deux piles qui l'encadrent ne lui laissent plus, de
-   leur côté, qu'un demi-écart (style en ligne de leurs <div class="stack">) :
-   pile et panneau additionnés, il restait 135 px de vide au-dessus du titre
-   et sous les étapes, contre 77 entre les autres sections. Resserré le
-   19 septembre 2026.
-
-   Resserré une seconde fois le 23 septembre 2026, dernier de la série après
-   les en-têtes, les cartes et le bloc contact : clamp(2rem,4.5vw,3.5rem) →
-   clamp(1.4rem,3vw,2.35rem), soit 56 px à 38 px à 1 280 px. Le rapport au
-   bloc contact est conservé — le bandeau reste à peu près aux trois quarts
-   de sa marge, comme avant. */
-.invert{background:var(--noir);color:#F3F3F3;padding-block:clamp(1.4rem,3vw,2.35rem)}
-.invert .lead{color:#B5B5B1}
-.invert .display{color:#FFF}
-/* Les cinq etapes sont des panneaux depliants, poses cote a cote. Elles
-   formaient une liste verticale de cinq lignes pleines : cinq titres qui
-   occupaient la hauteur d un ecran entier. `details` porte le pliage
-   lui-meme, il n y a rien a scripter et le clavier le manoeuvre seul.
-   Toutes sont fermees a l arrivee, a la demande du proprietaire du
-   18 septembre 2026. La premiere etait ouverte, pour montrer que les autres
-   s ouvrent ; c est desormais le chevron de chaque titre qui le dit. */
-.steps{display:grid;gap:.75rem;grid-template-columns:1fr;align-items:start}
-@media (min-width:46rem){.steps{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:68rem){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{border:1px solid #333;background:var(--noir-2);transition:border-color .2s ease}
-.step:hover,.step[open]{border-color:#4A4A47}
-.step__tete{display:flex;align-items:center;gap:.9rem;cursor:pointer;
-  padding:1.05rem 1.2rem;list-style:none}
-.step__tete::-webkit-details-marker{display:none}
-.step__tete:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
-.step__no{font-weight:800;font-size:clamp(1.275rem,2.38vw,1.7rem);line-height:.9;
-  letter-spacing:-.05em;color:var(--yellow);flex:none}
-.step h3{color:#FFF;font-size:.893rem;flex:1;min-width:0}
-/* Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert.
-   Le meme dessin sert aux cinq etapes et aux cinq leviers de #ia, repliables
-   depuis le 25 septembre 2026 : une seule declaration, deux composants. */
-.step__chevron,.pilier__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
+/* ---------- panneaux repliables de #ia ----------
+   Un carre a deux bords, tourne : pointe en bas ferme, en haut ouvert. */
+.pilier__chevron{flex:none;width:.6rem;height:.6rem;margin-top:-.25rem;
   border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
   transform:rotate(45deg);transition:transform .2s ease}
-.step[open] .step__chevron,.pilier[open] .pilier__chevron{transform:rotate(-135deg);
-  margin-top:.25rem}
-@media (prefers-reduced-motion:reduce){.step__chevron,.pilier__chevron{transition:none}}
-.step__corps{padding:0 1.2rem 1.2rem}
-.step__corps .chips{margin-top:0}
-.step p{color:#B5B5B1;font-size:.808rem}
-.step .chip{border-color:#3A3A3A;background:transparent;color:#C9C9C6}
-/* Sixième case : le lien vers le guide gratuit (guide.html), qui reprend ces
-   cinq étapes, demandé le 17 septembre 2026. Cinq panneaux sur trois colonnes
-   laissaient une case vide en fin de grille ; celle-ci la comble. Ses deux
-   lignes de texte tiennent dans la hauteur d'un panneau fermé grâce à une
-   marge verticale réduite. Le jaune y tient deux rôles permis : l'icône, et
-   l'aplat de ce qui se clique. */
+.pilier[open] .pilier__chevron{transform:rotate(-135deg);margin-top:.25rem}
+@media (prefers-reduced-motion:reduce){.pilier__chevron{transition:none}}
+/* Les encarts qui mènent à un guide ou à une page d'exemples. */
 .guide-lien{display:flex;align-items:center;gap:.9rem;padding:.75rem 1.2rem;text-decoration:none}
 .guide-lien:hover{border-color:var(--yellow)}
 .guide-lien:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
@@ -626,7 +584,7 @@ em{color:var(--yellow)}
 .pilier .chip{background:transparent;border-color:#3A3A38;padding:.3rem .55rem;font-size:.75rem}
 /* Cinq leviers repliables, demande du proprietaire du 25 septembre 2026 :
    « dans des onglets caches comme tu as mis les elements sous "Cinq etapes" ».
-   Meme mecanique que .step — un <details>, un <summary> qui porte le numero,
+   Un <details>, un <summary> qui porte le numero,
    le titre et le chevron, un corps pour le texte et les etiquettes — mais la
    peau de la section reste celle de ses voisines (surface #0E0E0E, filet
    --line), sinon les cinq leviers se detacheraient de la carte d appel et de
@@ -641,7 +599,7 @@ em{color:var(--yellow)}
    pose ici sur les seuls panneaux : les cartes pleines de #exemples et la
    carte d appel continuent de s aligner entre elles. */
 .pilier--repli{padding:0;gap:0;align-self:start}
-/* Les memes marges que .step__tete, au pixel pres : les deux accordeons de
+/* Marges de la tete du panneau, reprises des cinq etapes d'autrefois : les accordeons de
    la page se lisent a la meme densite, et le detecteur d impeccable, qui ne
    sait pas lire un clamp(), cesse de croire la marge nulle. */
 .pilier--repli .pilier__tete{cursor:pointer;list-style:none;padding:1.05rem 1.2rem}
@@ -875,14 +833,14 @@ h2.head__eyebrow{font-weight:600;margin:0}
    1er novembre 2026 (« Tu dois écrire en couleur jaune les écrits qui sont
    en italique ») : 15,3:1 sur le noir, 14,4:1 sur les cartes. */
 em,.display em,h1.display em{color:var(--yellow)}
-.step__no,.pilier__no,.offer__no{color:var(--ink-3)}
+.pilier__no,.offer__no{color:var(--ink-3)}
 .offer:hover .offer__no{color:var(--ink)}
 .guide-lien__ico{color:var(--ink)}
 
 /* Au survol, une carte se cerne de gris clair, pas de jaune. */
 .offer:hover,.agent:hover,
 .guide-lien:hover,.guide-lien--large:hover,.post-card:hover{border-color:var(--mur)}
-.step__tete:focus-visible,.pilier--repli .pilier__tete:focus-visible,
+.pilier--repli .pilier__tete:focus-visible,
 .guide-lien:focus-visible{outline-color:var(--ink)}
 .pilier--repli:hover,.pilier--repli[open]{border-color:var(--mur)}
 
@@ -955,7 +913,7 @@ h3{font-weight:500;letter-spacing:-.012em}
 /* Étiquettes, numéros, puces : la monospace de la référence. */
 .mono,.kpi,.chip,.agent__tag{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
 .flux__mot{font-family:var(--mono)}
-.step__no,.pilier__no,.offer__no{font-family:var(--mono);font-weight:400;letter-spacing:0;
+.pilier__no,.offer__no{font-family:var(--mono);font-weight:400;letter-spacing:0;
   font-size:clamp(.95rem,1.5vw,1.1rem);line-height:1}
 .pilier__tete{align-items:center}
 
@@ -966,7 +924,7 @@ h3{font-weight:500;letter-spacing:-.012em}
   -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
 
 /* Puces en pilule de verre, sans filet. */
-.chip,.kpi,.agent__tag,.step .chip,.pilier .chip{border-radius:999px;border-color:transparent;
+.chip,.kpi,.agent__tag,.pilier .chip{border-radius:999px;border-color:transparent;
   background:var(--verre);color:#D6D6D2}
 .kpi{background:var(--verre)}
 /* Notre méthode : sans fond depuis le 5 novembre 2026, à sa demande — ni sous les
@@ -976,13 +934,13 @@ h3{font-weight:500;letter-spacing:-.012em}
 /* Coins carrés, 5 novembre 2026 (« ne mets pas arrondis, mets des carrés ») :
    les cartes de Notre méthode et de Pour qui, qui se ressemblent. */
 #resultats .offer,.pour-qui .pilier{border-radius:0}
+#resultats .guide-lien--large{background:none;border-radius:0}
 
 /* Chiffres clés : grands et fins. */
 
 /* Cartes : arrondies, filet clair. */
 .manifeste,.offer,.agent,.pilier,.guide-lien--large{
   border-radius:var(--rayon);border-color:var(--line)}
-.step{border-radius:14px;border-color:var(--line)}
 .agent figure{border-radius:12px}
 /* Bloc contact : ni arrondi, ni fond, ni filet depuis le 5 novembre 2026, à sa
    demande — le texte se pose directement sur la page. */
@@ -1059,7 +1017,7 @@ h3{font-weight:500;letter-spacing:-.012em}
 .contact__btn:hover::after,.exemples__guide a:hover::after{transform:translateX(3px)}
 .guide-lien__bouton::after{content:"→";display:inline-block;margin-left:.35rem;transition:transform .18s ease}
 .guide-lien:hover .guide-lien__bouton::after{transform:translateX(3px)}
-.step__chevron,.pilier__chevron{border-color:var(--yellow)}
+.pilier__chevron{border-color:var(--yellow)}
 .qa summary::after{color:var(--yellow)}
 /* Les icônes des réseaux : un contour jaune, sans flèche (5 novembre 2026). */
 .icons a{border-color:var(--yellow)}
@@ -1210,7 +1168,7 @@ h3{font-weight:500;letter-spacing:-.012em}
     </div>
   </section>
 
-  <div class="stack" style="padding-block:var(--gap) calc(var(--gap) / 2)">
+  <div class="stack" style="padding-block:var(--gap) 0">
 
     <!-- ============ CE QU'ON VOUS APPORTE ============
          Revenue le 28 septembre 2026, à la demande du propriétaire, avec son
@@ -1227,123 +1185,101 @@ h3{font-weight:500;letter-spacing:-.012em}
       </div>
     </section>
 
-    <!-- ============ RÉSULTATS ============ -->
+    <!-- ============ NOTRE MÉTHODE ============
+         Réunit depuis le 7 novembre 2026, à sa demande, « Notre méthode » et
+         « Cinq étapes, du système au multi-scaling », résumées. Le détail est
+         dans CLAUDE.md. -->
     <section class="wrap" id="resultats">
       <div class="head head--centre">
         <h2 class="display">Notre <em>méthode</em>.</h2>
-        <p class="lead">Chaque système arrive avec son tableau de bord. Voici les quatre briques qu'on met en place, et l'indicateur que vous y verrez dès la première semaine.</p>
+        <p class="lead">Quatre outils, installés en cinq étapes&nbsp;: chacune s'appuie sur la précédente. Un tableau de bord vous permet de tout suivre dès la première semaine.</p>
       </div>
       <div class="offers">
         <article class="offer">
-          <span class="offer__no">01</span>
-          <h3>Radar de prospection</h3>
-          <p>Repère et relance vos prospects sur Meta, LinkedIn et TikTok, automatiquement.</p>
-          <span class="kpi mono">Prospects repérés par semaine</span>
+          <h3>Ce que nous installons</h3>
+          <ol class="methode">
+            <li>
+              <span class="offer__no" aria-hidden="true">01</span>
+              <div>
+                <h4>Radar de prospection</h4>
+                <p>Repère et relance vos prospects sur Meta, LinkedIn et TikTok.</p>
+                <span class="kpi mono">Prospects repérés par semaine</span>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">02</span>
+              <div>
+                <h4>Qualification par agents IA</h4>
+                <p>Vos vendeurs ne parlent qu'à des clients prêts à acheter.</p>
+                <span class="kpi mono">Rendez-vous vraiment qualifiés</span>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">03</span>
+              <div>
+                <h4>Traitement des demandes clients</h4>
+                <p>Emails et questions fréquentes traités 24&nbsp;h/24, avec votre ton.</p>
+                <span class="kpi mono">Demandes traitées sans vous</span>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">04</span>
+              <div>
+                <h4>Production de contenu multicanal</h4>
+                <p>Un seul contenu de départ, publié sur tous vos canaux.</p>
+                <span class="kpi mono">Contenus publiés et temps gagné</span>
+              </div>
+            </li>
+          </ol>
         </article>
         <article class="offer">
-          <span class="offer__no">02</span>
-          <h3>Qualification par agents IA</h3>
-          <p>L'IA trie les demandes selon vos règles&nbsp;: vos vendeurs ne parlent qu'à des clients prêts à acheter.</p>
-          <span class="kpi mono">Rendez-vous vraiment qualifiés</span>
+          <h3>Dans quel ordre</h3>
+          <ol class="methode">
+            <li>
+              <span class="offer__no" aria-hidden="true">01</span>
+              <div>
+                <h4>Création du système</h4>
+                <p>Stratégie, textes, visuels et tunnel de rendez-vous.</p>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">02</span>
+              <div>
+                <h4>Acquisition</h4>
+                <p>Publicités lancées, prospects qualifiés par les agents IA.</p>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">03</span>
+              <div>
+                <h4>Optimisation</h4>
+                <p>Campagnes ajustées selon les retours du terrain.</p>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">04</span>
+              <div>
+                <h4>Scaling</h4>
+                <p>Développement des équipes de qualification et de vente.</p>
+              </div>
+            </li>
+            <li>
+              <span class="offer__no" aria-hidden="true">05</span>
+              <div>
+                <h4>Multi-scaling</h4>
+                <p>Extension à d'autres canaux, comme Google et YouTube.</p>
+              </div>
+            </li>
+          </ol>
         </article>
-        <article class="offer">
-          <span class="offer__no">03</span>
-          <h3>Traitement des demandes clients</h3>
-          <p>Réponses aux emails et aux questions fréquentes, 24&nbsp;h/24, avec votre ton.</p>
-          <span class="kpi mono">Demandes traitées sans vous</span>
-        </article>
-        <article class="offer">
-          <span class="offer__no">04</span>
-          <h3>Production de contenu multicanal</h3>
-          <p>Un seul contenu de départ, publié sur tous vos canaux.</p>
-          <span class="kpi mono">Contenus publiés et temps gagné</span>
-        </article>
-      </div>
-
-    </section>
-
-  </div>
-
-  <!-- ============ MÉTHODE D'ACQUISITION ============
-       Le commentaire disait « section blanche » : c est faux depuis que les
-       aplats ont saute. `.invert` vaut var(--noir), le même noir que le fond
-       de page, et c est la seule chose qui la detache. -->
-  <section class="invert" id="methode">
-    <div class="wrap">
-      <div class="head head--centre">
-        <h2 class="display">Cinq étapes, <em>du système<br>au multi-scaling</em>.</h2>
-        <p class="lead">Chaque étape s'appuie sur la précédente : on ne lance pas de publicité avant que le système de rendez-vous soit en place, et on ne scale pas avant que les campagnes soient optimisées.</p>
-      </div>
-      <div class="steps">
-        <details class="step">
-          <summary class="step__tete">
-            <span class="step__no">01</span>
-            <h3>Création du système</h3>
-            <span class="step__chevron" aria-hidden="true"></span>
-          </summary>
-          <div class="step__corps">
-            <div class="chips">
-            <span class="chip">Stratégie</span><span class="chip">Copywriting</span>
-            <span class="chip">Tunnel de rendez-vous</span><span class="chip">Images</span>
-            <span class="chip">Vidéos</span><span class="chip">Montage</span>
-            <span class="chip">Outils IA</span>
-            </div>
-          </div>
-        </details>
-        <details class="step">
-          <summary class="step__tete">
-            <span class="step__no">02</span>
-            <h3>Acquisition</h3>
-            <span class="step__chevron" aria-hidden="true"></span>
-          </summary>
-          <div class="step__corps">
-            <div class="chips">
-            <span class="chip">Publicités Meta</span><span class="chip">LinkedIn</span>
-            <span class="chip">TikTok</span><span class="chip">Qualification des prospects</span>
-            <span class="chip">Agents IA</span><span class="chip">Tableau de bord</span>
-            </div>
-          </div>
-        </details>
-        <details class="step">
-          <summary class="step__tete">
-            <span class="step__no">03</span>
-            <h3>Optimisation</h3>
-            <span class="step__chevron" aria-hidden="true"></span>
-          </summary>
-          <div class="step__corps">
-            <p>On écoute ce que remontent le terrain — qui décroche, qui bloque, sur quel argument — et on ajuste les campagnes en conséquence.</p>
-          </div>
-        </details>
-        <details class="step">
-          <summary class="step__tete">
-            <span class="step__no">04</span>
-            <h3>Scaling</h3>
-            <span class="step__chevron" aria-hidden="true"></span>
-          </summary>
-          <div class="step__corps">
-            <p>Développement des équipes de qualification et de vente.</p>
-          </div>
-        </details>
-        <details class="step">
-          <summary class="step__tete">
-            <span class="step__no">05</span>
-            <h3>Multi-scaling</h3>
-            <span class="step__chevron" aria-hidden="true"></span>
-          </summary>
-          <div class="step__corps">
-            <p>Extension à Google, YouTube, TikTok et LinkedIn — et, lorsqu'elles seront accessibles, aux publicités sur ChatGPT ou Perplexity.</p>
-          </div>
-        </details>
-        <a class="step guide-lien" href="guide.html">
+        <a class="guide-lien guide-lien--large" href="guide.html">
           <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
           <span class="guide-lien__texte"><strong>Le guide gratuit</strong><span>Les 5 étapes, en PDF</span></span>
           <span class="guide-lien__bouton">Recevoir</span>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="stack" style="padding-block:calc(var(--gap) / 2) 0">
 
     <!-- ============ L'IA GÉNÉRATIVE ============
          Demandée par le propriétaire le 18 septembre 2026, d'abord juste
