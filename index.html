@@ -934,7 +934,8 @@ h3{font-weight:500;letter-spacing:-.012em}
 /* Coins carrés, 5 novembre 2026 (« ne mets pas arrondis, mets des carrés ») :
    les cartes de Notre méthode et de Pour qui, qui se ressemblent. */
 #resultats .offer,.pour-qui .pilier{border-radius:0}
-#resultats .guide-lien--large{background:none;border-radius:0}
+/* Le guide vit dans la carte des étapes, sous Multi-scaling : pas de second cadre. */
+#resultats .guide-lien--large{background:none;border:0;border-radius:0;padding:0;margin-top:auto}
 
 /* Chiffres clés : grands et fins. */
 
@@ -1271,12 +1272,12 @@ h3{font-weight:500;letter-spacing:-.012em}
               </div>
             </li>
           </ol>
+          <a class="guide-lien guide-lien--large" href="guide.html">
+            <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
+            <span class="guide-lien__texte"><strong>Le guide gratuit</strong><span>Les 5 étapes, en PDF</span></span>
+            <span class="guide-lien__bouton">Recevoir</span>
+          </a>
         </article>
-        <a class="guide-lien guide-lien--large" href="guide.html">
-          <span class="guide-lien__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="M7.5 9.5L12 14l4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
-          <span class="guide-lien__texte"><strong>Le guide gratuit</strong><span>Les 5 étapes, en PDF</span></span>
-          <span class="guide-lien__bouton">Recevoir</span>
-        </a>
       </div>
     </section>
 
