@@ -252,6 +252,11 @@ vos ventes moyenne et haute gamme en *moins de 3 mois*, et nous mettons l'IA gé
 au travail dans vos équipes. » Réécriture de Claude, sans rien ajouter : le délai reste
 le sien et ne porte que sur les ventes. Sont partis « On fait deux choses, et on les
 fait bien » et « Si c'est ce que vous cherchez, on est l'agence qu'il vous faut. »
+**Plus de marge au-dessus de la phrase**, le même jour (« il ne doit pas avoir trop
+d'espace » avec le titre) : `.manifeste` n'a plus de `padding-top`, héritage de la carte
+qui n'a plus de fond. Il ne reste que la marge de `.head`, comme sous les autres titres.
+**Interligne de la phrase à 1,65**, le même jour (« bien respirable avec des espaces
+interligne ») : il valait 1,3, dans le bloc « DOPAMINE ».
 
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de
