@@ -261,6 +261,11 @@ interligne ») : il valait 1,3, dans le bloc « DOPAMINE ».
 produits moyen et haut de gamme en *moins de 3 mois*, et des équipes qui gagnent des heures
 chaque semaine grâce à l'IA générative. » Il remplace la phrase citée ci-dessus. « Des heures
 chaque semaine » est une promesse de sa main : aucune mesure du site ne l'étaye.
+**La phrase est encadrée depuis le même jour**, à sa demande (« Encadre ceci ») : `.manifeste`
+reprend le filet `--line` et les coins carrés des cartes de « Notre méthode », toujours sans
+fond, sur toute la largeur de la page, et retrouve une marge intérieure en haut comme en bas.
+Le cadre annule le « sans contour » du 5 novembre 2026 décrit plus bas. 167 px de cadre à
+1 280 px, 183 px sur téléphone ; la page fait **4 653 px** à 1 280 px.
 
 **La carte de « Ce qu'on vous apporte » tient en un bloc centré depuis le 4 novembre
 2026**, à sa demande (« Résume ces informations et met cela au milieu »). Résumé de

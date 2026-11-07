@@ -407,12 +407,12 @@ em{color:var(--yellow)}
    d'une ligne plus discrète. Tailles déjà à −15 %, comme le reste du site. */
 /* Marge en valeurs fixes et non en clamp() : le détecteur d'impeccable ne
    lit pas un clamp() et croyait la carte sans marge intérieure. */
-/* Ni filet ni fond depuis le 5 novembre 2026, à sa demande : le texte se pose
-   directement sur la page. */
-.manifeste{background:none;border:0;
-  padding:0 1.3rem 1.4rem;
+/* Sans fond depuis le 5 novembre 2026. Encadrée depuis le 7 novembre 2026, à sa
+   demande : même filet et mêmes coins carrés que les cartes de Notre méthode. */
+.manifeste{background:none;border:1px solid var(--line);border-radius:0;
+  padding:1.4rem 1.3rem;
   display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center}
-@media (min-width:46rem){.manifeste{padding:0 2.2rem 1.9rem}}
+@media (min-width:46rem){.manifeste{padding:1.9rem 2.2rem}}
 /* Pleine largeur depuis le 29 septembre 2026. Depuis le 4 novembre 2026, un
    seul texte résumé, centré : la phrase forte s'arrête à 56 ch pour ne pas
    courir sur toute la carte. */
@@ -948,7 +948,7 @@ h3{font-weight:500;letter-spacing:-.012em}
 /* Chiffres clés : grands et fins. */
 
 /* Cartes : arrondies, filet clair. */
-.manifeste,.offer,.agent,.pilier,.guide-lien--large{
+.offer,.agent,.pilier,.guide-lien--large{
   border-radius:var(--rayon);border-color:var(--line)}
 .agent figure{border-radius:12px}
 /* Bloc contact : ni arrondi, ni fond, ni filet depuis le 5 novembre 2026, à sa
