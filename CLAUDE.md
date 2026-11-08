@@ -1130,6 +1130,16 @@ que l'agence vend : des agents IA qui qualifient.
   Script (un 302, puis `{"statut":"ok"}`) ; `journal.gs` lui-même, avec un faux
   `SpreadsheetApp` dans un `vm` de Node.
 
+**Vercel Web Analytics depuis le 8 novembre 2026**, à sa demande (« Puis-je avoir un tableau de
+bord de mon site vitrine ? », puis « oui prépare »). Sans cookie, donc sans bandeau. Chaque page
+(les neuf pages à la main et, par `build-blog.mjs`, le blog et les articles) porte avant
+`</head>` un petit script qui charge `/_vercel/insights/script.js` **seulement sur
+`smartefico.com` et `www`** : GitHub Pages, les `*.vercel.app` et la copie autonome ne
+chargent rien et ne produisent aucune erreur. Les chiffres se lisent dans l'onglet Analytics du
+projet Vercel `smartefico`, où le propriétaire active lui-même le service. **Une page ajoutée doit
+reprendre ce bloc.** L'article 9 des CGC doit le dire : phrase proposée, en attente de sa
+validation. Ce qui suit décrit la situation d'avant.
+
 **Aucune mesure d'audience, par choix.** Le 18 septembre 2026, le propriétaire a
 demandé un tableau de bord des visites ; le site n'en mesurait aucune, et n'en mesure
 toujours aucune. Entre Vercel Web Analytics (sans cookie), Google Analytics 4 et

@@ -359,6 +359,9 @@ ${favicon}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@1&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap">
 ${styleSite}
 ${styleBlog}
+<!-- Mesure d'audience : Vercel Web Analytics, sans cookie, demandée le 8 novembre 2026.
+     Chargée seulement sur smartefico.com : ailleurs (GitHub Pages, copie autonome) rien ne part. -->
+<script>['smartefico.com','www.smartefico.com'].includes(location.hostname)&&document.head.appendChild(Object.assign(document.createElement('script'),{src:'/_vercel/insights/script.js',defer:true}))</script>
 </head>`;
 }
 
