@@ -1137,8 +1137,9 @@ bord de mon site vitrine ? », puis « oui prépare »). Sans cookie, donc sans 
 `smartefico.com` et `www`** : GitHub Pages, les `*.vercel.app` et la copie autonome ne
 chargent rien et ne produisent aucune erreur. Les chiffres se lisent dans l'onglet Analytics du
 projet Vercel `smartefico`, où le propriétaire active lui-même le service. **Une page ajoutée doit
-reprendre ce bloc.** L'article 9 des CGC doit le dire : phrase proposée, en attente de sa
-validation. Ce qui suit décrit la situation d'avant.
+reprendre ce bloc.** L'article 9 des CGC le dit, phrase proposée par Claude et validée par lui le même jour
+(« Je valide la phrase ») : « Sa fréquentation est mesurée par Vercel Web Analytics, sans
+cookie et sous forme de statistiques anonymes : aucun visiteur n'y est identifié. » Ce qui suit décrit la situation d'avant.
 
 **Aucune mesure d'audience, par choix.** Le 18 septembre 2026, le propriétaire a
 demandé un tableau de bord des visites ; le site n'en mesurait aucune, et n'en mesure
