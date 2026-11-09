@@ -123,7 +123,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
   font-family:var(--mono)}
 .livre .btn{margin-top:auto}
 .livre .livre__auteur{color:#D6D6D2;font-size:.75rem;margin-top:-.3rem}
-/* Le septième livre prend toute la largeur : la grille en a six paires. */
+/* Le premier et le dernier livre prennent toute la largeur : la grille garde ses six paires. */
 .livre--large{grid-column:1/-1}
 @media (min-width:60rem){.livre--large{align-items:center}}
 
@@ -187,6 +187,22 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
 
   <section class="wrap" id="livres" aria-label="La librairie">
     <div class="livres">
+
+      <article class="livre livre--large">
+        <img class="livre__couv" src="assets/livres/start-up-avec-ia.jpg" width="520" height="832" alt="Couverture du livre Créer, lancer et réussir sa start-up avec l'IA" loading="lazy">
+        <div class="livre__corps">
+          <span class="mono livre__public">Créateurs d'entreprise</span>
+          <h2>Créer, lancer et réussir sa start-up avec l'IA</h2>
+          <p>Le plan pour décrocher ses premiers clients en 90&nbsp;jours et automatiser son activité sans coder.</p>
+          <ul class="livre__points">
+            <li>De l'idée au concept validé, puis à l'offre et au modèle économique</li>
+            <li>Vendre, financer et structurer son entreprise</li>
+            <li>62 prompts et 12 scénarios d'automatisation</li>
+            <li>Un plan d'action sur 90&nbsp;jours</li>
+          </ul>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HQZLH3FD" target="_blank" rel="noopener">Voir sur Amazon</a>
+        </div>
+      </article>
 
       <article class="livre">
         <img class="livre__couv" src="assets/livres/claude-rendu-simple.jpg" width="520" height="778" alt="Couverture du livre Claude rendu simple" loading="lazy">
