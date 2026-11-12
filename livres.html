@@ -123,7 +123,7 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
   font-family:var(--mono)}
 .livre .btn{margin-top:auto}
 .livre .livre__auteur{color:#D6D6D2;font-size:.75rem;margin-top:-.3rem}
-/* Le premier et le dernier livre prennent toute la largeur : la grille garde ses six paires. */
+/* Les deux premiers et le dernier livre prennent toute la largeur : la grille garde ses six paires. */
 .livre--large{grid-column:1/-1}
 @media (min-width:60rem){.livre--large{align-items:center}}
 
@@ -201,6 +201,21 @@ main{display:flex;flex-direction:column;gap:var(--gap);padding-bottom:var(--gap)
             <li>Un plan d'action sur 90&nbsp;jours</li>
           </ul>
           <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HQZLH3FD" target="_blank" rel="noopener">Voir sur Amazon</a>
+        </div>
+      </article>
+
+      <article class="livre livre--large">
+        <img class="livre__couv" src="assets/livres/claude-make-n8n.jpg" width="520" height="832" alt="Couverture du livre Claude, Make et n8n, le guide complet pour maîtriser l'automatisation IA" loading="lazy">
+        <div class="livre__corps">
+          <span class="mono livre__public">Automatisation</span>
+          <h2>Claude, Make et n8n : le guide complet pour maîtriser l'automatisation IA</h2>
+          <p>Automatisez vos tâches avec des agents IA et créez vos applications sans coder.</p>
+          <ul class="livre__points">
+            <li>Claude, Make et n8n réunis dans un même guide</li>
+            <li>Des agents IA branchés sur vos e-mails, votre CRM et vos documents</li>
+            <li>100 modèles et workflows complets</li>
+          </ul>
+          <a class="btn btn--solid" href="https://www.amazon.fr/dp/B0HRCH47JB" target="_blank" rel="noopener">Voir sur Amazon</a>
         </div>
       </article>
 

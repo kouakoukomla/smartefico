@@ -958,6 +958,11 @@ posées : **la vente passe par Amazon**, une page dédiée, un lien « Livres »
   aurait laissé un trou. Couverture tirée de son fichier Kindle (`Produits digitaux`), en
   520 px (`start-up-avec-ia.jpg`) ; texte de Claude d'après la couverture et le sommaire de
   l'EPUB, sans rien ajouter. L'agent immobilier, demandé en même temps, y était déjà.
+- **Un neuvième livre depuis le 12 novembre 2026 : « Claude, Make et n8n, le guide complet pour
+  maîtriser l'automatisation IA »** (`B0HRCH47JB`), à sa demande (« Complète ma librairie avec ce
+  livre »), en deuxième position et sur toute la largeur (`.livre--large`) : la grille garde
+  ses trois paires. Couverture tirée de la variante Kindle « panneau noir » de son bureau, en
+  520 px (`claude-make-n8n.jpg`) ; texte de Claude d'après la seule couverture, sans rien ajouter.
 - **L'agent immobilier augmenté a son lien depuis le 5 novembre 2026**
   (`B0HQGLMMK4`), après un jour en « Bientôt disponible ». L'EPUB du 4 novembre portait
   encore des « [À compléter] » : le propriétaire en a été prévenu, la version publiée
