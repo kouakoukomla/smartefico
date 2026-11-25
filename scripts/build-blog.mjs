@@ -229,6 +229,9 @@ function dateFr(iso) {
 const index = readFileSync(join(racine, 'index.html'), 'utf8');
 const styleSite = (index.match(/<style>[\s\S]*?<\/style>/) || ['<style></style>'])[0];
 const favicon = (index.match(/<link rel="icon"[^>]*>/) || [''])[0];
+// Le robot animé (25 novembre 2026) : son style arrive avec styleSite, son
+// markup et son script sont repris tels quels entre les repères BOT.
+const robot = (index.match(/<!-- BOT:START[\s\S]*?<!-- BOT:END -->\n?/) || [''])[0];
 
 const styleBlog = `<style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
@@ -425,7 +428,7 @@ ${corpsHtml}
 ${formulaire(a)}    <p style="margin-top:2.5rem"><a class="btn btn--line" href="index.html#appel">Me contacter</a></p>
   </main>
 ${pied}
-${scriptsFormulaire(a)}</body>
+${scriptsFormulaire(a)}${robot}</body>
 </html>
 `;
   writeFileSync(join(racine, a.page), html, 'utf8');
@@ -474,7 +477,7 @@ ${cartes}
     </div>
   </main>
 ${pied}
-</body>
+${robot}</body>
 </html>
 `;
 writeFileSync(join(racine, 'blog.html'), blog, 'utf8');

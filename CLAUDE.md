@@ -12,6 +12,7 @@ de discussion (voir Architecture).
 
 ```bash
 node scripts/sync-legal.mjs        # après toute modification de cgv.html ou cgc.html
+node scripts/sync-robot.mjs        # après toute retouche du robot dans index.html (puis build-blog)
 node scripts/build-standalone.mjs  # régénère index-autonome.html
 node scripts/build-guide.mjs guide     # après toute modification de scripts/guide/guide.html
 node scripts/build-guide.mjs guide-ia  # après toute modification de scripts/guide/guide-ia.html
@@ -1016,8 +1017,17 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
 - **Il parle quatre fois au plus**, une seule fois par visite (`sessionStorage`) : bonjour
   après 4 s, à l'arrivée sur `#agents` et sur `#contact`, et au réveil. Textes de Claude, à
   valider par lui : ils se changent dans le script.
-- Accueil seulement : ni le blog, ni les autres pages. 64 px de large sur téléphone, 90 px
-  à 1 280 px.
+- **Sur toutes les pages depuis le même jour**, à sa demande (« Ajoute aussi le robot sur
+  les autres pages »). `index.html` reste la source unique : son style est entre
+  `/* BOT-CSS:START */` et `/* BOT-CSS:END */`, autonome (ses propres couleurs `--bot-…`,
+  son bouton `.bot__wa`, sa classe masquée `.bot__cache`), son markup et son script entre
+  `<!-- BOT:START -->` et `<!-- BOT:END -->`. **`node scripts/sync-robot.mjs`** recopie les
+  deux dans `cgv`, `cgc`, les deux guides et leurs pages de remerciement, `exemples-ia` et
+  `livres` (style dans un `<style data-robot>` avant `</head>`) ; `build-blog.mjs` les
+  reprend pour le blog et les articles. **Après toute retouche du robot dans l'accueil,
+  lancer les deux.** Une page ajoutée doit rejoindre la liste `PAGES` du script. Les
+  phrases liées à `#agents` et `#contact` ne servent que sur l'accueil.
+- 64 px de large sur téléphone, 90 px à 1 280 px.
 - **Une boîte de dialogue depuis le même jour**, à sa demande (« On doit pouvoir lui envoyer
   un message même s'il ne répond pas […] Nous allons bientôt connecter un RAG ») : le panneau
   porte un fil de messages, un champ (1 000 caractères, Entrée envoie, Maj+Entrée va à la

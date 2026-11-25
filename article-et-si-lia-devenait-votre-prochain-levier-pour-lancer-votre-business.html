@@ -1004,6 +1004,95 @@ h3{font-weight:500;letter-spacing:-.012em}
 @media (prefers-reduced-motion:reduce){
   .contact__btn::after,.exemples__guide a::after,.guide-lien__bouton::after{transition:none;transform:none!important}
 }
+/* BOT-CSS:START — recopié tel quel dans les autres pages par scripts/sync-robot.mjs */
+/* ---------- robot (BOT) ----------
+   Demandé le 25 novembre 2026 (« sur mon site je veux ajouter un bot dynamique.
+   Il doit bouger, tourner les yeux, émotif ») sur une image fournie : tête
+   blanche, visière noire, yeux lumineux, casque-micro. Dessiné en SVG pour
+   animer chaque partie. Aucune IA, aucun serveur : il oriente vers WhatsApp et
+   le formulaire de rendez-vous. Émotions par data-emotion sur .bot. */
+.bot{--bot-fond:#0E0E0E;--bot-filet:#1F1F1F;--bot-encre:#FFFFFF;--bot-gris:#B4B4B0;--bot-gris-2:#8A8A86;
+  --bot-mur:#333333;--bot-jaune:#FFCC00;--bot-sur-jaune:#141414;
+  --bot-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  position:fixed;font-family:"Poppins","Helvetica Neue",Arial,sans-serif;text-align:left;right:clamp(.75rem,2.5vw,1.5rem);bottom:clamp(.75rem,2.5vw,1.5rem);z-index:60;
+  display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;pointer-events:none}
+.bot>*{pointer-events:auto}
+.bot__btn{position:relative;width:clamp(4rem,7vw,5.25rem);aspect-ratio:1;padding:0;border:0;
+  background:none;cursor:pointer;border-radius:50%;-webkit-tap-highlight-color:transparent}
+.bot__btn:focus-visible{outline:2px solid var(--bot-jaune);outline-offset:4px}
+.bot__corps{width:100%;height:100%;display:block;overflow:visible;
+  animation:bot-flotte 3.4s ease-in-out infinite}
+.bot__tete{transform-box:fill-box;transform-origin:50% 60%;
+  transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.bot__yeux{transition:transform .12s linear}
+.bot__lueur{filter:drop-shadow(0 0 2.5px rgba(170,205,255,.95)) drop-shadow(0 0 6px rgba(120,170,255,.55))}
+.bot__oeil{transform-box:fill-box;transform-origin:50% 50%;transition:transform .09s ease}
+.bot.cligne .bot__oeil{transform:scaleY(.12)}
+.bot__ombre{transform-box:fill-box;transform-origin:50% 50%;animation:bot-ombre 3.4s ease-in-out infinite}
+/* Les variantes : une seule visible à la fois. */
+.bot [data-e]{display:none}
+.bot[data-emotion="neutre"] [data-e~="neutre"],
+.bot[data-emotion="heureux"] [data-e~="heureux"],
+.bot[data-emotion="surpris"] [data-e~="surpris"],
+.bot[data-emotion="endormi"] [data-e~="endormi"],
+.bot[data-emotion="clin"] [data-e~="clin"],
+.bot[data-emotion="curieux"] [data-e~="curieux"]{display:inline}
+.bot__zzz{display:none;font:600 10px/1 var(--bot-mono);fill:#FFF}
+.bot[data-emotion="endormi"] .bot__zzz{display:inline;animation:bot-z 2.4s ease-in-out infinite}
+.bot[data-emotion="endormi"] .bot__corps{animation-duration:5.5s}
+.bot[data-emotion="surpris"] .bot__tete{transform:translateY(-3px) scale(1.04)}
+/* Bulle de parole et panneau */
+.bot__bulle{max-width:min(16rem,calc(100vw - 2rem));margin:0;padding:.6rem .85rem;
+  background:var(--bot-fond);color:var(--bot-encre);border:1px solid var(--bot-filet);border-radius:14px 14px 4px 14px;
+  font-size:.8rem;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(6px) scale(.97);transform-origin:100% 100%;
+  transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+.bot__bulle.visible{opacity:1;transform:none}
+.bot__panneau{width:min(20rem,calc(100vw - 2rem));padding:1rem 1rem 1.05rem;
+  background:var(--bot-fond);border:1px solid var(--bot-filet);border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:.65rem}
+.bot__panneau[hidden]{display:none}
+.bot__panneau-tete{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.bot__panneau h2{font-size:.95rem;font-weight:600;color:#FFF;margin:0;letter-spacing:-.01em}
+.bot__panneau p{margin:0;color:var(--bot-gris);font-size:.8rem;line-height:1.5}
+.bot__fermer{width:2rem;height:2rem;border-radius:50%;border:1px solid var(--bot-filet);background:none;
+  color:var(--bot-gris);font-size:1rem;line-height:1;cursor:pointer}
+.bot__fermer:hover{border-color:var(--bot-mur);color:#FFF}
+/* Boîte de dialogue, 25 novembre 2026 : on écrit au robot, même s'il ne répond
+   pas encore seul ; le RAG se branchera sur BOT_API (voir le script). */
+.bot__fil{list-style:none;margin:0;padding:0 .15rem 0 0;display:flex;flex-direction:column;gap:.5rem;
+  max-height:min(18rem,45vh);overflow-y:auto;overscroll-behavior:contain}
+.bot__msg{max-width:88%;padding:.5rem .7rem;border-radius:12px;font-size:.8rem;line-height:1.5;
+  white-space:pre-wrap;overflow-wrap:anywhere}
+.bot__msg--robot{align-self:flex-start;background:#1C1C1C;color:var(--bot-encre);border-bottom-left-radius:4px}
+.bot__msg--moi{align-self:flex-end;background:var(--bot-jaune);color:var(--bot-sur-jaune);border-bottom-right-radius:4px}
+.bot__msg a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.bot__wa{display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;padding:.5rem .85rem;border-radius:999px;
+  background:var(--bot-jaune);color:var(--bot-sur-jaune);font-size:.75rem;font-weight:600;text-decoration:none}
+.bot__msg .bot__wa{color:var(--bot-sur-jaune);text-decoration:none}
+.bot__wa::after{content:"→";transition:transform .2s ease}
+.bot__wa:hover::after{transform:translateX(3px)}
+.bot__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.bot__ecrit{display:flex;gap:.45rem;align-items:flex-end}
+.bot__ecrit textarea{flex:1;min-width:0;resize:none;max-height:7rem;padding:.6rem .75rem;
+  background:#000;color:var(--bot-encre);border:1px solid var(--bot-filet);border-radius:12px;
+  font:inherit;font-size:.85rem;line-height:1.4}
+.bot__ecrit textarea:focus{outline:none;border-color:var(--bot-jaune)}
+.bot__envoyer{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;border:0;cursor:pointer;
+  background:var(--bot-jaune);color:var(--bot-sur-jaune);font-size:1.1rem;font-weight:700;line-height:1}
+.bot__envoyer:disabled{opacity:.4;cursor:default}
+.bot__panneau .bot__liens{display:flex;justify-content:center;gap:.4rem;font-size:.72rem;color:var(--bot-gris-2)}
+.bot__liens a{color:var(--bot-gris);text-decoration:underline;text-underline-offset:2px}
+.bot__liens a:hover{color:#FFF}
+@keyframes bot-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes bot-ombre{0%,100%{transform:scaleX(1);opacity:.45}50%{transform:scaleX(.82);opacity:.25}}
+@keyframes bot-z{0%{opacity:0;transform:translate(0,4px)}30%{opacity:1}100%{opacity:0;transform:translate(6px,-10px)}}
+@media (prefers-reduced-motion:reduce){
+  .bot__corps,.bot__ombre,.bot[data-emotion="endormi"] .bot__zzz{animation:none}
+  .bot__tete,.bot__yeux,.bot__bulle{transition:none}
+}
+@media print{.bot{display:none}}
+/* BOT-CSS:END */
 </style>
 <style>
 .blog-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.4rem}
@@ -1197,5 +1286,241 @@ h3{font-weight:500;letter-spacing:-.012em}
     setTimeout(replier, 8000);
   })();
   </script>
+<!-- BOT:START — robot animé, 25 novembre 2026. Rien ne part vers un serveur :
+     il cligne, suit la souris, change d'émotion et mène vers WhatsApp ou le
+     formulaire de rendez-vous. -->
+<div class="bot" data-emotion="neutre">
+  <p class="bot__bulle" role="status" aria-live="polite"></p>
+  <div class="bot__panneau" id="bot-panneau" hidden>
+    <div class="bot__panneau-tete">
+      <h2>Une question&nbsp;?</h2>
+      <button class="bot__fermer" type="button" aria-label="Fermer">×</button>
+    </div>
+    <ol class="bot__fil" aria-live="polite" aria-label="Conversation">
+      <li class="bot__msg bot__msg--robot">Bonjour ! Écrivez-moi votre question. Je ne sais pas encore y répondre seul, mais je la transmets à l’équipe.</li>
+    </ol>
+    <form class="bot__ecrit">
+      <label class="bot__cache" for="bot-texte">Votre message</label>
+      <textarea id="bot-texte" rows="1" maxlength="1000" placeholder="Votre message…" required></textarea>
+      <button class="bot__envoyer" type="submit" aria-label="Envoyer" disabled>↑</button>
+    </form>
+    <p class="bot__liens"><a href="https://wa.me/33751599636" target="_blank" rel="noopener">WhatsApp</a><span aria-hidden="true">·</span><a href="https://tally.so/r/81VkKx?utm_source=site&amp;utm_medium=robot" target="_blank" rel="noopener">Réserver un appel</a></p>
+  </div>
+  <button class="bot__btn" type="button" aria-expanded="false" aria-controls="bot-panneau" aria-label="Une question ? Ouvrir la discussion">
+    <svg class="bot__corps" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <linearGradient id="bot-blanc" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D6D9E0"/>
+        </linearGradient>
+      </defs>
+      <ellipse class="bot__ombre" cx="60" cy="115" rx="24" ry="3.5" fill="#FFFFFF" fill-opacity=".18"/>
+      <g class="bot__tete">
+        <path d="M17 60C17 13 103 13 103 60" fill="none" stroke="url(#bot-blanc)" stroke-width="6.5" stroke-linecap="round"/>
+        <rect x="9" y="46" width="15" height="30" rx="7.5" fill="url(#bot-blanc)"/>
+        <rect x="19" y="49" width="5" height="24" rx="2.5" fill="#121212"/>
+        <rect x="96" y="46" width="15" height="30" rx="7.5" fill="url(#bot-blanc)"/>
+        <rect x="96" y="49" width="5" height="24" rx="2.5" fill="#121212"/>
+        <rect x="19" y="28" width="82" height="72" rx="36" fill="url(#bot-blanc)"/>
+        <ellipse cx="45" cy="37" rx="15" ry="4.5" fill="#FFFFFF" opacity=".8"/>
+        <rect x="29" y="44" width="62" height="44" rx="20" fill="#050608"/>
+        <rect x="35" y="47" width="50" height="5" rx="2.5" fill="#FFFFFF" opacity=".07"/>
+        <g class="bot__yeux bot__lueur" fill="#F5F9FF" stroke="#F5F9FF" stroke-linecap="round" stroke-linejoin="round">
+          <g data-e="neutre curieux" stroke="none">
+            <circle class="bot__oeil" cx="48" cy="64" r="6.2"/><circle class="bot__oeil" cx="72" cy="64" r="6.2"/>
+          </g>
+          <g data-e="surpris" stroke="none">
+            <circle cx="48" cy="63" r="7.6"/><circle cx="72" cy="63" r="7.6"/>
+          </g>
+          <g data-e="heureux" fill="none" stroke-width="3.6">
+            <path d="M42 67Q48 58 54 67"/><path d="M66 67Q72 58 78 67"/>
+          </g>
+          <g data-e="endormi" fill="none" stroke-width="3.2">
+            <path d="M42 64Q48 69 54 64"/><path d="M66 64Q72 69 78 64"/>
+          </g>
+          <g data-e="clin">
+            <circle class="bot__oeil" cx="48" cy="64" r="6.2" stroke="none"/>
+            <path d="M66 66Q72 59 78 66" fill="none" stroke-width="3.6"/>
+          </g>
+          <path data-e="neutre clin" d="M53 77Q60 82 67 77" fill="none" stroke-width="3"/>
+          <path data-e="heureux" d="M51 75Q60 87 69 75Z" stroke-width="1.5"/>
+          <ellipse data-e="surpris" cx="60" cy="79" rx="3.4" ry="4.2" fill="none" stroke-width="2.8"/>
+          <path data-e="endormi" d="M56 79Q60 81 64 79" fill="none" stroke-width="2.6"/>
+          <path data-e="curieux" d="M54 79Q60 77 66 78" fill="none" stroke-width="2.8"/>
+        </g>
+        <path d="M103 70C104 90 94 99 80 99" fill="none" stroke="#151515" stroke-width="3" stroke-linecap="round"/>
+        <rect x="71" y="95.5" width="12" height="7" rx="3.5" fill="#151515"/>
+        <text class="bot__zzz" x="94" y="30">z</text>
+      </g>
+    </svg>
+  </button>
+</div>
+<script>
+(function () {
+  var bot = document.querySelector('.bot');
+  if (!bot) return;
+  var btn = bot.querySelector('.bot__btn'), panneau = bot.querySelector('.bot__panneau'),
+      fermer = bot.querySelector('.bot__fermer'), bulle = bot.querySelector('.bot__bulle'),
+      tete = bot.querySelector('.bot__tete'), yeux = bot.querySelector('.bot__yeux');
+  var calme = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tactile = window.matchMedia('(hover: none)').matches;
+  var emotion = 'neutre', retour = null, dernierGeste = Date.now(), ouvert = false, survol = false;
+
+  function humeur(e, duree) {
+    clearTimeout(retour);
+    emotion = e; bot.dataset.emotion = e;
+    if (duree) retour = setTimeout(function () { humeur(ouvert ? 'clin' : survol ? 'heureux' : 'neutre'); }, duree);
+  }
+  var bulleMinuteur = null;
+  function dire(texte, e, duree) {
+    if (ouvert) return;
+    bulle.textContent = texte; bulle.classList.add('visible');
+    if (e) humeur(e, Math.min(duree || 2500, 2500));
+    clearTimeout(bulleMinuteur);
+    bulleMinuteur = setTimeout(function () { bulle.classList.remove('visible'); }, duree || 5500);
+  }
+
+  // Les yeux et la tête suivent la souris.
+  function regarder(dx, dy) {
+    yeux.style.transform = 'translate(' + (dx * 5).toFixed(2) + 'px,' + (dy * 3.5).toFixed(2) + 'px)';
+    tete.style.transform = 'rotate(' + (dx * 7).toFixed(2) + 'deg)';
+  }
+  var cible = null, attente = false;
+  function viser() {
+    attente = false;
+    if (!cible || emotion === 'endormi') return;
+    var r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    var dx = cible.x - cx, dy = cible.y - cy, d = Math.hypot(dx, dy) || 1, f = Math.min(1, d / 260);
+    regarder(dx / d * f, dy / d * f);
+  }
+  function reveil() {
+    dernierGeste = Date.now();
+    if (emotion === 'endormi') dire('Oh ! Je m’étais assoupi.', 'surpris', 2500);
+  }
+  if (!calme && !tactile) {
+    window.addEventListener('pointermove', function (ev) {
+      cible = { x: ev.clientX, y: ev.clientY }; reveil();
+      if (!attente) { attente = true; requestAnimationFrame(viser); }
+    }, { passive: true });
+  }
+
+  // Clignements, coups d'œil quand personne ne bouge, sommeil.
+  if (!calme) {
+    (function cligner() {
+      setTimeout(function () {
+        if (emotion === 'neutre' || emotion === 'curieux' || emotion === 'clin') {
+          bot.classList.add('cligne');
+          setTimeout(function () { bot.classList.remove('cligne'); }, 130);
+        }
+        cligner();
+      }, 2200 + Math.random() * 3800);
+    })();
+    setInterval(function () {
+      var calmeDepuis = Date.now() - dernierGeste;
+      if (ouvert || survol) return;
+      if (calmeDepuis > 30000 && emotion !== 'endormi') { regarder(0, .4); humeur('endormi'); return; }
+      if ((tactile || calmeDepuis > 6000) && emotion !== 'endormi') {
+        regarder(Math.random() * 2 - 1, Math.random() * 1.4 - .7);
+        if (Math.random() < .3) humeur('curieux', 1600);
+      }
+    }, 2600);
+  }
+  ['keydown', 'touchstart', 'wheel'].forEach(function (t) { window.addEventListener(t, reveil, { passive: true }); });
+
+  // Défilement rapide : il s'étonne.
+  var dernierY = window.scrollY, dernierT = Date.now();
+  window.addEventListener('scroll', function () {
+    var t = Date.now(), v = Math.abs(window.scrollY - dernierY) / Math.max(1, t - dernierT);
+    dernierY = window.scrollY; dernierT = t;
+    if (v > 4 && emotion !== 'surpris' && emotion !== 'endormi' && !ouvert) humeur('surpris', 700);
+  }, { passive: true });
+
+  // Survol et ouverture du panneau.
+  btn.addEventListener('pointerenter', function () { survol = true; if (!ouvert) humeur('heureux'); });
+  btn.addEventListener('pointerleave', function () { survol = false; if (!ouvert) humeur('neutre'); });
+  function basculer(etat) {
+    ouvert = etat; panneau.hidden = !etat; btn.setAttribute('aria-expanded', String(etat));
+    bulle.classList.remove('visible');
+    humeur(etat ? 'clin' : 'neutre');
+    if (etat) texte.focus(); else btn.focus();
+  }
+  btn.addEventListener('click', function () { basculer(!ouvert); });
+  fermer.addEventListener('click', function () { basculer(false); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && ouvert) basculer(false); });
+
+  // La boîte de dialogue. Tant que BOT_API est vide, rien ne part : le robot
+  // propose d'envoyer le message à l'équipe sur WhatsApp, déjà écrit. Le jour où
+  // le RAG est prêt, y mettre l'adresse de son point d'entrée : il reçoit en POST
+  // { messages: [{ role: 'user'|'assistant', content }] } et répond { reponse }.
+  var BOT_API = '';
+  var fil = bot.querySelector('.bot__fil'), formulaire = bot.querySelector('.bot__ecrit'),
+      texte = bot.querySelector('#bot-texte'), envoyer = bot.querySelector('.bot__envoyer');
+  var historique = [], occupe = false;
+  function ajouter(qui, contenu, lienWa) {
+    var li = document.createElement('li');
+    li.className = 'bot__msg bot__msg--' + (qui === 'user' ? 'moi' : 'robot');
+    li.textContent = contenu;
+    if (lienWa) {
+      var a = document.createElement('a');
+      a.className = 'bot__wa'; a.target = '_blank'; a.rel = 'noopener';
+      a.href = 'https://wa.me/33751599636?text=' + encodeURIComponent(lienWa);
+      a.textContent = 'Envoyer sur WhatsApp';
+      li.appendChild(a);
+    }
+    fil.appendChild(li); fil.scrollTop = fil.scrollHeight;
+  }
+  function repliWhatsApp(message) {
+    ajouter('assistant', 'Merci ! Je ne sais pas encore répondre seul. Votre message est prêt à partir vers l’équipe sur WhatsApp :', message);
+  }
+  function ajuster() {
+    texte.style.height = 'auto'; texte.style.height = Math.min(texte.scrollHeight, 112) + 'px';
+    envoyer.disabled = occupe || !texte.value.trim();
+  }
+  texte.addEventListener('input', ajuster);
+  texte.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); formulaire.requestSubmit ? formulaire.requestSubmit() : envoyer.click(); }
+  });
+  formulaire.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var message = texte.value.trim().slice(0, 1000);
+    if (!message || occupe) return;
+    ajouter('user', message);
+    historique.push({ role: 'user', content: message });
+    texte.value = ''; ajuster();
+    humeur('curieux');
+    if (!BOT_API) { setTimeout(function () { repliWhatsApp(message); humeur('heureux', 1800); }, 700); return; }
+    occupe = true; ajuster();
+    fetch(BOT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: historique.slice(-20) }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        var rep = d && typeof d.reponse === 'string' ? d.reponse.trim() : '';
+        if (!rep) throw new Error('vide');
+        historique.push({ role: 'assistant', content: rep });
+        ajouter('assistant', rep); humeur('heureux', 1800);
+      })
+      .catch(function () { repliWhatsApp(message); humeur('surpris', 1200); })
+      .then(function () { occupe = false; ajuster(); });
+  });
+
+  // Quelques mots, une seule fois chacun par visite.
+  function deja(cle) {
+    try { if (sessionStorage.getItem('bot-' + cle)) return true; sessionStorage.setItem('bot-' + cle, '1'); } catch (e) {}
+    return false;
+  }
+  setTimeout(function () { if (!deja('bonjour')) dire('Bonjour ! Cliquez sur moi si vous avez une question.', 'heureux', 5500); }, 4000);
+  if ('IntersectionObserver' in window) {
+    var phrases = { agents: ['Ce sont mes cousins, les agents IA.', 'curieux'], contact: ['C’est ici qu’on fait connaissance !', 'heureux'] };
+    var vu = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        vu.unobserve(en.target);
+        var p = phrases[en.target.id];
+        if (p && !deja(en.target.id)) dire(p[0], p[1], 4500);
+      });
+    }, { rootMargin: '0px 0px -40% 0px' });
+    Object.keys(phrases).forEach(function (id) { var el = document.getElementById(id); if (el) vu.observe(el); });
+  }
+})();
+</script>
+<!-- BOT:END -->
 </body>
 </html>

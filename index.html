@@ -1032,18 +1032,22 @@ h3{font-weight:500;letter-spacing:-.012em}
 @media (prefers-reduced-motion:reduce){
   .contact__btn::after,.exemples__guide a::after,.guide-lien__bouton::after{transition:none;transform:none!important}
 }
+/* BOT-CSS:START — recopié tel quel dans les autres pages par scripts/sync-robot.mjs */
 /* ---------- robot (BOT) ----------
    Demandé le 25 novembre 2026 (« sur mon site je veux ajouter un bot dynamique.
    Il doit bouger, tourner les yeux, émotif ») sur une image fournie : tête
    blanche, visière noire, yeux lumineux, casque-micro. Dessiné en SVG pour
    animer chaque partie. Aucune IA, aucun serveur : il oriente vers WhatsApp et
    le formulaire de rendez-vous. Émotions par data-emotion sur .bot. */
-.bot{position:fixed;right:clamp(.75rem,2.5vw,1.5rem);bottom:clamp(.75rem,2.5vw,1.5rem);z-index:60;
+.bot{--bot-fond:#0E0E0E;--bot-filet:#1F1F1F;--bot-encre:#FFFFFF;--bot-gris:#B4B4B0;--bot-gris-2:#8A8A86;
+  --bot-mur:#333333;--bot-jaune:#FFCC00;--bot-sur-jaune:#141414;
+  --bot-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  position:fixed;font-family:"Poppins","Helvetica Neue",Arial,sans-serif;text-align:left;right:clamp(.75rem,2.5vw,1.5rem);bottom:clamp(.75rem,2.5vw,1.5rem);z-index:60;
   display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;pointer-events:none}
 .bot>*{pointer-events:auto}
 .bot__btn{position:relative;width:clamp(4rem,7vw,5.25rem);aspect-ratio:1;padding:0;border:0;
   background:none;cursor:pointer;border-radius:50%;-webkit-tap-highlight-color:transparent}
-.bot__btn:focus-visible{outline:2px solid var(--yellow);outline-offset:4px}
+.bot__btn:focus-visible{outline:2px solid var(--bot-jaune);outline-offset:4px}
 .bot__corps{width:100%;height:100%;display:block;overflow:visible;
   animation:bot-flotte 3.4s ease-in-out infinite}
 .bot__tete{transform-box:fill-box;transform-origin:50% 60%;
@@ -1061,48 +1065,52 @@ h3{font-weight:500;letter-spacing:-.012em}
 .bot[data-emotion="endormi"] [data-e~="endormi"],
 .bot[data-emotion="clin"] [data-e~="clin"],
 .bot[data-emotion="curieux"] [data-e~="curieux"]{display:inline}
-.bot__zzz{display:none;font:600 10px/1 var(--mono,monospace);fill:#FFF}
+.bot__zzz{display:none;font:600 10px/1 var(--bot-mono);fill:#FFF}
 .bot[data-emotion="endormi"] .bot__zzz{display:inline;animation:bot-z 2.4s ease-in-out infinite}
 .bot[data-emotion="endormi"] .bot__corps{animation-duration:5.5s}
 .bot[data-emotion="surpris"] .bot__tete{transform:translateY(-3px) scale(1.04)}
 /* Bulle de parole et panneau */
 .bot__bulle{max-width:min(16rem,calc(100vw - 2rem));margin:0;padding:.6rem .85rem;
-  background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px 14px 4px 14px;
+  background:var(--bot-fond);color:var(--bot-encre);border:1px solid var(--bot-filet);border-radius:14px 14px 4px 14px;
   font-size:.8rem;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.5);
   opacity:0;transform:translateY(6px) scale(.97);transform-origin:100% 100%;
   transition:opacity .25s ease,transform .25s ease;pointer-events:none}
 .bot__bulle.visible{opacity:1;transform:none}
 .bot__panneau{width:min(20rem,calc(100vw - 2rem));padding:1rem 1rem 1.05rem;
-  background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  background:var(--bot-fond);border:1px solid var(--bot-filet);border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:.65rem}
 .bot__panneau[hidden]{display:none}
 .bot__panneau-tete{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
 .bot__panneau h2{font-size:.95rem;font-weight:600;color:#FFF;margin:0;letter-spacing:-.01em}
-.bot__panneau p{margin:0;color:var(--ink-2);font-size:.8rem;line-height:1.5}
-.bot__fermer{width:2rem;height:2rem;border-radius:50%;border:1px solid var(--line);background:none;
-  color:var(--ink-2);font-size:1rem;line-height:1;cursor:pointer}
-.bot__fermer:hover{border-color:var(--mur,#333);color:#FFF}
-.bot__panneau .btn{width:100%;justify-content:center;min-width:0}
+.bot__panneau p{margin:0;color:var(--bot-gris);font-size:.8rem;line-height:1.5}
+.bot__fermer{width:2rem;height:2rem;border-radius:50%;border:1px solid var(--bot-filet);background:none;
+  color:var(--bot-gris);font-size:1rem;line-height:1;cursor:pointer}
+.bot__fermer:hover{border-color:var(--bot-mur);color:#FFF}
 /* Boîte de dialogue, 25 novembre 2026 : on écrit au robot, même s'il ne répond
    pas encore seul ; le RAG se branchera sur BOT_API (voir le script). */
 .bot__fil{list-style:none;margin:0;padding:0 .15rem 0 0;display:flex;flex-direction:column;gap:.5rem;
   max-height:min(18rem,45vh);overflow-y:auto;overscroll-behavior:contain}
 .bot__msg{max-width:88%;padding:.5rem .7rem;border-radius:12px;font-size:.8rem;line-height:1.5;
   white-space:pre-wrap;overflow-wrap:anywhere}
-.bot__msg--robot{align-self:flex-start;background:#1C1C1C;color:var(--ink);border-bottom-left-radius:4px}
-.bot__msg--moi{align-self:flex-end;background:var(--yellow);color:var(--on-yellow);border-bottom-right-radius:4px}
+.bot__msg--robot{align-self:flex-start;background:#1C1C1C;color:var(--bot-encre);border-bottom-left-radius:4px}
+.bot__msg--moi{align-self:flex-end;background:var(--bot-jaune);color:var(--bot-sur-jaune);border-bottom-right-radius:4px}
 .bot__msg a{color:inherit;text-decoration:underline;text-underline-offset:2px}
-.bot__msg .btn{margin-top:.5rem;font-size:.75rem;padding:.5rem .8rem}
+.bot__wa{display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;padding:.5rem .85rem;border-radius:999px;
+  background:var(--bot-jaune);color:var(--bot-sur-jaune);font-size:.75rem;font-weight:600;text-decoration:none}
+.bot__msg .bot__wa{color:var(--bot-sur-jaune);text-decoration:none}
+.bot__wa::after{content:"→";transition:transform .2s ease}
+.bot__wa:hover::after{transform:translateX(3px)}
+.bot__cache{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .bot__ecrit{display:flex;gap:.45rem;align-items:flex-end}
 .bot__ecrit textarea{flex:1;min-width:0;resize:none;max-height:7rem;padding:.6rem .75rem;
-  background:#000;color:var(--ink);border:1px solid var(--line);border-radius:12px;
+  background:#000;color:var(--bot-encre);border:1px solid var(--bot-filet);border-radius:12px;
   font:inherit;font-size:.85rem;line-height:1.4}
-.bot__ecrit textarea:focus{outline:none;border-color:var(--yellow)}
+.bot__ecrit textarea:focus{outline:none;border-color:var(--bot-jaune)}
 .bot__envoyer{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;border:0;cursor:pointer;
-  background:var(--yellow);color:var(--on-yellow);font-size:1.1rem;font-weight:700;line-height:1}
+  background:var(--bot-jaune);color:var(--bot-sur-jaune);font-size:1.1rem;font-weight:700;line-height:1}
 .bot__envoyer:disabled{opacity:.4;cursor:default}
-.bot__panneau .bot__liens{display:flex;justify-content:center;gap:.4rem;font-size:.72rem;color:var(--ink-3,#8A8A86)}
-.bot__liens a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+.bot__panneau .bot__liens{display:flex;justify-content:center;gap:.4rem;font-size:.72rem;color:var(--bot-gris-2)}
+.bot__liens a{color:var(--bot-gris);text-decoration:underline;text-underline-offset:2px}
 .bot__liens a:hover{color:#FFF}
 @keyframes bot-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes bot-ombre{0%,100%{transform:scaleX(1);opacity:.45}50%{transform:scaleX(.82);opacity:.25}}
@@ -1112,6 +1120,7 @@ h3{font-weight:500;letter-spacing:-.012em}
   .bot__tete,.bot__yeux,.bot__bulle{transition:none}
 }
 @media print{.bot{display:none}}
+/* BOT-CSS:END */
 </style>
 
 <!-- Rattache SmartEfico et ses profils à une seule entité, pour Google
@@ -2187,7 +2196,7 @@ h3{font-weight:500;letter-spacing:-.012em}
       <li class="bot__msg bot__msg--robot">Bonjour ! Écrivez-moi votre question. Je ne sais pas encore y répondre seul, mais je la transmets à l’équipe.</li>
     </ol>
     <form class="bot__ecrit">
-      <label class="pilier__cache" for="bot-texte">Votre message</label>
+      <label class="bot__cache" for="bot-texte">Votre message</label>
       <textarea id="bot-texte" rows="1" maxlength="1000" placeholder="Votre message…" required></textarea>
       <button class="bot__envoyer" type="submit" aria-label="Envoyer" disabled>↑</button>
     </form>
@@ -2348,7 +2357,7 @@ h3{font-weight:500;letter-spacing:-.012em}
     li.textContent = contenu;
     if (lienWa) {
       var a = document.createElement('a');
-      a.className = 'btn btn--solid'; a.target = '_blank'; a.rel = 'noopener';
+      a.className = 'bot__wa'; a.target = '_blank'; a.rel = 'noopener';
       a.href = 'https://wa.me/33751599636?text=' + encodeURIComponent(lienWa);
       a.textContent = 'Envoyer sur WhatsApp';
       li.appendChild(a);
