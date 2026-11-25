@@ -406,13 +406,23 @@ em{color:var(--yellow)}
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && ouvert) basculer(false); });
 
   // La boîte de dialogue. Tant que BOT_API est vide, rien ne part : le robot
-  // propose d'envoyer le message à l'équipe sur WhatsApp, déjà écrit. Le jour où
-  // le RAG est prêt, y mettre l'adresse de son point d'entrée : il reçoit en POST
-  // { messages: [{ role: 'user'|'assistant', content }] } et répond { reponse }.
+  // propose d'envoyer le message à l'équipe sur WhatsApp, déjà écrit. Branché,
+  // il parle au déclencheur « Chat » de n8n : POST { action: 'sendMessage',
+  // sessionId, chatInput }, réponse { output }. n8n garde lui-même la mémoire de
+  // la conversation par sessionId. Il n'accepte que l'origine smartefico.com :
+  // ailleurs (aperçu local, vercel.app, Pages), le robot retombe sur WhatsApp.
+  // Adresse du RAG, à poser quand ses réponses sont justes :
+  // https://n8n-iw5p.srv1989004.hstgr.cloud/webhook/44cd029b-cb47-49f1-b3ba-2709bbbbdb49/chat
   var BOT_API = '';
   var fil = bot.querySelector('.bot__fil'), formulaire = bot.querySelector('.bot__ecrit'),
       texte = bot.querySelector('#bot-texte'), envoyer = bot.querySelector('.bot__envoyer');
-  var historique = [], occupe = false;
+  var historique = [], occupe = false, session = '';
+  try { session = sessionStorage.getItem('bot-session') || ''; } catch (e) {}
+  if (!session) {
+    session = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2);
+    try { sessionStorage.setItem('bot-session', session); } catch (e) {}
+  }
+  if (BOT_API) fil.firstElementChild.textContent = 'Bonjour ! Je suis l’assistant de SmartEfico. Posez-moi votre question.';
   function ajouter(qui, contenu, lienWa) {
     var li = document.createElement('li');
     li.className = 'bot__msg bot__msg--' + (qui === 'user' ? 'moi' : 'robot');
@@ -427,7 +437,9 @@ em{color:var(--yellow)}
     fil.appendChild(li); fil.scrollTop = fil.scrollHeight;
   }
   function repliWhatsApp(message) {
-    ajouter('assistant', 'Merci ! Je ne sais pas encore répondre seul. Votre message est prêt à partir vers l’équipe sur WhatsApp :', message);
+    ajouter('assistant', BOT_API
+      ? 'Je n’arrive pas à répondre pour l’instant. Votre message est prêt à partir vers l’équipe sur WhatsApp :'
+      : 'Merci ! Je ne sais pas encore répondre seul. Votre message est prêt à partir vers l’équipe sur WhatsApp :', message);
   }
   function ajuster() {
     texte.style.height = 'auto'; texte.style.height = Math.min(texte.scrollHeight, 112) + 'px';
@@ -447,16 +459,25 @@ em{color:var(--yellow)}
     humeur('curieux');
     if (!BOT_API) { setTimeout(function () { repliWhatsApp(message); humeur('heureux', 1800); }, 700); return; }
     occupe = true; ajuster();
-    fetch(BOT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: historique.slice(-20) }) })
+    var attente = document.createElement('li');
+    attente.className = 'bot__msg bot__msg--robot bot__msg--attente'; attente.textContent = '…';
+    attente.setAttribute('aria-label', 'Le robot écrit');
+    fil.appendChild(attente); fil.scrollTop = fil.scrollHeight;
+    var arret = window.AbortController ? new AbortController() : null;
+    var delai = setTimeout(function () { if (arret) arret.abort(); }, 60000);
+    fetch(BOT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: arret ? arret.signal : undefined,
+      body: JSON.stringify({ action: 'sendMessage', sessionId: session, chatInput: message }) })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) {
-        var rep = d && typeof d.reponse === 'string' ? d.reponse.trim() : '';
+        if (Array.isArray(d)) d = d[0];
+        var rep = d && typeof d.output === 'string' ? d.output.trim() : d && typeof d.reponse === 'string' ? d.reponse.trim() : '';
         if (!rep) throw new Error('vide');
+        attente.remove();
         historique.push({ role: 'assistant', content: rep });
         ajouter('assistant', rep); humeur('heureux', 1800);
       })
-      .catch(function () { repliWhatsApp(message); humeur('surpris', 1200); })
-      .then(function () { occupe = false; ajuster(); });
+      .catch(function () { attente.remove(); repliWhatsApp(message); humeur('surpris', 1200); })
+      .then(function () { clearTimeout(delai); occupe = false; ajuster(); });
   });
 
   // Quelques mots, une seule fois chacun par visite.

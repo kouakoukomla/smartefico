@@ -1035,11 +1035,26 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
   ne part : le robot répond qu'il ne sait pas encore répondre seul et propose un bouton
   « Envoyer sur WhatsApp » qui ouvre WhatsApp avec le message déjà écrit. La conversation ne
   vit qu'en mémoire, rien n'est stocké.
-- **Pour brancher le RAG** : mettre l'adresse de son point d'entrée dans `var BOT_API` du
-  script. Il reçoit en POST `{ messages: [{ role: 'user'|'assistant', content }] }` (les 20
-  derniers) et doit répondre `{ reponse: "…" }`. Une erreur ou une réponse vide retombe sur la
-  proposition WhatsApp. Réponses affichées en `textContent`. Ce chemin n'a pas encore été
-  éprouvé, faute de point d'entrée. **À ce moment-là** : la règle `connect-src` n'existe pas
+- **Le RAG est un déclencheur « Chat » de n8n**, sur son serveur Hostinger ; son adresse est
+  en commentaire juste au-dessus de `var BOT_API`. Le 25 novembre 2026, le propriétaire l'a
+  d'abord collé lui-même dans `index.html` depuis GitHub (widget `@n8n/chat`, bulle rose à
+  côté du robot), puis a demandé « laisse le bot seul » : le widget est parti (commit
+  `7976922`). Le robot parle au même point d'entrée : POST `{ action: 'sendMessage',
+  sessionId, chatInput }`, réponse `{ output }` ; `sessionId` est tiré une fois par visite
+  (`sessionStorage`), n8n garde la mémoire. Trois petits points pendant l'attente, 60 s au
+  plus, puis repli WhatsApp. Éprouvé contre un faux n8n (réponse, panne, session).
+  **n8n n'accepte que l'origine `https://smartefico.com`** : l'aperçu local, `vercel.app` et
+  Pages retombent sur WhatsApp.
+- **Branchement prêt mais coupé (`BOT_API` vide), volontairement**, le même jour : le
+  propriétaire a demandé de brancher, mais quatre questions de test ont montré un RAG qui
+  décrit une autre entreprise (porte-à-porte, inspection annuelle, « espace client » qui
+  n'existe pas) et annonce des prix (« prime de 20 % », « 300 $ »), contre la règle « aucun
+  montant ». **Avant d'y mettre l'adresse** : reposer ces questions (que fait SmartEfico,
+  combien ça coûte, plus de clients haut de gamme, comment prendre rendez-vous), puis faire
+  valider par lui une phrase de l'article 10 des CGC qui nomme n8n et le modèle d'IA
+  derrière. Le point d'entrée est public : toute personne peut l'appeler et consommer ses
+  crédits d'IA, la limite se règle dans n8n et chez le fournisseur du modèle. Après
+  branchement : `sync-robot.mjs`, `build-blog.mjs`, et un essai sur smartefico.com même. **À ce moment-là** : la règle `connect-src` n'existe pas
   dans la CSP de `vercel.json`, rien à y ouvrir ; mais l'article 10 des CGC devra nommer le
   service qui reçoit les messages, avec son accord, et le point d'entrée devra se protéger
   contre l'abus (voir Sécurité : l'ancien assistant était appelable hors du site).
