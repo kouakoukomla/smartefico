@@ -1054,7 +1054,14 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
   valider par lui une phrase de l'article 10 des CGC qui nomme n8n et le modèle d'IA
   derrière. Le point d'entrée est public : toute personne peut l'appeler et consommer ses
   crédits d'IA, la limite se règle dans n8n et chez le fournisseur du modèle. Après
-  branchement : `sync-robot.mjs`, `build-blog.mjs`, et un essai sur smartefico.com même. **À ce moment-là** : la règle `connect-src` n'existe pas
+  branchement : `sync-robot.mjs`, `build-blog.mjs`, et un essai sur smartefico.com même.
+- **La base du RAG est dans `scripts/rag/`**, préparée le même jour à sa demande
+  (« Prépare la base RAG ») : `base-smartefico.md`, tout ce que le site dit de SmartEfico
+  en treize parties autonomes (dont « Ce que SmartEfico ne fait pas »), et
+  `consignes-agent.md`, le message système de l'agent n8n, les réglages conseillés et six
+  questions de contrôle. Rédigés par Claude à partir du seul site : à tenir à jour quand
+  le site change, puis à recharger dans n8n — c'est lui qui les charge, pas le dépôt.
+  `scripts/` n'est pas servi par Vercel (`.vercelignore`) ; GitHub Pages, lui, sert tout. **À ce moment-là** : la règle `connect-src` n'existe pas
   dans la CSP de `vercel.json`, rien à y ouvrir ; mais l'article 10 des CGC devra nommer le
   service qui reçoit les messages, avec son accord, et le point d'entrée devra se protéger
   contre l'abus (voir Sécurité : l'ancien assistant était appelable hors du site).
