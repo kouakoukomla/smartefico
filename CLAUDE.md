@@ -999,6 +999,26 @@ supprimées le 4 novembre 2026**, à sa demande. Sont partis avec elles leur sty
 ces deux sections, leurs compteurs et leur sixième paire de lignes décrit ce qui a
 existé ; l'historique git les garde.
 
+**Un robot animé en bas à droite de l'accueil depuis le 25 novembre 2026**, à sa demande,
+sur une image fournie (tête blanche, visière noire, yeux lumineux, casque-micro) : « je veux
+ajouter un bot dynamique. Il doit bouger, tourner les yeux, émotif ». Tout est entre les
+repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin du `<style>`.
+- **Ce n'est pas l'ancien assistant** : aucune IA, aucun serveur, aucune requête. Rien à
+  changer aux CGC. Cliqué, il ouvre un petit panneau (« Je ne réponds pas encore aux
+  messages, mais l'équipe, oui ») avec WhatsApp et le formulaire `81VkKx`
+  (`utm_medium=robot`). Échap le ferme.
+- **Dessiné en SVG** (pas l'image, dont le damier est incrusté) pour animer chaque partie.
+- **Six émotions**, par `data-emotion` sur `.bot` : neutre ; heureux au survol ; clin d'œil
+  panneau ouvert ; surpris quand on défile vite ou qu'on le réveille ; curieux de temps en
+  temps ; endormi après 30 s sans geste, avec un « z ».
+- **Il bouge** : flotte, cligne des yeux au hasard, ses yeux et sa tête suivent la souris ;
+  sans souris (téléphone), il regarde autour de lui. Sous mouvement réduit, il reste immobile.
+- **Il parle quatre fois au plus**, une seule fois par visite (`sessionStorage`) : bonjour
+  après 4 s, à l'arrivée sur `#agents` et sur `#contact`, et au réveil. Textes de Claude, à
+  valider par lui : ils se changent dans le script.
+- Accueil seulement : ni le blog, ni les autres pages. 64 px de large sur téléphone, 90 px
+  à 1 280 px.
+
 **Plus d'assistant de discussion depuis le 1er novembre 2026**, à la demande du
 propriétaire (« je veux que tu supprime le bot du site »), le jour de l'audit de
 sécurité qui avait montré qu'on pouvait l'appeler hors du site. Tout est parti : la
