@@ -1054,6 +1054,11 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
   mention sous le champ (`.bot__mention` : « Assistant IA : vos messages sont transmis à
   nos outils pour vous répondre. N'y écrivez pas d'informations sensibles. »). Aucune durée
   de conservation : la mémoire `n8n_chat_histories` garde tout tant qu'on ne la vide pas.
+  **Liens cliquables dans les réponses**, le même jour, à sa demande : `avecLiens()` fait
+  des liens des seules adresses `https://`, nues ou en `[texte](https://…)`, ponctuation
+  finale laissée hors du lien ; `javascript:`, `http://` et toute balise restent du texte,
+  rien ne passe par `innerHTML`. Les messages du visiteur ne sont jamais transformés.
+  Éprouvé contre un faux n8n, pièges compris.
   **Ce qu'il a fallu corriger côté n8n**, pour mémoire : un nœud Edit Fields vide qui
   privait l'agent de sa question, un message système resté « You are a helpful
   assistant », et surtout deux tables — l'ajout écrivait dans `documents` (lue par la

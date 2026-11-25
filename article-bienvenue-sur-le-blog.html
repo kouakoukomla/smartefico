@@ -1428,10 +1428,31 @@ rien à installer, et tout reste sous mon nom. Pour aller plus loin, il y a la
     try { sessionStorage.setItem('bot-session', session); } catch (e) {}
   }
   if (BOT_API) fil.firstElementChild.textContent = 'Bonjour ! Je suis l’assistant de SmartEfico. Posez-moi votre question.';
+  // Liens cliquables dans les réponses du robot, 25 novembre 2026 : seules les
+  // adresses https:// (nues ou en [texte](https://…)) deviennent des liens, tout
+  // le reste reste du texte. Rien n'est jamais écrit en innerHTML.
+  function avecLiens(el, txt) {
+    var re = /\[([^\]\n]+)\]\((https:\/\/[^\s)]+)\)|(https:\/\/[^\s<>"'()]+)/g, i = 0, m;
+    while ((m = re.exec(txt))) {
+      var url = m[2] || m[3], texte = m[1] || '', fin = '';
+      if (!m[2]) { var p = url.match(/[.,;:!?»]+$/); if (p) { fin = p[0]; url = url.slice(0, -fin.length); } texte = url; }
+      var sur = false;
+      try { sur = new URL(url).protocol === 'https:'; } catch (e) {}
+      if (m.index > i) el.appendChild(document.createTextNode(txt.slice(i, m.index)));
+      if (sur) {
+        var a = document.createElement('a');
+        a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = texte;
+        el.appendChild(a);
+      } else el.appendChild(document.createTextNode(m[0].slice(0, m[0].length - fin.length)));
+      if (fin) el.appendChild(document.createTextNode(fin));
+      i = re.lastIndex;
+    }
+    if (i < txt.length) el.appendChild(document.createTextNode(txt.slice(i)));
+  }
   function ajouter(qui, contenu, lienWa) {
     var li = document.createElement('li');
     li.className = 'bot__msg bot__msg--' + (qui === 'user' ? 'moi' : 'robot');
-    li.textContent = contenu;
+    if (qui === 'user') li.textContent = contenu; else avecLiens(li, contenu);
     if (lienWa) {
       var a = document.createElement('a');
       a.className = 'bot__wa'; a.target = '_blank'; a.rel = 'noopener';
