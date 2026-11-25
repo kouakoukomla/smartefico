@@ -1018,6 +1018,21 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
   valider par lui : ils se changent dans le script.
 - Accueil seulement : ni le blog, ni les autres pages. 64 px de large sur téléphone, 90 px
   à 1 280 px.
+- **Une boîte de dialogue depuis le même jour**, à sa demande (« On doit pouvoir lui envoyer
+  un message même s'il ne répond pas […] Nous allons bientôt connecter un RAG ») : le panneau
+  porte un fil de messages, un champ (1 000 caractères, Entrée envoie, Maj+Entrée va à la
+  ligne) et deux petits liens, WhatsApp et rendez-vous. **Tant que `BOT_API` est vide**, rien
+  ne part : le robot répond qu'il ne sait pas encore répondre seul et propose un bouton
+  « Envoyer sur WhatsApp » qui ouvre WhatsApp avec le message déjà écrit. La conversation ne
+  vit qu'en mémoire, rien n'est stocké.
+- **Pour brancher le RAG** : mettre l'adresse de son point d'entrée dans `var BOT_API` du
+  script. Il reçoit en POST `{ messages: [{ role: 'user'|'assistant', content }] }` (les 20
+  derniers) et doit répondre `{ reponse: "…" }`. Une erreur ou une réponse vide retombe sur la
+  proposition WhatsApp. Réponses affichées en `textContent`. Ce chemin n'a pas encore été
+  éprouvé, faute de point d'entrée. **À ce moment-là** : la règle `connect-src` n'existe pas
+  dans la CSP de `vercel.json`, rien à y ouvrir ; mais l'article 10 des CGC devra nommer le
+  service qui reçoit les messages, avec son accord, et le point d'entrée devra se protéger
+  contre l'abus (voir Sécurité : l'ancien assistant était appelable hors du site).
 
 **Plus d'assistant de discussion depuis le 1er novembre 2026**, à la demande du
 propriétaire (« je veux que tu supprime le bot du site »), le jour de l'audit de

@@ -1072,7 +1072,7 @@ h3{font-weight:500;letter-spacing:-.012em}
   opacity:0;transform:translateY(6px) scale(.97);transform-origin:100% 100%;
   transition:opacity .25s ease,transform .25s ease;pointer-events:none}
 .bot__bulle.visible{opacity:1;transform:none}
-.bot__panneau{width:min(17.5rem,calc(100vw - 2rem));padding:1rem 1rem 1.05rem;
+.bot__panneau{width:min(20rem,calc(100vw - 2rem));padding:1rem 1rem 1.05rem;
   background:var(--surface);border:1px solid var(--line);border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:.65rem}
 .bot__panneau[hidden]{display:none}
@@ -1083,6 +1083,27 @@ h3{font-weight:500;letter-spacing:-.012em}
   color:var(--ink-2);font-size:1rem;line-height:1;cursor:pointer}
 .bot__fermer:hover{border-color:var(--mur,#333);color:#FFF}
 .bot__panneau .btn{width:100%;justify-content:center;min-width:0}
+/* Boîte de dialogue, 25 novembre 2026 : on écrit au robot, même s'il ne répond
+   pas encore seul ; le RAG se branchera sur BOT_API (voir le script). */
+.bot__fil{list-style:none;margin:0;padding:0 .15rem 0 0;display:flex;flex-direction:column;gap:.5rem;
+  max-height:min(18rem,45vh);overflow-y:auto;overscroll-behavior:contain}
+.bot__msg{max-width:88%;padding:.5rem .7rem;border-radius:12px;font-size:.8rem;line-height:1.5;
+  white-space:pre-wrap;overflow-wrap:anywhere}
+.bot__msg--robot{align-self:flex-start;background:#1C1C1C;color:var(--ink);border-bottom-left-radius:4px}
+.bot__msg--moi{align-self:flex-end;background:var(--yellow);color:var(--on-yellow);border-bottom-right-radius:4px}
+.bot__msg a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.bot__msg .btn{margin-top:.5rem;font-size:.75rem;padding:.5rem .8rem}
+.bot__ecrit{display:flex;gap:.45rem;align-items:flex-end}
+.bot__ecrit textarea{flex:1;min-width:0;resize:none;max-height:7rem;padding:.6rem .75rem;
+  background:#000;color:var(--ink);border:1px solid var(--line);border-radius:12px;
+  font:inherit;font-size:.85rem;line-height:1.4}
+.bot__ecrit textarea:focus{outline:none;border-color:var(--yellow)}
+.bot__envoyer{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;border:0;cursor:pointer;
+  background:var(--yellow);color:var(--on-yellow);font-size:1.1rem;font-weight:700;line-height:1}
+.bot__envoyer:disabled{opacity:.4;cursor:default}
+.bot__panneau .bot__liens{display:flex;justify-content:center;gap:.4rem;font-size:.72rem;color:var(--ink-3,#8A8A86)}
+.bot__liens a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+.bot__liens a:hover{color:#FFF}
 @keyframes bot-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes bot-ombre{0%,100%{transform:scaleX(1);opacity:.45}50%{transform:scaleX(.82);opacity:.25}}
 @keyframes bot-z{0%{opacity:0;transform:translate(0,4px)}30%{opacity:1}100%{opacity:0;transform:translate(6px,-10px)}}
@@ -2162,11 +2183,17 @@ h3{font-weight:500;letter-spacing:-.012em}
       <h2>Une question&nbsp;?</h2>
       <button class="bot__fermer" type="button" aria-label="Fermer">×</button>
     </div>
-    <p>Je ne réponds pas encore aux messages, mais l’équipe, oui&nbsp;: écrivez-nous sur WhatsApp ou réservez un appel.</p>
-    <a class="btn btn--solid" href="https://wa.me/33751599636" target="_blank" rel="noopener"><svg class="ico-wa" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Écrire sur WhatsApp</a>
-    <a class="btn btn--line" href="https://tally.so/r/81VkKx?utm_source=site&amp;utm_medium=robot" target="_blank" rel="noopener">Réserver un appel</a>
+    <ol class="bot__fil" aria-live="polite" aria-label="Conversation">
+      <li class="bot__msg bot__msg--robot">Bonjour ! Écrivez-moi votre question. Je ne sais pas encore y répondre seul, mais je la transmets à l’équipe.</li>
+    </ol>
+    <form class="bot__ecrit">
+      <label class="pilier__cache" for="bot-texte">Votre message</label>
+      <textarea id="bot-texte" rows="1" maxlength="1000" placeholder="Votre message…" required></textarea>
+      <button class="bot__envoyer" type="submit" aria-label="Envoyer" disabled>↑</button>
+    </form>
+    <p class="bot__liens"><a href="https://wa.me/33751599636" target="_blank" rel="noopener">WhatsApp</a><span aria-hidden="true">·</span><a href="https://tally.so/r/81VkKx?utm_source=site&amp;utm_medium=robot" target="_blank" rel="noopener">Réserver un appel</a></p>
   </div>
-  <button class="bot__btn" type="button" aria-expanded="false" aria-controls="bot-panneau" aria-label="Une question ? Ouvrir le panneau de contact">
+  <button class="bot__btn" type="button" aria-expanded="false" aria-controls="bot-panneau" aria-label="Une question ? Ouvrir la discussion">
     <svg class="bot__corps" viewBox="0 0 120 120" aria-hidden="true">
       <defs>
         <linearGradient id="bot-blanc" x1="0" y1="0" x2="0" y2="1">
@@ -2301,11 +2328,65 @@ h3{font-weight:500;letter-spacing:-.012em}
     ouvert = etat; panneau.hidden = !etat; btn.setAttribute('aria-expanded', String(etat));
     bulle.classList.remove('visible');
     humeur(etat ? 'clin' : 'neutre');
-    if (etat) panneau.querySelector('a').focus(); else btn.focus();
+    if (etat) texte.focus(); else btn.focus();
   }
   btn.addEventListener('click', function () { basculer(!ouvert); });
   fermer.addEventListener('click', function () { basculer(false); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && ouvert) basculer(false); });
+
+  // La boîte de dialogue. Tant que BOT_API est vide, rien ne part : le robot
+  // propose d'envoyer le message à l'équipe sur WhatsApp, déjà écrit. Le jour où
+  // le RAG est prêt, y mettre l'adresse de son point d'entrée : il reçoit en POST
+  // { messages: [{ role: 'user'|'assistant', content }] } et répond { reponse }.
+  var BOT_API = '';
+  var fil = bot.querySelector('.bot__fil'), formulaire = bot.querySelector('.bot__ecrit'),
+      texte = bot.querySelector('#bot-texte'), envoyer = bot.querySelector('.bot__envoyer');
+  var historique = [], occupe = false;
+  function ajouter(qui, contenu, lienWa) {
+    var li = document.createElement('li');
+    li.className = 'bot__msg bot__msg--' + (qui === 'user' ? 'moi' : 'robot');
+    li.textContent = contenu;
+    if (lienWa) {
+      var a = document.createElement('a');
+      a.className = 'btn btn--solid'; a.target = '_blank'; a.rel = 'noopener';
+      a.href = 'https://wa.me/33751599636?text=' + encodeURIComponent(lienWa);
+      a.textContent = 'Envoyer sur WhatsApp';
+      li.appendChild(a);
+    }
+    fil.appendChild(li); fil.scrollTop = fil.scrollHeight;
+  }
+  function repliWhatsApp(message) {
+    ajouter('assistant', 'Merci ! Je ne sais pas encore répondre seul. Votre message est prêt à partir vers l’équipe sur WhatsApp :', message);
+  }
+  function ajuster() {
+    texte.style.height = 'auto'; texte.style.height = Math.min(texte.scrollHeight, 112) + 'px';
+    envoyer.disabled = occupe || !texte.value.trim();
+  }
+  texte.addEventListener('input', ajuster);
+  texte.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); formulaire.requestSubmit ? formulaire.requestSubmit() : envoyer.click(); }
+  });
+  formulaire.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var message = texte.value.trim().slice(0, 1000);
+    if (!message || occupe) return;
+    ajouter('user', message);
+    historique.push({ role: 'user', content: message });
+    texte.value = ''; ajuster();
+    humeur('curieux');
+    if (!BOT_API) { setTimeout(function () { repliWhatsApp(message); humeur('heureux', 1800); }, 700); return; }
+    occupe = true; ajuster();
+    fetch(BOT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: historique.slice(-20) }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        var rep = d && typeof d.reponse === 'string' ? d.reponse.trim() : '';
+        if (!rep) throw new Error('vide');
+        historique.push({ role: 'assistant', content: rep });
+        ajouter('assistant', rep); humeur('heureux', 1800);
+      })
+      .catch(function () { repliWhatsApp(message); humeur('surpris', 1200); })
+      .then(function () { occupe = false; ajuster(); });
+  });
 
   // Quelques mots, une seule fois chacun par visite.
   function deja(cle) {
