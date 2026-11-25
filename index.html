@@ -2417,6 +2417,32 @@ h3{font-weight:500;letter-spacing:-.012em}
   }
 })();
 </script>
+     </script>
+
+<!-- Widget de chat Smart Efico -->
+<link
+  href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+  rel="stylesheet"
+/>
+
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'https://n8n-iw5p.srv1989004.hstgr.cloud/webhook/44cd029b-cb47-49f1-b3ba-2709bbbbdb49/chat',
+
+    mode: 'window',
+
+    initialMessages: [
+      'Bonjour ! Je suis l’assistant de Smart Efico.',
+      'Comment puis-je vous aider ?'
+    ]
+  });
+</script>
+
+<!-- BOT:END -->
+</body>
+</html>
 <!-- BOT:END -->
 </body>
 </html>
