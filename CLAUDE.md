@@ -1045,7 +1045,23 @@ repères `BOT:START/END` en bas de `index.html`, plus le bloc `.bot` à la fin d
   plus, puis repli WhatsApp. Éprouvé contre un faux n8n (réponse, panne, session).
   **n8n n'accepte que l'origine `https://smartefico.com`** : l'aperçu local, `vercel.app` et
   Pages retombent sur WhatsApp.
-- **Branchement prêt mais coupé (`BOT_API` vide), volontairement**, le même jour : le
+- **Branché depuis le 25 novembre 2026 au soir** (« Je valide, branche »), après six
+  questions de contrôle justes : `BOT_API` porte l'adresse n8n, accueil « Je suis
+  l'assistant de SmartEfico ». **Deux textes validés par lui le même jour** : la ligne de
+  l'article 10 des CGC (« l'assistant du site, qui répond aux questions des visiteurs :
+  leurs messages sont traités par n8n, hébergé par Hostinger, et par OpenAI pour produire
+  la réponse, puis conservés dans une base Supabase pour suivre la conversation ») et la
+  mention sous le champ (`.bot__mention` : « Assistant IA : vos messages sont transmis à
+  nos outils pour vous répondre. N'y écrivez pas d'informations sensibles. »). Aucune durée
+  de conservation : la mémoire `n8n_chat_histories` garde tout tant qu'on ne la vide pas.
+  **Ce qu'il a fallu corriger côté n8n**, pour mémoire : un nœud Edit Fields vide qui
+  privait l'agent de sa question, un message système resté « You are a helpful
+  assistant », et surtout deux tables — l'ajout écrivait dans `documents` (lue par la
+  fonction `match_documents`) quand l'agent lisait `rag_smartefico`, vide. Tout passe
+  désormais par `documents` (57 morceaux, le PDF chargé plusieurs fois : à recharger une
+  fois au propre). La mémoire est dans un **autre projet Supabase** que la base
+  (`myuugrgqtcdebqmmwkuq`). Six questions de contrôle dans `scripts/rag/consignes-agent.md`.
+- **Avant le branchement, coupé volontairement (`BOT_API` vide)**, le même jour : le
   propriétaire a demandé de brancher, mais quatre questions de test ont montré un RAG qui
   décrit une autre entreprise (porte-à-porte, inspection annuelle, « espace client » qui
   n'existe pas) et annonce des prix (« prime de 20 % », « 300 $ »), contre la règle « aucun

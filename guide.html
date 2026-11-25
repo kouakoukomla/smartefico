@@ -251,6 +251,9 @@ em{color:var(--yellow)}
 .bot__envoyer{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;border:0;cursor:pointer;
   background:var(--bot-jaune);color:var(--bot-sur-jaune);font-size:1.1rem;font-weight:700;line-height:1}
 .bot__envoyer:disabled{opacity:.4;cursor:default}
+/* Mention validée par le propriétaire le 25 novembre 2026, avec la ligne de
+   l'article 10 des CGC, au branchement sur n8n. */
+.bot__panneau .bot__mention{margin:-.15rem 0 0;font-size:.75rem;line-height:1.45;color:var(--bot-gris-2)}
 .bot__panneau .bot__liens{display:flex;justify-content:center;gap:.4rem;font-size:.72rem;color:var(--bot-gris-2)}
 .bot__liens a{color:var(--bot-gris);text-decoration:underline;text-underline-offset:2px}
 .bot__liens a:hover{color:#FFF}
@@ -399,6 +402,7 @@ em{color:var(--yellow)}
       <textarea id="bot-texte" rows="1" maxlength="1000" placeholder="Votre message…" required></textarea>
       <button class="bot__envoyer" type="submit" aria-label="Envoyer" disabled>↑</button>
     </form>
+    <p class="bot__mention">Assistant IA&nbsp;: vos messages sont transmis à nos outils pour vous répondre. N’y écrivez pas d’informations sensibles.</p>
     <p class="bot__liens"><a href="https://wa.me/33751599636" target="_blank" rel="noopener">WhatsApp</a><span aria-hidden="true">·</span><a href="https://tally.so/r/81VkKx?utm_source=site&amp;utm_medium=robot" target="_blank" rel="noopener">Réserver un appel</a></p>
   </div>
   <button class="bot__btn" type="button" aria-expanded="false" aria-controls="bot-panneau" aria-label="Une question ? Ouvrir la discussion">
@@ -550,7 +554,7 @@ em{color:var(--yellow)}
   // ailleurs (aperçu local, vercel.app, Pages), le robot retombe sur WhatsApp.
   // Adresse du RAG, à poser quand ses réponses sont justes :
   // https://n8n-iw5p.srv1989004.hstgr.cloud/webhook/44cd029b-cb47-49f1-b3ba-2709bbbbdb49/chat
-  var BOT_API = '';
+  var BOT_API = 'https://n8n-iw5p.srv1989004.hstgr.cloud/webhook/44cd029b-cb47-49f1-b3ba-2709bbbbdb49/chat';
   var fil = bot.querySelector('.bot__fil'), formulaire = bot.querySelector('.bot__ecrit'),
       texte = bot.querySelector('#bot-texte'), envoyer = bot.querySelector('.bot__envoyer');
   var historique = [], occupe = false, session = '';
